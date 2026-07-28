@@ -89,7 +89,15 @@ export default function SiteNav({
           <a href="/pricing" className="hv-ink" style={link("pricing")}>Pricing</a>
         </div>
         {onToggleLang ? (
-          <div onClick={onToggleLang} title="Switch language" className="nav-lang" style={{ display: "flex", padding: 3, borderRadius: 99, background: "rgba(26,29,18,0.07)", cursor: "pointer", fontSize: 11.5, fontWeight: 700 }}>
+          <div
+            role="button"
+            tabIndex={0}
+            aria-label={lang === "bn" ? "Switch language to English" : "Switch language to Bangla"}
+            onClick={onToggleLang}
+            onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onToggleLang(); } }}
+            className="nav-lang"
+            style={{ display: "flex", padding: 3, borderRadius: 99, background: "rgba(26,29,18,0.07)", cursor: "pointer", fontSize: 11.5, fontWeight: 700 }}
+          >
             <span style={seg(lang !== "bn")}>EN</span><span style={seg(lang === "bn")}>বাং</span>
           </div>
         ) : null}
@@ -117,7 +125,14 @@ export default function SiteNav({
             {onToggleLang ? (
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px 2px" }}>
                 <span style={{ fontSize: 13, fontWeight: 700, color: "#6B6D60" }}>Language</span>
-                <div onClick={onToggleLang} style={{ display: "flex", padding: 3, borderRadius: 99, background: "rgba(26,29,18,0.07)", cursor: "pointer", fontSize: 11.5, fontWeight: 700 }}>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  aria-label={lang === "bn" ? "Switch language to English" : "Switch language to Bangla"}
+                  onClick={onToggleLang}
+                  onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onToggleLang(); } }}
+                  style={{ display: "flex", padding: 3, borderRadius: 99, background: "rgba(26,29,18,0.07)", cursor: "pointer", fontSize: 11.5, fontWeight: 700 }}
+                >
                   <span style={seg(lang !== "bn")}>EN</span><span style={seg(lang === "bn")}>বাং</span>
                 </div>
               </div>
