@@ -47,8 +47,18 @@
   .m-orbcol { height: 360px !important; }
   .m-gap { gap: 24px !important; }
   .m-pad-band { padding: 28px 18px !important; }
-  .m-nav-cta { padding: 9px 13px !important; font-size: 12.5px !important; }
+  /* the hero repeats this CTA one screen down — the bar stays logo + burger */
+  .m-nav-cta { display: none !important; }
   .nav-lang { display: none !important; }
+  /* hero starts flush under the bar, no cream sliver */
+  .m-hero-wrap { margin-top: 0 !important; }
+
+  /* hero receipt chips: desktop lets them overhang the orb column, which the
+     full-bleed hero would clip on a phone — pull them back inside */
+  .m-hero-chip-1 { right: 0 !important; left: auto !important; }
+  .m-hero-chip-2 { left: 0 !important; right: auto !important; }
+  .m-hero-chip-3 { right: 0 !important; left: auto !important; }
+  .m-hero-chip > div { max-width: 100%; }
   /* grow hero chart: keep right-side pins inside the card */
   .m-pin-3 { transform: translate(-75%, -100%) !important; }
   .m-pin-4 { transform: translate(-92%, -100%) !important; }

@@ -73,7 +73,7 @@ export default function NovaPage() {
       <SiteNav active="nova" ctaHref="#cta" style={{ position: "sticky", top: 0, zIndex: 60 }} />
 
       {/* HERO */}
-      <div className="m-bleed-wrap" style={{ maxWidth: 1200, margin: "18px auto 0", padding: "0 20px" }}>
+      <div className="m-bleed-wrap m-hero-wrap" style={{ maxWidth: 1200, margin: "18px auto 0", padding: "0 20px" }}>
         <div className="m-pad-hero m-bleed" style={{ position: "relative", borderRadius: 36, background: "#0F120B", color: "#E9EFDC", overflow: "hidden", padding: "88px 64px" }}>
           <div style={{ position: "absolute", top: -200, left: "50%", transform: "translateX(-50%)", width: 720, height: 720, borderRadius: "50%", background: "radial-gradient(closest-side, rgba(198,240,53,0.18), rgba(198,240,53,0))" }} />
           <div className="m-grid" style={{ position: "relative", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 40, alignItems: "center" }}>

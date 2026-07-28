@@ -43,7 +43,7 @@ export default function HomeTop() {
         style={{ position: "sticky", top: 0, zIndex: 60 }}
       />
 
-      <div className="m-bleed-wrap" style={{ maxWidth: 1200, margin: "18px auto 0", padding: "0 20px" }}>
+      <div className="m-bleed-wrap m-hero-wrap" style={{ maxWidth: 1200, margin: "18px auto 0", padding: "0 20px" }}>
         <div className="m-pad-hero m-bleed" style={{ position: "relative", borderRadius: 36, background: "#0F120B", color: "#E9EFDC", overflow: "hidden", padding: "84px 64px 76px" }}>
           <div style={{ position: "absolute", top: -220, right: -140, width: 640, height: 640, borderRadius: "50%", background: "radial-gradient(closest-side, rgba(198,240,53,0.22), rgba(198,240,53,0))" }} />
           <div style={{ position: "absolute", bottom: -260, left: -120, width: 560, height: 560, borderRadius: "50%", background: "radial-gradient(closest-side, rgba(198,240,53,0.12), rgba(198,240,53,0))" }} />
@@ -105,7 +105,7 @@ export default function HomeTop() {
                 <div style={{ position: "absolute", left: "50%", bottom: 112, transform: "translateX(-50%)", fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.22em", color: "#0F120B" }}>NOVA</div>
               </div>
               {HERO_CHIPS.map((t, i) => (
-                <div key={t} style={{ position: "absolute", ...CHIP_POS[i], animation: "stepIn 12s ease-in-out infinite", animationDelay: CHIP_POS[i].delay }}>
+                <div key={t} className={`m-hero-chip m-hero-chip-${i + 1}`} style={{ position: "absolute", ...CHIP_POS[i], animation: "stepIn 12s ease-in-out infinite", animationDelay: CHIP_POS[i].delay }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 9, padding: "11px 15px", borderRadius: 14, background: "#14170E", border: "1px solid rgba(198,242,62,0.25)", boxShadow: "0 18px 40px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
                     <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", flexShrink: 0 }} />
                     <span style={{ fontSize: 12, fontWeight: 600, color: "#E9EFDC" }}>{t}</span>

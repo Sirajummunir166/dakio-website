@@ -68,7 +68,15 @@ export default function SiteNav({
         </a>
         <div className="nav-desktop-links" style={{ flex: 1, display: "flex", alignItems: "center", gap: 22, marginLeft: 12 }}>
           <div
+            role="button"
+            tabIndex={0}
+            aria-expanded={open}
+            aria-haspopup="true"
             onClick={toggleOpen}
+            onKeyDown={e => {
+              if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleOpen(); }
+              else if (e.key === "Escape") close();
+            }}
             onMouseEnter={openMenu}
             onMouseLeave={scheduleClose}
             style={{ display: "inline-flex", alignItems: "center", gap: 6, cursor: "pointer", userSelect: "none", ...link(prodActive ? active : "_"), ...(open ? { color: "#1A1D12" } : {}) }}

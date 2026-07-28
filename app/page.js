@@ -62,8 +62,25 @@ const SWITCH_ROWS = [
   { i: "3", t: "And you gain a CEO", d: "Shopify gives you tools. Dakio staffs the whole back office from day one." },
 ];
 
-// Radial org variant — chip anchor points (% of container), CEO at 50/50.
-const RADIAL_POS = [[22, 7], [50, 2], [78, 7], [15, 30], [85, 30], [15, 70], [85, 70], [30, 93], [70, 93]];
+// Radial org chart. Each spoke: chip anchor (% of container) plus the start/end
+// trim of its dashed line. The svg is preserveAspectRatio="none", so a single
+// trim ratio would render wildly different gaps per direction — these are
+// pre-solved per spoke to leave an even ~14px gap at both the hub and the chip.
+const RADIAL_SPOKES = [
+  { pos: [24, 19], trim: [0.310, 0.779] },
+  { pos: [50, 7], trim: [0.244, 0.802] },
+  { pos: [76, 19], trim: [0.310, 0.779] },
+  { pos: [16, 37], trim: [0.416, 0.635] },
+  { pos: [84, 37], trim: [0.416, 0.635] },
+  { pos: [16, 67], trim: [0.416, 0.655] },
+  { pos: [84, 67], trim: [0.416, 0.655] },
+  { pos: [29, 89], trim: [0.260, 0.809] },
+  { pos: [71, 89], trim: [0.260, 0.809] },
+];
+
+// The CEO Office is the hub, the rest ring it — sliced to the spoke count so a
+// data edit can never index past RADIAL_SPOKES.
+const DEPARTMENTS = DEPTS.filter(d => d.n !== "CEO Office").slice(0, RADIAL_SPOKES.length);
 
 const PLANS = [
   { n: "Starter", pr: "Free", sub: "forever", d: "Store, orders, couriers and Nova at L0–L1 — watch it work before you trust it.", cta: "Start free", dark: false },
@@ -151,12 +168,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ================= ORG / TEAM ================= */}
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px", textAlign: "center" }}>
+      {/* ================= ORG / TEAM — radial: CEO at the hub, departments around ================= */}
+      <div className="m-org-section" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px", textAlign: "center" }}>
         <div data-reveal>
           <div style={kicker}>THE ORGANIZATION</div>
           <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640 }}>This is your team now.</h2>
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: 34, marginTop: 26 }}>
+          <div className="m-org-stats" style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: 34, marginTop: 26 }}>
             <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>1</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>Acting CEO</div></div>
             <div style={{ width: 1, height: 34, background: "rgba(26,29,18,0.12)", alignSelf: "center" }} />
             <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>10</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>departments</div></div>
@@ -164,83 +181,19 @@ export default function Home() {
             <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>65</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>named duties</div></div>
           </div>
         </div>
-        <div data-reveal className="m-chip-grid" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 9, marginTop: 30, maxWidth: 820, marginLeft: "auto", marginRight: "auto" }}>
-          {DEPTS.map(d => (
-            <div key={d.n} className="hv-border-ink-up2 m-chip-stack" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "11px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)" }}>
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
-                <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", border: "1px solid rgba(26,29,18,0.25)" }} />
-                <span style={{ fontSize: 13.5, fontWeight: 700 }}>{d.n}</span>
-              </span>
-              <span style={{ fontFamily: MONO, fontSize: 8.5, letterSpacing: "0.06em", color: "#6B6D60" }}>{d.j}</span>
-            </div>
-          ))}
-        </div>
-        <div data-reveal style={{ marginTop: 18, fontSize: 13, color: "#6B6D60" }}>Every duty lands in a real module you could run by hand. Nova just never sleeps.</div>
-      </div>
-
-      {/* ============ ORG — TREE VARIANT (preview duplicate for comparison) ============ */}
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px", textAlign: "center" }}>
-        <div data-reveal>
-          <div style={kicker}>THE ORGANIZATION · TREE VARIANT (PREVIEW)</div>
-          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640 }}>This is your team now.</h2>
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: 34, marginTop: 26 }}>
-            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>1</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>Acting CEO</div></div>
-            <div style={{ width: 1, height: 34, background: "rgba(26,29,18,0.12)", alignSelf: "center" }} />
-            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>10</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>departments</div></div>
-            <div style={{ width: 1, height: 34, background: "rgba(26,29,18,0.12)", alignSelf: "center" }} />
-            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>65</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>named duties</div></div>
-          </div>
-        </div>
-        <div data-reveal style={{ marginTop: 34 }}>
-          {/* CEO node */}
-          <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "14px 26px", borderRadius: 16, background: "#1A1D12", color: "#F0EFE6" }}>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
-              <span style={{ width: 10, height: 10, borderRadius: 99, background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)" }} />
-              <span style={{ fontSize: 14.5, fontWeight: 800, color: "#FBFBF4" }}>CEO Office</span>
-            </span>
-            <span style={{ fontFamily: MONO, fontSize: 8.5, letterSpacing: "0.1em", color: "#C6F035" }}>PLANS · COORDINATES ALL</span>
-          </div>
-          {/* fishbone tree: center spine from the CEO node, one branch per dept */}
-          <div className="org-tree">
-            {DEPTS.filter(d => d.n !== "CEO Office").map(d => (
-              <div key={d.n} className="org-node">
-                <div className="hv-border-ink-up2 m-chip-stack" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "11px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)" }}>
-                  <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
-                    <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", border: "1px solid rgba(26,29,18,0.25)" }} />
-                    <span style={{ fontSize: 13.5, fontWeight: 700 }}>{d.n}</span>
-                  </span>
-                  <span style={{ fontFamily: MONO, fontSize: 8.5, letterSpacing: "0.06em", color: "#6B6D60" }}>{d.j}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div style={{ marginTop: 18, fontSize: 13, color: "#6B6D60" }}>Every duty lands in a real module you could run by hand. Nova just never sleeps.</div>
-        </div>
-      </div>
-
-      {/* ============ ORG — RADIAL VARIANT (preview duplicate for comparison) ============ */}
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px", textAlign: "center" }}>
-        <div data-reveal>
-          <div style={kicker}>THE ORGANIZATION · RADIAL VARIANT (PREVIEW)</div>
-          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640 }}>This is your team now.</h2>
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: 34, marginTop: 26 }}>
-            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>1</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>Acting CEO</div></div>
-            <div style={{ width: 1, height: 34, background: "rgba(26,29,18,0.12)", alignSelf: "center" }} />
-            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>10</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>departments</div></div>
-            <div style={{ width: 1, height: 34, background: "rgba(26,29,18,0.12)", alignSelf: "center" }} />
-            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>65</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>named duties</div></div>
-          </div>
-        </div>
-        <div data-reveal className="org-radial" style={{ position: "relative", maxWidth: 760, height: 440, margin: "26px auto 0" }}>
+        <div data-reveal className="org-radial" style={{ position: "relative", maxWidth: 760, height: 400, margin: "22px auto 0" }}>
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} aria-hidden="true">
-            {RADIAL_POS.map(([x, y], i) => (
-              <line key={i} x1="50" y1="50" x2={x} y2={y} stroke="rgba(26,29,18,0.25)" strokeWidth="1" strokeDasharray="4 5" vectorEffect="non-scaling-stroke" />
-            ))}
+            {RADIAL_SPOKES.map(({ pos: [x, y], trim: [t0, t1] }, i) => {
+              const at = t => [50 + (x - 50) * t, 50 + (y - 50) * t];
+              const [x1, y1] = at(t0);
+              const [x2, y2] = at(t1);
+              return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(26,29,18,0.25)" strokeWidth="1" strokeDasharray="4 5" vectorEffect="non-scaling-stroke" />;
+            })}
           </svg>
-          {DEPTS.filter(d => d.n !== "CEO Office").map((d, i) => {
-            const pos = RADIAL_POS[i];
+          {DEPARTMENTS.map((d, i) => {
+            const [x, y] = RADIAL_SPOKES[i].pos;
             return (
-              <div key={d.n} className="hv-border-ink-up2 org-radial-chip" style={{ position: "absolute", left: `${pos[0]}%`, top: `${pos[1]}%`, transform: "translate(-50%,-50%)", display: "inline-flex", alignItems: "center", gap: 9, padding: "11px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)", whiteSpace: "nowrap" }}>
+              <div key={d.n} className="org-radial-chip" style={{ position: "absolute", left: `${x}%`, top: `${y}%`, transform: "translate(-50%,-50%)", display: "inline-flex", alignItems: "center", gap: 9, padding: "11px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)", whiteSpace: "nowrap" }}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
                   <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", border: "1px solid rgba(26,29,18,0.25)" }} />
                   <span style={{ fontSize: 13.5, fontWeight: 700 }}>{d.n}</span>
