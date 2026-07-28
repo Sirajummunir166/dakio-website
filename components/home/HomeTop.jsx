@@ -1,24 +1,19 @@
-"use client";
+// Home nav + dark hero.
+//
+// This used to be a client component: the EN/বাং switch was useState and swapped
+// only the hero copy. The whole site is per-locale now, so the switch is a link
+// in SiteNav and this is a plain server component — no hero JS ships at all.
 
-// Home nav + dark hero. Client boundary because the EN/বাং toggle in SiteNav
-// swaps the hero copy (and only the hero copy) — state shared between the two.
+import { Nav } from "../Chrome";
+import { MONO } from "../../content/copy/home.en";
+import { type } from "../../lib/type";
 
-import { useState } from "react";
-import SiteNav from "../SiteNav";
-
-const MONO = "var(--dk-font-mono), monospace";
-const BN = "var(--dk-font-bn), sans-serif";
+const MONOFONT = "var(--dk-font-mono), monospace";
 
 const CHIP_POS = [
   { top: 24, right: -6, delay: "0s" },
   { top: 150, left: -30, delay: "-4s" },
   { bottom: 64, right: 2, delay: "-8s" },
-];
-
-const HERO_CHIPS = [
-  "84 messages answered",
-  "Cart recovered · ৳2,300",
-  "Weak ad set paused",
 ];
 
 function Arrow({ size = 15 }) {
@@ -29,16 +24,16 @@ function Arrow({ size = 15 }) {
   );
 }
 
-export default function HomeTop() {
-  const [lang, setLang] = useState("en");
-  const isBn = lang === "bn";
+export default function HomeTop({ lang = "en", copy }) {
+  const T = type(lang);
+  const c = copy;
 
   return (
     <>
-      <SiteNav
-        active="home"
+      <Nav
         lang={lang}
-        onToggleLang={() => setLang(isBn ? "en" : "bn")}
+        route="/"
+        active="home"
         ctaHref="#cta"
         style={{ position: "sticky", top: 0, zIndex: 60 }}
       />
@@ -49,49 +44,28 @@ export default function HomeTop() {
           <div style={{ position: "absolute", bottom: -260, left: -120, width: 560, height: 560, borderRadius: "50%", background: "radial-gradient(closest-side, rgba(198,240,53,0.12), rgba(198,240,53,0))" }} />
           <div className="m-grid" style={{ position: "relative", display: "grid", gridTemplateColumns: "1.15fr 0.85fr", gap: 40, alignItems: "center" }}>
             <div>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, border: "1px solid rgba(198,240,53,0.35)", fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "#C6F035", animation: "heroUp .6s ease both" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, border: "1px solid rgba(198,240,53,0.35)", fontFamily: MONOFONT, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "#C6F035", animation: "heroUp .6s ease both" }}>
                 <span style={{ position: "relative", width: 7, height: 7, borderRadius: 99, background: "#C6F035" }}>
                   <span style={{ position: "absolute", inset: 0, borderRadius: 99, background: "#C6F035", animation: "ping 2.2s ease-out infinite" }} />
                 </span>
-                THE COMMERCE OS FOR BANGLADESH
+                {MONO.heroBadge}
               </div>
-              {!isBn ? (
-                <>
-                  <h1 className="m-h1" style={{ margin: "24px 0 0", fontSize: 68, lineHeight: 1.02, letterSpacing: "-2.8px", fontWeight: 800, color: "#FBFBF4", animation: "heroUp .6s .08s ease both" }}>
-                    Appoint a CEO<br />to your store<span style={{ color: "#C6F035" }}>.</span>
-                  </h1>
-                  <p style={{ margin: "22px 0 0", fontSize: 17, lineHeight: 1.6, color: "#A9AD98", maxWidth: 440, animation: "heroUp .6s .16s ease both" }}>
-                    Store, couriers, payments — and <b style={{ color: "#E9EFDC" }}>Nova</b>, an AI CEO that runs it all. Even while you sleep.
-                  </p>
-                  <div className="m-wrap" style={{ display: "flex", gap: 12, marginTop: 32, animation: "heroUp .6s .24s ease both" }}>
-                    <a href="#cta" className="hv-up2-glow" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 26px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 15, fontWeight: 700 }}>
-                      Open your store <Arrow />
-                    </a>
-                    <a href="#nova" className="hv-bg-wash07" style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.25)", color: "#E9EFDC", fontSize: 15, fontWeight: 700 }}>
-                      Meet Nova
-                    </a>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <h1 className="m-h1" style={{ margin: "24px 0 0", fontFamily: BN, fontSize: 58, lineHeight: 1.15, letterSpacing: "-1px", fontWeight: 800, color: "#FBFBF4", animation: "heroUp .6s .08s ease both" }}>
-                    আপনার দোকানে<br />একজন CEO নিয়োগ দিন<span style={{ color: "#C6F035" }}>।</span>
-                  </h1>
-                  <p style={{ margin: "22px 0 0", fontFamily: BN, fontSize: 17, lineHeight: 1.7, color: "#A9AD98", maxWidth: 440, animation: "heroUp .6s .16s ease both" }}>
-                    স্টোর, কুরিয়ার, পেমেন্ট — আর <b style={{ color: "#E9EFDC" }}>Nova</b>, আপনার AI CEO। আপনি ঘুমালেও ব্যবসা চলে।
-                  </p>
-                  <div className="m-wrap" style={{ display: "flex", gap: 12, marginTop: 32, animation: "heroUp .6s .24s ease both" }}>
-                    <a href="#cta" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 26px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontFamily: BN, fontSize: 15, fontWeight: 700 }}>
-                      স্টোর খুলুন <Arrow />
-                    </a>
-                    <a href="#nova" className="hv-bg-wash07" style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.25)", color: "#E9EFDC", fontFamily: BN, fontSize: 15, fontWeight: 700 }}>
-                      Nova-কে জানুন
-                    </a>
-                  </div>
-                </>
-              )}
-              <div className="m-wrap" style={{ display: "flex", alignItems: "center", gap: 18, marginTop: 30, animation: "heroUp .6s .32s ease both", fontFamily: MONO, fontSize: 9.5, letterSpacing: "0.1em", color: "#878B76" }}>
-                <span style={{ color: "#C6F035" }}>STORE LIVE IN MINUTES</span><span style={{ opacity: 0.4 }}>·</span><span>NO CODE</span><span style={{ opacity: 0.4 }}>·</span><span>৳ · bKASH · COD</span>
+              <h1 className="m-h1" style={{ margin: "24px 0 0", fontSize: 68, lineHeight: 1.02, letterSpacing: "-2.8px", fontWeight: 800, color: "#FBFBF4", animation: "heroUp .6s .08s ease both", ...T.h1 }}>
+                {c.h1}
+              </h1>
+              <p style={{ margin: "22px 0 0", fontSize: 17, lineHeight: 1.6, color: "#A9AD98", maxWidth: 440, animation: "heroUp .6s .16s ease both", ...T.lead }}>
+                {c.sub}
+              </p>
+              <div className="m-wrap" style={{ display: "flex", gap: 12, marginTop: 32, animation: "heroUp .6s .24s ease both" }}>
+                <a href="#cta" className="hv-up2-glow" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 26px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 15, fontWeight: 700, ...T.label }}>
+                  {c.ctaPrimary} <Arrow />
+                </a>
+                <a href="#nova" className="hv-bg-wash07" style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.25)", color: "#E9EFDC", fontSize: 15, fontWeight: 700, ...T.label }}>
+                  {c.ctaSecondary}
+                </a>
+              </div>
+              <div className="m-wrap" style={{ display: "flex", alignItems: "center", gap: 18, marginTop: 30, animation: "heroUp .6s .32s ease both", fontFamily: MONOFONT, fontSize: 9.5, letterSpacing: "0.1em", color: "#878B76" }}>
+                <span style={{ color: "#C6F035" }}>{MONO.heroStrip[0]}</span><span style={{ opacity: 0.4 }}>·</span><span>{MONO.heroStrip[1]}</span><span style={{ opacity: 0.4 }}>·</span><span>{MONO.heroStrip[2]}</span>
               </div>
             </div>
             {/* Nova orb + live work chips */}
@@ -102,18 +76,18 @@ export default function HomeTop() {
                 <div style={{ position: "absolute", inset: 0, borderRadius: "50%", background: "conic-gradient(from 0deg, rgba(198,242,62,0) 0deg, rgba(198,242,62,0) 285deg, rgba(198,242,62,0.5) 345deg, #C6F035 360deg)", animation: "orbitcw 4s linear infinite" }} />
                 <div style={{ position: "absolute", inset: 6, borderRadius: "50%", background: "#0F120B" }} />
                 <div style={{ position: "absolute", inset: 96, borderRadius: "50%", background: "radial-gradient(circle at 32% 28%, #F4FFD6 0%, #C6F035 40%, #6FA524 75%, #2E4710 100%)", animation: "breathe 5s ease-in-out infinite", boxShadow: "0 0 80px rgba(198,240,53,0.35)" }} />
-                <div style={{ position: "absolute", left: "50%", bottom: 112, transform: "translateX(-50%)", fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.22em", color: "#0F120B" }}>NOVA</div>
+                <div style={{ position: "absolute", left: "50%", bottom: 112, transform: "translateX(-50%)", fontFamily: MONOFONT, fontSize: 10, fontWeight: 600, letterSpacing: "0.22em", color: "#0F120B" }}>NOVA</div>
               </div>
-              {HERO_CHIPS.map((t, i) => (
+              {c.chips.map((t, i) => (
                 <div key={t} className={`m-hero-chip m-hero-chip-${i + 1}`} style={{ position: "absolute", ...CHIP_POS[i], animation: "stepIn 12s ease-in-out infinite", animationDelay: CHIP_POS[i].delay }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 9, padding: "11px 15px", borderRadius: 14, background: "#14170E", border: "1px solid rgba(198,242,62,0.25)", boxShadow: "0 18px 40px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
                     <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", flexShrink: 0 }} />
-                    <span style={{ fontSize: 12, fontWeight: 600, color: "#E9EFDC" }}>{t}</span>
-                    <span style={{ fontFamily: MONO, fontSize: 8, letterSpacing: "0.1em", color: "#8CBF33", border: "1px solid rgba(140,191,51,0.4)", borderRadius: 99, padding: "2.5px 7px" }}>RECEIPT</span>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: "#E9EFDC", ...T.chip }}>{t}</span>
+                    <span style={{ fontFamily: MONOFONT, fontSize: 8, letterSpacing: "0.1em", color: "#8CBF33", border: "1px solid rgba(140,191,51,0.4)", borderRadius: 99, padding: "2.5px 7px" }}>{MONO.heroReceipt}</span>
                   </div>
                 </div>
               ))}
-              <div className="m-nowrap-off" style={{ position: "absolute", left: "50%", bottom: 6, transform: "translateX(-50%)", fontFamily: MONO, fontSize: 9, letterSpacing: "0.14em", color: "#878B76", whiteSpace: "nowrap", textAlign: "center", width: "100%" }}>ON DUTY 24/7 · EVERY ACTION AUDITABLE</div>
+              <div className="m-nowrap-off" style={{ position: "absolute", left: "50%", bottom: 6, transform: "translateX(-50%)", fontFamily: MONOFONT, fontSize: 9, letterSpacing: "0.14em", color: "#878B76", whiteSpace: "nowrap", textAlign: "center", width: "100%" }}>{MONO.heroDuty}</div>
             </div>
           </div>
         </div>
