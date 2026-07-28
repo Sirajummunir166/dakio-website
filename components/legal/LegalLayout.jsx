@@ -1,9 +1,18 @@
 // Legal page chrome + typography. Copy ported verbatim from dakio-landing's
 // PolicyLayout pages, restyled to the v3 site language (ink/lime/cream).
 
-import SiteNav from "../SiteNav";
-import SiteFooter from "../SiteFooter";
+import { notFound } from "next/navigation";
+import { Nav, Footer } from "../Chrome";
 import LogoDefs from "../Logo";
+import { DEFAULT_LOCALE } from "../../lib/i18n";
+
+// Policy copy is English-only and governs in English, so the legal routes exist
+// at one URL each. Middleware sends /bn/<legal> back to the bare path; this
+// guard makes sure the prerendered /bn copy 404s rather than shipping a
+// duplicate. Call it from every legal page.
+export function englishOnly(lang) {
+  if (lang !== DEFAULT_LOCALE) notFound();
+}
 
 const MONO = "var(--dk-font-mono), monospace";
 
@@ -62,7 +71,7 @@ export default function LegalLayout({ title, lastUpdated, children }) {
   return (
     <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", color: "#1A1D12", background: "#F4F2EA", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <LogoDefs mkId="mk" wmId="wm" />
-      <SiteNav ctaHref="/#cta" style={{ position: "sticky", top: 0, zIndex: 60 }} />
+      <Nav lang={DEFAULT_LOCALE} route="/" ctaHref="/#cta" style={{ position: "sticky", top: 0, zIndex: 60 }} />
       <div style={{ flex: 1, maxWidth: 760, margin: "0 auto", padding: "64px 28px 88px", width: "100%" }}>
         <div style={{ marginBottom: 40 }}>
           <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#3E7A45" }}>DAKIO · LEGAL</div>
@@ -72,7 +81,7 @@ export default function LegalLayout({ title, lastUpdated, children }) {
         {children}
         <div style={{ marginTop: 8, fontFamily: MONO, fontSize: 9, letterSpacing: "0.1em", color: "#878B76" }}>© DIGIDHAKA COMMUNICATION LIMITED · TRADE LICENSE TRAD/DSCC/041467/2021</div>
       </div>
-      <SiteFooter />
+      <Footer lang={DEFAULT_LOCALE} />
     </div>
   );
 }

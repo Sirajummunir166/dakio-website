@@ -1,7 +1,7 @@
 // Return and Refund Policy — copy ported verbatim from
 // dakio-landing/src/pages/RefundPolicy.jsx.
 
-import LegalLayout, { Section, P, Ul, A } from "../../../components/legal/LegalLayout";
+import LegalLayout, { englishOnly, Section, P, Ul, A } from "../../../components/legal/LegalLayout";
 
 export const metadata = {
   title: "Return and Refund Policy — Dakio",
@@ -9,7 +9,10 @@ export const metadata = {
   alternates: { canonical: "/refund-policy" },
 };
 
-export default function RefundPolicyPage() {
+export default async function RefundPolicyPage({ params }) {
+  const { lang } = await params;
+  englishOnly(lang);
+
   return (
     <LegalLayout title="Return and Refund Policy" lastUpdated="July 2026">
       <Section title="Overview">

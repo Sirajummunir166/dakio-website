@@ -1,7 +1,7 @@
 // Data Deletion Request — copy ported verbatim from
 // dakio-landing/src/pages/DataDeletion.jsx.
 
-import LegalLayout, { Section, P, Ul, Step, A } from "../../../components/legal/LegalLayout";
+import LegalLayout, { englishOnly, Section, P, Ul, Step, A } from "../../../components/legal/LegalLayout";
 
 export const metadata = {
   title: "Data Deletion — Dakio",
@@ -9,7 +9,10 @@ export const metadata = {
   alternates: { canonical: "/data-deletion" },
 };
 
-export default function DataDeletionPage() {
+export default async function DataDeletionPage({ params }) {
+  const { lang } = await params;
+  englishOnly(lang);
+
   return (
     <LegalLayout title="Data Deletion Request" lastUpdated="June 2026">
       <Section title="Overview">

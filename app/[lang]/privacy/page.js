@@ -1,6 +1,6 @@
 // Privacy Policy — copy ported verbatim from dakio-landing/src/pages/Privacy.jsx.
 
-import LegalLayout, { Section, P, Ul, A } from "../../../components/legal/LegalLayout";
+import LegalLayout, { englishOnly, Section, P, Ul, A } from "../../../components/legal/LegalLayout";
 
 export const metadata = {
   title: "Privacy Policy — Dakio",
@@ -8,7 +8,10 @@ export const metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-export default function PrivacyPage() {
+export default async function PrivacyPage({ params }) {
+  const { lang } = await params;
+  englishOnly(lang);
+
   return (
     <LegalLayout title="Privacy Policy" lastUpdated="June 2026">
       <Section title="About Dakio">

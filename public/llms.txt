@@ -14,6 +14,18 @@
 - [Switch](https://dakio.io/switch): Move from Shopify to Dakio in one weekend — free concierge migration, SEO redirects intact, COD + bKash native.
 - [Pricing](https://dakio.io/pricing): Plans in taka, free to start, AI CEO included on every tier — honest task metering, no hidden fees.
 
+## Languages
+
+Every marketing page exists in English and Bangla. English keeps the bare paths
+(https://dakio.io/pricing); Bangla is the same page under /bn
+(https://dakio.io/bn/pricing). The two are linked by hreflang, and English is
+x-default. The Bangla is written as Bangla marketing copy rather than translated
+from the English, so the pages make the same argument in different words.
+
+Blog articles are Bangla-native and canonical under /bn/blog. Legal pages
+(privacy, terms, refund policy, data deletion) exist in English only and the
+English version governs.
+
 ## What is Nova?
 
 Nova is an AI Acting CEO for e-commerce stores on Dakio. It starts as an L3 Operator on day one and earns the full L4 Acting CEO seat through approved work. Nova never touches a store directly: every action passes an authority check, executes, writes a ledger receipt, and lands in a product surface the founder can inspect and undo. Refunds, guardrails and contract signing stay founder-only, forever.

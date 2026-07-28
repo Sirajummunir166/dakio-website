@@ -1,6 +1,6 @@
 // Terms of Service — copy ported verbatim from dakio-landing/src/pages/Terms.jsx.
 
-import LegalLayout, { Section, P, Ul, A } from "../../../components/legal/LegalLayout";
+import LegalLayout, { englishOnly, Section, P, Ul, A } from "../../../components/legal/LegalLayout";
 
 export const metadata = {
   title: "Terms of Service — Dakio",
@@ -8,7 +8,10 @@ export const metadata = {
   alternates: { canonical: "/terms" },
 };
 
-export default function TermsPage() {
+export default async function TermsPage({ params }) {
+  const { lang } = await params;
+  englishOnly(lang);
+
   return (
     <LegalLayout title="Terms of Service" lastUpdated="June 2026">
       <Section title="Overview">

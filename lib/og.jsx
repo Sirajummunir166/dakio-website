@@ -1,13 +1,21 @@
 // OG image factory — 1200×630, ink bg + lime accent + the page's one-line
-// claim, per the SEO doc. Latin text only (the bundled OG font has no Bengali
-// glyphs); Bengali-titled pages use their English claim.
+// claim, per the SEO doc.
+//
+// Latin text only, in both locales: next/og renders through satori, which has
+// no Indic shaping, so Bengali comes out with reordered matras and dotted
+// circles even when the right font is supplied. content/copy/og.js holds the
+// Bangla claims and the full explanation.
 
 import { ImageResponse } from "next/og";
+import { ogClaim, OG_KICKER } from "../content/copy/og";
 
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = "image/png";
 
-export function ogImage(claim, kicker = "DAKIO — THE COMMERCE OS FOR BANGLADESH") {
+/** Render the OG card for a route. `route` keys into content/copy/og.js. */
+export function ogImage(route) {
+  const claim = ogClaim(route);
+
   return new ImageResponse(
     (
       <div
@@ -42,7 +50,7 @@ export function ogImage(claim, kicker = "DAKIO — THE COMMERCE OS FOR BANGLADES
               background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)",
             }}
           />
-          <div style={{ fontSize: 26, letterSpacing: 4, color: "#C6F035", fontWeight: 600 }}>{kicker}</div>
+          <div style={{ fontSize: 26, letterSpacing: 4, color: "#C6F035", fontWeight: 600 }}>{OG_KICKER}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
           <div style={{ fontSize: 72, lineHeight: 1.08, color: "#FBFBF4", fontWeight: 800, letterSpacing: -2, maxWidth: 980 }}>{claim}</div>
