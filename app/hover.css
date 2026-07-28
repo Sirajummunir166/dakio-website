@@ -20,3 +20,5 @@
 .hv-glow22:hover { box-shadow: 0 0 22px rgba(198, 240, 53, 0.4); }
 .av-scale97:active { transform: scale(0.97); }
 .hv-bg-wash06:hover { background: rgba(233, 239, 220, 0.06); }
+.hv-bg-ink05:hover { background: rgba(26, 29, 18, 0.05); }
+.hv-up3-border25:hover { transform: translateY(-3px); border-color: rgba(26, 29, 18, 0.25); }
