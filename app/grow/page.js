@@ -205,8 +205,8 @@ export default function GrowPage() {
       </div>
 
       {/* COMPOUNDING LOOP */}
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "92px 28px 20px" }}>
-        <div data-reveal className="m-pad-band" style={{ borderRadius: 32, background: "#0F120B", color: "#E9EFDC", padding: "52px 56px" }}>
+      <div className="m-bleed-wrap" style={{ maxWidth: 1200, margin: "0 auto", padding: "92px 28px 20px" }}>
+        <div data-reveal className="m-pad-band m-bleed" style={{ borderRadius: 32, background: "#0F120B", color: "#E9EFDC", padding: "52px 56px" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#8CBF33" }}>WHY THE CURVE BENDS</div>
             <h2 className="m-h2b" style={{ margin: "12px auto 0", fontSize: 40, lineHeight: 1.08, letterSpacing: "-1.5px", fontWeight: 800, color: "#FBFBF4", maxWidth: 620 }}>The levers hand off. The growth compounds.</h2>
@@ -238,8 +238,8 @@ export default function GrowPage() {
       </div>
 
       {/* CTA */}
-      <div id="cta" style={{ maxWidth: 1200, margin: "70px auto 0", padding: "0 20px 60px" }}>
-        <div data-reveal className="m-pad-cta" style={{ borderRadius: 36, background: "#C6F035", padding: "72px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <div id="cta" className="m-bleed-wrap" style={{ maxWidth: 1200, margin: "70px auto 0", padding: "0 20px 60px" }}>
+        <div data-reveal className="m-pad-cta m-bleed" style={{ borderRadius: 36, background: "#C6F035", padding: "72px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
           <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.03, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: 740 }}>Your curve is still the grey one.</h2>
           <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>

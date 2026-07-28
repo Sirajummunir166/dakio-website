@@ -132,8 +132,8 @@ export default function AboutPage() {
       </div>
 
       {/* MISSION */}
-      <div style={{ maxWidth: 1160, margin: "0 auto", padding: "84px 28px 20px" }}>
-        <div data-reveal className="m-grid m-pad-band m-gap" style={{ borderRadius: 32, background: "#1A1D12", color: "#F0EFE6", padding: 56, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
+      <div className="m-bleed-wrap" style={{ maxWidth: 1160, margin: "0 auto", padding: "84px 28px 20px" }}>
+        <div data-reveal className="m-grid m-pad-band m-gap m-bleed" style={{ borderRadius: 32, background: "#1A1D12", color: "#F0EFE6", padding: 56, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
           <div>
             <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.4px", color: "#C6F035", textTransform: "uppercase" }}>Our mission</div>
             <h2 className="m-h2b" style={{ margin: "16px 0 0", fontSize: 34, lineHeight: 1.16, letterSpacing: "-1px", fontWeight: 750, color: "#fff" }}>Give every merchant the team that was only available to big brands.</h2>
@@ -190,8 +190,8 @@ export default function AboutPage() {
       </div>
 
       {/* CTA */}
-      <div id="cta" style={{ maxWidth: 1160, margin: "64px auto 0", padding: "0 28px" }}>
-        <div data-reveal className="m-pad-cta" style={{ borderRadius: 32, background: "#C6F035", padding: "60px 40px", textAlign: "center" }}>
+      <div id="cta" className="m-bleed-wrap" style={{ maxWidth: 1160, margin: "64px auto 0", padding: "0 28px" }}>
+        <div data-reveal className="m-pad-cta m-bleed" style={{ borderRadius: 32, background: "#C6F035", padding: "60px 40px", textAlign: "center" }}>
           <h2 className="m-cta-h2" style={{ margin: "0 auto", fontSize: 44, lineHeight: 1.08, letterSpacing: "-1.6px", fontWeight: 800, maxWidth: 640 }}>Join 1,000+ merchants who don&apos;t run alone.</h2>
           <p style={{ margin: "16px auto 0", fontSize: 16, color: "#1A1D12", maxWidth: 440, lineHeight: 1.6 }}>Start free today — and appoint your CEO on day one. No card, no setup fee.</p>
           <div className="m-wrap" style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 30 }}>

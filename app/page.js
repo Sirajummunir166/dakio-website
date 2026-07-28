@@ -399,8 +399,8 @@ export default function Home() {
       </div>
 
       {/* ================= BANGLADESH ================= */}
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
-        <div data-reveal className="m-grid m-pad-band m-gap" style={{ borderRadius: 32, background: "#1A1D12", color: "#F0EFE6", padding: 56, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center", overflow: "hidden", position: "relative" }}>
+      <div className="m-bleed-wrap" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
+        <div data-reveal className="m-grid m-pad-band m-gap m-bleed" style={{ borderRadius: 32, background: "#1A1D12", color: "#F0EFE6", padding: 56, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center", overflow: "hidden", position: "relative" }}>
           <div style={{ position: "absolute", right: -60, top: -80, fontSize: 340, fontWeight: 800, color: "rgba(198,240,53,0.07)", lineHeight: 1, fontFamily: BN }}>৳</div>
           <div style={{ position: "relative" }}>
             <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#8CBF33" }}>HOME GROUND</div>
@@ -481,8 +481,8 @@ export default function Home() {
       </div>
 
       {/* ================= CTA ================= */}
-      <div id="cta" style={{ maxWidth: 1200, margin: "80px auto 0", padding: "0 20px" }}>
-        <div data-reveal className="m-pad-cta" style={{ borderRadius: 36, background: "#C6F035", padding: "76px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <div id="cta" className="m-bleed-wrap" style={{ maxWidth: 1200, margin: "80px auto 0", padding: "0 20px" }}>
+        <div data-reveal className="m-pad-cta m-bleed" style={{ borderRadius: 36, background: "#C6F035", padding: "76px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
           <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 60, lineHeight: 1.03, letterSpacing: "-2.5px", fontWeight: 800, maxWidth: 720 }}>Your store. Your CEO.<br />Today.</h2>
           <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 34 }}>

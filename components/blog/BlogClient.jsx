@@ -107,8 +107,8 @@ export default function BlogClient({ posts, categories, formattedDates }) {
       </div>
 
       {/* CTA */}
-      <div style={{ maxWidth: 1160, margin: "56px auto 0", padding: "0 28px" }}>
-        <div style={{ borderRadius: 32, background: "#C6F035", padding: "52px 40px", textAlign: "center" }}>
+      <div className="m-bleed-wrap" style={{ maxWidth: 1160, margin: "56px auto 0", padding: "0 28px" }}>
+        <div className="m-pad-cta m-bleed" style={{ borderRadius: 32, background: "#C6F035", padding: "52px 40px", textAlign: "center" }}>
           <h2 className="m-h2b" style={{ margin: "0 auto", fontSize: 38, lineHeight: 1.1, letterSpacing: "-1.4px", fontWeight: 800, maxWidth: 560 }}>পড়া শেষ? এবার শুরু করুন।</h2>
           <p style={{ margin: "14px auto 0", fontSize: 15.5, color: "#1A1D12", maxWidth: 420, lineHeight: 1.65 }}>ফ্রি অ্যাকাউন্ট খুলুন — কোনো ক্রেডিট কার্ড লাগবে না।</p>
           <div style={{ display: "flex", justifyContent: "center", marginTop: 26 }}>

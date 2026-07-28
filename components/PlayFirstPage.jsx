@@ -63,8 +63,8 @@ export default function PlayFirstPage({
       </div>
 
       {/* LIVE EMBED */}
-      <div style={{ maxWidth: 1310, margin: "0 auto", padding: "0 20px" }}>
-        <div style={{ borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.1)", boxShadow: "0 40px 90px rgba(26,29,18,0.2)", overflow: "hidden", animation: "heroUp .7s .22s ease both" }}>
+      <div className="m-bleed-wrap" style={{ maxWidth: 1310, margin: "0 auto", padding: "0 20px" }}>
+        <div className="m-bleed" style={{ borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.1)", boxShadow: "0 40px 90px rgba(26,29,18,0.2)", overflow: "hidden", animation: "heroUp .7s .22s ease both" }}>
           <div className="m-wrap" style={{ display: "flex", alignItems: "center", gap: 6, padding: "12px 18px", borderBottom: "1px solid rgba(26,29,18,0.07)", background: "#ffffff" }}>
             <span style={{ width: 9, height: 9, borderRadius: 99, background: "#1A1D12", opacity: 0.85 }} />
             <span style={{ width: 9, height: 9, borderRadius: 99, background: "#1A1D12", opacity: 0.35 }} />
@@ -102,8 +102,8 @@ export default function PlayFirstPage({
       </div>
 
       {/* CTA */}
-      <div id="cta" style={{ maxWidth: 1200, margin: "70px auto 0", padding: "0 20px 60px" }}>
-        <div data-reveal className="m-pad-cta" style={{ borderRadius: 36, background: "#C6F035", padding: "72px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <div id="cta" className="m-bleed-wrap" style={{ maxWidth: 1200, margin: "70px auto 0", padding: "0 20px 60px" }}>
+        <div data-reveal className="m-pad-cta m-bleed" style={{ borderRadius: 36, background: "#C6F035", padding: "72px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
           <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.03, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: ctaH2MaxWidth }}>{ctaH2}</h2>
           <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>

@@ -36,6 +36,9 @@
 
 /* ===== Breakpoint ≤620px — phones ===== */
 @media (max-width: 620px) {
+  /* full-bleed bands: drop the outer gutter + card radius, keep inner padding */
+  .m-bleed-wrap { padding-left: 0 !important; padding-right: 0 !important; }
+  .m-bleed { border-radius: 0 !important; }
   .m-grid2, .m-grid2-1 { grid-template-columns: minmax(0, 1fr) !important; }
   .m-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
   .m-stats2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }

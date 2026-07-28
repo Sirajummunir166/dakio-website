@@ -43,8 +43,8 @@ export default function HomeTop() {
         style={{ position: "sticky", top: 0, zIndex: 60 }}
       />
 
-      <div style={{ maxWidth: 1200, margin: "18px auto 0", padding: "0 20px" }}>
-        <div className="m-pad-hero" style={{ position: "relative", borderRadius: 36, background: "#0F120B", color: "#E9EFDC", overflow: "hidden", padding: "84px 64px 76px" }}>
+      <div className="m-bleed-wrap" style={{ maxWidth: 1200, margin: "18px auto 0", padding: "0 20px" }}>
+        <div className="m-pad-hero m-bleed" style={{ position: "relative", borderRadius: 36, background: "#0F120B", color: "#E9EFDC", overflow: "hidden", padding: "84px 64px 76px" }}>
           <div style={{ position: "absolute", top: -220, right: -140, width: 640, height: 640, borderRadius: "50%", background: "radial-gradient(closest-side, rgba(198,240,53,0.22), rgba(198,240,53,0))" }} />
           <div style={{ position: "absolute", bottom: -260, left: -120, width: 560, height: 560, borderRadius: "50%", background: "radial-gradient(closest-side, rgba(198,240,53,0.12), rgba(198,240,53,0))" }} />
           <div className="m-grid" style={{ position: "relative", display: "grid", gridTemplateColumns: "1.15fr 0.85fr", gap: 40, alignItems: "center" }}>
