@@ -60,7 +60,7 @@ export default function SiteNav({
       <LogoDefs mkId="nv-mk" wmId="nv-wm" />
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "14px 28px", display: "flex", alignItems: "center", gap: 24 }}>
-        <a href="/" style={{ display: "flex", alignItems: "center", gap: 9, flexShrink: 0 }}>
+        <a href="/" aria-label="Dakio — home" style={{ display: "flex", alignItems: "center", gap: 9, flexShrink: 0 }}>
           <svg width="26" height="26" viewBox="0 5.4 23 23" style={{ color: "#1A1D12" }}><use href="#nv-mk" /></svg>
           <svg width="88" height="25" viewBox="31 0 104 29" style={{ color: "#1A1D12" }}><use href="#nv-wm" /></svg>
         </a>

@@ -31,7 +31,9 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${archivo.variable} ${notoSansBengali.variable} ${ibmPlexMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <main style={{ display: "block" }}>{children}</main>
+      </body>
     </html>
   );
 }

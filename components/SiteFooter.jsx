@@ -45,13 +45,14 @@ const PAY_ALT =
 export default function SiteFooter() {
   return (
     <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", background: "#0F120B", color: "#E9EFDC", marginTop: 20 }}>
-      <LogoDefs wmId="nf-wm" />
+      <LogoDefs mkId="nf-mk" wmId="nf-wm" />
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 28px 36px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 32 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span style={{ width: 24, height: 24, borderRadius: "50%", background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)", animation: "nfBreathe 5s ease-in-out infinite" }} />
+              {/* dark-bg lockup per design system: lime mark + cream wordmark */}
+              <svg width="24" height="24" viewBox="0 5.4 23 23" style={{ color: "#C6F035" }}><use href="#nf-mk" /></svg>
               <svg width="82" height="23" viewBox="31 0 104 29" style={{ color: "#FBFBF4" }}><use href="#nf-wm" /></svg>
             </div>
             <p style={{ margin: "14px 0 0", fontSize: 13, color: "#A9AD98", maxWidth: 250, lineHeight: 1.65 }}>The commerce OS for Bangladesh — with an AI CEO in every store.</p>
