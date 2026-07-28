@@ -6,11 +6,13 @@ import SiteNav from "../../components/SiteNav";
 import SiteFooter from "../../components/SiteFooter";
 import Reveal from "../../components/Reveal";
 import LogoDefs from "../../components/Logo";
+import PageJsonLd from "../../components/PageJsonLd";
 
 export const metadata = {
   title: "About Dakio — Built in Bangladesh by Digidhaka",
   description:
     "We gave Bangladesh's entrepreneurs world-class tools, then a team: every Dakio store appoints Nova, an AI CEO, on day one. 1,000+ merchants across 64 districts.",
+  alternates: { canonical: "/about" },
 };
 
 const STATS = [
@@ -68,6 +70,7 @@ const CONTACTS = [
 export default function AboutPage() {
   return (
     <div className="company-root" style={{ fontFamily: "var(--dk-font-sans)", color: "#1A1D12", background: "#F4F2EA", overflowX: "hidden" }}>
+      <PageJsonLd route="/about" />
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />
 

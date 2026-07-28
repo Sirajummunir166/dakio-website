@@ -7,6 +7,7 @@ import SiteNav from "./SiteNav";
 import SiteFooter from "./SiteFooter";
 import Reveal from "./Reveal";
 import LogoDefs from "./Logo";
+import PageJsonLd from "./PageJsonLd";
 
 const MONO = "var(--dk-font-mono), monospace";
 const ZOOM = 0.88;
@@ -24,6 +25,7 @@ export function Highlight({ children }) {
 }
 
 export default function PlayFirstPage({
+  route,
   active,
   navCtaHref,
   navCtaLabel,
@@ -49,6 +51,7 @@ export default function PlayFirstPage({
 }) {
   return (
     <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", color: "#1A1D12", background: "#F4F2EA", overflowX: "hidden" }}>
+      <PageJsonLd route={route} />
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />
 

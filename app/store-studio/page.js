@@ -6,6 +6,7 @@ export const metadata = {
   title: "Store Studio — Design a Storefront Without a Developer | Dakio",
   description:
     "Edit the real storefront live: theme gallery, Bangla fonts, dark mode, one-tap looks. You can't break anything — Undo is right there. Try the live builder.",
+  alternates: { canonical: "/store-studio" },
 };
 
 const PROTO = "/prototypes/Dakio Store Studio.dc.html";
@@ -13,6 +14,7 @@ const PROTO = "/prototypes/Dakio Store Studio.dc.html";
 export default function StoreStudioPage() {
   return (
     <PlayFirstPage
+      route="/store-studio"
       active="store-studio"
       navCtaHref={PROTO}
       navCtaLabel="Open Store Studio"

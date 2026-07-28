@@ -6,6 +6,7 @@ export const metadata = {
   title: "Front Office — AI That Sells in Your Inbox | Dakio",
   description:
     "Messenger, Instagram, WhatsApp and email in one thread. Nova answers in Bangla, takes orders only after the customer confirms, and cuts RTO. You can take over anytime.",
+  alternates: { canonical: "/front-office" },
 };
 
 const MONO = "var(--dk-font-mono), monospace";
@@ -14,6 +15,7 @@ const PROTO = "/prototypes/Nova Inbox - Front Office.dc.html";
 export default function FrontOfficePage() {
   return (
     <PlayFirstPage
+      route="/front-office"
       active="front-office"
       navCtaHref={PROTO}
       navCtaLabel="Open Front Office"

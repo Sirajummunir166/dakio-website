@@ -1,0 +1,18 @@
+# Dakio
+
+> Dakio is the commerce OS for Bangladesh — an all-in-one e-commerce platform (storefront, couriers, bKash, Nagad, cash on delivery) where every store appoints Nova, an AI Acting CEO, on day one. Nova plans, executes and reports 24/7 inside founder-set guardrails; every action carries a receipt and can be undone. Built by Digidhaka Communication Limited (Dhaka, Bangladesh). Pricing in taka: Starter is free forever (Nova Advisor, 50 tasks/mo), Growth is ৳1,490/month (Nova Operator, 750 tasks/mo, Grow Labs, Supplier Network), Business is ৳3,990/month (Nova L4 Acting CEO, 2,500 tasks/mo, voice calls, seasonal playbooks). Every plan includes Nova; courier deliveries are billed per shipment at cost.
+
+## Pages
+
+- [Home](https://dakio.io/): Appoint an AI CEO to your online store — store, couriers, bKash, Nagad & COD, run by Nova 24/7.
+- [Nova](https://dakio.io/nova): Nova is an AI Acting CEO — not a chatbot. It observes, plans, executes and reports inside guardrails, with a receipt for everything.
+- [Store Studio](https://dakio.io/store-studio): Design a storefront without a developer — live canvas, theme gallery, Bangla fonts, dark mode, undo everything.
+- [Grow Labs](https://dakio.io/grow): The business Grow Studio — six growth levers (campaigns, content, reach, research, pricing, goals) pulled by Nova around the clock.
+- [Ads Gallery](https://dakio.io/ads): Pick a product, get an editable on-brand ad in 3 sizes, static and motion, checked by the Creative Doctor.
+- [Front Office](https://dakio.io/front-office): One inbox for Messenger, Instagram, WhatsApp and email — Nova sells in Bangla and takes orders only after the customer confirms.
+- [Switch](https://dakio.io/switch): Move from Shopify to Dakio in one weekend — free concierge migration, SEO redirects intact, COD + bKash native.
+- [Pricing](https://dakio.io/pricing): Plans in taka, free to start, AI CEO included on every tier — honest task metering, no hidden fees.
+
+## What is Nova?
+
+Nova is an AI Acting CEO for e-commerce stores on Dakio. It starts as an L3 Operator on day one and earns the full L4 Acting CEO seat through approved work. Nova never touches a store directly: every action passes an authority check, executes, writes a ledger receipt, and lands in a product surface the founder can inspect and undo. Refunds, guardrails and contract signing stay founder-only, forever.

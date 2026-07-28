@@ -5,11 +5,13 @@ import SiteFooter from "../../components/SiteFooter";
 import Reveal from "../../components/Reveal";
 import LogoDefs from "../../components/Logo";
 import DecisionCard from "../../components/nova/DecisionCard";
+import PageJsonLd from "../../components/PageJsonLd";
 
 export const metadata = {
   title: "Nova — Your Store's AI Acting CEO, On Duty 24/7 | Dakio",
   description:
     "Not a chatbot. Nova plans, executes and reports around the clock inside guardrails you set — every action receipted, everything undoable. Appoint your CEO today.",
+  alternates: { canonical: "/nova" },
 };
 
 const MONO = "var(--dk-font-mono), monospace";
@@ -64,6 +66,7 @@ const kicker = { fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing:
 export default function NovaPage() {
   return (
     <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", color: "#1A1D12", background: "#F4F2EA", overflowX: "hidden" }}>
+      <PageJsonLd route="/nova" />
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />
 

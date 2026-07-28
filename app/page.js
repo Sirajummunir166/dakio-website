@@ -4,11 +4,13 @@ import HomeTop from "../components/home/HomeTop";
 import SiteFooter from "../components/SiteFooter";
 import Reveal from "../components/Reveal";
 import LogoDefs from "../components/Logo";
+import PageJsonLd from "../components/PageJsonLd";
 
 export const metadata = {
   title: "Dakio — Appoint an AI CEO to Your Online Store | Bangladesh",
   description:
     "Store, couriers, bKash, Nagad & COD — plus Nova, an AI CEO that runs marketing, support and ops 24/7 with a receipt for everything. Start free, no card.",
+  alternates: { canonical: "/" },
 };
 
 const MONO = "var(--dk-font-mono), monospace";
@@ -79,6 +81,7 @@ const monoTile = { width: 38, height: 38, borderRadius: 12, background: "#14170E
 export default function Home() {
   return (
     <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", color: "#1A1D12", background: "#F4F2EA", overflowX: "hidden" }}>
+      <PageJsonLd route="/" />
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />
 

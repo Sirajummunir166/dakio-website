@@ -6,6 +6,7 @@ export const metadata = {
   title: "Ads Gallery — Pick a Product, Get the Ad | Dakio",
   description:
     "One click turns any product into an editable, on-brand ad in 3 sizes, static and motion — checked by the Creative Doctor before it ships. In Bangla too.",
+  alternates: { canonical: "/ads" },
 };
 
 const PROTO = "/prototypes/Dakio Nova Motion Ads.dc.html";
@@ -13,6 +14,7 @@ const PROTO = "/prototypes/Dakio Nova Motion Ads.dc.html";
 export default function AdsPage() {
   return (
     <PlayFirstPage
+      route="/ads"
       active="ads"
       navCtaHref={PROTO}
       navCtaLabel="Open Ads Gallery"
