@@ -6,6 +6,7 @@ import SiteFooter from "../../components/SiteFooter";
 import Reveal from "../../components/Reveal";
 import LogoDefs from "../../components/Logo";
 import PageJsonLd from "../../components/PageJsonLd";
+import { REGISTER_URL } from "../../lib/urls";
 
 export const metadata = {
   title: "Switch from Shopify to Dakio in One Weekend — Free Migration",
@@ -193,7 +194,7 @@ export default function SwitchPage() {
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
           <h2 style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.04, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: 720 }}>Friday you export.<br />Monday you have a CEO.</h2>
           <div style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
-            <a href="#" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700 }}>
+            <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700 }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />Plan my switch
             </a>
             <a href="/" className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700 }}>Back to Dakio</a>

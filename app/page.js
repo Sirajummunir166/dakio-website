@@ -5,6 +5,7 @@ import SiteFooter from "../components/SiteFooter";
 import Reveal from "../components/Reveal";
 import LogoDefs from "../components/Logo";
 import PageJsonLd from "../components/PageJsonLd";
+import { REGISTER_URL } from "../lib/urls";
 
 export const metadata = {
   title: "Dakio — Appoint an AI CEO to Your Online Store | Bangladesh",
@@ -488,7 +489,7 @@ export default function Home() {
             <a href="/prototypes/Nova HQ Prototype v7.dc.html" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700 }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />Appoint Nova
             </a>
-            <a href="#" className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700 }}>Start free — no card</a>
+            <a href={REGISTER_URL} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700 }}>Start free — no card</a>
           </div>
           <div style={{ position: "relative", marginTop: 20, fontFamily: MONO, fontSize: 9.5, letterSpacing: "0.14em", color: "rgba(26,29,18,0.6)" }}>FREE TO START · GUARDRAILS ON DAY ONE · UNDO EVERYTHING</div>
         </div>

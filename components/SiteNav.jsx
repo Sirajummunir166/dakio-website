@@ -6,6 +6,7 @@
 
 import { useRef, useState } from "react";
 import LogoDefs from "./Logo";
+import { LOGIN_URL } from "../lib/urls";
 
 const MONO = "var(--dk-font-mono), monospace";
 
@@ -83,7 +84,7 @@ export default function SiteNav({
             <span style={seg(lang !== "bn")}>EN</span><span style={seg(lang === "bn")}>বাং</span>
           </div>
         ) : null}
-        <a href="#" style={{ fontSize: 14, fontWeight: 600, color: "#1A1D12" }}>Log in</a>
+        <a href={LOGIN_URL} style={{ fontSize: 14, fontWeight: 600, color: "#1A1D12" }}>Log in</a>
         <a href={ctaHref} className="hv-up1" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "10px 18px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 13.5, fontWeight: 700, whiteSpace: "nowrap" }}>
           <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", animation: "nvPulse 2.2s infinite" }} />{ctaLabel}
         </a>
