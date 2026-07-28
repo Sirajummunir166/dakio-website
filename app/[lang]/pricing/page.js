@@ -1,18 +1,30 @@
 import PricingClient from "../../../components/pricing/PricingClient";
 import PageJsonLd from "../../../components/PageJsonLd";
+import { href, languageAlternates } from "../../../lib/i18n";
+import pricingEn, { MONO } from "../../../content/copy/pricing.en";
+import pricingBn from "../../../content/copy/pricing.bn";
 
-export const metadata = {
-  title: "Dakio Pricing — Plans in Taka, AI CEO Included | Free to Start",
-  description:
-    "Free forever to start. Growth ৳1,490/mo, Business ৳3,990/mo — every plan includes Nova. Honest task metering, no hidden fees, courier rates passed through.",
-  alternates: { canonical: "/pricing" },
-};
+const COPY = { en: pricingEn, bn: pricingBn };
+const ROUTE = "/pricing";
 
-export default function PricingPage() {
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  const c = COPY[lang] || COPY.en;
+  return {
+    title: c.meta.title,
+    description: c.meta.description,
+    alternates: { canonical: href(lang, ROUTE), languages: languageAlternates(ROUTE) },
+  };
+}
+
+export default async function PricingPage({ params }) {
+  const { lang } = await params;
+  const c = COPY[lang] || COPY.en;
+
   return (
     <>
-      <PageJsonLd route="/pricing" />
-      <PricingClient />
+      <PageJsonLd route={ROUTE} lang={lang} />
+      <PricingClient lang={lang} copy={c} mono={MONO} />
     </>
   );
 }
