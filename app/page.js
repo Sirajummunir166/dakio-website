@@ -62,6 +62,9 @@ const SWITCH_ROWS = [
   { i: "3", t: "And you gain a CEO", d: "Shopify gives you tools. Dakio staffs the whole back office from day one." },
 ];
 
+// Radial org variant — chip anchor points (% of container), CEO at 50/50.
+const RADIAL_POS = [[22, 7], [50, 2], [78, 7], [15, 30], [85, 30], [15, 70], [85, 70], [30, 93], [70, 93]];
+
 const PLANS = [
   { n: "Starter", pr: "Free", sub: "forever", d: "Store, orders, couriers and Nova at L0–L1 — watch it work before you trust it.", cta: "Start free", dark: false },
   { n: "Growth", pr: "৳1,490", sub: "/month", d: "Unlimited products, supplier network, Grow Labs, Nova Operator — 750 tasks/mo.", cta: "Choose Growth", dark: true, pop: true },
@@ -161,14 +164,98 @@ export default function Home() {
             <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>65</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>named duties</div></div>
           </div>
         </div>
-        <div data-reveal style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 9, marginTop: 30, maxWidth: 820, marginLeft: "auto", marginRight: "auto" }}>
+        <div data-reveal className="m-chip-grid" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 9, marginTop: 30, maxWidth: 820, marginLeft: "auto", marginRight: "auto" }}>
           {DEPTS.map(d => (
-            <div key={d.n} className="hv-border-ink-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "11px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)" }}>
-              <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", border: "1px solid rgba(26,29,18,0.25)" }} />
-              <span style={{ fontSize: 13.5, fontWeight: 700 }}>{d.n}</span>
+            <div key={d.n} className="hv-border-ink-up2 m-chip-stack" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "11px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)" }}>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
+                <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", border: "1px solid rgba(26,29,18,0.25)" }} />
+                <span style={{ fontSize: 13.5, fontWeight: 700 }}>{d.n}</span>
+              </span>
               <span style={{ fontFamily: MONO, fontSize: 8.5, letterSpacing: "0.06em", color: "#6B6D60" }}>{d.j}</span>
             </div>
           ))}
+        </div>
+        <div data-reveal style={{ marginTop: 18, fontSize: 13, color: "#6B6D60" }}>Every duty lands in a real module you could run by hand. Nova just never sleeps.</div>
+      </div>
+
+      {/* ============ ORG — TREE VARIANT (preview duplicate for comparison) ============ */}
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px", textAlign: "center" }}>
+        <div data-reveal>
+          <div style={kicker}>THE ORGANIZATION · TREE VARIANT (PREVIEW)</div>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640 }}>This is your team now.</h2>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: 34, marginTop: 26 }}>
+            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>1</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>Acting CEO</div></div>
+            <div style={{ width: 1, height: 34, background: "rgba(26,29,18,0.12)", alignSelf: "center" }} />
+            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>10</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>departments</div></div>
+            <div style={{ width: 1, height: 34, background: "rgba(26,29,18,0.12)", alignSelf: "center" }} />
+            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>65</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>named duties</div></div>
+          </div>
+        </div>
+        <div data-reveal style={{ marginTop: 34 }}>
+          {/* CEO node */}
+          <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "14px 26px", borderRadius: 16, background: "#1A1D12", color: "#F0EFE6" }}>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
+              <span style={{ width: 10, height: 10, borderRadius: 99, background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)" }} />
+              <span style={{ fontSize: 14.5, fontWeight: 800, color: "#FBFBF4" }}>CEO Office</span>
+            </span>
+            <span style={{ fontFamily: MONO, fontSize: 8.5, letterSpacing: "0.1em", color: "#C6F035" }}>PLANS · COORDINATES ALL</span>
+          </div>
+          {/* fishbone tree: center spine from the CEO node, one branch per dept */}
+          <div className="org-tree">
+            {DEPTS.filter(d => d.n !== "CEO Office").map(d => (
+              <div key={d.n} className="org-node">
+                <div className="hv-border-ink-up2 m-chip-stack" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "11px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)" }}>
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
+                    <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", border: "1px solid rgba(26,29,18,0.25)" }} />
+                    <span style={{ fontSize: 13.5, fontWeight: 700 }}>{d.n}</span>
+                  </span>
+                  <span style={{ fontFamily: MONO, fontSize: 8.5, letterSpacing: "0.06em", color: "#6B6D60" }}>{d.j}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 18, fontSize: 13, color: "#6B6D60" }}>Every duty lands in a real module you could run by hand. Nova just never sleeps.</div>
+        </div>
+      </div>
+
+      {/* ============ ORG — RADIAL VARIANT (preview duplicate for comparison) ============ */}
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px", textAlign: "center" }}>
+        <div data-reveal>
+          <div style={kicker}>THE ORGANIZATION · RADIAL VARIANT (PREVIEW)</div>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640 }}>This is your team now.</h2>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: 34, marginTop: 26 }}>
+            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>1</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>Acting CEO</div></div>
+            <div style={{ width: 1, height: 34, background: "rgba(26,29,18,0.12)", alignSelf: "center" }} />
+            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>10</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>departments</div></div>
+            <div style={{ width: 1, height: 34, background: "rgba(26,29,18,0.12)", alignSelf: "center" }} />
+            <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>65</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>named duties</div></div>
+          </div>
+        </div>
+        <div data-reveal className="org-radial" style={{ position: "relative", maxWidth: 760, height: 440, margin: "26px auto 0" }}>
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} aria-hidden="true">
+            {RADIAL_POS.map(([x, y], i) => (
+              <line key={i} x1="50" y1="50" x2={x} y2={y} stroke="rgba(26,29,18,0.25)" strokeWidth="1" strokeDasharray="4 5" vectorEffect="non-scaling-stroke" />
+            ))}
+          </svg>
+          {DEPTS.filter(d => d.n !== "CEO Office").map((d, i) => {
+            const pos = RADIAL_POS[i];
+            return (
+              <div key={d.n} className="hv-border-ink-up2 org-radial-chip" style={{ position: "absolute", left: `${pos[0]}%`, top: `${pos[1]}%`, transform: "translate(-50%,-50%)", display: "inline-flex", alignItems: "center", gap: 9, padding: "11px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)", whiteSpace: "nowrap" }}>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
+                  <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", border: "1px solid rgba(26,29,18,0.25)" }} />
+                  <span style={{ fontSize: 13.5, fontWeight: 700 }}>{d.n}</span>
+                </span>
+                <span style={{ fontFamily: MONO, fontSize: 8.5, letterSpacing: "0.06em", color: "#6B6D60" }}>{d.j}</span>
+              </div>
+            );
+          })}
+          <div className="org-radial-ceo" style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "16px 28px", borderRadius: 18, background: "#1A1D12", color: "#F0EFE6", boxShadow: "0 18px 44px rgba(15,18,11,0.25)" }}>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
+              <span style={{ width: 12, height: 12, borderRadius: 99, background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)", animation: "breathe 5s ease-in-out infinite" }} />
+              <span style={{ fontSize: 15, fontWeight: 800, color: "#FBFBF4" }}>CEO Office</span>
+            </span>
+            <span style={{ fontFamily: MONO, fontSize: 8.5, letterSpacing: "0.1em", color: "#C6F035" }}>PLANS · COORDINATES ALL</span>
+          </div>
         </div>
         <div data-reveal style={{ marginTop: 18, fontSize: 13, color: "#6B6D60" }}>Every duty lands in a real module you could run by hand. Nova just never sleeps.</div>
       </div>

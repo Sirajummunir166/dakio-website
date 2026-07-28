@@ -52,6 +52,10 @@
   /* grow hero chart: keep right-side pins inside the card */
   .m-pin-3 { transform: translate(-75%, -100%) !important; }
   .m-pin-4 { transform: translate(-92%, -100%) !important; }
+
+  /* department/agent chips: 2-col grid of stacked cards (name top, role below) */
+  .m-chip-grid { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
+  .m-chip-stack { flex-direction: column !important; justify-content: center !important; gap: 5px !important; padding: 13px 10px !important; border-radius: 16px !important; }
 }
 
 @media (min-width: 621px) and (max-width: 900px) {

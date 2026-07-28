@@ -218,11 +218,13 @@ export default function NovaPage() {
           <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 680 }}>Ten agents. One ledger.</h2>
           <p style={{ margin: "16px auto 0", fontSize: 15, color: "#6B6D60", maxWidth: 460, lineHeight: 1.6 }}>Promote Marketing-Nova to autonomous while Finance-Nova still asks first — authority is per agent, and CEO-Nova coordinates them all.</p>
         </div>
-        <div data-reveal style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 9, marginTop: 30, maxWidth: 900, marginLeft: "auto", marginRight: "auto" }}>
+        <div data-reveal className="m-chip-grid" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 9, marginTop: 30, maxWidth: 900, marginLeft: "auto", marginRight: "auto" }}>
           {AGENTS.map(([n, m], i) => (
-            <div key={n} className="hv-border-ink-up2" style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "11px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)" }}>
-              <span style={{ width: 8, height: 8, borderRadius: 99, background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)" }} />
-              <span style={{ fontSize: 13.5, fontWeight: 700 }}>{n}</span>
+            <div key={n} className="hv-border-ink-up2 m-chip-stack" style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "11px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)" }}>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+                <span style={{ width: 8, height: 8, borderRadius: 99, background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)" }} />
+                <span style={{ fontSize: 13.5, fontWeight: 700 }}>{n}</span>
+              </span>
               <span style={agentTag(m, i)}>{m}</span>
             </div>
           ))}
