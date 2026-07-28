@@ -1,53 +1,64 @@
-// Front Office — 1:1 port of "Dakio Front Office Page.dc.html".
+// Front Office — 1:1 port of "Dakio Front Office Page.dc.html", localized.
 
-import PlayFirstPage, { Highlight } from "../../../components/PlayFirstPage";
+import PlayFirstPage from "../../../components/PlayFirstPage";
+import pfEn, { MONO } from "../../../content/copy/playfirst.en";
+import pfBn from "../../../content/copy/playfirst.bn";
+import { href, languageAlternates } from "../../../lib/i18n";
+import { type } from "../../../lib/type";
 
-export const metadata = {
-  title: "Front Office — AI That Sells in Your Inbox | Dakio",
-  description:
-    "Messenger, Instagram, WhatsApp and email in one thread. Nova answers in Bangla, takes orders only after the customer confirms, and cuts RTO. You can take over anytime.",
-  alternates: { canonical: "/front-office" },
-};
-
-const MONO = "var(--dk-font-mono), monospace";
+const COPY = { en: pfEn, bn: pfBn };
+const ROUTE = "/front-office";
+const MONOFONT = "var(--dk-font-mono), monospace";
 const PROTO = "/prototypes/Nova Inbox - Front Office.dc.html";
 
-export default function FrontOfficePage() {
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  const c = (COPY[lang] || COPY.en).frontOffice;
+  return {
+    title: c.meta.title,
+    description: c.meta.description,
+    alternates: { canonical: href(lang, ROUTE), languages: languageAlternates(ROUTE) },
+  };
+}
+
+export default async function FrontOfficePage({ params }) {
+  const { lang } = await params;
+  const pack = COPY[lang] || COPY.en;
+  const c = pack.frontOffice;
+  const T = type(lang);
+
   return (
     <PlayFirstPage
-      route="/front-office"
+      lang={lang}
+      shared={pack.shared}
+      route={ROUTE}
       active="front-office"
       navCtaHref={PROTO}
-      navCtaLabel="Open Front Office"
-      kicker="FRONT OFFICE · THE REAL INBOX, LIVE"
-      h1={<>Nova sells<br />in your <Highlight>inbox</Highlight>.</>}
+      navCtaLabel={c.navCta}
+      kicker={MONO.frontOffice.kicker}
+      h1={c.h1}
       h1MaxWidth={760}
-      sub="Messenger, Instagram, WhatsApp, email — one thread each, Nova answering in Bangla, taking orders only after the customer says yes. Below is the real thing."
+      sub={c.sub}
       subMaxWidth={490}
-      barUrl="app.dakio.io/inbox — Shahrqee (demo threads)"
-      liveLabel="LIVE — READ THE THREADS"
+      barUrl={c.barUrl}
+      liveLabel={MONO.frontOffice.live}
       iframeSrc={PROTO}
-      iframeTitle="Front Office — live"
-      tryChips={[
-        "Open a NOVA HANDLING thread",
-        "Expand a receipt row on a reply",
-        "Check the customer 360 rail",
-        "Flip the autonomy dial T0–T3",
-        "See a CONTEXT BRIEF handover",
-      ]}
-      featsH2="A salesperson with rules it can't break."
+      iframeTitle={c.iframeTitle}
+      tryLabel={MONO.try}
+      tryChips={c.tryChips}
+      featsH2={c.featsH2}
       featsH2MaxWidth={700}
-      feats={["Messenger · IG · WhatsApp · Email", "Replies in Bangla, human pacing", 'Orders only after "hae, confirm"', "RTO Shield — pre-dispatch confirm", "Escalates with a context brief", "You take over instantly", "EST vs MEASURED, never summed", "Every reply receipted"]}
+      feats={c.feats}
       featsMaxWidth={900}
       featsNote={
-        <div data-reveal style={{ marginTop: 22, display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 22px", borderRadius: 99, background: "#1A1D12", color: "#F0EFE6", fontSize: 13, fontWeight: 600 }}>
-          Hard lines, forever:&nbsp;<span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.08em", color: "#C6F035" }}>NO ORDER WITHOUT CONSENT · REFUNDS FOUNDER-ONLY · &quot;BOT NAKI?&quot; → HONEST ANSWER</span>
+        <div data-reveal className="m-wrap" style={{ marginTop: 22, display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 22px", borderRadius: 99, background: "#1A1D12", color: "#F0EFE6", fontSize: 13, fontWeight: 600, ...T.label }}>
+          {c.hardLinesLabel}&nbsp;<span style={{ fontFamily: MONOFONT, fontSize: 10, letterSpacing: "0.08em", color: "#C6F035" }}>{MONO.frontOffice.hardLines}</span>
         </div>
       }
-      ctaH2={<>Stop answering &quot;dam koto?&quot;<br />at midnight.</>}
+      ctaH2={c.ctaH2}
       ctaH2MaxWidth={760}
-      ctaPrimaryLabel="Put Nova on the desk"
-      ctaMonoLine="STARTS IN SHADOW MODE · YOU PROMOTE IT · TAKE OVER ANY THREAD, INSTANTLY"
+      ctaPrimaryLabel={c.ctaPrimary}
+      ctaMonoLine={MONO.frontOffice.ctaStrip}
     />
   );
 }

@@ -1,48 +1,59 @@
-// Store Studio — 1:1 port of "Dakio Store Studio Page.dc.html".
+// Store Studio — 1:1 port of "Dakio Store Studio Page.dc.html", localized.
 
-import PlayFirstPage, { Highlight } from "../../../components/PlayFirstPage";
+import PlayFirstPage from "../../../components/PlayFirstPage";
+import pfEn, { MONO } from "../../../content/copy/playfirst.en";
+import pfBn from "../../../content/copy/playfirst.bn";
+import { href, languageAlternates } from "../../../lib/i18n";
+import { type } from "../../../lib/type";
 
-export const metadata = {
-  title: "Store Studio — Design a Storefront Without a Developer | Dakio",
-  description:
-    "Edit the real storefront live: theme gallery, Bangla fonts, dark mode, one-tap looks. You can't break anything — Undo is right there. Try the live builder.",
-  alternates: { canonical: "/store-studio" },
-};
-
+const COPY = { en: pfEn, bn: pfBn };
+const ROUTE = "/store-studio";
 const PROTO = "/prototypes/Dakio Store Studio.dc.html";
 
-export default function StoreStudioPage() {
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  const c = (COPY[lang] || COPY.en).studio;
+  return {
+    title: c.meta.title,
+    description: c.meta.description,
+    alternates: { canonical: href(lang, ROUTE), languages: languageAlternates(ROUTE) },
+  };
+}
+
+export default async function StoreStudioPage({ params }) {
+  const { lang } = await params;
+  const pack = COPY[lang] || COPY.en;
+  const c = pack.studio;
+  const T = type(lang);
+
   return (
     <PlayFirstPage
-      route="/store-studio"
+      lang={lang}
+      shared={pack.shared}
+      route={ROUTE}
       active="store-studio"
       navCtaHref={PROTO}
-      navCtaLabel="Open Store Studio"
-      kicker="STORE STUDIO · THIS IS THE REAL BUILDER, LIVE"
-      h1={<>Don&apos;t read about it.<br /><Highlight>Design</Highlight>.</>}
+      navCtaLabel={c.navCta}
+      kicker={MONO.studio.kicker}
+      h1={c.h1}
       h1MaxWidth={720}
-      sub="Below is Store Studio itself — theme it, edit the headlines, reorder sections, flip it dark. You can't break anything; Undo is right there."
+      sub={c.sub}
       subMaxWidth={460}
-      barUrl="app.dakio.io/studio — Shahrqee (demo store)"
-      liveLabel="LIVE — GO AHEAD, CLICK THINGS"
+      barUrl={c.barUrl}
+      liveLabel={MONO.studio.live}
       iframeSrc={PROTO}
-      iframeTitle="Store Studio — live"
-      tryChips={[
-        "Theme tab → tap a gallery look",
-        "Click a headline & type",
-        "Flip dark storefront on",
-        "Switch to mobile preview",
-        "Then hit Undo",
-      ]}
-      featsH2="Everything you just touched ships with every store."
+      iframeTitle={c.iframeTitle}
+      tryLabel={MONO.try}
+      tryChips={c.tryChips}
+      featsH2={c.featsH2}
       featsH2MaxWidth={640}
-      feats={["Theme Studio", "Theme gallery", "বাংলা font packs", "Dark storefront", "14 section types", "Inline editing", "Mobile control", "Undo & versions"]}
+      feats={c.feats}
       featsMaxWidth={840}
-      featsNote={<div data-reveal style={{ marginTop: 20, fontSize: 13, color: "#6B6D60" }}>No developer, no theme marketplace, no publish anxiety — the canvas is the store.</div>}
-      ctaH2={<>Liked the demo store?<br />Make yours.</>}
+      featsNote={<div data-reveal style={{ marginTop: 20, fontSize: 13, color: "#6B6D60", ...T.small }}>{c.note}</div>}
+      ctaH2={c.ctaH2}
       ctaH2MaxWidth={700}
-      ctaPrimaryLabel="Start free — no card"
-      ctaMonoLine="LIVE CANVAS · THEME GALLERY · বাংলা FONTS · EVERYTHING UNDOABLE"
+      ctaPrimaryLabel={c.ctaPrimary}
+      ctaMonoLine={MONO.studio.ctaStrip}
     />
   );
 }
