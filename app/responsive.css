@@ -126,3 +126,16 @@
   color: #3e7a45;
 }
 .nav-mobile-divider { height: 1px; background: rgba(26, 29, 18, 0.08); margin: 8px 4px; }
+
+/* ===== Bangla display type below the breakpoints =====
+   The mobile heading rules above carry !important (they have to beat the
+   inline styles ported from the sources), which means they also beat the
+   per-locale type deltas in lib/type.js. Those deltas keep desktop Bangla off
+   negative tracking; these rules do the same job on phones and tablets.
+   Scoped to html[lang="bn"], so the English render is untouched. */
+@media (max-width: 900px) {
+  html[lang="bn"] .m-h1 { font-size: clamp(30px, 8.4vw, 46px) !important; letter-spacing: normal !important; }
+  html[lang="bn"] .m-h2 { font-size: clamp(26px, 7vw, 38px) !important; letter-spacing: normal !important; }
+  html[lang="bn"] .m-h2b { font-size: clamp(23px, 6.2vw, 32px) !important; letter-spacing: normal !important; }
+  html[lang="bn"] .m-cta-h2 { font-size: clamp(26px, 7.4vw, 40px) !important; letter-spacing: normal !important; }
+}
