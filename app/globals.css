@@ -39,6 +39,8 @@ a:hover { color: inherit; }
 /* Nova */
 @keyframes waveform { 0%,100% { transform:scaleY(0.3); } 50% { transform:scaleY(1); } }
 @keyframes trustFill { 0% { width:8%; } 100% { width:68%; } }
+/* Complete Store — the order pipe */
+@keyframes pipeFlow { 0% { background-position:0 0; } 100% { background-position:0 44px; } }
 /* Grow */
 @keyframes drawLine { to { stroke-dashoffset:0; } }
 @keyframes pinIn { 0% { opacity:0; transform:translateY(8px) scale(0.95); } 100% { opacity:1; transform:translateY(0) scale(1); } }

@@ -65,10 +65,10 @@ export default function HomeTop() {
                   </p>
                   <div className="m-wrap" style={{ display: "flex", gap: 12, marginTop: 32, animation: "heroUp .6s .24s ease both" }}>
                     <a href="#cta" className="hv-up2-glow" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 26px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 15, fontWeight: 700 }}>
-                      Appoint Nova <Arrow />
+                      Open your store <Arrow />
                     </a>
-                    <a href="#rooms" className="hv-bg-wash07" style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.25)", color: "#E9EFDC", fontSize: 15, fontWeight: 700 }}>
-                      Open your store
+                    <a href="#nova" className="hv-bg-wash07" style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.25)", color: "#E9EFDC", fontSize: 15, fontWeight: 700 }}>
+                      Meet Nova
                     </a>
                   </div>
                 </>
@@ -82,16 +82,16 @@ export default function HomeTop() {
                   </p>
                   <div className="m-wrap" style={{ display: "flex", gap: 12, marginTop: 32, animation: "heroUp .6s .24s ease both" }}>
                     <a href="#cta" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 26px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontFamily: BN, fontSize: 15, fontWeight: 700 }}>
-                      Nova নিয়োগ দিন <Arrow />
+                      স্টোর খুলুন <Arrow />
                     </a>
-                    <a href="#rooms" className="hv-bg-wash07" style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.25)", color: "#E9EFDC", fontFamily: BN, fontSize: 15, fontWeight: 700 }}>
-                      স্টোর খুলুন
+                    <a href="#nova" className="hv-bg-wash07" style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.25)", color: "#E9EFDC", fontFamily: BN, fontSize: 15, fontWeight: 700 }}>
+                      Nova-কে জানুন
                     </a>
                   </div>
                 </>
               )}
               <div className="m-wrap" style={{ display: "flex", alignItems: "center", gap: 18, marginTop: 30, animation: "heroUp .6s .32s ease both", fontFamily: MONO, fontSize: 9.5, letterSpacing: "0.1em", color: "#878B76" }}>
-                <span>NO CODE</span><span style={{ opacity: 0.4 }}>·</span><span>NO INVENTORY</span><span style={{ opacity: 0.4 }}>·</span><span>৳ · bKASH · COD</span>
+                <span style={{ color: "#C6F035" }}>STORE LIVE IN MINUTES</span><span style={{ opacity: 0.4 }}>·</span><span>NO CODE</span><span style={{ opacity: 0.4 }}>·</span><span>৳ · bKASH · COD</span>
               </div>
             </div>
             {/* Nova orb + live work chips */}

@@ -3,6 +3,7 @@
 // legal row + lime Appoint Nova button.
 
 import LogoDefs from "./Logo";
+import { REGISTER_URL } from "../lib/urls";
 
 const MONO = "var(--dk-font-mono), monospace";
 
@@ -11,6 +12,7 @@ const COLS = [
     title: "PRODUCT",
     links: [
       { label: "Nova — your CEO", href: "/nova" },
+      { label: "The Complete Store", href: "/store" },
       { label: "Store Studio", href: "/store-studio" },
       { label: "Grow Labs", href: "/grow" },
       { label: "Ads Gallery", href: "/ads" },
@@ -83,7 +85,7 @@ export default function SiteFooter() {
             <a href="/terms" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76" }}>Terms</a>
             <a href="/refund-policy" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76" }}>Return &amp; Refund Policy</a>
             <a href="/data-deletion" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76" }}>Data Deletion</a>
-            <a href="/nova" className="hv-up1" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "8px 16px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 12, fontWeight: 700 }}>Appoint Nova</a>
+            <a href={REGISTER_URL} className="hv-up1" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "8px 16px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 12, fontWeight: 700 }}>Open your store</a>
           </div>
         </div>
       </div>

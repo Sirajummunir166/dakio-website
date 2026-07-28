@@ -19,6 +19,12 @@ const BN = "var(--dk-font-bn), sans-serif";
 
 const MARQUEE = ["bKash", "Nagad", "Cash on delivery", "Steadfast", "Pathao", "RedX", "Facebook", "Instagram", "WhatsApp", "bKash", "Nagad", "Cash on delivery", "Steadfast", "Pathao", "RedX", "Facebook", "Instagram", "WhatsApp"];
 
+const LAUNCH_STEPS = [
+  { i: "01", time: "~30 SEC", t: "Give your store a name", isName: true, arrow: true },
+  { i: "02", time: "~5 MIN", t: "Add your products", isProducts: true, arrow: true },
+  { i: "03", time: "LIVE", t: "Share your link", isLive: true, arrow: false },
+];
+
 const BRIEF_TILES = [
   { v: "৳46,200", l: "revenue overnight" },
   { v: "23", l: "orders confirmed" },
@@ -119,6 +125,87 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* ================= LAUNCH IN MINUTES ================= */}
+      <div id="launch" style={{ maxWidth: 1200, margin: "0 auto", padding: "88px 28px 8px" }}>
+        <div style={{ textAlign: "center" }} data-reveal>
+          <div style={kicker}>FIRST THINGS FIRST — THE STORE</div>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 660 }}>
+            Name it. Fill it.{" "}
+            <span style={{ position: "relative", whiteSpace: "nowrap" }}>It&apos;s live.<span style={{ position: "absolute", left: 0, right: 0, bottom: 5, height: 13, background: "#C6F035", zIndex: -1, borderRadius: 3 }} /></span>
+          </h2>
+        </div>
+        <div data-reveal className="m-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14, marginTop: 38 }}>
+          {LAUNCH_STEPS.map(ls => (
+            <div key={ls.i} style={{ position: "relative", borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 24 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <span style={{ fontFamily: MONO, fontSize: 9, fontWeight: 600, letterSpacing: "0.12em", color: "#6B6D60" }}>STEP {ls.i}</span>
+                <span style={{ fontFamily: MONO, fontSize: 9, fontWeight: 600, letterSpacing: "0.08em", color: "#3E7A45" }}>{ls.time}</span>
+              </div>
+              <div style={{ fontSize: 19, fontWeight: 800, letterSpacing: "-0.4px", marginTop: 10 }}>{ls.t}</div>
+              <div style={{ marginTop: 14 }}>
+                {ls.isName ? (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 14px", borderRadius: 12, background: "#ffffff", border: "1.5px solid #1A1D12" }}>
+                      <span style={{ fontSize: 13, fontWeight: 700 }}>shahrqee</span>
+                      <span style={{ width: 2, height: 16, background: "#C6F035", animation: "pulseRing 1.4s infinite" }} />
+                      <span style={{ marginLeft: "auto", fontFamily: MONO, fontSize: 8, letterSpacing: "0.1em", color: "#3E7A45" }}>AVAILABLE ✓</span>
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 12px", borderRadius: 12, background: "#EEEBDF" }}>
+                      <span style={{ fontFamily: MONO, fontSize: 10.5, fontWeight: 600, color: "#1A1D12" }}>shahrqee.dakio.shop</span>
+                      <span style={{ marginLeft: "auto", fontSize: 10, fontWeight: 700, color: "#6B6D60" }}>yours instantly</span>
+                    </div>
+                    <div style={{ fontSize: 12, color: "#6B6D60", lineHeight: 1.55 }}>A designed storefront is ready the moment you sign up — restyle it anytime.</div>
+                  </div>
+                ) : null}
+                {ls.isProducts ? (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "9px 12px", borderRadius: 12, background: "#ffffff", border: "1px solid rgba(26,29,18,0.08)" }}>
+                      <span style={{ width: 26, height: 26, borderRadius: 8, background: "#8C2F1B", flexShrink: 0 }} />
+                      <span style={{ fontSize: 12, fontWeight: 700 }}>Muslin saree — crimson</span>
+                      <span style={{ marginLeft: "auto", fontFamily: MONO, fontSize: 9, color: "#3E7A45" }}>৳2,300</span>
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "9px 12px", borderRadius: 12, background: "#ffffff", border: "1px solid rgba(26,29,18,0.08)" }}>
+                      <span style={{ width: 26, height: 26, borderRadius: 8, background: "#1F6E63", flexShrink: 0 }} />
+                      <span style={{ fontSize: 12, fontWeight: 700 }}>Jamdani stole — teal</span>
+                      <span style={{ marginLeft: "auto", fontFamily: MONO, fontSize: 9, color: "#3E7A45" }}>৳1,850</span>
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", borderRadius: 12, border: "1.5px dashed rgba(26,29,18,0.18)", fontSize: 11, fontWeight: 700, color: "#6B6D60" }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>photo + price is enough
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", borderRadius: 12, background: "rgba(198,240,53,0.16)", border: "1px solid rgba(198,240,53,0.5)", fontSize: 11, fontWeight: 700 }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 3h5v5M21 3l-7 7M8 3H3v18h18v-5" /></svg>no stock? pick from suppliers — Dakio ships
+                    </div>
+                  </div>
+                ) : null}
+                {ls.isLive ? (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "11px 14px", borderRadius: 99, background: "#0F120B" }}>
+                      <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite", flexShrink: 0 }} />
+                      <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 600, color: "#C6F035" }}>shahrqee.dakio.shop</span>
+                      <span style={{ marginLeft: "auto", fontFamily: MONO, fontSize: 8, letterSpacing: "0.1em", color: "#8CBF33" }}>LIVE</span>
+                    </div>
+                    <div style={{ fontSize: 12, color: "#6B6D60", lineHeight: 1.55 }}>Share the link on Facebook, Instagram, anywhere — orders, bKash and couriers already work.</div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 12px", borderRadius: 12, background: "rgba(198,240,53,0.16)", border: "1px solid rgba(198,240,53,0.5)" }}>
+                      <span style={{ width: 16, height: 16, borderRadius: "50%", background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)", flexShrink: 0 }} />
+                      <span style={{ fontSize: 11.5, fontWeight: 700 }}>…and your CEO clocks in.</span>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+              {ls.arrow ? (
+                <div className="m-hide" style={{ position: "absolute", right: -14, top: "50%", transform: "translateY(-50%)", zIndex: 2, width: 26, height: 26, borderRadius: 99, background: "#1A1D12", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C6F035" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </div>
+        <div data-reveal style={{ textAlign: "center", marginTop: 16, fontSize: 13, color: "#6B6D60" }}>
+          No code, no theme marketplace, no developer — the store is the easy part here.{" "}
+          <a href="/store" style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>See everything included →</a>
         </div>
       </div>
 
@@ -526,10 +613,10 @@ export default function Home() {
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
           <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 60, lineHeight: 1.03, letterSpacing: "-2.5px", fontWeight: 800, maxWidth: 720 }}>Your store. Your CEO.<br />Today.</h2>
           <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 34 }}>
-            <a href="/prototypes/Nova HQ Prototype v7.dc.html" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700 }}>
-              <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />Appoint Nova
+            <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700 }}>
+              <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />Open your store — free
             </a>
-            <a href={REGISTER_URL} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700 }}>Start free — no card</a>
+            <a href="/nova" className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700 }}>Then appoint Nova</a>
           </div>
           <div style={{ position: "relative", marginTop: 20, fontFamily: MONO, fontSize: 9.5, letterSpacing: "0.14em", color: "rgba(26,29,18,0.6)" }}>FREE TO START · GUARDRAILS ON DAY ONE · UNDO EVERYTHING</div>
         </div>

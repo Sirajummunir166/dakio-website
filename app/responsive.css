@@ -22,6 +22,8 @@
   .m-pad-cta { padding: 52px 24px !important; }
   .m-wrap { flex-wrap: wrap !important; }
   .m-hide { display: none !important; }
+  /* a sticky column is pointless once the grid stacks */
+  .m-unstick { position: static !important; }
 
   /* nav: center links + Log in collapse into the burger menu */
   .nav-desktop-links, .nav-login { display: none !important; }

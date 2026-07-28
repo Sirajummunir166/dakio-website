@@ -16,6 +16,7 @@ const NOVA_ITEMS = [
 ];
 
 const BUILD_ITEMS = [
+  { mono: "CS", n: "The Complete Store", d: "Everything included, working from day one", href: "/store" },
   { mono: "SS", n: "Store Studio", d: "Design without a developer", href: "/store-studio" },
   { mono: "GL", n: "Grow Labs", d: "The business Grow Studio", href: "/grow" },
   { mono: "AD", n: "Ads Gallery", d: "Product → on-brand ad", href: "/ads" },
@@ -35,7 +36,7 @@ export default function SiteNav({
   lang = "en",
   onToggleLang = null,
   ctaHref = "#cta",
-  ctaLabel = "Appoint Nova",
+  ctaLabel = "Open your store",
   style,
 }) {
   const [open, setOpen] = useState(false);
@@ -55,7 +56,7 @@ export default function SiteNav({
     padding: "5px 11px", borderRadius: 99, fontSize: 11.5, fontWeight: 700,
     ...(on ? { background: "#1A1D12", color: "#C6F035" } : { color: "#6B6D60" }),
   });
-  const prodActive = ["store-studio", "grow", "ads", "front-office"].includes(active);
+  const prodActive = ["store", "store-studio", "grow", "ads", "front-office"].includes(active);
 
   return (
     <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", position: "relative", backdropFilter: "blur(10px)", background: "rgba(239,241,233,0.88)", borderBottom: "1px solid rgba(26,29,18,0.06)", ...style }}>

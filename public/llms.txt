@@ -6,6 +6,7 @@
 
 - [Home](https://dakio.io/): Appoint an AI CEO to your online store — store, couriers, bKash, Nagad & COD, run by Nova 24/7.
 - [Nova](https://dakio.io/nova): Nova is an AI Acting CEO — not a chatbot. It observes, plans, executes and reports inside guardrails, with a receipt for everything.
+- [The Complete Store](https://dakio.io/store): What every Dakio store already includes — storefront and link, checkout (bKash, Nagad, cards, cash on delivery), couriers (Steadfast, Pathao, RedX), one order desk, stock (your own or a supplier's), and automatic money records.
 - [Store Studio](https://dakio.io/store-studio): Design a storefront without a developer — live canvas, theme gallery, Bangla fonts, dark mode, undo everything.
 - [Grow Labs](https://dakio.io/grow): The business Grow Studio — six growth levers (campaigns, content, reach, research, pricing, goals) pulled by Nova around the clock.
 - [Ads Gallery](https://dakio.io/ads): Pick a product, get an editable on-brand ad in 3 sizes, static and motion, checked by the Creative Doctor.
