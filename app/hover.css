@@ -22,3 +22,4 @@
 .hv-bg-wash06:hover { background: rgba(233, 239, 220, 0.06); }
 .hv-bg-ink05:hover { background: rgba(26, 29, 18, 0.05); }
 .hv-up3-border25:hover { transform: translateY(-3px); border-color: rgba(26, 29, 18, 0.25); }
+.company-root a.hv-green:hover, .hv-green:hover { color: #3E7A45; }
