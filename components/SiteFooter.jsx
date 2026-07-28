@@ -48,7 +48,7 @@ export default function SiteFooter() {
       <LogoDefs mkId="nf-mk" wmId="nf-wm" />
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 28px 36px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 32 }}>
+        <div className="m-foot" style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 32 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               {/* dark-bg lockup per design system: lime mark + cream wordmark */}

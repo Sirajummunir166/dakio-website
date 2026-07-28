@@ -104,10 +104,10 @@ export default function Home() {
 
       {/* ================= MORNING BRIEF ================= */}
       <div id="nova" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 56, alignItems: "center" }} data-reveal>
+        <div className="m-grid m-gap" style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 56, alignItems: "center" }} data-reveal>
           <div>
             <div style={kicker}>06:00 · EVERY MORNING</div>
-            <h2 style={{ margin: "14px 0 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>
+            <h2 className="m-h2" style={{ margin: "14px 0 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>
               Wake up to work<br />already{" "}
               <span style={{ position: "relative", whiteSpace: "nowrap" }}>done<span style={{ position: "absolute", left: 0, right: 0, bottom: 5, height: 13, background: "#C6F035", zIndex: -1, borderRadius: 3 }} /></span>.
             </h2>
@@ -129,7 +129,7 @@ export default function Home() {
                 Hear it as a call
               </span>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 9, marginTop: 20 }}>
+            <div className="m-tiles" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 9, marginTop: 20 }}>
               {BRIEF_TILES.map(bt => (
                 <div key={bt.l} style={{ padding: "14px 14px 12px", borderRadius: 14, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.06)" }}>
                   <div style={{ fontSize: 21, fontWeight: 800, letterSpacing: "-0.5px", color: "#FBFBF4" }}>{bt.v}</div>
@@ -152,7 +152,7 @@ export default function Home() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px", textAlign: "center" }}>
         <div data-reveal>
           <div style={kicker}>THE ORGANIZATION</div>
-          <h2 style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640 }}>This is your team now.</h2>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640 }}>This is your team now.</h2>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: 34, marginTop: 26 }}>
             <div><span style={{ fontSize: 44, fontWeight: 800, letterSpacing: "-1.5px" }}>1</span><div style={{ fontSize: 12, color: "#6B6D60", fontWeight: 600, marginTop: 2 }}>Acting CEO</div></div>
             <div style={{ width: 1, height: 34, background: "rgba(26,29,18,0.12)", alignSelf: "center" }} />
@@ -177,9 +177,9 @@ export default function Home() {
       <div id="rooms" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }} data-reveal>
           <div style={kicker}>THE PRODUCT — NOT MOCKUPS. CLICK ANY CARD.</div>
-          <h2 style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 620 }}>The rooms your CEO works in.</h2>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 620 }}>The rooms your CEO works in.</h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 14 }}>
+        <div className="m-rooms" style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 14 }}>
           {/* Nova HQ (big) */}
           <a href="/prototypes/Nova HQ Prototype v7.dc.html" data-reveal className="hv-up4" style={{ gridColumn: "span 3", display: "block", borderRadius: 28, background: "#0F120B", color: "#E9EFDC", padding: 28, overflow: "hidden", position: "relative" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -322,7 +322,7 @@ export default function Home() {
             <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 7, fontFamily: MONO, fontSize: 8, letterSpacing: "0.1em", color: "#3E7A45" }}><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>3 SIZES + MOTION · EDITABLE · ON-BRAND BY DEFAULT</div>
           </a>
           {/* Dropshipping */}
-          <a href="/prototypes/Dakio Supplier Dashboard.dc.html" data-reveal className="hv-up3" style={{ gridColumn: "span 6", display: "flex", alignItems: "center", gap: 28, borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: "24px 28px" }}>
+          <a href="/prototypes/Dakio Supplier Dashboard.dc.html" data-reveal className="hv-up3 m-wrap" style={{ gridColumn: "span 6", display: "flex", alignItems: "center", gap: 28, borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: "24px 28px" }}>
             <div style={{ flexShrink: 0, display: "flex", alignItems: "center", gap: 12 }}>
               <span style={monoTile}>SN</span>
               <div>
@@ -330,7 +330,7 @@ export default function Home() {
                 <div style={{ fontSize: 12.5, color: "#6B6D60", marginTop: 1, maxWidth: 280 }}>Sell without inventory — verified suppliers hold stock, Dakio ships every order.</div>
               </div>
             </div>
-            <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+            <div className="m-wrap" style={{ flex: 1, display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
               {SHIP_FLOW.map(sf => (
                 <div key={sf.n} style={{ flex: 1, display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
                   <div style={{ flex: 1, padding: "12px 14px", borderRadius: 12, background: "#ffffff", border: "1px solid rgba(26,29,18,0.08)", textAlign: "center" }}>
@@ -349,9 +349,9 @@ export default function Home() {
       <div id="trust" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }} data-reveal>
           <div style={kicker}>WHY FOUNDERS TRUST AN AI CEO</div>
-          <h2 style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640 }}>You hold the guardrails.</h2>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640 }}>You hold the guardrails.</h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
           <div style={{ borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 26 }}>
             <div style={{ fontSize: 16, fontWeight: 800, letterSpacing: "-0.3px" }}>Every action has a receipt</div>
             <div style={{ marginTop: 16, borderRadius: 14, background: "#ffffff", border: "1px solid rgba(26,29,18,0.09)", padding: 16 }}>
@@ -400,11 +400,11 @@ export default function Home() {
 
       {/* ================= BANGLADESH ================= */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
-        <div data-reveal style={{ borderRadius: 32, background: "#1A1D12", color: "#F0EFE6", padding: 56, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center", overflow: "hidden", position: "relative" }}>
+        <div data-reveal className="m-grid m-pad-band m-gap" style={{ borderRadius: 32, background: "#1A1D12", color: "#F0EFE6", padding: 56, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center", overflow: "hidden", position: "relative" }}>
           <div style={{ position: "absolute", right: -60, top: -80, fontSize: 340, fontWeight: 800, color: "rgba(198,240,53,0.07)", lineHeight: 1, fontFamily: BN }}>৳</div>
           <div style={{ position: "relative" }}>
             <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#8CBF33" }}>HOME GROUND</div>
-            <h2 style={{ margin: "14px 0 0", fontSize: 44, lineHeight: 1.08, letterSpacing: "-1.6px", fontWeight: 800, color: "#FBFBF4" }}>Built for Bangladesh.<br /><span style={{ color: "#C6F035" }}>Not translated for it.</span></h2>
+            <h2 className="m-h2b" style={{ margin: "14px 0 0", fontSize: 44, lineHeight: 1.08, letterSpacing: "-1.6px", fontWeight: 800, color: "#FBFBF4" }}>Built for Bangladesh.<br /><span style={{ color: "#C6F035" }}>Not translated for it.</span></h2>
             <p style={{ margin: "16px 0 0", fontSize: 14.5, lineHeight: 1.65, color: "#A9AD98", maxWidth: 380 }}>Payments, language and the retail calendar are design inputs here — not plugins.</p>
           </div>
           <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 10 }}>
@@ -429,10 +429,10 @@ export default function Home() {
 
       {/* ================= SWITCH ================= */}
       <div id="switch" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }} data-reveal>
+        <div className="m-grid m-gap" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }} data-reveal>
           <div>
             <div style={kicker}>SWITCHING?</div>
-            <h2 style={{ margin: "14px 0 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>
+            <h2 className="m-h2" style={{ margin: "14px 0 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>
               Leaving Shopify?<br />Bring it over a{" "}
               <span style={{ position: "relative", whiteSpace: "nowrap" }}>weekend<span style={{ position: "absolute", left: 0, right: 0, bottom: 5, height: 13, background: "#C6F035", zIndex: -1, borderRadius: 3 }} /></span>.
             </h2>
@@ -456,9 +456,9 @@ export default function Home() {
       <div id="pricing" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 36 }} data-reveal>
           <div style={kicker}>PRICING</div>
-          <h2 style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>Taka. Not dollars.</h2>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>Taka. Not dollars.</h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
           {PLANS.map(p => (
             <div key={p.n} style={{ padding: 28, borderRadius: 26, display: "flex", flexDirection: "column", ...(p.dark ? { background: "#0F120B", color: "#E9EFDC", boxShadow: "0 24px 54px rgba(15,18,11,0.3)" } : { background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)" }) }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -482,10 +482,10 @@ export default function Home() {
 
       {/* ================= CTA ================= */}
       <div id="cta" style={{ maxWidth: 1200, margin: "80px auto 0", padding: "0 20px" }}>
-        <div data-reveal style={{ borderRadius: 36, background: "#C6F035", padding: "76px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div data-reveal className="m-pad-cta" style={{ borderRadius: 36, background: "#C6F035", padding: "76px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
-          <h2 style={{ position: "relative", margin: "0 auto", fontSize: 60, lineHeight: 1.03, letterSpacing: "-2.5px", fontWeight: 800, maxWidth: 720 }}>Your store. Your CEO.<br />Today.</h2>
-          <div style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 34 }}>
+          <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 60, lineHeight: 1.03, letterSpacing: "-2.5px", fontWeight: 800, maxWidth: 720 }}>Your store. Your CEO.<br />Today.</h2>
+          <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 34 }}>
             <a href="/prototypes/Nova HQ Prototype v7.dc.html" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700 }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />Appoint Nova
             </a>

@@ -84,13 +84,13 @@ export default function AboutPage() {
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, background: "rgba(198,240,53,0.35)", border: "1px solid rgba(26,29,18,0.1)", fontSize: 12.5, fontWeight: 600, color: "#3E7A45", animation: "heroUp .6s ease both" }}>
             <span style={{ width: 7, height: 7, borderRadius: 99, background: "#3E7A45", animation: "pulseRingGreen 2.2s infinite" }} />Digidhaka Communication Limited
           </div>
-          <h1 style={{ margin: "22px auto 0", fontSize: 60, lineHeight: 1.04, letterSpacing: "-2.4px", fontWeight: 800, maxWidth: 700, animation: "heroUp .6s .08s ease both" }}>
+          <h1 className="m-h1" style={{ margin: "22px auto 0", fontSize: 60, lineHeight: 1.04, letterSpacing: "-2.4px", fontWeight: 800, maxWidth: 700, animation: "heroUp .6s .08s ease both" }}>
             Meet <span style={{ position: "relative", whiteSpace: "nowrap" }}>Dakio<span style={{ position: "absolute", left: 0, right: 0, bottom: 5, height: 13, background: "#C6F035", zIndex: -1, borderRadius: 3 }} /></span>
           </h1>
           <p style={{ margin: "20px auto 0", fontSize: 17, lineHeight: 1.65, color: "#6B6D60", maxWidth: 540, animation: "heroUp .6s .16s ease both" }}>
             We started by giving Bangladesh&apos;s entrepreneurs world-class tools. Then we realized tools weren&apos;t the real gap — <b style={{ color: "#1A1D12" }}>a team was</b>. So every Dakio store now comes with a CEO.
           </p>
-          <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 30, animation: "heroUp .6s .24s ease both" }}>
+          <div className="m-wrap" style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 30, animation: "heroUp .6s .24s ease both" }}>
             <a href="#cta" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "14px 26px", borderRadius: 99, background: "#C6F035", color: "#1A1D12", fontSize: 15, fontWeight: 700 }}>
               Start selling free <Arrow />
             </a>
@@ -101,7 +101,7 @@ export default function AboutPage() {
 
       {/* STATS */}
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "0 28px" }}>
-        <div data-reveal style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", borderTop: "1px solid rgba(26,29,18,0.08)", borderBottom: "1px solid rgba(26,29,18,0.08)" }}>
+        <div data-reveal className="m-stats2" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", borderTop: "1px solid rgba(26,29,18,0.08)", borderBottom: "1px solid rgba(26,29,18,0.08)" }}>
           {STATS.map((s, i) => (
             <div key={s.l} style={{ padding: "34px 20px", textAlign: "center", ...(i < 3 ? { borderRight: "1px solid rgba(26,29,18,0.08)" } : {}) }}>
               <div style={{ fontSize: 38, fontWeight: 800, letterSpacing: "-1.4px" }}>{s.v}</div>
@@ -113,10 +113,10 @@ export default function AboutPage() {
 
       {/* OUR STORY */}
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "96px 28px 20px" }}>
-        <div data-reveal style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 56, alignItems: "start" }}>
+        <div data-reveal className="m-grid m-gap" style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 56, alignItems: "start" }}>
           <div>
             <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.4px", color: "#3E7A45", textTransform: "uppercase" }}>Our story</div>
-            <h2 style={{ margin: "14px 0 0", fontSize: 42, lineHeight: 1.1, letterSpacing: "-1.6px", fontWeight: 750 }}>
+            <h2 className="m-h2b" style={{ margin: "14px 0 0", fontSize: 42, lineHeight: 1.1, letterSpacing: "-1.6px", fontWeight: 750 }}>
               Built in Bangladesh,{" "}
               <span style={{ position: "relative", whiteSpace: "nowrap" }}>for Bangladesh.<span style={{ position: "absolute", left: 0, right: 0, bottom: 3, height: 11, background: "#C6F035", zIndex: -1, borderRadius: 3 }} /></span>
             </h2>
@@ -133,10 +133,10 @@ export default function AboutPage() {
 
       {/* MISSION */}
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "84px 28px 20px" }}>
-        <div data-reveal style={{ borderRadius: 32, background: "#1A1D12", color: "#F0EFE6", padding: 56, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
+        <div data-reveal className="m-grid m-pad-band m-gap" style={{ borderRadius: 32, background: "#1A1D12", color: "#F0EFE6", padding: 56, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
           <div>
             <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.4px", color: "#C6F035", textTransform: "uppercase" }}>Our mission</div>
-            <h2 style={{ margin: "16px 0 0", fontSize: 34, lineHeight: 1.16, letterSpacing: "-1px", fontWeight: 750, color: "#fff" }}>Give every merchant the team that was only available to big brands.</h2>
+            <h2 className="m-h2b" style={{ margin: "16px 0 0", fontSize: 34, lineHeight: 1.16, letterSpacing: "-1px", fontWeight: 750, color: "#fff" }}>Give every merchant the team that was only available to big brands.</h2>
             <p style={{ margin: "16px 0 0", fontSize: 15, lineHeight: 1.65, color: "rgba(240,239,230,0.6)", maxWidth: 420 }}>A merchant in Khulna or Rajshahi deserves what a funded company in Dhaka has — a marketing team, a support desk, an operations lead. Dakio levels the field with one appointment: Nova. The best product wins, not the best-staffed one.</p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -154,9 +154,9 @@ export default function AboutPage() {
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "84px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 36 }} data-reveal>
           <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.4px", color: "#6B6D60", textTransform: "uppercase" }}>What we stand for</div>
-          <h2 style={{ margin: "12px auto 0", fontSize: 40, lineHeight: 1.12, letterSpacing: "-1.4px", fontWeight: 750 }}>Our values</h2>
+          <h2 className="m-h2b" style={{ margin: "12px auto 0", fontSize: 40, lineHeight: 1.12, letterSpacing: "-1.4px", fontWeight: 750 }}>Our values</h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 14, maxWidth: 920, margin: "0 auto" }}>
+        <div className="m-grid2-1" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 14, maxWidth: 920, margin: "0 auto" }}>
           {VALUES.map(v => (
             <div key={v.t} data-reveal className="hv-up3" style={{ padding: 26, borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.06)" }}>
               <span style={{ display: "block", width: 9, height: 9, borderRadius: 99, marginBottom: 14, ...v.dot }} />
@@ -171,9 +171,9 @@ export default function AboutPage() {
       <div id="contact" style={{ maxWidth: 1160, margin: "0 auto", padding: "84px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 36 }} data-reveal>
           <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.4px", color: "#6B6D60", textTransform: "uppercase" }}>Find us</div>
-          <h2 style={{ margin: "12px auto 0", fontSize: 40, lineHeight: 1.12, letterSpacing: "-1.4px", fontWeight: 750 }}>Get in touch</h2>
+          <h2 className="m-h2b" style={{ margin: "12px auto 0", fontSize: 40, lineHeight: 1.12, letterSpacing: "-1.4px", fontWeight: 750 }}>Get in touch</h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 14, maxWidth: 800, margin: "0 auto" }}>
+        <div className="m-grid2-1" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 14, maxWidth: 800, margin: "0 auto" }}>
           {CONTACTS.map(c => (
             <div key={c.label} data-reveal className="hv-up3" style={{ padding: 26, borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.06)", textAlign: "center" }}>
               <div style={{ width: 44, height: 44, borderRadius: 14, background: "#1A1D12", display: "inline-flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>{c.icon}</div>
@@ -191,10 +191,10 @@ export default function AboutPage() {
 
       {/* CTA */}
       <div id="cta" style={{ maxWidth: 1160, margin: "64px auto 0", padding: "0 28px" }}>
-        <div data-reveal style={{ borderRadius: 32, background: "#C6F035", padding: "60px 40px", textAlign: "center" }}>
-          <h2 style={{ margin: "0 auto", fontSize: 44, lineHeight: 1.08, letterSpacing: "-1.6px", fontWeight: 800, maxWidth: 640 }}>Join 1,000+ merchants who don&apos;t run alone.</h2>
+        <div data-reveal className="m-pad-cta" style={{ borderRadius: 32, background: "#C6F035", padding: "60px 40px", textAlign: "center" }}>
+          <h2 className="m-cta-h2" style={{ margin: "0 auto", fontSize: 44, lineHeight: 1.08, letterSpacing: "-1.6px", fontWeight: 800, maxWidth: 640 }}>Join 1,000+ merchants who don&apos;t run alone.</h2>
           <p style={{ margin: "16px auto 0", fontSize: 16, color: "#1A1D12", maxWidth: 440, lineHeight: 1.6 }}>Start free today — and appoint your CEO on day one. No card, no setup fee.</p>
-          <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 30 }}>
+          <div className="m-wrap" style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 30 }}>
             <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "15px 28px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15, fontWeight: 700 }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRingGreen 2.2s infinite" }} />Start selling free
             </a>

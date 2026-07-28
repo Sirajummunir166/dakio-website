@@ -47,7 +47,7 @@ export default async function BlogPostPage({ params }) {
           <span style={{ padding: "6px 13px", borderRadius: 99, background: "rgba(198,240,53,0.35)", border: "1px solid rgba(27,30,21,0.10)", color: "#3E7A45", fontSize: 12, fontWeight: 600 }}>{post.category}</span>
         </div>
 
-        <h1 style={{ margin: "18px 0 0", fontSize: 42, lineHeight: 1.25, letterSpacing: "-1.4px", fontWeight: 800 }}>{post.title}</h1>
+        <h1 className="m-h2b" style={{ margin: "18px 0 0", fontSize: 42, lineHeight: 1.25, letterSpacing: "-1.4px", fontWeight: 800 }}>{post.title}</h1>
 
         <div style={{ marginTop: 22, display: "flex", alignItems: "center", gap: 14 }}>
           <div style={{ width: 40, height: 40, borderRadius: 99, background: "#1A1D12", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }) {
               সব লেখা <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 14 }}>
+          <div className="m-grid2-1" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 14 }}>
             {related.map(r => (
               <a key={r.slug} href={`/blog/${r.slug}`} className="hv-up3" style={{ display: "flex", flexDirection: "column", borderRadius: 22, background: "#FBFAF5", border: "1px solid rgba(27,30,21,0.06)", overflow: "hidden" }}>
                 <Thumb variant={r.thumb || "cream"} height={130} mark={48} />

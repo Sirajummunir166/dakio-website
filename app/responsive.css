@@ -1,0 +1,109 @@
+/* Mobile/tablet layer. The .dc.html sources are desktop-only (inline styles,
+   no media queries), so responsiveness is added via utility classes whose
+   rules only fire below the breakpoints — desktop rendering stays untouched.
+   !important is required to beat the inline source styles. */
+
+/* ===== Breakpoint ≤900px — stack the big grids, shrink display type ===== */
+@media (max-width: 900px) {
+  .m-h1 { font-size: clamp(34px, 9.5vw, 52px) !important; letter-spacing: -1.6px !important; }
+  .m-h2 { font-size: clamp(30px, 8vw, 44px) !important; letter-spacing: -1.3px !important; }
+  .m-h2b { font-size: clamp(26px, 7vw, 36px) !important; letter-spacing: -1px !important; }
+  .m-cta-h2 { font-size: clamp(30px, 8.5vw, 46px) !important; letter-spacing: -1.4px !important; }
+
+  .m-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .m-grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .m-rooms { grid-template-columns: minmax(0, 1fr) !important; }
+  .m-rooms > a { grid-column: auto !important; min-width: 0; }
+  .m-foot { grid-template-columns: repeat(2, 1fr) !important; }
+  .m-foot > div:first-child { grid-column: 1 / -1; }
+
+  .m-pad-hero { padding: 48px 24px 44px !important; }
+  .m-pad-band { padding: 36px 24px !important; }
+  .m-pad-cta { padding: 52px 24px !important; }
+  .m-wrap { flex-wrap: wrap !important; }
+  .m-hide { display: none !important; }
+
+  /* nav: center links + Log in collapse into the burger menu */
+  .nav-desktop-links, .nav-login { display: none !important; }
+  .nav-burger { display: inline-flex !important; }
+  .nav-row { padding: 12px 16px !important; gap: 12px !important; }
+  .nav-row > a:first-child { margin-right: auto; }
+}
+
+@media (min-width: 901px) {
+  .nav-burger, .nav-mobile-panel { display: none !important; }
+}
+
+/* ===== Breakpoint ≤620px — phones ===== */
+@media (max-width: 620px) {
+  .m-grid2, .m-grid2-1 { grid-template-columns: minmax(0, 1fr) !important; }
+  .m-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .m-stats2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .m-nowrap-off { white-space: normal !important; }
+  .m-orb { transform: translate(-50%, -50%) scale(0.78) !important; }
+  .m-orbcol { height: 360px !important; }
+  .m-gap { gap: 24px !important; }
+  .m-pad-band { padding: 28px 18px !important; }
+  .m-nav-cta { padding: 9px 13px !important; font-size: 12.5px !important; }
+  .nav-lang { display: none !important; }
+  /* grow hero chart: keep right-side pins inside the card */
+  .m-pin-3 { transform: translate(-75%, -100%) !important; }
+  .m-pin-4 { transform: translate(-92%, -100%) !important; }
+}
+
+@media (min-width: 621px) and (max-width: 900px) {
+  .m-grid2-1 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+
+/* Mobile nav panel */
+.nav-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(26, 29, 18, 0.14);
+  background: transparent;
+  cursor: pointer;
+  color: #1a1d12;
+  flex-shrink: 0;
+}
+.nav-mobile-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 8px 14px 14px;
+}
+.nav-mobile-card {
+  border-radius: 20px;
+  background: #fbfbf4;
+  border: 1px solid rgba(26, 29, 18, 0.08);
+  box-shadow: 0 34px 80px rgba(26, 29, 18, 0.22);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  animation: nvDrop 0.18s ease both;
+  max-height: calc(100vh - 90px);
+  overflow-y: auto;
+}
+.nav-mobile-card a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1a1d12;
+}
+.nav-mobile-card a:active { background: #f0efe4; }
+.nav-mobile-label {
+  padding: 12px 12px 4px;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #3e7a45;
+}
+.nav-mobile-divider { height: 1px; background: rgba(26, 29, 18, 0.08); margin: 8px 4px; }

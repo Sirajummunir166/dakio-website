@@ -64,12 +64,12 @@ export default function SwitchPage() {
       {/* HERO */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "76px 28px 20px", textAlign: "center" }}>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, background: "rgba(198,240,53,0.35)", border: "1px solid rgba(26,29,18,0.1)", fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "#3E7A45", animation: "heroUp .6s ease both" }}>SWITCHING FROM {PLAT.toUpperCase()}</div>
-        <h1 style={{ margin: "22px auto 0", fontSize: 64, lineHeight: 1.03, letterSpacing: "-2.6px", fontWeight: 800, maxWidth: 760, animation: "heroUp .6s .08s ease both" }}>
+        <h1 className="m-h1" style={{ margin: "22px auto 0", fontSize: 64, lineHeight: 1.03, letterSpacing: "-2.6px", fontWeight: 800, maxWidth: 760, animation: "heroUp .6s .08s ease both" }}>
           Leave the tools.<br />Gain a{" "}
           <span style={{ position: "relative", whiteSpace: "nowrap" }}>team<span style={{ position: "absolute", left: 0, right: 0, bottom: 6, height: 14, background: "#C6F035", zIndex: -1, borderRadius: 3 }} /></span>.
         </h1>
         <p style={{ margin: "20px auto 0", fontSize: 17, lineHeight: 1.6, color: "#6B6D60", maxWidth: 480, animation: "heroUp .6s .16s ease both" }}>Concierge migration over one weekend. Your store keeps selling the whole time — and on Monday it has a CEO.</p>
-        <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 30, animation: "heroUp .6s .24s ease both" }}>
+        <div className="m-wrap" style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 30, animation: "heroUp .6s .24s ease both" }}>
           <a href="#cta" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 26px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15, fontWeight: 700 }}>
             Plan my switch
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
@@ -80,7 +80,7 @@ export default function SwitchPage() {
 
       {/* THE MATH */}
       <div id="math" style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 28px 20px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, maxWidth: 880, margin: "0 auto", alignItems: "stretch" }} data-reveal>
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, maxWidth: 880, margin: "0 auto", alignItems: "stretch" }} data-reveal>
           <div style={{ borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)", padding: 30, display: "flex", flexDirection: "column" }}>
             <div style={{ fontFamily: MONO, fontSize: 9.5, letterSpacing: "0.12em", color: "#6B6D60" }}>YOUR {PLAT.toUpperCase()} STACK · MONTHLY</div>
             <div style={{ marginTop: 18, display: "flex", flexDirection: "column", gap: 11, flex: 1 }}>
@@ -123,9 +123,9 @@ export default function SwitchPage() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }} data-reveal>
           <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#3E7A45" }}>THE PLAN</div>
-          <h2 style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>One weekend. We carry the boxes.</h2>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>One weekend. We carry the boxes.</h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
           {WEEKEND.map(wk => (
             <div key={wk.d} style={{ borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 26 }}>
               <div style={dayPill(wk.lime)}>{wk.d}</div>
@@ -149,9 +149,9 @@ export default function SwitchPage() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }} data-reveal>
           <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#3E7A45" }}>WHY IT&apos;S WORTH THE WEEKEND</div>
-          <h2 style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 660 }}>What {PLAT} never gave you.</h2>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 660 }}>What {PLAT} never gave you.</h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
           <div style={{ borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 26 }}>
             <div style={{ fontSize: 34, fontWeight: 800, letterSpacing: "-1px" }}>৳</div>
             <div style={{ fontSize: 17, fontWeight: 800, letterSpacing: "-0.3px", marginTop: 10 }}>COD + bKash native</div>
@@ -190,10 +190,10 @@ export default function SwitchPage() {
 
       {/* CTA */}
       <div id="cta" style={{ maxWidth: 1200, margin: "80px auto 0", padding: "0 20px 60px" }}>
-        <div data-reveal style={{ borderRadius: 36, background: "#C6F035", padding: "76px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div data-reveal className="m-pad-cta" style={{ borderRadius: 36, background: "#C6F035", padding: "76px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
-          <h2 style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.04, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: 720 }}>Friday you export.<br />Monday you have a CEO.</h2>
-          <div style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
+          <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.04, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: 720 }}>Friday you export.<br />Monday you have a CEO.</h2>
+          <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
             <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700 }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />Plan my switch
             </a>

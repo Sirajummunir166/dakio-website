@@ -74,21 +74,21 @@ export default function NovaPage() {
 
       {/* HERO */}
       <div style={{ maxWidth: 1200, margin: "18px auto 0", padding: "0 20px" }}>
-        <div style={{ position: "relative", borderRadius: 36, background: "#0F120B", color: "#E9EFDC", overflow: "hidden", padding: "88px 64px" }}>
+        <div className="m-pad-hero" style={{ position: "relative", borderRadius: 36, background: "#0F120B", color: "#E9EFDC", overflow: "hidden", padding: "88px 64px" }}>
           <div style={{ position: "absolute", top: -200, left: "50%", transform: "translateX(-50%)", width: 720, height: 720, borderRadius: "50%", background: "radial-gradient(closest-side, rgba(198,240,53,0.18), rgba(198,240,53,0))" }} />
-          <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 40, alignItems: "center" }}>
+          <div className="m-grid" style={{ position: "relative", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 40, alignItems: "center" }}>
             <div>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, border: "1px solid rgba(198,242,62,0.35)", fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "#C6F035", animation: "heroUp .6s ease both" }}>NOVA — ACTING CEO · EVERY DAKIO STORE</div>
-              <h1 style={{ margin: "22px 0 0", fontSize: 66, lineHeight: 1.02, letterSpacing: "-2.6px", fontWeight: 800, color: "#FBFBF4", animation: "heroUp .6s .08s ease both" }}>Not hired.<br /><span style={{ color: "#C6F035" }}>Appointed.</span></h1>
+              <h1 className="m-h1" style={{ margin: "22px 0 0", fontSize: 66, lineHeight: 1.02, letterSpacing: "-2.6px", fontWeight: 800, color: "#FBFBF4", animation: "heroUp .6s .08s ease both" }}>Not hired.<br /><span style={{ color: "#C6F035" }}>Appointed.</span></h1>
               <p style={{ margin: "22px 0 0", fontSize: 17, lineHeight: 1.6, color: "#A9AD98", maxWidth: 430, animation: "heroUp .6s .16s ease both" }}>Nova observes, plans, executes and reports across your whole store — 24/7, inside guardrails you set, with a receipt for everything.</p>
-              <div style={{ display: "flex", gap: 12, marginTop: 30, animation: "heroUp .6s .24s ease both" }}>
+              <div className="m-wrap" style={{ display: "flex", gap: 12, marginTop: 30, animation: "heroUp .6s .24s ease both" }}>
                 <a href="#cta" className="hv-up2-glow" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 26px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 15, fontWeight: 700 }}>Appoint Nova as your CEO</a>
                 <a href="/prototypes/Nova HQ Prototype v7.dc.html" className="hv-bg-wash07" style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.25)", color: "#E9EFDC", fontSize: 15, fontWeight: 700 }}>Walk into HQ →</a>
               </div>
               <div style={{ marginTop: 28, display: "inline-flex", alignItems: "center", gap: 10, padding: "8px 15px", borderRadius: 99, border: "1px solid rgba(198,242,62,0.2)", fontFamily: MONO, fontSize: 9, letterSpacing: "0.1em", color: "#878B76", animation: "heroUp .6s .32s ease both" }}>STARTING ROLE — L3 OPERATOR · EARNS THE FULL CEO SEAT</div>
             </div>
-            <div style={{ position: "relative", height: 400 }}>
-              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 330, height: 330 }}>
+            <div className="m-orbcol" style={{ position: "relative", height: 400 }}>
+              <div className="m-orb" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 330, height: 330 }}>
                 <div style={{ position: "absolute", inset: 0, borderRadius: "50%", border: "1px solid rgba(198,242,62,0.2)" }} />
                 <div style={{ position: "absolute", inset: 0, animation: "orbitcw 30s linear infinite" }}>
                   {ORBIT_DOTS.map((od, i) => (
@@ -100,7 +100,7 @@ export default function NovaPage() {
                 <div style={{ position: "absolute", inset: 7, borderRadius: "50%", background: "#0F120B" }} />
                 <div style={{ position: "absolute", inset: 100, borderRadius: "50%", background: "radial-gradient(circle at 32% 28%, #F4FFD6 0%, #C6F035 40%, #6FA524 75%, #2E4710 100%)", animation: "breathe 5s ease-in-out infinite", boxShadow: "0 0 70px rgba(198,240,53,0.3)" }} />
               </div>
-              <div style={{ position: "absolute", left: "50%", bottom: 0, transform: "translateX(-50%)", fontFamily: MONO, fontSize: 9, letterSpacing: "0.14em", color: "#878B76", whiteSpace: "nowrap" }}>10 DEPARTMENT AGENTS · ONE LEDGER · ONE DESK</div>
+              <div className="m-nowrap-off" style={{ position: "absolute", left: "50%", bottom: 0, transform: "translateX(-50%)", fontFamily: MONO, fontSize: 9, letterSpacing: "0.14em", color: "#878B76", whiteSpace: "nowrap", textAlign: "center", width: "100%" }}>10 DEPARTMENT AGENTS · ONE LEDGER · ONE DESK</div>
             </div>
           </div>
         </div>
@@ -110,10 +110,10 @@ export default function NovaPage() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }} data-reveal>
           <div style={kicker}>A DAY ON DUTY</div>
-          <h2 style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>It never clocks out.</h2>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>It never clocks out.</h2>
         </div>
-        <div style={{ position: "relative", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }} data-reveal>
-          <div style={{ position: "absolute", top: 26, left: "11%", right: "11%", height: 2, background: "repeating-linear-gradient(90deg, rgba(26,29,18,0.16) 0 8px, transparent 8px 16px)" }} />
+        <div className="m-grid2-1" style={{ position: "relative", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }} data-reveal>
+          <div className="m-hide" style={{ position: "absolute", top: 26, left: "11%", right: "11%", height: 2, background: "repeating-linear-gradient(90deg, rgba(26,29,18,0.16) 0 8px, transparent 8px 16px)" }} />
           {DAY.map(dy => (
             <div key={dy.t} style={{ position: "relative" }}>
               <div style={timePill(dy.lime)}>{dy.t}</div>
@@ -128,9 +128,9 @@ export default function NovaPage() {
 
       {/* THE ONE RULE */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
-        <div data-reveal style={{ borderRadius: 32, background: "#1A1D12", color: "#F0EFE6", padding: "52px 56px", textAlign: "center" }}>
+        <div data-reveal className="m-pad-band" style={{ borderRadius: 32, background: "#1A1D12", color: "#F0EFE6", padding: "52px 56px", textAlign: "center" }}>
           <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#8CBF33" }}>THE ONE RULE THAT NEVER BENDS</div>
-          <h2 style={{ margin: "14px auto 0", fontSize: 40, lineHeight: 1.1, letterSpacing: "-1.4px", fontWeight: 800, color: "#FBFBF4", maxWidth: 640 }}>Nova never touches your store directly.</h2>
+          <h2 className="m-h2b" style={{ margin: "14px auto 0", fontSize: 40, lineHeight: 1.1, letterSpacing: "-1.4px", fontWeight: 800, color: "#FBFBF4", maxWidth: 640 }}>Nova never touches your store directly.</h2>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginTop: 32, flexWrap: "wrap" }}>
             {PIPELINE.map(pp => (
               <div key={pp.k} style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -148,10 +148,10 @@ export default function NovaPage() {
 
       {/* DECISION DESK + TRUST */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 56, alignItems: "center" }} data-reveal>
+        <div className="m-grid m-gap" style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 56, alignItems: "center" }} data-reveal>
           <div>
             <div style={kicker}>THE DECISION DESK</div>
-            <h2 style={{ margin: "14px 0 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>
+            <h2 className="m-h2" style={{ margin: "14px 0 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>
               Big moves wait<br />for{" "}
               <span style={{ position: "relative", whiteSpace: "nowrap" }}>you<span style={{ position: "absolute", left: 0, right: 0, bottom: 5, height: 13, background: "#C6F035", zIndex: -1, borderRadius: 3 }} /></span>.
             </h2>
@@ -175,7 +175,7 @@ export default function NovaPage() {
 
       {/* VOICE */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 56, alignItems: "center" }} data-reveal>
+        <div className="m-grid m-gap" style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 56, alignItems: "center" }} data-reveal>
           <div style={{ borderRadius: 28, background: "#0F120B", padding: 28, color: "#E9EFDC" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
               <div style={{ position: "relative", width: 52, height: 52, flexShrink: 0 }}>
@@ -199,7 +199,7 @@ export default function NovaPage() {
           </div>
           <div>
             <div style={kicker}>NOVA VOICE</div>
-            <h2 style={{ margin: "14px 0 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>It calls you first.</h2>
+            <h2 className="m-h2" style={{ margin: "14px 0 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800 }}>It calls you first.</h2>
             <p style={{ margin: "18px 0 0", fontSize: 15.5, lineHeight: 1.65, color: "#6B6D60", maxWidth: 380 }}>Morning brief as a phone call. Watchdog alerts before small fires get big. Even customer confirmation calls — in Bangla or English. Every call recorded, transcribed, receipted.</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 22 }}>
               <span style={{ padding: "8px 15px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.1)", fontSize: 12, fontWeight: 700 }}>Briefing calls</span>
@@ -215,7 +215,7 @@ export default function NovaPage() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px", textAlign: "center" }}>
         <div data-reveal>
           <div style={kicker}>THE TEAM UNDER YOUR CEO</div>
-          <h2 style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 680 }}>Ten agents. One ledger.</h2>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 680 }}>Ten agents. One ledger.</h2>
           <p style={{ margin: "16px auto 0", fontSize: 15, color: "#6B6D60", maxWidth: 460, lineHeight: 1.6 }}>Promote Marketing-Nova to autonomous while Finance-Nova still asks first — authority is per agent, and CEO-Nova coordinates them all.</p>
         </div>
         <div data-reveal style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 9, marginTop: 30, maxWidth: 900, marginLeft: "auto", marginRight: "auto" }}>
@@ -227,17 +227,17 @@ export default function NovaPage() {
             </div>
           ))}
         </div>
-        <div data-reveal style={{ marginTop: 26, display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 22px", borderRadius: 99, background: "#1A1D12", color: "#F0EFE6", fontSize: 13, fontWeight: 600 }}>
+        <div data-reveal className="m-wrap" style={{ marginTop: 26, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "12px 22px", borderRadius: 99, background: "#1A1D12", color: "#F0EFE6", fontSize: 13, fontWeight: 600 }}>
           Founder-only, forever:&nbsp;<span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.08em", color: "#C6F035" }}>REFUNDS · GUARDRAILS · CONTRACT SIGNING</span>
         </div>
       </div>
 
       {/* CTA */}
       <div id="cta" style={{ maxWidth: 1200, margin: "80px auto 0", padding: "0 20px 60px" }}>
-        <div data-reveal style={{ borderRadius: 36, background: "#C6F035", padding: "76px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div data-reveal className="m-pad-cta" style={{ borderRadius: 36, background: "#C6F035", padding: "76px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
-          <h2 style={{ position: "relative", margin: "0 auto", fontSize: 58, lineHeight: 1.03, letterSpacing: "-2.4px", fontWeight: 800, maxWidth: 700 }}>Give your store its CEO.</h2>
-          <div style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
+          <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 58, lineHeight: 1.03, letterSpacing: "-2.4px", fontWeight: 800, maxWidth: 700 }}>Give your store its CEO.</h2>
+          <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
             <a href="/prototypes/Nova HQ Prototype v7.dc.html" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700 }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />Appoint Nova
             </a>

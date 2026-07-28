@@ -1,6 +1,7 @@
 import { Archivo, Noto_Sans_Bengali, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import "./hover.css";
+import "./responsive.css";
 
 const archivo = Archivo({
   subsets: ["latin"],

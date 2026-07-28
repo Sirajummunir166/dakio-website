@@ -43,7 +43,7 @@ export default function BlogClient({ posts, categories, formattedDates }) {
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, background: "rgba(198,240,53,0.35)", border: "1px solid rgba(26,29,18,0.1)", fontSize: 12.5, fontWeight: 600, color: "#3E7A45", animation: "heroUp .6s ease both" }}>
             <span style={{ width: 7, height: 7, borderRadius: 99, background: "#3E7A45", animation: "pulseRingGreen 2.2s infinite" }} />Blog
           </div>
-          <h1 style={{ margin: "22px auto 0", fontSize: 54, lineHeight: 1.05, letterSpacing: "-2.1px", fontWeight: 800, animation: "heroUp .6s .08s ease both" }}>
+          <h1 className="m-h1" style={{ margin: "22px auto 0", fontSize: 54, lineHeight: 1.05, letterSpacing: "-2.1px", fontWeight: 800, animation: "heroUp .6s .08s ease both" }}>
             Resources &amp; <span style={{ position: "relative", whiteSpace: "nowrap" }}>Insights<span style={{ position: "absolute", left: 0, right: 0, bottom: 5, height: 12, background: "#C6F035", zIndex: -1, borderRadius: 3 }} /></span>
           </h1>
           <p style={{ margin: "18px auto 0", fontSize: 16.5, lineHeight: 1.7, color: "#6B6D60", maxWidth: 460, animation: "heroUp .6s .16s ease both" }}>ই-কমার্স ব্যবসা বাড়ানোর টিপস, গাইড এবং কৌশল — সরাসরি Dakio টিম থেকে।</p>
@@ -68,7 +68,7 @@ export default function BlogClient({ posts, categories, formattedDates }) {
       {/* FEATURED */}
       {featured ? (
         <div style={{ maxWidth: 1160, margin: "0 auto", padding: "0 28px 14px" }}>
-          <a href={`/blog/${featured.slug}`} className="hv-up3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderRadius: 26, background: "#1A1D12", color: "#F0EFE6", overflow: "hidden", minHeight: 320 }}>
+          <a href={`/blog/${featured.slug}`} className="hv-up3 m-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderRadius: 26, background: "#1A1D12", color: "#F0EFE6", overflow: "hidden", minHeight: 320 }}>
             <div style={{ position: "relative", background: "linear-gradient(135deg, #2a2e1f, #1A1D12)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="110" height="110" viewBox="0 5.4 23 23" style={{ color: "rgba(198,240,53,0.25)" }}><use href="#mk" /></svg>
               <span style={{ position: "absolute", top: 18, left: 18, padding: "6px 13px", borderRadius: 99, background: "rgba(198,240,53,0.16)", color: "#C6F035", fontSize: 11.5, fontWeight: 600 }}>{featured.category}</span>
@@ -85,7 +85,7 @@ export default function BlogClient({ posts, categories, formattedDates }) {
 
       {/* GRID */}
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "14px 28px 20px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+        <div className="m-grid2-1" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
           {grid.map((p, i) => {
             const t = THUMBS[i % 3];
             return (
@@ -109,7 +109,7 @@ export default function BlogClient({ posts, categories, formattedDates }) {
       {/* CTA */}
       <div style={{ maxWidth: 1160, margin: "56px auto 0", padding: "0 28px" }}>
         <div style={{ borderRadius: 32, background: "#C6F035", padding: "52px 40px", textAlign: "center" }}>
-          <h2 style={{ margin: "0 auto", fontSize: 38, lineHeight: 1.1, letterSpacing: "-1.4px", fontWeight: 800, maxWidth: 560 }}>পড়া শেষ? এবার শুরু করুন।</h2>
+          <h2 className="m-h2b" style={{ margin: "0 auto", fontSize: 38, lineHeight: 1.1, letterSpacing: "-1.4px", fontWeight: 800, maxWidth: 560 }}>পড়া শেষ? এবার শুরু করুন।</h2>
           <p style={{ margin: "14px auto 0", fontSize: 15.5, color: "#1A1D12", maxWidth: 420, lineHeight: 1.65 }}>ফ্রি অ্যাকাউন্ট খুলুন — কোনো ক্রেডিট কার্ড লাগবে না।</p>
           <div style={{ display: "flex", justifyContent: "center", marginTop: 26 }}>
             <a href="/#cta" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 26px", borderRadius: 10, background: "#1A1D12", color: "#F4F2EA", fontSize: 15, fontWeight: 700 }}>

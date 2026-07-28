@@ -8,13 +8,10 @@ import SiteFooter from "./SiteFooter";
 import Reveal from "./Reveal";
 import LogoDefs from "./Logo";
 import PageJsonLd from "./PageJsonLd";
+import FrameScaler from "./FrameScaler";
 import { REGISTER_URL } from "../lib/urls";
 
 const MONO = "var(--dk-font-mono), monospace";
-const ZOOM = 0.88;
-const BASE_W = 1440;
-const VIEW_H = 720;
-const INNER_H = Math.ceil(VIEW_H / ZOOM);
 
 export function Highlight({ children }) {
   return (
@@ -61,14 +58,14 @@ export default function PlayFirstPage({
       {/* HERO */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "64px 28px 36px", textAlign: "center" }}>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, background: "rgba(198,240,53,0.35)", border: "1px solid rgba(26,29,18,0.1)", fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "#3E7A45", animation: "heroUp .6s ease both" }}>{kicker}</div>
-        <h1 style={{ margin: "20px auto 0", fontSize: 62, lineHeight: 1.03, letterSpacing: "-2.5px", fontWeight: 800, maxWidth: h1MaxWidth, animation: "heroUp .6s .08s ease both" }}>{h1}</h1>
+        <h1 className="m-h1" style={{ margin: "20px auto 0", fontSize: 62, lineHeight: 1.03, letterSpacing: "-2.5px", fontWeight: 800, maxWidth: h1MaxWidth, animation: "heroUp .6s .08s ease both" }}>{h1}</h1>
         <p style={{ margin: "18px auto 0", fontSize: 16, lineHeight: 1.6, color: "#6B6D60", maxWidth: subMaxWidth, animation: "heroUp .6s .16s ease both" }}>{sub}</p>
       </div>
 
       {/* LIVE EMBED */}
       <div style={{ maxWidth: 1310, margin: "0 auto", padding: "0 20px" }}>
         <div style={{ borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.1)", boxShadow: "0 40px 90px rgba(26,29,18,0.2)", overflow: "hidden", animation: "heroUp .7s .22s ease both" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "12px 18px", borderBottom: "1px solid rgba(26,29,18,0.07)", background: "#ffffff" }}>
+          <div className="m-wrap" style={{ display: "flex", alignItems: "center", gap: 6, padding: "12px 18px", borderBottom: "1px solid rgba(26,29,18,0.07)", background: "#ffffff" }}>
             <span style={{ width: 9, height: 9, borderRadius: 99, background: "#1A1D12", opacity: 0.85 }} />
             <span style={{ width: 9, height: 9, borderRadius: 99, background: "#1A1D12", opacity: 0.35 }} />
             <span style={{ width: 9, height: 9, borderRadius: 99, background: "#1A1D12", opacity: 0.15 }} />
@@ -77,11 +74,7 @@ export default function PlayFirstPage({
               <span style={{ width: 7, height: 7, borderRadius: 99, background: "#3E7A45", animation: "pulseRing 2.2s infinite" }} />{liveLabel}
             </div>
           </div>
-          <div style={{ width: "100%", height: VIEW_H, overflow: "hidden", background: "#eff1e9" }}>
-            <div style={{ width: BASE_W, height: INNER_H, transform: `scale(${ZOOM})`, transformOrigin: "top left" }}>
-              <iframe src={iframeSrc} title={iframeTitle} style={{ width: BASE_W, height: INNER_H, border: "none", display: "block" }} />
-            </div>
-          </div>
+          <FrameScaler src={iframeSrc} title={iframeTitle} />
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginTop: 18, flexWrap: "wrap" }}>
           {tryChips.map(t => (
@@ -98,7 +91,7 @@ export default function PlayFirstPage({
       {/* WHAT YOU JUST USED */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "88px 28px 20px", textAlign: "center" }}>
         <div data-reveal>
-          <h2 style={{ margin: "0 auto", fontSize: 44, lineHeight: 1.06, letterSpacing: "-1.7px", fontWeight: 800, maxWidth: featsH2MaxWidth }}>{featsH2}</h2>
+          <h2 className="m-h2b" style={{ margin: "0 auto", fontSize: 44, lineHeight: 1.06, letterSpacing: "-1.7px", fontWeight: 800, maxWidth: featsH2MaxWidth }}>{featsH2}</h2>
         </div>
         <div data-reveal style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 9, marginTop: 28, maxWidth: featsMaxWidth, marginLeft: "auto", marginRight: "auto" }}>
           {feats.map(f => (
@@ -110,10 +103,10 @@ export default function PlayFirstPage({
 
       {/* CTA */}
       <div id="cta" style={{ maxWidth: 1200, margin: "70px auto 0", padding: "0 20px 60px" }}>
-        <div data-reveal style={{ borderRadius: 36, background: "#C6F035", padding: "72px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div data-reveal className="m-pad-cta" style={{ borderRadius: 36, background: "#C6F035", padding: "72px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
-          <h2 style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.03, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: ctaH2MaxWidth }}>{ctaH2}</h2>
-          <div style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
+          <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.03, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: ctaH2MaxWidth }}>{ctaH2}</h2>
+          <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
             <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700 }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />{ctaPrimaryLabel}
             </a>

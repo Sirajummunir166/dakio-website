@@ -52,7 +52,7 @@ export default function ContactClient() {
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, background: "rgba(198,240,53,0.35)", border: "1px solid rgba(26,29,18,0.1)", fontSize: 12.5, fontWeight: 600, color: "#3E7A45", animation: "heroUp .6s ease both" }}>
             <span style={{ width: 7, height: 7, borderRadius: 99, background: "#3E7A45", animation: "pulseRingGreen 2.2s infinite" }} />Contact
           </div>
-          <h1 style={{ margin: "22px auto 0", fontSize: 56, lineHeight: 1.05, letterSpacing: "-2.2px", fontWeight: 800, animation: "heroUp .6s .08s ease both" }}>
+          <h1 className="m-h1" style={{ margin: "22px auto 0", fontSize: 56, lineHeight: 1.05, letterSpacing: "-2.2px", fontWeight: 800, animation: "heroUp .6s .08s ease both" }}>
             Get in <span style={{ position: "relative", whiteSpace: "nowrap" }}>touch<span style={{ position: "absolute", left: 0, right: 0, bottom: 5, height: 12, background: "#C6F035", zIndex: -1, borderRadius: 3 }} /></span>
           </h1>
           <p style={{ margin: "18px auto 0", fontSize: 17, lineHeight: 1.65, color: "#6B6D60", maxWidth: 460, animation: "heroUp .6s .16s ease both" }}>Questions, feedback, or need help? A human answers here — Nova only runs the stores.</p>
@@ -61,7 +61,7 @@ export default function ContactClient() {
 
       {/* CONTACT GRID */}
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "12px 28px 20px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "0.8fr 1.2fr", gap: 14, alignItems: "start" }}>
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "0.8fr 1.2fr", gap: 14, alignItems: "start" }}>
           {/* left: info cards */}
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             {INFO_CARDS.map(c => (
@@ -101,7 +101,7 @@ export default function ContactClient() {
               </div>
             ) : (
               <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 16 }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                <div className="m-grid2-1" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                   <div>
                     <label style={labelStyle}>Your name</label>
                     <input type="text" placeholder="Enter your name" style={inputStyle} />

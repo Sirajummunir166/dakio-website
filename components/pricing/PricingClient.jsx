@@ -62,7 +62,7 @@ export default function PricingClient() {
       {/* HERO */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "72px 28px 8px", textAlign: "center" }}>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, background: "rgba(198,240,53,0.35)", border: "1px solid rgba(26,29,18,0.1)", fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "#3E7A45", animation: "heroUp .6s ease both" }}>৳ BANGLADESH PRICING · GOING GLOBAL SOON</div>
-        <h1 style={{ margin: "22px auto 0", fontSize: 60, lineHeight: 1.04, letterSpacing: "-2.5px", fontWeight: 800, maxWidth: 780, animation: "heroUp .6s .08s ease both" }}>
+        <h1 className="m-h1" style={{ margin: "22px auto 0", fontSize: 60, lineHeight: 1.04, letterSpacing: "-2.5px", fontWeight: 800, maxWidth: 780, animation: "heroUp .6s .08s ease both" }}>
           Your whole back office, for less than{" "}
           <span style={{ position: "relative", whiteSpace: "nowrap" }}>one employee<span style={{ position: "absolute", left: 0, right: 0, bottom: 6, height: 14, background: "#C6F035", zIndex: -1, borderRadius: 3 }} /></span>.
         </h1>
@@ -75,7 +75,7 @@ export default function PricingClient() {
 
       {/* PLANS */}
       <div id="plans" style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 28px 20px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, alignItems: "stretch" }}>
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, alignItems: "stretch" }}>
           {PLANS.map(p => (
             <div key={p.n} style={{ padding: 28, borderRadius: 26, display: "flex", flexDirection: "column", ...(p.dark ? { background: "#0F120B", color: "#E9EFDC", boxShadow: "0 28px 60px rgba(15,18,11,0.3)" } : p.pop ? { background: "#FBFAF5", border: "2px solid #1A1D12" } : { background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)" }) }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -106,10 +106,10 @@ export default function PricingClient() {
 
       {/* WHAT'S A NOVA TASK */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "88px 28px 20px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }} data-reveal>
+        <div className="m-grid m-gap" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }} data-reveal>
           <div>
             <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#3E7A45" }}>THE METER, IN PLAIN WORDS</div>
-            <h2 style={{ margin: "14px 0 0", fontSize: 48, lineHeight: 1.05, letterSpacing: "-1.9px", fontWeight: 800 }}>What&apos;s a Nova task?</h2>
+            <h2 className="m-h2" style={{ margin: "14px 0 0", fontSize: 48, lineHeight: 1.05, letterSpacing: "-1.9px", fontWeight: 800 }}>What&apos;s a Nova task?</h2>
             <p style={{ margin: "16px 0 0", fontSize: 15, lineHeight: 1.65, color: "#6B6D60", maxWidth: 400 }}>One finished piece of work — not a token, not an API call. The Hours-Saved report shows you every task and what it was worth.</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 20 }}>
               {TASK_CHIPS.map(t => (
@@ -139,12 +139,12 @@ export default function PricingClient() {
 
       {/* EMPLOYEE ANCHOR */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "88px 28px 20px" }}>
-        <div data-reveal style={{ borderRadius: 32, background: "#0F120B", color: "#E9EFDC", padding: "52px 56px" }}>
+        <div data-reveal className="m-pad-band" style={{ borderRadius: 32, background: "#0F120B", color: "#E9EFDC", padding: "52px 56px" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#8CBF33" }}>THE REAL COMPARISON</div>
-            <h2 style={{ margin: "12px auto 0", fontSize: 42, lineHeight: 1.07, letterSpacing: "-1.6px", fontWeight: 800, color: "#FBFBF4", maxWidth: 620 }}>Don&apos;t compare us to software.<br />Compare us to payroll.</h2>
+            <h2 className="m-h2b" style={{ margin: "12px auto 0", fontSize: 42, lineHeight: 1.07, letterSpacing: "-1.6px", fontWeight: 800, color: "#FBFBF4", maxWidth: 620 }}>Don&apos;t compare us to software.<br />Compare us to payroll.</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 34, maxWidth: 820, marginLeft: "auto", marginRight: "auto" }}>
+          <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 34, maxWidth: 820, marginLeft: "auto", marginRight: "auto" }}>
             <div style={{ borderRadius: 20, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.09)", padding: 26 }}>
               <div style={{ fontSize: 15, fontWeight: 800, color: "#FBFBF4" }}>One shop assistant</div>
               <div style={{ marginTop: 14, display: "flex", alignItems: "baseline", gap: 5 }}><span style={{ fontSize: 34, fontWeight: 800, letterSpacing: "-1.2px", color: "#FBFBF4" }}>৳12,000</span><span style={{ fontSize: 12, color: "#878B76" }}>/month</span></div>
@@ -187,7 +187,7 @@ export default function PricingClient() {
       {/* FAQ */}
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "88px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 32 }} data-reveal>
-          <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.08, letterSpacing: "-1.4px", fontWeight: 800 }}>Fair questions.</h2>
+          <h2 className="m-h2b" style={{ margin: 0, fontSize: 38, lineHeight: 1.08, letterSpacing: "-1.4px", fontWeight: 800 }}>Fair questions.</h2>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }} data-reveal>
           {FAQ.map(f => (
@@ -201,10 +201,10 @@ export default function PricingClient() {
 
       {/* CTA */}
       <div id="cta" style={{ maxWidth: 1200, margin: "70px auto 0", padding: "0 20px 60px" }}>
-        <div data-reveal style={{ borderRadius: 36, background: "#C6F035", padding: "72px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div data-reveal className="m-pad-cta" style={{ borderRadius: 36, background: "#C6F035", padding: "72px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
-          <h2 style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.03, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: 700 }}>Fourteen days with the full CEO. Free.</h2>
-          <div style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
+          <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.03, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: 700 }}>Fourteen days with the full CEO. Free.</h2>
+          <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
             <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700 }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />Start the Business trial
             </a>

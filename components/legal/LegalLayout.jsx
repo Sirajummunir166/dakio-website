@@ -66,7 +66,7 @@ export default function LegalLayout({ title, lastUpdated, children }) {
       <div style={{ flex: 1, maxWidth: 760, margin: "0 auto", padding: "64px 28px 88px", width: "100%" }}>
         <div style={{ marginBottom: 40 }}>
           <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#3E7A45" }}>DAKIO · LEGAL</div>
-          <h1 style={{ margin: "14px 0 8px", fontSize: 44, lineHeight: 1.08, letterSpacing: "-1.7px", fontWeight: 800 }}>{title}</h1>
+          <h1 className="m-h2b" style={{ margin: "14px 0 8px", fontSize: 44, lineHeight: 1.08, letterSpacing: "-1.7px", fontWeight: 800 }}>{title}</h1>
           {lastUpdated ? <p style={{ fontSize: 13, color: "#878B76", margin: 0 }}>Last updated: {lastUpdated}</p> : null}
         </div>
         {children}

@@ -39,6 +39,7 @@ export default function SiteNav({
   style,
 }) {
   const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const closeT = useRef(null);
 
   const toggleOpen = () => { clearTimeout(closeT.current); setOpen(o => !o); };
@@ -60,12 +61,12 @@ export default function SiteNav({
     <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", position: "relative", backdropFilter: "blur(10px)", background: "rgba(239,241,233,0.88)", borderBottom: "1px solid rgba(26,29,18,0.06)", ...style }}>
       <LogoDefs mkId="nv-mk" wmId="nv-wm" />
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "14px 28px", display: "flex", alignItems: "center", gap: 24 }}>
+      <div className="nav-row" style={{ maxWidth: 1200, margin: "0 auto", padding: "14px 28px", display: "flex", alignItems: "center", gap: 24 }}>
         <a href="/" aria-label="Dakio — home" style={{ display: "flex", alignItems: "center", gap: 9, flexShrink: 0 }}>
           <svg width="26" height="26" viewBox="0 5.4 23 23" style={{ color: "#1A1D12" }}><use href="#nv-mk" /></svg>
           <svg width="88" height="25" viewBox="31 0 104 29" style={{ color: "#1A1D12" }}><use href="#nv-wm" /></svg>
         </a>
-        <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 22, marginLeft: 12 }}>
+        <div className="nav-desktop-links" style={{ flex: 1, display: "flex", alignItems: "center", gap: 22, marginLeft: 12 }}>
           <div
             onClick={toggleOpen}
             onMouseEnter={openMenu}
@@ -80,15 +81,56 @@ export default function SiteNav({
           <a href="/pricing" className="hv-ink" style={link("pricing")}>Pricing</a>
         </div>
         {onToggleLang ? (
-          <div onClick={onToggleLang} title="Switch language" style={{ display: "flex", padding: 3, borderRadius: 99, background: "rgba(26,29,18,0.07)", cursor: "pointer", fontSize: 11.5, fontWeight: 700 }}>
+          <div onClick={onToggleLang} title="Switch language" className="nav-lang" style={{ display: "flex", padding: 3, borderRadius: 99, background: "rgba(26,29,18,0.07)", cursor: "pointer", fontSize: 11.5, fontWeight: 700 }}>
             <span style={seg(lang !== "bn")}>EN</span><span style={seg(lang === "bn")}>বাং</span>
           </div>
         ) : null}
-        <a href={LOGIN_URL} style={{ fontSize: 14, fontWeight: 600, color: "#1A1D12" }}>Log in</a>
-        <a href={ctaHref} className="hv-up1" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "10px 18px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 13.5, fontWeight: 700, whiteSpace: "nowrap" }}>
+        <a href={LOGIN_URL} className="nav-login" style={{ fontSize: 14, fontWeight: 600, color: "#1A1D12" }}>Log in</a>
+        <a href={ctaHref} className="hv-up1 m-nav-cta" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "10px 18px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 13.5, fontWeight: 700, whiteSpace: "nowrap" }}>
           <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", animation: "nvPulse 2.2s infinite" }} />{ctaLabel}
         </a>
+        <button
+          type="button"
+          className="nav-burger"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMobileOpen(o => !o)}
+        >
+          {mobileOpen ? (
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M3 7h18M3 12h18M3 17h18" /></svg>
+          )}
+        </button>
       </div>
+
+      {mobileOpen ? (
+        <div className="nav-mobile-panel">
+          <div className="nav-mobile-card">
+            {onToggleLang ? (
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px 2px" }}>
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#6B6D60" }}>Language</span>
+                <div onClick={onToggleLang} style={{ display: "flex", padding: 3, borderRadius: 99, background: "rgba(26,29,18,0.07)", cursor: "pointer", fontSize: 11.5, fontWeight: 700 }}>
+                  <span style={seg(lang !== "bn")}>EN</span><span style={seg(lang === "bn")}>বাং</span>
+                </div>
+              </div>
+            ) : null}
+            <div className="nav-mobile-label">RUN BY NOVA</div>
+            {NOVA_ITEMS.map(it => <a key={it.mono} href={it.href}><span style={{ width: 30, height: 30, borderRadius: 10, background: "#14170E", color: "#C6F035", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: MONO, fontSize: 10, fontWeight: 600, flexShrink: 0 }}>{it.mono}</span>{it.n}</a>)}
+            <div className="nav-mobile-label">BUILD &amp; GROW</div>
+            {BUILD_ITEMS.map(it => <a key={it.mono} href={it.href}><span style={{ width: 30, height: 30, borderRadius: 10, background: "#EEF4D4", color: "#3A5212", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: MONO, fontSize: 10, fontWeight: 600, flexShrink: 0 }}>{it.mono}</span>{it.n}</a>)}
+            <div className="nav-mobile-divider" />
+            <a href="/nova">Nova</a>
+            <a href="/switch">Switch to Dakio</a>
+            <a href="/pricing">Pricing</a>
+            <div className="nav-mobile-divider" />
+            <a href="/about">About</a>
+            <a href="/blog">Blog</a>
+            <a href="/contact">Contact</a>
+            <div className="nav-mobile-divider" />
+            <a href={LOGIN_URL}>Log in</a>
+          </div>
+        </div>
+      ) : null}
 
       {open ? (
         <>

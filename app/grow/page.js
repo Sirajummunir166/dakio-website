@@ -81,16 +81,16 @@ export default function GrowPage() {
 
       {/* HERO: the diverging curve */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 28px 20px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: 48, alignItems: "center" }}>
+        <div className="m-grid m-gap" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: 48, alignItems: "center" }}>
           <div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, background: "rgba(198,240,53,0.35)", border: "1px solid rgba(26,29,18,0.1)", fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "#3E7A45", animation: "heroUp .6s ease both" }}>GROW LABS · THE BUSINESS GROW STUDIO</div>
-            <h1 style={{ margin: "22px 0 0", fontSize: 58, lineHeight: 1.04, letterSpacing: "-2.4px", fontWeight: 800, animation: "heroUp .6s .08s ease both" }}>
+            <h1 className="m-h1" style={{ margin: "22px 0 0", fontSize: 58, lineHeight: 1.04, letterSpacing: "-2.4px", fontWeight: 800, animation: "heroUp .6s .08s ease both" }}>
               Growth you never{" "}
               <span style={{ position: "relative", whiteSpace: "nowrap" }}>dared<span style={{ position: "absolute", left: 0, right: 0, bottom: 5, height: 13, background: "#C6F035", zIndex: -1, borderRadius: 3 }} /></span>{" "}
               to plan.
             </h1>
             <p style={{ margin: "20px 0 0", fontSize: 16, lineHeight: 1.65, color: "#6B6D60", maxWidth: 400, animation: "heroUp .6s .16s ease both" }}>Campaigns, content, reach, research, pricing, goals — six growth levers in one studio. You pull them by hand, or Nova pulls them around the clock.</p>
-            <div style={{ display: "flex", gap: 12, marginTop: 28, animation: "heroUp .6s .24s ease both" }}>
+            <div className="m-wrap" style={{ display: "flex", gap: 12, marginTop: 28, animation: "heroUp .6s .24s ease both" }}>
               <a href="#cta" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 26px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15, fontWeight: 700 }}>
                 Start growing free
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
@@ -123,8 +123,8 @@ export default function GrowPage() {
                   <path d="M20,250 C120,246 220,240 340,236 C430,233 500,231 540,230" fill="none" stroke="rgba(233,239,220,0.35)" strokeWidth="2.5" strokeDasharray="6 7" pathLength="1000" strokeDashoffset="1000" style={{ animation: "drawLine 1.8s .3s ease both" }} />
                   <path d="M20,250 C110,242 200,228 300,196 C390,167 470,102 540,52" fill="none" stroke="#C6F035" strokeWidth="4" strokeLinecap="round" pathLength="1000" strokeDasharray="1000" strokeDashoffset="1000" style={{ animation: "drawLine 2.2s .5s ease both" }} />
                 </svg>
-                {PINS.map(pn => (
-                  <div key={pn.t} style={pn.s}>
+                {PINS.map((pn, i) => (
+                  <div key={pn.t} className={`m-pin-${i + 1}`} style={pn.s}>
                     <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", flexShrink: 0 }} />{pn.t}
                   </div>
                 ))}
@@ -141,9 +141,9 @@ export default function GrowPage() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "92px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 36 }} data-reveal>
           <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#3E7A45" }}>SAME SHOP · SAME MIDNIGHT</div>
-          <h2 style={{ margin: "14px auto 0", fontSize: 50, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640 }}>The growth happens while you sleep.</h2>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 50, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640 }}>The growth happens while you sleep.</h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} data-reveal>
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} data-reveal>
           <div style={{ borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)", padding: 28 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <span style={{ fontFamily: MONO, fontSize: 9, letterSpacing: "0.12em", color: "#B03A2E" }}>11:47 PM — YOU, ALONE</span>
@@ -182,10 +182,10 @@ export default function GrowPage() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "92px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 36 }} data-reveal>
           <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#3E7A45" }}>SIX LEVERS, ONE STUDIO</div>
-          <h2 style={{ margin: "14px auto 0", fontSize: 50, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 700 }}>Every lever, pulled professionally.</h2>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 50, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 700 }}>Every lever, pulled professionally.</h2>
           <p style={{ margin: "14px auto 0", fontSize: 14.5, color: "#6B6D60", maxWidth: 460, lineHeight: 1.6 }}>What you used to improvise at midnight, the studio runs like a marketing team — and Nova runs the studio.</p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
           {LEVERS.map(lv => (
             <div key={lv.n} className="hv-up3-border25" style={{ borderRadius: 24, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 24, display: "flex", flexDirection: "column" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -206,10 +206,10 @@ export default function GrowPage() {
 
       {/* COMPOUNDING LOOP */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "92px 28px 20px" }}>
-        <div data-reveal style={{ borderRadius: 32, background: "#0F120B", color: "#E9EFDC", padding: "52px 56px" }}>
+        <div data-reveal className="m-pad-band" style={{ borderRadius: 32, background: "#0F120B", color: "#E9EFDC", padding: "52px 56px" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#8CBF33" }}>WHY THE CURVE BENDS</div>
-            <h2 style={{ margin: "12px auto 0", fontSize: 40, lineHeight: 1.08, letterSpacing: "-1.5px", fontWeight: 800, color: "#FBFBF4", maxWidth: 620 }}>The levers hand off. The growth compounds.</h2>
+            <h2 className="m-h2b" style={{ margin: "12px auto 0", fontSize: 40, lineHeight: 1.08, letterSpacing: "-1.5px", fontWeight: 800, color: "#FBFBF4", maxWidth: 620 }}>The levers hand off. The growth compounds.</h2>
           </div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 9, marginTop: 30, flexWrap: "wrap" }}>
             {LOOP.map(lp => (
@@ -225,7 +225,7 @@ export default function GrowPage() {
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7v6h6M3 13a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 9" /></svg>REPEATS EVERY NIGHT
             </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginTop: 34, maxWidth: 860, marginLeft: "auto", marginRight: "auto" }}>
+          <div className="m-stats2" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginTop: 34, maxWidth: 860, marginLeft: "auto", marginRight: "auto" }}>
             {STATS.map(st => (
               <div key={st.l} style={{ padding: "16px 14px", borderRadius: 16, background: "rgba(198,240,53,0.08)", border: "1px solid rgba(198,240,53,0.22)", textAlign: "center" }}>
                 <div style={{ fontSize: 23, fontWeight: 800, letterSpacing: "-0.7px", color: "#C6F035" }}>{st.v}</div>
@@ -239,10 +239,10 @@ export default function GrowPage() {
 
       {/* CTA */}
       <div id="cta" style={{ maxWidth: 1200, margin: "70px auto 0", padding: "0 20px 60px" }}>
-        <div data-reveal style={{ borderRadius: 36, background: "#C6F035", padding: "72px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div data-reveal className="m-pad-cta" style={{ borderRadius: 36, background: "#C6F035", padding: "72px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
-          <h2 style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.03, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: 740 }}>Your curve is still the grey one.</h2>
-          <div style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
+          <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.03, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: 740 }}>Your curve is still the grey one.</h2>
+          <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
             <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700 }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />Bend it — start free
             </a>
