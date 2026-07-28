@@ -1,0 +1,19 @@
+/* Hover states ported from style-hover attributes in the .dc.html sources.
+   Values are verbatim; class names are semantic. No transitions are added
+   unless the source element declared one (matches support.js pseudoClass). */
+
+.hv-ink:hover { color: #1A1D12; }
+.hv-lime:hover { color: #C6F035; }
+.hv-cream-e9:hover { color: #E9EFDC; }
+.hv-up1:hover { transform: translateY(-1px); }
+.hv-up2:hover { transform: translateY(-2px); }
+.hv-up3:hover { transform: translateY(-3px); }
+.hv-up4:hover { transform: translateY(-4px); }
+.hv-up2-glow:hover { transform: translateY(-2px); box-shadow: 0 0 34px rgba(198, 240, 53, 0.35); }
+.hv-bg-f0efe4:hover { background: #F0EFE4; }
+.hv-bg-wash07:hover { background: rgba(233, 239, 220, 0.07); }
+.hv-bg-lime24:hover { background: rgba(198, 242, 62, 0.24); }
+.hv-bg-ink08:hover { background: rgba(26, 29, 18, 0.08); }
+.hv-border-ink-up2:hover { border-color: #1A1D12; transform: translateY(-2px); }
+.hv-ink-lime:hover { background: #1A1D12; color: #C6F035; }
+.hv-gap12:hover { gap: 12px; }

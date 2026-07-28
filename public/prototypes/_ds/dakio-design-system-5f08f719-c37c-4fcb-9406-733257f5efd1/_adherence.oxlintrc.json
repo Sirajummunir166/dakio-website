@@ -1,0 +1,123 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": []
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Archivo|JetBrains Mono|Hind Siliguri))/i]",
+        "message": "Font not provided by the design system. Available: Archivo, JetBrains Mono, Hind Siliguri."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--dk-bg",
+      "--dk-border",
+      "--dk-border-dark",
+      "--dk-card",
+      "--dk-cream",
+      "--dk-error",
+      "--dk-fg",
+      "--dk-font-bn",
+      "--dk-font-mono",
+      "--dk-font-sans",
+      "--dk-ink",
+      "--dk-lime",
+      "--dk-line",
+      "--dk-muted",
+      "--dk-radius-icon",
+      "--dk-radius-lg",
+      "--dk-radius-md",
+      "--dk-radius-sm",
+      "--dk-space-1",
+      "--dk-space-2",
+      "--dk-space-3",
+      "--dk-space-4",
+      "--dk-space-6",
+      "--dk-space-8",
+      "--dk-success",
+      "--dk-text-2xl",
+      "--dk-text-3xl",
+      "--dk-text-base",
+      "--dk-text-lg",
+      "--dk-text-sm",
+      "--dk-text-xl",
+      "--dk-text-xs",
+      "--dk-warning"
+    ],
+    "tokenKinds": {
+      "--dk-ink": "color",
+      "--dk-lime": "color",
+      "--dk-cream": "color",
+      "--dk-muted": "color",
+      "--dk-border": "color",
+      "--dk-border-dark": "color",
+      "--dk-success": "color",
+      "--dk-warning": "color",
+      "--dk-error": "color",
+      "--dk-bg": "color",
+      "--dk-fg": "color",
+      "--dk-card": "color",
+      "--dk-line": "color",
+      "--dk-font-sans": "font",
+      "--dk-font-mono": "font",
+      "--dk-font-bn": "font",
+      "--dk-text-xs": "font",
+      "--dk-text-sm": "font",
+      "--dk-text-base": "font",
+      "--dk-text-lg": "font",
+      "--dk-text-xl": "font",
+      "--dk-text-2xl": "font",
+      "--dk-text-3xl": "font",
+      "--dk-radius-sm": "radius",
+      "--dk-radius-md": "radius",
+      "--dk-radius-lg": "radius",
+      "--dk-radius-icon": "radius",
+      "--dk-space-1": "spacing",
+      "--dk-space-2": "spacing",
+      "--dk-space-3": "spacing",
+      "--dk-space-4": "spacing",
+      "--dk-space-6": "spacing",
+      "--dk-space-8": "spacing"
+    },
+    "fontFamilies": [
+      "Archivo",
+      "Hind Siliguri",
+      "JetBrains Mono"
+    ]
+  }
+}

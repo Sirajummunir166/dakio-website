@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"><style>body{margin:0;font-family:'Space Grotesk',system-ui,sans-serif;color:#1B1F14;background:#F1F0E8}a{color:#3A5212;text-decoration:none}a:hover{color:#6FA524}
+@keyframes riseIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.6);opacity:0}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+*::-webkit-scrollbar{width:8px;height:8px}*::-webkit-scrollbar-thumb{background:rgba(27,31,20,.14);border-radius:4px}</style></helmet>
+<div style="overflow-x:auto;height:100vh">
+<div data-screen-label="Inbox — Front Office" style="display:flex;height:100vh;min-width:1280px;overflow:hidden;background:#F1F0E8">
+
+  <div style="width:212px;flex:none;background:#14170E;color:#E9EFDC;display:flex;flex-direction:column;padding:16px 12px;gap:3px;overflow-y:auto">
+    <div style="display:flex;align-items:center;gap:8px;padding:2px 8px 14px"><span style="width:26px;height:26px;border-radius:8px;background:#C7F23E;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0F120B;font-size:15px">d</span><span style="font-size:19px;font-weight:700;letter-spacing:-.02em;color:#FBFBF4">dakio</span></div>
+    <a href="Nova%20HQ%20Prototype%20v7.dc.html" style="display:flex;align-items:center;gap:8px;border:1px solid rgba(199,242,62,.4);border-radius:12px;padding:9px 12px;margin-bottom:10px;color:#E9EFDC" style-hover="border-color:#C7F23E;background:rgba(199,242,62,.06)">
+      <span style="position:relative;width:8px;height:8px;flex:none;border-radius:50%;background:#C7F23E"><span style="position:absolute;inset:0;border-radius:50%;background:#C7F23E;animation:ping 2s ease-out infinite"></span></span>
+      <span style="font-size:13px;font-weight:600;flex:1">Nova HQ</span>
+      <span style="font:600 7.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#8CBF33">LIVE</span>
+    </a>
+    <sc-for list="{{nav}}" as="nv" hint-placeholder-count="12">
+      <sc-if value="{{nv.isSec}}" hint-placeholder-val="{{ false }}"><div style="font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#5E624F;padding:12px 10px 5px">{{nv.label}}</div></sc-if>
+      <sc-if value="{{nv.isItem}}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;gap:9px;border-radius:10px;padding:8px 10px;background:{{nv.bg}};color:{{nv.color}};cursor:pointer" style-hover="background:rgba(255,255,255,.05)">
+        <span style="font-size:13px;line-height:1">{{nv.icon}}</span>
+        <span style="font-size:13px;font-weight:{{nv.weight}};flex:1">{{nv.label}}</span>
+        <sc-if value="{{nv.dot}}" hint-placeholder-val="{{ false }}"><span style="width:5px;height:5px;border-radius:50%;background:#8CBF33"></span></sc-if>
+        <sc-if value="{{nv.badge}}" hint-placeholder-val="{{ false }}"><span style="font:600 8.5px 'IBM Plex Mono',monospace;background:#C7F23E;color:#0F120B;border-radius:999px;padding:2px 7px">{{nv.badge}}</span></sc-if>
+      </div></sc-if>
+    </sc-for>
+    <div style="margin-top:auto;display:flex;align-items:center;gap:9px;border-top:1px solid rgba(255,255,255,.08);padding:12px 8px 2px"><span style="width:30px;height:30px;border-radius:50%;background:#C7F23E;color:#0F120B;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">D</span><span style="flex:1;min-width:0"><span style="display:block;font-size:12.5px;font-weight:600;color:#FBFBF4">Dine Mate</span><span style="display:block;font:500 8px 'IBM Plex Mono',monospace;color:#5E624F">DAKIO STORE</span></span></div>
+  </div>
+
+  <div style="width:322px;flex:none;background:#FBFBF4;border-right:1px solid rgba(27,31,20,.09);display:flex;flex-direction:column;min-width:0">
+    <div style="padding:16px 16px 10px;border-bottom:1px solid rgba(27,31,20,.07)">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+        <span style="font-size:18px;font-weight:700;letter-spacing:-.01em">Inbox</span>
+        <span onClick="{{tierToggle}}" style="cursor:pointer;position:relative;display:flex;align-items:center;gap:6px;border:1.5px solid #1B1F14;border-radius:999px;padding:5px 11px;font:600 9px 'IBM Plex Mono',monospace;letter-spacing:.08em" style-hover="background:#EFEFE3">{{tierLabel}} ▾</span>
+      </div>
+      <div style="font:500 8.5px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#878B76;margin-top:4px">FRONT OFFICE · NOVA-OPERATED · ONE LEDGER</div>
+      <sc-if value="{{tierOpen}}" hint-placeholder-val="{{ false }}">
+      <div style="background:#14170E;border-radius:14px;padding:12px;margin-top:10px;animation:riseIn .25s ease both">
+        <div style="font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#878B76;padding:0 4px 8px">AUTONOMY DIAL — THIS DOOR ONLY · SERVER-ENFORCED</div>
+        <sc-for list="{{tiers}}" as="tr" hint-placeholder-count="4">
+          <div onClick="{{tr.pick}}" style="cursor:pointer;display:flex;gap:9px;align-items:flex-start;border-radius:9px;padding:8px 9px;background:{{tr.bg}}" style-hover="background:rgba(199,242,62,.1)">
+            <span style="font:700 10px 'IBM Plex Mono',monospace;color:{{tr.tc}};flex:none;margin-top:1px">{{tr.id}}</span>
+            <span style="flex:1;min-width:0"><span style="display:block;font-size:12px;font-weight:700;color:{{tr.nc}}">{{tr.name}}</span><span style="display:block;font-size:10.5px;line-height:1.45;color:#A9AD98;margin-top:1px">{{tr.desc}}</span></span>
+          </div>
+        </sc-for>
+        <div style="font:500 7.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#5E624F;padding:8px 4px 0;line-height:1.6">T0 IS MANDATORY WEEK 1 · PROMOTION IS OFFERED FROM DELIVERED OUTCOMES, NEVER ACTIVITY · ESCALATION IS NEVER PUNISHED</div>
+      </div>
+      </sc-if>
+      <div style="display:flex;gap:6px;margin-top:11px">
+        <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+          <span onClick="{{tb.pick}}" style="cursor:pointer;font-size:11.5px;font-weight:{{tb.w}};border-radius:999px;padding:5px 11px;background:{{tb.bg}};color:{{tb.c}};border:1px solid {{tb.bd}};white-space:nowrap" style-hover="border-color:#1B1F14">{{tb.label}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding:6px 8px">
+      <sc-for list="{{rows}}" as="t" hint-placeholder-count="7">
+        <div onClick="{{t.pick}}" style="cursor:pointer;display:flex;gap:10px;align-items:flex-start;border-radius:13px;padding:11px 10px;background:{{t.bg}};border:1px solid {{t.bd}};margin-bottom:4px" style-hover="background:#F1F0E8">
+          <span style="position:relative;width:36px;height:36px;flex:none;border-radius:50%;background:{{t.av}};color:#FBFBF4;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">{{t.initial}}<span style="position:absolute;right:-3px;bottom:-3px;font:700 6px 'IBM Plex Mono',monospace;background:#FBFBF4;border:1px solid rgba(27,31,20,.15);border-radius:5px;padding:1.5px 3px;color:#3A3F30">{{t.ch}}</span></span>
+          <span style="flex:1;min-width:0">
+            <span style="display:flex;align-items:baseline;justify-content:space-between;gap:6px"><span style="font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{t.name}}</span><span style="font:500 8.5px 'IBM Plex Mono',monospace;color:#9BA18B;flex:none">{{t.time}}</span></span>
+            <span style="display:block;font-size:11.5px;color:#6E7261;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px"><span style="color:{{t.pvC}};font-weight:600">{{t.pvTag}}</span>{{t.pv}}</span>
+            <span style="display:inline-flex;margin-top:6px;font:600 7.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;background:{{t.chipBg}};color:{{t.chipFg}};border:1px solid {{t.chipBd}};border-radius:5px;padding:2.5px 7px">{{t.chip}}</span>
+          </span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="border-top:1px solid rgba(27,31,20,.08);padding:10px 16px;font:500 8px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#878B76;line-height:1.7">TODAY · LEDGER TRUTH<br><span style="color:#3A3F30">23 CONV · 3 CHAT ORDERS ৳5,840 <span style="color:#7A5A14">EST</span> · 6 CONFIRMED · 2 RTO SAVES · 1 NEEDS YOU</span><br>ESTIMATES FLIP TO MEASURED ON DELIVERY — NEVER SUMMED TOGETHER</div>
+  </div>
+
+  <div style="flex:1;min-width:430px;display:flex;flex-direction:column;background:#F1F0E8">
+    <div style="background:#FBFBF4;border-bottom:1px solid rgba(27,31,20,.08);padding:13px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <span style="width:34px;height:34px;flex:none;border-radius:50%;background:{{aAv}};color:#FBFBF4;display:flex;align-items:center;justify-content:center;font-weight:700">{{aInitial}}</span>
+      <span style="min-width:0"><span style="display:block;font-size:15px;font-weight:700">{{aName}}</span><span style="display:block;font:500 8.5px 'IBM Plex Mono',monospace;color:#878B76;margin-top:1px">{{aSub}}</span></span>
+      <span style="font:600 7.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;background:#E4F7AE;color:#3A5212;border-radius:5px;padding:3px 8px">{{aStage}}</span>
+      <sc-if value="{{aRisk}}" hint-placeholder-val="{{ false }}"><span style="font:600 7.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;background:#F6DDD3;color:#9C3F1B;border-radius:5px;padding:3px 8px">AT RISK</span></sc-if>
+      <span style="margin-left:auto;display:flex;align-items:center;gap:8px">
+        <sc-if value="{{aCall}}" hint-placeholder-val="{{ false }}"><span onClick="{{doCall}}" style="cursor:pointer;font:600 9px 'IBM Plex Mono',monospace;letter-spacing:.06em;border:1.5px solid #1B1F14;border-radius:999px;padding:6px 12px" style-hover="background:#C7F23E">☎ NOVA CALLS</span></sc-if>
+        <span onClick="{{glossToggle}}" style="cursor:pointer;font:600 9px 'IBM Plex Mono',monospace;border:1.5px solid {{glossBd}};background:{{glossBg}};color:{{glossC}};border-radius:999px;padding:6px 12px" style-hover="border-color:#1B1F14">EN</span>
+        <span onClick="{{novaToggle}}" style="cursor:pointer;display:flex;align-items:center;gap:7px;border:1.5px solid {{ntBd}};background:{{ntBg}};border-radius:999px;padding:6px 12px" style-hover="border-color:#1B1F14"><span style="width:7px;height:7px;border-radius:50%;background:{{ntDot}}"></span><span style="font:600 9px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:{{ntC}}">{{ntLabel}}</span></span>
+      </span>
+    </div>
+
+    <div ref="{{convRef}}" style="flex:1;overflow-y:auto;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{msgs}}" as="m" hint-placeholder-count="8">
+        <sc-if value="{{m.isC}}" hint-placeholder-val="{{ true }}">
+          <div style="align-self:flex-start;max-width:62%;display:flex;flex-direction:column;gap:3px;animation:riseIn .3s ease both">
+            <span style="background:#FBFBF4;border:1px solid rgba(27,31,20,.07);border-radius:15px 15px 15px 4px;padding:10px 14px;font-size:13.5px;line-height:1.6">{{m.t}}</span>
+            <sc-if value="{{m.showG}}" hint-placeholder-val="{{ false }}"><span style="font-size:10.5px;font-style:italic;color:#9BA18B;padding:0 6px">{{m.g}}</span></sc-if>
+            <span style="font:500 8px 'IBM Plex Mono',monospace;color:#9BA18B;padding:0 6px">{{m.ts}}</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{m.isN}}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-end;max-width:62%;display:flex;flex-direction:column;align-items:flex-end;gap:3px;animation:riseIn .3s ease both">
+            <span style="display:flex;align-items:flex-start;gap:8px"><span style="background:#FBFBF4;border:1px solid rgba(140,191,51,.45);border-left:3px solid #8CBF33;border-radius:15px 15px 4px 15px;padding:10px 14px;font-size:13.5px;line-height:1.6">{{m.t}}</span><span style="width:20px;height:20px;flex:none;margin-top:3px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#F4FFD6,#C7F23E 45%,#6FA524 90%)"></span></span>
+            <sc-if value="{{m.showG}}" hint-placeholder-val="{{ false }}"><span style="font-size:10.5px;font-style:italic;color:#9BA18B;padding:0 32px 0 6px;text-align:right">{{m.g}}</span></sc-if>
+            <span style="display:flex;align-items:center;gap:8px;padding-right:32px"><span style="font:500 8px 'IBM Plex Mono',monospace;color:#9BA18B">NOVA · {{m.ts}}</span><sc-if value="{{m.hasR}}" hint-placeholder-val="{{ false }}"><span onClick="{{m.toggleR}}" style="cursor:pointer;font:600 8px 'IBM Plex Mono',monospace;color:#3A5212" style-hover="color:#6FA524">● RECEIPT</span></sc-if></span>
+            <sc-if value="{{m.showR}}" hint-placeholder-val="{{ false }}"><span style="font:500 8.5px 'IBM Plex Mono',monospace;line-height:1.7;background:#EFEFE3;border-radius:9px;padding:8px 11px;color:#5E624F;max-width:100%;animation:riseIn .25s ease both">{{m.r}}</span></sc-if>
+          </div>
+        </sc-if>
+        <sc-if value="{{m.isF}}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-end;max-width:62%;display:flex;flex-direction:column;align-items:flex-end;gap:3px;animation:riseIn .3s ease both">
+            <span style="background:#1B1F14;color:#FBFBF4;border-radius:15px 15px 4px 15px;padding:10px 14px;font-size:13.5px;line-height:1.6">{{m.t}}</span>
+            <span style="font:500 8px 'IBM Plex Mono',monospace;color:#9BA18B">YOU · {{m.ts}}</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{m.isSys}}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:center;max-width:86%;font:500 8px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#878B76;background:rgba(27,31,20,.05);border-radius:999px;padding:5px 13px;text-align:center;line-height:1.6">{{m.t}}</div>
+        </sc-if>
+        <sc-if value="{{m.isOrd}}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-end;width:340px;max-width:80%;background:#14170E;color:#E9EFDC;border-radius:15px;padding:14px 16px;animation:riseIn .35s ease both">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"><span style="font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#8CBF33">{{m.num}}</span><span style="font:600 8px 'IBM Plex Mono',monospace;color:#878B76">COD</span></div>
+            <div style="font-size:15px;font-weight:700;margin-top:5px">{{m.title}}</div>
+            <div style="font:500 8.5px 'IBM Plex Mono',monospace;color:#A9AD98;margin-top:3px;line-height:1.6">{{m.sub}}</div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:10px">
+              <span style="font:600 7px 'IBM Plex Mono',monospace;letter-spacing:.08em;background:#C7F23E;color:#0F120B;border-radius:4px;padding:2.5px 7px">BY: NOVA</span>
+              <sc-if value="{{m.conf}}" hint-placeholder-val="{{ false }}"><span style="font:600 7px 'IBM Plex Mono',monospace;letter-spacing:.08em;background:rgba(199,242,62,.14);color:#8CBF33;border:1px solid rgba(199,242,62,.4);border-radius:4px;padding:2.5px 7px">CONFIRMED · RTO SHIELD</span></sc-if>
+              <span style="font:600 7px 'IBM Plex Mono',monospace;letter-spacing:.08em;background:rgba(227,181,74,.16);color:#E3B54A;border-radius:4px;padding:2.5px 7px">{{m.rev}}</span>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{m.isBrief}}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:center;width:430px;max-width:92%;background:#FBFBF4;border:2px solid #1B1F14;border-radius:15px;padding:15px 17px;animation:riseIn .35s ease both">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"><span style="font:600 8.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#9C3F1B">CONTEXT BRIEF — NEEDS YOU</span><a href="Nova%20HQ%20Prototype%20v7.dc.html" style="font:600 8px 'IBM Plex Mono',monospace;color:#3A5212">ON YOUR DESK ↗</a></div>
+            <div style="display:flex;flex-direction:column;gap:5px;margin-top:10px">
+              <sc-for list="{{m.rowsB}}" as="br" hint-placeholder-count="4"><span style="display:flex;gap:9px;font-size:11.5px;line-height:1.5"><span style="width:74px;flex:none;font:600 7.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#878B76;margin-top:2px">{{br.l}}</span><span style="flex:1">{{br.v}}</span></span></sc-for>
+            </div>
+            <div onClick="{{m.useReply}}" style="cursor:pointer;display:flex;gap:8px;align-items:center;background:#EFEFE3;border-radius:10px;padding:9px 12px;margin-top:11px" style-hover="background:#E4F7AE">
+              <span style="flex:1;font-size:12px;line-height:1.5;color:#3A3F30">{{m.sug}}</span>
+              <span style="font:600 8px 'IBM Plex Mono',monospace;color:#3A5212;white-space:nowrap">USE REPLY →</span>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{m.isCase}}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:center;width:400px;max-width:90%;background:#FBFBF4;border:1.5px solid rgba(122,90,20,.5);border-radius:15px;padding:13px 16px;animation:riseIn .35s ease both">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"><span style="font:600 8.5px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#7A5A14">{{m.title}}</span><span style="font:600 7px 'IBM Plex Mono',monospace;background:#F7E9C4;color:#7A5A14;border-radius:4px;padding:2px 6px">{{m.tag}}</span></div>
+            <div style="font-size:12px;line-height:1.6;color:#3A3F30;margin-top:6px">{{m.body}}</div>
+          </div>
+        </sc-if>
+      </sc-for>
+      <sc-if value="{{typing}}" hint-placeholder-val="{{ false }}">
+        <div style="align-self:flex-end;display:flex;align-items:center;gap:8px"><span style="background:#FBFBF4;border:1px solid rgba(140,191,51,.45);border-radius:15px;padding:10px 14px;display:flex;gap:4px"><span style="width:5px;height:5px;border-radius:50%;background:#8CBF33;animation:blink 1s steps(1) infinite"></span><span style="width:5px;height:5px;border-radius:50%;background:#8CBF33;animation:blink 1s steps(1) .33s infinite"></span><span style="width:5px;height:5px;border-radius:50%;background:#8CBF33;animation:blink 1s steps(1) .66s infinite"></span></span><span style="width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#F4FFD6,#C7F23E 45%,#6FA524 90%)"></span></div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{draftOn}}" hint-placeholder-val="{{ true }}">
+    <div style="background:#FBFBF4;border-top:1px solid rgba(27,31,20,.08);padding:14px 22px 12px;animation:riseIn .3s ease both">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font:600 8.5px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#878B76">NOVA DRAFTED THIS — {{draftMode}}</span><span style="font:500 8px 'IBM Plex Mono',monospace;color:#9BA18B">PACED SEND · SEEN-MARK + TYPING ON APPROVE</span></div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-top:10px">
+        <sc-for list="{{draftBubbles}}" as="db" hint-placeholder-count="2"><div style="background:#FFFFFF;border:1px solid rgba(27,31,20,.1);border-radius:11px;padding:10px 14px;font-size:13.5px;line-height:1.5">{{db.t}}</div></sc-for>
+      </div>
+      <div style="font-size:11px;line-height:1.6;color:#878B76;margin-top:8px">{{draftWhy}}</div>
+      <div style="display:flex;gap:9px;margin-top:11px">
+        <span onClick="{{sendDraft}}" style="cursor:pointer;background:#1B1F14;color:#C7F23E;border-radius:999px;padding:9px 20px;font-size:12.5px;font-weight:700" style-hover="background:#2A2F1E">Send it</span>
+        <span onClick="{{editDraft}}" style="cursor:pointer;border:1.5px solid rgba(27,31,20,.2);border-radius:999px;padding:9px 18px;font-size:12.5px;font-weight:600;color:#3A3F30" style-hover="border-color:#1B1F14">Edit first</span>
+        <span onClick="{{rejectDraft}}" style="cursor:pointer;border-radius:999px;padding:9px 16px;font-size:12.5px;font-weight:600;color:#9C3F1B" style-hover="background:#F6DDD3">Reject</span>
+        <span style="margin-left:auto;font:500 8px 'IBM Plex Mono',monospace;color:#9BA18B;align-self:center">REJECTS ARE RECEIPTED TOO</span>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{silentOn}}" hint-placeholder-val="{{ false }}">
+    <div style="background:#FBFBF4;border-top:1px solid rgba(27,31,20,.08);padding:11px 22px;display:flex;align-items:center;gap:11px">
+      <span style="font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#878B76;flex:none">SILENT DRAFT<br>VISIBLE TO YOU ONLY</span>
+      <span style="flex:1;font-size:12px;color:#3A3F30;background:#EFEFE3;border-radius:10px;padding:8px 12px;line-height:1.5">{{silentText}}</span>
+      <span onClick="{{useSilent}}" style="cursor:pointer;font:600 8.5px 'IBM Plex Mono',monospace;color:#3A5212;white-space:nowrap" style-hover="color:#6FA524">USE →</span>
+    </div>
+    </sc-if>
+
+    <div style="background:#FBFBF4;border-top:1px solid rgba(27,31,20,.08);padding:12px 22px 16px">
+      <sc-if value="{{heldOn}}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:10px;background:#14170E;color:#E9EFDC;border-radius:11px;padding:9px 14px;margin-bottom:10px">
+        <span style="font:600 8.5px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#C7F23E">THREAD IS YOURS</span>
+        <span style="flex:1;font-size:11.5px;color:#A9AD98">Nova is silent and drafting privately — server-enforced lock. Its blocked sends are receipted rows.</span>
+        <span onClick="{{handBack}}" style="cursor:pointer;background:#C7F23E;color:#0F120B;border-radius:999px;padding:6px 13px;font-size:11px;font-weight:700;white-space:nowrap" style-hover="background:#D9FF5C">Hand back to Nova</span>
+      </div>
+      </sc-if>
+      <sc-if value="{{offOn}}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:10px;background:#EFEFE3;border-radius:11px;padding:9px 14px;margin-bottom:10px">
+        <span style="font:600 8.5px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#878B76">NOVA IS OFF FOR THIS THREAD — SERVER-ENFORCED · TOGGLE TO RESUME</span>
+      </div>
+      </sc-if>
+      <div style="display:flex;gap:10px;align-items:center">
+        <input ref="{{compRef}}" onKeyDown="{{compKey}}" placeholder="{{compPh}}" style="flex:1;background:#FFFFFF;border:1.5px solid rgba(27,31,20,.12);border-radius:999px;padding:12px 18px;font:500 13px 'Space Grotesk',sans-serif;color:#1B1F14;outline:none">
+        <span onClick="{{compSend}}" style="cursor:pointer;width:42px;height:42px;flex:none;border-radius:50%;background:#C7F23E;display:flex;align-items:center;justify-content:center;font-size:16px" style-hover="background:#D9FF5C">➤</span>
+      </div>
+      <div style="font:500 7.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#9BA18B;margin-top:7px">SENDING TAKES THE THREAD AS YOU — NOVA GOES SILENT UNTIL EXPLICIT HAND-BACK · WORKS FROM META BUSINESS SUITE TOO</div>
+    </div>
+  </div>
+
+  <div style="width:296px;flex:none;background:#FBFBF4;border-left:1px solid rgba(27,31,20,.09);overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:14px">
+    <a href="Nova%20HQ%20Prototype%20v7.dc.html" style="display:flex;align-items:center;gap:11px;background:#14170E;border-radius:14px;padding:12px 14px;color:#E9EFDC" style-hover="box-shadow:0 6px 20px rgba(20,23,14,.25)">
+      <span style="width:30px;height:30px;flex:none;border-radius:50%;background:radial-gradient(circle at 32% 28%,#F4FFD6,#C7F23E 45%,#6FA524 90%);animation:breathe 5s ease-in-out infinite"></span>
+      <span style="flex:1;min-width:0"><span style="display:block;font-size:12.5px;font-weight:700;color:#FBFBF4">Nova HQ</span><span style="display:block;font:500 7.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#878B76;margin-top:2px">FRONT OFFICE TILE · 1 NEEDS YOU · 23 TODAY</span></span>
+      <span style="font:600 9px 'IBM Plex Mono',monospace;color:#C7F23E">↗</span>
+    </a>
+    <div>
+      <div style="font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#878B76;padding-bottom:7px">IDENTITY</div>
+      <div style="background:#FFFFFF;border:1px solid rgba(27,31,20,.08);border-radius:12px;padding:11px 13px">
+        <div style="font-size:12.5px;font-weight:700">{{idTitle}}</div>
+        <div style="font:500 8px 'IBM Plex Mono',monospace;color:#878B76;line-height:1.7;margin-top:3px">{{idSub}}</div>
+      </div>
+    </div>
+    <div>
+      <div style="font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#878B76;padding-bottom:7px">JOURNEY — DETERMINISTIC, NEVER MODEL-SET</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <sc-for list="{{jStages}}" as="js" hint-placeholder-count="10">
+          <span style="font:600 7px 'IBM Plex Mono',monospace;letter-spacing:.05em;border-radius:5px;padding:3px 6px;background:{{js.bg}};color:{{js.c}};border:1px solid {{js.bd}}">{{js.l}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <sc-if value="{{hasOrders}}" hint-placeholder-val="{{ true }}">
+    <div>
+      <div style="font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#878B76;padding-bottom:7px">ORDERS</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <sc-for list="{{orders360}}" as="o" hint-placeholder-count="2">
+          <div style="background:#FFFFFF;border:1px solid rgba(27,31,20,.08);border-radius:12px;padding:10px 13px;display:flex;align-items:center;gap:9px">
+            <span style="flex:1;min-width:0"><span style="display:block;font-size:12px;font-weight:700">{{o.t}}</span><span style="display:block;font:500 7.5px 'IBM Plex Mono',monospace;color:#878B76;margin-top:2px">{{o.sub}}</span></span>
+            <span style="font:600 7px 'IBM Plex Mono',monospace;letter-spacing:.06em;background:{{o.bBg}};color:{{o.bFg}};border-radius:4px;padding:2.5px 6px;white-space:nowrap">{{o.badge}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{hasProm}}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#878B76;padding-bottom:7px">PROMISES — DEBTS, SWEPT NIGHTLY</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <sc-for list="{{prom360}}" as="p" hint-placeholder-count="1">
+          <div style="background:#FFFFFF;border:1px solid rgba(27,31,20,.08);border-radius:12px;padding:10px 13px">
+            <div style="display:flex;justify-content:space-between;gap:8px"><span style="font:600 7px 'IBM Plex Mono',monospace;letter-spacing:.06em;background:{{p.bBg}};color:{{p.bFg}};border-radius:4px;padding:2.5px 6px">{{p.st}}</span><span style="font:500 7.5px 'IBM Plex Mono',monospace;color:#9BA18B">{{p.due}}</span></div>
+            <div style="font-size:11.5px;line-height:1.5;margin-top:6px">{{p.t}}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{hasCases}}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#878B76;padding-bottom:7px">OPEN CASES</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <sc-for list="{{cases360}}" as="cs" hint-placeholder-count="1">
+          <div style="background:#FFFFFF;border:1px solid rgba(122,90,20,.35);border-radius:12px;padding:10px 13px"><div style="font:600 9px 'IBM Plex Mono',monospace;color:#7A5A14">{{cs.t}}</div><div style="font-size:11px;color:#5E624F;line-height:1.55;margin-top:4px">{{cs.sub}}</div></div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+    <div>
+      <div style="font:600 8px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#878B76;padding-bottom:7px">NOVA REMEMBERS — EVIDENCE-CITED</div>
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{facts360}}" as="fx" hint-placeholder-count="3">
+          <div style="display:flex;gap:8px;padding:7px 2px;border-top:1px solid rgba(27,31,20,.06);align-items:flex-start"><span style="font:600 6.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;background:#EFEFE3;color:#5E624F;border-radius:4px;padding:2.5px 6px;white-space:nowrap;flex:none;margin-top:1px">{{fx.k}}</span><span style="font-size:11px;line-height:1.5;color:#3A3F30">{{fx.t}}</span></div>
+        </sc-for>
+      </div>
+      <div style="font:500 7px 'IBM Plex Mono',monospace;color:#9BA18B;line-height:1.7;margin-top:8px;border-top:1px solid rgba(27,31,20,.06);padding-top:8px">FULL PHONES &amp; ADDRESSES NEVER ENTER MODEL CONTEXT · OWNER RULES ALWAYS WIN</div>
+    </div>
+  </div>
+
+  <sc-if value="{{toastOn}}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#14170E;color:#E9EFDC;border:1px solid rgba(199,242,62,.4);border-radius:999px;padding:10px 20px;font:600 9.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;z-index:80;animation:riseIn .25s ease both;box-shadow:0 14px 40px rgba(0,0,0,.35)">{{toast}}</div>
+  </sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultTier&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;T1&quot;,&quot;options&quot;:[&quot;T0&quot;,&quot;T1&quot;,&quot;T2&quot;,&quot;T3&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Front Office&quot;},&quot;glossDefault&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Front Office&quot;}}">
+class Component extends DCLogic {
+  state = { tid: 'rahim', tab: 'All', held: { tanvir: true }, novaOff: {}, gloss: this.props.glossDefault ?? false, tier: this.props.defaultTier ?? 'T1', tierOpen: false, openR: null, sent: {}, rejected: {}, extra: {}, toast: null, typing: false };
+  T = [
+    { id: 'hasan', name: 'Hasan Al Asim', ch: 'MSGR', time: '39m', av: '#3A5212', stage: 1, needsYou: false, call: false,
+      idT: 'Unlinked visitor', idS: 'IDENTITY IS EARNED IN-THREAD ONLY — SELF-STATED PHONE, IN-THREAD ORDER, OR VERIFIED CHANNEL. NEVER NAME/AVATAR/INFERENCE.',
+      orders: [], prom: [], cases: [], facts: [['LANG', 'Banglish, casual register — mirror it'], ['SOURCE', 'Reached page organically · first contact 08:44']],
+      draft: { b: ['Ji, ei je Dakio! Nova bolchi 🙂', 'Bolen, ki lagbe apnar?'], why: 'Customer explicitly asked \u201CHello Dakio?\u201D — a new distinct question (identity check), not a repeat of the earlier unanswered greetings. Honesty floor applies: if asked \u201Cbot naki?\u201D, Nova discloses in one warm sentence and keeps helping.' },
+      msgs: [
+        { k: 'c', t: 'Hi there', ts: '21:07' }, { k: 'c', t: 'hello', ts: '21:26' }, { k: 'c', t: 'hello', ts: '21:56' }, { k: 'c', t: 'Hello Dakio?', ts: '21:58' },
+        { k: 'sys', t: 'JOURNEY: STRANGER → INQUIRER · REDUCER-COMPUTED FROM CLASSIFIED INTENT — NEVER BY THE MODEL' }
+      ] },
+    { id: 'rahim', name: 'Rahim Uddin', ch: 'MSGR', time: '2h', av: '#7A5A14', stage: 5, needsYou: false, call: true,
+      idT: 'Customer #C-2081', idS: 'LINKED: SELF-STATED PHONE ···641 · EXACT MATCH · HIGH CONFIDENCE (AUTO). CROSS-PLATFORM SPINE: PHONE.',
+      orders: [{ t: '#1043 · ৳1,450 COD', sub: 'MILANO PUNJABI (XL) ×1 · TODAY 14:19', badge: 'EST UNTIL DELIVERED', bBg: '#F7E9C4', bFg: '#7A5A14' }],
+      prom: [], cases: [], facts: [['PREF', 'Banglish · haggles, converts on free delivery'], ['ADDR', 'Mirpur, Dhaka — district charge auto-applied'], ['BOUNDS', 'Negotiation: coupon-only, max 10%, 1/customer. Price edits: never.']],
+      draft: null,
+      msgs: [
+        { k: 'c', t: 'eta dam koto? XL hobe?', ts: '14:02', g: 'How much is this? Do you have XL?' },
+        { k: 'n', t: 'Ji bhai, Milano Punjabi ৳1,450. XL stock e ache — konta pathabo? 🙂', ts: '14:03', g: 'Yes brother, it\u2019s ৳1,450. XL is in stock — which one shall I send?', r: 'CATALOG READ 14:02 · VARIANT XL: 7 IN STOCK · ONE FACT, ONE NUDGE · PACED 41S + TYPING' },
+        { k: 'c', t: '1300 hole ekhoni nibo', ts: '14:08', g: 'I\u2019ll take it right now for 1300.' },
+        { k: 'n', t: 'Bhai, dam ta already best — quality dekhe nirash hoben na. ৳1,450 e din.', ts: '14:09', g: 'Brother, the price is already our best — the quality won\u2019t disappoint. Take it at ৳1,450.', r: 'NEGOTIATION ROUND 1: DECLINE WITH VALUE FRAMING (POLICY: DECLINE-FIRST)' },
+        { k: 'c', t: 'accha 1350 last 😅', ts: '14:10' },
+        { k: 'n', t: 'Dam kombe na bhai — kintu apnar jonno free delivery kore dilam, coupon DHK60 🎁 Total ৳1,450, delivery free.', ts: '14:11', g: 'The price won\u2019t drop — but I\u2019ve made delivery free for you with coupon DHK60. Total ৳1,450, free delivery.', r: 'ROUND 2: COUPON DHK60 · INSIDE TENANT BOUNDS (MAX 10% EQUIV · 1/CUSTOMER) · PRICE EDIT: NEVER · BEYOND BOUNDS → FOUNDER CARD' },
+        { k: 'c', t: 'nen. Rahim Uddin, House 12 Road 4, Mirpur. 01712-3456**', ts: '14:14' },
+        { k: 'sys', t: 'IDENTITY LINKED — SELF-STATED PHONE ···641 → CUSTOMER #C-2081 · AUTO (HIGH CONFIDENCE) · PSID MEMORY MIGRATED' },
+        { k: 'n', t: 'Confirm korchi bhai: Milano Punjabi (XL) ×1 — ৳1,450, delivery FREE (DHK60), COD, Mirpur address. Sob thik? ✅', ts: '14:16', g: 'Confirming: Milano Punjabi (XL) ×1 — ৳1,450, free delivery (DHK60), cash on delivery, Mirpur address. All correct?', r: 'READ-BACK CONFIRM — MID-CLOSE, PACING BYPASSED · WAITS FOR EXPLICIT YES' },
+        { k: 'c', t: 'ji thik ache', ts: '14:18' },
+        { k: 'ord', num: 'ORDER #1043 · CREATED IN-THREAD', title: '৳1,450 — Milano Punjabi (XL)', sub: 'SERVER-PRICED · STOCK OK · FAKE-ORDER GUARD PASS · COUPON RE-VALIDATED · SOURCE: THIS CONVERSATION', conf: true, rev: 'REVENUE: ESTIMATED UNTIL DELIVERED' },
+        { k: 'n', t: 'Order hoye geche bhai! #1043 — track: dakio.shop/t/1043 🙏', ts: '14:19', g: 'Your order is placed! #1043 — tracking link: dakio.shop/t/1043', r: 'ORDER CREATE ACTION — FIRST EVIDENCE ENTRY: CUSTOMER VERBATIM \u201Cji thik ache\u201D' },
+        { k: 'sys', t: 'PRE-DISPATCH CONFIRM 14:20 — \u201Cসব ঠিক আছে? কুরিয়ারে দিয়ে দিচ্ছি\u201D → \u201Cji\u201D → Order.confirmedAt SET · RTO SHIELD ON' }
+      ] },
+    { id: 'nusrat', name: 'Nusrat Jahan', ch: 'IG', time: '2h', av: '#9C3F1B', stage: 4, needsYou: true, call: false,
+      idT: 'Customer #C-1764', idS: 'LINKED: IN-THREAD ORDER #1042 · AUTO.',
+      orders: [{ t: '#1042 · ৳2,350', sub: 'AWAITING PAYMENT VERIFICATION', badge: 'UNPAID', bBg: '#F6DDD3', bFg: '#9C3F1B' }],
+      prom: [{ t: '\u201CConfirm hole apnake janabo\u201D — payment check result', due: 'DUE TODAY', st: 'OPEN', bBg: '#F7E9C4', bFg: '#7A5A14' }],
+      cases: [], facts: [['LANG', 'Bangla, formal apu register'], ['PAY', 'bKash claimant — TrxID given, slip attached']],
+      draft: null,
+      msgs: [
+        { k: 'c', t: 'bKash e ৳2,350 pathiyechi order #1042 er jonno. TrxID: 9FK2X41LQ (screenshot dilam)', ts: '11:32', g: 'I sent ৳2,350 by bKash for order #1042. TrxID: 9FK2X41LQ (screenshot attached)' },
+        { k: 'n', t: 'Dhonnobad apu! 🙏 Ami ekhoni check korte diyechi — confirm hole apnake janabo.', ts: '11:33', g: 'Thank you! I\u2019ve sent it for checking right away — I\u2019ll let you know once confirmed.', r: 'PAYMENT CLAIM INTAKE — VERIFICATION IS FOUNDER-ONLY, FOREVER · PROMISE #P-91 REGISTERED · NOVA NEVER MARKS PAID' },
+        { k: 'brief', rowsB: [ { l: 'CUSTOMER', v: 'Nusrat Jahan · #C-1764 · IG DM · calm' }, { l: 'WANTS', v: 'Payment confirmation for order #1042 (৳2,350 bKash)' }, { l: 'NOVA DID', v: 'Intake TrxID 9FK2X41LQ + slip · checked: amount matches invoice · order currently UNPAID' }, { l: 'PROMISES', v: '1 open — \u201Cjanabo\u201D when checked (due today)' } ], sug: 'After your bKash statement check: one tap marks #1042 paid — Nova then closes the loop in-thread and stamps the promise kept.' }
+      ] },
+    { id: 'karim', name: 'Karim Ahmed', ch: 'MSGR', time: '2h', av: '#3A5212', stage: 6, risk: false, needsYou: false, call: true,
+      idT: 'Customer #C-1521', idS: 'LINKED: EXISTING CHANNEL BACK-REFERENCE · AUTO.',
+      orders: [{ t: '#1031 · ৳1,890 COD', sub: 'STEADFAST · OUT FOR DELIVERY 16:40', badge: 'IN DELIVERY', bBg: '#E4F7AE', bFg: '#3A5212' }],
+      prom: [{ t: '\u201CAjker moddhe janabo\u201D — courier follow-up', due: 'KEPT 16:41', st: 'KEPT', bBg: '#E4F7AE', bFg: '#3A5212' }],
+      cases: [{ t: 'CASE #C-19 · DELIVERY_STUCK · RESOLVED', sub: 'Courier re-polled by async lane · flag card cleared on webhook movement · loop closed in this thread' }],
+      facts: [['LANG', 'Banglish · patient but 2nd delay complaint'], ['RTO', 'Risk signal: 5d stagnation → at_risk interrupt, cleared 16:40']],
+      draft: null,
+      msgs: [
+        { k: 'c', t: 'bhai order ekhono paini, 5 din hoye geche 😕', ts: '11:02', g: 'Brother, I still haven\u2019t received my order — it\u2019s been 5 days.' },
+        { k: 'n', t: 'Check korlam bhai — Steadfast e dewa hoyeche, kintu oder dik theke update aseni. Ami follow-up kore ajker moddhe janabo, kotha dilam. 🙏', ts: '11:04', g: 'I checked — it\u2019s with Steadfast but no update from their side. I\u2019ll follow up and let you know today, I promise.', r: 'COURIER STATUS TOOL-READ 11:03 (LAST SCAN 3D AGO) · TRUTH, NO INVENTED ETA · PROMISE #P-88 REGISTERED, DUE TODAY · AUTO-SENT: delivery_issue IN autoIntents' },
+        { k: 'case', title: 'CASE #C-19 · DELIVERY_STUCK', tag: 'FLAG CARD → YOUR DESK', body: 'Async lane re-polled Steadfast. Dakio has no courier-reschedule API — so a pre-gathered flag card (order, scans, suggested call script) went to your Decision Desk with the boundary stated honestly.' },
+        { k: 'sys', t: '16:40 — COURIER WEBHOOK MOVED: OUT FOR DELIVERY · CASE LOOPS BACK INTO THIS SESSION' },
+        { k: 'n', t: 'Bhai good news — parcel out for delivery, ajkei peye jaben InshaAllah. Deri r jonno ami dukkhito 🙏', ts: '16:41', g: 'Good news — your parcel is out for delivery, you\u2019ll get it today. Sorry about the delay.', r: 'PROMISE #P-88 → KEPT — BY REAL SEND 16:41 (PROMISES ARE KEPT ONLY BY SENDS, NEVER BY CLAIMS)' },
+        { k: 'sys', t: 'IF NOTHING HAD MOVED IN 24H: HONEST \u201CNO NEWS YET\u201D FOLLOW-UP FIRES — NEVER SILENCE' }
+      ] },
+    { id: 'sadia', name: 'Sadia Islam', ch: 'MSGR', time: '2h', av: '#7A5A14', stage: 8, needsYou: false, call: false,
+      idT: 'Customer #C-1188', idS: 'LINKED: PHONE SPINE · FB + SMS UNIFIED.',
+      orders: [{ t: '#1038 · ৳2,890', sub: 'DELIVERED 2D AGO · JAMDANI SAREE', badge: 'MEASURED ✓', bBg: '#E4F7AE', bFg: '#3A5212' }],
+      prom: [], cases: [], facts: [['SENTIMENT', 'Clean — review ask was eligible'], ['RULE', 'Review: once per order, organic window, zero incentive']],
+      draft: null,
+      msgs: [
+        { k: 'sys', t: 'DELIVERED +2D · SENTIMENT CLEAN · ORGANIC WINDOW OPEN → REVIEW ASK ARMED (UNHAPPY GATE: RECOVERY BEFORE FEEDBACK, ALWAYS)' },
+        { k: 'n', t: 'Apu, Jamdani saree ta kemon laglo? 🌸 Bhalo legecha hole ek line review dile onek upokar hoy — dakio.shop/r/1038', ts: '19:12', g: 'How did you like the Jamdani saree? If you loved it, a one-line review would help us a lot.', r: 'REVIEW ASK 1 OF 1 · ZERO INCENTIVE · LEDGERED AS ASK — COMPLETED REVIEWS STAY AN HONEST ZERO UNTIL AN ATTRIBUTABLE TOKEN EXISTS' },
+        { k: 'c', t: 'khub shundor hoyeche! dicchi review 😍', ts: '19:40', g: 'It\u2019s beautiful! I\u2019ll leave a review.' },
+        { k: 'n', t: 'Onek dhonnobad apu! 💚', ts: '19:41', g: 'Thank you so much!' }
+      ] },
+    { id: 'mahmuda', name: 'Mahmuda Akter', ch: 'IG', time: '6h', av: '#9C3F1B', stage: 9, needsYou: false, call: false,
+      idT: 'Customer #C-402 · VIP', idS: 'LINKED: PHONE SPINE · LTV ৳4,120 MEASURED · WARMEST REGISTER.',
+      orders: [{ t: '#1044 · ৳890 COD', sub: 'CHIFFON HIJAB (DUSTY ROSE) · REORDER', badge: 'EST UNTIL DELIVERED', bBg: '#F7E9C4', bFg: '#7A5A14' }, { t: '#986 · ৳890', sub: 'DELIVERED 44D AGO', badge: 'MEASURED ✓', bBg: '#E4F7AE', bFg: '#3A5212' }],
+      prom: [], cases: [], facts: [['CYCLE', 'Refill math: 42d avg — she returned day 44'], ['PREF', 'Dusty rose · Banani address · COD']],
+      draft: null,
+      msgs: [
+        { k: 'c', t: 'ager barer moto oi hijab ta abar den 🙂', ts: '09:05', g: 'Give me that hijab again, same as last time.' },
+        { k: 'n', t: 'Apu, welcome back! 🌸 Ager barer Chiffon Hijab (Dusty Rose) — same ta, same Banani address e, COD ৳890. Thik?', ts: '09:06', g: 'Welcome back! Same Chiffon Hijab (Dusty Rose), same Banani address, COD ৳890. Correct?', r: '360 RECALL: LAST ORDER #986 · CYCLE 42D AVG, TODAY = DAY 44 · ONE-TAP-FEEL REORDER FROM HISTORY' },
+        { k: 'c', t: 'ji same 💕', ts: '09:08' },
+        { k: 'ord', num: 'ORDER #1044 · REORDER IN-THREAD', title: '৳890 — Chiffon Hijab (Dusty Rose)', sub: 'SERVER-PRICED · ADDRESS FROM VERIFIED 360 · SOURCE: THIS CONVERSATION', conf: false, rev: 'REVENUE: ESTIMATED UNTIL DELIVERED' },
+        { k: 'sys', t: 'JOURNEY: RETAINED → REPEAT_BUYER · TRANSITION CAUSE: ORDER #1044 (DIRECT-CAUSE RULE)' }
+      ] },
+    { id: 'tanvir', name: 'Tanvir Hasan', ch: 'MSGR', time: '2h', av: '#1B1F14', stage: 6, risk: true, needsYou: false, call: false,
+      idT: 'Customer #C-977', idS: 'LINKED: IN-THREAD ORDER #1029 · ESCALATION: LEGAL/ABUSE (FORCED TRIGGER).',
+      orders: [{ t: '#1029 · ৳2,140 COD', sub: 'COURIER POD: DELIVERED 12 JUL', badge: 'DISPUTED', bBg: '#F6DDD3', bFg: '#9C3F1B' }],
+      prom: [], cases: [{ t: 'ESCALATION · LEGAL/ABUSE', sub: '10-trigger taxonomy · holding line sent · thread hard-locked to YOU · trust-neutral for Nova' }],
+      facts: [['SENTIMENT', 'Anger 0.92 — de-escalation ceded to founder'], ['RULE', 'Refund execution: blocked at every tier, forever — propose-only']],
+      draft: null, silent: 'Bhai, courier er POD onujayi #1029 deliver hoyechilo 12 July. Apni chaile ami exchange path ta ready kore rakhi — refund ta owner dekhben.',
+      msgs: [
+        { k: 'c', t: 'apnara scam korchen!! taka niye product den nai. ami legal action nibo 😡', ts: '13:18', g: 'You\u2019re scamming people!! Took the money and never sent the product. I\u2019ll take legal action.' },
+        { k: 'n', t: 'Bhai, ami bujhte parchi — bhoy pawar kichu nei. Ei muhurte owner ke dekhachchi, uni ekhoni ashchen. 🙏', ts: '13:19', g: 'I understand — nothing to worry about. I\u2019m showing this to the owner right now, he\u2019s coming immediately.', r: 'ESCALATION TX — TRIGGER: LEGAL/ABUSE (FORCED) · ONE SCRIPT-MATCHED HOLDING LINE · CONTEXT BRIEF → 5 DECISION SURFACES · THREAD LOCKED' },
+        { k: 'brief', rowsB: [ { l: 'CUSTOMER', v: 'Tanvir Hasan · #C-977 · anger 0.92' }, { l: 'WANTS', v: 'Refund on #1029 — claims non-delivery' }, { l: 'FACTS CHECKED', v: 'Courier POD shows DELIVERED 12 Jul · COD collected · verbatim message attached to receipt' }, { l: 'NOVA DID', v: 'Holding line only — refunds are founder-only at every tier' } ], sug: 'Acknowledge + offer exchange path; share POD photo. Refund decision stays yours alone.' },
+        { k: 'f', t: 'Tanvir bhai, ami owner. Apnar order #1029 ami nijei dekhchi — POD ta pathachchi, ar ekhoni apnake call korchi.', ts: '13:22' },
+        { k: 'sys', t: 'FOUNDER TOOK THREAD 13:22 (WORKS FROM META BUSINESS SUITE TOO) — NOVA SILENT · ITS IN-FLIGHT SEND LANDED AS A RECEIPTED BLOCKED ROW' }
+      ] }
+  ];
+  stages = ['STRANGER', 'INQUIRER', 'QUALIFIED', 'NEGOTIATING', 'ORDERED', 'CONFIRMED', 'IN DELIVERY', 'DELIVERED', 'RETAINED', 'REPEAT'];
+  tierDefs = [ ['T0', 'Shadow', 'Everything drafts — every reply is a card you approve. Mandatory first week.'], ['T1', 'Front Desk', 'Auto-replies on the safe-intent allowlist; anything with commercial weight drafts.'], ['T2', 'Order Taker', '+ auto order creation under your cap, address confirmed in-thread, clean risk history.'], ['T3', 'Closer', '+ auto discounts inside bounds and pre-dispatch cancels.'] ];
+  toastIt(t) { clearTimeout(this._tt); this.setState({ toast: t }); this._tt = setTimeout(() => this.setState({ toast: null }), 3400); }
+  componentDidUpdate() { const el = this.convRef && this.convRef.current; if (el && this._scrollPend) { el.scrollTop = el.scrollHeight; this._scrollPend = false; } }
+  componentDidMount() { const el = this.convRef && this.convRef.current; if (el) el.scrollTop = el.scrollHeight; }
+  componentWillUnmount() { clearTimeout(this._tt); clearTimeout(this._ty); }
+  th() { return this.T.find(t => t.id === this.state.tid); }
+  renderVals() {
+    const s = this.state, set = p => this.setState(p), t = this.th();
+    const held = !!s.held[t.id], off = !!s.novaOff[t.id];
+    const draftPend = t.draft && !s.sent[t.id] && !s.rejected[t.id];
+    const chipOf = x => { const h = !!s.held[x.id], o = !!s.novaOff[x.id], d = x.draft && !s.sent[x.id] && !s.rejected[x.id];
+      if (h) return ['YOURS — LOCKED', '#1B1F14', '#FBFBF4', '#1B1F14'];
+      if (o) return ['NOVA OFF', '#EFEFE3', '#878B76', 'rgba(27,31,20,.15)'];
+      if (x.needsYou) return ['NEEDS YOU', '#F6DDD3', '#9C3F1B', 'rgba(156,63,27,.35)'];
+      if (d) return ['DRAFT WAITING', '#F7E9C4', '#7A5A14', 'rgba(122,90,20,.35)'];
+      return ['NOVA HANDLING', '#E4F7AE', '#3A5212', 'rgba(58,82,18,.25)']; };
+    const list = this.T.filter(x => s.tab === 'All' || (s.tab === 'Messenger' && x.ch === 'MSGR') || (s.tab === 'Instagram' && x.ch === 'IG') || (s.tab === 'Needs you' && (x.needsYou || (x.draft && !s.sent[x.id] && !s.rejected[x.id]))));
+    const pvOf = x => { const d = x.draft && !s.sent[x.id] && !s.rejected[x.id];
+      if (d) return ['Draft: ', '#7A5A14', x.draft.b[0]];
+      const last = [...x.msgs, ...(s.extra[x.id] || [])].filter(m => m.k === 'c' || m.k === 'n' || m.k === 'f').pop() || { k: 'c', t: '' };
+      return [last.k === 'n' ? 'Nova: ' : (last.k === 'f' ? 'You: ' : ''), last.k === 'n' ? '#3A5212' : '#6E7261', last.t]; };
+    const base = [...t.msgs, ...(s.extra[t.id] || [])];
+    return {
+      nav: [ { isItem: 1, icon: '▦', label: 'Dashboard' }, { isItem: 1, icon: '◫', label: 'Orders', dot: 1 }, { isItem: 1, icon: '◨', label: 'Products', dot: 1 }, { isItem: 1, icon: '◧', label: 'Customers', dot: 1 }, { isItem: 1, icon: '◍', label: 'Inbox', active: 1, badge: '3', bg: '#C7F23E', color: '#0F120B', weight: 700 }, { isItem: 1, icon: '▤', label: 'POS' }, { isSec: 1, label: 'GROW' }, { isItem: 1, icon: '↗', label: 'Grow Lab', dot: 1 }, { isSec: 1, label: 'OPERATIONS' }, { isItem: 1, icon: '◱', label: 'Purchases', dot: 1 }, { isItem: 1, icon: '◰', label: 'Delivery', dot: 1 }, { isSec: 1, label: 'MONEY' }, { isItem: 1, icon: '◪', label: 'Accounts' }, { isItem: 1, icon: '▥', label: 'Reports', dot: 1 }, { isSec: 1, label: 'STORE' }, { isItem: 1, icon: '◩', label: 'Store Studio' }, { isItem: 1, icon: '◈', label: 'Coupons', dot: 1 } ].map(n => ({ ...n, bg: n.bg || 'transparent', color: n.color || '#A9AD98', weight: n.weight || 500 })),
+      tierLabel: s.tier + ' · ' + (this.tierDefs.find(d => d[0] === s.tier) || [])[1].toUpperCase(),
+      tierToggle: () => set({ tierOpen: !s.tierOpen }),
+      tierOpen: s.tierOpen,
+      tiers: this.tierDefs.map(([id, name, desc]) => ({ id, name, desc, bg: s.tier === id ? 'rgba(199,242,62,.14)' : 'transparent', tc: s.tier === id ? '#C7F23E' : '#5E624F', nc: s.tier === id ? '#C7F23E' : '#E9EFDC', pick: () => { set({ tier: id, tierOpen: false }); this.toastIt('AUTONOMY → ' + id + ' ' + name.toUpperCase() + ' — SERVER-ENFORCED FROM NEXT INBOUND'); } })),
+      tabs: ['All', 'Messenger', 'Instagram', 'Needs you'].map(label => ({ label, w: s.tab === label ? 700 : 500, bg: s.tab === label ? '#1B1F14' : 'transparent', c: s.tab === label ? '#C7F23E' : '#5E624F', bd: s.tab === label ? '#1B1F14' : 'rgba(27,31,20,.15)', pick: () => set({ tab: label }) })),
+      rows: list.map(x => { const [chip, chipBg, chipFg, chipBd] = chipOf(x); const [pvTag, pvC, pv] = pvOf(x); return { name: x.name, ch: x.ch, time: x.time, initial: x.name[0], av: x.av, chip, chipBg, chipFg, chipBd, pvTag, pvC, pv, bg: x.id === s.tid ? '#FFFFFF' : 'transparent', bd: x.id === s.tid ? 'rgba(27,31,20,.14)' : 'transparent', pick: () => { this._scrollPend = true; set({ tid: x.id, openR: null }); } }; }),
+      aName: t.name, aInitial: t.name[0], aAv: t.av,
+      aSub: (t.ch === 'MSGR' ? 'MESSENGER' : 'INSTAGRAM DM') + ' · ' + t.idT.toUpperCase(),
+      aStage: 'JOURNEY: ' + this.stages[t.stage], aRisk: !!t.risk, aCall: !!t.call,
+      doCall: () => this.toastIt('NOVA VOICE (FR-9.3 SIBLING) — CALLING ' + t.name.split(' ')[0].toUpperCase() + ' · RECORDED · TRANSCRIPT = RECEIPT'),
+      glossToggle: () => set({ gloss: !s.gloss }), glossBd: s.gloss ? '#1B1F14' : 'rgba(27,31,20,.2)', glossBg: s.gloss ? '#1B1F14' : 'transparent', glossC: s.gloss ? '#C7F23E' : '#5E624F',
+      novaToggle: () => { const v = !off; this.setState(st => ({ novaOff: { ...st.novaOff, [t.id]: v } })); this.toastIt(v ? 'NOVA OFF FOR THIS THREAD — SERVER-ENFORCED' : 'NOVA RESUMED — WON\u2019T RE-GREET'); },
+      ntBd: off ? 'rgba(27,31,20,.2)' : 'rgba(58,82,18,.4)', ntBg: off ? 'transparent' : '#E4F7AE', ntDot: off ? '#9BA18B' : '#3A5212', ntC: off ? '#878B76' : '#3A5212', ntLabel: off ? 'NOVA OFF' : 'NOVA ON',
+      convRef: (this.convRef = this.convRef || React.createRef()),
+      msgs: base.map((m, i) => ({ isC: m.k === 'c', isN: m.k === 'n', isF: m.k === 'f', isSys: m.k === 'sys', isOrd: m.k === 'ord', isBrief: m.k === 'brief', isCase: m.k === 'case',
+        t: m.t, ts: m.ts || '', g: m.g || '', showG: !!(m.g && s.gloss), hasR: !!m.r, r: m.r || '', showR: s.openR === i, toggleR: () => set({ openR: s.openR === i ? null : i }),
+        num: m.num || '', title: m.title || '', sub: m.sub || '', conf: !!m.conf, rev: m.rev || '', rowsB: m.rowsB || [], sug: m.sug || '', tag: m.tag || '', body: m.body || '',
+        useReply: () => { if (this.compRef && this.compRef.current) { this.compRef.current.value = m.sug; this.compRef.current.focus(); } } })),
+      typing: s.typing,
+      draftOn: !!(draftPend && !held && !off), draftMode: s.tier === 'T0' ? 'SHADOW: EVERYTHING DRAFTS' : 'COMMERCIAL WEIGHT → DRAFT-FIRST',
+      draftBubbles: draftPend ? t.draft.b.map(x => ({ t: x })) : [], draftWhy: draftPend ? t.draft.why : '',
+      sendDraft: () => { const now = new Date(), ts = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+        this._scrollPend = true; this.setState(st => ({ sent: { ...st.sent, [t.id]: 1 }, typing: true }));
+        this._ty = setTimeout(() => { this._scrollPend = true; this.setState(st => ({ typing: false, extra: { ...st.extra, [t.id]: [...(st.extra[t.id] || []), ...t.draft.b.map(b => ({ k: 'n', t: b, ts, r: 'APPROVED BY YOU · SENT VIA send_inbox_reply — AUTHORITY CHECKED, META SEND BY SERVER EXECUTOR · RECEIPTED' }))] } })); }, 1400);
+        this.toastIt('APPROVED — PACED SEND WITH SEEN-MARK + TYPING · RECEIPTED'); },
+      editDraft: () => { if (this.compRef && this.compRef.current) { this.compRef.current.value = t.draft.b.join(' '); this.compRef.current.focus(); } this.toastIt('EDITING — SENDING TAKES THE THREAD AS YOU'); },
+      rejectDraft: () => { this.setState(st => ({ rejected: { ...st.rejected, [t.id]: 1 } })); this.toastIt('DRAFT DISCARDED — RECEIPTED AS REJECTED (NOVA LEARNS FROM YOUR EDITS)'); },
+      silentOn: !!(held && t.silent), silentText: t.silent || '',
+      useSilent: () => { if (this.compRef && this.compRef.current) { this.compRef.current.value = t.silent; this.compRef.current.focus(); } },
+      heldOn: held, offOn: off && !held,
+      handBack: () => { this._scrollPend = true; this.setState(st => ({ held: { ...st.held, [t.id]: false }, extra: { ...st.extra, [t.id]: [...(st.extra[t.id] || []), { k: 'sys', t: 'EXPLICIT HAND-BACK — NOVA RESUMES · SPEAKS ONLY IF A MESSAGE IS UNANSWERED · NEVER RE-GREETS · YOUR PROMISES INGESTED AS THREAD TRUTH' }] } })); this.toastIt('HANDED BACK TO NOVA'); },
+      compRef: (this.compRef = this.compRef || React.createRef()),
+      compPh: held ? 'Reply as YOU — thread is yours…' : 'Type as YOU — sending takes the thread…',
+      compKey: e => { if (e.key === 'Enter' && e.target.value.trim()) this._send(e.target.value.trim()); },
+      compSend: () => { const el = this.compRef && this.compRef.current; if (el && el.value.trim()) this._send(el.value.trim()); },
+      idTitle: t.idT, idSub: t.idS,
+      jStages: this.stages.map((l, i) => ({ l, bg: i < t.stage ? '#E4F7AE' : (i === t.stage ? '#1B1F14' : 'transparent'), c: i < t.stage ? '#3A5212' : (i === t.stage ? '#C7F23E' : '#9BA18B'), bd: i === t.stage ? '#1B1F14' : 'rgba(27,31,20,.12)' })),
+      hasOrders: t.orders.length > 0, orders360: t.orders,
+      hasProm: t.prom.length > 0, prom360: t.prom,
+      hasCases: t.cases.length > 0, cases360: t.cases,
+      facts360: t.facts.map(([k, x]) => ({ k, t: x })),
+      toastOn: !!s.toast, toast: s.toast || ''
+    };
+  }
+  _send(v) {
+    const t = this.th(), now = new Date(), ts = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+    const takeover = !this.state.held[t.id];
+    this._scrollPend = true;
+    this.setState(st => ({ held: { ...st.held, [t.id]: true }, extra: { ...st.extra, [t.id]: [...(st.extra[t.id] || []), { k: 'f', t: v, ts }, ...(takeover ? [{ k: 'sys', t: 'FOUNDER TOOK THREAD ' + ts + ' — NOVA SILENT, DRAFTING PRIVATELY · HAND-BACK IS EXPLICIT ONLY' }] : [])] } }));
+    if (this.compRef && this.compRef.current) this.compRef.current.value = '';
+    if (takeover) this.toastIt('YOU TOOK THE THREAD — NOVA\u2019S IN-FLIGHT SENDS BECOME RECEIPTED BLOCKED ROWS');
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/tokens/tokens.css">
+  <script src="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/_ds_bundle.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; background:#F4F2EA; }
+    a { color:inherit; text-decoration:none; }
+    a:hover { color:inherit; }
+    @keyframes heroUp { 0% { opacity:0; transform:translateY(18px); } 100% { opacity:1; transform:translateY(0); } }
+    @keyframes orbitcw { to { transform:rotate(360deg); } }
+    @keyframes pulseRing { 0% { box-shadow:0 0 0 0 rgba(198,240,53,0.4); } 70% { box-shadow:0 0 0 14px rgba(198,240,53,0); } 100% { box-shadow:0 0 0 0 rgba(198,240,53,0); } }
+    @keyframes breathe { 0%,100% { transform:scale(1); } 50% { transform:scale(1.05); } }
+  </style>
+</helmet>
+
+<div style="font-family:var(--dk-font-sans), 'Noto Sans Bengali', sans-serif; color:#1A1D12; background:#F4F2EA; overflow-x:hidden;" data-screen-label="Switch to Dakio">
+
+  <svg width="0" height="0" style="position:absolute;" aria-hidden="true"><defs>
+    <path id="mk" fill="currentColor" d="M21,16.2c0-.1.1-.3.2-.4,0-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1,0,.2-.1.4-.2.1,0,.3,0,.4-.1s.3,0,.4,0v-5c0-.2,0-.3-.1-.5,0-.2-.1-.3-.2-.5,0-.2-.1-.3-.2-.5,0-.2-.2-.3-.3-.4s-.2-.3-.3-.4-.2-.3-.4-.4c-.1,0-.3-.2-.4-.4-.1,0-.3-.2-.4-.3-.1,0-.3-.2-.4-.3-.2,0-.3-.2-.5-.2s-.3,0-.5-.2c-.2,0-.3,0-.5,0s-.3,0-.5,0h-4.5v.4c0,0,0,.3-.1.4,0,0-.1.3-.2.4,0,0-.2.2-.3.3-.1,0-.2.2-.3.3-.1,0-.2,0-.4.2-.1,0-.3,0-.4,0s-.3,0-.4,0h-.4c0,0-.3,0-.4,0-.1,0-.3,0-.4-.2-.1,0-.2-.2-.3-.3-.1,0-.2-.2-.3-.3s-.1-.2-.2-.4c0,0,0-.3-.1-.4s0-.3,0-.4h-5c-.2,0-.3,0-.5,0-.2,0-.3,0-.5.2-.2,0-.3,0-.5.2-.2,0-.3.2-.4.3,0,0-.3.2-.4.3,0,0-.3.2-.4.4-.1,0-.2.3-.4.4-.1,0-.2.3-.3.4,0,0-.2.3-.3.4,0,.2-.2.3-.2.5s-.1.3-.2.5,0,.3,0,.5,0,.3,0,.5v4.5h.4c.1,0,.3,0,.4.1.1,0,.3.1.4.2.1,0,.2.2.3.3.1.1.2.2.3.3s0,.2.2.4c0,.1,0,.3,0,.4v.8c0,.1,0,.3,0,.4,0,.1,0,.3-.2.4s-.2.2-.3.3-.2.2-.3.3c-.1,0-.2.1-.4.2-.1,0-.3,0-.4.1h-.4v5c0,.2,0,.3,0,.5,0,.2.1.3.2.5,0,.2.1.3.2.5,0,.2.2.3.3.4s.2.3.3.4.2.3.4.4c.1.1.3.2.4.4,0,.1.3.2.4.3,0,0,.3.2.4.3s.3.2.5.2.3.1.5.2c.2,0,.3,0,.5.1s.3,0,.5,0h4.5v-.4c0-.1,0-.3.1-.4,0-.1.1-.3.2-.4s.2-.2.3-.3c.1-.1.2-.2.3-.3.1,0,.2-.1.4-.2.1,0,.3,0,.4-.1s.3,0,.4,0h.4c.1,0,.3,0,.4.1.1,0,.3.1.4.2.1,0,.2.2.3.3.1.1.2.2.3.3,0,.1.1.2.2.4,0,.1,0,.3.1.4s0,.3,0,.4h5c.2,0,.3,0,.5-.1s.3-.1.5-.2.3-.1.5-.2c.2,0,.3-.2.4-.3s.3-.2.4-.3c.1-.1.3-.2.4-.4s.2-.3.4-.4.2-.3.3-.4.2-.3.3-.4c0-.2.2-.3.2-.5s.1-.3.2-.5c0-.2,0-.3.1-.5v-5h-.4c-.1,0-.3,0-.4-.1-.1,0-.3-.1-.4-.2-.1,0-.2-.2-.3-.3l-.3-.3c0-.1-.1-.2-.2-.4,0-.1,0-.3-.1-.4s0-.3,0-.4v-.4c0-.1,0-.3.1-.4ZM18.2,18.4c-1.1,1.1-2.5,1.9-4.1,2.2-.5.1-1,.2-1.6.2-1.6,0-3.1-.5-4.4-1.4-1.8-1.2-3-3-3.4-5.1,0-.4.2-.8.6-.9.4,0,.8.2.9.6.3,1.7,1.3,3.2,2.8,4.2,1.5,1,3.2,1.3,4.9,1,1.3-.3,2.4-.9,3.4-1.8.3-.3.7-.3,1,0s.3.7,0,1h0Z"></path>
+    <g id="wm" fill="currentColor">
+      <path d="M76.3,7.9h0c-.3-.3-.6-.5-1-.7-.3-.2-.7-.3-1-.5-.3,0-.7-.3-1.1-.4s-.7-.2-1.1-.3c-.4,0-.7,0-1.1-.2h-2.2c-.4,0-.7,0-1.1.2-.4,0-.7.2-1.1.3-.4,0-.7.2-1.1.4-.3,0-.7.3-1,.5s-.7.4-1,.6-.6.4-.9.7-.6.5-.8.8-.5.5-.8.8c-.2.3-.5.6-.7.9-.2.3-.4.6-.6,1s-.3.7-.5,1c0,.3-.3.7-.4,1.1,0,.4-.2.7-.3,1.1s0,.7-.2,1.1v2.2c0,.3,0,.7.2,1.1,0,.4.2.7.3,1.1s.2.7.4,1.1c0,.3.3.7.5,1s.4.7.6,1c.2.3.4.6.7.9.2.3.5.6.8.8l.8.8c.3.2.6.5.9.7s.6.4,1,.6.7.3,1,.5c.3.1.7.3,1.1.4s.7.2,1.1.3c.4,0,.7.1,1.1.2h2.2c.4,0,.7,0,1.1-.2.4,0,.7-.2,1.1-.3.4-.1.7-.2,1.1-.4.3-.1.7-.3,1-.5s.7-.4,1-.6h0c0-.1,0,1.4,0,1.4h5V6.4h-5v1.5ZM76.2,18.7c0,.4-.2.8-.4,1.2-.2.4-.4.8-.6,1.1-.2.4-.5.7-.8,1s-.6.6-1,.8c-.4.2-.7.4-1.1.6s-.8.3-1.2.4-.8.1-1.3.1-.9,0-1.3-.1c-.4,0-.8-.2-1.2-.4-.4-.2-.8-.4-1.1-.6s-.7-.5-1-.8-.6-.6-.8-1c-.2-.4-.4-.7-.6-1.1-.2-.4-.3-.8-.4-1.2,0-.4,0-.8,0-1.3s0-.9,0-1.3c0-.4.2-.8.4-1.2s.4-.8.6-1.1c.2-.4.5-.7.8-1s.6-.6,1-.8.7-.4,1.1-.6c.4-.2.8-.3,1.2-.4.4,0,.8-.1,1.3-.1s.9,0,1.3.1.8.2,1.2.4c.4.2.8.4,1.1.6.4.2.7.5,1,.8s.6.6.8,1c.2.4.4.7.6,1.1.2.4.3.8.4,1.2s0,.8,0,1.3,0,.9,0,1.3Z"></path>
+      <path d="M49.6,7.9h0c-.3-.3-.6-.5-1-.7-.3-.2-.7-.3-1-.5-.3,0-.7-.3-1.1-.4-.4,0-.7-.2-1.1-.3-.4,0-.7,0-1.1-.2h-2.2c-.4,0-.7,0-1.1.2-.4,0-.7.2-1.1.3-.4,0-.7.2-1.1.4-.3,0-.7.3-1,.5s-.7.4-1,.6-.6.4-.9.7-.6.5-.8.8c-.3.3-.5.5-.8.8-.2.3-.5.6-.7.9-.2.3-.4.6-.6,1-.2.3-.3.7-.5,1,0,.3-.3.7-.4,1.1-.1.4-.2.7-.3,1.1,0,.4-.1.7-.2,1.1v2.2c0,.4,0,.7.2,1.1,0,.4.2.7.3,1.1s.2.7.4,1.1c0,.3.3.7.5,1s.4.7.6,1c.2.3.4.6.7.9s.5.6.8.8l.8.8c.3.2.6.5.9.7.3.2.6.4,1,.6s.7.3,1,.5c.3.1.7.3,1.1.4.4.1.7.2,1.1.3.4,0,.7.1,1.1.2h2.2c.4,0,.7,0,1.1-.2.4,0,.7-.2,1.1-.3.4-.1.7-.2,1.1-.4.3-.1.7-.3,1-.5s.7-.4,1-.6h0c0-.1,0,1.4,0,1.4h5V1.1h-5v6.8ZM49.5,18.7c0,.4-.2.8-.4,1.2s-.4.8-.6,1.1c-.2.4-.5.7-.8,1s-.6.6-1,.8c-.4.2-.7.4-1.1.6-.4.2-.8.3-1.2.4-.4,0-.8.1-1.3.1s-.9,0-1.3-.1c-.4,0-.8-.2-1.2-.4-.4-.2-.8-.4-1.1-.6-.4-.2-.7-.5-1-.8s-.6-.6-.8-1-.4-.7-.6-1.1c-.2-.4-.3-.8-.4-1.2,0-.4,0-.8,0-1.3s0-.9,0-1.3c0-.4.2-.8.4-1.2s.4-.8.6-1.1.5-.7.8-1,.6-.6,1-.8.7-.4,1.1-.6c.4-.2.8-.3,1.2-.4.4,0,.8-.1,1.3-.1s.9,0,1.3.1c.4,0,.8.2,1.2.4s.8.4,1.1.6.7.5,1,.8.6.6.8,1,.4.7.6,1.1.3.8.4,1.2c0,.4,0,.8,0,1.3s0,.9,0,1.3Z"></path>
+      <path d="M107.9,1.5c0-.2,0-.3-.2-.4,0-.1-.2-.3-.3-.4,0-.1-.2-.2-.4-.3,0,0-.3-.2-.4-.2-.2,0-.3-.1-.5-.1h-1c-.2,0-.3,0-.5.1-.2,0-.3.1-.4.2,0,0-.3.2-.4.3s-.2.2-.3.4c0,.1-.2.3-.2.4,0,.2,0,.3,0,.5v1c0,.2,0,.3,0,.5,0,.2,0,.3.2.4,0,0,.2.3.3.4,0,0,.2.2.4.3,0,0,.3.2.4.2.2,0,.3,0,.5,0h1c.2,0,.3,0,.5,0,.2,0,.3,0,.4-.2,0,0,.3-.2.4-.3s.2-.2.3-.4.2-.3.2-.4c0-.2,0-.3,0-.5v-1c0-.2,0-.3,0-.5Z"></path>
+      <path d="M134.7,16.3c0-.4,0-.7-.2-1.1,0-.4-.2-.7-.3-1.1-.1-.4-.2-.7-.4-1.1-.1-.3-.3-.7-.5-1s-.4-.7-.6-1c-.2-.3-.4-.6-.7-.9-.2-.3-.5-.6-.8-.8s-.5-.5-.8-.8-.6-.5-.9-.7c-.3-.2-.6-.4-1-.6-.3-.2-.7-.3-1-.5-.3,0-.7-.3-1.1-.4s-.7-.2-1.1-.3c-.4,0-.7,0-1.1-.2h-2.2c-.4,0-.7,0-1.1.2-.4,0-.7.2-1.1.3-.4,0-.7.2-1.1.4-.3,0-.7.3-1,.5s-.7.4-1,.6-.6.4-.9.7c-.3.2-.6.5-.8.8-.3.3-.5.5-.8.8-.2.3-.5.6-.7.9-.2.3-.4.6-.6,1s-.3.7-.5,1-.3.7-.4,1.1c0,.4-.2.7-.3,1.1,0,.4,0,.7-.2,1.1v2.2c0,.4,0,.7.2,1.1,0,.4.2.7.3,1.1,0,.4.2.7.4,1.1,0,.3.3.7.5,1s.4.7.6,1,.4.6.7.9.5.6.8.8c.3.3.5.5.8.8.3.2.6.5.9.7s.6.4,1,.6.7.3,1,.5c.3.1.7.3,1.1.4s.7.2,1.1.3c.4,0,.7.1,1.1.2h2.2c.4,0,.7,0,1.1-.2.4,0,.7-.2,1.1-.3.4-.1.7-.2,1.1-.4.3-.1.7-.3,1-.5s.7-.4,1-.6.6-.4.9-.7c.3-.2.6-.5.8-.8.3-.3.5-.5.8-.8s.5-.6.7-.9.4-.6.6-1,.3-.7.5-1c.1-.3.3-.7.4-1.1.1-.4.2-.7.3-1.1,0-.4.1-.7.2-1.1v-2.2ZM129.7,18.7c0,.4-.2.8-.4,1.2-.2.4-.4.8-.6,1.1-.2.4-.5.7-.8,1s-.6.6-1,.8c-.4.2-.7.4-1.1.6s-.8.3-1.2.4c-.4,0-.8.1-1.3.1s-.9,0-1.3-.1c-.4,0-.8-.2-1.2-.4-.4-.2-.8-.4-1.1-.6-.4-.2-.7-.5-1-.8s-.6-.6-.8-1c-.2-.4-.4-.7-.6-1.1s-.3-.8-.4-1.2c0-.4,0-.8,0-1.3s0-.9,0-1.3c0-.4.2-.8.4-1.2.2-.4.4-.8.6-1.1.2-.4.5-.7.8-1s.6-.6,1-.8.7-.4,1.1-.6c.4-.2.8-.3,1.2-.4.4,0,.8-.1,1.3-.1s.9,0,1.3.1c.4,0,.8.2,1.2.4.4.2.8.4,1.1.6.4.2.7.5,1,.8s.6.6.8,1,.4.7.6,1.1c.2.4.3.8.4,1.2,0,.4.1.8.1,1.3s0,.9-.1,1.3Z"></path>
+      <polygon points="90.8 17.9 99.7 6.4 93.4 6.4 90.8 9.8 90.8 1.1 85.8 1.1 85.8 28.4 90.8 28.4 90.8 25.5 93.3 28.4 99.9 28.4 90.8 17.9 90.8 17.9"></polygon>
+      <rect x="103.1" y="6.4" width="5" height="22"></rect>
+    </g>
+  </defs></svg>
+
+  <!-- NAV -->
+  <dc-import name="SiteNav" active="switch" cta-href="#cta" cta-label="Plan my switch" hint-size="100%,58px" style="position:sticky; top:0; z-index:60;"></dc-import>
+
+  <!-- HERO -->
+  <div style="max-width:1200px; margin:0 auto; padding:76px 28px 20px; text-align:center;">
+    <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:99px; background:rgba(198,240,53,0.35); border:1px solid rgba(26,29,18,0.1); font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.12em; color:#3E7A45; animation:heroUp .6s ease both;">SWITCHING FROM {{ platName }}</div>
+    <h1 style="margin:22px auto 0; font-size:64px; line-height:1.03; letter-spacing:-2.6px; font-weight:800; max-width:760px; animation:heroUp .6s .08s ease both;">Leave the tools.<br>Gain a <span style="position:relative; white-space:nowrap;">team<span style="position:absolute; left:0; right:0; bottom:6px; height:14px; background:#C6F035; z-index:-1; border-radius:3px;"></span></span>.</h1>
+    <p style="margin:20px auto 0; font-size:17px; line-height:1.6; color:#6B6D60; max-width:480px; animation:heroUp .6s .16s ease both;">Concierge migration over one weekend. Your store keeps selling the whole time — and on Monday it has a CEO.</p>
+    <div style="display:flex; justify-content:center; gap:12px; margin-top:30px; animation:heroUp .6s .24s ease both;">
+      <a href="#cta" style="display:inline-flex; align-items:center; gap:8px; padding:15px 26px; border-radius:99px; background:#1A1D12; color:#C6F035; font-size:15px; font-weight:700;" style-hover="transform:translateY(-2px)">Plan my switch
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      <a href="#math" style="display:inline-flex; align-items:center; padding:15px 24px; border-radius:99px; border:1.5px solid rgba(26,29,18,0.2); color:#1A1D12; font-size:15px; font-weight:700;" style-hover="background:rgba(26,29,18,0.05)">See the math</a>
+    </div>
+  </div>
+
+  <!-- THE MATH -->
+  <div id="math" style="max-width:1200px; margin:0 auto; padding:80px 28px 20px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:880px; margin:0 auto; align-items:stretch;" data-reveal>
+      <div style="border-radius:28px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.08); padding:30px; display:flex; flex-direction:column;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.12em; color:#6B6D60;">YOUR {{ platCaps }} STACK · MONTHLY</div>
+        <div style="margin-top:18px; display:flex; flex-direction:column; gap:11px; flex:1;">
+          <sc-for list="{{ oldBill }}" as="ob" hint-placeholder-count="4">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding-bottom:11px; border-bottom:1px dashed rgba(26,29,18,0.1);">
+              <div><div style="font-size:13.5px; font-weight:700;">{{ ob.n }}</div><div style="font-size:11px; color:#6B6D60; margin-top:1px;">{{ ob.d }}</div></div>
+              <span style="font-size:14px; font-weight:700; color:#6B6D60; white-space:nowrap;">{{ ob.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px;">
+          <span style="font-size:13px; font-weight:700; color:#6B6D60;">Typical total — and still no CEO</span>
+          <span style="font-size:30px; font-weight:800; letter-spacing:-1px; color:#B03A2E;">≈ ৳16,500<span style="font-size:13px; font-weight:600; color:#6B6D60;">/mo</span></span>
+        </div>
+      </div>
+      <div style="border-radius:28px; background:#0F120B; color:#E9EFDC; padding:30px; display:flex; flex-direction:column; box-shadow:0 30px 70px rgba(15,18,11,0.3);">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.12em; color:#8CBF33;">THE SAME STORE ON DAKIO</div>
+          <span style="width:22px; height:22px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%); animation:breathe 5s ease-in-out infinite;"></span>
+        </div>
+        <div style="margin-top:18px; display:flex; flex-direction:column; gap:11px; flex:1;">
+          <sc-for list="{{ newBill }}" as="nb" hint-placeholder-count="4">
+            <div style="display:flex; align-items:center; gap:10px; padding-bottom:11px; border-bottom:1px dashed rgba(255,255,255,0.1);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C6F035" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20 6L9 17l-5-5"></path></svg>
+              <div style="flex:1;"><div style="font-size:13.5px; font-weight:700; color:#FBFBF4;">{{ nb.n }}</div><div style="font-size:11px; color:#A9AD98; margin-top:1px;">{{ nb.d }}</div></div>
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.08em; color:#8CBF33;">INCLUDED</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px;">
+          <span style="font-size:13px; font-weight:700; color:#A9AD98;">One plan — Growth</span>
+          <span style="font-size:30px; font-weight:800; letter-spacing:-1px; color:#C6F035;">৳1,490<span style="font-size:13px; font-weight:600; color:#A9AD98;">/mo</span></span>
+        </div>
+      </div>
+    </div>
+    <div data-reveal style="text-align:center; margin-top:14px; font-size:11.5px; color:#6B6D60;">Typical stack for a BD merchant on a $39 plan with paid apps and a designer retainer, at July 2026 rates. Your bill may differ — bring it, we'll do the math with you.</div>
+  </div>
+
+  <!-- THE WEEKEND -->
+  <div style="max-width:1200px; margin:0 auto; padding:96px 28px 20px;">
+    <div style="text-align:center; margin-bottom:40px;" data-reveal>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.14em; color:#3E7A45;">THE PLAN</div>
+      <h2 style="margin:14px auto 0; font-size:52px; line-height:1.05; letter-spacing:-2px; font-weight:800;">One weekend. We carry the boxes.</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:14px;" data-reveal>
+      <sc-for list="{{ weekend }}" as="wk" hint-placeholder-count="3">
+        <div style="border-radius:26px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.07); padding:26px;">
+          <div style="{{ wk.day }}">{{ wk.d }}</div>
+          <div style="font-size:17px; font-weight:800; letter-spacing:-0.3px; margin-top:14px;">{{ wk.t }}</div>
+          <div style="font-size:13px; color:#6B6D60; margin-top:7px; line-height:1.6;">{{ wk.b }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div data-reveal style="margin-top:14px; border-radius:20px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.07); padding:20px 24px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.12em; color:#3E7A45; flex-shrink:0;">WHAT MOVES ·</span>
+      <sc-for list="{{ moves }}" as="mv" hint-placeholder-count="6">
+        <span style="display:inline-flex; align-items:center; gap:7px; padding:7px 14px; border-radius:99px; background:#ffffff; border:1px solid rgba(26,29,18,0.09); font-size:12.5px; font-weight:700;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3E7A45" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>{{ mv.t }}
+        </span>
+      </sc-for>
+      <span style="margin-left:auto; font-size:12px; color:#6B6D60;">SEO redirects included — your links keep working.</span>
+    </div>
+  </div>
+
+  <!-- WHAT YOU GAIN -->
+  <div style="max-width:1200px; margin:0 auto; padding:96px 28px 20px;">
+    <div style="text-align:center; margin-bottom:40px;" data-reveal>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.14em; color:#3E7A45;">WHY IT'S WORTH THE WEEKEND</div>
+      <h2 style="margin:14px auto 0; font-size:52px; line-height:1.05; letter-spacing:-2px; font-weight:800; max-width:660px;">What {{ platName2 }} never gave you.</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:14px;" data-reveal>
+      <div style="border-radius:26px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.07); padding:26px;">
+        <div style="font-size:34px; font-weight:800; letter-spacing:-1px;">৳</div>
+        <div style="font-size:17px; font-weight:800; letter-spacing:-0.3px; margin-top:10px;">COD + bKash native</div>
+        <div style="font-size:13px; color:#6B6D60; margin-top:7px; line-height:1.6;">The checkout Bangladesh actually uses — no plugins, no USD fees, no workarounds.</div>
+        <div style="display:flex; gap:6px; margin-top:14px;"><span style="padding:5px 11px; border-radius:99px; background:#EEEBDF; font-size:10.5px; font-weight:700;">bKash</span><span style="padding:5px 11px; border-radius:99px; background:#EEEBDF; font-size:10.5px; font-weight:700;">Nagad</span><span style="padding:5px 11px; border-radius:99px; background:#EEEBDF; font-size:10.5px; font-weight:700;">COD</span></div>
+      </div>
+      <div style="border-radius:26px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.07); padding:26px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1A1D12" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z"></path><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        <div style="font-size:17px; font-weight:800; letter-spacing:-0.3px; margin-top:10px;">Courier rails built in</div>
+        <div style="font-size:13px; color:#6B6D60; margin-top:7px; line-height:1.6;">Steadfast, Pathao and RedX booked in one tap, with COD collection tracked to the taka.</div>
+        <div style="display:flex; gap:6px; margin-top:14px;"><span style="padding:5px 11px; border-radius:99px; background:#EEEBDF; font-size:10.5px; font-weight:700;">Steadfast</span><span style="padding:5px 11px; border-radius:99px; background:#EEEBDF; font-size:10.5px; font-weight:700;">Pathao</span><span style="padding:5px 11px; border-radius:99px; background:#EEEBDF; font-size:10.5px; font-weight:700;">RedX</span></div>
+      </div>
+      <a href="Dakio Nova.dc.html" style="display:block; border-radius:26px; background:#0F120B; color:#E9EFDC; padding:26px;" style-hover="transform:translateY(-3px)">
+        <span style="display:inline-block; width:30px; height:30px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%); animation:breathe 5s ease-in-out infinite;"></span>
+        <div style="font-size:17px; font-weight:800; letter-spacing:-0.3px; margin-top:10px; color:#FBFBF4;">And a CEO</div>
+        <div style="font-size:13px; color:#A9AD98; margin-top:7px; line-height:1.6;">{{ platName3 }} gives you tools; you're still every employee. Dakio staffs the back office from day one.</div>
+        <div style="display:inline-flex; align-items:center; gap:7px; margin-top:14px; font-size:12.5px; font-weight:700; color:#C6F035;">Meet Nova <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="max-width:760px; margin:0 auto; padding:96px 28px 20px;">
+    <div style="text-align:center; margin-bottom:32px;" data-reveal>
+      <h2 style="margin:0; font-size:40px; line-height:1.08; letter-spacing:-1.4px; font-weight:800;">The three questions everyone asks.</h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px;" data-reveal>
+      <sc-for list="{{ faq }}" as="f" hint-placeholder-count="3">
+        <div style="border-radius:18px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.07); padding:20px 24px;">
+          <div style="font-size:15px; font-weight:800; letter-spacing:-0.2px;">{{ f.q }}</div>
+          <div style="font-size:13.5px; color:#6B6D60; margin-top:6px; line-height:1.6;">{{ f.a }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div id="cta" style="max-width:1200px; margin:80px auto 0; padding:0 20px 60px;">
+    <div data-reveal style="border-radius:36px; background:#C6F035; padding:76px 40px; text-align:center; position:relative; overflow:hidden;">
+      <div style="position:absolute; left:50%; top:-160px; transform:translateX(-50%); width:520px; height:520px; border-radius:50%; border:1px dashed rgba(26,29,18,0.2); animation:orbitcw 50s linear infinite;"></div>
+      <h2 style="position:relative; margin:0 auto; font-size:56px; line-height:1.04; letter-spacing:-2.3px; font-weight:800; max-width:720px;">Friday you export.<br>Monday you have a CEO.</h2>
+      <div style="position:relative; display:flex; justify-content:center; gap:12px; margin-top:32px;">
+        <a href="#" style="display:inline-flex; align-items:center; gap:9px; padding:16px 30px; border-radius:99px; background:#1A1D12; color:#C6F035; font-size:15.5px; font-weight:700;" style-hover="transform:translateY(-2px)">
+          <span style="width:8px; height:8px; border-radius:99px; background:#C6F035; animation:pulseRing 2.2s infinite;"></span>Plan my switch</a>
+        <a href="Dakio Home.dc.html" style="display:inline-flex; align-items:center; padding:16px 26px; border-radius:99px; border:1.5px solid rgba(26,29,18,0.35); color:#1A1D12; font-size:15.5px; font-weight:700;" style-hover="background:rgba(26,29,18,0.08)">Back to Dakio</a>
+      </div>
+      <div style="position:relative; margin-top:20px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.14em; color:rgba(26,29,18,0.6);">CONCIERGE MIGRATION · FREE ON GROWTH &amp; BUSINESS PLANS · NO CONTRACT</div>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;fromPlatform&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Shopify&quot;,&quot;options&quot;:[&quot;Shopify&quot;,&quot;WooCommerce&quot;,&quot;Wix&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Positioning&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const els = this.el ? this.el.querySelectorAll('[data-reveal]') : document.querySelectorAll('[data-reveal]');
+    els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(22px)'; el.style.transition = 'opacity .7s ease, transform .7s ease'; });
+    const reveal = (el, animate) => { if (!animate) el.style.transition = 'none'; el.style.opacity = '1'; el.style.transform = 'translateY(0)'; el.dataset.revealed = '1'; };
+    const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < (window.innerHeight || 800); };
+    els.forEach(el => { if (inView(el)) reveal(el, false); });
+    this._io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { reveal(e.target, true); this._io.unobserve(e.target); } }); }, { threshold: 0.14 });
+    els.forEach(el => { if (!el.dataset.revealed) this._io.observe(el); });
+    const onScroll = () => { els.forEach(el => { if (!el.dataset.revealed && inView(el)) reveal(el, true); }); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    setTimeout(onScroll, 1200);
+  }
+  renderVals() {
+    const plat = this.props.fromPlatform ?? 'Shopify';
+    return {
+      platName: plat.toUpperCase(), platCaps: plat.toUpperCase(), platName2: plat, platName3: plat,
+      oldBill: [
+        { n: 'Platform subscription', d: 'Basic plan, billed in USD', v: '≈ ৳4,700' },
+        { n: 'Apps & plugins', d: 'COD forms, reviews, courier connectors', v: '≈ ৳3,800' },
+        { n: 'Payment workarounds', d: 'Gateway + conversion fees', v: '≈ ৳2,000+' },
+        { n: 'Designer / agency', d: 'Theme fixes, banners, ad creatives', v: '≈ ৳6,000+' }],
+      newBill: [
+        { n: 'Store + Store Studio', d: 'Design it yourself — theme gallery, Bangla fonts' },
+        { n: 'COD, bKash & Nagad', d: 'Native checkout, no gateway workarounds' },
+        { n: 'Couriers + Grow Labs', d: 'Steadfast · Pathao · RedX, campaigns, broadcasts' },
+        { n: 'Nova — your Acting CEO', d: 'Marketing, support, ops. On duty 24/7' }],
+      weekend: [
+        { d: 'FRIDAY', t: 'Export & hand over', b: 'One CSV export and store access. We map products, variants, customers and order history overnight.', day: "display:inline-block; padding:6px 13px; border-radius:99px; background:#1A1D12; color:#C6F035; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.1em;" },
+        { d: 'SATURDAY', t: 'Review your new store', b: 'Everything imported, storefront rebuilt in Store Studio with a theme you pick. You click around and correct.', day: "display:inline-block; padding:6px 13px; border-radius:99px; background:#C6F035; color:#0F120B; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.1em;" },
+        { d: 'SUNDAY', t: 'Domain flips, Nova starts', b: 'DNS + redirects go live, old links keep working. Nova begins its first night shift at 00:00.', day: "display:inline-block; padding:6px 13px; border-radius:99px; background:#1A1D12; color:#C6F035; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.1em;" }],
+      moves: [{ t: 'Products & variants' }, { t: 'Customers' }, { t: 'Order history' }, { t: 'Reviews' }, { t: 'Images' }, { t: 'Domain & redirects' }],
+      faq: [
+        { q: 'Will my Google ranking break?', a: 'No — every old URL gets a permanent redirect to its new home, and your domain stays yours. Rankings follow the redirects.' },
+        { q: 'What happens to my theme?', a: "Themes don't transfer between platforms — instead you rebuild in Store Studio in an afternoon: theme gallery, your brand colors, Bangla fonts, no developer." },
+        { q: 'Am I locked in?', a: 'No contract, monthly billing, and your data (products, customers, orders) exports to CSV anytime. We keep you by being better, not by holding the door.' }],
+    };
+  }
+}
+</script>
+</body>
+</html>

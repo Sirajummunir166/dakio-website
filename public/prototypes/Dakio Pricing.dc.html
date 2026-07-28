@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/tokens/tokens.css">
+  <script src="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/_ds_bundle.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; background:#F4F2EA; }
+    a { color:inherit; text-decoration:none; }
+    a:hover { color:inherit; }
+    @keyframes heroUp { 0% { opacity:0; transform:translateY(18px); } 100% { opacity:1; transform:translateY(0); } }
+    @keyframes orbitcw { to { transform:rotate(360deg); } }
+    @keyframes pulseRing { 0% { box-shadow:0 0 0 0 rgba(198,240,53,0.4); } 70% { box-shadow:0 0 0 14px rgba(198,240,53,0); } 100% { box-shadow:0 0 0 0 rgba(198,240,53,0); } }
+    @keyframes breathe { 0%,100% { transform:scale(1); } 50% { transform:scale(1.05); } }
+  </style>
+</helmet>
+
+<div style="font-family:var(--dk-font-sans), 'Noto Sans Bengali', sans-serif; color:#1A1D12; background:#F4F2EA; overflow-x:hidden;" data-screen-label="Pricing">
+
+  <dc-import name="SiteNav" active="pricing" cta-href="#plans" hint-size="100%,58px" style="position:sticky; top:0; z-index:60;"></dc-import>
+
+  <!-- HERO -->
+  <div style="max-width:1200px; margin:0 auto; padding:72px 28px 8px; text-align:center;">
+    <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:99px; background:rgba(198,240,53,0.35); border:1px solid rgba(26,29,18,0.1); font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.12em; color:#3E7A45; animation:heroUp .6s ease both;">৳ BANGLADESH PRICING · GOING GLOBAL SOON</div>
+    <h1 style="margin:22px auto 0; font-size:60px; line-height:1.04; letter-spacing:-2.5px; font-weight:800; max-width:780px; animation:heroUp .6s .08s ease both;">Your whole back office, for less than <span style="position:relative; white-space:nowrap;">one employee<span style="position:absolute; left:0; right:0; bottom:6px; height:14px; background:#C6F035; z-index:-1; border-radius:3px;"></span></span>.</h1>
+    <p style="margin:18px auto 0; font-size:16px; line-height:1.6; color:#6B6D60; max-width:480px; animation:heroUp .6s .16s ease both;">A shop assistant costs ৳12,000 a month and works ten hours. Nova works around the clock — and every plan includes it.</p>
+    <div style="display:inline-flex; padding:3px; border-radius:99px; background:#E9EBE0; margin-top:28px; animation:heroUp .6s .24s ease both;">
+      <span onClick="{{ setMo }}" style="{{ moSeg }}">Monthly</span>
+      <span onClick="{{ setYr }}" style="{{ yrSeg }}">Annual — 2 months free</span>
+    </div>
+  </div>
+
+  <!-- PLANS -->
+  <div id="plans" style="max-width:1200px; margin:0 auto; padding:44px 28px 20px;">
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; align-items:stretch;">
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+        <div style="{{ p.card }}">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span style="{{ p.name }}">{{ p.n }}</span>
+            <span style="{{ p.lvl }}">{{ p.level }}</span>
+          </div>
+          <div style="{{ p.who }}">{{ p.audience }}</div>
+          <div style="margin-top:18px; display:flex; align-items:baseline; gap:6px;">
+            <span style="{{ p.price }}">{{ p.pr }}</span>
+            <span style="{{ p.per }}">{{ p.sub }}</span>
+          </div>
+          <div style="{{ p.billNote }}">{{ p.note }}</div>
+          <div style="{{ p.divider }}"></div>
+          <div style="display:flex; flex-direction:column; gap:10px; flex:1;">
+            <sc-for list="{{ p.feats }}" as="f" hint-placeholder-count="5">
+              <div style="display:flex; align-items:flex-start; gap:9px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="{{ p.tick }}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><path d="M20 6L9 17l-5-5"></path></svg>
+                <span style="{{ p.featTxt }}">{{ f.t }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <a href="#" style="{{ p.btn }}">{{ p.cta }}</a>
+        </div>
+      </sc-for>
+    </div>
+    <div style="text-align:center; margin-top:18px; font-size:13px; color:#6B6D60;">Every new store gets <b style="color:#1A1D12;">14 days of Business, free</b> — meet the full CEO before you choose. Courier deliveries billed per shipment on all plans.</div>
+  </div>
+
+  <!-- WHAT'S A NOVA TASK -->
+  <div style="max-width:1200px; margin:0 auto; padding:88px 28px 20px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;" data-reveal>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.14em; color:#3E7A45;">THE METER, IN PLAIN WORDS</div>
+        <h2 style="margin:14px 0 0; font-size:48px; line-height:1.05; letter-spacing:-1.9px; font-weight:800;">What's a Nova task?</h2>
+        <p style="margin:16px 0 0; font-size:15px; line-height:1.65; color:#6B6D60; max-width:400px;">One finished piece of work — not a token, not an API call. The Hours-Saved report shows you every task and what it was worth.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;">
+          <sc-for list="{{ taskChips }}" as="tc" hint-placeholder-count="5">
+            <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:99px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.1); font-size:12px; font-weight:700;">{{ tc.t }}<span style="font-family:'IBM Plex Mono',monospace; font-size:7px; letter-spacing:0.08em; color:#3E7A45;">= 1 TASK</span></span>
+          </sc-for>
+          <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:99px; background:#1A1D12; color:#F0EFE6; font-size:12px; font-weight:700;">Voice call<span style="font-family:'IBM Plex Mono',monospace; font-size:7px; letter-spacing:0.08em; color:#C6F035;">= NOVA MINUTES</span></span>
+        </div>
+      </div>
+      <div style="border-radius:28px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.07); padding:28px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.12em; color:#6B6D60;">WHEN TASKS RUN OUT</div>
+        <div style="font-size:19px; font-weight:800; letter-spacing:-0.4px; margin-top:10px;">Nova never just stops. It shifts to Draft mode.</div>
+        <div style="margin-top:14px; padding:15px 16px; border-radius:14px; background:#14170E; color:#E9EFDC;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="width:14px; height:14px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%);"></span>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.1em; color:#E3B54A;">DRAFT MODE · TASKS USED 750/750</span>
+          </div>
+          <div style="font-size:12px; margin-top:8px; line-height:1.55; color:#A9AD98;">"I've queued 12 replies and 2 campaigns as drafts — nothing executes until you top up or the month resets. Nothing is lost."</div>
+          <div style="display:flex; gap:6px; margin-top:12px;">
+            <span style="padding:6px 14px; border-radius:99px; background:#C6F035; color:#0F120B; font-size:10.5px; font-weight:700; cursor:pointer;">Top up — ৳250 / 250 tasks</span>
+            <span style="padding:6px 12px; border-radius:99px; border:1px solid rgba(233,239,220,0.25); color:#A9AD98; font-size:10.5px; font-weight:600; cursor:pointer;">Wait for reset</span>
+          </div>
+        </div>
+        <div style="margin-top:12px; font-size:12px; color:#6B6D60; line-height:1.55;">Prepared work executes the moment you top up. Honest billing is the same product as honest AI.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMPLOYEE ANCHOR -->
+  <div style="max-width:1200px; margin:0 auto; padding:88px 28px 20px;">
+    <div data-reveal style="border-radius:32px; background:#0F120B; color:#E9EFDC; padding:52px 56px;">
+      <div style="text-align:center;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.14em; color:#8CBF33;">THE REAL COMPARISON</div>
+        <h2 style="margin:12px auto 0; font-size:42px; line-height:1.07; letter-spacing:-1.6px; font-weight:800; color:#FBFBF4; max-width:620px;">Don't compare us to software.<br>Compare us to payroll.</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:34px; max-width:820px; margin-left:auto; margin-right:auto;">
+        <div style="border-radius:20px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.09); padding:26px;">
+          <div style="font-size:15px; font-weight:800; color:#FBFBF4;">One shop assistant</div>
+          <div style="margin-top:14px; display:flex; align-items:baseline; gap:5px;"><span style="font-size:34px; font-weight:800; letter-spacing:-1.2px; color:#FBFBF4;">৳12,000</span><span style="font-size:12px; color:#878B76;">/month</span></div>
+          <div style="display:flex; flex-direction:column; gap:8px; margin-top:16px; font-size:12.5px; color:#A9AD98;">
+            <span>10 hours a day, 6 days a week</span>
+            <span>Knows one job</span>
+            <span>Needs training, leave, supervision</span>
+          </div>
+        </div>
+        <div style="border-radius:20px; background:rgba(198,240,53,0.1); border:1px solid rgba(198,240,53,0.4); padding:26px; position:relative;">
+          <div style="display:flex; align-items:center; gap:9px;">
+            <span style="width:18px; height:18px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%); animation:breathe 5s ease-in-out infinite;"></span>
+            <span style="font-size:15px; font-weight:800; color:#FBFBF4;">Nova — Acting CEO</span>
+          </div>
+          <div style="margin-top:14px; display:flex; align-items:baseline; gap:5px;"><span style="font-size:34px; font-weight:800; letter-spacing:-1.2px; color:#C6F035;">৳3,990</span><span style="font-size:12px; color:#878B76;">/month, Business plan</span></div>
+          <div style="display:flex; flex-direction:column; gap:8px; margin-top:16px; font-size:12.5px; color:#E9EFDC;">
+            <span>24/7 — nights, Eid, monsoon</span>
+            <span>10 departments, 65 duties</span>
+            <span>Every action receipted &amp; undoable</span>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:22px; font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.12em; color:#878B76;">PREMIUM WORK · REASONABLE TAKA · WE'RE NOT THE CHEAPEST, WE'RE THE BEST HIRE</div>
+    </div>
+  </div>
+
+  <!-- SHOPIFY MATH -->
+  <div style="max-width:1200px; margin:0 auto; padding:88px 28px 20px;">
+    <div data-reveal style="border-radius:28px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.07); padding:34px 40px; display:flex; align-items:center; gap:32px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:260px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.12em; color:#3E7A45;">COMING FROM SHOPIFY?</div>
+        <div style="font-size:24px; font-weight:800; letter-spacing:-0.7px; margin-top:8px;">Their stack: ≈ ৳16,500/mo.<br>Dakio Growth: ৳1,490 — CEO included.</div>
+      </div>
+      <a href="Dakio Switch.dc.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 24px; border-radius:99px; background:#1A1D12; color:#C6F035; font-size:14px; font-weight:700; flex-shrink:0;" style-hover="transform:translateY(-2px)">See the full math <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="max-width:760px; margin:0 auto; padding:88px 28px 20px;">
+    <div style="text-align:center; margin-bottom:32px;" data-reveal>
+      <h2 style="margin:0; font-size:38px; line-height:1.08; letter-spacing:-1.4px; font-weight:800;">Fair questions.</h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px;" data-reveal>
+      <sc-for list="{{ faq }}" as="f" hint-placeholder-count="4">
+        <div style="border-radius:18px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.07); padding:20px 24px;">
+          <div style="font-size:15px; font-weight:800; letter-spacing:-0.2px;">{{ f.q }}</div>
+          <div style="font-size:13.5px; color:#6B6D60; margin-top:6px; line-height:1.6;">{{ f.a }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div id="cta" style="max-width:1200px; margin:70px auto 0; padding:0 20px 60px;">
+    <div data-reveal style="border-radius:36px; background:#C6F035; padding:72px 40px; text-align:center; position:relative; overflow:hidden;">
+      <div style="position:absolute; left:50%; top:-160px; transform:translateX(-50%); width:520px; height:520px; border-radius:50%; border:1px dashed rgba(26,29,18,0.2); animation:orbitcw 50s linear infinite;"></div>
+      <h2 style="position:relative; margin:0 auto; font-size:56px; line-height:1.03; letter-spacing:-2.3px; font-weight:800; max-width:700px;">Fourteen days with the full CEO. Free.</h2>
+      <div style="position:relative; display:flex; justify-content:center; gap:12px; margin-top:32px;">
+        <a href="#" style="display:inline-flex; align-items:center; gap:9px; padding:16px 30px; border-radius:99px; background:#1A1D12; color:#C6F035; font-size:15.5px; font-weight:700;" style-hover="transform:translateY(-2px)">
+          <span style="width:8px; height:8px; border-radius:99px; background:#C6F035; animation:pulseRing 2.2s infinite;"></span>Start the Business trial</a>
+        <a href="Dakio Home.dc.html" style="display:inline-flex; align-items:center; padding:16px 26px; border-radius:99px; border:1.5px solid rgba(26,29,18,0.35); color:#1A1D12; font-size:15.5px; font-weight:700;" style-hover="background:rgba(26,29,18,0.08)">Back to Dakio</a>
+      </div>
+      <div style="position:relative; margin-top:20px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.14em; color:rgba(26,29,18,0.6);">NO CARD TO START · MONTHLY BILLING · YOUR DATA EXPORTS ANYTIME</div>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { billing: 'mo' };
+  componentDidMount() {
+    const els = this.el ? this.el.querySelectorAll('[data-reveal]') : document.querySelectorAll('[data-reveal]');
+    els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(22px)'; el.style.transition = 'opacity .7s ease, transform .7s ease'; });
+    const reveal = (el, animate) => { if (!animate) el.style.transition = 'none'; el.style.opacity = '1'; el.style.transform = 'translateY(0)'; el.dataset.revealed = '1'; };
+    const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < (window.innerHeight || 800); };
+    els.forEach(el => { if (inView(el)) reveal(el, false); });
+    this._io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { reveal(e.target, true); this._io.unobserve(e.target); } }); }, { threshold: 0.14 });
+    els.forEach(el => { if (!el.dataset.revealed) this._io.observe(el); });
+    const onScroll = () => { els.forEach(el => { if (!el.dataset.revealed && inView(el)) reveal(el, true); }); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    setTimeout(onScroll, 1200);
+  }
+  renderVals() {
+    const yr = this.state.billing === 'yr';
+    const seg = on => 'padding:9px 18px; border-radius:99px; cursor:pointer; font-size:13px; font-weight:700;' + (on ? ' background:#1A1D12; color:#C6F035;' : ' color:#6B6D60;');
+    const plansData = [
+      { n: 'Starter', level: 'NOVA L0–L1 ADVISOR', audience: 'Get online, meet Nova', pr: 'Free', sub: 'forever', note: 'no card needed', cta: 'Start free', dark: false,
+        feats: ['Store + Store Studio & theme gallery', 'Orders, couriers & COD · bKash · Nagad', 'Nova Advisor — 50 tasks/mo', 'Morning brief, read-only', 'Up to 30 products'] },
+      { n: 'Growth', level: 'NOVA L3 OPERATOR', audience: 'The default for running shops', pr: yr ? '৳1,242' : '৳1,490', sub: '/month', note: yr ? 'billed ৳14,900/year' : 'billed monthly', cta: 'Choose Growth', dark: false, pop: true,
+        feats: ['Everything in Starter, unlimited products', 'Nova Operator — 750 tasks/mo', 'Grow Labs + Supplier Network', 'Ads Gallery — static exports', 'Decision desk, receipts & undo'] },
+      { n: 'Business', level: 'NOVA L4 ACTING CEO', audience: 'The full CEO seat', pr: yr ? '৳3,325' : '৳3,990', sub: '/month', note: yr ? 'billed ৳39,900/year' : 'billed monthly', cta: 'Start 14-day free trial', dark: true,
+        feats: ['Everything in Growth', 'Acting CEO — 2,500 tasks/mo', '60 Nova voice minutes — briefs, alerts, COD confirms', 'Seasonal playbooks (Eid, Puja, 11.11)', 'Motion ad renders + staff logins', 'Concierge migration included'] },
+    ];
+    return {
+      setMo: () => this.setState({ billing: 'mo' }), setYr: () => this.setState({ billing: 'yr' }),
+      moSeg: seg(!yr), yrSeg: seg(yr),
+      plans: plansData.map(p => ({
+        n: p.n, level: p.level, audience: p.audience, pr: p.pr, sub: p.sub, note: p.note, cta: p.cta,
+        feats: p.feats.map(t => ({ t })),
+        card: 'padding:28px; border-radius:26px; display:flex; flex-direction:column;' + (p.dark ? ' background:#0F120B; color:#E9EFDC; box-shadow:0 28px 60px rgba(15,18,11,0.3);' : p.pop ? ' background:#FBFAF5; border:2px solid #1A1D12;' : ' background:#FBFAF5; border:1px solid rgba(26,29,18,0.07);'),
+        name: 'font-size:17px; font-weight:800; letter-spacing:-0.3px;' + (p.dark ? ' color:#FBFBF4;' : ''),
+        lvl: "font-family:'IBM Plex Mono',monospace; font-size:7.5px; font-weight:600; letter-spacing:0.08em; padding:4px 9px; border-radius:99px;" + (p.dark ? ' background:rgba(198,240,53,0.16); color:#C6F035;' : ' background:rgba(26,29,18,0.07); color:#3E7A45;'),
+        who: 'font-size:12.5px; margin-top:5px;' + (p.dark ? ' color:#878B76;' : ' color:#6B6D60;'),
+        price: 'font-size:38px; font-weight:800; letter-spacing:-1.4px;' + (p.dark ? ' color:#C6F035;' : ''),
+        per: 'font-size:13px;' + (p.dark ? ' color:#878B76;' : ' color:#6B6D60;'),
+        billNote: 'font-size:11.5px; margin-top:3px;' + (p.dark ? ' color:#878B76;' : ' color:#6B6D60;'),
+        divider: 'height:1px; margin:20px 0;' + (p.dark ? ' background:rgba(240,239,230,0.12);' : ' background:rgba(26,29,18,0.08);'),
+        tick: p.dark ? '#C6F035' : '#1A1D12',
+        featTxt: 'font-size:13px; line-height:1.5;' + (p.dark ? ' color:#E9EFDC;' : ''),
+        btn: 'margin-top:22px; display:flex; align-items:center; justify-content:center; padding:13px 0; border-radius:99px; font-size:14px; font-weight:700;' + (p.dark ? ' background:#C6F035; color:#0F120B;' : p.pop ? ' background:#1A1D12; color:#C6F035;' : ' border:1.5px solid rgba(26,29,18,0.2); color:#1A1D12;'),
+      })),
+      taskChips: [
+        { t: 'Customer reply answered' }, { t: 'Listing written from a photo' }, { t: 'Ad creative generated' },
+        { t: 'Abandoned cart recovered' }, { t: 'Reorder drafted' }],
+      faq: [
+        { q: 'Why not unlimited AI?', a: "Nova does real work on real compute — unlimited would mean either fake AI or hidden throttling. We'd rather sell you an honest meter with receipts than a soft lie." },
+        { q: 'What happens when my tasks run out?', a: 'Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 250 tasks) or the month resets. Nothing is lost, nothing is silent.' },
+        { q: 'What do couriers cost?', a: "Per-delivery, passed through at the courier's rate (Steadfast, Pathao, RedX) on every plan — we don't mark up shipping." },
+        { q: "I'm not in Bangladesh — can I use Dakio?", a: 'Soon. We built for Bangladesh first — ৳, bKash, COD, Bangla — and global markets open next with local pricing, not conversions. Join the waitlist from the signup page.' }],
+    };
+  }
+}
+</script>
+</body>
+</html>

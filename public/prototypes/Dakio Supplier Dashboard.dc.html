@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; background:#e5e7de; }
+    a { color:#4a5232; } a:hover { color:#1b1e15; }
+    @keyframes splashSeq { 0%, 78% { opacity:1; visibility:visible; } 100% { opacity:0; visibility:hidden; } }
+    @keyframes logoIn { 0% { transform:scale(.7); opacity:0; } 60% { transform:scale(1.05); opacity:1; } 100% { transform:scale(1); opacity:1; } }
+    @keyframes barLoad { 0% { width:0%; } 60% { width:70%; } 100% { width:100%; } }
+    @keyframes fadeUp { 0% { opacity:0; transform:translateY(10px); } 100% { opacity:1; transform:translateY(0); } }
+    @keyframes toastIn { 0% { opacity:0; transform:translate(-50%, 12px); } 100% { opacity:1; transform:translate(-50%, 0); } }
+  </style>
+</helmet>
+
+<div style="min-height:100dvh; max-width:430px; margin:0 auto; font-family:'Hanken Grotesk',sans-serif; color:#1b1e15; background:#eff1e9; display:flex; flex-direction:column; height:100dvh; position:relative; overflow:hidden;" data-screen-label="Dakio Supplier App">
+
+  <!-- ================= SPLASH ================= -->
+  <sc-if value="{{ showSplash }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute; inset:0; z-index:100; background:#eff1e9; display:flex; flex-direction:column; align-items:center; justify-content:center; animation:splashSeq 2.6s ease forwards; pointer-events:none;">
+      <div style="width:76px; height:76px; border-radius:24px; background:#1b1e15; display:flex; align-items:center; justify-content:center; box-shadow:0 16px 40px rgba(27,30,21,0.18); animation:logoIn .9s cubic-bezier(.2,.8,.3,1) both;">
+        <span style="font-weight:600; font-size:42px; color:#d9f450; line-height:1;">d</span>
+      </div>
+      <div style="margin-top:18px; font-weight:600; font-size:30px; letter-spacing:-0.8px; color:#1b1e15; animation:fadeUp .7s .3s ease both;">dakio</div>
+      <div style="margin-top:6px; font-size:13px; color:#8a8f7c; animation:fadeUp .7s .45s ease both;">Supplier Panel</div>
+      <div style="margin-top:32px; width:150px; height:4px; border-radius:99px; background:rgba(27,30,21,0.08); overflow:hidden;">
+        <div style="height:100%; border-radius:99px; background:#c9e83c; animation:barLoad 2s ease forwards;"></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ================= HOME ================= -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:1; overflow-y:auto; padding:18px 16px 96px; animation:fadeUp .35s ease both;" data-screen-label="Supplier Home">
+
+      <!-- Brand hero -->
+      <div style="margin:-18px -16px 0; padding:18px 16px 20px; background:linear-gradient(180deg, #dff556 0%, #d9f450 100%); border-radius:0 0 30px 30px;">
+
+        <div style="display:flex; align-items:center; gap:11px;">
+          <div style="width:44px; height:44px; border-radius:99px; background:#1b1e15; display:flex; align-items:center; justify-content:center; font-weight:500; font-size:19px; color:#d9f450; flex-shrink:0;">M</div>
+          <div style="flex:1; min-width:0;">
+            <div style="display:flex; align-items:center; gap:7px;">
+              <span style="font-weight:600; font-size:15px; letter-spacing:-0.2px;">Minichic Warehouse</span>
+              <span style="display:inline-flex; align-items:center; gap:3px; padding:3px 8px; border-radius:99px; font-size:9px; font-weight:600; background:#1b1e15; color:#d9f450;">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+                VERIFIED
+              </span>
+            </div>
+            <div style="font-size:12px; color:rgba(27,30,21,0.55);">Supplier ID: SUP-0412</div>
+          </div>
+          <div style="width:40px; height:40px; border-radius:99px; background:rgba(255,255,255,0.75); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;" style-active="transform:scale(0.94)">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1b1e15" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"></path></svg>
+          </div>
+        </div>
+
+        <div style="margin:18px 2px 0; position:relative; z-index:40;">
+          <div onClick="{{ toggleRange }}" style="display:inline-flex; align-items:center; gap:5px; cursor:pointer;" style-active="transform:scale(0.97)">
+            <span style="font-size:12px; font-weight:600; color:rgba(27,30,21,0.55);">{{ rangeLabel }}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(27,30,21,0.55)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+          </div>
+          <sc-if value="{{ rangeOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:22px; left:0; width:180px; padding:6px; border-radius:18px; background:#ffffff; border:1px solid rgba(27,30,21,0.08); box-shadow:0 14px 34px rgba(27,30,21,0.16); display:flex; flex-direction:column; gap:2px; animation:fadeUp .2s ease both; z-index:45;">
+              <sc-for list="{{ rangeOptions }}" as="r" hint-placeholder-count="6">
+                <div onClick="{{ r.pick }}" style="{{ r.style }}">{{ r.label }}</div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <div style="font-weight:500; font-size:26px; letter-spacing:-0.9px; line-height:1.2; margin-top:2px;">Good morning, Minichic</div>
+        </div>
+
+        <div style="display:flex; gap:8px; margin:14px 0 16px; overflow-x:auto;">
+          <div style="display:flex; align-items:baseline; gap:6px; padding:9px 14px; border-radius:99px; background:rgba(255,255,255,0.75); flex-shrink:0;"><span style="font-weight:600; font-size:14px;">148</span><span style="font-size:12px; color:rgba(27,30,21,0.5);">Products</span></div>
+          <div style="display:flex; align-items:baseline; gap:6px; padding:9px 14px; border-radius:99px; background:rgba(255,255,255,0.75); flex-shrink:0;"><span style="font-weight:600; font-size:14px;">36</span><span style="font-size:12px; color:rgba(27,30,21,0.5);">Merchants</span></div>
+          <div style="display:flex; align-items:baseline; gap:6px; padding:9px 14px; border-radius:99px; background:rgba(255,255,255,0.75); flex-shrink:0;"><span style="font-weight:600; font-size:14px;">Tk 4,82,300</span><span style="font-size:12px; color:rgba(27,30,21,0.5);">Sales</span></div>
+        </div>
+
+        <!-- Fulfillment highlight -->
+        <div onClick="{{ goOrders }}" style="padding:18px; border-radius:24px; cursor:pointer; background:#1b1e15; display:flex; align-items:center; gap:12px; box-shadow:0 12px 28px rgba(27,30,21,0.28);" style-active="transform:scale(0.98)">
+          <div style="flex:1; display:flex;">
+            <div style="flex:1;">
+              <div style="font-size:12px; font-weight:500; color:rgba(244,246,236,0.55);">To fulfill today</div>
+              <div style="font-size:30px; font-weight:500; letter-spacing:-1px; line-height:1.25; color:#d9f450;">14</div>
+            </div>
+            <div style="width:1px; background:rgba(244,246,236,0.14); margin:4px 16px;"></div>
+            <div style="flex:1.4;">
+              <div style="font-size:12px; font-weight:500; color:rgba(244,246,236,0.55);">Pending payout</div>
+              <div style="font-size:30px; font-weight:500; letter-spacing:-1px; line-height:1.25; color:#d9f450;">Tk 86,400</div>
+            </div>
+          </div>
+          <div style="width:38px; height:38px; border-radius:99px; background:#d9f450; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1b1e15" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg>
+          </div>
+        </div>
+
+      </div><!-- /brand hero -->
+
+      <!-- Pipeline -->
+      <div style="margin-top:14px; padding:18px; border-radius:24px; background:#fbfcf7; border:1px solid rgba(27,30,21,0.06);">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
+          <div style="font-size:13px; font-weight:600; color:#5c6150;">Fulfillment Pipeline</div>
+          <div onClick="{{ goOrders }}" style="font-size:11.5px; font-weight:600; color:#1b1e15; cursor:pointer; display:flex; align-items:center; gap:3px;">View all
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:8px;">
+          <sc-for list="{{ pipeline }}" as="st" hint-placeholder-count="4">
+            <div onClick="{{ st.open }}" style="{{ st.style }}">
+              <div style="{{ st.numStyle }}">{{ st.count }}</div>
+              <div style="font-size:10.5px; font-weight:600; margin-top:3px; line-height:1.25; color:inherit;">{{ st.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- Next pickups -->
+      <div style="margin-top:12px; padding:18px; border-radius:24px; background:#fbfcf7; border:1px solid rgba(27,30,21,0.06);">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+          <div style="font-size:13px; font-weight:600; color:#5c6150;">Next Courier Pickups</div>
+          <div style="font-size:11.5px; color:#8a8f7c;">Today</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <sc-for list="{{ pickups }}" as="pk" hint-placeholder-count="2">
+            <div style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:18px; background:#f2f4ea;">
+              <div style="width:42px; height:42px; border-radius:14px; background:#ffffff; border:1px solid rgba(27,30,21,0.07); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5c6150" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z"></path><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:13.5px; font-weight:600; letter-spacing:-0.2px;">{{ pk.courier }}</div>
+                <div style="font-size:11.5px; color:#8a8f7c;">{{ pk.parcels }} parcels &middot; {{ pk.zone }}</div>
+              </div>
+              <div style="{{ pk.timeStyle }}">{{ pk.time }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- Metrics -->
+      <div style="display:flex; align-items:baseline; justify-content:space-between; margin:20px 4px 10px;">
+        <div style="font-size:13px; font-weight:600; color:#5c6150;">Business Overview</div>
+        <div style="font-size:11.5px; color:#8a8f7c;">{{ rangeLabel }}</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div style="grid-column:span 2; padding:18px; border-radius:24px; background:#1b1e15; color:#f4f6ec; display:flex; align-items:center; justify-content:space-between;">
+          <div>
+            <div style="font-size:12px; color:rgba(244,246,236,0.55);">Total sales (via merchants)</div>
+            <div style="font-size:32px; font-weight:500; letter-spacing:-1.2px; line-height:1.2; color:#d9f450;">Tk 4,82,300</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:5px; padding:7px 12px; border-radius:99px; background:rgba(217,244,80,0.14);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#d9f450" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg>
+            <span style="font-size:12px; font-weight:600; color:#d9f450;">+14%</span>
+          </div>
+        </div>
+
+        <div style="padding:16px; border-radius:22px; background:#fbfcf7; border:1px solid rgba(27,30,21,0.06);">
+          <div style="font-size:12px; color:#8a8f7c;">Units sold</div>
+          <div style="font-size:22px; font-weight:500; letter-spacing:-0.8px; margin-top:3px;">1,240</div>
+          <div style="font-size:11px; color:#7a9a1e; margin-top:2px;">+118 this week</div>
+        </div>
+        <div style="padding:16px; border-radius:22px; background:#fbfcf7; border:1px solid rgba(27,30,21,0.06);">
+          <div style="font-size:12px; color:#8a8f7c;">Active merchants</div>
+          <div style="font-size:22px; font-weight:500; letter-spacing:-0.8px; margin-top:3px;">36</div>
+          <div style="font-size:11px; color:#7a9a1e; margin-top:2px;">+4 new</div>
+        </div>
+        <div style="padding:16px; border-radius:22px; background:#fbfcf7; border:1px solid rgba(27,30,21,0.06);">
+          <div style="font-size:12px; color:#8a8f7c;">Return rate</div>
+          <div style="font-size:22px; font-weight:500; letter-spacing:-0.8px; margin-top:3px;">2.1%</div>
+          <div style="font-size:11px; color:#7a9a1e; margin-top:2px;">0.4% lower</div>
+        </div>
+        <div style="padding:16px; border-radius:22px; background:#fbfcf7; border:1px solid rgba(27,30,21,0.06);">
+          <div style="font-size:12px; color:#8a8f7c;">Avg. handover time</div>
+          <div style="font-size:22px; font-weight:500; letter-spacing:-0.8px; margin-top:3px;">4.2 hrs</div>
+          <div style="font-size:11px; color:#8a8f7c; margin-top:2px;">Target: under 6 hrs</div>
+        </div>
+        <div style="padding:16px; border-radius:22px; background:#fbfcf7; border:1px solid rgba(27,30,21,0.06);">
+          <div style="font-size:12px; color:#8a8f7c;">Stock value</div>
+          <div style="font-size:22px; font-weight:500; letter-spacing:-0.8px; margin-top:3px;">Tk 8,64,000</div>
+          <div style="font-size:11px; color:#8a8f7c; margin-top:2px;">148 products</div>
+        </div>
+        <div style="padding:16px; border-radius:22px; background:#d9ddd0;">
+          <div style="font-size:12px; color:rgba(27,30,21,0.5);">Low stock alerts</div>
+          <div style="font-size:22px; font-weight:500; letter-spacing:-0.8px; margin-top:3px;">6 items</div>
+          <div style="font-size:11px; color:#a05e10; margin-top:2px;">Restock needed</div>
+        </div>
+      </div>
+
+      <!-- Top products -->
+      <div style="margin-top:12px; padding:18px; border-radius:24px; background:#fbfcf7; border:1px solid rgba(27,30,21,0.06);">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+          <div style="font-size:13px; font-weight:600; color:#5c6150;">Top Selling Products</div>
+          <div style="font-size:11.5px; color:#8a8f7c;">{{ rangeLabel }}</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <sc-for list="{{ topProducts }}" as="tp" hint-placeholder-count="3">
+            <div style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:18px; background:#f2f4ea;">
+              <div style="{{ tp.thumbStyle }}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(27,30,21,0.4)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"></path><path d="M12 13v8"></path></svg>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:13.5px; font-weight:600; letter-spacing:-0.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ tp.name }}</div>
+                <div style="font-size:11.5px; color:#8a8f7c;">{{ tp.merchants }} merchants selling</div>
+              </div>
+              <div style="display:flex; flex-direction:column; align-items:flex-end; flex-shrink:0;">
+                <div style="font-size:13.5px; font-weight:600; letter-spacing:-0.3px;">{{ tp.units }}</div>
+                <div style="font-size:11px; color:#a3a795;">units</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+    </div>
+  </sc-if>
+
+  <!-- ================= FULFILLMENT ORDERS ================= -->
+  <sc-if value="{{ isOrders }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1; overflow-y:auto; padding:18px 16px 96px; animation:fadeUp .35s ease both;" data-screen-label="Fulfillment Orders">
+
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <div onClick="{{ goHome }}" style="width:40px; height:40px; border-radius:99px; background:#ffffff; border:1px solid rgba(27,30,21,0.07); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;" style-active="transform:scale(0.94)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1b1e15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:500; font-size:19px; letter-spacing:-0.4px;">Fulfillment</div>
+          <div style="font-size:12px; color:#8a8f7c;">14 orders to process today</div>
+        </div>
+        <div style="width:40px; height:40px; border-radius:99px; background:#ffffff; border:1px solid rgba(27,30,21,0.07); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;" style-active="transform:scale(0.94)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1b1e15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; margin-bottom:12px;">
+        <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="4">
+          <div onClick="{{ chip.onClick }}" style="{{ chip.style }}">{{ chip.label }}</div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <sc-for list="{{ filteredOrders }}" as="order" hint-placeholder-count="5">
+          <div style="padding:14px; border-radius:22px; background:#fbfcf7; border:1px solid rgba(27,30,21,0.06);">
+            <div style="display:flex; align-items:flex-start; gap:12px;">
+              <div style="{{ order.thumbStyle }}">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(27,30,21,0.4)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"></path><path d="M12 13v8"></path></svg>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-weight:600; font-size:14.5px; letter-spacing:-0.2px; line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ order.product }}</div>
+                <div style="font-size:12px; color:#8a8f7c; margin-top:1px;">{{ order.merchant }} &middot; {{ order.dest }}</div>
+                <div style="display:flex; align-items:center; gap:6px; margin-top:8px; flex-wrap:wrap;">
+                  <div style="{{ order.statusStyle }}">{{ order.statusLabel }}</div>
+                  <div style="padding:4px 10px; border-radius:99px; font-size:10.5px; font-weight:600; background:#ffffff; border:1px solid rgba(27,30,21,0.12); color:#5c6150;">{{ order.qty }}</div>
+                </div>
+              </div>
+              <div style="display:flex; flex-direction:column; align-items:flex-end; flex-shrink:0;">
+                <div style="font-weight:600; font-size:16px; letter-spacing:-0.4px;">{{ order.amount }}</div>
+                <div style="font-size:11px; color:#a3a795; margin-top:1px;">{{ order.orderId }}</div>
+              </div>
+            </div>
+            <div style="font-size:11.5px; color:#a3a795; margin-top:10px;">{{ order.note }}</div>
+            <sc-if value="{{ order.showAction }}" hint-placeholder-val="{{ false }}">
+              <div onClick="{{ order.advance }}" style="margin-top:11px; padding:10px 0; border-radius:99px; background:#1b1e15; color:#d9f450; font-weight:600; font-size:13px; text-align:center; cursor:pointer;" style-active="transform:scale(0.97)">{{ order.actionLabel }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+    </div>
+  </sc-if>
+
+  <!-- ================= PRODUCTS ================= -->
+  <sc-if value="{{ isProducts }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1; overflow-y:auto; padding:18px 16px 96px; animation:fadeUp .35s ease both;" data-screen-label="Supplier Products">
+
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+        <div style="flex:1;">
+          <div style="font-weight:500; font-size:22px; letter-spacing:-0.6px;">Products</div>
+          <div style="font-size:12px; color:#8a8f7c;">{{ productCount }}</div>
+        </div>
+        <div onClick="{{ navSoon }}" style="display:flex; align-items:center; gap:6px; padding:11px 18px; border-radius:99px; background:#1b1e15; color:#d9f450; font-weight:600; font-size:13.5px; cursor:pointer;" style-active="transform:scale(0.96)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Add
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:9px; padding:12px 15px; border-radius:99px; background:#ffffff; border:1px solid rgba(27,30,21,0.07); margin-bottom:12px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a3a795" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+        <input placeholder="Search products..." style="border:none; background:transparent; outline:none; flex:1; font-family:'Hanken Grotesk',sans-serif; font-size:13.5px; color:#1b1e15; padding:0;">
+      </div>
+
+      <div style="display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; margin-bottom:12px;">
+        <sc-for list="{{ pchips }}" as="chip" hint-placeholder-count="4">
+          <div onClick="{{ chip.onClick }}" style="{{ chip.style }}">{{ chip.label }}</div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <sc-for list="{{ filteredProducts }}" as="p" hint-placeholder-count="4">
+          <div style="padding:16px; border-radius:24px; background:#fbfcf7; border:1px solid rgba(27,30,21,0.06);">
+            <div style="display:flex; align-items:flex-start; gap:12px;">
+              <div style="{{ p.thumbStyle }}">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(27,30,21,0.4)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"></path><path d="M12 13v8"></path></svg>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="display:flex; align-items:flex-start; gap:8px;">
+                  <div style="flex:1; min-width:0; font-weight:600; font-size:14.5px; letter-spacing:-0.2px; line-height:1.3;">{{ p.name }}</div>
+                  <div style="{{ p.statusStyle }}">{{ p.statusLabel }}</div>
+                </div>
+                <div style="font-size:11px; color:#a3a795; margin-top:2px;">SKU: {{ p.sku }}</div>
+                <div style="display:flex; gap:18px; margin-top:10px;">
+                  <div><div style="font-size:9px; letter-spacing:0.8px; color:#a3a795; font-weight:600;">WHOLESALE</div><div style="font-size:13px; font-weight:600; margin-top:1px;">{{ p.wholesale }}</div></div>
+                  <div><div style="font-size:9px; letter-spacing:0.8px; color:#a3a795; font-weight:600;">SUGGESTED</div><div style="font-size:13px; font-weight:600; margin-top:1px;">{{ p.suggested }}</div></div>
+                  <div><div style="font-size:9px; letter-spacing:0.8px; color:#a3a795; font-weight:600;">CATEGORY</div><div style="font-size:13px; font-weight:600; margin-top:1px;">{{ p.category }}</div></div>
+                </div>
+                <div style="margin-top:7px;"><span style="{{ p.stockStyle }}">{{ p.stockLine }}</span></div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; border-top:1px solid rgba(27,30,21,0.07); margin-top:12px; padding-top:11px;">
+              <div onClick="{{ navSoon }}" style="display:flex; align-items:center; gap:6px; padding:8px 15px; border-radius:99px; background:#ffffff; border:1px solid rgba(27,30,21,0.12); font-weight:600; font-size:12.5px; cursor:pointer;" style-active="transform:scale(0.96)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>Preview
+              </div>
+              <div style="padding:4px 10px; border-radius:99px; font-size:10px; font-weight:600; letter-spacing:0.6px; background:#e8e3f0; color:#5c5170;">{{ p.merchantsLabel }}</div>
+              <div style="flex:1;"></div>
+              <div onClick="{{ navSoon }}" style="width:34px; height:34px; border-radius:12px; background:#f2f4ea; display:flex; align-items:center; justify-content:center; cursor:pointer;" style-active="transform:scale(0.92)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="#5c6150"><circle cx="12" cy="5" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="12" cy="19" r="1.8"></circle></svg>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+    </div>
+  </sc-if>
+
+  <!-- ================= MENU ================= -->
+  <sc-if value="{{ isMenu }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1; overflow-y:auto; padding:18px 16px 96px; animation:fadeUp .35s ease both;" data-screen-label="Menu">
+      <div style="font-weight:500; font-size:22px; letter-spacing:-0.6px; margin-bottom:12px;">Menu</div>
+      <div style="display:flex; align-items:center; gap:9px; padding:12px 15px; border-radius:99px; background:#ffffff; border:1px solid rgba(27,30,21,0.07);">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a3a795" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+        <input placeholder="Search menu..." style="border:none; background:transparent; outline:none; flex:1; font-family:'Hanken Grotesk',sans-serif; font-size:13.5px; color:#1b1e15; padding:0;">
+      </div>
+      <sc-for list="{{ menuSections }}" as="sec" hint-placeholder-count="3">
+        <div style="font-size:10px; letter-spacing:1px; color:#a3a795; font-weight:600; margin:18px 4px 8px;">{{ sec.title }}</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <sc-for list="{{ sec.items }}" as="mi" hint-placeholder-count="4">
+            <div onClick="{{ mi.go }}" style="display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:18px; background:#fbfcf7; border:1px solid rgba(27,30,21,0.06); cursor:pointer;" style-active="transform:scale(0.985)">
+              <div style="width:42px; height:42px; border-radius:99px; background:#d9f450; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <span dangerouslySetInnerHTML="{{ mi.icon }}" style="display:flex; align-items:center; justify-content:center;"></span>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-weight:600; font-size:14px; letter-spacing:-0.2px;">{{ mi.label }}</div>
+                <div style="font-size:11.5px; color:#8a8f7c;">{{ mi.sub }}</div>
+              </div>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1b1e15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- ================= TOAST ================= -->
+  <sc-if value="{{ toastVisible }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute; left:50%; bottom:104px; transform:translateX(-50%); z-index:60; padding:11px 18px; border-radius:99px; background:#1b1e15; font-size:13px; font-weight:500; color:#f4f6ec; white-space:nowrap; box-shadow:0 12px 30px rgba(27,30,21,0.3); animation:toastIn .3s ease both;">{{ toastText }}</div>
+  </sc-if>
+
+  <!-- ================= BOTTOM NAV ================= -->
+  <div style="position:absolute; left:14px; right:14px; bottom:calc(12px + env(safe-area-inset-bottom)); display:flex; padding:7px; border-radius:99px; background:linear-gradient(135deg, rgba(255,255,255,0.78), rgba(240,247,205,0.62)); backdrop-filter:blur(24px) saturate(1.4); box-shadow:0 12px 34px rgba(27,30,21,0.14), 0 2px 8px rgba(27,30,21,0.06), inset 0 1px 0 rgba(255,255,255,0.85); border:1px solid rgba(255,255,255,0.65); z-index:50;">
+    <div onClick="{{ goHome }}" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:7px 0; cursor:pointer; border-radius:99px;">
+      <div style="{{ navHomeStyle }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1z"></path></svg>
+      <div style="font-size:10.5px; font-weight:600;">Home</div></div>
+    </div>
+    <div onClick="{{ goOrders }}" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:7px 0; cursor:pointer; border-radius:99px; position:relative;">
+      <div style="{{ navOrdersStyle }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1.5 13.5a1 1 0 01-1 1.1H5.5a1 1 0 01-1-1.1zM8.5 9.5V6a3.5 3.5 0 017 0v3.5"></path></svg>
+      <div style="font-size:10.5px; font-weight:600;">Fulfill</div></div>
+      <div style="position:absolute; top:2px; right:20px; min-width:17px; height:17px; border-radius:99px; background:#1b1e15; color:#d9f450; font-size:10px; font-weight:600; display:flex; align-items:center; justify-content:center; padding:0 4px;">14</div>
+    </div>
+    <div onClick="{{ goProducts }}" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:7px 0; cursor:pointer; border-radius:99px;">
+      <div style="{{ navProductsStyle }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 9.2l-1.2-4.5a1.5 1.5 0 00-1.4-1.2H6a1.5 1.5 0 00-1.4 1.2L3.4 9.2a2.6 2.6 0 002.5 3.3 2.7 2.7 0 002.1-1 2.7 2.7 0 004.1 0 2.7 2.7 0 004.1 0 2.7 2.7 0 002.1 1 2.6 2.6 0 002.4-3.3zM5 12.5V19a1.5 1.5 0 001.5 1.5h11A1.5 1.5 0 0019 19v-6.5"></path></svg>
+      <div style="font-size:10.5px; font-weight:600;">Products</div></div>
+    </div>
+    <div onClick="{{ navSoon }}" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:7px 0; cursor:pointer; border-radius:99px;">
+      <div style="color:#a3a795; display:flex; flex-direction:column; align-items:center; gap:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"></rect><path d="M2 10h20M6 15h4"></path></svg>
+      <div style="font-size:10.5px; font-weight:600;">Payouts</div></div>
+    </div>
+    <div onClick="{{ goMenu }}" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:7px 0; cursor:pointer; border-radius:99px;">
+      <div style="{{ navMenuStyle }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      <div style="font-size:10.5px; font-weight:600;">Menu</div></div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 400, &quot;height&quot;: 860 },
+  &quot;showSplash&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;App&quot; }
+}">
+class Component extends DCLogic {
+  state = {
+    screen: 'home',
+    filter: 'all',
+    advanced: {},
+    toast: null,
+    range: 'Today',
+    rangeOpen: false,
+    pfilter: 'all',
+  };
+
+  PRODUCTS = [
+    { sku: 'MC-1101', name: 'France National Team Home Jersey 2022', wholesale: 'Tk 720', suggested: 'Tk 1,100+', category: 'Sports', stock: 320, status: 'active', thumb: '#ece5d3', merchants: 14 },
+    { sku: 'MC-1102', name: 'Germany National Team Jersey White', wholesale: 'Tk 850', suggested: 'Tk 1,200+', category: 'Sports', stock: 210, status: 'active', thumb: '#f0e3e0', merchants: 9 },
+    { sku: 'MC-0904', name: 'Wireless Earbuds Pro', wholesale: 'Tk 540', suggested: 'Tk 900+', category: 'Gadgets', stock: 8, status: 'active', thumb: '#e8e3f0', merchants: 11 },
+    { sku: 'MC-0722', name: '3-pc Bedsheet Set', wholesale: 'Tk 1,480', suggested: 'Tk 2,200+', category: 'Home', stock: 96, status: 'active', thumb: '#dfe9e3', merchants: 9 },
+    { sku: 'MC-0651', name: 'Smart Watch M6', wholesale: 'Tk 610', suggested: 'Tk 950+', category: 'Gadgets', stock: 0, status: 'out', thumb: '#e6e9dc', merchants: 7 },
+    { sku: 'MC-1214', name: 'Silk Saree — Maroon', wholesale: 'Tk 2,150', suggested: 'Tk 3,000+', category: 'Fashion', stock: 44, status: 'draft', thumb: '#f2e9d8', merchants: 0 },
+  ];
+
+  ORDERS = [
+    { id: 'DK-4821', product: 'France National Team Home Jersey 2022', merchant: 'Nila Fashion House', dest: 'Dhaka, Mirpur', amount: 'Tk 720', qty: '2 pcs', cat: 'new', thumb: '#ece5d3', note: 'Received 25 min ago' },
+    { id: 'DK-4820', product: 'Germany National Team Jersey White', merchant: 'StyleBox BD', dest: 'Chattogram, Agrabad', amount: 'Tk 850', qty: '1 pc', cat: 'new', thumb: '#f0e3e0', note: 'Received 1 hour ago' },
+    { id: 'DK-4819', product: 'Wireless Earbuds Pro', merchant: 'Gadget Duniya', dest: 'Dhaka, Uttara', amount: 'Tk 540', qty: '1 pc', cat: 'new', thumb: '#e8e3f0', note: 'Received 2 hours ago' },
+    { id: 'DK-4815', product: '3-pc Bedsheet Set', merchant: 'Nila Fashion House', dest: 'Sylhet, Zindabazar', amount: 'Tk 1,480', qty: '1 set', cat: 'packing', thumb: '#dfe9e3', note: 'Packing since 10:20 AM' },
+    { id: 'DK-4812', product: 'Smart Watch M6', merchant: 'Gadget Duniya', dest: 'Khulna, Sonadanga', amount: 'Tk 610', qty: '1 pc', cat: 'packing', thumb: '#e6e9dc', note: 'Fragile — bubble wrap needed' },
+    { id: 'DK-4808', product: 'Silk Saree — Maroon', merchant: 'Rupkotha Store', dest: 'Rajshahi, Boalia', amount: 'Tk 2,150', qty: '1 pc', cat: 'ready', thumb: '#f2e9d8', note: 'Pathao pickup at 3:00 PM' },
+    { id: 'DK-4805', product: 'Kids Dress Set (3-5y)', merchant: 'Nila Fashion House', dest: 'Barishal Sadar', amount: 'Tk 680', qty: '2 pcs', cat: 'ready', thumb: '#dfe9e3', note: 'Steadfast pickup at 4:30 PM' },
+    { id: 'DK-4799', product: 'Casual Sneakers 42', merchant: 'StyleBox BD', dest: 'Dhaka, Dhanmondi', amount: 'Tk 1,050', qty: '1 pair', cat: 'handed', thumb: '#e5e5e5', note: 'Handed to RedX at 11:40 AM' },
+  ];
+
+  STATUS = {
+    new: { label: 'New', bg: '#d9f450', fg: '#1b1e15', action: 'Start packing', next: 'packing' },
+    packing: { label: 'Packing', bg: '#e6e9dc', fg: '#4a5040', action: 'Mark ready for pickup', next: 'ready' },
+    ready: { label: 'Ready for pickup', bg: '#fce8cc', fg: '#a05e10', action: 'Hand over to courier', next: 'handed' },
+    handed: { label: 'Handed over', bg: '#1b1e15', fg: '#d9f450', action: null, next: null },
+  };
+
+  showToast(text) {
+    clearTimeout(this._toastTimer);
+    this.setState({ toast: text });
+    this._toastTimer = setTimeout(() => this.setState({ toast: null }), 2200);
+  }
+
+  catOf(o) {
+    return this.state.advanced[o.id] || o.cat;
+  }
+
+  renderVals() {
+    const s = this.state;
+
+    const counts = { new: 0, packing: 0, ready: 0, handed: 0 };
+    this.ORDERS.forEach(o => { counts[this.catOf(o)]++; });
+
+    const pipeMeta = [
+      { key: 'new', label: 'New' },
+      { key: 'packing', label: 'Packing' },
+      { key: 'ready', label: 'Ready' },
+      { key: 'handed', label: 'Handed over' },
+    ];
+    const pipeline = pipeMeta.map((p, i) => {
+      const dark = p.key === 'new';
+      return {
+        label: p.label,
+        count: String(counts[p.key]).padStart(2, '0'),
+        style: {
+          padding: '12px 10px', borderRadius: '18px', cursor: 'pointer', textAlign: 'center',
+          background: dark ? '#1b1e15' : '#f2f4ea',
+          color: dark ? '#f4f6ec' : '#5c6150',
+        },
+        numStyle: { fontSize: '22px', fontWeight: 500, letterSpacing: '-0.8px', lineHeight: 1.1, color: dark ? '#d9f450' : '#1b1e15' },
+        open: () => this.setState({ screen: 'orders', filter: p.key }),
+      };
+    });
+
+    const pickups = [
+      { courier: 'Pathao Courier', parcels: 6, zone: 'Dhaka zone', time: '3:00 PM', hot: true },
+      { courier: 'Steadfast', parcels: 5, zone: 'Outside Dhaka', time: '4:30 PM', hot: false },
+      { courier: 'RedX', parcels: 3, zone: 'Chattogram', time: '5:15 PM', hot: false },
+    ].map(pk => ({
+      ...pk,
+      timeStyle: {
+        padding: '6px 12px', borderRadius: '99px', fontSize: '11.5px', fontWeight: 600, flexShrink: 0,
+        background: pk.hot ? '#d9f450' : '#ffffff',
+        border: pk.hot ? 'none' : '1px solid rgba(27,30,21,0.1)',
+        color: '#1b1e15',
+      },
+    }));
+
+    const topProducts = [
+      { name: 'France National Team Home Jersey 2022', merchants: 14, units: 320, thumb: '#ece5d3' },
+      { name: 'Wireless Earbuds Pro', merchants: 11, units: 265, thumb: '#e8e3f0' },
+      { name: '3-pc Bedsheet Set', merchants: 9, units: 198, thumb: '#dfe9e3' },
+    ].map(tp => ({
+      ...tp,
+      thumbStyle: { width: '42px', height: '42px', borderRadius: '13px', background: tp.thumb, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
+    }));
+
+    const chipBase = {
+      padding: '8px 15px', borderRadius: '99px', fontSize: '12.5px', fontWeight: 600,
+      whiteSpace: 'nowrap', cursor: 'pointer', flexShrink: 0,
+      background: '#ffffff', border: '1px solid rgba(27,30,21,0.08)', color: '#5c6150',
+    };
+    const chipActive = { ...chipBase, background: '#1b1e15', border: '1px solid #1b1e15', color: '#f4f6ec' };
+
+    const cats = [
+      { key: 'all', label: 'All' },
+      { key: 'new', label: 'New' },
+      { key: 'packing', label: 'Packing' },
+      { key: 'ready', label: 'Ready' },
+      { key: 'handed', label: 'Handed over' },
+    ];
+    const chips = cats.map(c => {
+      const count = c.key === 'all' ? this.ORDERS.length : counts[c.key];
+      return {
+        label: c.label + ' (' + count + ')',
+        style: s.filter === c.key ? chipActive : chipBase,
+        onClick: () => this.setState({ filter: c.key }),
+      };
+    });
+
+    const filteredOrders = this.ORDERS
+      .filter(o => s.filter === 'all' || this.catOf(o) === s.filter)
+      .map(o => {
+        const cat = this.catOf(o);
+        const st = this.STATUS[cat];
+        return {
+          ...o,
+          orderId: o.id,
+          statusLabel: st.label,
+          statusStyle: {
+            padding: '4px 10px', borderRadius: '99px', fontSize: '10.5px', fontWeight: 600,
+            background: st.bg, color: st.fg, flexShrink: 0,
+          },
+          thumbStyle: {
+            width: '46px', height: '46px', borderRadius: '15px', background: o.thumb,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+          },
+          showAction: !!st.action,
+          actionLabel: st.action || '',
+          advance: () => {
+            this.setState(prev => ({ advanced: { ...prev.advanced, [o.id]: st.next } }));
+            const msgs = { packing: 'Moved to Packing', ready: 'Marked ready — courier notified', handed: 'Handed over — merchant updated' };
+            this.showToast(msgs[st.next] || 'Updated');
+          },
+        };
+      });
+
+    const rangeItemBase = { padding: '9px 13px', borderRadius: '13px', fontSize: '13px', fontWeight: 500, cursor: 'pointer', color: '#5c6150' };
+    const rangeOptions = ['Today', 'Yesterday', 'Last 7 days', 'Last 30 days', 'Last 90 days', 'Lifetime'].map(r => ({
+      label: r,
+      style: s.range === r ? { ...rangeItemBase, background: '#1b1e15', color: '#f4f6ec', fontWeight: 600 } : rangeItemBase,
+      pick: () => this.setState({ range: r, rangeOpen: false }),
+    }));
+
+    const navOn = { color: '#1b1e15', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' };
+    const navOff = { color: '#a3a795', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' };
+
+    // ---- Products page ----
+    const PSTATUS = {
+      active: { label: 'Active', bg: '#d9f450', fg: '#1b1e15' },
+      draft: { label: 'Draft', bg: '#e6e9dc', fg: '#4a5040' },
+      out: { label: 'Out of stock', bg: '#fce8cc', fg: '#a05e10' },
+    };
+    const pcats = [
+      { key: 'all', label: 'All' },
+      { key: 'active', label: 'Active' },
+      { key: 'draft', label: 'Draft' },
+      { key: 'out', label: 'Out of stock' },
+    ];
+    const pchips = pcats.map(c => {
+      const count = c.key === 'all' ? this.PRODUCTS.length : this.PRODUCTS.filter(p => p.status === c.key).length;
+      return {
+        label: c.label + ' (' + count + ')',
+        style: s.pfilter === c.key ? chipActive : chipBase,
+        onClick: () => this.setState({ pfilter: c.key }),
+      };
+    });
+    const filteredProducts = this.PRODUCTS
+      .filter(p => s.pfilter === 'all' || p.status === s.pfilter)
+      .map(p => {
+        const st = PSTATUS[p.status];
+        const low = p.stock > 0 && p.stock <= 10;
+        return {
+          ...p,
+          statusLabel: st.label,
+          statusStyle: { padding: '4px 10px', borderRadius: '99px', fontSize: '10.5px', fontWeight: 600, background: st.bg, color: st.fg, flexShrink: 0 },
+          thumbStyle: { width: '54px', height: '54px', borderRadius: '16px', background: p.thumb, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
+          stockLine: p.stock === 0 ? 'Out of stock' : (low ? 'Low stock — ' + p.stock + ' pcs left' : p.stock + ' pcs in stock'),
+          stockStyle: { fontSize: '11.5px', fontWeight: 600, color: p.stock === 0 ? '#a05e10' : (low ? '#a05e10' : '#7a9a1e') },
+          merchantsLabel: p.merchants + ' MERCHANTS',
+        };
+      });
+
+    // ---- Menu page ----
+    const ic = svg => ({ __html: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1b1e15" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + svg + '</svg>' });
+    const go = screen => () => this.setState({ screen });
+    const soon = () => this.showToast('This section is coming soon in the prototype');
+    const menuSections = [
+      { title: 'DAILY OPERATIONS', items: [
+        { label: 'Dashboard', sub: 'Sales, payouts, pipeline', icon: ic('<rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect>'), go: go('home') },
+        { label: 'Fulfillment', sub: 'Pack & hand over orders', icon: ic('<path d="M6 7h12l1.5 13.5a1 1 0 01-1 1.1H5.5a1 1 0 01-1-1.1zM8.5 9.5V6a3.5 3.5 0 017 0v3.5"></path>'), go: go('orders') },
+        { label: 'Products', sub: 'Catalog listings & pricing', icon: ic('<path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"></path><path d="M12 13v8"></path>'), go: go('products') },
+        { label: 'Inventory', sub: 'Stock levels & adjustments', icon: ic('<path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6"></path>'), go: soon },
+      ]},
+      { title: 'LOGISTICS', items: [
+        { label: 'Courier Pickups', sub: 'Pathao, Steadfast, RedX', icon: ic('<path d="M1 4h14v12H1zM15 8h4l3 3v5h-7V8z"></path><circle cx="5.5" cy="18.5" r="2.2"></circle><circle cx="18.5" cy="18.5" r="2.2"></circle>'), go: soon },
+        { label: 'Returns', sub: 'Returned parcels', icon: ic('<path d="M9 14l-5-5 5-5"></path><path d="M4 9h10a6 6 0 016 6v0a6 6 0 01-6 6h-3"></path>'), go: soon },
+      ]},
+      { title: 'MONEY', items: [
+        { label: 'Payouts', sub: 'Pending & paid settlements', icon: ic('<rect x="2" y="5" width="20" height="14" rx="3"></rect><path d="M2 10h20M6 15h4"></path>'), go: soon },
+        { label: 'Statements', sub: 'Monthly sales reports', icon: ic('<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><path d="M14 2v6h6M9 13h6M9 17h6"></path>'), go: soon },
+      ]},
+      { title: 'GENERAL', items: [
+        { label: 'Merchants', sub: 'Who sells your products', icon: ic('<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path>'), go: soon },
+        { label: 'Support', sub: 'Talk to Dakio team', icon: ic('<path d="M21 11.5a8.38 8.38 0 01-8.5 8.5 8.5 8.5 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 018.5-8.5 8.38 8.38 0 018.5 8.5z"></path>'), go: soon },
+        { label: 'Settings', sub: 'Warehouse profile & users', icon: ic('<circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33h0a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51h0a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82v0a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"></path>'), go: soon },
+      ]},
+    ];
+
+    return {
+      isProducts: s.screen === 'products',
+      isMenu: s.screen === 'menu',
+      goProducts: () => this.setState({ screen: 'products' }),
+      goMenu: () => this.setState({ screen: 'menu' }),
+      navProductsStyle: s.screen === 'products' ? navOn : navOff,
+      navMenuStyle: s.screen === 'menu' ? navOn : navOff,
+      productCount: this.PRODUCTS.length + ' products listed',
+      pchips,
+      filteredProducts,
+      menuSections,
+      showSplash: this.props.showSplash ?? true,
+      isHome: s.screen === 'home',
+      isOrders: s.screen === 'orders',
+      goHome: () => this.setState({ screen: 'home' }),
+      goOrders: () => this.setState({ screen: 'orders' }),
+      navSoon: () => this.showToast('This section is coming soon in the prototype'),
+      pipeline,
+      pickups,
+      topProducts,
+      chips,
+      filteredOrders,
+      rangeLabel: s.range,
+      rangeOpen: s.rangeOpen,
+      toggleRange: () => this.setState(prev => ({ rangeOpen: !prev.rangeOpen })),
+      rangeOptions,
+      toastVisible: !!s.toast,
+      toastText: s.toast,
+      navHomeStyle: s.screen === 'home' ? navOn : navOff,
+      navOrdersStyle: s.screen === 'orders' ? navOn : navOff,
+    };
+  }
+}
+</script>
+</body>
+</html>

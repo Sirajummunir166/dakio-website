@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/tokens/tokens.css">
+  <script src="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/_ds_bundle.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; background:#F4F2EA; }
+    a { color:inherit; text-decoration:none; }
+    a:hover { color:inherit; }
+    @keyframes heroUp { 0% { opacity:0; transform:translateY(18px); } 100% { opacity:1; transform:translateY(0); } }
+    @keyframes orbitcw { to { transform:rotate(360deg); } }
+    @keyframes pulseRing { 0% { box-shadow:0 0 0 0 rgba(198,240,53,0.4); } 70% { box-shadow:0 0 0 14px rgba(198,240,53,0); } 100% { box-shadow:0 0 0 0 rgba(198,240,53,0); } }
+  </style>
+</helmet>
+
+<div style="font-family:var(--dk-font-sans), 'Noto Sans Bengali', sans-serif; color:#1A1D12; background:#F4F2EA; overflow-x:hidden;" data-screen-label="Store Studio Page">
+
+  <dc-import name="SiteNav" active="store-studio" cta-href="Dakio Store Studio.dc.html" cta-label="Open Store Studio" hint-size="100%,58px" style="position:sticky; top:0; z-index:60;"></dc-import>
+
+  <!-- HERO -->
+  <div style="max-width:1200px; margin:0 auto; padding:64px 28px 36px; text-align:center;">
+    <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:99px; background:rgba(198,240,53,0.35); border:1px solid rgba(26,29,18,0.1); font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.12em; color:#3E7A45; animation:heroUp .6s ease both;">STORE STUDIO · THIS IS THE REAL BUILDER, LIVE</div>
+    <h1 style="margin:20px auto 0; font-size:62px; line-height:1.03; letter-spacing:-2.5px; font-weight:800; max-width:720px; animation:heroUp .6s .08s ease both;">Don't read about it.<br><span style="position:relative; white-space:nowrap;">Design<span style="position:absolute; left:0; right:0; bottom:6px; height:14px; background:#C6F035; z-index:-1; border-radius:3px;"></span></span>.</h1>
+    <p style="margin:18px auto 0; font-size:16px; line-height:1.6; color:#6B6D60; max-width:460px; animation:heroUp .6s .16s ease both;">Below is Store Studio itself — theme it, edit the headlines, reorder sections, flip it dark. You can't break anything; Undo is right there.</p>
+  </div>
+
+  <!-- LIVE BUILDER EMBED -->
+  <div style="max-width:1310px; margin:0 auto; padding:0 20px;">
+    <div style="border-radius:26px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.1); box-shadow:0 40px 90px rgba(26,29,18,0.2); overflow:hidden; animation:heroUp .7s .22s ease both;">
+      <div style="display:flex; align-items:center; gap:6px; padding:12px 18px; border-bottom:1px solid rgba(26,29,18,0.07); background:#ffffff;">
+        <span style="width:9px; height:9px; border-radius:99px; background:#1A1D12; opacity:0.85;"></span>
+        <span style="width:9px; height:9px; border-radius:99px; background:#1A1D12; opacity:0.35;"></span>
+        <span style="width:9px; height:9px; border-radius:99px; background:#1A1D12; opacity:0.15;"></span>
+        <div style="margin-left:14px; padding:4px 14px; border-radius:99px; background:#E8E6DA; font-size:10px; color:#6B6D60; font-weight:600;">app.dakio.io/studio — Shahrqee (demo store)</div>
+        <div style="margin-left:auto; display:inline-flex; align-items:center; gap:7px; font-family:'IBM Plex Mono',monospace; font-size:8.5px; letter-spacing:0.1em; color:#3E7A45;">
+          <span style="width:7px; height:7px; border-radius:99px; background:#3E7A45; animation:pulseRing 2.2s infinite;"></span>LIVE — GO AHEAD, CLICK THINGS
+        </div>
+      </div>
+      <div style="{{ frameOuter }}">
+        <div style="{{ frameInner }}">
+          <iframe src="Dakio Store Studio.dc.html" title="Store Studio — live" style="{{ frameStyle }}"></iframe>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:18px; flex-wrap:wrap;">
+      <sc-for list="{{ tryChips }}" as="tc" hint-placeholder-count="5">
+        <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 15px; border-radius:99px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.1); font-size:12px; font-weight:700;">
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.08em; color:#3E7A45;">TRY</span>{{ tc.t }}
+        </span>
+      </sc-for>
+      <a href="Dakio Store Studio.dc.html" style="display:inline-flex; align-items:center; gap:7px; padding:8px 16px; border-radius:99px; background:#1A1D12; color:#C6F035; font-size:12px; font-weight:700;" style-hover="transform:translateY(-1px)">Full screen <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></a>
+    </div>
+  </div>
+
+  <!-- WHAT YOU JUST USED -->
+  <div style="max-width:1200px; margin:0 auto; padding:88px 28px 20px; text-align:center;">
+    <div data-reveal>
+      <h2 style="margin:0 auto; font-size:44px; line-height:1.06; letter-spacing:-1.7px; font-weight:800; max-width:640px;">Everything you just touched ships with every store.</h2>
+    </div>
+    <div data-reveal style="display:flex; flex-wrap:wrap; justify-content:center; gap:9px; margin-top:28px; max-width:840px; margin-left:auto; margin-right:auto;">
+      <sc-for list="{{ feats }}" as="f" hint-placeholder-count="8">
+        <span style="padding:10px 17px; border-radius:99px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.09); font-size:13px; font-weight:700;">{{ f.t }}</span>
+      </sc-for>
+    </div>
+    <div data-reveal style="margin-top:20px; font-size:13px; color:#6B6D60;">No developer, no theme marketplace, no publish anxiety — the canvas is the store.</div>
+  </div>
+
+  <!-- CTA -->
+  <div id="cta" style="max-width:1200px; margin:70px auto 0; padding:0 20px 60px;">
+    <div data-reveal style="border-radius:36px; background:#C6F035; padding:72px 40px; text-align:center; position:relative; overflow:hidden;">
+      <div style="position:absolute; left:50%; top:-160px; transform:translateX(-50%); width:520px; height:520px; border-radius:50%; border:1px dashed rgba(26,29,18,0.2); animation:orbitcw 50s linear infinite;"></div>
+      <h2 style="position:relative; margin:0 auto; font-size:56px; line-height:1.03; letter-spacing:-2.3px; font-weight:800; max-width:700px;">Liked the demo store?<br>Make yours.</h2>
+      <div style="position:relative; display:flex; justify-content:center; gap:12px; margin-top:32px;">
+        <a href="#" style="display:inline-flex; align-items:center; gap:9px; padding:16px 30px; border-radius:99px; background:#1A1D12; color:#C6F035; font-size:15.5px; font-weight:700;" style-hover="transform:translateY(-2px)">
+          <span style="width:8px; height:8px; border-radius:99px; background:#C6F035; animation:pulseRing 2.2s infinite;"></span>Start free — no card</a>
+        <a href="Dakio Home.dc.html" style="display:inline-flex; align-items:center; padding:16px 26px; border-radius:99px; border:1.5px solid rgba(26,29,18,0.35); color:#1A1D12; font-size:15.5px; font-weight:700;" style-hover="background:rgba(26,29,18,0.08)">Back to Dakio</a>
+      </div>
+      <div style="position:relative; margin-top:20px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.14em; color:rgba(26,29,18,0.6);">LIVE CANVAS · THEME GALLERY · বাংলা FONTS · EVERYTHING UNDOABLE</div>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;builderZoom&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.88,&quot;min&quot;:0.6,&quot;max&quot;:1,&quot;step&quot;:0.02,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Embed&quot;},&quot;frameHeight&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:720,&quot;min&quot;:480,&quot;max&quot;:1000,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Embed&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const els = this.el ? this.el.querySelectorAll('[data-reveal]') : document.querySelectorAll('[data-reveal]');
+    els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(22px)'; el.style.transition = 'opacity .7s ease, transform .7s ease'; });
+    const reveal = (el, animate) => { if (!animate) el.style.transition = 'none'; el.style.opacity = '1'; el.style.transform = 'translateY(0)'; el.dataset.revealed = '1'; };
+    const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < (window.innerHeight || 800); };
+    els.forEach(el => { if (inView(el)) reveal(el, false); });
+    this._io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { reveal(e.target, true); this._io.unobserve(e.target); } }); }, { threshold: 0.14 });
+    els.forEach(el => { if (!el.dataset.revealed) this._io.observe(el); });
+    const onScroll = () => { els.forEach(el => { if (!el.dataset.revealed && inView(el)) reveal(el, true); }); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    setTimeout(onScroll, 1200);
+  }
+  renderVals() {
+    const zoom = this.props.builderZoom ?? 0.88;
+    const baseW = 1440, viewH = this.props.frameHeight ?? 720;
+    return {
+      frameOuter: 'width:100%; height:' + viewH + 'px; overflow:hidden; background:#eff1e9;',
+      frameInner: 'width:' + baseW + 'px; height:' + Math.ceil(viewH / zoom) + 'px; transform:scale(' + zoom + '); transform-origin:top left;',
+      frameStyle: 'width:' + baseW + 'px; height:' + Math.ceil(viewH / zoom) + 'px; border:none; display:block;',
+      tryChips: [
+        { t: 'Theme tab → tap a gallery look' }, { t: 'Click a headline & type' },
+        { t: 'Flip dark storefront on' }, { t: 'Switch to mobile preview' }, { t: 'Then hit Undo' }],
+      feats: [
+        { t: 'Theme Studio' }, { t: 'Theme gallery' }, { t: 'বাংলা font packs' }, { t: 'Dark storefront' },
+        { t: '14 section types' }, { t: 'Inline editing' }, { t: 'Mobile control' }, { t: 'Undo & versions' }],
+    };
+  }
+}
+</script>
+</body>
+</html>

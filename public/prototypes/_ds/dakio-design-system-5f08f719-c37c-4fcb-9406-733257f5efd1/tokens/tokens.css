@@ -1,0 +1,86 @@
+/* Dakio design tokens — v3 (Dak Stamp + plain-o wordmark) */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@100..800&family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+:root {
+  /* brand */
+  --dk-ink: #1A1D12;
+  --dk-lime: #C6F035;
+  --dk-cream: #F4F2EA;
+
+  /* neutrals (warm-olive, derived from ink) */
+  --dk-muted: #6B6D60;
+  --dk-border: #E2DFD2;
+  --dk-border-dark: #2E3122;
+
+  /* semantic (independent of brand accent) */
+  --dk-success: #3E7A45;
+  --dk-warning: #B07A2A;
+  --dk-error: #B03A2E;
+
+  /* surface roles (light) */
+  --dk-bg: var(--dk-cream);
+  --dk-fg: var(--dk-ink);
+  --dk-card: #FBFAF5;
+  --dk-line: var(--dk-border);
+
+  /* type */
+  --dk-font-sans: "Archivo", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --dk-font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --dk-font-bn: "Hind Siliguri", "Noto Sans Bengali", var(--dk-font-sans);
+  --dk-text-xs: 12px;
+  --dk-text-sm: 13.5px;
+  --dk-text-base: 15px;
+  --dk-text-lg: 18px;
+  --dk-text-xl: 22px;
+  --dk-text-2xl: 32px;
+  --dk-text-3xl: 44px;
+
+  /* radius / spacing scale */
+  --dk-radius-sm: 8px;
+  --dk-radius-md: 12px;
+  --dk-radius-lg: 16px;
+  --dk-radius-icon: 14px; /* app icon rounded-square, 64px grid */
+  --dk-space-1: 4px;
+  --dk-space-2: 8px;
+  --dk-space-3: 12px;
+  --dk-space-4: 16px;
+  --dk-space-6: 24px;
+  --dk-space-8: 32px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dk-bg: #14160E;
+    --dk-fg: #F0EFE6;
+    --dk-muted: #9A9C8C;
+    --dk-card: #1D2013;
+    --dk-line: #2E3122;
+  }
+}
+:root[data-theme="dark"] {
+  --dk-bg: #14160E;
+  --dk-fg: #F0EFE6;
+  --dk-muted: #9A9C8C;
+  --dk-card: #1D2013;
+  --dk-line: #2E3122;
+}
+:root[data-theme="light"] {
+  --dk-bg: #F4F2EA;
+  --dk-fg: #1A1D12;
+  --dk-muted: #6B6D60;
+  --dk-card: #FBFAF5;
+  --dk-line: #E2DFD2;
+}
+
+/*
+Usage rules (see Brand cards for rationale):
+- --dk-lime is a SIGNAL color: one CTA / active-state / in-transit moment per screen. Never body text (1.2:1 contrast on cream — fails WCAG).
+- --dk-ink / --dk-cream pair at 15.3:1, --dk-lime / --dk-ink at 13.0:1 — both safe for any text.
+- Semantic colors are independent of the brand accent: delivered is --dk-success (green), not lime.
+- The Dakio mark is always rendered in a single color — never two-tone inside the SVG.
+
+- --dk-font-sans (Archivo) is the default for all Latin UI text; it's a variable font, so any weight 100–900 is valid (not just the named stops below).
+- --dk-font-bn (Hind Siliguri) renders Bengali script — never let Latin fallback render Bengali codepoints as tofu. Match its weight to the surrounding Archivo weight.
+- --dk-font-mono (JetBrains Mono) is reserved for identifiers — tracking codes, order IDs, timestamps. Never for prose, headings, or currency amounts (use --dk-font-sans with tabular-nums for those).
+- See Type → Fonts and Type → Usage guide cards for full specimens and do/don't detail.
+*/

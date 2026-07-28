@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/tokens/tokens.css">
+  <script src="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/_ds_bundle.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; background:#F4F2EA; }
+    a { color:inherit; text-decoration:none; }
+    a:hover { color:inherit; }
+    @keyframes heroUp { 0% { opacity:0; transform:translateY(18px); } 100% { opacity:1; transform:translateY(0); } }
+    @keyframes orbitcw { to { transform:rotate(360deg); } }
+    @keyframes pulseRing { 0% { box-shadow:0 0 0 0 rgba(198,240,53,0.4); } 70% { box-shadow:0 0 0 14px rgba(198,240,53,0); } 100% { box-shadow:0 0 0 0 rgba(198,240,53,0); } }
+    @keyframes drawLine { to { stroke-dashoffset:0; } }
+    @keyframes pinIn { 0% { opacity:0; transform:translateY(8px) scale(0.95); } 100% { opacity:1; transform:translateY(0) scale(1); } }
+    @keyframes glowDot { 0%,100% { box-shadow:0 0 0 0 rgba(198,240,53,0.7); } 50% { box-shadow:0 0 0 10px rgba(198,240,53,0); } }
+    @keyframes areaIn { 0% { opacity:0; } 100% { opacity:1; } }
+  </style>
+</helmet>
+
+<div style="font-family:var(--dk-font-sans), 'Noto Sans Bengali', sans-serif; color:#1A1D12; background:#F4F2EA; overflow-x:hidden;" data-screen-label="Grow Studio Page">
+
+  <dc-import name="SiteNav" active="grow" cta-href="#cta" cta-label="Appoint Nova" hint-size="100%,58px" style="position:sticky; top:0; z-index:60;"></dc-import>
+
+  <!-- HERO: the diverging curve -->
+  <div style="max-width:1200px; margin:0 auto; padding:70px 28px 20px;">
+    <div style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:48px; align-items:center;">
+      <div>
+        <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:99px; background:rgba(198,240,53,0.35); border:1px solid rgba(26,29,18,0.1); font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.12em; color:#3E7A45; animation:heroUp .6s ease both;">GROW LABS · THE BUSINESS GROW STUDIO</div>
+        <h1 style="margin:22px 0 0; font-size:58px; line-height:1.04; letter-spacing:-2.4px; font-weight:800; animation:heroUp .6s .08s ease both;">Growth you never <span style="position:relative; white-space:nowrap;">dared<span style="position:absolute; left:0; right:0; bottom:5px; height:13px; background:#C6F035; z-index:-1; border-radius:3px;"></span></span> to plan.</h1>
+        <p style="margin:20px 0 0; font-size:16px; line-height:1.65; color:#6B6D60; max-width:400px; animation:heroUp .6s .16s ease both;">Campaigns, content, reach, research, pricing, goals — six growth levers in one studio. You pull them by hand, or Nova pulls them around the clock.</p>
+        <div style="display:flex; gap:12px; margin-top:28px; animation:heroUp .6s .24s ease both;">
+          <a href="#cta" style="display:inline-flex; align-items:center; gap:8px; padding:15px 26px; border-radius:99px; background:#1A1D12; color:#C6F035; font-size:15px; font-weight:700;" style-hover="transform:translateY(-2px)">Start growing free
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          <a href="Dakio Grow Modules.dc.html" style="display:inline-flex; align-items:center; padding:15px 24px; border-radius:99px; border:1.5px solid rgba(26,29,18,0.2); color:#1A1D12; font-size:15px; font-weight:700;" style-hover="background:rgba(26,29,18,0.05)">See it live</a>
+        </div>
+      </div>
+      <div style="animation:heroUp .7s .2s ease both;">
+        <div style="position:relative; border-radius:26px; background:#0F120B; padding:26px 26px 18px; box-shadow:0 34px 80px rgba(15,18,11,0.3); overflow:hidden;">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.14em; color:#878B76;">SHAHRQEE · REVENUE, ONE QUARTER</span>
+            <span style="display:flex; gap:14px; font-family:'IBM Plex Mono',monospace; font-size:8.5px; letter-spacing:0.08em;">
+              <span style="color:#878B76;">— YOU, DOING EVERYTHING</span>
+              <span style="color:#C6F035;">— YOU + NOVA</span>
+            </span>
+          </div>
+          <div style="position:relative; margin-top:14px;">
+            <svg viewBox="0 0 560 290" style="width:100%; display:block;">
+              <line x1="20" y1="70" x2="540" y2="70" stroke="rgba(233,239,220,0.07)" stroke-width="1"></line>
+              <line x1="20" y1="140" x2="540" y2="140" stroke="rgba(233,239,220,0.07)" stroke-width="1"></line>
+              <line x1="20" y1="210" x2="540" y2="210" stroke="rgba(233,239,220,0.07)" stroke-width="1"></line>
+              <line x1="20" y1="258" x2="540" y2="258" stroke="rgba(233,239,220,0.14)" stroke-width="1"></line>
+              <polygon points="20,250 150,236 300,196 430,120 540,52 540,258 20,258" fill="url(#growFill)" style="animation:areaIn 1.4s 1.4s ease both;"></polygon>
+              <defs><linearGradient id="growFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(198,240,53,0.28)"></stop><stop offset="100%" stop-color="rgba(198,240,53,0)"></stop></linearGradient></defs>
+              <path d="M20,250 C120,246 220,240 340,236 C430,233 500,231 540,230" fill="none" stroke="rgba(233,239,220,0.35)" stroke-width="2.5" stroke-dasharray="6 7" pathLength="1000" stroke-dashoffset="1000" style="animation:drawLine 1.8s .3s ease both;"></path>
+              <path d="M20,250 C110,242 200,228 300,196 C390,167 470,102 540,52" fill="none" stroke="#C6F035" stroke-width="4" stroke-linecap="round" pathLength="1000" stroke-dasharray="1000" stroke-dashoffset="1000" style="animation:drawLine 2.2s .5s ease both;"></path>
+            </svg>
+            <sc-for list="{{ pins }}" as="pn" hint-placeholder-count="4">
+              <div style="{{ pn.s }}">
+                <span style="width:7px; height:7px; border-radius:99px; background:#C6F035; flex-shrink:0;"></span>{{ pn.t }}
+              </div>
+            </sc-for>
+            <span style="position:absolute; left:95%; top:15.5%; width:12px; height:12px; margin:-6px; border-radius:99px; background:#C6F035; animation:glowDot 2s 2.7s infinite;"></span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.1em; color:#878B76;"><span>APRIL</span><span>EID RAMP</span><span>JUNE</span></div>
+        </div>
+        <div style="text-align:center; margin-top:12px; font-size:12px; color:#6B6D60;">Demo store, one quarter in the Grow Studio. The grey line is the same shop without it.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MIDNIGHT: with / without -->
+  <div style="max-width:1200px; margin:0 auto; padding:92px 28px 20px;">
+    <div style="text-align:center; margin-bottom:36px;" data-reveal>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.14em; color:#3E7A45;">SAME SHOP · SAME MIDNIGHT</div>
+      <h2 style="margin:14px auto 0; font-size:50px; line-height:1.05; letter-spacing:-2px; font-weight:800; max-width:640px;">The growth happens while you sleep.</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;" data-reveal>
+      <div style="border-radius:26px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.08); padding:28px;">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.12em; color:#B03A2E;">11:47 PM — YOU, ALONE</span>
+          <span style="font-size:11px; color:#6B6D60;">😮‍💨 still at the desk</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:9px; margin-top:18px;">
+          <sc-for list="{{ alone }}" as="a" hint-placeholder-count="4">
+            <div style="display:flex; align-items:center; gap:10px; padding:12px 14px; border-radius:12px; background:#ffffff; border:1px solid rgba(26,29,18,0.07);">
+              <span style="width:7px; height:7px; border-radius:99px; background:rgba(176,58,46,0.6); flex-shrink:0;"></span>
+              <span style="font-size:13px; color:#6B6D60;">{{ a.t }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:16px; font-family:'IBM Plex Mono',monospace; font-size:8.5px; letter-spacing:0.1em; color:#B03A2E;">GROWTH TODAY: WHATEVER ENERGY WAS LEFT</div>
+      </div>
+      <div style="border-radius:26px; background:#0F120B; color:#E9EFDC; padding:28px; box-shadow:0 28px 60px rgba(15,18,11,0.28);">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.12em; color:#8CBF33;">11:47 PM — NOVA IN THE STUDIO</span>
+          <span style="font-size:11px; color:#A9AD98;">you: asleep 😴</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:9px; margin-top:18px;">
+          <sc-for list="{{ withNova }}" as="w" hint-placeholder-count="4">
+            <div style="display:flex; align-items:center; gap:10px; padding:12px 14px; border-radius:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(198,242,62,0.15);">
+              <span style="width:7px; height:7px; border-radius:99px; background:#C6F035; flex-shrink:0;"></span>
+              <span style="flex:1; font-size:13px;">{{ w.t }}</span>
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.06em; color:#8CBF33;">{{ w.r }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:16px; font-family:'IBM Plex Mono',monospace; font-size:8.5px; letter-spacing:0.1em; color:#8CBF33;">GROWTH TONIGHT: ৳9,200 · READY FOR YOUR 06:00 BRIEF</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIX LEVERS -->
+  <div style="max-width:1200px; margin:0 auto; padding:92px 28px 20px;">
+    <div style="text-align:center; margin-bottom:36px;" data-reveal>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.14em; color:#3E7A45;">SIX LEVERS, ONE STUDIO</div>
+      <h2 style="margin:14px auto 0; font-size:50px; line-height:1.05; letter-spacing:-2px; font-weight:800; max-width:700px;">Every lever, pulled professionally.</h2>
+      <p style="margin:14px auto 0; font-size:14.5px; color:#6B6D60; max-width:460px; line-height:1.6;">What you used to improvise at midnight, the studio runs like a marketing team — and Nova runs the studio.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:14px;" data-reveal>
+      <sc-for list="{{ levers }}" as="lv" hint-placeholder-count="6">
+        <div style="border-radius:24px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.07); padding:24px; display:flex; flex-direction:column;" style-hover="transform:translateY(-3px); border-color:rgba(26,29,18,0.25)">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span style="font-size:16px; font-weight:800; letter-spacing:-0.3px;">{{ lv.n }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:7.5px; letter-spacing:0.1em; color:#3E7A45;">{{ lv.job }}</span>
+          </div>
+          <div style="margin-top:14px; font-size:12px; color:#9a9e8c; text-decoration:line-through; text-decoration-color:rgba(176,58,46,0.5); line-height:1.5;">{{ lv.before }}</div>
+          <div style="margin-top:7px; font-size:12.5px; color:#1A1D12; line-height:1.55; flex:1;"><b style="color:#3E7A45;">Now:</b> {{ lv.after }}</div>
+          <div style="margin-top:14px; display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:11px; background:#14170E; color:#E9EFDC;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.06em; color:#878B76;">{{ lv.from }}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C6F035" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.06em; color:#C6F035;">{{ lv.to }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- COMPOUNDING LOOP -->
+  <div style="max-width:1200px; margin:0 auto; padding:92px 28px 20px;">
+    <div data-reveal style="border-radius:32px; background:#0F120B; color:#E9EFDC; padding:52px 56px;">
+      <div style="text-align:center;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.14em; color:#8CBF33;">WHY THE CURVE BENDS</div>
+        <h2 style="margin:12px auto 0; font-size:40px; line-height:1.08; letter-spacing:-1.5px; font-weight:800; color:#FBFBF4; max-width:620px;">The levers hand off. The growth compounds.</h2>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:center; gap:9px; margin-top:30px; flex-wrap:wrap;">
+        <sc-for list="{{ loop }}" as="lp" hint-placeholder-count="4">
+          <div style="display:flex; align-items:center; gap:9px;">
+            <div style="padding:11px 16px; border-radius:13px; background:rgba(255,255,255,0.06); border:1px solid rgba(198,242,62,0.22);">
+              <div style="font-size:12.5px; font-weight:700; color:#FBFBF4;">{{ lp.n }}</div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:7.5px; letter-spacing:0.08em; color:#8CBF33; margin-top:2px;">{{ lp.d }}</div>
+            </div>
+            <sc-if value="{{ lp.arrow }}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C6F035" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></sc-if>
+          </div>
+        </sc-for>
+        <div style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:99px; border:1px dashed rgba(198,242,62,0.45); font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.1em; color:#C6F035;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6M3 13a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 9"></path></svg>REPEATS EVERY NIGHT
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-top:34px; max-width:860px; margin-left:auto; margin-right:auto;">
+        <sc-for list="{{ stats }}" as="st" hint-placeholder-count="4">
+          <div style="padding:16px 14px; border-radius:16px; background:rgba(198,240,53,0.08); border:1px solid rgba(198,240,53,0.22); text-align:center;">
+            <div style="font-size:23px; font-weight:800; letter-spacing:-0.7px; color:#C6F035;">{{ st.v }}</div>
+            <div style="font-size:10.5px; color:#A9AD98; margin-top:3px; line-height:1.4;">{{ st.l }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="text-align:center; margin-top:18px; font-family:'IBM Plex Mono',monospace; font-size:8.5px; letter-spacing:0.12em; color:#878B76;">SHAHRQEE DEMO STORE · ONE QUARTER · EVERY NUMBER TRACES TO A RECEIPT</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div id="cta" style="max-width:1200px; margin:70px auto 0; padding:0 20px 60px;">
+    <div data-reveal style="border-radius:36px; background:#C6F035; padding:72px 40px; text-align:center; position:relative; overflow:hidden;">
+      <div style="position:absolute; left:50%; top:-160px; transform:translateX(-50%); width:520px; height:520px; border-radius:50%; border:1px dashed rgba(26,29,18,0.2); animation:orbitcw 50s linear infinite;"></div>
+      <h2 style="position:relative; margin:0 auto; font-size:56px; line-height:1.03; letter-spacing:-2.3px; font-weight:800; max-width:740px;">Your curve is still the grey one.</h2>
+      <div style="position:relative; display:flex; justify-content:center; gap:12px; margin-top:32px;">
+        <a href="#" style="display:inline-flex; align-items:center; gap:9px; padding:16px 30px; border-radius:99px; background:#1A1D12; color:#C6F035; font-size:15.5px; font-weight:700;" style-hover="transform:translateY(-2px)">
+          <span style="width:8px; height:8px; border-radius:99px; background:#C6F035; animation:pulseRing 2.2s infinite;"></span>Bend it — start free</a>
+        <a href="Dakio Grow Modules.dc.html" style="display:inline-flex; align-items:center; padding:16px 26px; border-radius:99px; border:1.5px solid rgba(26,29,18,0.35); color:#1A1D12; font-size:15.5px; font-weight:700;" style-hover="background:rgba(26,29,18,0.08)">Open the Grow Studio</a>
+      </div>
+      <div style="position:relative; margin-top:20px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.14em; color:rgba(26,29,18,0.6);">SIX LEVERS · NOVA ON THE NIGHT SHIFT · EVERYTHING REVERSIBLE</div>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const els = this.el ? this.el.querySelectorAll('[data-reveal]') : document.querySelectorAll('[data-reveal]');
+    els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(22px)'; el.style.transition = 'opacity .7s ease, transform .7s ease'; });
+    const reveal = (el, animate) => { if (!animate) el.style.transition = 'none'; el.style.opacity = '1'; el.style.transform = 'translateY(0)'; el.dataset.revealed = '1'; };
+    const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < (window.innerHeight || 800); };
+    els.forEach(el => { if (inView(el)) reveal(el, false); });
+    this._io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { reveal(e.target, true); this._io.unobserve(e.target); } }); }, { threshold: 0.14 });
+    els.forEach(el => { if (!el.dataset.revealed) this._io.observe(el); });
+    const onScroll = () => { els.forEach(el => { if (!el.dataset.revealed && inView(el)) reveal(el, true); }); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    setTimeout(onScroll, 1200);
+  }
+  renderVals() {
+    const pin = (l, t, d) => 'position:absolute; left:' + l + '%; top:' + t + '%; transform:translate(-50%,-100%); display:inline-flex; align-items:center; gap:7px; padding:6px 11px; border-radius:99px; background:#14170E; border:1px solid rgba(198,242,62,0.35); font-size:10px; font-weight:700; color:#E9EFDC; white-space:nowrap; animation:pinIn .4s ' + d + 's ease both;';
+    return {
+      pins: [
+        { t: 'Cart won back · ৳2,300', s: pin(26, 76, 1.0) },
+        { t: 'Reel hit 7:30 PM slot', s: pin(46, 62, 1.5) },
+        { t: 'Eid campaign scaled', s: pin(66, 44, 2.0) },
+        { t: 'Best month ever', s: pin(87, 20, 2.5) }],
+      alone: [
+        { t: '23 unread DMs — "dam koto?" ×9' },
+        { t: "Tomorrow's post: still undecided" },
+        { t: 'Ad running on a guess since Tuesday' },
+        { t: '4 carts abandoned today, quietly' },
+        { t: 'Eid plan: "next week, inshallah"' }],
+      withNova: [
+        { t: 'Replied to all 23 DMs, in Bangla', r: 'RECEIPT' },
+        { t: "Tomorrow's reel scheduled — 7:30 PM", r: 'RECEIPT' },
+        { t: 'Weak ad set paused, budget shifted', r: 'RECEIPT' },
+        { t: '3 carts recovered · ৳6,900', r: 'RECEIPT' },
+        { t: 'Eid playbook drafted — for your approval', r: 'WAITING ON YOU' }],
+      levers: [
+        { n: 'Campaigns', job: 'PROMOTE', before: 'Boosted a post the night before Eid.', after: 'The season is planned on a quarter Gantt — Eid, Puja, 11.11 — three weeks ahead.', from: 'ROAS 1.2×', to: 'ROAS 3.4×' },
+        { n: 'Content', job: 'CREATE', before: 'Posted whenever you remembered.', after: 'A month of posts slotted at the hours your buyers actually scroll.', from: 'REACH 900', to: 'REACH 4,200' },
+        { n: 'Broadcast', job: 'REACH', before: 'Mass-forwarded on WhatsApp, hoped.', after: '38 lapsed buyers, one targeted message, cool-off protected.', from: 'REPEAT 5/MO', to: 'REPEAT 19/MO' },
+        { n: 'Research', job: 'DISCOVER', before: 'Copied competitors after the trend peaked.', after: 'Demand curves spot the next winner six weeks early, supplier margins attached.', from: 'FOLLOWER', to: 'FIRST MOVER' },
+        { n: 'Growth', job: 'IMPROVE', before: 'Gut-feel discounts when sales dipped.', after: 'Every opportunity comes with evidence, math and risk — Apply or Not now.', from: 'GUESSING', to: '৳1,14,200 BACK' },
+        { n: 'Goals', job: 'LEAD', before: 'Checked sales at midnight, felt anxious.', after: 'Pace, forecast and the exact lever that closes the gap — named.', from: 'HOPE', to: 'ON TRACK 9/12' }],
+      loop: [
+        { n: 'Research finds it', d: 'THE NEXT WINNER', arrow: true },
+        { n: 'Campaigns launch it', d: 'ON THE SEASON', arrow: true },
+        { n: 'Broadcast brings them back', d: 'REPEAT BUYERS', arrow: true },
+        { n: 'Growth sharpens it', d: 'PRICE & MARGIN', arrow: true },
+        { n: 'Goals re-aim', d: 'NEXT TARGET', arrow: false }],
+      stats: [
+        { v: '+38%', l: 'revenue vs last quarter' },
+        { v: '৳1,14,200', l: 'recovered by Growth' },
+        { v: '0', l: 'stockouts in Eid week' },
+        { v: '6h 40m', l: 'founder hours saved daily' }],
+    };
+  }
+}
+</script>
+</body>
+</html>

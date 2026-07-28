@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/tokens/tokens.css">
+  <script src="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/_ds_bundle.js"></script>
+  <script src="nova-motion-data.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Instrument+Serif&amp;family=Cormorant+Garamond:wght@500;600;700&amp;family=Karla:wght@400;600;700&amp;display=swap">
+  <style>
+    html, body { margin:0; padding:0; height:100%; background:#EEEBDF; }
+    * { box-sizing:border-box; }
+    a { color:#1A1D12; } a:hover { color:#3E4A1E; }
+    input, textarea, select, button { font-family:inherit; }
+    input:focus, textarea:focus, select:focus { outline:2px solid #C6F035; outline-offset:1px; }
+    ::-webkit-scrollbar { width:9px; height:9px; } ::-webkit-scrollbar-thumb { background:#CFCBBB; border-radius:9px; border:2px solid transparent; background-clip:content-box; }
+    @keyframes nmaToast { from { transform:translate(-50%, 14px); opacity:0; } to { transform:translate(-50%, 0); opacity:1; } }
+    @keyframes nmaPulse { 0%,100% { opacity:1; } 50% { opacity:0.35; } }
+  </style>
+</helmet>
+<div style="height:100vh; display:flex; flex-direction:column; overflow:hidden; background:#EEEBDF; color:#1A1D12; font-family:var(--dk-font-sans); font-size:14px;">
+
+<!-- ============ ADS CONTENT GALLERY ============ -->
+<sc-if value="{{ galleryOn }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Ads Content Gallery" style="flex:1; overflow-y:auto; background:#F4F2EA;">
+  <div style="max-width:1280px; margin:0 auto; padding:22px 36px 56px;">
+    <div style="display:flex; align-items:center; gap:10px; font-size:12.5px; color:#6B6D60;">
+      <a href="Dakio Grow Modules.dc.html" style="text-decoration:none; font-weight:700; display:inline-flex; align-items:center; gap:6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>Content Studio</a>
+      <span style="color:#C9C5B4;">/</span><span style="font-weight:600;">Ads Content Gallery</span>
+      <div style="flex:1;"></div>
+      <div style="display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:#FBFAF5; border:1px solid #E2DFD2; font-size:12px; font-weight:600;">{{ storeChip }}</div>
+    </div>
+    <div style="display:flex; align-items:flex-end; gap:16px; margin-top:26px; flex-wrap:wrap;">
+      <div>
+        <div style="display:inline-flex; align-items:center; gap:8px; padding:5px 11px; border-radius:999px; background:#1A1D12; color:#C6F035; font-size:11px; font-weight:800; letter-spacing:1.2px;">✦ NOVA MOTION ADS</div>
+        <div style="font-size:34px; font-weight:800; letter-spacing:-0.8px; margin-top:10px; line-height:1.05;">Turn a product into branded ads</div>
+        <div style="font-size:14px; color:#6B6D60; margin-top:8px; max-width:560px; line-height:1.5;">Pick a product, choose a template — Nova fills it with your catalogue data and adapts it to your store theme. Every template ships static <b>and</b> motion, in all three sizes.</div>
+      </div>
+      <div style="flex:1;"></div>
+      <button onClick="{{ onBlank }}" style="padding:9px 15px; border-radius:10px; border:1.5px dashed #B9B5A2; background:transparent; font-size:12.5px; font-weight:700; color:#5C6150; cursor:pointer;">Start from a blank canvas</button>
+    </div>
+
+    <sc-if value="{{ resumeOn }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:20px; display:flex; align-items:center; gap:14px; padding:13px 16px; border-radius:14px; background:#1A1D12; color:#F0EFE6;">
+        <span style="width:8px; height:8px; border-radius:99px; background:#C6F035; animation:nmaPulse 2s infinite;"></span>
+        <div style="font-size:13px;"><b>Continue where you left off</b> — {{ resumeName }}</div>
+        <div style="flex:1;"></div>
+        <button onClick="{{ onResume }}" style="padding:7px 14px; border-radius:9px; border:none; background:#C6F035; color:#1A1D12; font-weight:800; font-size:12.5px; cursor:pointer;">Resume</button>
+        <button onClick="{{ onResumeX }}" style="padding:7px 10px; border-radius:9px; border:1px solid #3A3D2E; background:transparent; color:#9A9C8C; font-weight:700; font-size:12.5px; cursor:pointer;">Dismiss</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ draftsOn }}" hint-placeholder-val="{{ false }}">
+      <div style="font-size:10.5px; font-weight:800; letter-spacing:1.4px; color:#9a9e8c; margin:26px 2px 8px;">SAVED IN CONTENT STUDIO</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <sc-for list="{{ drafts }}" as="d" hint-placeholder-count="2">
+          <div style="display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:12px; background:#FBFAF5; border:1px solid #E2DFD2;">
+            <div><div style="font-size:12.5px; font-weight:700;">{{ d.name }}</div><div style="font-size:11px; color:#9a9e8c; margin-top:1px;">{{ d.meta }}</div></div>
+            <button onClick="{{ d.open }}" style="padding:5px 10px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; font-size:11.5px; font-weight:700; cursor:pointer;">Open</button>
+            <button onClick="{{ d.del }}" style="padding:5px 8px; border-radius:8px; border:none; background:transparent; color:#B03A2E; font-size:11.5px; font-weight:700; cursor:pointer;">✕</button>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ myTplsOn }}" hint-placeholder-val="{{ false }}">
+      <div style="font-size:10.5px; font-weight:800; letter-spacing:1.4px; color:#9a9e8c; margin:26px 2px 8px;">YOUR TEMPLATES · DAKIO DESIGN TEAM</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <sc-for list="{{ myTpls }}" as="t" hint-placeholder-count="2">
+          <div style="display:flex; align-items:center; gap:9px; padding:9px 12px; border-radius:12px; background:#FBFAF5; border:1px solid #E2DFD2;">
+            <div><div style="font-size:12.5px; font-weight:700;">{{ t.name }}</div><div style="font-size:10.5px; color:#9a9e8c; margin-top:1px;">{{ t.meta }}</div></div>
+            <span style="{{ t.statusSt }}">{{ t.statusLbl }}</span>
+            <button onClick="{{ t.use }}" style="padding:5px 10px; border-radius:8px; border:1px solid #1A1D12; background:#fff; font-size:11px; font-weight:800; cursor:pointer;">Use</button>
+            <button onClick="{{ t.pub }}" style="padding:5px 9px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; font-size:11px; font-weight:700; cursor:pointer;">{{ t.pubLbl }}</button>
+            <button onClick="{{ t.arch }}" style="padding:5px 9px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; font-size:11px; font-weight:700; cursor:pointer;">{{ t.archLbl }}</button>
+            <button onClick="{{ t.del }}" title="Delete" style="padding:5px 8px; border-radius:8px; border:none; background:transparent; color:#B03A2E; font-size:11.5px; font-weight:700; cursor:pointer;">✕</button>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <div style="font-size:10.5px; font-weight:800; letter-spacing:1.4px; color:#9a9e8c; margin:30px 2px 10px;">STEP 1 · PICK A PRODUCT</div>
+    <div style="display:flex; gap:12px; overflow-x:auto; padding-bottom:6px;">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+        <div onClick="{{ p.on }}" style="{{ p.card }}">
+          <div style="{{ p.thumbSt }}"><span style="{{ p.monoSt }}">{{ p.mono }}</span></div>
+          <div style="font-size:13px; font-weight:700; margin-top:9px; line-height:1.2;">{{ p.name }}</div>
+          <div style="display:flex; align-items:baseline; gap:7px; margin-top:4px;">
+            <span style="font-size:13.5px; font-weight:800;">{{ p.price }}</span>
+            <sc-if value="{{ p.wasOn }}" hint-placeholder-val="{{ false }}"><span style="font-size:11.5px; color:#9a9e8c; text-decoration:line-through;">{{ p.was }}</span></sc-if>
+            <sc-if value="{{ p.lowOn }}" hint-placeholder-val="{{ false }}"><span style="font-size:10px; font-weight:800; color:#B03A2E; letter-spacing:0.5px;">{{ p.low }}</span></sc-if>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex; align-items:baseline; gap:10px; margin:30px 2px 12px;">
+      <div style="font-size:10.5px; font-weight:800; letter-spacing:1.4px; color:#9a9e8c;">STEP 2 · CHOOSE A TEMPLATE</div>
+      <div style="font-size:11.5px; color:#9a9e8c;">10 families · live previews use your product &amp; store theme</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr)); gap:18px;">
+      <sc-for list="{{ tplCards }}" as="t" hint-placeholder-count="10">
+        <div onClick="{{ t.use }}" style="border-radius:16px; background:#FBFAF5; border:1px solid #E2DFD2; overflow:hidden; cursor:pointer; transition:box-shadow .15s ease, transform .15s ease;" style-hover="box-shadow:0 10px 30px rgba(26,29,18,0.14); transform:translateY(-2px);">
+          <div style="position:relative; height:290px; overflow:hidden; background:#EAE7DA;">
+            <div style="position:absolute; left:50%; top:0; width:1080px; height:1080px; transform:translateX(-50%) scale(0.2685); transform-origin:50% 0; pointer-events:none;">
+              <sc-for list="{{ t.pv }}" as="e" hint-placeholder-count="8">
+                <div style="{{ e.st }}"><sc-if value="{{ e.isTxt }}" hint-placeholder-val="{{ true }}">{{ e.text }}</sc-if><sc-if value="{{ e.isMono }}" hint-placeholder-val="{{ false }}"><span style="{{ e.monoSt }}">{{ e.mono }}</span></sc-if></div>
+              </sc-for>
+            </div>
+            <div style="position:absolute; right:10px; top:10px; display:flex; gap:6px;">
+              <sc-if value="{{ t.customOn }}" hint-placeholder-val="{{ false }}"><span style="padding:4px 9px; border-radius:999px; background:#FBFAF5; border:1px solid #E2DFD2; color:#5C6150; font-size:10px; font-weight:800; letter-spacing:0.8px;">BY DAKIO TEAM</span></sc-if>
+              <span style="padding:4px 9px; border-radius:999px; background:rgba(26,29,18,0.82); color:#F0EFE6; font-size:10px; font-weight:800; letter-spacing:0.8px;">STATIC</span>
+              <sc-if value="{{ t.motionOn }}" hint-placeholder-val="{{ true }}"><span style="padding:4px 9px; border-radius:999px; background:#C6F035; color:#1A1D12; font-size:10px; font-weight:800; letter-spacing:0.8px;">▶ MOTION</span></sc-if>
+            </div>
+          </div>
+          <div style="padding:13px 15px 15px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div style="font-size:15px; font-weight:800;">{{ t.name }}</div>
+              <span style="padding:3px 8px; border-radius:999px; border:1px solid #E2DFD2; font-size:10px; font-weight:700; color:#5C6150;">{{ t.obj }}</span>
+              <div style="flex:1;"></div>
+              <span style="font-size:10.5px; color:#9a9e8c; font-weight:600;">1:1 · 4:5 · 9:16</span>
+            </div>
+            <div style="font-size:12px; color:#6B6D60; margin-top:5px; line-height:1.45;">{{ t.desc }}</div>
+            <div style="display:flex; align-items:center; gap:8px; margin-top:11px;">
+              <span style="font-size:11px; color:#9a9e8c;">Best for: {{ t.rec }}</span>
+              <div style="flex:1;"></div>
+              <span style="padding:7px 13px; border-radius:9px; background:#1A1D12; color:#F0EFE6; font-size:12px; font-weight:700;">Use template</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:26px; font-size:11.5px; color:#9a9e8c; line-height:1.5; max-width:720px;">Templates are live systems — bindings, per-size layouts, brand mapping and motion recipes — not flattened images. In production this gallery reads your product catalogue and the theme saved in Store Studio; here it runs on the Shahrqee demo data.</div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ EDITOR ============ -->
+<sc-if value="{{ editorOn }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Motion Ads Editor" style="flex:1; display:flex; flex-direction:column; min-height:0;">
+
+  <div style="height:54px; display:flex; align-items:center; gap:7px; padding:0 10px; background:#FBFAF5; border-bottom:1px solid #E2DFD2; flex-shrink:0; min-width:0;">
+    <button onClick="{{ onBack }}" title="Back to Content Studio" style="width:30px; height:30px; border-radius:9px; border:1px solid #E2DFD2; background:#fff; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1A1D12" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button>
+    <input value="{{ projName }}" onChange="{{ onName }}" style="border:none; background:transparent; font-size:13.5px; font-weight:800; flex:1 1 110px; min-width:80px; max-width:240px; padding:5px 6px; border-radius:8px;" />
+    <span style="padding:4px 9px; border-radius:999px; background:#EEF0E6; border:1px solid #E2DFD2; font-size:10.5px; font-weight:800; color:#5C6150; letter-spacing:0.6px; white-space:nowrap; flex:0 20 auto; min-width:0; overflow:hidden; text-overflow:ellipsis;">DRAFT · BY NOVA ✦</span>
+    <span style="font-size:11px; color:#9a9e8c; white-space:nowrap; flex:0 40 auto; min-width:0; overflow:hidden; text-overflow:ellipsis;">{{ saveTxt }}</span>
+    <div style="flex:1 0 0;"></div>
+    <button onClick="{{ onUndo }}" title="Undo (⌘Z)" style="{{ undoSt }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14L4 9l5-5"></path><path d="M4 9h10a6 6 0 016 6v1"></path></svg></button>
+    <button onClick="{{ onRedo }}" title="Redo" style="{{ redoSt }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14l5-5-5-5"></path><path d="M20 9H10a6 6 0 00-6 6v1"></path></svg></button>
+    <div style="width:1px; height:22px; background:#E2DFD2; margin:0 2px; flex-shrink:0;"></div>
+    <div style="display:flex; background:#EEEBDF; border-radius:10px; padding:3px; gap:2px; flex-shrink:0;">
+      <sc-for list="{{ fmtBtns }}" as="f" hint-placeholder-count="3"><button onClick="{{ f.on }}" title="{{ f.sub }}" style="{{ f.st }}">{{ f.lbl }}</button></sc-for>
+    </div>
+    <div style="width:1px; height:22px; background:#E2DFD2; margin:0 2px; flex-shrink:0;"></div>
+    <div style="display:flex; background:#EEEBDF; border-radius:10px; padding:3px; gap:2px; flex-shrink:0;">
+      <button onClick="{{ onModeD }}" style="{{ modeDSt }}">Design</button>
+      <button onClick="{{ onModeA }}" style="{{ modeASt }}">▶ Animate</button>
+    </div>
+    <div style="flex:1 0 0;"></div>
+    <button onClick="{{ onCd }}" style="{{ cdBtnSt }}">{{ cdBtnLbl }}</button>
+    <button onClick="{{ onPreview }}" style="padding:7px 10px; border-radius:10px; border:1px solid #E2DFD2; background:#fff; font-size:12px; font-weight:700; cursor:pointer; white-space:nowrap; flex-shrink:0;">{{ previewLbl }}</button>
+    <button onClick="{{ onAdset }}" style="padding:7px 10px; border-radius:10px; border:1px solid #1A1D12; background:#fff; font-size:12px; font-weight:800; cursor:pointer; white-space:nowrap; flex-shrink:0;">✦ Ad set</button>
+    <button onClick="{{ onSave }}" style="padding:7px 10px; border-radius:10px; border:1px solid #E2DFD2; background:#fff; font-size:12px; font-weight:700; cursor:pointer; flex-shrink:0;">Save</button>
+    <button onClick="{{ onExport }}" style="padding:7px 12px; border-radius:10px; border:none; background:#C6F035; color:#1A1D12; font-size:12px; font-weight:800; cursor:pointer; flex-shrink:0;">Export</button>
+  </div>
+
+  <div style="flex:1; display:flex; min-height:0;">
+    <div style="width:58px; background:#FBFAF5; border-right:1px solid #E2DFD2; display:flex; flex-direction:column; align-items:center; padding-top:8px; gap:2px; flex-shrink:0;">
+      <sc-for list="{{ railTabs }}" as="r" hint-placeholder-count="7">
+        <button onClick="{{ r.on }}" style="{{ r.st }}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="{{ r.d }}"></path></svg><span style="font-size:8.5px; font-weight:700; letter-spacing:0.2px;">{{ r.label }}</span></button>
+      </sc-for>
+    </div>
+
+    <div style="width:274px; background:#FBFAF5; border-right:1px solid #E2DFD2; overflow-y:auto; padding:14px 14px 20px; flex-shrink:0;">
+
+      <sc-if value="{{ tabTemplates }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin-bottom:8px;">TEMPLATES</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <sc-for list="{{ tplList }}" as="t" hint-placeholder-count="10">
+            <div onClick="{{ t.on }}" style="{{ t.st }}"><div style="font-size:12.5px; font-weight:700;">{{ t.name }}</div><div style="font-size:10.5px; color:#9a9e8c; margin-top:1px;">{{ t.obj }}</div></div>
+          </sc-for>
+        </div>
+        <div style="margin-top:12px; font-size:11px; color:#9a9e8c; line-height:1.5;">Switching re-cuts all three sizes and re-applies your motion style. Added layers &amp; overrides reset.</div>
+      </sc-if>
+
+      <sc-if value="{{ tabProduct }}" hint-placeholder-val="{{ true }}">
+        <div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin-bottom:8px;">PRODUCT</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <sc-for list="{{ prodList }}" as="p" hint-placeholder-count="6">
+            <div onClick="{{ p.on }}" style="{{ p.rowSt }}">
+              <div style="{{ p.dotSt }}"></div>
+              <div style="flex:1; min-width:0;"><div style="font-size:12.5px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ p.name }}</div><div style="font-size:10.5px; color:#9a9e8c;">{{ p.sub }}</div></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:6px; margin:16px 0 6px;"><div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c;">PRODUCT IMAGES</div><div style="font-size:10px; color:#9a9e8c;">{{ imgCount }}</div></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+          <sc-for list="{{ imgThumbs }}" as="g" hint-placeholder-count="4">
+            <div onClick="{{ g.on }}" style="{{ g.st }}">
+              <div style="{{ g.artSt }}"><span style="{{ g.monoSt }}">{{ g.mono }}</span></div>
+              <div style="display:flex; align-items:center; gap:4px; padding:5px 6px 6px;">
+                <span style="flex:1; font-size:9.5px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ g.label }}</span>
+                <sc-if value="{{ g.usedOn }}" hint-placeholder-val="{{ false }}"><span style="padding:2px 5px; border-radius:99px; background:#1A1D12; color:#C6F035; font-size:8px; font-weight:800;">IN USE</span></sc-if>
+                <sc-if value="{{ g.lowOn }}" hint-placeholder-val="{{ false }}"><span style="padding:2px 5px; border-radius:99px; background:#FFF3E2; color:#B07A2A; font-size:8px; font-weight:800;">LOW RES</span></sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:8px; font-size:11px; color:#9a9e8c; line-height:1.5;">Click a photo to preview it on the canvas, then confirm with “Use this image”. The photo changes — layout, crop and motion stay.</div>
+        <div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:16px 0 6px;">BOUND FIELDS</div>
+        <div style="display:flex; flex-direction:column; gap:4px;">
+          <sc-for list="{{ bindRows }}" as="b" hint-placeholder-count="5">
+            <div style="display:flex; gap:8px; font-size:11px; padding:5px 8px; border-radius:7px; background:#F4F2EA;"><span style="font-family:var(--dk-font-mono); font-size:10px; color:#7C8060; flex-shrink:0;">{{ b.k }}</span><span style="color:#3C4033; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ b.v }}</span></div>
+          </sc-for>
+        </div>
+        <div style="margin-top:10px; font-size:11px; color:#9a9e8c; line-height:1.5;">Missing fields fall back safely — templates hide what a product doesn’t have. Switching product refills bound layers.</div>
+      </sc-if>
+
+      <sc-if value="{{ tabUploads }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin-bottom:8px;">UPLOADS</div>
+        <label style="display:flex; flex-direction:column; align-items:center; gap:8px; padding:26px 14px; border:1.5px dashed #B9B5A2; border-radius:14px; cursor:pointer; text-align:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B6D60" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0l-4 4m4-4l4 4M4 20h16"></path></svg>
+          <span style="font-size:12px; font-weight:700; color:#3C4033;">Add an image</span>
+          <span style="font-size:10.5px; color:#9a9e8c; line-height:1.4;">Dropped onto the canvas as a new layer. Resized to ≤1000px.</span>
+          <input type="file" accept="image/*" onChange="{{ onFile }}" style="display:none;" />
+        </label>
+        <div style="margin-top:12px; font-size:11px; color:#9a9e8c; line-height:1.5;">Prototype note: uploads live in this browser only — asset storage is a backend deliverable.</div>
+      </sc-if>
+
+      <sc-if value="{{ tabText }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin-bottom:8px;">ADD TEXT</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <sc-for list="{{ textAdds }}" as="t" hint-placeholder-count="4">
+            <button onClick="{{ t.on }}" style="text-align:left; padding:11px 12px; border-radius:11px; border:1px solid #E2DFD2; background:#fff; cursor:pointer;"><span style="{{ t.exSt }}">{{ t.lbl }}</span><span style="display:block; font-size:10.5px; color:#9a9e8c; margin-top:2px;">{{ t.sub }}</span></button>
+          </sc-for>
+        </div>
+        <div style="margin-top:12px; font-size:11px; color:#9a9e8c; line-height:1.5;">Heading uses your store’s heading font; body text uses its body font. Bangla text renders in Hind Siliguri automatically.</div>
+      </sc-if>
+
+      <sc-if value="{{ tabShapes }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin-bottom:8px;">ADD A SHAPE</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+          <sc-for list="{{ shapeAdds }}" as="s" hint-placeholder-count="5">
+            <button onClick="{{ s.on }}" style="padding:14px 10px; border-radius:11px; border:1px solid #E2DFD2; background:#fff; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:8px;"><span style="{{ s.exSt }}"></span><span style="font-size:11.5px; font-weight:700;">{{ s.lbl }}</span></button>
+          </sc-for>
+        </div>
+        <div style="margin-top:12px; font-size:11px; color:#9a9e8c; line-height:1.5;">Shapes pick up brand colors — recolor them in the properties panel.</div>
+      </sc-if>
+
+      <sc-if value="{{ tabBrand }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin-bottom:8px;">STORE THEME</div>
+        <div style="padding:11px 12px; border-radius:12px; background:#1A1D12; color:#F0EFE6;">
+          <div style="font-size:12.5px; font-weight:800;">{{ themeName }}</div>
+          <div style="font-size:10.5px; color:#9A9C8C; margin-top:3px; line-height:1.45;">Pulled from Store Studio — one theme powers your storefront and your ads.</div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;">
+          <sc-for list="{{ palBtns }}" as="p" hint-placeholder-count="6">
+            <button onClick="{{ p.on }}" title="{{ p.name }}" style="{{ p.st }}"><span style="{{ p.s1 }}"></span><span style="{{ p.s2 }}"></span><span style="{{ p.s3 }}"></span></button>
+          </sc-for>
+        </div>
+        <div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:16px 0 6px;">ADAPTATION</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+          <sc-for list="{{ modeBtns }}" as="m" hint-placeholder-count="4"><button onClick="{{ m.on }}" style="{{ m.st }}">{{ m.lbl }}</button></sc-for>
+        </div>
+        <div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:16px 0 6px;">CONTRAST CHECKS</div>
+        <div style="display:flex; flex-direction:column; gap:4px;">
+          <sc-for list="{{ checks }}" as="c" hint-placeholder-count="4">
+            <div style="display:flex; align-items:center; gap:8px; font-size:11px; padding:5px 8px; border-radius:7px; background:#F4F2EA;"><span style="flex:1;">{{ c.label }}</span><span style="font-family:var(--dk-font-mono); font-size:10px; color:#7C8060;">{{ c.ratio }}:1</span><span style="{{ c.tagSt }}">{{ c.tag }}</span></div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ notesOn }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:8px; display:flex; flex-direction:column; gap:3px;">
+            <sc-for list="{{ notes }}" as="n" hint-placeholder-count="2"><div style="font-size:10.5px; color:#7C8060;">✦ {{ n.t }}</div></sc-for>
+          </div>
+        </sc-if>
+        <div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:16px 0 6px;">SEMANTIC ROLES</div>
+        <div style="display:flex; flex-direction:column; gap:4px;">
+          <sc-for list="{{ roleRows }}" as="r" hint-placeholder-count="11">
+            <div style="display:flex; align-items:center; gap:8px; padding:4px 6px; border-radius:7px;" style-hover="background:#F4F2EA;">
+              <input type="color" value="{{ r.val }}" onChange="{{ r.on }}" style="width:24px; height:24px; border:1px solid #E2DFD2; border-radius:7px; padding:0; background:none; cursor:pointer;" />
+              <span style="flex:1; font-size:11.5px; font-weight:600;">{{ r.name }}</span>
+              <span style="font-family:var(--dk-font-mono); font-size:10px; color:#9a9e8c;">{{ r.val }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:10px; font-size:11px; color:#9a9e8c; line-height:1.5;">Derivation is deterministic — shades, neutrals and contrast fixes are computed from the 5 store-theme colors. No AI calls.</div>
+      </sc-if>
+
+      <sc-if value="{{ tabLayers }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; align-items:baseline; gap:8px; margin-bottom:8px;"><div style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c;">LAYERS</div><div style="font-size:10.5px; color:#9a9e8c;">{{ layerCount }}</div></div>
+        <div style="display:flex; flex-direction:column; gap:3px;">
+          <sc-for list="{{ layers }}" as="l" hint-placeholder-count="8">
+            <div onClick="{{ l.on }}" style="{{ l.st }}">
+              <span style="font-family:var(--dk-font-mono); font-size:9px; font-weight:700; color:#9a9e8c; width:22px; flex-shrink:0;">{{ l.tag }}</span>
+              <span style="flex:1; font-size:12px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ l.label }}</span>
+              <button onClick="{{ l.onUp }}" title="Raise" style="border:none; background:none; cursor:pointer; font-size:11px; color:#6B6D60; padding:2px;">▲</button>
+              <button onClick="{{ l.onDown }}" title="Lower" style="border:none; background:none; cursor:pointer; font-size:11px; color:#6B6D60; padding:2px;">▼</button>
+              <button onClick="{{ l.onEye }}" title="Show / hide" style="{{ l.eyeSt }}">◉</button>
+              <button onClick="{{ l.onLock }}" title="Lock" style="{{ l.lockSt }}">⚿</button>
+              <button onClick="{{ l.onDel }}" title="Delete" style="border:none; background:none; cursor:pointer; font-size:11px; color:#B03A2E; padding:2px;">✕</button>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:10px; font-size:11px; color:#9a9e8c; line-height:1.5;">Top of list = front of canvas. Layer changes apply to all three sizes.</div>
+      </sc-if>
+    </div>
+
+    <!-- canvas -->
+    <div id="nma-cwrap" onPointerDown="{{ onCanvasDown }}" style="flex:1; position:relative; overflow:auto; background:#E7E4D8; background-image:radial-gradient(rgba(26,29,18,0.07) 1px, transparent 1px); background-size:22px 22px;">
+      <div style="{{ stageSt }}">
+        <div style="{{ artBoxSt }}">
+          <div id="nma-art" style="{{ artSt }}">
+            <sc-for list="{{ cvEls }}" as="e" hint-placeholder-count="8"><div data-el-id="{{ e.id }}" onPointerDown="{{ e.down }}" onDoubleClick="{{ e.dbl }}" style="{{ e.st }}"><sc-if value="{{ e.isTxt }}" hint-placeholder-val="{{ true }}">{{ e.text }}</sc-if><sc-if value="{{ e.isMono }}" hint-placeholder-val="{{ false }}"><span style="{{ e.monoSt }}">{{ e.mono }}</span></sc-if><sc-if value="{{ e.hOn }}" hint-placeholder-val="{{ false }}"><div onPointerDown="{{ e.onRot }}" style="{{ e.hRot }}"></div><div onPointerDown="{{ e.onNW }}" style="{{ e.hNW }}"></div><div onPointerDown="{{ e.onNE }}" style="{{ e.hNE }}"></div><div onPointerDown="{{ e.onSW }}" style="{{ e.hSW }}"></div><div onPointerDown="{{ e.onSE }}" style="{{ e.hSE }}"></div><div onPointerDown="{{ e.onE }}" style="{{ e.hE }}"></div><div onPointerDown="{{ e.onW }}" style="{{ e.hW }}"></div><sc-if value="{{ e.nsOn }}" hint-placeholder-val="{{ false }}"><div onPointerDown="{{ e.onN }}" style="{{ e.hN }}"></div><div onPointerDown="{{ e.onS }}" style="{{ e.hS }}"></div></sc-if></sc-if></div></sc-for>
+            <sc-if value="{{ editingOn }}" hint-placeholder-val="{{ false }}">
+              <textarea id="nma-edit" value="{{ editText }}" onChange="{{ editChange }}" onKeyDown="{{ editKeys }}" onBlur="{{ editDone }}" spellCheck="{{ false }}" style="{{ editSt }}"></textarea>
+            </sc-if>
+            <div id="nma-gv" style="position:absolute; top:0; bottom:0; width:2px; background:#C6F035; display:none; z-index:60; pointer-events:none;"></div>
+            <div id="nma-gh" style="position:absolute; left:0; right:0; height:2px; background:#C6F035; display:none; z-index:60; pointer-events:none;"></div>
+            <sc-if value="{{ safeShow }}" hint-placeholder-val="{{ false }}">
+              <div style="{{ safeTopSt }}"><span style="background:rgba(26,29,18,0.75); color:#F0EFE6; font-size:20px; font-weight:700; padding:6px 14px; border-radius:999px;">platform UI zone</span></div>
+              <div style="{{ safeBotSt }}"><span style="background:rgba(26,29,18,0.75); color:#F0EFE6; font-size:20px; font-weight:700; padding:6px 14px; border-radius:999px;">keep clear — CTA overlays</span></div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute; left:14px; bottom:14px; display:flex; align-items:center; gap:2px; background:#FBFAF5; border:1px solid #E2DFD2; border-radius:11px; padding:4px; box-shadow:0 4px 16px rgba(26,29,18,0.08);">
+        <button onClick="{{ onZoomOut }}" style="width:28px; height:28px; border:none; background:none; cursor:pointer; font-size:15px; font-weight:700; color:#3C4033;">−</button>
+        <span style="font-size:11px; font-weight:700; min-width:40px; text-align:center; font-variant-numeric:tabular-nums;">{{ zoomPct }}</span>
+        <button onClick="{{ onZoomIn }}" style="width:28px; height:28px; border:none; background:none; cursor:pointer; font-size:15px; font-weight:700; color:#3C4033;">+</button>
+        <button onClick="{{ onZoomFit }}" style="padding:5px 9px; border:none; border-radius:8px; background:#EEEBDF; cursor:pointer; font-size:11px; font-weight:700;">Fit</button>
+        <button onClick="{{ onSafe }}" style="{{ safeBtnSt }}">Safe zones</button>
+      </div>
+      <sc-if value="{{ stopPillOn }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ onStopPreview }}" style="position:absolute; top:14px; left:50%; transform:translateX(-50%); padding:8px 16px; border-radius:999px; border:none; background:#1A1D12; color:#C6F035; font-size:12px; font-weight:800; cursor:pointer; box-shadow:0 6px 20px rgba(26,29,18,0.25);">■ Stop preview</button>
+      </sc-if>
+      <sc-if value="{{ imgBarOn }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute; bottom:64px; left:50%; transform:translateX(-50%); display:flex; align-items:center; gap:10px; background:#1A1D12; color:#F0EFE6; padding:8px 9px 8px 16px; border-radius:999px; z-index:95; box-shadow:0 10px 30px rgba(26,29,18,0.3); white-space:nowrap;">
+          <span style="font-size:12px;">Previewing <b>{{ imgBarName }}</b></span>
+          <button onClick="{{ onImgUse }}" style="padding:7px 13px; border-radius:999px; border:none; background:#C6F035; color:#1A1D12; font-size:11.5px; font-weight:800; cursor:pointer;">Use this image</button>
+          <button onClick="{{ onImgCancel }}" style="padding:7px 11px; border-radius:999px; border:1px solid #3A3D2E; background:transparent; color:#9A9C8C; font-size:11.5px; font-weight:700; cursor:pointer;">Cancel</button>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- properties -->
+    <div style="width:296px; background:#FBFAF5; border-left:1px solid #E2DFD2; overflow-y:auto; padding:14px 14px 24px; flex-shrink:0;">
+      <sc-if value="{{ selOn }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="font-size:13.5px; font-weight:800;">{{ selLabel }}</div>
+          <span style="padding:3px 8px; border-radius:999px; background:#EEF0E6; font-size:10px; font-weight:800; color:#5C6150; letter-spacing:0.6px;">{{ selType }}</span>
+          <div style="flex:1;"></div>
+          <button onClick="{{ onDup }}" title="Duplicate (⌘D)" style="padding:5px 8px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; font-size:10.5px; font-weight:700; cursor:pointer;">Dup</button>
+          <button onClick="{{ onDelSel }}" title="Delete" style="padding:5px 8px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; font-size:10.5px; font-weight:700; color:#B03A2E; cursor:pointer;">Del</button>
+        </div>
+        <div style="display:flex; gap:6px; margin-top:9px;">
+          <button onClick="{{ onLockT }}" style="{{ lockBtnSt }}">{{ lockLbl }}</button>
+          <button onClick="{{ onVisT }}" style="{{ visBtnSt }}">{{ visLbl }}</button>
+        </div>
+
+        <sc-if value="{{ isTxtSel }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:15px 0 5px;">CONTENT</div>
+          <textarea value="{{ txtVal }}" onChange="{{ onTxtVal }}" rows="3" style="width:100%; padding:8px 9px; border:1px solid #E2DFD2; border-radius:9px; font-size:12.5px; resize:vertical; background:#fff; line-height:1.4;"></textarea>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:8px;">
+            <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">FONT</div>
+              <select data-val="{{ fontVal }}" value="{{ fontVal }}" onChange="{{ onFont }}" style="width:100%; padding:6px 6px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;">
+                <option value="head">Heading font</option><option value="body">Body font</option><option value="bn">Hind Siliguri (বাংলা)</option>
+              </select></div>
+            <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">WEIGHT</div>
+              <select data-val="{{ weightVal }}" value="{{ weightVal }}" onChange="{{ onWeight }}" style="width:100%; padding:6px 6px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;">
+                <option value="300">300 Light</option><option value="400">400 Regular</option><option value="500">500 Medium</option><option value="600">600 Semibold</option><option value="700">700 Bold</option><option value="800">800 Heavy</option><option value="900">900 Black</option>
+              </select></div>
+            <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">SIZE</div><input type="number" value="{{ sizeV }}" onChange="{{ onSize }}" style="width:100%; padding:6px 8px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;" /></div>
+            <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">COLOR</div><input type="color" value="{{ colorV }}" onChange="{{ onColor }}" style="width:100%; height:31px; padding:2px; border:1px solid #E2DFD2; border-radius:8px; background:#fff; cursor:pointer;" /></div>
+            <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">LINE HEIGHT</div><input type="number" step="0.05" value="{{ lhV }}" onChange="{{ onLh }}" style="width:100%; padding:6px 8px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;" /></div>
+            <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">LETTER SPACE</div><input type="number" value="{{ lsV }}" onChange="{{ onLs }}" style="width:100%; padding:6px 8px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;" /></div>
+          </div>
+          <div style="display:flex; gap:5px; margin-top:8px;">
+            <button onClick="{{ alTxtL }}" style="{{ alLSt }}">Left</button><button onClick="{{ alTxtC }}" style="{{ alCSt }}">Center</button><button onClick="{{ alTxtR }}" style="{{ alRSt }}">Right</button>
+            <button onClick="{{ onStrike }}" style="{{ strikeSt }}">S̶</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isBindable }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:15px 0 5px;">BIND DATA</div>
+          <select data-val="{{ bindVal }}" value="{{ bindVal }}" onChange="{{ onBind }}" style="width:100%; padding:7px 6px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;">
+            <sc-for list="{{ bindOpts }}" as="b" hint-placeholder-count="6"><option value="{{ b.v }}">{{ b.l }}</option></sc-for>
+          </select>
+          <sc-if value="{{ bindOn }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:6px; padding:6px 8px; border-radius:7px; background:#F4F2EA; font-size:11px; color:#3C4033; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">→ {{ bindPreview }}</div>
+            <div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin:8px 0 3px;">FALLBACK — WHEN DATA IS MISSING</div>
+            <input value="{{ fallbackV }}" onChange="{{ onFallback }}" placeholder="e.g. Shop the collection" style="width:100%; padding:7px 9px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;" />
+            <button onClick="{{ onHideMiss }}" style="{{ hideMissSt }}">{{ hideMissLbl }}</button>
+            <div style="margin-top:6px; font-size:10.5px; color:#9a9e8c; line-height:1.5;">Bound layers refill automatically when a merchant switches product.</div>
+          </sc-if>
+        </sc-if>
+
+        <sc-if value="{{ isBdgSel }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:15px 0 5px;">PILL FILL</div>
+          <input type="color" value="{{ bgV }}" onChange="{{ onBg }}" style="width:100%; height:31px; padding:2px; border:1px solid #E2DFD2; border-radius:8px; background:#fff; cursor:pointer;" />
+        </sc-if>
+
+        <sc-if value="{{ isShpSel }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:15px 0 5px;">FILL</div>
+          <sc-if value="{{ fillOn }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex; gap:6px; align-items:center;">
+              <input type="color" value="{{ fillV }}" onChange="{{ onFill }}" style="width:44px; height:31px; padding:2px; border:1px solid #E2DFD2; border-radius:8px; background:#fff; cursor:pointer; flex-shrink:0;" />
+              <div style="flex:1;"><div style="font-size:9.5px; font-weight:700; color:#9a9e8c;">OPACITY {{ fillOpV }}%</div>
+                <input type="range" min="0" max="100" value="{{ fillOpV }}" onChange="{{ onFillOp }}" style="width:100%; accent-color:#1A1D12;" /></div>
+              <button onClick="{{ onFillRem }}" title="Remove fill — real transparency" style="padding:6px 9px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; font-size:10.5px; font-weight:700; color:#B03A2E; cursor:pointer; flex-shrink:0;">None</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ fillOff }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ onFillAdd }}" style="width:100%; padding:8px; border-radius:9px; border:1.5px dashed #B9B5A2; background:transparent; font-size:11.5px; font-weight:700; color:#5C6150; cursor:pointer;">+ Add fill</button>
+          </sc-if>
+          <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:13px 0 5px;">BORDER</div>
+          <sc-if value="{{ borderOn }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; gap:6px; align-items:center;">
+              <input type="color" value="{{ borderV }}" onChange="{{ onBorder }}" style="width:44px; height:31px; padding:2px; border:1px solid #E2DFD2; border-radius:8px; background:#fff; cursor:pointer; flex-shrink:0;" />
+              <div style="width:54px; flex-shrink:0;"><div style="font-size:9.5px; font-weight:700; color:#9a9e8c;">WIDTH</div>
+                <input type="number" value="{{ bwV }}" onChange="{{ onBw }}" style="width:100%; padding:5px 7px; border:1px solid #E2DFD2; border-radius:7px; font-size:11.5px; background:#fff;" /></div>
+              <div style="flex:1;"><div style="font-size:9.5px; font-weight:700; color:#9a9e8c;">OPACITY {{ borderOpV }}%</div>
+                <input type="range" min="0" max="100" value="{{ borderOpV }}" onChange="{{ onBorderOp }}" style="width:100%; accent-color:#1A1D12;" /></div>
+            </div>
+            <div style="display:flex; gap:5px; margin-top:6px;">
+              <button onClick="{{ onDash }}" style="{{ dashSt }}">Dashed</button>
+              <button onClick="{{ onBorderRem }}" style="padding:6px 10px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; font-size:11px; font-weight:700; color:#B03A2E; cursor:pointer;">Remove border</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ borderOff }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ onBorderAdd }}" style="width:100%; padding:8px; border-radius:9px; border:1.5px dashed #B9B5A2; background:transparent; font-size:11.5px; font-weight:700; color:#5C6150; cursor:pointer;">+ Add border</button>
+          </sc-if>
+        </sc-if>
+
+        <sc-if value="{{ isImgSel }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:15px 0 5px;">IMAGE</div>
+          <div style="display:flex; gap:6px;"><button onClick="{{ onFitCover }}" style="{{ fitCoverSt }}">Fill</button><button onClick="{{ onFitContain }}" style="{{ fitContainSt }}">Fit</button></div>
+          <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:13px 0 5px;">ADJUSTMENTS</div>
+          <div style="font-size:9.5px; font-weight:700; color:#9a9e8c;">BRIGHTNESS {{ briV }}%</div>
+          <input type="range" min="50" max="150" value="{{ briV }}" onChange="{{ onBri }}" style="width:100%; accent-color:#1A1D12;" />
+          <div style="font-size:9.5px; font-weight:700; color:#9a9e8c;">CONTRAST {{ conV }}%</div>
+          <input type="range" min="50" max="150" value="{{ conV }}" onChange="{{ onCon }}" style="width:100%; accent-color:#1A1D12;" />
+          <div style="font-size:9.5px; font-weight:700; color:#9a9e8c;">SATURATION {{ satV }}%</div>
+          <input type="range" min="0" max="200" value="{{ satV }}" onChange="{{ onSat }}" style="width:100%; accent-color:#1A1D12;" />
+          <button onClick="{{ onAdjReset }}" style="margin-top:6px; padding:6px 10px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; font-size:11px; font-weight:700; cursor:pointer;">Reset adjustments</button>
+          <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:13px 0 5px;">BACKGROUND</div>
+          <sc-if value="{{ cutOff }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ onRemoveBg }}" style="width:100%; padding:9px; border-radius:9px; border:1px solid #1A1D12; background:#1A1D12; color:#C6F035; font-size:12px; font-weight:800; cursor:pointer;">{{ removeBgLbl }}</button>
+          </sc-if>
+          <sc-if value="{{ cutOn }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; gap:6px;">
+              <button onClick="{{ onRestoreBg }}" style="flex:1; padding:8px; border-radius:9px; border:1px solid #E2DFD2; background:#fff; font-size:11.5px; font-weight:700; cursor:pointer;">Restore original</button>
+              <sc-if value="{{ canRetryBg }}" hint-placeholder-val="{{ false }}"><button onClick="{{ onRetryBg }}" style="flex:1; padding:8px; border-radius:9px; border:1px solid #E2DFD2; background:#fff; font-size:11.5px; font-weight:700; cursor:pointer;">{{ retryBgLbl }}</button></sc-if>
+            </div>
+            <div style="margin-top:6px; font-size:10.5px; color:#9a9e8c; line-height:1.5;">Original photo stays untouched in the catalogue — this layer just renders the cutout.</div>
+          </sc-if>
+          <sc-if value="{{ isProdImgSel }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:13px 0 5px;">IMAGE SOURCE</div>
+            <select data-val="{{ imgSrcV }}" value="{{ imgSrcV }}" onChange="{{ onImgSrc }}" style="width:100%; padding:7px 6px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;">
+              <option value="main">Merchant’s chosen photo (follows selection)</option>
+              <sc-for list="{{ imgFixOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}">{{ o.l }}</option></sc-for>
+              <option value="pair">Paired product’s photo</option>
+            </select>
+            <button onClick="{{ onChangeImg }}" style="margin-top:8px; width:100%; padding:9px; border-radius:9px; border:1px solid #1A1D12; background:#fff; font-size:12px; font-weight:800; cursor:pointer;">Change product image</button>
+            <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:13px 0 5px;">CROP — {{ cropFmtLbl }} ONLY</div>
+            <div style="font-size:9.5px; font-weight:700; color:#9a9e8c;">ZOOM {{ czV }}%</div>
+            <input type="range" min="100" max="200" value="{{ czV }}" onChange="{{ onCz }}" style="width:100%; accent-color:#1A1D12;" />
+            <div style="font-size:9.5px; font-weight:700; color:#9a9e8c;">POSITION X {{ cxV }}</div>
+            <input type="range" min="0" max="100" value="{{ cxV }}" onChange="{{ onCx }}" style="width:100%; accent-color:#1A1D12;" />
+            <div style="font-size:9.5px; font-weight:700; color:#9a9e8c;">POSITION Y {{ cyV }}</div>
+            <input type="range" min="0" max="100" value="{{ cyV }}" onChange="{{ onCy }}" style="width:100%; accent-color:#1A1D12;" />
+            <button onClick="{{ onCropReset }}" style="margin-top:6px; padding:6px 10px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; font-size:11px; font-weight:700; cursor:pointer;">Reset crop</button>
+            <div style="margin-top:8px; font-size:10.5px; color:#9a9e8c; line-height:1.5;">Each size keeps its own crop — Story can run taller than Feed.</div>
+          </sc-if>
+        </sc-if>
+
+        <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:15px 0 5px;">TRANSFORM</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+          <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">X</div><input type="number" value="{{ posX }}" onChange="{{ onPosX }}" style="width:100%; padding:6px 8px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;" /></div>
+          <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">Y</div><input type="number" value="{{ posY }}" onChange="{{ onPosY }}" style="width:100%; padding:6px 8px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;" /></div>
+          <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">WIDTH</div><input type="number" value="{{ posW }}" onChange="{{ onPosW }}" style="width:100%; padding:6px 8px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;" /></div>
+          <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">{{ hLbl }}</div><input type="number" value="{{ posH }}" onChange="{{ onPosH }}" style="width:100%; padding:6px 8px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;" /></div>
+        </div>
+        <div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin:8px 0 2px;">OPACITY {{ opPct }}%</div>
+        <input type="range" min="0" max="100" value="{{ opPct }}" onChange="{{ onOp }}" style="width:100%; accent-color:#1A1D12;" />
+        <div style="display:flex; gap:5px; margin-top:8px;">
+          <button onClick="{{ alL }}" title="Align left" style="{{ miniBtn }}">⇤</button><button onClick="{{ alC }}" title="Center X" style="{{ miniBtn }}">⇹</button><button onClick="{{ alR }}" title="Align right" style="{{ miniBtn }}">⇥</button>
+          <button onClick="{{ alT }}" title="Align top" style="{{ miniBtn }}">⤒</button><button onClick="{{ alM }}" title="Center Y" style="{{ miniBtn }}">⇳</button><button onClick="{{ alB }}" title="Align bottom" style="{{ miniBtn }}">⤓</button>
+        </div>
+        <div style="display:flex; gap:5px; margin-top:6px;">
+          <button onClick="{{ onFwd }}" style="{{ miniW }}">Forward</button><button onClick="{{ onBackw }}" style="{{ miniW }}">Backward</button><button onClick="{{ onRadT }}" style="{{ radBtnSt }}">Corners</button><button onClick="{{ onShadow }}" style="{{ shadowSt }}">Shadow</button>
+        </div>
+
+        <sc-if value="{{ animPanelOn }}" hint-placeholder-val="{{ false }}">
+          <div style="height:1px; background:#E2DFD2; margin:16px 0 12px;"></div>
+          <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c;">ANIMATION — THIS LAYER</div>
+          <sc-for list="{{ animSlots }}" as="a" hint-placeholder-count="4">
+            <div style="margin-top:10px; padding:9px 10px; border-radius:11px; background:#F4F2EA;">
+              <div style="display:flex; align-items:center; gap:6px;"><span style="font-size:10px; font-weight:800; letter-spacing:0.8px; color:#5C6150;">{{ a.title }}</span><div style="flex:1;"></div>
+                <sc-if value="{{ a.hasEv }}" hint-placeholder-val="{{ false }}"><button onClick="{{ a.onClear }}" style="border:none; background:none; color:#B03A2E; font-size:10.5px; font-weight:700; cursor:pointer;">remove</button></sc-if>
+              </div>
+              <select data-val="{{ a.preset }}" value="{{ a.preset }}" onChange="{{ a.onPreset }}" style="width:100%; margin-top:6px; padding:6px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;">
+                <sc-for list="{{ a.opts }}" as="o" hint-placeholder-count="5"><option value="{{ o.v }}">{{ o.l }}</option></sc-for>
+              </select>
+              <sc-if value="{{ a.hasEv }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-top:6px;">
+                  <div><div style="font-size:9px; font-weight:700; color:#9a9e8c;">START s</div><input type="number" step="0.1" value="{{ a.start }}" onChange="{{ a.onStart }}" style="width:100%; padding:5px 7px; border:1px solid #E2DFD2; border-radius:7px; font-size:11.5px; background:#fff;" /></div>
+                  <sc-if value="{{ a.hasDur }}" hint-placeholder-val="{{ true }}"><div><div style="font-size:9px; font-weight:700; color:#9a9e8c;">DURATION s</div><input type="number" step="0.1" value="{{ a.dur }}" onChange="{{ a.onDur }}" style="width:100%; padding:5px 7px; border:1px solid #E2DFD2; border-radius:7px; font-size:11.5px; background:#fff;" /></div></sc-if>
+                  <sc-if value="{{ a.hasDur }}" hint-placeholder-val="{{ true }}"><div><div style="font-size:9px; font-weight:700; color:#9a9e8c;">EASING</div>
+                    <select data-val="{{ a.ease }}" value="{{ a.ease }}" onChange="{{ a.onEase }}" style="width:100%; padding:5px; border:1px solid #E2DFD2; border-radius:7px; font-size:11.5px; background:#fff;"><option value="out">Ease out</option><option value="in-out">Ease in-out</option><option value="overshoot">Overshoot</option><option value="linear">Linear</option></select></div></sc-if>
+                  <div><div style="font-size:9px; font-weight:700; color:#9a9e8c;">INTENSITY {{ a.int }}×</div><input type="range" min="0.5" max="2" step="0.1" value="{{ a.int }}" onChange="{{ a.onInt }}" style="width:100%; accent-color:#1A1D12; margin-top:7px;" /></div>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </sc-if>
+      </sc-if>
+
+      <sc-if value="{{ noSelOn }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:13px 14px; border-radius:14px; background:#1A1D12; color:#F0EFE6;">
+          <div style="display:inline-flex; align-items:center; gap:7px; padding:3px 9px; border-radius:999px; background:rgba(198,240,53,0.16); color:#C6F035; font-size:10px; font-weight:800; letter-spacing:1px;">✦ PREPARED BY NOVA</div>
+          <div style="font-size:12px; line-height:1.55; margin-top:9px; color:#D8D6C8;">{{ novaBody }}</div>
+          <div style="font-size:10.5px; line-height:1.5; margin-top:8px; color:#9A9C8C;">Deterministic fill — product data + store theme. AI copy generation plugs in here later.</div>
+          <div style="display:flex; gap:6px; margin-top:10px; flex-wrap:wrap;">
+            <button onClick="{{ onAltHead }}" style="padding:7px 12px; border-radius:9px; border:1px solid #3A3D2E; background:transparent; color:#F0EFE6; font-size:11.5px; font-weight:700; cursor:pointer;">Try another headline</button>
+            <button onClick="{{ onRegenOpen }}" style="padding:7px 12px; border-radius:9px; border:none; background:#C6F035; color:#1A1D12; font-size:11.5px; font-weight:800; cursor:pointer;">✦ Regenerate…</button>
+          </div>
+        </div>
+        <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:16px 0 5px;">TEMPLATE</div>
+        <button onClick="{{ onTplSaveOpen }}" style="width:100%; padding:9px; border-radius:9px; border:1px solid #1A1D12; background:#fff; font-size:12px; font-weight:800; cursor:pointer;">Save as reusable template…</button>
+        <sc-if value="{{ srcTplOn }}" hint-placeholder-val="{{ false }}"><div style="margin-top:6px; font-size:10.5px; color:#9a9e8c; line-height:1.5;">Based on your template “{{ srcTplName }}”.</div></sc-if>
+        <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:16px 0 5px;">CANVAS</div>
+        <div style="font-size:12px; color:#3C4033; line-height:1.6;">{{ fmtInfo }}</div>
+        <div style="margin-top:10px; font-size:11px; color:#9a9e8c; line-height:1.55;">Click any layer to edit it. Double-click text to type on the canvas. Content edits sync across all three sizes; position is per-size.</div>
+        <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:16px 0 5px;">SHORTCUTS</div>
+        <div style="font-size:11px; color:#6B6D60; line-height:1.8;">Arrows nudge · ⇧ arrows ×10<br />⌘Z undo · ⌘D duplicate · ⌘C/V copy<br />Delete removes · Space plays (Animate)</div>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- timeline -->
+  <sc-if value="{{ animateOn }}" hint-placeholder-val="{{ false }}">
+  <div style="height:236px; background:#FBFAF5; border-top:1px solid #E2DFD2; display:flex; flex-direction:column; flex-shrink:0;">
+    <div style="height:46px; display:flex; align-items:center; gap:8px; padding:0 12px; border-bottom:1px solid #EEEBDF;">
+      <button onClick="{{ onPlay }}" style="width:34px; height:34px; border-radius:10px; border:none; background:#1A1D12; color:#C6F035; cursor:pointer; display:inline-flex; align-items:center; justify-content:center;">
+        <sc-if value="{{ playingOn }}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"></path></svg></sc-if>
+        <sc-if value="{{ pausedOn }}" hint-placeholder-val="{{ true }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"></path></svg></sc-if>
+      </button>
+      <button onClick="{{ onRestart }}" title="Restart" style="width:30px; height:30px; border-radius:9px; border:1px solid #E2DFD2; background:#fff; cursor:pointer; font-size:12px;">⟲</button>
+      <span id="nma-clock" style="font-family:var(--dk-font-mono); font-size:11.5px; color:#3C4033; min-width:104px;">{{ clock0 }}</span>
+      <span style="font-size:10px; font-weight:700; color:#9a9e8c;">LENGTH</span>
+      <input type="number" min="2" max="12" step="0.5" value="{{ durSec }}" onChange="{{ onDurCh }}" style="width:56px; padding:5px 7px; border:1px solid #E2DFD2; border-radius:8px; font-size:11.5px; background:#fff;" /><span style="font-size:10.5px; color:#9a9e8c; margin-left:-3px;">s</span>
+      <div style="width:1px; height:20px; background:#E2DFD2; margin:0 3px;"></div>
+      <span style="font-size:10px; font-weight:700; color:#9a9e8c;">MOTION STYLE</span>
+      <sc-for list="{{ mchips }}" as="m" hint-placeholder-count="5"><button onClick="{{ m.on }}" style="{{ m.st }}">{{ m.lbl }}</button></sc-for>
+      <sc-if value="{{ customOn }}" hint-placeholder-val="{{ false }}"><span style="padding:5px 10px; border-radius:999px; background:#EEF0E6; border:1px dashed #B9B5A2; font-size:11px; font-weight:700; color:#5C6150;">Custom</span></sc-if>
+      <div style="flex:1;"></div>
+      <sc-if value="{{ reducedOn }}" hint-placeholder-val="{{ false }}"><span style="padding:5px 10px; border-radius:999px; background:#FFF3E2; border:1px solid #E8D5B5; font-size:10.5px; font-weight:700; color:#B07A2A;">Reduced motion — preview shows final frame</span></sc-if>
+      <button onClick="{{ onTlOut }}" style="width:26px; height:26px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; cursor:pointer; font-size:13px;">−</button>
+      <button onClick="{{ onTlIn }}" style="width:26px; height:26px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; cursor:pointer; font-size:13px;">+</button>
+      <button onClick="{{ onTlFit }}" style="padding:5px 9px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; cursor:pointer; font-size:10.5px; font-weight:700;">Fit</button>
+      <button onClick="{{ onResetAll }}" style="padding:5px 9px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; cursor:pointer; font-size:10.5px; font-weight:700; color:#B03A2E;">Reset all motion</button>
+    </div>
+    <div id="nma-tl" style="flex:1; overflow:auto; position:relative;">
+      <div id="nma-tlc" style="{{ tlcSt }}">
+        <div onPointerDown="{{ onRuler }}" style="{{ rulerSt }}">
+          <sc-for list="{{ ticks }}" as="k" hint-placeholder-count="12">
+            <div style="{{ k.st }}"></div>
+            <sc-if value="{{ k.hasLbl }}" hint-placeholder-val="{{ false }}"><span style="{{ k.lblSt }}">{{ k.lbl }}</span></sc-if>
+          </sc-for>
+        </div>
+        <sc-for list="{{ tlRows }}" as="r" hint-placeholder-count="8">
+          <div style="{{ r.rowSt }}">
+            <div onClick="{{ r.on }}" style="{{ r.labSt }}">
+              <span style="flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.label }}</span>
+              <sc-if value="{{ r.hasAnim }}" hint-placeholder-val="{{ true }}"><button onClick="{{ r.onReset }}" title="Reset this layer's motion" style="border:none; background:none; color:#9a9e8c; font-size:10px; cursor:pointer; padding:1px;">⟲</button></sc-if>
+              <sc-if value="{{ r.noAnim }}" hint-placeholder-val="{{ false }}"><button onClick="{{ r.onAdd }}" style="border:1px dashed #B9B5A2; background:none; border-radius:6px; color:#5C6150; font-size:9.5px; font-weight:700; cursor:pointer; padding:2px 6px;">+ motion</button></sc-if>
+            </div>
+            <sc-for list="{{ r.bars }}" as="b" hint-placeholder-count="1">
+              <div onPointerDown="{{ b.down }}" title="{{ b.tip }}" style="{{ b.st }}">{{ b.lbl }}<sc-if value="{{ b.hasEdge }}" hint-placeholder-val="{{ true }}"><span onPointerDown="{{ b.edge }}" style="position:absolute; right:0; top:0; bottom:0; width:9px; cursor:ew-resize; border-radius:0 7px 7px 0; background:rgba(255,255,255,0.28);"></span></sc-if></div>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div id="nma-ph" onPointerDown="{{ onPhDown }}" style="{{ phSt }}"><div style="width:11px; height:11px; border-radius:3px; background:#C6F035; border:2px solid #1A1D12; margin-left:-5.5px; cursor:ew-resize;"></div><div style="width:2px; background:#1A1D12; flex:1; margin-left:-1px;"></div></div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ cdOn }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Creative Doctor" style="position:fixed; top:54px; right:0; bottom:0; width:378px; background:#FBFAF5; border-left:1px solid #E2DFD2; box-shadow:-18px 0 44px rgba(26,29,18,0.13); z-index:150; display:flex; flex-direction:column;">
+    <div style="display:flex; align-items:center; gap:9px; padding:13px 16px; border-bottom:1px solid #EEEBDF;">
+      <span style="width:26px; height:26px; border-radius:8px; background:#1A1D12; color:#C6F035; display:inline-flex; align-items:center; justify-content:center; font-size:14px; font-weight:800;">✚</span>
+      <div style="font-size:14px; font-weight:800;">Creative Doctor</div>
+      <div style="flex:1;"></div>
+      <button onClick="{{ onCd }}" style="border:none; background:none; font-size:15px; cursor:pointer; color:#6B6D60;">✕</button>
+    </div>
+    <div style="padding:12px 16px 0;"><div style="{{ cdStatusSt }}">{{ cdStatus }}</div></div>
+    <div style="flex:1; overflow-y:auto; padding:12px 16px 18px; display:flex; flex-direction:column; gap:9px;">
+      <sc-for list="{{ cdItems }}" as="i" hint-placeholder-count="3">
+        <div style="border:1px solid #E2DFD2; border-radius:13px; background:#fff; padding:11px 12px;">
+          <div style="display:flex; align-items:center; gap:6px; min-width:0;">
+            <span style="{{ i.sevSt }}">{{ i.sevLbl }}</span>
+            <span style="padding:2px 7px; border-radius:99px; border:1px solid #E2DFD2; font-size:9.5px; font-weight:700; color:#5C6150; white-space:nowrap;">{{ i.fmtChip }}</span>
+            <span style="font-size:9.5px; color:#9a9e8c; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ i.layer }}</span>
+          </div>
+          <div style="font-size:12.5px; font-weight:800; margin-top:7px; line-height:1.3;">{{ i.title }}</div>
+          <div style="font-size:11.5px; color:#6B6D60; line-height:1.5; margin-top:4px;">{{ i.body }}</div>
+          <div style="display:flex; gap:6px; margin-top:9px; flex-wrap:wrap;">
+            <sc-if value="{{ i.hasFix }}" hint-placeholder-val="{{ true }}"><button onClick="{{ i.onFix }}" style="padding:6px 11px; border-radius:8px; border:none; background:#1A1D12; color:#C6F035; font-size:11px; font-weight:800; cursor:pointer;">{{ i.fixLbl }}</button></sc-if>
+            <sc-if value="{{ i.canSel }}" hint-placeholder-val="{{ true }}"><button onClick="{{ i.onSel }}" style="padding:6px 11px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; font-size:11px; font-weight:700; cursor:pointer;">Select layer</button></sc-if>
+            <button onClick="{{ i.onIgn }}" style="padding:6px 11px; border-radius:8px; border:none; background:transparent; color:#9a9e8c; font-size:11px; font-weight:700; cursor:pointer;">Ignore</button>
+          </div>
+        </div>
+      </sc-for>
+      <sc-if value="{{ cdIgnOn }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ onCdUnign }}" style="padding:7px 11px; border-radius:9px; border:1.5px dashed #B9B5A2; background:transparent; font-size:11px; font-weight:700; color:#5C6150; cursor:pointer;">{{ cdIgnLbl }}</button>
+      </sc-if>
+    </div>
+    <div style="padding:11px 16px; border-top:1px solid #EEEBDF; font-size:10.5px; color:#9a9e8c; line-height:1.5;">Checks the live composition across all three sizes — overflow, safe zones, contrast, content gaps, motion timing. Deterministic rules; every applied fix is one ⌘Z from undone.</div>
+  </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<!-- ============ EXPORT MODAL ============ -->
+<sc-if value="{{ exportOn }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ onExportClose }}" style="position:fixed; inset:0; background:rgba(26,29,18,0.5); z-index:200; display:flex; align-items:center; justify-content:center;">
+  <div onClick="{{ stop }}" style="width:520px; max-height:86vh; overflow-y:auto; background:#FBFAF5; border-radius:18px; padding:20px 22px 22px; box-shadow:0 30px 80px rgba(0,0,0,0.3);">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="font-size:17px; font-weight:800;">Export</div>
+      <div style="flex:1;"></div>
+      <button onClick="{{ onExportClose }}" style="border:none; background:none; font-size:16px; cursor:pointer; color:#6B6D60;">✕</button>
+    </div>
+    <div style="display:flex; background:#EEEBDF; border-radius:10px; padding:3px; gap:2px; margin-top:12px;">
+      <button onClick="{{ onExTabS }}" style="{{ exTabSSt }}">Static image</button>
+      <button onClick="{{ onExTabM }}" style="{{ exTabMSt }}">Motion · MP4</button>
+    </div>
+
+    <sc-if value="{{ exStaticOn }}" hint-placeholder-val="{{ true }}">
+      <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:15px 0 6px;">SIZES</div>
+      <div style="display:flex; flex-direction:column; gap:5px;">
+        <sc-for list="{{ exFmtRows }}" as="f" hint-placeholder-count="3">
+          <div onClick="{{ f.on }}" style="{{ f.st }}"><span style="{{ f.tick }}">✓</span><span style="font-weight:700; font-size:12.5px;">{{ f.lbl }}</span><span style="font-size:11px; color:#9a9e8c;">{{ f.sub }}</span></div>
+        </sc-for>
+      </div>
+      <div style="display:flex; gap:6px; align-items:center; margin-top:14px;">
+        <span style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c;">FORMAT</span>
+        <button onClick="{{ onExPng }}" style="{{ exPngSt }}">PNG</button>
+        <button onClick="{{ onExJpg }}" style="{{ exJpgSt }}">JPEG</button>
+        <sc-if value="{{ exQOn }}" hint-placeholder-val="{{ false }}">
+          <span style="font-size:10px; font-weight:700; color:#9a9e8c; margin-left:8px;">QUALITY {{ exQPct }}%</span>
+          <input type="range" min="50" max="100" value="{{ exQPct }}" onChange="{{ onExQ }}" style="flex:1; accent-color:#1A1D12;" />
+        </sc-if>
+      </div>
+      <button onClick="{{ onDoExport }}" style="margin-top:16px; width:100%; padding:12px; border-radius:11px; border:none; background:#C6F035; color:#1A1D12; font-size:13.5px; font-weight:800; cursor:pointer;">{{ exportLbl }}</button>
+      <div style="margin-top:9px; font-size:11px; color:#9a9e8c; line-height:1.5;">Rendered client-side from the live project at full 1080px resolution — the same composition data the render worker will use for MP4.</div>
+    </sc-if>
+
+    <sc-if value="{{ exMotionOn }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; gap:8px; margin-top:15px;">
+        <div style="flex:1; padding:10px 12px; border-radius:11px; background:#F4F2EA;"><div style="font-size:10px; font-weight:800; color:#9a9e8c; letter-spacing:1px;">OUTPUT</div><div style="font-size:12.5px; font-weight:700; margin-top:3px;">MP4 · 30fps · {{ exMotionSpec }}</div></div>
+        <div style="flex:1; padding:10px 12px; border-radius:11px; background:#F4F2EA;"><div style="font-size:10px; font-weight:800; color:#9a9e8c; letter-spacing:1px;">DURATION</div><div style="font-size:12.5px; font-weight:700; margin-top:3px;">{{ exMotionDur }}</div></div>
+      </div>
+      <div style="margin-top:12px; padding:11px 13px; border-radius:11px; background:#FFF3E2; border:1px solid #E8D5B5; font-size:12px; color:#7A5A22; line-height:1.55;"><b>Backend-dependent.</b> Motion export renders on a dedicated worker from saved project JSON — never in the main API process, and never simulated in this prototype. The button stays honest until the service exists.</div>
+      <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:14px 0 5px;">EXPORT-JOB CONTRACT</div>
+      <pre style="margin:0; padding:12px 13px; border-radius:11px; background:#1A1D12; color:#C9CDBA; font-family:var(--dk-font-mono); font-size:10.5px; line-height:1.65; overflow-x:auto;">POST /api/render-jobs
+{ projectId, format: "{{ exFmtKey }}",
+  fps: 30, durationMs: {{ exDurMs }},
+  composition: &lt;CreativeProject JSON&gt; }
+→ 202 { jobId, status: "queued" }
+   queued → rendering → completed | failed</pre>
+      <button disabled="{{ true }}" style="margin-top:14px; width:100%; padding:12px; border-radius:11px; border:1.5px dashed #B9B5A2; background:transparent; color:#9a9e8c; font-size:13px; font-weight:800; cursor:not-allowed;">Request render — awaiting render service</button>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ AD SET MODAL ============ -->
+<sc-if value="{{ adsetOn }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ onAdsetClose }}" style="position:fixed; inset:0; background:rgba(26,29,18,0.5); z-index:200; display:flex; align-items:center; justify-content:center;">
+  <div onClick="{{ stop }}" style="width:min(880px, 92vw); max-height:88vh; overflow-y:auto; background:#FBFAF5; border-radius:18px; padding:20px 22px 22px; box-shadow:0 30px 80px rgba(0,0,0,0.3);">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="font-size:17px; font-weight:800;">✦ Ad set — six outputs, one project</div>
+      <div style="flex:1;"></div>
+      <button onClick="{{ onAdsetClose }}" style="border:none; background:none; font-size:16px; cursor:pointer; color:#6B6D60;">✕</button>
+    </div>
+    <div style="font-size:12px; color:#6B6D60; margin-top:4px;">Square, portrait and story — each as static and motion. Shared content stays in sync; open any size to fine-tune it independently.</div>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:16px;">
+      <sc-for list="{{ adTiles }}" as="a" hint-placeholder-count="6">
+        <div style="border:1px solid #E2DFD2; border-radius:14px; overflow:hidden; background:#fff;">
+          <div style="{{ a.boxSt }}">
+            <div style="{{ a.pvSt }}">
+              <sc-for list="{{ a.pv }}" as="e" hint-placeholder-count="8">
+                <div style="{{ e.st }}"><sc-if value="{{ e.isTxt }}" hint-placeholder-val="{{ true }}">{{ e.text }}</sc-if><sc-if value="{{ e.isMono }}" hint-placeholder-val="{{ false }}"><span style="{{ e.monoSt }}">{{ e.mono }}</span></sc-if></div>
+              </sc-for>
+            </div>
+            <sc-if value="{{ a.motionChip }}" hint-placeholder-val="{{ false }}"><span style="position:absolute; left:8px; bottom:8px; padding:4px 9px; border-radius:999px; background:#C6F035; color:#1A1D12; font-size:10px; font-weight:800;">▶ {{ a.motionMeta }}</span></sc-if>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; padding:9px 11px;">
+            <div><div style="font-size:12px; font-weight:800;">{{ a.title }}</div><div style="font-size:10px; color:#9a9e8c;">{{ a.sub }}</div></div>
+            <div style="flex:1;"></div>
+            <button onClick="{{ a.onOpen }}" style="padding:5px 10px; border-radius:8px; border:1px solid #E2DFD2; background:#fff; font-size:11px; font-weight:700; cursor:pointer;">{{ a.openLbl }}</button>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex; gap:8px; margin-top:16px; align-items:center;">
+      <button onClick="{{ onExportAll }}" style="padding:11px 16px; border-radius:11px; border:none; background:#C6F035; color:#1A1D12; font-size:12.5px; font-weight:800; cursor:pointer;">Export 3 statics · PNG</button>
+      <button onClick="{{ onSaveSet }}" style="padding:11px 16px; border-radius:11px; border:1px solid #1A1D12; background:#fff; font-size:12.5px; font-weight:800; cursor:pointer;">Save set to Content Studio</button>
+      <span style="font-size:11px; color:#9a9e8c;">Motion MP4s queue on the render service — see Export → Motion.</span>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ regenOn }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ onRegenClose }}" style="position:fixed; inset:0; background:rgba(26,29,18,0.5); z-index:200; display:flex; align-items:center; justify-content:center;">
+  <div onClick="{{ stop }}" style="width:520px; max-height:86vh; overflow-y:auto; background:#FBFAF5; border-radius:18px; padding:20px 22px 22px; box-shadow:0 30px 80px rgba(0,0,0,0.3);">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="font-size:17px; font-weight:800;">✦ Regenerate with Nova</div>
+      <div style="flex:1;"></div>
+      <button onClick="{{ onRegenClose }}" style="border:none; background:none; font-size:16px; cursor:pointer; color:#6B6D60;">✕</button>
+    </div>
+    <div style="font-size:12px; color:#6B6D60; margin-top:4px;">Describe the ad — Nova composes structured, fully editable layers from {{ regenProd }} and your store theme.</div>
+    <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:12px;">
+      <sc-for list="{{ regenChips }}" as="c" hint-placeholder-count="5"><button onClick="{{ c.on }}" style="padding:6px 11px; border-radius:999px; border:1px solid #E2DFD2; background:#fff; font-size:11.5px; font-weight:700; cursor:pointer;">{{ c.l }}</button></sc-for>
+    </div>
+    <textarea value="{{ regenDirV }}" onChange="{{ onRegenDir }}" rows="2" placeholder="e.g. bold flash-sale story ad with motion" style="width:100%; margin-top:10px; padding:9px 10px; border:1px solid #E2DFD2; border-radius:10px; font-size:12.5px; resize:vertical; background:#fff; line-height:1.4;"></textarea>
+    <div style="margin-top:8px; font-size:11px; color:#9a9e8c; line-height:1.5;">Deterministic composer — direction picks the layout family, motion style, brand mode and size. No AI calls in this prototype; the generated design is layers, never a flattened image.</div>
+    <button onClick="{{ onRegenFull }}" style="margin-top:12px; width:100%; padding:12px; border-radius:11px; border:none; background:#C6F035; color:#1A1D12; font-size:13.5px; font-weight:800; cursor:pointer;">✦ Generate — replaces the canvas (⌘Z restores)</button>
+    <sc-if value="{{ regenAgainOn }}" hint-placeholder-val="{{ false }}">
+      <div style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c; margin:14px 0 6px;">REFINE THE LAST GENERATION</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+        <button onClick="{{ onRegenVar }}" style="padding:9px; border-radius:9px; border:1px solid #E2DFD2; background:#fff; font-size:11.5px; font-weight:700; cursor:pointer;">Another variation</button>
+        <button onClick="{{ onRegenLayout }}" style="padding:9px; border-radius:9px; border:1px solid #E2DFD2; background:#fff; font-size:11.5px; font-weight:700; cursor:pointer;">Layout only</button>
+        <button onClick="{{ onRegenCopy }}" style="padding:9px; border-radius:9px; border:1px solid #E2DFD2; background:#fff; font-size:11.5px; font-weight:700; cursor:pointer;">Copy only</button>
+        <button onClick="{{ onRegenMotion }}" style="padding:9px; border-radius:9px; border:1px solid #E2DFD2; background:#fff; font-size:11.5px; font-weight:700; cursor:pointer;">Motion only</button>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ tplSaveOn }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ onTplSaveClose }}" style="position:fixed; inset:0; background:rgba(26,29,18,0.5); z-index:200; display:flex; align-items:center; justify-content:center;">
+  <div onClick="{{ stop }}" style="width:480px; max-height:86vh; overflow-y:auto; background:#FBFAF5; border-radius:18px; padding:20px 22px 22px; box-shadow:0 30px 80px rgba(0,0,0,0.3);">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="font-size:17px; font-weight:800;">Save as reusable template</div>
+      <div style="flex:1;"></div>
+      <button onClick="{{ onTplSaveClose }}" style="border:none; background:none; font-size:16px; cursor:pointer; color:#6B6D60;">✕</button>
+    </div>
+    <div style="font-size:12px; color:#6B6D60; margin-top:4px;">Layers, per-size layouts, bindings, brand roles and motion all travel with it — it behaves exactly like the built-in ten.</div>
+    <div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin:14px 0 3px;">TEMPLATE NAME</div>
+    <input value="{{ tmName }}" onChange="{{ onTmName }}" style="width:100%; padding:8px 10px; border:1px solid #E2DFD2; border-radius:9px; font-size:13px; font-weight:700; background:#fff;" />
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px;">
+      <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">CATEGORY</div>
+        <select data-val="{{ tmCat }}" value="{{ tmCat }}" onChange="{{ onTmCat }}" style="width:100%; padding:7px 6px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;">
+          <sc-for list="{{ tmCats }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.v }}</option></sc-for>
+        </select></div>
+      <div><div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin-bottom:3px;">OBJECTIVE</div>
+        <select data-val="{{ tmObj }}" value="{{ tmObj }}" onChange="{{ onTmObj }}" style="width:100%; padding:7px 6px; border:1px solid #E2DFD2; border-radius:8px; font-size:12px; background:#fff;">
+          <sc-for list="{{ tmObjs }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.v }}</option></sc-for>
+        </select></div>
+    </div>
+    <div style="font-size:9.5px; font-weight:700; color:#9a9e8c; margin:10px 0 3px;">SHORT DESCRIPTION</div>
+    <input value="{{ tmDesc }}" onChange="{{ onTmDesc }}" placeholder="One line merchants will see in the gallery" style="width:100%; padding:8px 10px; border:1px solid #E2DFD2; border-radius:9px; font-size:12px; background:#fff;" />
+    <div style="display:flex; gap:6px; margin-top:12px; align-items:center;">
+      <span style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c;">STATUS</span>
+      <button onClick="{{ onTmDraft }}" style="{{ tmDraftSt }}">Draft</button>
+      <button onClick="{{ onTmPub }}" style="{{ tmPubSt }}">Published to gallery</button>
+    </div>
+    <sc-if value="{{ tmUpdateOn }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; gap:6px; margin-top:10px; align-items:center;">
+        <span style="font-size:10px; font-weight:800; letter-spacing:1.2px; color:#9a9e8c;">SAVE AS</span>
+        <button onClick="{{ onTmUpd }}" style="{{ tmUpdSt }}">Update “{{ tmSrcName }}”</button>
+        <button onClick="{{ onTmNew }}" style="{{ tmNewSt }}">New template</button>
+      </div>
+    </sc-if>
+    <div style="margin-top:12px; padding:9px 11px; border-radius:10px; background:#F4F2EA; font-size:11px; color:#5C6150; line-height:1.5;">{{ tmMetaLine }}</div>
+    <button onClick="{{ onTmSave }}" style="margin-top:12px; width:100%; padding:12px; border-radius:11px; border:none; background:#C6F035; color:#1A1D12; font-size:13.5px; font-weight:800; cursor:pointer;">Save template</button>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; bottom:22px; left:50%; transform:translateX(-50%); background:#1A1D12; color:#F0EFE6; padding:11px 18px; border-radius:999px; font-size:12.5px; font-weight:600; z-index:300; box-shadow:0 10px 30px rgba(0,0,0,0.3); animation:nmaToast .18s ease; display:flex; align-items:center; gap:12px; white-space:nowrap;">
+    <span>{{ toastMsg }}</span>
+    <sc-if value="{{ toastActOn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ onToastAct }}" style="border:none; background:none; color:#C6F035; font-weight:800; font-size:12.5px; cursor:pointer; padding:0;">{{ toastActLbl }}</button></sc-if>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startIn&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;gallery&quot;,&quot;editor&quot;],&quot;default&quot;:&quot;gallery&quot;,&quot;tsType&quot;:&quot;'gallery'|'editor'&quot;,&quot;section&quot;:&quot;Prototype&quot;},&quot;storeTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;porcelain&quot;,&quot;sage&quot;,&quot;terra&quot;,&quot;noir&quot;,&quot;lime&quot;,&quot;blush&quot;],&quot;default&quot;:&quot;porcelain&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Store theme (from Store Studio)&quot;},&quot;storeFont&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;editorial&quot;,&quot;clean&quot;,&quot;bold&quot;,&quot;boutique&quot;],&quot;default&quot;:&quot;editorial&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Store theme (from Store Studio)&quot;},&quot;motionStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;clean&quot;,&quot;bold&quot;,&quot;premium&quot;,&quot;playful&quot;,&quot;urgent&quot;],&quot;default&quot;:&quot;clean&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;reducedMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { view:'gallery', productId:'pr1', proj:null, fmt:'square', mode:'design', sel:null, imgPreview:null, cdOpen:false,
+    customTpls:[], tplSaveOpen:false, tplMeta:null, regenOpen:false, regenDir:'', regenSeed:0, regenDone:false, removingBg:false, bgTol:26,
+    editing:null, editText:'', leftTab:'product', zoom:'fit', fitSc:0.42, safeOn:false, playing:false,
+    pps:null, exportOpen:false, exTab:'static', exFmts:{square:true, portrait:true, story:true}, exType:'png', exQ:92,
+    adsetOpen:false, hist:[], redoS:[], saveTxt:'', toast:null, drafts:[], resume:null, storeTheme:null, altIdx:0 };
+  get D(){ return window.NMA_DATA; }
+  cl(o){ return JSON.parse(JSON.stringify(o)); }
+  theme(){ return this.state.storeTheme || { p:(this.props.storeTheme ?? 'porcelain'), f:(this.props.storeFont ?? 'editorial'), c:'soft' }; }
+  brand(){ const p = this.state.proj; const mode = p ? p.brandMode : 'brand';
+    const key = JSON.stringify([this.theme(), mode, p && p.brandOverrides]);
+    if(this._bKey !== key){ const B = this.D.deriveBrand(this.theme(), mode);
+      if(p && p.brandOverrides) Object.assign(B.roles, p.brandOverrides); this._bKey = key; this._bVal = B; }
+    return this._bVal; }
+  product(id){ return this.D.PRODUCTS.find(x => x.id === (id || this.state.productId)) || this.D.PRODUCTS[0]; }
+  comp(p){ const pr = p || this.state.proj; return pr && pr.formats[this.state.fmt]; }
+  getEl(id, fmt){ const c = (this.state.proj || {}).formats; return c && c[fmt || this.state.fmt].els.find(e => e.id === id); }
+  fontOf(k, B){ return k === 'bn' ? B.fonts.bn : (k === 'body' ? B.fonts.b : B.fonts.h); }
+  reduced(){ return !!this.props.reducedMotion || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); }
+  resolveColor(s, key, B){ const role = s[key + 'Role']; return role ? (B.roles[role] || s[key]) : s[key]; }
+
+  // ---------- project lifecycle ----------
+  mkProject(tplId, prodId){ const D = this.D, P = this.product(prodId), S = D.slots(P), B0 = D.deriveBrand(this.theme(), 'brand');
+    const tpl = D.TEMPLATES.find(t => t.id === tplId); const style = this.props.motionStyle ?? 'clean';
+    const formats = {}; D.FMT_KEYS.forEach(f => { const F = D.FORMATS[f];
+      const els = tpl.build(f, F.w, F.h, S, B0).map(e => ({ ...e, anim:D.recipeFor(style, e.id) })); formats[f] = { els }; });
+    return { name:P.name + ' — ' + tpl.name, createdBy:'nova', productId:P.id, tplId, motionStyle:style,
+      durationMs:6000, brandMode:'brand', brandOverrides:{}, formats, saveId:null, cdIgnored:[] }; }
+  useTemplate(tplId){ const proj = this.mkProject(tplId, this.state.productId); this._t = 0;
+    this.setState({ view:'editor', proj, fmt:'square', mode:'design', sel:null, hist:[], redoS:[], leftTab:'product', imgPreview:null, cdOpen:false });
+    this.autosave(proj); this.toast('✦ Nova filled ' + proj.name + ' — three sizes, motion included'); }
+  startBlank(){ const D = this.D, B = D.deriveBrand(this.theme(), 'brand'); const formats = {};
+    D.FMT_KEYS.forEach(f => { const F = D.FORMATS[f]; formats[f] = { els:[
+      { id:'bg', type:'shape', x:0, y:0, w:F.w, h:F.h, rot:0, op:1, vis:true, lock:true, bind:null, style:{ fill:B.roles.background, fillRole:'background', rad:0, border:null, borderRole:null, bw:0, dash:false, shadow:false } },
+      { id:'headline', type:'text', bind:null, text:'Say something', x:90, y:F.h/2 - 60, w:F.w - 180, h:0, rot:0, op:1, vis:true, lock:false, style:{ font:'head', size:80, weight:B.fonts.hw, color:B.roles.heading, colorRole:'heading', align:'center', lh:1.05, ls:Math.round(B.fonts.ls*80), bg:null, pad:0, rad:0, shadow:false } } ] }; });
+    const proj = { name:'Untitled creative', createdBy:'merchant', productId:this.state.productId, tplId:null, motionStyle:'clean',
+      durationMs:6000, brandMode:'brand', brandOverrides:{}, formats, saveId:null };
+    proj.formats.square.els[1].anim = this.D.recipeFor('clean','headline');
+    this._t = 0; this.setState({ view:'editor', proj, fmt:'square', mode:'design', sel:null, hist:[], redoS:[] }); }
+  switchTemplate(tplId){ const old = this.state.proj; const proj = this.mkProject(tplId, old.productId);
+    proj.name = old.name.includes('—') ? this.product(old.productId).name + ' — ' + this.D.TEMPLATES.find(t=>t.id===tplId).name : old.name;
+    proj.brandMode = old.brandMode; proj.brandOverrides = this.cl(old.brandOverrides); proj.motionStyle = old.motionStyle; proj.durationMs = old.durationMs; proj.saveId = old.saveId;
+    if(old.motionStyle !== 'custom') this.D.FMT_KEYS.forEach(f => proj.formats[f].els.forEach(e => { e.anim = this.D.recipeFor(old.motionStyle, e.id); }));
+    this.commitProj(proj); this.toast('Template applied — all three sizes re-cut'); }
+  setProduct(id){ if(!this.state.proj){ this.setState({ productId:id }); return; }
+    this.commit(p => { p.productId = id; this.applyBindings(p, id); });
+    this.setState({ productId:id, imgPreview:null }); this.toast('Rebound to ' + this.product(id).name); }
+  applyBindings(p, prodId){ const S = this.D.slots(this.product(prodId));
+    this.D.FMT_KEYS.forEach(f => p.formats[f].els.forEach(e => {
+      if(!e.bind || (e.type !== 'text' && e.type !== 'badge')) return;
+      const v = S[e.bind];
+      if(v != null){ e.text = v; if(e._hiddenByBind){ e.vis = true; e._hiddenByBind = false; } }
+      else if(e.fallback){ e.text = e.fallback; if(e._hiddenByBind){ e.vis = true; e._hiddenByBind = false; } }
+      else if(e.hideIfMissing !== false && e.vis){ e.vis = false; e._hiddenByBind = true; } })); }
+  tplName(proj){ if(!proj.tplId) return 'blank canvas';
+    if(String(proj.tplId).indexOf('custom:') === 0){ const ct = this.loadTpls().find(t => 'custom:' + t.id === proj.tplId); return ct ? ct.name : 'a saved template'; }
+    const t = this.D.TEMPLATES.find(x => x.id === proj.tplId); return t ? t.name : 'a template'; }
+
+  // ---------- custom templates ----------
+  loadTpls(){ try { return JSON.parse(localStorage.getItem('dakio-nma-templates') || '[]'); } catch(e){ return []; } }
+  saveTpls(list){ try { localStorage.setItem('dakio-nma-templates', JSON.stringify(list)); } catch(e){ this.toast('Storage full — template not saved'); }
+    this.setState({ customTpls:list }); }
+  projHasMotion(p){ return this.D.FMT_KEYS.some(f => (p || this.state.proj).formats[f].els.some(e => e.anim)); }
+  instantiateCustom(ct, keep){ const proj = { name:this.product().name + ' — ' + ct.name, createdBy:'nova', productId:this.state.productId,
+      tplId:'custom:' + ct.id, motionStyle:ct.motionStyle || 'custom', durationMs:ct.durationMs || 6000,
+      brandMode:keep ? keep.brandMode : 'brand', brandOverrides:keep ? this.cl(keep.brandOverrides) : {}, cdIgnored:[],
+      saveId:keep ? keep.saveId : null, formats:this.cl(ct.formats) };
+    this.applyBindings(proj, this.state.productId); return proj; }
+  useCustomTemplate(ct){ const proj = this.instantiateCustom(ct, null); this._t = 0;
+    this.setState({ view:'editor', proj, fmt:'square', mode:'design', sel:null, hist:[], redoS:[], leftTab:'product', imgPreview:null, cdOpen:false });
+    this.autosave(proj); this.toast('✦ ' + ct.name + ' filled with ' + this.product().name); }
+  switchCustom(ct){ const proj = this.instantiateCustom(ct, this.state.proj); this.commitProj(proj); this.setState({ sel:null });
+    this.toast('Template applied — all three sizes re-cut'); }
+  saveTemplate(){ const m = this.state.tplMeta; if(!m || !m.name.trim()){ this.toast('Give the template a name'); return; }
+    const p = this.state.proj, list = this.loadTpls(); const upd = m.saveAs === 'update' && m.updateId;
+    const prev = upd ? list.find(t => t.id === m.updateId) : null;
+    const rec = { id:upd ? m.updateId : ('t' + Date.now()), name:m.name.trim(), category:m.category, objective:m.objective,
+      desc:m.desc || 'Custom template by the Dakio design team.', status:m.status, hasMotion:this.projHasMotion(p),
+      motionStyle:p.motionStyle, durationMs:p.durationMs, sizes:this.D.FMT_KEYS.slice(),
+      createdAt:prev ? prev.createdAt : Date.now(), updatedAt:Date.now(), formats:this.cl(p.formats) };
+    this.saveTpls(upd ? list.map(t => t.id === rec.id ? rec : t) : [rec, ...list]);
+    this.commit(x => { x.tplId = 'custom:' + rec.id; });
+    this.setState({ tplSaveOpen:false });
+    this.toast(upd ? '“' + rec.name + '” updated' : (rec.status === 'published' ? '✦ Published to the Ads Content Gallery' : 'Saved as draft template — publish it from the gallery')); }
+  setTplStatus(id, status){ this.saveTpls(this.loadTpls().map(t => t.id === id ? { ...t, status, updatedAt:Date.now() } : t)); }
+  deleteTpl(id){ const list = this.loadTpls(); const gone = list.find(t => t.id === id);
+    this.saveTpls(list.filter(t => t.id !== id));
+    this.toast('Deleted “' + (gone ? gone.name : 'template') + '”', { label:'Undo', fn:() => this.saveTpls([gone, ...this.loadTpls()]) }); }
+
+  // ---------- Nova composer ----------
+  mutateBySeed(proj, seed){ if(!seed) return; const D = this.D;
+    const rnd = n => { const x = Math.sin(seed*9301 + n*49297)*233280; return x - Math.floor(x); };
+    D.FMT_KEYS.forEach((f, fi) => { const els = proj.formats[f].els;
+      const hero = els.find(e => e.type === 'product-image' && e.imgOf !== 'pair');
+      if(hero){ const k = 0.9 + rnd(fi)*0.1; const nw = Math.round(hero.w*k);
+        hero.x += Math.round((hero.w - nw)/2); hero.y += Math.round((hero.h - Math.round(hero.h*k))/2);
+        hero.h = Math.round(hero.h*k); hero.w = nw; hero.imgIdx = Math.floor(rnd(fi + 10)*4); }
+      const disc = els.find(e => e.id === 'disc'); if(disc) disc.rot = Math.round((rnd(fi + 20) - 0.5)*16);
+      const badge = els.find(e => e.id === 'badge'); if(badge) badge.rot = Math.round((rnd(fi + 25) - 0.5)*8); });
+    const S = D.slots(this.product(proj.productId));
+    const alts = [S.primaryBenefit, S.problem, 'New: ' + S.productTitle, S.productTitle].filter(Boolean);
+    if(seed % 2){ const pick = alts[Math.floor(rnd(3)*alts.length)];
+      D.FMT_KEYS.forEach(f => { const h = proj.formats[f].els.find(e => e.id === 'headline');
+        if(h && h.bind === 'productTitle'){ h.text = pick; h.bind = pick === S.productTitle ? 'productTitle' : null; } }); } }
+  regenerate(mode){ const st = this.state, D = this.D, R = D.parseDirection(st.regenDir);
+    if(mode === 'full' || mode === 'variation'){ const seed = mode === 'variation' ? st.regenSeed + 1 : st.regenSeed;
+      const proj = this.mkProject(R.tpl, st.productId);
+      proj.motionStyle = R.motion; D.FMT_KEYS.forEach(f => proj.formats[f].els.forEach(e => { e.anim = D.recipeFor(R.motion, e.id); }));
+      proj.brandMode = R.mode; this.mutateBySeed(proj, seed);
+      proj.name = this.product().name + ' — Nova ' + (seed ? 'v' + (seed + 1) : 'draft');
+      const old = this.state.proj; proj.saveId = old ? old.saveId : null;
+      this.commitProj(proj);
+      this.setState({ fmt:R.fmt, sel:null, regenSeed:seed, regenDone:true, regenOpen:false, mode:'design' });
+      this.toast('✦ Generated from your direction — ⌘Z brings the old design back'); return; }
+    if(mode === 'copy'){ const S = D.slots(this.product());
+      const alts = [S.productTitle, S.primaryBenefit, S.problem, 'New: ' + S.productTitle].filter(Boolean);
+      const i = (st.regenSeed + 1) % alts.length; const cta = D.CTA_OPTIONS[(st.regenSeed + 1) % D.CTA_OPTIONS.length];
+      this.commit(p => { D.FMT_KEYS.forEach(f => p.formats[f].els.forEach(e => {
+        if(e.id === 'headline' && e.type === 'text'){ e.text = alts[i]; e.bind = alts[i] === S.productTitle ? 'productTitle' : null; }
+        if(e.bind === 'ctaText' && e.type === 'badge') e.text = cta; })); });
+      this.setState({ regenSeed:st.regenSeed + 1, regenOpen:false }); this.toast('Copy rotated — headline and CTA'); return; }
+    if(mode === 'motion'){ const cyc = Object.keys(D.RECIPES); const cur = cyc.indexOf(this.state.proj.motionStyle);
+      const next = cyc[(cur + 1 + cyc.length) % cyc.length]; this.applyStyleRecipe(next); this.setState({ regenOpen:false, mode:'animate' });
+      this.toast('Motion restyled: ' + D.RECIPES[next].label); return; }
+    if(mode === 'layout'){ const ids = D.TEMPLATES.map(t => t.id); const curId = String(this.state.proj.tplId || '');
+      const next = ids[(ids.indexOf(curId) + 1 + ids.length) % ids.length];
+      this.switchTemplate(next); this.setState({ regenOpen:false }); return; } }
+
+  // ---------- background removal ----------
+  async floodCut(src, tol){ const img = await this.imgFor(src); const w = img.width, h = img.height;
+    const cv = document.createElement('canvas'); cv.width = w; cv.height = h; const cx = cv.getContext('2d');
+    cx.drawImage(img, 0, 0); const d = cx.getImageData(0, 0, w, h); const px = d.data;
+    const corners = [[0,0],[w-1,0],[0,h-1],[w-1,h-1]].map(([x,y]) => { const i = (y*w + x)*4; return [px[i], px[i+1], px[i+2]]; });
+    const match = i => corners.some(c => Math.abs(px[i] - c[0]) + Math.abs(px[i+1] - c[1]) + Math.abs(px[i+2] - c[2]) < tol*3);
+    const seen = new Uint8Array(w*h); const q = [];
+    for(let x = 0; x < w; x++){ q.push(x, (h-1)*w + x); } for(let y = 0; y < h; y++){ q.push(y*w, y*w + w - 1); }
+    while(q.length){ const p = q.pop(); if(seen[p]) continue; seen[p] = 1; const i = p*4; if(!match(i)) continue;
+      px[i+3] = 0; const x = p % w, y = (p/w)|0;
+      if(x > 0) q.push(p - 1); if(x < w - 1) q.push(p + 1); if(y > 0) q.push(p - w); if(y < h - 1) q.push(p + w); }
+    cx.putImageData(d, 0, 0); return cv.toDataURL('image/png'); }
+  removeBg(retry){ const sel = this.getEl(this.state.sel); if(!sel || this.state.removingBg) return;
+    const tol = retry ? (this.state.bgTol >= 78 ? 26 : this.state.bgTol + 26) : this.state.bgTol;
+    this.setState({ removingBg:true, bgTol:tol });
+    setTimeout(async () => { try {
+        if(sel.type === 'image'){ const cut = await this.floodCut(sel.src, tol);
+          this.updEl(sel.id, x => { x.srcCut = cut; x.style.cutout = true; }, true); }
+        else this.updEl(sel.id, x => { x.style.cutout = true; }, true);
+        this.toast('Background removed — original kept. Restore any time.');
+      } catch(e){ this.toast('Could not process this image'); }
+      this.setState({ removingBg:false }); }, sel.type === 'image' ? 120 : 700); }
+
+  // ---------- commits / history / persistence ----------
+  commitProj(proj){ if(!this._pend) this._pend = JSON.stringify(this.state.proj); this._schedHist();
+    this.setState({ proj, saveTxt:'Saving…' }); this.autosave(proj); }
+  commit(fn){ const p = this.cl(this.state.proj); fn(p); this.commitProj(p); }
+  _schedHist(){ clearTimeout(this._ht); this._ht = setTimeout(() => { const snap = this._pend; this._pend = null;
+    if(snap) this.setState(s => ({ hist:[...s.hist.slice(-59), snap], redoS:[] })); }, 450); }
+  flushHist(){ clearTimeout(this._ht); const snap = this._pend; this._pend = null;
+    if(snap) this.setState(s => ({ hist:[...s.hist.slice(-59), snap], redoS:[] })); }
+  undo(){ this.flushHist(); this.setState(s => { if(!s.hist.length) return null; const cur = JSON.stringify(s.proj);
+    return { proj:JSON.parse(s.hist[s.hist.length-1]), hist:s.hist.slice(0,-1), redoS:[...s.redoS, cur], sel:null }; }, () => this.autosave()); }
+  redo(){ this.setState(s => { if(!s.redoS.length) return null; const cur = JSON.stringify(s.proj);
+    return { proj:JSON.parse(s.redoS[s.redoS.length-1]), redoS:s.redoS.slice(0,-1), hist:[...s.hist, cur] }; }, () => this.autosave()); }
+  updEl(id, fn, shared){ this.commit(p => { (shared ? this.D.FMT_KEYS : [this.state.fmt]).forEach(f => {
+    const e = p.formats[f].els.find(x => x.id === id); if(e) fn(e, p); }); }); }
+  updSty(id, patch){ this.updEl(id, e => Object.assign(e.style, patch), true); }
+  markCustom(p){ p.motionStyle = 'custom'; }
+  autosave(proj){ clearTimeout(this._at); this._at = setTimeout(() => { try {
+      localStorage.setItem('dakio-nma-autosave', JSON.stringify({ proj:proj || this.state.proj, productId:this.state.productId, fmt:this.state.fmt, mode:this.state.mode, storeTheme:this.state.storeTheme, at:Date.now() }));
+      this.setState({ saveTxt:'Autosaved · recovers on refresh' }); } catch(e){ this.setState({ saveTxt:'Autosave paused — storage full' }); } }, 700); }
+  loadDrafts(){ try { return JSON.parse(localStorage.getItem('dakio-nma-drafts') || '[]'); } catch(e){ return []; } }
+  saveDraft(msg){ const p = this.cl(this.state.proj); let drafts = this.loadDrafts();
+    if(!p.saveId){ p.saveId = 'd' + Date.now(); this.commit(x => { x.saveId = p.saveId; }); }
+    const rec = { id:p.saveId, name:p.name, tpl:p.tplId, at:Date.now(), proj:p, productId:this.state.productId };
+    drafts = [rec, ...drafts.filter(d => d.id !== p.saveId)].slice(0, 6);
+    try { localStorage.setItem('dakio-nma-drafts', JSON.stringify(drafts)); this.setState({ drafts });
+      this.toast(msg || '✦ Saved to Content Studio — Draft, ready for review'); }
+    catch(e){ this.toast('Storage is full — draft not saved'); } }
+  openDraft(d){ this._t = 0; this.setState({ view:'editor', proj:this.cl(d.proj), productId:d.productId || 'pr1', fmt:'square', mode:'design', sel:null, hist:[], redoS:[], imgPreview:null, cdOpen:false }); }
+  delDraft(id){ const drafts = this.loadDrafts().filter(d => d.id !== id);
+    localStorage.setItem('dakio-nma-drafts', JSON.stringify(drafts)); this.setState({ drafts }); }
+  backToGallery(){ this.stop(); this.setState({ view:'gallery', sel:null, drafts:this.loadDrafts(), customTpls:this.loadTpls(), imgPreview:null, cdOpen:false }); }
+
+  // ---------- canvas interactions ----------
+  curScale(){ return this.state.zoom === 'fit' ? this.state.fitSc : this.state.zoom; }
+  elDown(e, id){ if(this.state.editing) return; e.stopPropagation();
+    const el = this.getEl(id); if(!el) return;
+    if(this.state.sel !== id) this.setState({ sel:id });
+    if(el.lock) return;
+    const sc = this.curScale(), F = this.D.FORMATS[this.state.fmt];
+    const sx = e.clientX, sy = e.clientY, ox = el.x, oy = el.y; let moved = false, nx = ox, ny = oy;
+    const node = e.currentTarget, gv = document.getElementById('nma-gv'), gh = document.getElementById('nma-gh');
+    const mv = ev => { const dx = (ev.clientX - sx)/sc, dy = (ev.clientY - sy)/sc;
+      if(!moved && Math.hypot(dx, dy) < 3/sc) return; moved = true;
+      nx = ox + dx; ny = oy + dy; const th = 8/sc, h = node.offsetHeight;
+      let snapX = null, snapY = null;
+      [[F.w/2 - el.w/2, F.w/2], [54, 54], [F.w - 54 - el.w, F.w - 54]].forEach(([p, g]) => { if(Math.abs(nx - p) < th){ nx = p; snapX = g; } });
+      [[F.h/2 - h/2, F.h/2], [54, 54], [F.h - 54 - h, F.h - 54]].forEach(([p, g]) => { if(Math.abs(ny - p) < th){ ny = p; snapY = g; } });
+      if(gv){ gv.style.display = snapX == null ? 'none' : 'block'; if(snapX != null) gv.style.left = (snapX - 1) + 'px'; }
+      if(gh){ gh.style.display = snapY == null ? 'none' : 'block'; if(snapY != null) gh.style.top = (snapY - 1) + 'px'; }
+      node.style.transform = 'translate(' + nx + 'px,' + ny + 'px) rotate(' + el.rot + 'deg)'; };
+    const up = () => { window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up);
+      if(gv) gv.style.display = 'none'; if(gh) gh.style.display = 'none';
+      if(moved) this.updEl(id, x => { x.x = Math.round(nx); x.y = Math.round(ny); }, false); };
+    window.addEventListener('pointermove', mv); window.addEventListener('pointerup', up); }
+  startResize(e, id, hand){ e.stopPropagation(); const el = this.getEl(id); if(!el || el.lock) return;
+    const sc = this.curScale(), sx = e.clientX, sy = e.clientY;
+    const node = e.currentTarget.parentElement;
+    const o = { x:el.x, y:el.y, w:el.w, h:el.h || node.offsetHeight, size:el.style.size || 0, ls:el.style.ls || 0 };
+    const corner = hand.length === 2, isTxt = el.type === 'text', isBdg = el.type === 'badge';
+    const scaleTxt = (isTxt || isBdg) && corner;               // corner on text/badge = proportional scale
+    const keepAspect = (el.type === 'product-image' || el.type === 'image') && corner;
+    let r = null;
+    const mv = ev => { const dx = (ev.clientX - sx)/sc, dy = (ev.clientY - sy)/sc;
+      const L = hand.includes('w'), T = hand.includes('n');
+      let w = o.w, h = o.h;
+      if(hand !== 'n' && hand !== 's') w = Math.max(40, o.w + (L ? -dx : dx));
+      if(corner || hand === 'n' || hand === 's') h = Math.max(16, o.h + (T ? -dy : dy));
+      r = { x:o.x, y:o.y, w:Math.round(w), h:Math.round(h), size:o.size, ls:o.ls };
+      if(scaleTxt){ const k = w/o.w; r.size = Math.max(10, Math.round(o.size*k)); r.ls = Math.round(o.ls*k*10)/10; r.h = Math.round(o.h*k); }
+      else if(keepAspect){ const k = w/o.w; r.h = Math.round(o.h*k); }
+      if((isTxt || isBdg) && !corner) r.h = o.h;               // side handle = width only, text reflows
+      if(L) r.x = o.x + (o.w - r.w);
+      if(T) r.y = o.y + (o.h - r.h);
+      node.style.width = r.w + 'px'; if(el.h) node.style.height = r.h + 'px';
+      if(scaleTxt){ node.style.fontSize = r.size + 'px'; node.style.letterSpacing = r.ls + 'px'; }
+      node.style.transform = 'translate(' + r.x + 'px,' + r.y + 'px) rotate(' + el.rot + 'deg)'; };
+    const up = () => { window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up);
+      if(!r) return; const fin = r;
+      this.updEl(id, x => { x.x = Math.round(fin.x); x.y = Math.round(fin.y); x.w = fin.w; if(x.h) x.h = fin.h;
+        if(scaleTxt){ x.style.size = fin.size; x.style.ls = fin.ls; } }, false); };
+    window.addEventListener('pointermove', mv); window.addEventListener('pointerup', up); }
+  startRotate(e, id){ e.stopPropagation(); const el = this.getEl(id); if(!el || el.lock) return;
+    const node = e.currentTarget.parentElement, rect = node.getBoundingClientRect();
+    const cx = rect.left + rect.width/2, cy = rect.top + rect.height/2; let rot = el.rot;
+    const mv = ev => { let a = Math.atan2(ev.clientY - cy, ev.clientX - cx) * 180/Math.PI + 90;
+      const snap = Math.round(a/15)*15; if(Math.abs(a - snap) < 4) a = snap; rot = Math.round(a);
+      node.style.transform = 'translate(' + el.x + 'px,' + el.y + 'px) rotate(' + rot + 'deg)'; };
+    const up = () => { window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up);
+      this.updEl(id, x => { x.rot = ((rot % 360) + 360) % 360 > 180 ? rot % 360 - 360 : rot % 360; }, false); };
+    window.addEventListener('pointermove', mv); window.addEventListener('pointerup', up); }
+  startEdit(id){ const el = this.getEl(id); if(!el || el.lock) return;
+    this.setState({ editing:id, editText:el.text, sel:id }, () => { const t = document.getElementById('nma-edit'); if(t){ t.focus(); t.select(); } }); }
+  commitEdit(){ const { editing, editText } = this.state; if(!editing) return;
+    this.updEl(editing, e => { e.text = editText; }, true); this.setState({ editing:null }); }
+  onCanvasDown(e){ if(e.target.closest && e.target.closest('[data-el-id]')) return; this.setState({ sel:null }); }
+  duplicate(id){ const el = this.getEl(id); if(!el) return; const nid = el.id.replace(/\d*$/,'') + Date.now()%10000;
+    this.commit(p => { this.D.FMT_KEYS.forEach(f => { const src = p.formats[f].els.find(x => x.id === id); if(!src) return;
+      const cp = this.cl(src); cp.id = nid; cp.x += 26; cp.y += 26; cp.lock = false; p.formats[f].els.push(cp); }); });
+    this.setState({ sel:nid }); }
+  delEl(id){ const el = this.getEl(id); if(!el || el.id === 'bg') { this.toast('The background stays — recolor it instead'); return; }
+    this.commit(p => { this.D.FMT_KEYS.forEach(f => { p.formats[f].els = p.formats[f].els.filter(x => x.id !== id); }); });
+    this.setState({ sel:null }); }
+  moveL(id, dir){ this.commit(p => { this.D.FMT_KEYS.forEach(f => { const a = p.formats[f].els; const i = a.findIndex(x => x.id === id);
+    const j = i + dir; if(i < 0 || j < 1 || j >= a.length) return; const t = a[i]; a[i] = a[j]; a[j] = t; }); }); }
+  addEl(mk){ const nid = mk.idRoot + (Date.now()%100000);
+    this.commit(p => { this.D.FMT_KEYS.forEach(f => { const F = this.D.FORMATS[f];
+      const e = mk.build(F, this.brand()); e.id = nid; p.formats[f].els.push(e); }); });
+    this.setState({ sel:nid, leftTab:this.state.leftTab }); }
+  addText(kind){ const B = this.brand(); const defs = { heading:{ size:76, font:'head', weight:B.fonts.hw, role:'heading', t:'Headline goes here' },
+      sub:{ size:44, font:'head', weight:B.fonts.hw, role:'heading', t:'A supporting line' },
+      body:{ size:30, font:'body', weight:500, role:'body', t:'Body copy — say one useful thing.' },
+      caption:{ size:24, font:'body', weight:600, role:'muted', t:'CAPTION · SMALL PRINT' } }[kind];
+    this.addEl({ idRoot:'text', build:(F) => ({ id:'', type:'text', bind:null, text:defs.t, x:90, y:F.h/2 - defs.size, w:F.w - 180, h:0, rot:0, op:1, vis:true, lock:false,
+      style:{ font:defs.font, size:defs.size, weight:defs.weight, color:B.roles[defs.role], colorRole:defs.role, align:'center', lh:1.15, ls:kind==='caption'?3:Math.round(B.fonts.ls*defs.size), bg:null, pad:0, rad:0, shadow:false } }) }); }
+  addShape(kind){ const B = this.brand(); const specs = { rect:{ w:420, h:300, rad:0 }, rounded:{ w:420, h:300, rad:28 }, circle:{ w:340, h:340, rad:999 }, pill:{ w:380, h:110, rad:999 }, line:{ w:520, h:6, rad:3 } }[kind];
+    this.addEl({ idRoot:'shape', build:(F) => ({ id:'', type:'shape', x:(F.w-specs.w)/2, y:(F.h-specs.h)/2, w:specs.w, h:specs.h, rot:0, op:1, vis:true, lock:false, bind:null,
+      style:{ fill:B.roles.decorativeAccent, fillRole:'decorativeAccent', rad:specs.rad, border:null, borderRole:null, bw:0, dash:false, shadow:false } }) }); }
+  onFile(e){ const f = e.target.files && e.target.files[0]; if(!f) return; const rd = new FileReader();
+    rd.onload = () => { const img = new Image(); img.onload = () => { const k = Math.min(1, 1000/Math.max(img.width, img.height));
+      const cv = document.createElement('canvas'); cv.width = Math.round(img.width*k); cv.height = Math.round(img.height*k);
+      cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height); const src = cv.toDataURL('image/jpeg', 0.85);
+      const w = 520, h = Math.round(520 * cv.height/cv.width);
+      this.addEl({ idRoot:'image', build:(F) => ({ id:'', type:'image', src, x:(F.w-w)/2, y:(F.h-h)/2, w, h, rot:0, op:1, vis:true, lock:false, bind:null,
+        style:{ rad:this.brand().corners.img, fit:'cover', shadow:false, bri:100, con:100, sat:100 } }) });
+      this.toast('Image added as a layer — session-only in this prototype'); };
+      img.src = rd.result; }; rd.readAsDataURL(f); e.target.value = ''; }
+
+  // ---------- brand ----------
+  setStoreTheme(p){ this.setState({ storeTheme:{ ...this.theme(), p } }, () => this.autosave());
+    this.commit(x => { x.brandOverrides = {}; }); }
+  setBrandMode(m){ this.commit(p => { p.brandMode = m; p.brandOverrides = {}; });
+    this.toast(m === 'template' ? 'Template style — brand removed' : ('Brand adaptation: ' + m)); }
+  setRole(role, hex){ this.commit(p => { p.brandOverrides[role] = hex; }); }
+
+  // ---------- motion ----------
+  applyStyleRecipe(name){ this.commit(p => { p.motionStyle = name;
+    this.D.FMT_KEYS.forEach(f => p.formats[f].els.forEach(e => { e.anim = this.D.recipeFor(name, e.id); })); });
+    this.seekTo(0); this.play(); }
+  setAnim(id, slot, field, val){ this.updEl(id, (e, p) => { this.markCustom(p); if(!e.anim) e.anim = {};
+    if(!e.anim[slot]) e.anim[slot] = slot === 'continuous' ? { p:'float', s:800, i:1 } : { p:'fade', s:Math.round(this._t||0), d:500, e:'out', i:1 };
+    if(field === 'p' && (val === 'none' || !val)){ delete e.anim[slot]; return; }
+    e.anim[slot][field] = val; }, true); }
+  clearAnim(id, slot){ this.updEl(id, (e, p) => { this.markCustom(p); if(e.anim) delete e.anim[slot]; }, true); }
+  resetRow(id){ this.updEl(id, (e, p) => { this.markCustom(p); e.anim = null; }, true); }
+  resetAllMotion(){ this.commit(p => { p.motionStyle = 'custom';
+    this.D.FMT_KEYS.forEach(f => p.formats[f].els.forEach(e => { e.anim = null; })); }); this.stop(); this.applyFrame(null); }
+
+  // ---------- playback ----------
+  EASE = { linear:p => p, out:p => 1 - Math.pow(1-p, 3), 'in-out':p => p < 0.5 ? 4*p*p*p : 1 - Math.pow(-2*p+2, 3)/2,
+    overshoot:p => { const c = 2.04; return 1 + (c+1)*Math.pow(p-1, 3) + c*Math.pow(p-1, 2); } };
+  evalAnim(el, t){ const r = { o:1, dx:0, dy:0, s:1, dr:0, f:'', clip:'' }; const A = el.anim; if(t == null || !A) return r;
+    const en = A.enter; if(en){ if(t < en.s){ r.o = 0; return r; } const p = Math.min(1, (t - en.s)/Math.max(1, en.d));
+      const v = (this.EASE[en.e] || this.EASE.out)(p); const i = en.i || 1;
+      if(en.p === 'fade') r.o *= p;
+      else if(en.p === 'slide-up'){ r.dy += (1-v)*90*i; r.o *= Math.min(1, p*1.8); }
+      else if(en.p === 'slide-down'){ r.dy -= (1-v)*90*i; r.o *= Math.min(1, p*1.8); }
+      else if(en.p === 'slide-left'){ r.dx += (1-v)*110*i; r.o *= Math.min(1, p*1.8); }
+      else if(en.p === 'slide-right'){ r.dx -= (1-v)*110*i; r.o *= Math.min(1, p*1.8); }
+      else if(en.p === 'scale-in'){ r.s *= 0.6 + 0.4*v; r.o *= Math.min(1, p*2); }
+      else if(en.p === 'pop'){ r.s *= Math.max(0.001, v); r.o *= Math.min(1, p*3); }
+      else if(en.p === 'wipe'){ r.clip = 'inset(0 ' + ((1-v)*100).toFixed(1) + '% 0 0)'; }
+      else if(en.p === 'blur'){ r.f += ' blur(' + ((1-v)*14).toFixed(1) + 'px)'; r.o *= Math.min(1, p*1.5); }
+      else if(en.p === 'rotate-in'){ r.dr += (1-v)*-10*i; r.s *= 0.85 + 0.15*v; r.o *= Math.min(1, p*2); } }
+    const em = A.emphasis; if(em && t >= em.s && t <= em.s + em.d){ const q = (t - em.s)/em.d, w = Math.sin(q*Math.PI), i = em.i || 1;
+      if(em.p === 'pulse') r.s *= 1 + 0.09*i*w;
+      else if(em.p === 'price-pop') r.s *= 1 + 0.2*i*w;
+      else if(em.p === 'bounce') r.dy -= Math.abs(Math.sin(q*Math.PI*2.5))*(1-q)*26*i;
+      else if(em.p === 'shake') r.dx += Math.sin(q*Math.PI*7)*(1-q)*9*i;
+      else if(em.p === 'glow') r.f += ' drop-shadow(0 0 ' + (14*w*i).toFixed(1) + 'px rgba(255,255,255,0.8))'; }
+    const co = A.continuous; if(co && t >= co.s){ const tt = (t - co.s)/1000, i = co.i || 1;
+      if(co.p === 'float') r.dy += Math.sin(tt*2.2)*7*i;
+      else if(co.p === 'slow-zoom') r.s *= 1 + Math.min(0.08, (t - co.s)/(this.state.proj.durationMs||6000)*0.08)*i;
+      else if(co.p === 'sway') r.dr += Math.sin(tt*1.8)*1.7*i;
+      else if(co.p === 'drift'){ r.dx += Math.sin(tt*1.1)*9*i; r.dy += Math.cos(tt*0.9)*6*i; } }
+    const ex = A.exit; if(ex){ if(t > ex.s + ex.d){ r.o = 0; return r; } if(t >= ex.s){ const p = (t - ex.s)/Math.max(1, ex.d);
+      const v = (this.EASE[ex.e] || this.EASE.out)(p); const i = ex.i || 1;
+      if(ex.p === 'fade-out') r.o *= 1 - p; else if(ex.p === 'scale-out'){ r.s *= 1 - 0.5*v; r.o *= 1 - p; }
+      else if(ex.p === 'slide-out'){ r.dy -= v*90*i; r.o *= 1 - p; } else if(ex.p === 'blur-out'){ r.f += ' blur(' + (v*14).toFixed(1) + 'px)'; r.o *= 1 - p; } } }
+    return r; }
+  baseFilter(el){ const s = el.style; return (el.type === 'image' || el.type === 'product-image') && (s.bri !== 100 || s.con !== 100 || s.sat !== 100)
+    ? 'brightness(' + s.bri + '%) contrast(' + s.con + '%) saturate(' + s.sat + '%)' : ''; }
+  applyFrame(t){ const art = document.getElementById('nma-art'); const c = this.comp(); if(!art || !c) return;
+    const map = {}; art.querySelectorAll('[data-el-id]').forEach(n => { map[n.dataset.elId] = n; });
+    c.els.forEach(el => { const n = map[el.id]; if(!n || !el.vis) return; const r = this.evalAnim(el, t);
+      n.style.opacity = String(el.op * r.o);
+      n.style.transform = 'translate(' + (el.x + r.dx) + 'px,' + (el.y + r.dy) + 'px) rotate(' + (el.rot + r.dr) + 'deg) scale(' + r.s.toFixed(4) + ')';
+      n.style.filter = (this.baseFilter(el) + r.f) || 'none'; n.style.clipPath = r.clip || 'none'; });
+    const dur = this.state.proj.durationMs; const ph = document.getElementById('nma-ph');
+    if(ph && t != null) ph.style.left = (160 + (t/1000)*this.ppsVal()) + 'px';
+    const ck = document.getElementById('nma-clock'); if(ck) ck.textContent = this.fmtTime(t == null ? 0 : t) + ' / ' + this.fmtTime(dur); }
+  play(){ if(this.reduced()){ this._t = this.state.proj.durationMs - 40; this.applyFrame(this._t);
+      this.toast('Reduced motion is on — showing the final frame'); return; }
+    if(this.state.playing) return; this.setState({ playing:true }, () => { this._t0 = performance.now() - (this._t || 0); this._loop(); }); }
+  _loop = () => { if(!this.state.playing) return; const dur = this.state.proj.durationMs;
+    let t = performance.now() - this._t0; if(t >= dur + 600){ this._t0 = performance.now(); t = 0; }
+    this._t = Math.min(t, dur); this.applyFrame(this._t); this._raf = requestAnimationFrame(this._loop); };
+  stop(){ cancelAnimationFrame(this._raf); if(this.state.playing) this.setState({ playing:false }); }
+  togglePlay(){ this.state.playing ? this.stop() : this.play(); }
+  seekTo(t){ this._t = Math.max(0, Math.min(t, this.state.proj.durationMs)); if(this.state.playing) this._t0 = performance.now() - this._t;
+    this.applyFrame(this._t); }
+  ppsVal(){ if(this.state.pps) return this.state.pps; const tl = document.getElementById('nma-tl');
+    const w = tl ? tl.clientWidth - 200 : 760; return Math.max(40, w/(this.state.proj.durationMs/1000)); }
+  scrub(e){ const c = document.getElementById('nma-tlc'); if(!c) return; const rect = c.getBoundingClientRect();
+    const t = ((e.clientX - rect.left - 160)/this.ppsVal())*1000; this.stop(); this.seekTo(t);
+    const mv = ev => { const t2 = ((ev.clientX - rect.left - 160)/this.ppsVal())*1000; this.seekTo(t2); };
+    const up = () => { window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up); };
+    window.addEventListener('pointermove', mv); window.addEventListener('pointerup', up); }
+  barDown(e, id, slot, edge){ e.stopPropagation(); const el = this.getEl(id); const ev = el.anim && el.anim[slot]; if(!ev) return;
+    const pps = this.ppsVal(), sx = e.clientX, o = { s:ev.s, d:ev.d || 600 }; let r = { ...o }; const node = edge ? e.currentTarget.parentElement : e.currentTarget;
+    this.setState({ sel:id });
+    const mv = evn => { const dt = ((evn.clientX - sx)/pps)*1000; const dur = this.state.proj.durationMs;
+      if(edge){ r.d = Math.max(120, Math.min(o.d + dt, dur - o.s)); node.style.width = Math.max(14, (r.d/1000)*pps) + 'px'; }
+      else { r.s = Math.max(0, Math.min(o.s + dt, dur - (ev.d || 200))); node.style.left = (160 + (r.s/1000)*pps) + 'px'; } };
+    const up = () => { window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up);
+      this.setAnim(id, slot, edge ? 'd' : 's', Math.round(edge ? r.d : r.s)); };
+    window.addEventListener('pointermove', mv); window.addEventListener('pointerup', up); }
+
+  // ---------- export ----------
+  wrapText(ctx, text, maxW){ const out = []; String(text).split('\n').forEach(line => { const words = line.split(' '); let cur = '';
+    words.forEach(w => { const test = cur ? cur + ' ' + w : w;
+      if(ctx.measureText(test).width > maxW && cur){ out.push(cur); cur = w; } else cur = test; }); out.push(cur); }); return out; }
+  rr(ctx, x, y, w, h, r){ const rad = Math.min(r === 999 ? Math.min(w, h)/2 : r, Math.min(w, h)/2);
+    ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, rad) : ctx.rect(x, y, w, h); }
+  async rasterize(fmtKey){ const D = this.D, F = D.FORMATS[fmtKey], B = this.brand(), p = this.state.proj;
+    await (document.fonts && document.fonts.ready);
+    const cv = document.createElement('canvas'); cv.width = F.w; cv.height = F.h; const ctx = cv.getContext('2d');
+    ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, F.w, F.h);
+    for(const el of p.formats[fmtKey].els){ if(!el.vis) continue; const s = el.style; ctx.save(); ctx.globalAlpha = el.op;
+      const h = el.h || this.measureH(el, B); ctx.translate(el.x + el.w/2, el.y + h/2); ctx.rotate(el.rot*Math.PI/180); ctx.translate(-el.w/2, -h/2);
+      if(s.shadow){ ctx.shadowColor = 'rgba(20,18,10,0.28)'; ctx.shadowBlur = 34; ctx.shadowOffsetY = 12; }
+      if(el.type === 'shape'){ const fill = this.withOp(this.resolveColor(s, 'fill', B), s.fillOp);
+        if(fill){ ctx.fillStyle = fill; this.rr(ctx, 0, 0, el.w, h, s.rad); ctx.fill(); }
+        const bd = this.withOp(this.resolveColor(s, 'border', B), s.borderOp);
+        if(bd && s.bw){ ctx.strokeStyle = bd; ctx.lineWidth = s.bw; if(s.dash) ctx.setLineDash([16, 12]); this.rr(ctx, s.bw/2, s.bw/2, el.w - s.bw, h - s.bw, s.rad); ctx.stroke(); ctx.setLineDash([]); } }
+      else if(el.type === 'badge'){ ctx.fillStyle = this.resolveColor(s, 'bg', B); this.rr(ctx, 0, 0, el.w, h, s.rad); ctx.fill();
+        ctx.shadowColor = 'transparent'; ctx.fillStyle = this.resolveColor(s, 'color', B);
+        ctx.font = s.weight + ' ' + s.size + 'px ' + this.fontOf(s.font, B); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        try { ctx.letterSpacing = (s.ls||0) + 'px'; } catch(err){}
+        ctx.fillText(el.text, el.w/2, h/2 + 2); }
+      else if(el.type === 'product-image'){ this.drawPlaceholder(ctx, el, B); }
+      else if(el.type === 'image'){ const img = await this.imgFor((s.cutout && el.srcCut) ? el.srcCut : el.src); this.rr(ctx, 0, 0, el.w, h, s.rad); ctx.clip();
+        ctx.filter = this.baseFilter(el) || 'none';
+        const k = s.fit === 'contain' ? Math.min(el.w/img.width, h/img.height) : Math.max(el.w/img.width, h/img.height);
+        ctx.drawImage(img, (el.w - img.width*k)/2, (h - img.height*k)/2, img.width*k, img.height*k); ctx.filter = 'none'; }
+      else if(el.type === 'text'){ ctx.shadowColor = 'transparent';
+        ctx.font = s.weight + ' ' + s.size + 'px ' + this.fontOf(s.font, B); try { ctx.letterSpacing = (s.ls||0) + 'px'; } catch(err){}
+        const lines = this.wrapText(ctx, el.text, el.w); const lh = s.size*s.lh; ctx.textBaseline = 'alphabetic';
+        if(s.bg){ ctx.fillStyle = s.bg; this.rr(ctx, -s.pad, -s.pad, el.w + s.pad*2, lines.length*lh + s.pad*2, s.rad); ctx.fill(); }
+        ctx.fillStyle = this.resolveColor(s, 'color', B); ctx.textAlign = s.align;
+        const ax = s.align === 'center' ? el.w/2 : (s.align === 'right' ? el.w : 0);
+        lines.forEach((ln, i) => { const yy = i*lh + s.size*0.86; ctx.fillText(ln, ax, yy);
+          if(s.strike){ const tw = ctx.measureText(ln).width; ctx.strokeStyle = this.resolveColor(s, 'color', B); ctx.lineWidth = Math.max(2, s.size/16);
+            const x0 = s.align === 'center' ? el.w/2 - tw/2 : (s.align === 'right' ? el.w - tw : 0);
+            ctx.beginPath(); ctx.moveTo(x0, yy - s.size*0.3); ctx.lineTo(x0 + tw, yy - s.size*0.3); ctx.stroke(); } }); }
+      ctx.restore(); }
+    return cv; }
+  drawPlaceholder(ctx, el, B){ const P0 = this.product(); const P = el.imgOf === 'pair' ? (this.product(P0.pair) || P0) : P0;
+    const defs = P.imgs && P.imgs.length ? P.imgs : [{ ...P.img, pat:'weave', flip:0 }];
+    const IM = defs[Math.min(el.imgIdx ?? el.imgVar ?? 0, defs.length - 1)];
+    const s = el.style, h = el.h, z = (s.cz ?? 100)/100, ox = ((s.cx ?? 50) - 50)*4, oy = ((s.cy ?? 50) - 50)*4;
+    if(s.cutout){ ctx.beginPath(); ctx.ellipse(el.w/2, h*0.52, el.w*0.38, h*0.46, 0, 0, Math.PI*2); ctx.clip(); }
+    else { this.rr(ctx, 0, 0, el.w, h, s.rad); ctx.clip(); } ctx.filter = this.baseFilter(el) || 'none';
+    const g = ctx.createLinearGradient(0, 0, el.w, h); g.addColorStop(0, IM.a); g.addColorStop(1, this.D.mix(IM.b, '#FFFFFF', IM.flip || 0)); ctx.fillStyle = g; ctx.fillRect(0, 0, el.w, h);
+    ctx.strokeStyle = IM.st + '55'; ctx.lineWidth = 3*z;
+    const step = 26*z; ctx.save(); ctx.translate(ox % step, oy % step);
+    if(IM.pat === 'diagonal'){ ctx.rotate(-Math.PI/4); for(let x = -h*2; x < el.w + h*2; x += step){ ctx.beginPath(); ctx.moveTo(x, -h*2); ctx.lineTo(x, h*3); ctx.stroke(); } }
+    else { for(let y = step; y < h + step; y += step){ ctx.beginPath(); ctx.moveTo(-step, y); ctx.lineTo(el.w + step, y); ctx.stroke(); }
+      if(IM.pat !== 'weave') for(let x = step; x < el.w + step; x += step){ ctx.beginPath(); ctx.moveTo(x, -step); ctx.lineTo(x, h + step); ctx.stroke(); } }
+    ctx.restore();
+    ctx.fillStyle = IM.st; ctx.globalAlpha = 0.9; ctx.font = '900 ' + Math.round(el.w*0.26*z) + 'px ' + B.fonts.b;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(IM.mono, el.w/2 - ox/2, h/2 - oy/2); ctx.globalAlpha = 1; ctx.filter = 'none'; }
+  imgFor(src){ this._imgs = this._imgs || {}; if(this._imgs[src]) return Promise.resolve(this._imgs[src]);
+    return new Promise(res => { const im = new Image(); im.onload = () => { this._imgs[src] = im; res(im); }; im.src = src; }); }
+  measureH(el, B){ if(el.type !== 'text') return el.h || 0; this._mctx = this._mctx || document.createElement('canvas').getContext('2d');
+    const s = el.style; this._mctx.font = s.weight + ' ' + s.size + 'px ' + this.fontOf(s.font, B);
+    try { this._mctx.letterSpacing = (s.ls||0) + 'px'; } catch(err){}
+    return this.wrapText(this._mctx, el.text, el.w).length * s.size * s.lh; }
+  async doExport(keys){ const list = keys || this.D.FMT_KEYS.filter(k => this.state.exFmts[k]);
+    if(!list.length){ this.toast('Pick at least one size'); return; }
+    const type = this.state.exType, q = this.state.exQ/100; const slug = (this.state.proj.name || 'creative').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    for(const k of list){ const cv = await this.rasterize(k);
+      const a = document.createElement('a'); a.download = 'shahrqee-' + slug + '-' + k + (type === 'png' ? '.png' : '.jpg');
+      a.href = cv.toDataURL(type === 'png' ? 'image/png' : 'image/jpeg', q); a.click(); await new Promise(r => setTimeout(r, 350)); }
+    this.toast(list.length + (list.length > 1 ? ' files' : ' file') + ' exported at 1080px'); }
+
+  // ---------- creative doctor ----------
+  withOp(hex, op){ if(hex == null) return null; if(op == null || op >= 100) return hex;
+    const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + (op/100).toFixed(2) + ')'; }
+  cdRun(){ const proj = this.state.proj; if(!proj) return [];
+    const key = JSON.stringify([proj, this.theme()]); if(this._cdKey === key) return this._cdRes;
+    const D = this.D, B = this.brand(), issues = [], ign = proj.cdIgnored || [];
+    const P = this.product(proj.productId);
+    const add = o => { if(!ign.includes(o.key)) issues.push(o); };
+    D.FMT_KEYS.forEach(f => { const F = D.FORMATS[f], els = proj.formats[f].els;
+      const bboxOf = el => ({ x:el.x, y:el.y, w:el.w, h:el.type === 'text' ? this.measureH(el, B) : (el.h || 0) });
+      const isContent = el => el.type === 'text' || el.type === 'badge';
+      els.forEach(el => { if(!el.vis) return; const bb = bboxOf(el); const nm = this.pretty(el.id);
+        if(isContent(el) || el.type === 'image' || el.type === 'product-image'){
+          if(bb.x < -2 || bb.y < -2 || bb.x + bb.w > F.w + 2 || bb.y + bb.h > F.h + 2)
+            add({ key:f+':'+el.id+':ovf', sev:isContent(el) ? 'critical' : 'warn', fmt:f, elId:el.id, layer:nm,
+              title:nm + ' runs off the canvas', body:'Part of this layer sits outside the ' + F.label + ' frame and will be cut off in the exported file.',
+              fix:{ label:'Pull inside the frame', fn:p => { const e2 = p.formats[f].els.find(x => x.id === el.id); if(!e2) return;
+                e2.x = Math.round(Math.min(Math.max(e2.x, 0), F.w - bb.w)); e2.y = Math.round(Math.min(Math.max(e2.y, 0), F.h - bb.h)); } } }); }
+        if(f === 'story' && isContent(el) && (bb.y < F.safe.top || bb.y + bb.h > F.h - F.safe.bottom))
+          add({ key:f+':'+el.id+':safe', sev:'warn', fmt:f, elId:el.id, layer:nm,
+            title:nm + ' sits in the Story UI zone', body:'Instagram lays its own UI over the top ' + F.safe.top + 'px and bottom ' + F.safe.bottom + 'px. This layer may be covered when published.',
+            fix:{ label:'Move into the safe area', fn:p => { const e2 = p.formats[f].els.find(x => x.id === el.id); if(!e2) return;
+              e2.y = Math.round(Math.min(Math.max(e2.y, F.safe.top + 10), F.h - F.safe.bottom - bb.h - 10)); } } });
+        if(el.type === 'text' && el.style.size < 22)
+          add({ key:f+':'+el.id+':small', sev:'warn', fmt:f, elId:el.id, layer:nm,
+            title:nm + ' is too small to read', body:el.style.size + 'px is below comfortable reading size on a phone feed — 24px is the floor at 1080px.',
+            fix:{ label:'Raise to 24px', fn:p => { const e2 = p.formats[f].els.find(x => x.id === el.id); if(e2) e2.style.size = 24; } } });
+        if(el.type === 'text' && el.style.size >= 56){ const lines = Math.round(this.measureH(el, B)/(el.style.size*el.style.lh));
+          if(lines > 3) add({ key:f+':'+el.id+':wrap', sev:'tip', fmt:f, elId:el.id, layer:nm,
+            title:nm + ' wraps to ' + lines + ' lines', body:'Long headlines lose punch. Widen the box, shorten the line, or step the size down.',
+            fix:{ label:'Widen to full width', fn:p => { const e2 = p.formats[f].els.find(x => x.id === el.id); if(!e2) return; e2.w = F.w - 108; e2.x = 54; } } }); }
+        if(el.type === 'text' && el.style.colorRole !== 'decorativeAccent'){ const bx = bb.x + bb.w/2, by = bb.y + bb.h/2;
+          const selfI = els.indexOf(el); let under = null;
+          for(let i2 = selfI - 1; i2 >= 0; i2--){ const o2 = els[i2]; if(!o2.vis) continue; const ob = bboxOf(o2);
+            if(bx < ob.x || bx > ob.x + ob.w || by < ob.y || by > ob.y + ob.h) continue;
+            if(o2.type === 'product-image' || o2.type === 'image'){ under = { photo:true }; break; }
+            if(o2.type === 'shape'){ const fl = this.resolveColor(o2.style, 'fill', B);
+              if(fl && o2.op * ((o2.style.fillOp ?? 100)/100) >= 0.6){ under = { color:fl }; break; } } }
+          if(under && under.photo){ if(el.style.size <= 34) add({ key:f+':'+el.id+':photo', sev:'tip', fmt:f, elId:el.id, layer:nm,
+              title:nm + ' sits on the product photo', body:'Small text over imagery is fragile. Back it with a shape, or move it off the photo.', fix:null }); }
+          else { const bgC = under ? under.color : '#FFFFFF'; const tc = this.resolveColor(el.style, 'color', B);
+            if(/^#[0-9A-Fa-f]{6}$/.test(tc) && /^#[0-9A-Fa-f]{6}$/.test(bgC)){ const ratio = Math.round(D.contrast(tc, bgC)*10)/10;
+              if(ratio < 3) add({ key:f+':'+el.id+':ctr', sev:'critical', fmt:f, elId:el.id, layer:nm,
+                title:nm + ' is hard to read', body:'Contrast is ' + ratio + ':1 against the layer behind it — 4.5:1 is the readable bar for feed ads.',
+                fix:{ label:'Use the strongest brand color', fn:p => { const e2 = p.formats[f].els.find(x => x.id === el.id); if(!e2) return;
+                  const best = D.contrast(B.roles.heading, bgC) >= D.contrast(B.roles.background, bgC) ? 'heading' : 'background';
+                  e2.style.color = B.roles[best]; e2.style.colorRole = best; } } }); } } } }); });
+    const dur = proj.durationMs, mEls = proj.formats.square.els;
+    mEls.forEach(el => { if(!el.vis || !el.anim) return; const en = el.anim.enter, nm = this.pretty(el.id);
+      if(en && en.s + en.d > dur) add({ key:'m:'+el.id+':cut', sev:'critical', fmt:null, elId:el.id, layer:nm,
+        title:nm + ' never finishes entering', body:'Its enter animation ends at ' + ((en.s+en.d)/1000).toFixed(1) + 's but the ad is only ' + (dur/1000).toFixed(1) + 's long.',
+        fix:{ label:'Shift it earlier', fn:p => { D.FMT_KEYS.forEach(ff => { const e2 = p.formats[ff].els.find(x => x.id === el.id);
+          if(e2 && e2.anim && e2.anim.enter) e2.anim.enter.s = Math.max(0, dur - e2.anim.enter.d - 200); }); } } });
+      const ex = el.anim.exit;
+      if(ex && en && el.type === 'text' && (ex.s - (en.s + en.d)) < 900 && ex.s + (ex.d||0) <= dur)
+        add({ key:'m:'+el.id+':blink', sev:'warn', fmt:null, elId:el.id, layer:nm,
+          title:nm + ' is visible under a second', body:'It exits ' + Math.max(0, Math.round((ex.s - en.s - en.d))) + 'ms after it settles — too quick to read.',
+          fix:{ label:'Give it 1.5s on screen', fn:p => { D.FMT_KEYS.forEach(ff => { const e2 = p.formats[ff].els.find(x => x.id === el.id);
+            if(e2 && e2.anim && e2.anim.exit && e2.anim.enter) e2.anim.exit.s = Math.min(dur - (e2.anim.exit.d||300), e2.anim.enter.s + e2.anim.enter.d + 1500); }); } } }); });
+    const cta = mEls.find(e2 => e2.vis && (e2.id === 'cta' || (e2.bind === 'ctaText' && e2.type === 'badge')));
+    if(cta && cta.anim && cta.anim.enter && cta.anim.enter.s > dur*0.66)
+      add({ key:'m:cta:late', sev:'warn', fmt:null, elId:cta.id, layer:'CTA',
+        title:'The CTA shows up late', body:'It enters at ' + (cta.anim.enter.s/1000).toFixed(1) + 's of ' + (dur/1000).toFixed(1) + 's — viewers who drop off early never see it.',
+        fix:{ label:'Bring it to mid-ad', fn:p => { D.FMT_KEYS.forEach(ff => { const e2 = p.formats[ff].els.find(x => x.id === cta.id);
+          if(e2 && e2.anim && e2.anim.enter) e2.anim.enter.s = Math.round(dur*0.45); }); } } });
+    const starts = mEls.filter(e2 => e2.vis && e2.anim && e2.anim.enter && e2.id.indexOf('tick') !== 0).map(e2 => e2.anim.enter.s).sort((a,b) => a-b);
+    let pile = 1, mx = 1; for(let i2 = 1; i2 < starts.length; i2++){ pile = starts[i2] - starts[i2-1] < 80 ? pile + 1 : 1; mx = Math.max(mx, pile); }
+    if(mx >= 5) add({ key:'m:pile', sev:'tip', fmt:null, elId:null, layer:'Timing',
+      title:mx + ' layers enter almost together', body:'When everything moves at once, nothing leads the eye. Stagger the entrances slightly.',
+      fix:{ label:'Stagger them', fn:p => { D.FMT_KEYS.forEach(ff => { const list = p.formats[ff].els.filter(e2 => e2.vis && e2.anim && e2.anim.enter)
+        .sort((a,b) => a.anim.enter.s - b.anim.enter.s); list.forEach((e2, i3) => { e2.anim.enter.s = Math.min(e2.anim.enter.s + i3*60, dur - (e2.anim.enter.d||300)); }); }); } } });
+    if(proj.tplId && !mEls.some(e2 => e2.type === 'product-image' && e2.vis))
+      add({ key:'c:noimg', sev:'warn', fmt:null, elId:null, layer:'Content',
+        title:'No product image', body:'Product ads without the product underperform. Add the photo back, or switch to a text-led template on purpose.',
+        fix:{ label:'Add the product photo', fn:p => { D.FMT_KEYS.forEach(ff => { const FF = D.FORMATS[ff]; const w2 = ff === 'story' ? 600 : 520;
+          p.formats[ff].els.push({ id:'product', type:'product-image', x:(FF.w-w2)/2, y:(FF.h-w2)/2, w:w2, h:w2, rot:0, op:1, vis:true, lock:false, bind:null, imgIdx:0, imgOf:'main',
+            anim:D.recipeFor(p.motionStyle === 'custom' ? 'clean' : p.motionStyle, 'product'),
+            style:{ rad:B.corners.img, fit:'cover', shadow:true, bri:100, con:100, sat:100, cz:100, cx:50, cy:50 } }); }); } } });
+    if(!mEls.some(e2 => e2.vis && (e2.id === 'cta' || e2.bind === 'ctaText')))
+      add({ key:'c:nocta', sev:'warn', fmt:null, elId:null, layer:'Content',
+        title:'No call to action', body:'Every ad needs one next step. Without a CTA, taps go nowhere.',
+        fix:{ label:'Add a Shop now button', fn:p => { D.FMT_KEYS.forEach(ff => { const FF = D.FORMATS[ff];
+          p.formats[ff].els.push({ id:'cta', type:'badge', bind:'ctaText', text:'Shop now', x:(FF.w-380)/2, y:FF.h - (ff === 'story' ? FF.safe.bottom + 110 : 160), w:380, h:92, rot:0, op:1, vis:true, lock:false,
+            anim:D.recipeFor(p.motionStyle === 'custom' ? 'clean' : p.motionStyle, 'cta'),
+            style:{ font:'body', size:30, weight:700, color:B.roles.ctaText, colorRole:'ctaText', bg:B.roles.cta, bgRole:'cta', rad:B.corners.btn, ls:1.5, align:'center', lh:1, shadow:false } }); }); } } });
+    const defs = P.imgs || []; const mainIm = mEls.find(e2 => e2.type === 'product-image' && e2.imgOf !== 'pair');
+    const usedDef = defs.length ? defs[Math.min(mainIm ? (mainIm.imgIdx ?? 0) : 0, defs.length - 1)] : null;
+    if(usedDef && usedDef.lowRes) add({ key:'c:lowres', sev:'warn', fmt:null, elId:mainIm ? mainIm.id : null, layer:'Product image',
+      title:'This photo may export blurry', body:'“' + (usedDef.label || 'The selected photo') + '” is a low-resolution source. At 1080px it will look soft — pick a sharper shot if you have one.', fix:null });
+    if(defs.length === 1) add({ key:'c:oneimg', sev:'tip', fmt:null, elId:null, layer:'Catalogue',
+      title:'Only one photo for this product', body:P.name + ' has a single catalogue image. More angles give you options per template — add some in Products.', fix:null });
+    this._cdKey = key; this._cdRes = issues; return issues; }
+
+  // ---------- keyboard ----------
+  onKey = (e) => { const tag = (e.target.tagName || '').toLowerCase();
+    if(tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable) return;
+    if(this.state.view !== 'editor') return; const sel = this.state.sel; const mod = e.metaKey || e.ctrlKey;
+    if(mod && e.key.toLowerCase() === 'z'){ e.preventDefault(); e.shiftKey ? this.redo() : this.undo(); return; }
+    if(mod && e.key.toLowerCase() === 'd' && sel){ e.preventDefault(); this.duplicate(sel); return; }
+    if(mod && e.key.toLowerCase() === 'c' && sel){ this._clip = sel; return; }
+    if(mod && e.key.toLowerCase() === 'v' && this._clip){ e.preventDefault(); this.duplicate(this._clip); return; }
+    if(e.key === 'Escape'){ if(this.state.imgPreview != null) this.setState({ imgPreview:null });
+      else if(this.state.exportOpen || this.state.adsetOpen || this.state.cdOpen || this.state.regenOpen || this.state.tplSaveOpen)
+        this.setState({ exportOpen:false, adsetOpen:false, cdOpen:false, regenOpen:false, tplSaveOpen:false });
+      else if(this.state.playing) this.stop(); else this.setState({ sel:null }); return; }
+    if(e.key === ' ' && this.state.mode === 'animate'){ e.preventDefault(); this.togglePlay(); return; }
+    if(!sel) return; const el = this.getEl(sel); if(!el || el.lock) return;
+    const step = e.shiftKey ? 10 : 1;
+    if(e.key === 'ArrowLeft'){ e.preventDefault(); this.updEl(sel, x => { x.x -= step; }, false); }
+    else if(e.key === 'ArrowRight'){ e.preventDefault(); this.updEl(sel, x => { x.x += step; }, false); }
+    else if(e.key === 'ArrowUp'){ e.preventDefault(); this.updEl(sel, x => { x.y -= step; }, false); }
+    else if(e.key === 'ArrowDown'){ e.preventDefault(); this.updEl(sel, x => { x.y += step; }, false); }
+    else if(e.key === 'Delete' || e.key === 'Backspace'){ e.preventDefault(); this.delEl(sel); } };
+
+  // ---------- misc ----------
+  toast(msg, act){ clearTimeout(this._tt); this.setState({ toast:{ msg, act } }); this._tt = setTimeout(() => this.setState({ toast:null }), 3400); }
+  fmtTime(ms){ const s = ms/1000; return s.toFixed(1) + 's'; }
+  pretty(id){ const L = { bg:'Background', ring:'Accent ring', band:'Band', rule:'Rule', card:'Card', frame:'Frame', strip:'Strip', top:'Top block',
+    product:'Product image', product2:'Second product', thumb:'Product thumb', plus:'Plus', kicker:'Kicker', kicker2:'Kicker 2', headline:'Headline', sub:'Subheading',
+    price:'Price', prev:'Previous price', disc:'Discount', badge:'Badge', benefit:'Benefit', tick:'Bullet dot', cta:'CTA', logo:'Store logo', url:'Store URL',
+    urgency:'Urgency line', pay:'Payment line', stars:'Stars', sold:'Social proof', quote:'Quote mark', review:'Review', name:'Reviewer', names:'Product names',
+    problem:'Problem', solution:'Solution', text:'Text', shape:'Shape', image:'Uploaded image' };
+    const root = id.replace(/\d+$/, ''); const n = id.match(/\d+$/); return (L[root] || root) + (n && L[root] && (root === 'benefit' || root === 'tick') ? ' ' + n[0] : ''); }
+  measure(){ const wrap = document.getElementById('nma-cwrap'); if(!wrap || !this.state.proj) return;
+    const F = this.D.FORMATS[this.state.fmt]; const fit = Math.min((wrap.clientWidth - 90)/F.w, (wrap.clientHeight - 90)/F.h, 1);
+    if(Math.abs(fit - this.state.fitSc) > 0.004) this.setState({ fitSc:fit }); }
+  zoomBy(dir){ const cur = this.curScale(); const nz = Math.max(0.08, Math.min(2, cur * (dir > 0 ? 1.25 : 0.8))); this.setState({ zoom:nz }); }
+
+  componentDidMount(){ window.addEventListener('keydown', this.onKey);
+    this._ro = new ResizeObserver(() => this.measure()); this._ro.observe(document.body);
+    let resume = null; try { resume = JSON.parse(localStorage.getItem('dakio-nma-autosave') || 'null'); } catch(e){}
+    this.setState({ drafts:this.loadDrafts(), resume, customTpls:this.loadTpls() });
+    if((this.props.startIn ?? 'gallery') === 'editor' && !this.state.proj) this.useTemplate('spotlight'); }
+  componentWillUnmount(){ window.removeEventListener('keydown', this.onKey); cancelAnimationFrame(this._raf); if(this._ro) this._ro.disconnect(); }
+  componentDidUpdate(prevProps, prevState){ if(this.state.view !== 'editor' || !this.state.proj) return;
+    this.measure();
+    document.querySelectorAll('select[data-val]').forEach(n => { if(n.dataset.val != null && n.value !== n.dataset.val) n.value = n.dataset.val; });
+    if(!this.state.playing && this.state.mode === 'animate') this.applyFrame(this._t || 0);
+    if(prevState && prevState.mode === 'animate' && this.state.mode === 'design' && !this.state.playing) this.applyFrame(null); }
+
+  // ---------- render assembly ----------
+  liteEls(els, B){ return els.map((el, i) => this.enrichEl(el, B, { lite:true, key:'p' + i })); }
+  enrichEl(el, B, o){ const s = el.style; const st = { position:'absolute', left:0, top:0, width:el.w + 'px',
+      transform:'translate(' + el.x + 'px,' + el.y + 'px) rotate(' + el.rot + 'deg)', transformOrigin:'center',
+      opacity:el.vis ? el.op : 0, ...(el.vis ? {} : { display:'none' }) };
+    const out = { id:el.id, key:o.key || el.id, isTxt:false, isMono:false, text:'', mono:'', hOn:false };
+    if(el.type === 'text'){ out.isTxt = true; out.text = el.text;
+      Object.assign(st, { fontFamily:this.fontOf(s.font, B), fontSize:s.size + 'px', fontWeight:s.weight, color:this.resolveColor(s, 'color', B),
+        textAlign:s.align, lineHeight:s.lh, letterSpacing:s.ls + 'px', whiteSpace:'pre-wrap',
+        textDecoration:s.strike ? 'line-through' : 'none' });
+      if(s.bg){ st.background = s.bg; st.padding = s.pad + 'px'; st.borderRadius = s.rad + 'px'; }
+      else if(s.shadow) st.textShadow = '0 6px 26px rgba(20,18,10,0.3)'; }
+    else if(el.type === 'badge'){ out.isTxt = true; out.text = el.text;
+      Object.assign(st, { height:el.h + 'px', display:'flex', alignItems:'center', justifyContent:'center',
+        background:this.resolveColor(s, 'bg', B), color:this.resolveColor(s, 'color', B), fontFamily:this.fontOf(s.font, B),
+        fontSize:s.size + 'px', fontWeight:s.weight, letterSpacing:s.ls + 'px', borderRadius:(s.rad === 999 ? 999 : s.rad) + 'px',
+        boxShadow:s.shadow ? '0 12px 34px rgba(20,18,10,0.28)' : 'none' }); }
+    else if(el.type === 'shape'){ const fill = this.withOp(this.resolveColor(s, 'fill', B), s.fillOp); const bd = this.withOp(this.resolveColor(s, 'border', B), s.borderOp);
+      Object.assign(st, { height:el.h + 'px', background:fill || 'transparent', borderRadius:(s.rad === 999 ? 999 : s.rad) + 'px',
+        border:bd && s.bw ? s.bw + 'px ' + (s.dash ? 'dashed' : 'solid') + ' ' + bd : 'none',
+        boxShadow:s.shadow ? '0 14px 40px rgba(20,18,10,0.25)' : 'none', boxSizing:'border-box' }); }
+    else if(el.type === 'product-image'){ const P0 = this.product(); const P = el.imgOf === 'pair' ? (this.product(P0.pair) || P0) : P0;
+      const defs = P.imgs && P.imgs.length ? P.imgs : [{ ...P.img, pat:'weave', flip:0 }];
+      let idx = el.imgIdx ?? el.imgVar ?? 0;
+      if(el.imgOf !== 'pair' && this.state.imgPreview != null && !o.lite) idx = this.state.imgPreview;
+      const IM = defs[Math.min(idx, defs.length - 1)];
+      const z = (s.cz ?? 100)/100, u = v => Math.round(v*z) + 'px';
+      const bp = ((s.cx ?? 50) - 50)*4 + 'px ' + ((s.cy ?? 50) - 50)*4 + 'px';
+      out.isMono = true; out.mono = IM.mono;
+      const stripes = IM.pat === 'diagonal' ? 'repeating-linear-gradient(45deg, transparent 0 ' + u(22) + ', ' + IM.st + '55 ' + u(22) + ' ' + u(25) + ')'
+        : IM.pat === 'check' ? 'repeating-linear-gradient(0deg, transparent 0 ' + u(22) + ', ' + IM.st + '44 ' + u(22) + ' ' + u(25) + '), repeating-linear-gradient(90deg, transparent 0 ' + u(22) + ', ' + IM.st + '44 ' + u(22) + ' ' + u(25) + ')'
+        : 'repeating-linear-gradient(0deg, transparent 0 ' + u(22) + ', ' + IM.st + '55 ' + u(22) + ' ' + u(25) + ')';
+      Object.assign(st, { height:el.h + 'px', borderRadius:(s.rad === 999 ? 999 : s.rad) + 'px', overflow:'hidden',
+        backgroundImage:stripes + ', linear-gradient(135deg, ' + IM.a + ', ' + this.D.mix(IM.b, '#FFFFFF', IM.flip || 0) + ')',
+        backgroundPosition:bp + ', 0 0',
+        display:'flex', alignItems:'center', justifyContent:'center',
+        boxShadow:s.shadow ? '0 18px 50px rgba(20,18,10,0.3)' : 'none', filter:this.baseFilter(el) || 'none' });
+      if(s.cutout){ st.clipPath = 'ellipse(38% 46% at 50% 52%)'; st.boxShadow = 'none'; st.borderRadius = '0'; }
+      out.monoSt = { fontFamily:B.fonts.b, fontWeight:900, fontSize:Math.round(el.w*0.26*z) + 'px', color:IM.st, opacity:0.9, letterSpacing:'2px',
+        transform:'translate(' + ((s.cx ?? 50) - 50)*-2 + 'px,' + ((s.cy ?? 50) - 50)*-2 + 'px)' }; }
+    else if(el.type === 'image'){ Object.assign(st, { height:el.h + 'px', borderRadius:s.rad + 'px', backgroundImage:'url(' + ((s.cutout && el.srcCut) ? el.srcCut : el.src) + ')',
+      backgroundSize:s.fit === 'contain' ? 'contain' : 'cover', backgroundPosition:'center', backgroundRepeat:'no-repeat',
+      boxShadow:s.shadow ? '0 18px 50px rgba(20,18,10,0.3)' : 'none', filter:this.baseFilter(el) || 'none' }); }
+    if(o.lite){ out.st = st; return out; }
+    const sel = this.state.sel === el.id, sc = this.curScale();
+    Object.assign(st, { cursor:el.lock ? 'default' : 'move', userSelect:'none',
+      outline:sel ? (2/sc) + 'px solid #C6F035' : 'none', outlineOffset:(3/sc) + 'px' });
+    if(this.state.editing === el.id) st.opacity = 0;
+    out.st = st; out.down = e => this.elDown(e, el.id);
+    out.dbl = (el.type === 'text' || el.type === 'badge') ? (() => this.startEdit(el.id)) : null;
+    out.hOn = sel && !el.lock;
+    if(out.hOn){ const hs = 13/sc; const hb = { position:'absolute', width:hs + 'px', height:hs + 'px', background:'#FFFFFF',
+        border:(2/sc) + 'px solid #1A1D12', borderRadius:(3/sc) + 'px', zIndex:50 };
+      out.hNW = { ...hb, left:-hs/2 + 'px', top:-hs/2 + 'px', cursor:'nwse-resize' };
+      out.hNE = { ...hb, right:-hs/2 + 'px', top:-hs/2 + 'px', cursor:'nesw-resize' };
+      out.hSW = { ...hb, left:-hs/2 + 'px', bottom:-hs/2 + 'px', cursor:'nesw-resize' };
+      out.hSE = { ...hb, right:-hs/2 + 'px', bottom:-hs/2 + 'px', cursor:'nwse-resize' };
+      out.hRot = { position:'absolute', left:'50%', top:(-30/sc) + 'px', marginLeft:(-hs/2) + 'px', width:hs + 'px', height:hs + 'px',
+        background:'#C6F035', border:(2/sc) + 'px solid #1A1D12', borderRadius:'99px', cursor:'grab', zIndex:50 };
+      out.onNW = e => this.startResize(e, el.id, 'nw'); out.onNE = e => this.startResize(e, el.id, 'ne');
+      out.onSW = e => this.startResize(e, el.id, 'sw'); out.onSE = e => this.startResize(e, el.id, 'se');
+      const bw2 = 2/sc, barL = hs*1.7, barT = hs*0.6;
+      const bar = { position:'absolute', background:'#FFFFFF', border:bw2 + 'px solid #1A1D12', borderRadius:(3/sc) + 'px', zIndex:50 };
+      out.hE = { ...bar, right:(-barT/2 - bw2) + 'px', top:'50%', marginTop:(-barL/2) + 'px', width:barT + 'px', height:barL + 'px', cursor:'ew-resize' };
+      out.hW = { ...bar, left:(-barT/2 - bw2) + 'px', top:'50%', marginTop:(-barL/2) + 'px', width:barT + 'px', height:barL + 'px', cursor:'ew-resize' };
+      out.onE = e => this.startResize(e, el.id, 'e'); out.onW = e => this.startResize(e, el.id, 'w');
+      out.nsOn = el.type === 'shape' || el.type === 'image' || el.type === 'product-image';
+      if(out.nsOn){ out.hN = { ...bar, top:(-barT/2 - bw2) + 'px', left:'50%', marginLeft:(-barL/2) + 'px', width:barL + 'px', height:barT + 'px', cursor:'ns-resize' };
+        out.hS = { ...bar, bottom:(-barT/2 - bw2) + 'px', left:'50%', marginLeft:(-barL/2) + 'px', width:barL + 'px', height:barT + 'px', cursor:'ns-resize' };
+        out.onN = e => this.startResize(e, el.id, 'n'); out.onS = e => this.startResize(e, el.id, 's'); }
+      out.onRot = e => this.startRotate(e, el.id); }
+    return out; }
+
+  renderVals(){ const D = this.D, st = this.state; if(!D) return { galleryOn:true, editorOn:false, products:[], tplCards:[], drafts:[] };
+    const B = this.brand(), P = this.product(), S = D.slots(P);
+    const view = st.view, proj = st.proj;
+    const btn = on => ({ padding:'6px 10px', borderRadius:'8px', border:'1px solid ' + (on ? '#1A1D12' : '#E2DFD2'),
+      background:on ? '#1A1D12' : '#fff', color:on ? '#F0EFE6' : '#1A1D12', fontSize:'11.5px', fontWeight:700, cursor:'pointer' });
+    const segBtn = on => ({ padding:'5px 9px', borderRadius:'8px', border:'none', whiteSpace:'nowrap', background:on ? '#1A1D12' : 'transparent',
+      color:on ? '#C6F035' : '#3C4033', fontSize:'11.5px', fontWeight:700, cursor:'pointer' });
+    const out = { galleryOn:view === 'gallery', editorOn:view === 'editor' && !!proj, stop:e => e.stopPropagation(),
+      toastOn:!!st.toast, toastMsg:st.toast ? st.toast.msg : '', toastActOn:!!(st.toast && st.toast.act),
+      toastActLbl:st.toast && st.toast.act ? st.toast.act.label : '', onToastAct:() => { if(st.toast && st.toast.act) st.toast.act.fn(); } };
+
+    // ----- gallery -----
+    if(out.galleryOn){ const th = this.theme();
+      out.storeChip = 'Shahrqee · ' + D.PAL[th.p].name + ' · ' + D.FON[th.f].name;
+      out.onBlank = () => this.startBlank();
+      out.resumeOn = !!(st.resume && st.resume.proj); out.resumeName = st.resume && st.resume.proj ? st.resume.proj.name : '';
+      out.onResume = () => { const r = st.resume; this._t = 0; this.setState({ view:'editor', proj:r.proj, productId:r.productId || 'pr1', fmt:r.fmt || 'square', mode:'design', storeTheme:r.storeTheme || null, resume:null, hist:[], redoS:[] }); };
+      out.onResumeX = () => { this.setState({ resume:null }); };
+      out.draftsOn = st.drafts.length > 0;
+      out.drafts = st.drafts.map(d => ({ key:d.id, name:d.name, meta:new Date(d.at).toLocaleDateString('en-GB', { day:'numeric', month:'short' }) + ' · draft',
+        open:() => this.openDraft(d), del:() => this.delDraft(d.id) }));
+      out.products = D.PRODUCTS.map(p => { const selP = p.id === st.productId;
+        return { key:p.id, name:p.name, price:D.taka(p.price), was:p.was ? D.taka(p.was) : '', wasOn:!!p.was,
+          lowOn:p.stock <= 10, low:'ONLY ' + p.stock + ' LEFT', mono:p.img.mono,
+          on:() => this.setState({ productId:p.id }),
+          card:{ minWidth:'168px', width:'168px', padding:'10px', borderRadius:'14px', background:'#FBFAF5', cursor:'pointer',
+            border:selP ? '2px solid #1A1D12' : '1px solid #E2DFD2', boxShadow:selP ? '0 6px 20px rgba(26,29,18,0.12)' : 'none' },
+          thumbSt:{ height:'110px', borderRadius:'10px', display:'flex', alignItems:'center', justifyContent:'center',
+            backgroundImage:'repeating-linear-gradient(0deg, transparent 0 9px, ' + p.img.st + '55 9px 10px), linear-gradient(135deg, ' + p.img.a + ', ' + p.img.b + ')' },
+          monoSt:{ fontWeight:900, fontSize:'26px', color:p.img.st, letterSpacing:'1px' } }; });
+      const cts = st.customTpls || [];
+      out.myTplsOn = cts.length > 0;
+      const stMeta = { draft:{ l:'DRAFT', bg:'#EEF0E6', c:'#5C6150' }, published:{ l:'LIVE', bg:'#C6F035', c:'#1A1D12' }, archived:{ l:'ARCHIVED', bg:'#F4F2EA', c:'#9a9e8c' } };
+      out.myTpls = cts.map(t => { const sm = stMeta[t.status] || stMeta.draft;
+        return { key:t.id, name:t.name, meta:t.category + ' · ' + t.objective + (t.hasMotion ? ' · motion' : ' · static'),
+          statusLbl:sm.l, statusSt:{ padding:'3px 8px', borderRadius:'99px', fontSize:'9px', fontWeight:800, letterSpacing:'0.5px', background:sm.bg, color:sm.c, whiteSpace:'nowrap' },
+          use:() => this.useCustomTemplate(t),
+          pubLbl:t.status === 'published' ? 'Unpublish' : 'Publish',
+          pub:() => this.setTplStatus(t.id, t.status === 'published' ? 'draft' : 'published'),
+          archLbl:t.status === 'archived' ? 'Restore' : 'Archive',
+          arch:() => this.setTplStatus(t.id, t.status === 'archived' ? 'draft' : 'archived'),
+          del:() => this.deleteTpl(t.id) }; });
+      out.tplCards = D.TEMPLATES.map(t => { const els = t.build('square', 1080, 1080, S, B);
+        return { key:t.id, name:t.name, obj:t.objective, desc:t.desc, rec:t.cat, pv:this.liteEls(els, B), use:() => this.useTemplate(t.id), motionOn:true, customOn:false }; })
+        .concat(cts.filter(t => t.status === 'published').map(ct => { const pvp = { formats:this.cl(ct.formats) }; this.applyBindings(pvp, st.productId);
+          return { key:'c' + ct.id, name:ct.name, obj:ct.objective, desc:ct.desc || 'Custom template by the Dakio design team.', rec:ct.category,
+            pv:this.liteEls(pvp.formats.square.els, B), use:() => this.useCustomTemplate(ct), motionOn:!!ct.hasMotion, customOn:true }; }));
+      return out; }
+    if(!out.editorOn) return out;
+
+    // ----- editor top -----
+    const F = D.FORMATS[st.fmt]; const c = this.comp(); const sc = this.curScale();
+    out.onBack = () => this.backToGallery();
+    out.projName = proj.name; out.onName = e => this.commit(p => { p.name = e.target.value; });
+    out.saveTxt = st.saveTxt;
+    out.onUndo = () => this.undo(); out.onRedo = () => this.redo();
+    const navBtn = en => ({ width:'28px', height:'28px', borderRadius:'9px', border:'1px solid #E2DFD2', background:'#fff', flexShrink:0,
+      cursor:en ? 'pointer' : 'default', color:en ? '#1A1D12' : '#C9C5B4', display:'inline-flex', alignItems:'center', justifyContent:'center' });
+    out.undoSt = navBtn(st.hist.length || this._pend); out.redoSt = navBtn(st.redoS.length);
+    out.fmtBtns = D.FMT_KEYS.map(k => ({ key:k, lbl:D.FORMATS[k].label, sub:D.FORMATS[k].sub, st:segBtn(st.fmt === k),
+      on:() => this.setState({ fmt:k, sel:null }) }));
+    out.onModeD = () => { this.stop(); this.setState({ mode:'design' }); };
+    out.onModeA = () => this.setState({ mode:'animate' });
+    out.modeDSt = segBtn(st.mode === 'design'); out.modeASt = segBtn(st.mode === 'animate');
+    out.previewLbl = st.playing ? '■ Stop' : '▶ Play';
+    out.onPreview = () => { if(st.playing) { this.stop(); this.applyFrame(st.mode === 'animate' ? this._t : null); } else { this.seekTo(0); this.play(); } };
+    out.onAdset = () => this.setState({ adsetOpen:true });
+    out.onSave = () => this.saveDraft();
+    out.onExport = () => this.setState({ exportOpen:true });
+
+    // rail + drawer
+    const tabs = [ ['templates','Layouts','M3.5 3.5h7v7h-7zM13.5 3.5h7v7h-7zM3.5 13.5h7v7h-7zM13.5 13.5h7v7h-7z'],
+      ['product','Product','M20.6 11.4l-8-8H5a1.4 1.4 0 00-1.4 1.4v7.6l8 8a2 2 0 002.8 0l6.2-6.2a2 2 0 000-2.8zM7.5 7.5h.01'],
+      ['uploads','Uploads','M12 16V4m0 0l-4 4m4-4l4 4M4 20h16'],
+      ['text','Text','M5 5.5h14M12 5.5V19M8.5 19h7'],
+      ['shapes','Shapes','M4 4h8v8H4zM16 11a5.5 5.5 0 100 11 5.5 5.5 0 000-11z'],
+      ['brand','Brand','M12 3s6.5 6.6 6.5 10.7A6.5 6.5 0 015.5 13.7C5.5 9.6 12 3 12 3z'],
+      ['layers','Layers','M12 3l9 5-9 5-9-5 9-5zM3 13.5l9 5 9-5'] ];
+    out.railTabs = tabs.map(([k, label, d]) => ({ key:k, label, d,
+      st:{ width:'46px', height:'46px', borderRadius:'11px', border:'none', cursor:'pointer', display:'flex', flexDirection:'column',
+        alignItems:'center', justifyContent:'center', gap:'2px', background:st.leftTab === k ? '#1A1D12' : 'transparent',
+        color:st.leftTab === k ? '#C6F035' : '#5C6150' },
+      on:() => this.setState({ leftTab:k }) }));
+    ['templates','product','uploads','text','shapes','brand','layers'].forEach(k => { out['tab' + k[0].toUpperCase() + k.slice(1)] = st.leftTab === k; });
+
+    const drawerRow = (on2, sel2) => ({ padding:'9px 11px', borderRadius:'11px', cursor:'pointer', background:sel2 ? '#1A1D12' : '#fff',
+      color:sel2 ? '#F0EFE6' : '#1A1D12', border:'1px solid ' + (sel2 ? '#1A1D12' : '#E2DFD2') });
+    out.tplList = D.TEMPLATES.map(t => ({ key:t.id, name:t.name, obj:t.objective + ' · ' + t.cat,
+      st:drawerRow(0, proj.tplId === t.id), on:() => this.switchTemplate(t.id) }))
+      .concat((st.customTpls || []).filter(t => t.status !== 'archived').map(ct => ({ key:'c' + ct.id, name:ct.name,
+        obj:ct.objective + ' · your template', st:drawerRow(0, proj.tplId === 'custom:' + ct.id), on:() => this.switchCustom(ct) })));
+    out.prodList = D.PRODUCTS.map(p => ({ key:p.id, name:p.name, sub:D.taka(p.price) + (p.was ? ' · was ' + D.taka(p.was) : '') + ' · stock ' + p.stock,
+      rowSt:{ display:'flex', alignItems:'center', gap:'9px', padding:'8px 10px', borderRadius:'11px', cursor:'pointer',
+        background:p.id === proj.productId ? '#EEF0E6' : '#fff', border:'1px solid ' + (p.id === proj.productId ? '#1A1D12' : '#E2DFD2') },
+      dotSt:{ width:'30px', height:'30px', borderRadius:'8px', flexShrink:0, backgroundImage:'linear-gradient(135deg, ' + p.img.a + ', ' + p.img.b + ')' },
+      on:() => this.setProduct(p.id) }));
+    const mainImgEl = c.els.find(e2 => e2.type === 'product-image' && e2.imgOf !== 'pair');
+    const pDefs = P.imgs && P.imgs.length ? P.imgs : [{ ...P.img, pat:'weave', flip:0, label:'Front' }];
+    const usedIdx = Math.min(mainImgEl ? (mainImgEl.imgIdx ?? 0) : 0, pDefs.length - 1);
+    out.imgCount = pDefs.length + (pDefs.length === 1 ? ' photo' : ' photos');
+    out.imgThumbs = pDefs.map((g, i) => { const used = i === usedIdx, previewing = st.imgPreview === i;
+      return { key:'g' + i, label:g.label || ('Photo ' + (i+1)), mono:g.mono, usedOn:used, lowOn:!!g.lowRes,
+        on:() => this.setState({ imgPreview:(i === usedIdx ? null : i) }),
+        st:{ borderRadius:'10px', overflow:'hidden', cursor:'pointer', background:'#fff',
+          border:previewing ? '2px solid #C6F035' : (used ? '2px solid #1A1D12' : '1px solid #E2DFD2') },
+        artSt:{ height:'64px', display:'flex', alignItems:'center', justifyContent:'center',
+          backgroundImage:'repeating-linear-gradient(' + (g.pat === 'diagonal' ? '45deg' : '0deg') + ', transparent 0 8px, ' + g.st + '55 8px 9px), linear-gradient(135deg, ' + g.a + ', ' + g.b + ')' },
+        monoSt:{ fontWeight:900, fontSize:'18px', color:g.st, letterSpacing:'1px' } }; });
+    out.imgBarOn = st.imgPreview != null && st.imgPreview !== usedIdx;
+    out.imgBarName = out.imgBarOn ? (pDefs[Math.min(st.imgPreview, pDefs.length - 1)].label || 'Photo') : '';
+    out.onImgUse = () => { const i2 = st.imgPreview; if(i2 == null) return;
+      this.commit(p => { this.D.FMT_KEYS.forEach(f2 => p.formats[f2].els.forEach(e2 => { if(e2.type === 'product-image' && e2.imgOf !== 'pair' && !e2.imgLock) e2.imgIdx = i2; })); });
+      this.setState({ imgPreview:null }); this.toast('Photo applied across all three sizes — layout, crop and motion kept'); };
+    out.onImgCancel = () => this.setState({ imgPreview:null });
+    out.bindRows = ['productTitle','currentPrice','previousPrice','discountLabel','primaryBenefit','stockUrgency','reviewText']
+      .map(k => ({ key:k, k, v:S[k] == null ? '— missing (layer hidden)' : String(S[k]) }));
+    out.onFile = e => this.onFile(e);
+    out.textAdds = [ ['heading','Heading','Your store’s heading font', { fontFamily:B.fonts.h, fontSize:'17px', fontWeight:B.fonts.hw }],
+      ['sub','Subheading','Same voice, smaller', { fontFamily:B.fonts.h, fontSize:'14px', fontWeight:B.fonts.hw }],
+      ['body','Body text','Store body font', { fontFamily:B.fonts.b, fontSize:'12.5px', fontWeight:500 }],
+      ['caption','Caption','Small, spaced, quiet', { fontFamily:B.fonts.b, fontSize:'10px', fontWeight:700, letterSpacing:'2px' }] ]
+      .map(([k, lbl, sub, exSt]) => ({ key:k, lbl, sub, exSt:{ ...exSt, color:'#1A1D12' }, on:() => this.addText(k) }));
+    const shEx = { display:'inline-block', width:'34px', height:'24px', background:'#C9CDBA' };
+    out.shapeAdds = [ ['rect','Rectangle', { ...shEx }], ['rounded','Rounded', { ...shEx, borderRadius:'7px' }],
+      ['circle','Circle', { ...shEx, width:'26px', height:'26px', borderRadius:'99px' }], ['pill','Pill', { ...shEx, borderRadius:'99px' }],
+      ['line','Line', { ...shEx, height:'3px', marginTop:'11px' }] ].map(([k, lbl, exSt]) => ({ key:k, lbl, exSt, on:() => this.addShape(k) }));
+
+    const th = this.theme();
+    out.themeName = D.PAL[th.p].name + ' · ' + D.FON[th.f].name + ' · ' + D.COR[th.c].n;
+    out.palBtns = Object.keys(D.PAL).map(k => { const p2 = D.PAL[k]; const on = th.p === k;
+      const sw = bg => ({ width:'14px', height:'22px', borderRadius:'4px', background:bg });
+      return { key:k, name:p2.name, s1:sw(p2.bg), s2:sw(p2.ink), s3:sw(p2.accent),
+        st:{ display:'flex', gap:'3px', padding:'5px', borderRadius:'9px', cursor:'pointer', background:'#fff',
+          border:on ? '2px solid #1A1D12' : '1px solid #E2DFD2' }, on:() => this.setStoreTheme(k) }; });
+    out.modeBtns = [ ['brand','Store brand'], ['light','Try light'], ['dark','Try dark'], ['template','Template style'] ]
+      .map(([k, lbl]) => ({ key:k, lbl, st:btn(proj.brandMode === k), on:() => this.setBrandMode(k) }));
+    out.checks = B.checks.map(ch => ({ key:ch.label, label:ch.label, ratio:ch.ratio, tag:ch.ok ? 'PASS' : 'LOW',
+      tagSt:{ padding:'2px 7px', borderRadius:'99px', fontSize:'9px', fontWeight:800, letterSpacing:'0.5px',
+        background:ch.ok ? '#E4EFD8' : '#F6E3D8', color:ch.ok ? '#3E7A45' : '#B03A2E' } }));
+    out.notesOn = B.notes.length > 0; out.notes = B.notes.map((t, i) => ({ key:'n' + i, t }));
+    out.roleRows = Object.keys(B.roles).map(rk => ({ key:rk, name:rk.replace(/([A-Z])/g, ' $1').toLowerCase(), val:B.roles[rk],
+      on:e => this.setRole(rk, e.target.value) }));
+
+    out.layerCount = c.els.length + ' on this size';
+    out.layers = [...c.els].reverse().map(el => ({ key:el.id, label:this.pretty(el.id) + (el.bind ? ' ·' : ''),
+      tag:{ text:'TXT', badge:'PILL', shape:'SHP', 'product-image':'IMG', image:'IMG' }[el.type] || 'EL',
+      st:{ display:'flex', alignItems:'center', gap:'5px', padding:'6px 8px', borderRadius:'9px', cursor:'pointer',
+        background:st.sel === el.id ? '#EEF0E6' : 'transparent', border:'1px solid ' + (st.sel === el.id ? '#1A1D12' : 'transparent'),
+        opacity:el.vis ? 1 : 0.45 },
+      on:() => this.setState({ sel:el.id }),
+      onUp:e => { e.stopPropagation(); this.moveL(el.id, 1); }, onDown:e => { e.stopPropagation(); this.moveL(el.id, -1); },
+      onEye:e => { e.stopPropagation(); this.updEl(el.id, x => { x.vis = !x.vis; }, true); },
+      onLock:e => { e.stopPropagation(); this.updEl(el.id, x => { x.lock = !x.lock; }, true); },
+      onDel:e => { e.stopPropagation(); this.delEl(el.id); },
+      eyeSt:{ border:'none', background:'none', cursor:'pointer', fontSize:'11px', padding:'2px', color:el.vis ? '#1A1D12' : '#C9C5B4' },
+      lockSt:{ border:'none', background:'none', cursor:'pointer', fontSize:'11px', padding:'2px', color:el.lock ? '#B07A2A' : '#C9C5B4' } }));
+
+    // canvas
+    out.onCanvasDown = e => this.onCanvasDown(e);
+    out.stageSt = { minWidth:'100%', minHeight:'100%', display:'flex', alignItems:'center', justifyContent:'center', padding:'40px' };
+    out.artBoxSt = { width:F.w*sc + 'px', height:F.h*sc + 'px', position:'relative', flexShrink:0, boxShadow:'0 20px 60px rgba(26,29,18,0.18)' };
+    out.artSt = { position:'absolute', left:0, top:0, width:F.w + 'px', height:F.h + 'px', transform:'scale(' + sc + ')',
+      transformOrigin:'0 0', background:'#FFFFFF', overflow:'hidden' };
+    out.cvEls = c.els.map(el => this.enrichEl(el, B, {}));
+    out.editingOn = !!st.editing;
+    if(st.editing){ const el = this.getEl(st.editing); if(el){ const s = el.style;
+      out.editText = st.editText; out.editChange = e => this.setState({ editText:e.target.value });
+      out.editKeys = e => { if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); this.commitEdit(); } if(e.key === 'Escape'){ this.setState({ editing:null }); } };
+      out.editDone = () => this.commitEdit();
+      out.editSt = { position:'absolute', left:0, top:0, width:el.w + 'px', minHeight:(el.h || s.size*s.lh + 20) + 'px',
+        transform:'translate(' + el.x + 'px,' + el.y + 'px) rotate(' + el.rot + 'deg)', transformOrigin:'center',
+        fontFamily:this.fontOf(s.font, B), fontSize:s.size + 'px', fontWeight:s.weight, color:this.resolveColor(s, 'color', B),
+        textAlign:s.align, lineHeight:s.lh, letterSpacing:s.ls + 'px', background:el.type === 'badge' ? this.resolveColor(s, 'bg', B) : 'rgba(255,255,255,0.5)',
+        border:'2px solid #C6F035', borderRadius:'6px', padding:'2px', resize:'none', overflow:'hidden', zIndex:80, boxSizing:'border-box' }; } }
+    out.safeShow = st.safeOn; const sz = F.safe;
+    out.safeTopSt = { position:'absolute', left:0, right:0, top:0, height:sz.top + 'px', borderBottom:'3px dashed rgba(26,29,18,0.5)',
+      background:'rgba(26,29,18,0.08)', display:'flex', alignItems:'center', justifyContent:'center', pointerEvents:'none', zIndex:55 };
+    out.safeBotSt = { position:'absolute', left:0, right:0, bottom:0, height:sz.bottom + 'px', borderTop:'3px dashed rgba(26,29,18,0.5)',
+      background:'rgba(26,29,18,0.08)', display:'flex', alignItems:'center', justifyContent:'center', pointerEvents:'none', zIndex:55 };
+    out.onZoomOut = () => this.zoomBy(-1); out.onZoomIn = () => this.zoomBy(1);
+    out.zoomPct = Math.round(sc*100) + '%'; out.onZoomFit = () => this.setState({ zoom:'fit' });
+    out.onSafe = () => this.setState({ safeOn:!st.safeOn });
+    out.safeBtnSt = { padding:'5px 9px', border:'none', borderRadius:'8px', background:st.safeOn ? '#1A1D12' : '#EEEBDF',
+      color:st.safeOn ? '#C6F035' : '#1A1D12', cursor:'pointer', fontSize:'11px', fontWeight:700 };
+    out.stopPillOn = st.playing && st.mode === 'design';
+    out.onStopPreview = () => { this.stop(); this.applyFrame(null); };
+
+    // properties
+    const sel = st.sel ? this.getEl(st.sel) : null;
+    out.selOn = !!sel; out.noSelOn = !sel;
+    if(sel){ const s = sel.style;
+      out.selLabel = this.pretty(sel.id);
+      out.selType = { text:'TEXT', badge:'PILL', shape:'SHAPE', 'product-image':'PRODUCT', image:'IMAGE' }[sel.type] || 'LAYER';
+      out.onDup = () => this.duplicate(sel.id); out.onDelSel = () => this.delEl(sel.id);
+      out.lockLbl = sel.lock ? '⚿ Locked' : 'Lock'; out.visLbl = sel.vis ? 'Visible' : 'Hidden';
+      out.lockBtnSt = btn(sel.lock); out.visBtnSt = btn(!sel.vis);
+      out.onLockT = () => this.updEl(sel.id, x => { x.lock = !x.lock; }, true);
+      out.onVisT = () => this.updEl(sel.id, x => { x.vis = !x.vis; }, true);
+      out.isTxtSel = sel.type === 'text'; out.isBdgSel = sel.type === 'badge';
+      out.isShpSel = sel.type === 'shape'; out.isImgSel = sel.type === 'product-image' || sel.type === 'image';
+      out.isProdImgSel = sel.type === 'product-image';
+      out.onChangeImg = () => this.setState({ leftTab:'product' });
+      out.cutOn = !!s.cutout; out.cutOff = !s.cutout;
+      out.removeBgLbl = st.removingBg ? 'Removing…' : 'Remove background';
+      out.onRemoveBg = () => this.removeBg(false);
+      out.onRestoreBg = () => this.updEl(sel.id, x => { x.style.cutout = false; }, true);
+      out.canRetryBg = sel.type === 'image'; out.retryBgLbl = st.removingBg ? 'Working…' : 'Try again';
+      out.onRetryBg = () => this.removeBg(true);
+      if(out.isProdImgSel){ const pd2 = this.product(); const defs2 = pd2.imgs && pd2.imgs.length ? pd2.imgs : [pd2.img];
+        out.imgSrcV = sel.imgOf === 'pair' ? 'pair' : (sel.imgLock ? 'fix' + Math.min(sel.imgIdx ?? 0, defs2.length - 1) : 'main');
+        out.imgFixOpts = defs2.map((g2, i3) => ({ key:'f' + i3, v:'fix' + i3, l:'Always: ' + (g2.label || 'Photo ' + (i3 + 1)) }));
+        out.onImgSrc = e => { const v3 = e.target.value;
+          this.updEl(sel.id, x => { if(v3 === 'pair'){ x.imgOf = 'pair'; x.imgLock = false; }
+            else if(v3 === 'main'){ x.imgOf = 'main'; x.imgLock = false; }
+            else { x.imgOf = 'main'; x.imgLock = true; x.imgIdx = +v3.slice(3) || 0; } }, true); }; }
+      out.cropFmtLbl = F.label; out.czV = sel.style.cz ?? 100; out.cxV = sel.style.cx ?? 50; out.cyV = sel.style.cy ?? 50;
+      out.onCz = e => this.updEl(sel.id, x => { x.style.cz = +e.target.value; }, false);
+      out.onCx = e => this.updEl(sel.id, x => { x.style.cx = +e.target.value; }, false);
+      out.onCy = e => this.updEl(sel.id, x => { x.style.cy = +e.target.value; }, false);
+      out.onCropReset = () => this.updEl(sel.id, x => { Object.assign(x.style, { cz:100, cx:50, cy:50 }); }, false);
+      out.txtVal = sel.text || ''; out.onTxtVal = e => this.updEl(sel.id, x => { x.text = e.target.value; }, true);
+      out.fontVal = s.font; out.onFont = e => this.updSty(sel.id, { font:e.target.value });
+      out.weightVal = String(s.weight); out.onWeight = e => this.updSty(sel.id, { weight:+e.target.value });
+      out.sizeV = s.size || 0; out.onSize = e => this.updSty(sel.id, { size:Math.max(8, +e.target.value || 0) });
+      out.colorV = s.color || '#111111'; out.onColor = e => this.updEl(sel.id, x => { x.style.color = e.target.value; x.style.colorRole = null; }, true);
+      out.lhV = s.lh || 1.1; out.onLh = e => this.updSty(sel.id, { lh:+e.target.value || 1.1 });
+      out.lsV = s.ls || 0; out.onLs = e => this.updSty(sel.id, { ls:+e.target.value || 0 });
+      const alBtn = on => ({ flex:1, padding:'6px 0', borderRadius:'8px', border:'1px solid ' + (on ? '#1A1D12' : '#E2DFD2'),
+        background:on ? '#1A1D12' : '#fff', color:on ? '#F0EFE6' : '#1A1D12', fontSize:'11px', fontWeight:700, cursor:'pointer' });
+      out.alTxtL = () => this.updSty(sel.id, { align:'left' }); out.alTxtC = () => this.updSty(sel.id, { align:'center' }); out.alTxtR = () => this.updSty(sel.id, { align:'right' });
+      out.alLSt = alBtn(s.align === 'left'); out.alCSt = alBtn(s.align === 'center'); out.alRSt = alBtn(s.align === 'right');
+      out.onStrike = () => this.updSty(sel.id, { strike:!s.strike }); out.strikeSt = alBtn(!!s.strike);
+      out.isBindable = sel.type === 'text' || sel.type === 'badge';
+      if(out.isBindable){ const S2 = D.slots(this.product());
+        out.bindVal = sel.bind || ''; out.bindOn = !!sel.bind;
+        out.bindOpts = D.BINDS.map(b => ({ key:b.k || 'none', v:b.k, l:b.label + (b.k && S2[b.k] == null ? ' — missing here' : '') }));
+        out.bindPreview = sel.bind ? (S2[sel.bind] != null ? String(S2[sel.bind]) : '(missing for this product)') : '';
+        out.onBind = e => { const k = e.target.value || null; const v2 = k ? S2[k] : null;
+          this.updEl(sel.id, x => { x.bind = k; if(v2 != null) x.text = v2;
+            if(!k && x._hiddenByBind){ x.vis = true; x._hiddenByBind = false; } }, true); };
+        out.fallbackV = sel.fallback || ''; out.onFallback = e => this.updEl(sel.id, x => { x.fallback = e.target.value || null; }, true);
+        const hm = sel.hideIfMissing !== false;
+        out.hideMissLbl = hm ? 'Hides when data is missing' : 'Stays visible when missing';
+        out.hideMissSt = { ...btn(hm), width:'100%', marginTop:'8px', padding:'7px 0' };
+        out.onHideMiss = () => this.updEl(sel.id, x => { x.hideIfMissing = x.hideIfMissing === false ? true : false; }, true); }
+      out.bgV = s.bg || '#1A1D12'; out.onBg = e => this.updEl(sel.id, x => { x.style.bg = e.target.value; x.style.bgRole = null; }, true);
+      const fillRes = this.resolveColor(s, 'fill', B); out.fillOn = fillRes != null; out.fillOff = fillRes == null;
+      out.fillV = fillRes || '#EEEBDF'; out.onFill = e => this.updEl(sel.id, x => { x.style.fill = e.target.value; x.style.fillRole = null; }, true);
+      out.fillOpV = s.fillOp ?? 100; out.onFillOp = e => this.updSty(sel.id, { fillOp:+e.target.value });
+      out.onFillRem = () => this.updEl(sel.id, x => { x.style.fill = null; x.style.fillRole = null; }, true);
+      out.onFillAdd = () => this.updEl(sel.id, x => { x.style.fill = B.roles.decorativeAccent; x.style.fillRole = 'decorativeAccent'; if(x.style.fillOp == null) x.style.fillOp = 100; }, true);
+      const bdRes = this.resolveColor(s, 'border', B); out.borderOn = !!(bdRes && (s.bw || 0) > 0); out.borderOff = !out.borderOn;
+      out.borderV = bdRes || '#1A1D12'; out.onBorder = e => this.updEl(sel.id, x => { x.style.border = e.target.value; x.style.borderRole = null; if(!x.style.bw) x.style.bw = 3; }, true);
+      out.bwV = s.bw || 0; out.onBw = e => this.updSty(sel.id, { bw:Math.max(0, +e.target.value || 0) });
+      out.borderOpV = s.borderOp ?? 100; out.onBorderOp = e => this.updSty(sel.id, { borderOp:+e.target.value });
+      out.onBorderRem = () => this.updEl(sel.id, x => { x.style.border = null; x.style.borderRole = null; x.style.bw = 0; }, true);
+      out.onBorderAdd = () => this.updEl(sel.id, x => { x.style.border = B.roles.heading; x.style.borderRole = 'heading'; x.style.bw = 4; if(x.style.borderOp == null) x.style.borderOp = 100; }, true);
+      out.onDash = () => this.updSty(sel.id, { dash:!s.dash }); out.dashSt = btn(!!s.dash);
+      out.onFitCover = () => this.updSty(sel.id, { fit:'cover' }); out.onFitContain = () => this.updSty(sel.id, { fit:'contain' });
+      out.fitCoverSt = btn(s.fit !== 'contain'); out.fitContainSt = btn(s.fit === 'contain');
+      out.briV = s.bri ?? 100; out.conV = s.con ?? 100; out.satV = s.sat ?? 100;
+      out.onBri = e => this.updSty(sel.id, { bri:+e.target.value }); out.onCon = e => this.updSty(sel.id, { con:+e.target.value });
+      out.onSat = e => this.updSty(sel.id, { sat:+e.target.value }); out.onAdjReset = () => this.updSty(sel.id, { bri:100, con:100, sat:100 });
+      out.posX = Math.round(sel.x); out.posY = Math.round(sel.y); out.posW = Math.round(sel.w);
+      out.posH = sel.type === 'text' ? Math.round(sel.rot) : Math.round(sel.h || 0);
+      out.hLbl = sel.type === 'text' ? 'ROTATION°' : 'HEIGHT';
+      out.onPosX = e => this.updEl(sel.id, x => { x.x = +e.target.value || 0; }, false);
+      out.onPosY = e => this.updEl(sel.id, x => { x.y = +e.target.value || 0; }, false);
+      out.onPosW = e => this.updEl(sel.id, x => { x.w = Math.max(20, +e.target.value || 0); }, false);
+      out.onPosH = e => sel.type === 'text' ? this.updEl(sel.id, x => { x.rot = +e.target.value || 0; }, false)
+        : this.updEl(sel.id, x => { x.h = Math.max(10, +e.target.value || 0); }, false);
+      out.opPct = Math.round(sel.op*100); out.onOp = e => this.updEl(sel.id, x => { x.op = (+e.target.value)/100; }, true);
+      const selH = () => { const n = document.querySelector('[data-el-id="' + sel.id + '"]'); return n ? n.offsetHeight : (sel.h || 100); };
+      out.miniBtn = { flex:1, padding:'6px 0', borderRadius:'8px', border:'1px solid #E2DFD2', background:'#fff', fontSize:'12px', cursor:'pointer' };
+      out.miniW = { flex:1, padding:'6px 0', borderRadius:'8px', border:'1px solid #E2DFD2', background:'#fff', fontSize:'10.5px', fontWeight:700, cursor:'pointer' };
+      out.alL = () => this.updEl(sel.id, x => { x.x = 54; }, false); out.alR = () => this.updEl(sel.id, x => { x.x = F.w - 54 - sel.w; }, false);
+      out.alC = () => this.updEl(sel.id, x => { x.x = Math.round((F.w - sel.w)/2); }, false);
+      out.alT = () => this.updEl(sel.id, x => { x.y = 54; }, false); out.alB = () => { const h = selH(); this.updEl(sel.id, x => { x.y = F.h - 54 - h; }, false); };
+      out.alM = () => { const h = selH(); this.updEl(sel.id, x => { x.y = Math.round((F.h - h)/2); }, false); };
+      out.onFwd = () => this.moveL(sel.id, 1); out.onBackw = () => this.moveL(sel.id, -1);
+      out.onRadT = () => this.updSty(sel.id, { rad:(s.rad || 0) > 0 ? 0 : (s.rad === 999 ? 0 : 24) });
+      out.radBtnSt = btn((s.rad || 0) > 0); out.onShadow = () => this.updSty(sel.id, { shadow:!s.shadow }); out.shadowSt = btn(!!s.shadow);
+      out.animPanelOn = st.mode === 'animate';
+      if(out.animPanelOn){ const A = sel.anim || {};
+        const slotDef = [ ['enter','ENTER', D.PRESETS.enter, true], ['emphasis','EMPHASIS', D.PRESETS.emphasis, true],
+          ['exit','EXIT', D.PRESETS.exit, true], ['continuous','CONTINUOUS', D.PRESETS.continuous, false] ];
+        out.animSlots = slotDef.map(([slot, title, opts, hasDur]) => { const ev = A[slot];
+          return { key:slot, title, hasEv:!!ev, hasDur:hasDur && !!ev, preset:ev ? ev.p : 'none',
+            opts:[{ v:'none', l:'None' }, ...opts.map(o => ({ v:o, l:o.replace(/-/g, ' ') }))],
+            onPreset:e => this.setAnim(sel.id, slot, 'p', e.target.value),
+            start:ev ? (ev.s/1000).toFixed(1) : '0.0', onStart:e => this.setAnim(sel.id, slot, 's', Math.max(0, +e.target.value*1000 || 0)),
+            dur:ev && ev.d ? (ev.d/1000).toFixed(1) : '0.5', onDur:e => this.setAnim(sel.id, slot, 'd', Math.max(100, +e.target.value*1000 || 100)),
+            ease:ev ? (ev.e || 'out') : 'out', onEase:e => this.setAnim(sel.id, slot, 'e', e.target.value),
+            int:ev ? (ev.i || 1) : 1, onInt:e => this.setAnim(sel.id, slot, 'i', +e.target.value),
+            onClear:() => this.clearAnim(sel.id, slot) }; }); } }
+    else { out.novaBody = 'Filled from ' + P.name + ' — ' + this.tplName(proj) +
+        ', adapted to the ' + D.PAL[th.p].name + ' theme, ' + (proj.motionStyle === 'custom' ? 'custom' : proj.motionStyle) + ' motion across all three sizes.';
+      out.onRegenOpen = () => this.setState({ regenOpen:true });
+      out.onTplSaveOpen = () => { const src = String(proj.tplId || '').indexOf('custom:') === 0 ? this.loadTpls().find(t => 'custom:' + t.id === proj.tplId) : null;
+        this.setState({ tplSaveOpen:true, tplMeta:{ name:src ? src.name : (proj.name.indexOf(' — ') > -1 ? proj.name.split(' — ')[1] : proj.name),
+          category:src ? src.category : 'Any product', objective:src ? src.objective : 'Conversions', desc:src ? src.desc : '',
+          status:src ? src.status : 'draft', saveAs:src ? 'update' : 'new', updateId:src ? src.id : null, srcName:src ? src.name : '' } }); };
+      const srcC = String(proj.tplId || '').indexOf('custom:') === 0 ? (st.customTpls || []).find(t => 'custom:' + t.id === proj.tplId) : null;
+      out.srcTplOn = !!srcC; out.srcTplName = srcC ? srcC.name : '';
+      out.fmtInfo = F.sub + ' — safe zones ' + F.safe.top + 'px top / ' + F.safe.bottom + 'px bottom.';
+      const alts = [P.name, S.primaryBenefit, P.problem, 'New: ' + P.name].filter(Boolean);
+      out.onAltHead = () => { const i = (st.altIdx + 1) % alts.length; this.setState({ altIdx:i });
+        this.updEl('headline', x => { x.text = alts[i]; x.bind = null; }, true); this.toast('Headline swapped — deterministic rotation, not AI'); }; }
+
+    // creative doctor
+    const cdIss = this.cdRun(); const nCrit = cdIss.filter(i2 => i2.sev === 'critical').length;
+    out.cdBtnLbl = '✚ Doctor' + (cdIss.length ? ' · ' + cdIss.length : ' ✓');
+    out.cdBtnSt = { padding:'8px 13px', borderRadius:'10px', border:'1px solid ' + (nCrit ? '#E5B8AE' : (cdIss.length ? '#E8D5B5' : '#E2DFD2')),
+      background:nCrit ? '#F6E3D8' : (cdIss.length ? '#FFF3E2' : '#fff'), color:nCrit ? '#8A2A1E' : (cdIss.length ? '#7A5A22' : '#1A1D12'),
+      fontSize:'12px', fontWeight:800, cursor:'pointer', whiteSpace:'nowrap', flexShrink:0, padding:'7px 10px' };
+    out.onCd = () => this.setState({ cdOpen:!st.cdOpen });
+    out.cdOn = st.cdOpen;
+    if(st.cdOpen){ out.cdStatus = cdIss.length === 0 ? 'All clear — nothing blocking export.'
+        : cdIss.length + (cdIss.length === 1 ? ' thing' : ' things') + ' worth a look' + (nCrit ? ' · ' + nCrit + ' critical' : '');
+      out.cdStatusSt = { padding:'9px 12px', borderRadius:'10px', fontSize:'12px', fontWeight:700,
+        background:cdIss.length === 0 ? '#E4EFD8' : (nCrit ? '#F6E3D8' : '#FFF3E2'), color:cdIss.length === 0 ? '#3E7A45' : (nCrit ? '#8A2A1E' : '#7A5A22') };
+      const sevMeta = { critical:{ l:'CRITICAL', bg:'#F6E3D8', c:'#8A2A1E' }, warn:{ l:'WARNING', bg:'#FFF3E2', c:'#7A5A22' }, tip:{ l:'SUGGESTION', bg:'#EEF0E6', c:'#5C6150' } };
+      const ord = { critical:0, warn:1, tip:2 };
+      out.cdItems = [...cdIss].sort((a, b) => ord[a.sev] - ord[b.sev]).map((i2, n2) => ({ key:'cd' + n2,
+        sevLbl:sevMeta[i2.sev].l, sevSt:{ padding:'2px 7px', borderRadius:'99px', fontSize:'9px', fontWeight:800, letterSpacing:'0.5px', background:sevMeta[i2.sev].bg, color:sevMeta[i2.sev].c, whiteSpace:'nowrap' },
+        fmtChip:i2.fmt ? D.FORMATS[i2.fmt].label : 'All sizes', layer:i2.layer || '', title:i2.title, body:i2.body,
+        hasFix:!!i2.fix, fixLbl:i2.fix ? i2.fix.label : '', canSel:!!i2.elId,
+        onFix:() => { this.commit(p => i2.fix.fn(p)); this.toast('Fixed — ⌘Z undoes it'); },
+        onSel:() => this.setState({ fmt:i2.fmt || st.fmt, sel:i2.elId, mode:i2.key.indexOf('m:') === 0 ? 'animate' : st.mode }),
+        onIgn:() => this.commit(p => { p.cdIgnored = [...(p.cdIgnored || []), i2.key]; }) }));
+      const ignN = (proj.cdIgnored || []).length; out.cdIgnOn = ignN > 0;
+      out.cdIgnLbl = 'Bring back ' + ignN + ' ignored ' + (ignN === 1 ? 'check' : 'checks');
+      out.onCdUnign = () => this.commit(p => { p.cdIgnored = []; }); }
+
+    // timeline
+    out.animateOn = st.mode === 'animate'; out.playingOn = st.playing; out.pausedOn = !st.playing;
+    out.onPlay = () => this.togglePlay(); out.onRestart = () => { this.seekTo(0); if(!st.playing) this.play(); };
+    out.clock0 = this.fmtTime(this._t || 0) + ' / ' + this.fmtTime(proj.durationMs);
+    out.durSec = proj.durationMs/1000; out.onDurCh = e => { const v = Math.max(2, Math.min(12, +e.target.value || 6));
+      this.commit(p => { p.durationMs = Math.round(v*1000); }); };
+    out.mchips = Object.keys(D.RECIPES).map(k => ({ key:k, lbl:D.RECIPES[k].label,
+      st:{ padding:'5px 11px', borderRadius:'999px', border:'1px solid ' + (proj.motionStyle === k ? '#1A1D12' : '#E2DFD2'),
+        background:proj.motionStyle === k ? '#1A1D12' : '#fff', color:proj.motionStyle === k ? '#C6F035' : '#1A1D12',
+        fontSize:'11px', fontWeight:700, cursor:'pointer' }, on:() => this.applyStyleRecipe(k) }));
+    out.customOn = proj.motionStyle === 'custom'; out.reducedOn = this.reduced();
+    out.onTlOut = () => this.setState({ pps:Math.max(30, this.ppsVal()*0.75) });
+    out.onTlIn = () => this.setState({ pps:Math.min(600, this.ppsVal()*1.35) });
+    out.onTlFit = () => this.setState({ pps:null });
+    out.onResetAll = () => this.resetAllMotion();
+    const pps = this.ppsVal(), durS = proj.durationMs/1000, tlW = 160 + durS*pps + 60;
+    out.tlcSt = { position:'relative', width:tlW + 'px', minHeight:'100%' };
+    out.rulerSt = { position:'sticky', top:0, height:'26px', background:'#FBFAF5', borderBottom:'1px solid #EEEBDF',
+      position2:'relative', cursor:'pointer', zIndex:20, position:'sticky' };
+    out.onRuler = e => this.scrub(e);
+    const ticks = []; for(let t2 = 0; t2 <= durS + 0.001; t2 += 0.5){ const x = 160 + t2*pps; const major = Math.abs(t2 - Math.round(t2)) < 0.01;
+      ticks.push({ key:'t' + t2, hasLbl:major, lbl:Math.round(t2) + 's',
+        st:{ position:'absolute', left:x + 'px', bottom:0, width:'1px', height:major ? '10px' : '6px', background:major ? '#B9B5A2' : '#D8D4C6' },
+        lblSt:{ position:'absolute', left:(x + 4) + 'px', top:'4px', fontSize:'9px', fontWeight:700, color:'#9a9e8c' } }); }
+    out.ticks = ticks;
+    const barCols = { enter:{ bg:'#1A1D12', c:'#F0EFE6' }, emphasis:{ bg:'#C6F035', c:'#1A1D12' }, exit:{ bg:'#B03A2E', c:'#fff' }, continuous:{ bg:'#8A8F7C', c:'#fff' } };
+    out.tlRows = [...c.els].reverse().filter(e2 => e2.vis).map(el => { const A = el.anim || {}; const bars = [];
+      ['enter','emphasis','exit','continuous'].forEach(slot => { const ev = A[slot]; if(!ev) return;
+        const d = slot === 'continuous' ? (proj.durationMs - ev.s) : ev.d; const col = barCols[slot];
+        bars.push({ key:el.id + slot, lbl:ev.p.replace(/-/g, ' '), tip:slot + ' · drag to move' + (slot !== 'continuous' ? ', edge to stretch' : ''),
+          hasEdge:slot !== 'continuous', down:e => this.barDown(e, el.id, slot, false), edge:e => this.barDown(e, el.id, slot, true),
+          st:{ position:'absolute', left:(160 + (ev.s/1000)*pps) + 'px', top:'5px', height:'22px', width:Math.max(16, (d/1000)*pps) + 'px',
+            borderRadius:'7px', background:col.bg, color:col.c, fontSize:'9.5px', fontWeight:700, display:'flex', alignItems:'center',
+            padding:'0 8px', cursor:'grab', whiteSpace:'nowrap', overflow:'hidden', zIndex:10,
+            border:slot === 'continuous' ? '1px dashed #FBFAF5' : 'none', opacity:st.sel === el.id ? 1 : 0.82 } }); });
+      return { key:el.id, label:this.pretty(el.id), hasAnim:bars.length > 0, noAnim:bars.length === 0, bars,
+        on:() => this.setState({ sel:el.id }),
+        onReset:e => { e.stopPropagation(); this.resetRow(el.id); },
+        onAdd:e => { e.stopPropagation(); this.setAnim(el.id, 'enter', 'p', 'fade'); },
+        rowSt:{ position:'relative', height:'32px', borderBottom:'1px solid #F1EEE3', background:st.sel === el.id ? '#F4F6EC' : 'transparent' },
+        labSt:{ position:'sticky', left:0, width:'160px', height:'100%', display:'flex', alignItems:'center', gap:'4px', padding:'0 8px',
+          fontSize:'11px', fontWeight:600, background:st.sel === el.id ? '#EEF0E6' : '#FBFAF5', borderRight:'1px solid #EEEBDF',
+          cursor:'pointer', zIndex:15, color:'#3C4033' } }; });
+    out.phSt = { position:'absolute', top:0, bottom:0, left:(160 + ((this._t || 0)/1000)*pps) + 'px', width:'2px', zIndex:30,
+      display:'flex', flexDirection:'column', cursor:'ew-resize' };
+    out.onPhDown = e => this.scrub(e);
+
+    // export modal
+    out.exportOn = st.exportOpen; out.onExportClose = () => this.setState({ exportOpen:false });
+    out.onExTabS = () => this.setState({ exTab:'static' }); out.onExTabM = () => this.setState({ exTab:'motion' });
+    const exSeg = on => ({ flex:1, padding:'8px', borderRadius:'8px', border:'none', background:on ? '#1A1D12' : 'transparent',
+      color:on ? '#C6F035' : '#3C4033', fontSize:'12.5px', fontWeight:700, cursor:'pointer' });
+    out.exTabSSt = exSeg(st.exTab === 'static'); out.exTabMSt = exSeg(st.exTab === 'motion');
+    out.exStaticOn = st.exTab === 'static'; out.exMotionOn = st.exTab === 'motion';
+    out.exFmtRows = D.FMT_KEYS.map(k => { const on = st.exFmts[k];
+      return { key:k, lbl:D.FORMATS[k].label + (k === st.fmt ? ' · current' : ''), sub:D.FORMATS[k].sub,
+        on:() => this.setState({ exFmts:{ ...st.exFmts, [k]:!on } }),
+        st:{ display:'flex', alignItems:'center', gap:'10px', padding:'9px 11px', borderRadius:'10px', cursor:'pointer',
+          border:'1px solid ' + (on ? '#1A1D12' : '#E2DFD2'), background:on ? '#F4F6EC' : '#fff' },
+        tick:{ width:'18px', height:'18px', borderRadius:'5px', display:'inline-flex', alignItems:'center', justifyContent:'center',
+          fontSize:'11px', fontWeight:900, background:on ? '#1A1D12' : '#EEEBDF', color:on ? '#C6F035' : 'transparent' } }; });
+    out.onExPng = () => this.setState({ exType:'png' }); out.onExJpg = () => this.setState({ exType:'jpg' });
+    out.exPngSt = btn(st.exType === 'png'); out.exJpgSt = btn(st.exType === 'jpg');
+    out.exQOn = st.exType === 'jpg'; out.exQPct = st.exQ; out.onExQ = e => this.setState({ exQ:+e.target.value });
+    const nSel = D.FMT_KEYS.filter(k => st.exFmts[k]).length;
+    out.exportLbl = 'Export ' + nSel + (nSel === 1 ? ' image' : ' images') + ' · ' + st.exType.toUpperCase();
+    out.onDoExport = () => this.doExport();
+    out.exMotionSpec = F.w + '×' + F.h; out.exMotionDur = (proj.durationMs/1000).toFixed(1) + 's · ~' + Math.round(proj.durationMs/1000*30) + ' frames';
+    out.exFmtKey = st.fmt; out.exDurMs = proj.durationMs;
+
+    // ad set modal
+    out.adsetOn = st.adsetOpen; out.onAdsetClose = () => this.setState({ adsetOpen:false });
+    const tileW = 250;
+    out.adTiles = []; D.FMT_KEYS.forEach(k => { const FK = D.FORMATS[k]; const els = this.liteEls(proj.formats[k].els, B);
+      const scT = tileW/FK.w, boxH = Math.min(240, FK.h*scT);
+      [false, true].forEach(motion => { out.adTiles.push({ key:k + (motion ? 'm' : 's'),
+        title:FK.label + (motion ? ' · Motion' : ' · Static'), sub:FK.sub, pv:els, motionChip:motion,
+        motionMeta:(proj.durationMs/1000).toFixed(0) + 's · ' + (proj.motionStyle === 'custom' ? 'custom' : proj.motionStyle),
+        openLbl:motion ? 'Open & play' : 'Open',
+        boxSt:{ position:'relative', height:boxH + 'px', overflow:'hidden', background:'#EAE7DA' },
+        pvSt:{ position:'absolute', left:'50%', top:0, width:FK.w + 'px', height:FK.h + 'px',
+          transform:'translateX(-50%) scale(' + scT + ')', transformOrigin:'50% 0', pointerEvents:'none' },
+        onOpen:() => { this.setState({ adsetOpen:false, fmt:k, mode:motion ? 'animate' : 'design', sel:null }, () => { if(motion){ this.seekTo(0); this.play(); } }); } }); }); });
+    out.adTiles.sort((a, b) => (a.motionChip ? 1 : 0) - (b.motionChip ? 1 : 0));
+    out.onExportAll = () => this.doExport(D.FMT_KEYS);
+    out.onSaveSet = () => { this.saveDraft('✦ Ad set saved — 6 outputs from one project, ready for review'); };
+
+    // regenerate modal
+    out.regenOn = st.regenOpen; out.onRegenClose = () => this.setState({ regenOpen:false });
+    out.regenProd = P.name;
+    out.regenDirV = st.regenDir; out.onRegenDir = e => this.setState({ regenDir:e.target.value });
+    out.regenChips = ['Premium product-launch ad','Bold flash-sale design','Minimal clean product ad','Free delivery story ad','Motion ad for a new arrival']
+      .map(l => ({ key:l, l, on:() => this.setState({ regenDir:l }) }));
+    out.onRegenFull = () => this.regenerate('full');
+    out.regenAgainOn = st.regenDone;
+    out.onRegenVar = () => this.regenerate('variation'); out.onRegenLayout = () => this.regenerate('layout');
+    out.onRegenCopy = () => this.regenerate('copy'); out.onRegenMotion = () => this.regenerate('motion');
+
+    // save-as-template modal
+    const tm = st.tplMeta || {};
+    out.tplSaveOn = st.tplSaveOpen; out.onTplSaveClose = () => this.setState({ tplSaveOpen:false });
+    out.tmName = tm.name || ''; out.onTmName = e => this.setState({ tplMeta:{ ...tm, name:e.target.value } });
+    out.tmCat = tm.category || 'Any product'; out.onTmCat = e => this.setState({ tplMeta:{ ...tm, category:e.target.value } });
+    out.tmObj = tm.objective || 'Conversions'; out.onTmObj = e => this.setState({ tplMeta:{ ...tm, objective:e.target.value } });
+    out.tmCats = D.TPL_CATEGORIES.map(v => ({ key:v, v })); out.tmObjs = D.TPL_OBJECTIVES.map(v => ({ key:v, v }));
+    out.tmDesc = tm.desc || ''; out.onTmDesc = e => this.setState({ tplMeta:{ ...tm, desc:e.target.value } });
+    out.tmDraftSt = btn(tm.status !== 'published'); out.tmPubSt = btn(tm.status === 'published');
+    out.onTmDraft = () => this.setState({ tplMeta:{ ...tm, status:'draft' } });
+    out.onTmPub = () => this.setState({ tplMeta:{ ...tm, status:'published' } });
+    out.tmUpdateOn = !!tm.updateId; out.tmSrcName = tm.srcName || '';
+    out.tmUpdSt = btn(tm.saveAs === 'update'); out.tmNewSt = btn(tm.saveAs !== 'update');
+    out.onTmUpd = () => this.setState({ tplMeta:{ ...tm, saveAs:'update' } });
+    out.onTmNew = () => this.setState({ tplMeta:{ ...tm, saveAs:'new' } });
+    out.tmMetaLine = '1:1 · 4:5 · 9:16 · ' + (this.projHasMotion() ? 'motion included' : 'static') + ' · bindings & brand roles preserved · auto-fills with any merchant product';
+    out.onTmSave = () => this.saveTemplate();
+    return out; }
+}
+</script>
+</body>
+</html>
