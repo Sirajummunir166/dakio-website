@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/tokens/tokens.css">
+  <script src="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/_ds_bundle.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Noto+Sans+Bengali:wght@500;700;800&family=Noto+Serif+Bengali:wght@600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/html-to-image@1.11.11/dist/html-to-image.js"></script>
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; background:#E7E4D8; }
+    a { color:inherit; text-decoration:none; }
+    a:hover { color:inherit; }
+    [contenteditable] { outline:none; }
+    [contenteditable]:focus { box-shadow:0 0 0 2px rgba(198,240,53,0.9); border-radius:6px; }
+    @keyframes ssBreathe { 0%,100% { transform:scale(1); } 50% { transform:scale(1.04); } }
+    @keyframes ssToast { 0% { opacity:0; transform:translateY(8px); } 12%,88% { opacity:1; transform:translateY(0); } 100% { opacity:0; transform:translateY(-6px); } }
+    @keyframes ssFloatA { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+    @keyframes ssFloatB { 0%,100% { transform:translateY(0); } 50% { transform:translateY(9px); } }
+  </style>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk','Noto Sans Bengali',sans-serif; color:#1A1D12; height:100vh; display:flex; flex-direction:column; overflow:hidden;" data-screen-label="Dakio Social Studio">
+
+  <div style="flex-shrink:0; display:flex; align-items:center; gap:14px; padding:12px 20px; background:#FBFAF5; border-bottom:1px solid rgba(26,29,18,0.09);">
+    <a href="Dakio Home.dc.html" style="display:flex; align-items:center; gap:9px;">
+      <span style="width:22px; height:22px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%);"></span>
+      <span style="font-size:15px; font-weight:800; letter-spacing:-0.3px;">Dakio Social Studio</span>
+    </a>
+    <span style="padding:4px 10px; border-radius:99px; background:#EEF4D4; color:#3A5212; font-family:'IBM Plex Mono',monospace; font-size:8px; font-weight:600; letter-spacing:0.1em;">INTERNAL · BRAND-LOCKED</span>
+    <span style="flex:1;"></span>
+    <span style="font-size:12px; color:#6B6D60;">Click text to edit · click the screen slot to drop a mockup · download.</span>
+  </div>
+
+  <div style="flex:1; display:flex; min-height:0;">
+    <!-- TEMPLATE RAIL -->
+    <div style="width:216px; flex-shrink:0; background:#FBFAF5; border-right:1px solid rgba(26,29,18,0.09); overflow-y:auto; padding:14px 12px; display:flex; flex-direction:column; gap:8px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; font-weight:600; letter-spacing:0.14em; color:#9a9e8c; padding:0 4px;">TEMPLATES</div>
+      <sc-for list="{{ rail }}" as="r" hint-placeholder-count="10">
+        <div onClick="{{ r.on }}" style="{{ r.card }}">
+          <div style="{{ r.mock }}"><span style="{{ r.mockTxt }}">{{ r.glyph }}</span></div>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:12px; font-weight:700;">{{ r.n }}</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:7px; letter-spacing:0.08em; color:#9a9e8c; margin-top:1px;">{{ r.tag }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- CANVAS -->
+    <div class="ss-canvas-area" style="flex:1; min-width:0; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; background-image:radial-gradient(rgba(26,29,18,0.08) 1px, transparent 1px); background-size:22px 22px;">
+      <div style="{{ stageWrap }}">
+        <div class="ss-stage-inner" style="{{ stageInner }}">
+          <div style="{{ padBox }}">
+            <div style="position:relative; display:flex; align-items:flex-start; justify-content:space-between; gap:20px;">
+              <span contentEditable="plaintext-only" suppressContentEditableWarning="{{ true }}" onBlur="{{ bKicker }}" style="{{ kickerStyle }}">{{ kicker }}</span>
+              <svg width="{{ markW }}" height="{{ markW }}" viewBox="0 5.4 23 23" style="{{ markStyle }}"><path fill="currentColor" d="M21,16.2c0-.1.1-.3.2-.4,0-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1,0,.2-.1.4-.2.1,0,.3,0,.4-.1s.3,0,.4,0v-5c0-.2,0-.3-.1-.5,0-.2-.1-.3-.2-.5,0-.2-.1-.3-.2-.5,0-.2-.2-.3-.3-.4s-.2-.3-.3-.4-.2-.3-.4-.4c-.1,0-.3-.2-.4-.4-.1,0-.3-.2-.4-.3-.1,0-.3-.2-.4-.3-.2,0-.3-.2-.5-.2s-.3,0-.5-.2c-.2,0-.3,0-.5,0s-.3,0-.5,0h-4.5v.4c0,0,0,.3-.1.4,0,0-.1.3-.2.4,0,0-.2.2-.3.3-.1,0-.2.2-.3.3-.1,0-.2,0-.4.2-.1,0-.3,0-.4,0s-.3,0-.4,0h-.4c0,0-.3,0-.4,0-.1,0-.3,0-.4-.2-.1,0-.2-.2-.3-.3-.1,0-.2-.2-.3-.3s-.1-.2-.2-.4c0,0,0-.3-.1-.4s0-.3,0-.4h-5c-.2,0-.3,0-.5,0-.2,0-.3,0-.5.2-.2,0-.3,0-.5.2-.2,0-.3.2-.4.3,0,0-.3.2-.4.3,0,0-.3.2-.4.4-.1,0-.2.3-.4.4-.1,0-.2.3-.3.4,0,0-.2.3-.3.4,0,.2-.2.3-.2.5s-.1.3-.2.5,0,.3,0,.5,0,.3,0,.5v4.5h.4c.1,0,.3,0,.4.1.1,0,.3.1.4.2.1,0,.2.2.3.3.1.1.2.2.3.3s0,.2.2.4c0,.1,0,.3,0,.4v.8c0,.1,0,.3,0,.4,0,.1,0,.3-.2.4s-.2.2-.3.3-.2.2-.3.3c-.1,0-.2.1-.4.2-.1,0-.3,0-.4.1h-.4v5c0,.2,0,.3,0,.5,0,.2.1.3.2.5,0,.2.1.3.2.5,0,.2.2.3.3.4s.2.3.3.4.2.3.4.4c.1.1.3.2.4.4,0,.1.3.2.4.3,0,0,.3.2.4.3s.3.2.5.2.3.1.5.2c.2,0,.3,0,.5.1s.3,0,.5,0h4.5v-.4c0-.1,0-.3.1-.4,0-.1.1-.3.2-.4s.2-.2.3-.3c.1-.1.2-.2.3-.3.1,0,.2-.1.4-.2.1,0,.3,0,.4-.1s.3,0,.4,0h.4c.1,0,.3,0,.4.1.1,0,.3.1.4.2.1,0,.2.2.3.3.1.1.2.2.3.3,0,.1.1.2.2.4,0,.1,0,.3.1.4s0,.3,0,.4h5c.2,0,.3,0,.5-.1s.3-.1.5-.2.3-.1.5-.2c.2,0,.3-.2.4-.3s.3-.2.4-.3c.1-.1.3-.2.4-.4s.2-.3.4-.4.2-.3.3-.4.2-.3.3-.4c0-.2.2-.3.2-.5s.1-.3.2-.5c0-.2,0-.3.1-.5v-5h-.4c-.1,0-.3,0-.4-.1-.1,0-.3-.1-.4-.2-.1,0-.2-.2-.3-.3l-.3-.3c0-.1-.1-.2-.2-.4,0-.1,0-.3-.1-.4s0-.3,0-.4v-.4c0-.1,0-.3.1-.4ZM18.2,18.4c-1.1,1.1-2.5,1.9-4.1,2.2-.5.1-1,.2-1.6.2-1.6,0-3.1-.5-4.4-1.4-1.8-1.2-3-3-3.4-5.1,0-.4.2-.8.6-.9.4,0,.8.2.9.6.3,1.7,1.3,3.2,2.8,4.2,1.5,1,3.2,1.3,4.9,1,1.3-.3,2.4-.9,3.4-1.8.3-.3.7-.3,1,0s.3.7,0,1h0Z"></path></svg>
+            </div>
+            <div style="{{ midBox }}">
+              <sc-if value="{{ showOrb }}" hint-placeholder-val="{{ false }}">
+                <div style="{{ orbStyle }}"></div>
+              </sc-if>
+              <div contentEditable="plaintext-only" suppressContentEditableWarning="{{ true }}" onBlur="{{ bHead }}" style="{{ headStyle }}">{{ headline }}</div>
+              <div contentEditable="plaintext-only" suppressContentEditableWarning="{{ true }}" onBlur="{{ bSub }}" style="{{ subStyle }}">{{ sub }}</div>
+            </div>
+            <sc-if value="{{ hasImg }}" hint-placeholder-val="{{ false }}">
+              <div onClick="{{ pickImg }}" title="Click to change the screenshot" style="{{ imgWrap }}">
+                <div style="{{ imgChrome }}"><span style="{{ imgDot }}"></span><span style="{{ imgDot }}"></span><span style="{{ imgDot }}"></span><span style="{{ imgUrl }}">app.dakio.io</span></div>
+                <sc-if value="{{ imgSet }}" hint-placeholder-val="{{ false }}"><div style="{{ imgBody }}"></div></sc-if>
+                <sc-if value="{{ imgEmpty }}" hint-placeholder-val="{{ true }}">
+                  <div style="{{ imgPh }}">
+                    <svg width="{{ imgPhIcon }}" height="{{ imgPhIcon }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg>
+                    <div style="{{ imgPhTxt }}">Click to drop your screenshot — product UI, storefront, dashboard.</div>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+            <div style="position:relative; display:flex; align-items:center; justify-content:space-between; gap:20px;">
+              <span contentEditable="plaintext-only" suppressContentEditableWarning="{{ true }}" onBlur="{{ bCta }}" style="{{ ctaStyle }}">{{ cta }}</span>
+              <svg width="{{ wmW }}" height="{{ wmH }}" viewBox="31 0 104 29" style="{{ wmStyle }}"><g fill="currentColor"><path d="M76.3,7.9h0c-.3-.3-.6-.5-1-.7-.3-.2-.7-.3-1-.5-.3,0-.7-.3-1.1-.4s-.7-.2-1.1-.3c-.4,0-.7,0-1.1-.2h-2.2c-.4,0-.7,0-1.1.2-.4,0-.7.2-1.1.3-.4,0-.7.2-1.1.4-.3,0-.7.3-1,.5s-.7.4-1,.6-.6.4-.9.7-.6.5-.8.8-.5.5-.8.8c-.2.3-.5.6-.7.9-.2.3-.4.6-.6,1s-.3.7-.5,1c0,.3-.3.7-.4,1.1,0,.4-.2.7-.3,1.1s0,.7-.2,1.1v2.2c0,.3,0,.7.2,1.1,0,.4.2.7.3,1.1s.2.7.4,1.1c0,.3.3.7.5,1s.4.7.6,1c.2.3.4.6.7.9.2.3.5.6.8.8l.8.8c.3.2.6.5.9.7s.6.4,1,.6.7.3,1,.5c.3.1.7.3,1.1.4s.7.2,1.1.3c.4,0,.7.1,1.1.2h2.2c.4,0,.7,0,1.1-.2.4,0,.7-.2,1.1-.3.4-.1.7-.2,1.1-.4.3-.1.7-.3,1-.5s.7-.4,1-.6h0c0-.1,0,1.4,0,1.4h5V6.4h-5v1.5ZM76.2,18.7c0,.4-.2.8-.4,1.2-.2.4-.4.8-.6,1.1-.2.4-.5.7-.8,1s-.6.6-1,.8c-.4.2-.7.4-1.1.6s-.8.3-1.2.4-.8.1-1.3.1-.9,0-1.3-.1c-.4,0-.8-.2-1.2-.4-.4-.2-.8-.4-1.1-.6s-.7-.5-1-.8-.6-.6-.8-1c-.2-.4-.4-.7-.6-1.1-.2-.4-.3-.8-.4-1.2,0-.4,0-.8,0-1.3s0-.9,0-1.3c0-.4.2-.8.4-1.2s.4-.8.6-1.1c.2-.4.5-.7.8-1s.6-.6,1-.8.7-.4,1.1-.6c.4-.2.8-.3,1.2-.4.4,0,.8-.1,1.3-.1s.9,0,1.3.1.8.2,1.2.4c.4.2.8.4,1.1.6.4.2.7.5,1,.8s.6.6.8,1c.2.4.4.7.6,1.1.2.4.3.8.4,1.2s0,.8,0,1.3,0,.9,0,1.3Z"></path><path d="M49.6,7.9h0c-.3-.3-.6-.5-1-.7-.3-.2-.7-.3-1-.5-.3,0-.7-.3-1.1-.4-.4,0-.7-.2-1.1-.3-.4,0-.7,0-1.1-.2h-2.2c-.4,0-.7,0-1.1.2-.4,0-.7.2-1.1.3-.4,0-.7.2-1.1.4-.3,0-.7.3-1,.5s-.7.4-1,.6-.6.4-.9.7-.6.5-.8.8c-.3.3-.5.5-.8.8-.2.3-.5.6-.7.9-.2.3-.4.6-.6,1-.2.3-.3.7-.5,1,0,.3-.3.7-.4,1.1-.1.4-.2.7-.3,1.1,0,.4-.1.7-.2,1.1v2.2c0,.4,0,.7.2,1.1,0,.4.2.7.3,1.1s.2.7.4,1.1c0,.3.3.7.5,1s.4.7.6,1c.2.3.4.6.7.9s.5.6.8.8l.8.8c.3.2.6.5.9.7.3.2.6.4,1,.6s.7.3,1,.5c.3.1.7.3,1.1.4.4.1.7.2,1.1.3.4,0,.7.1,1.1.2h2.2c.4,0,.7,0,1.1-.2.4,0,.7-.2,1.1-.3.4-.1.7-.2,1.1-.4.3-.1.7-.3,1-.5s.7-.4,1-.6h0c0-.1,0,1.4,0,1.4h5V1.1h-5v6.8ZM49.5,18.7c0,.4-.2.8-.4,1.2s-.4.8-.6,1.1c-.2.4-.5.7-.8,1s-.6.6-1,.8c-.4.2-.7.4-1.1.6-.4.2-.8.3-1.2.4-.4,0-.8.1-1.3.1s-.9,0-1.3-.1c-.4,0-.8-.2-1.2-.4-.4-.2-.8-.4-1.1-.6-.4-.2-.7-.5-1-.8s-.6-.6-.8-1-.4-.7-.6-1.1c-.2-.4-.3-.8-.4-1.2,0-.4,0-.8,0-1.3s0-.9,0-1.3c0-.4.2-.8.4-1.2s.4-.8.6-1.1.5-.7.8-1,.6-.6,1-.8.7-.4,1.1-.6c.4-.2.8-.3,1.2-.4.4,0,.8-.1,1.3-.1s.9,0,1.3.1c.4,0,.8.2,1.2.4s.8.4,1.1.6.7.5,1,.8.6.6.8,1,.4.7.6,1.1.3.8.4,1.2c0,.4,0,.8,0,1.3s0,.9,0,1.3Z"></path><path d="M107.9,1.5c0-.2,0-.3-.2-.4,0-.1-.2-.3-.3-.4,0-.1-.2-.2-.4-.3,0,0-.3-.2-.4-.2-.2,0-.3-.1-.5-.1h-1c-.2,0-.3,0-.5.1-.2,0-.3.1-.4.2,0,0-.3.2-.4.3s-.2.2-.3.4c0,.1-.2.3-.2.4,0,.2,0,.3,0,.5v1c0,.2,0,.3,0,.5,0,.2,0,.3.2.4,0,0,.2.3.3.4,0,0,.2.2.4.3,0,0,.3.2.4.2.2,0,.3,0,.5,0h1c.2,0,.3,0,.5,0,.2,0,.3,0,.4-.2,0,0,.3-.2.4-.3s.2-.2.3-.4.2-.3.2-.4c0-.2,0-.3,0-.5v-1c0-.2,0-.3,0-.5Z"></path><path d="M134.7,16.3c0-.4,0-.7-.2-1.1,0-.4-.2-.7-.3-1.1-.1-.4-.2-.7-.4-1.1-.1-.3-.3-.7-.5-1s-.4-.7-.6-1c-.2-.3-.4-.6-.7-.9-.2-.3-.5-.6-.8-.8s-.5-.5-.8-.8-.6-.5-.9-.7c-.3-.2-.6-.4-1-.6-.3-.2-.7-.3-1-.5-.3,0-.7-.3-1.1-.4s-.7-.2-1.1-.3c-.4,0-.7,0-1.1-.2h-2.2c-.4,0-.7,0-1.1.2-.4,0-.7.2-1.1.3-.4,0-.7.2-1.1.4-.3,0-.7.3-1,.5s-.7.4-1,.6-.6.4-.9.7c-.3.2-.6.5-.8.8-.3.3-.5.5-.8.8-.2.3-.5.6-.7.9-.2.3-.4.6-.6,1s-.3.7-.5,1-.3.7-.4,1.1c0,.4-.2.7-.3,1.1,0,.4,0,.7-.2,1.1v2.2c0,.4,0,.7.2,1.1,0,.4.2.7.3,1.1,0,.4.2.7.4,1.1,0,.3.3.7.5,1s.4.7.6,1,.4.6.7.9.5.6.8.8c.3.3.5.5.8.8.3.2.6.5.9.7s.6.4,1,.6.7.3,1,.5c.3.1.7.3,1.1.4s.7.2,1.1.3c.4,0,.7.1,1.1.2h2.2c.4,0,.7,0,1.1-.2.4,0,.7-.2,1.1-.3.4-.1.7-.2,1.1-.4.3-.1.7-.3,1-.5s.7-.4,1-.6.6-.4.9-.7c.3-.2.6-.5.8-.8.3-.3.5-.5.8-.8s.5-.6.7-.9.4-.6.6-1,.3-.7.5-1c.1-.3.3-.7.4-1.1.1-.4.2-.7.3-1.1,0-.4.1-.7.2-1.1v-2.2ZM129.7,18.7c0,.4-.2.8-.4,1.2-.2.4-.4.8-.6,1.1-.2.4-.5.7-.8,1s-.6.6-1,.8c-.4.2-.7.4-1.1.6s-.8.3-1.2.4c-.4,0-.8.1-1.3.1s-.9,0-1.3-.1c-.4,0-.8-.2-1.2-.4-.4-.2-.8-.4-1.1-.6-.4-.2-.7-.5-1-.8s-.6-.6-.8-1c-.2-.4-.4-.7-.6-1.1s-.3-.8-.4-1.2c0-.4,0-.8,0-1.3s0-.9,0-1.3c0-.4.2-.8.4-1.2.2-.4.4-.8.6-1.1.2-.4.5-.7.8-1s.6-.6,1-.8.7-.4,1.1-.6c.4-.2.8-.3,1.2-.4.4,0,.8-.1,1.3-.1s.9,0,1.3.1c.4,0,.8.2,1.2.4.4.2.8.4,1.1.6.4.2.7.5,1,.8s.6.6.8,1,.4.7.6,1.1c.2.4.3.8.4,1.2,0,.4.1.8.1,1.3s0,.9-.1,1.3Z"></path><polygon points="90.8 17.9 99.7 6.4 93.4 6.4 90.8 9.8 90.8 1.1 85.8 1.1 85.8 28.4 90.8 28.4 90.8 25.5 93.3 28.4 99.9 28.4 90.8 17.9 90.8 17.9"></polygon><rect x="103.1" y="6.4" width="5" height="22"></rect></g></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <input type="file" accept="image/*" onChange="{{ onImg }}" class="ss-file" style="display:none;">
+      <sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute; bottom:22px; left:50%; transform:translateX(-50%); padding:10px 18px; border-radius:99px; background:#14170E; color:#C6F035; font-size:12.5px; font-weight:700; box-shadow:0 14px 30px rgba(20,22,14,0.3); animation:ssToast 2.6s ease both; z-index:5;">{{ toastMsg }}</div>
+      </sc-if>
+    </div>
+
+    <!-- CONTROLS -->
+    <div style="width:262px; flex-shrink:0; background:#FBFAF5; border-left:1px solid rgba(26,29,18,0.09); overflow-y:auto; padding:16px 14px; display:flex; flex-direction:column;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; font-weight:600; letter-spacing:0.14em; color:#9a9e8c;">SIZE</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; padding:3px; border-radius:12px; background:#E9EBE0; gap:2px; margin-top:8px;">
+        <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="4">
+          <div onClick="{{ s.on }}" style="{{ s.seg }}">{{ s.n }}</div>
+        </sc-for>
+      </div>
+      <div style="margin-top:5px; font-size:10.5px; color:#8a8f7c;">{{ sizeNote }}</div>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; font-weight:600; letter-spacing:0.14em; color:#9a9e8c; margin-top:18px;">BACKGROUND</div>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; margin-top:8px;">
+        <sc-for list="{{ variants }}" as="v" hint-placeholder-count="3">
+          <div onClick="{{ v.on }}" title="{{ v.n }}" style="{{ v.sw }}" style-hover="transform:scale(1.05)"></div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ hasImg }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; font-weight:600; letter-spacing:0.14em; color:#9a9e8c; margin-top:18px;">MOCKUP IMAGE</div>
+        <div onClick="{{ pickImg }}" style="margin-top:8px; padding:10px 12px; border-radius:11px; background:#1A1D12; color:#C6F035; text-align:center; font-size:11.5px; font-weight:700; cursor:pointer;" style-hover="transform:translateY(-1px)">{{ imgBtnLabel }}</div>
+        <sc-if value="{{ imgSet }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ clearImg }}" style="margin-top:6px; padding:8px 12px; border-radius:11px; border:1.5px dashed rgba(26,29,18,0.2); text-align:center; font-size:11px; font-weight:700; color:#6B6D60; cursor:pointer;" style-hover="border-color:#B03A2E; color:#B03A2E">Remove image</div>
+        </sc-if>
+      </sc-if>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; font-weight:600; letter-spacing:0.14em; color:#9a9e8c; margin-top:18px;">TEXT</div>
+      <div style="margin-top:8px; padding:11px 12px; border-radius:12px; background:#ffffff; border:1px solid rgba(26,29,18,0.09); font-size:11.5px; color:#6B6D60; line-height:1.55;">Click the kicker, headline, subline or CTA on the canvas and type. Edits stick per template.</div>
+      <div onClick="{{ resetTxt }}" style="margin-top:8px; padding:9px 12px; border-radius:11px; border:1.5px dashed rgba(26,29,18,0.2); text-align:center; font-size:11.5px; font-weight:700; color:#6B6D60; cursor:pointer;" style-hover="border-color:#1A1D12; color:#1A1D12">Reset text to template</div>
+      <div style="flex:1;"></div>
+      <div style="padding:12px; border-radius:14px; background:#14170E; color:#E9EFDC; margin-top:16px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:7.5px; letter-spacing:0.1em; color:#8CBF33;">EXPORT · {{ exportLabel }}</div>
+        <div onClick="{{ download }}" style="margin-top:9px; display:flex; align-items:center; justify-content:center; gap:8px; padding:12px 0; border-radius:99px; background:#C6F035; color:#0F120B; font-size:13.5px; font-weight:800; cursor:pointer;" style-hover="box-shadow:0 0 24px rgba(198,240,53,0.45)" style-active="transform:scale(0.98)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>Download PNG
+        </div>
+        <div style="margin-top:8px; font-size:10px; color:#878B76; line-height:1.5;">Exports the exact canvas at full resolution. If fonts look off, download once more.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:860},&quot;defaultTemplate&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;comingsoon&quot;,&quot;options&quot;:[&quot;comingsoon&quot;,&quot;launch&quot;,&quot;release&quot;,&quot;mockup&quot;,&quot;announce&quot;,&quot;feature&quot;,&quot;stat&quot;,&quot;tipbn&quot;,&quot;switch&quot;,&quot;eid&quot;,&quot;hiring&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Studio&quot;}}">
+class Component extends DCLogic {
+  state = { tpl: null, size: 'sq', variant: null, over: {}, img: null, toastMsg: '', availW: 560, availH: 540 };
+  get curTpl() { return this.state.tpl ?? this.props.defaultTemplate ?? 'announce'; }
+  componentDidMount() {
+    const measure = () => {
+      const area = (this.el || document).querySelector('.ss-canvas-area');
+      if (area) this.setState({ availW: Math.max(area.clientWidth - 48, 200), availH: Math.max(area.clientHeight - 48, 200) });
+    };
+    measure();
+    this._onRs = measure;
+    window.addEventListener('resize', this._onRs, { passive: true });
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._onRs); clearTimeout(this._tt); }
+  SIZES = { sq: { n: 'Post 1:1', W: 1080, H: 1080, note: '1080 × 1080 — Facebook / Instagram feed' },
+    story: { n: 'Story', W: 1080, H: 1920, note: '1080 × 1920 — Stories / Reels cover' },
+    og: { n: 'Link', W: 1200, H: 630, note: '1200 × 630 — link shares / OG' },
+    banner: { n: 'Banner', W: 1640, H: 624, note: '1640 × 624 — Facebook cover / page banner' } };
+  VARS = {
+    ink: { bg: '#0F120B', text: '#FBFBF4', sub: '#A9AD98', acc: '#C6F035', accInk: '#0F120B', chipBd: 'rgba(198,240,53,0.45)', chipTx: '#C6F035', fCard: 'rgba(255,255,255,0.06)', fBd: 'rgba(198,240,53,0.32)', fK: '#8CBF33', fT: '#E9EFDC' },
+    lime: { bg: '#C6F035', text: '#0F120B', sub: 'rgba(15,18,11,0.72)', acc: '#0F120B', accInk: '#C6F035', chipBd: 'rgba(15,18,11,0.4)', chipTx: '#0F120B', fCard: 'rgba(15,18,11,0.9)', fBd: 'rgba(15,18,11,0.9)', fK: '#C6F035', fT: '#F0EFE6' },
+    cream: { bg: '#F4F2EA', text: '#1A1D12', sub: '#6B6D60', acc: '#1A1D12', accInk: '#C6F035', chipBd: 'rgba(26,29,18,0.3)', chipTx: '#3E7A45', fCard: '#FFFFFF', fBd: 'rgba(26,29,18,0.12)', fK: '#3E7A45', fT: '#1A1D12' } };
+  TPLS = {
+    comingsoon: { n: 'Coming soon', tag: 'LAUNCH TEASER', v: 'ink', orb: true, hs: 0.078, center: true,
+      kicker: 'দাকিও · COMING SOON', headline: 'Your whole business.\nOne CEO.\nOn the way.', sub: 'Store, couriers, payments — and Nova, an AI CEO. Launching in Bangladesh.', cta: 'Follow for launch day → dakio.io' },
+    launch: { n: 'Launch day', tag: 'WE ARE LIVE', v: 'lime', orb: true, hs: 0.084,
+      kicker: 'LAUNCH DAY · WE ARE LIVE', headline: 'Dakio is live.\nAppoint your CEO.', sub: 'Every store now ships with Nova — free to start, guardrails on day one.', cta: 'Start free today → dakio.io' },
+    release: { n: 'Feature release', tag: 'NOW SHIPPING', v: 'ink', orb: false, hs: 0.072,
+      kicker: 'NEW · NOW SHIPPING', headline: 'Theme Studio\nis here.', sub: 'Dark storefront, বাংলা fonts, one-tap looks — live for every store today.', cta: 'Open Store Studio → dakio.io' },
+    mockup: { n: 'Product mockup', tag: 'YOUR SCREENSHOT', v: 'ink', orb: false, hs: 0.052, img: true,
+      kicker: 'INSIDE DAKIO', headline: 'The morning brief, 06:00 sharp.', sub: '', cta: 'See it live → dakio.io' },
+    announce: { n: 'Announcement', tag: 'HERO CLAIM', v: 'ink', orb: true, hs: 0.082,
+      kicker: 'THE COMMERCE OS FOR BANGLADESH', headline: 'Appoint a CEO\nto your store.', sub: 'Nova runs marketing, support and ops 24/7 — with a receipt for everything.', cta: 'Start free → dakio.io' },
+    feature: { n: 'Feature spotlight', tag: 'PRODUCT', v: 'cream', orb: false, hs: 0.076,
+      kicker: 'STORE STUDIO', headline: 'Design like you\nhired a designer.', sub: 'Theme gallery · বাংলা fonts · dark storefront — no developer needed.', cta: 'Try it live → dakio.io/store-studio' },
+    stat: { n: 'Stat post', tag: 'PROOF', v: 'lime', orb: false, hs: 0.24, tightHead: true,
+      kicker: 'SHAHRQEE · ONE QUARTER IN THE GROW SUITE', headline: '+38%', sub: 'revenue growth with Nova pulling the levers — every number traces to a receipt.', cta: 'Bend your curve → dakio.io/grow' },
+    tipbn: { n: 'Bangla tip', tag: 'টিপ · EDUCATION', v: 'ink', orb: false, hs: 0.072, bn: true,
+      kicker: 'দাকিও টিপ · ০৪', headline: 'সন্ধ্যা ৭:৩০-এ\nপোস্ট করুন।', sub: 'আপনার ক্রেতারা তখনই স্ক্রল করেন — Nova নিজেই সেরা সময়ে শিডিউল করে দেয়।', cta: 'ফ্রি শুরু করুন → dakio.io' },
+    switch: { n: 'Switch campaign', tag: 'VS SHOPIFY', v: 'cream', orb: false, hs: 0.088,
+      kicker: 'LEAVING SHOPIFY?', headline: '৳16,500\n→ ৳1,490', sub: 'Same store, one plan, migrated over a weekend — and on Monday it has a CEO.', cta: 'Plan the switch → dakio.io/switch' },
+    eid: { n: 'Eid greeting', tag: 'SEASONAL', v: 'ink', orb: true, hs: 0.115, bn: true, serif: true,
+      kicker: 'দাকিও পরিবারের পক্ষ থেকে', headline: 'ঈদ মোবারক', sub: 'উৎসবের দিনগুলোতেও আপনার দোকান জেগে থাকুক — Nova আছে।', cta: 'dakio.io' },
+    hiring: { n: 'Hiring', tag: 'CAREERS', v: 'lime', orb: false, hs: 0.074,
+      kicker: "WE'RE HIRING · DHAKA", headline: 'Build the AI CEO for\na million merchants.', sub: 'Product · AI Engineering · Growth. Taka-honest salaries, ego optional.', cta: 'careers@dakio.io' } };
+  txt(tplId, field) { const o = (this.state.over[tplId] || {})[field]; return o != null ? o : this.TPLS[tplId][field]; }
+  save(field) { return ev => { const v = ev.target.innerText; const k = this.curTpl; this.setState(s => ({ over: { ...s.over, [k]: { ...(s.over[k] || {}), [field]: v } } })); }; }
+  toast(msg) { this.setState({ toastMsg: msg }); clearTimeout(this._tt); this._tt = setTimeout(() => this.setState({ toastMsg: '' }), 2700); }
+  async fontCSS() {
+    if (this._fontCSS) return this._fontCSS;
+    const cssUrl = 'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Noto+Sans+Bengali:wght@500;700;800&family=Noto+Serif+Bengali:wght@600;700&family=IBM+Plex+Mono:wght@500;600&display=swap';
+    let css = await (await fetch(cssUrl)).text();
+    const urls = Array.from(new Set(Array.from(css.matchAll(/url\((https:[^)]+)\)/g), m => m[1])));
+    const pairs = await Promise.all(urls.map(async u => {
+      const b = await (await fetch(u)).blob();
+      const d = await new Promise(res => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.readAsDataURL(b); });
+      return [u, d];
+    }));
+    pairs.forEach(([u, d]) => { css = css.split(u).join(d); });
+    this._fontCSS = css;
+    return css;
+  }
+  async download() {
+    const S = this.SIZES[this.state.size];
+    const node = (this.el || document).querySelector('.ss-stage-inner');
+    if (!window.htmlToImage || !node) { this.toast('Export engine still loading — try again in a moment'); return; }
+    this.toast('Rendering ' + S.W + '×' + S.H + ' PNG…');
+    try {
+      await document.fonts.ready;
+      const opts = { pixelRatio: 1, width: S.W, height: S.H, cacheBust: true, style: { transform: 'none' } };
+      try { opts.fontEmbedCSS = await this.fontCSS(); } catch (fe) { try { opts.fontEmbedCSS = await window.htmlToImage.getFontEmbedCSS(node); } catch (fe2) { /* continue */ } }
+      await window.htmlToImage.toPng(node, opts);
+      const png = await window.htmlToImage.toPng(node, opts);
+      const a = document.createElement('a');
+      a.href = png; a.download = 'dakio-' + this.curTpl + '-' + this.state.size + '.png'; a.click();
+      this.toast('Downloaded dakio-' + this.curTpl + '-' + this.state.size + '.png');
+    } catch (e) { this.toast('Export failed — check connection and retry'); }
+  }
+  renderVals() {
+    const st = this.state, tplId = this.curTpl, T = this.TPLS[tplId], S = this.SIZES[st.size];
+    const V = this.VARS[st.variant || T.v];
+    const W = S.W, H = S.H, isStory = st.size === 'story', isWide = st.size === 'og' || st.size === 'banner';
+    const scale = Math.min(st.availW / W, st.availH / H, 0.62);
+    const base = isWide ? Math.min(W * 0.82, H * 1.55) : W;
+    const headFont = T.serif ? "'Noto Serif Bengali',serif" : T.bn ? "'Noto Sans Bengali',sans-serif" : "'Hanken Grotesk',sans-serif";
+    const seg = on => 'text-align:center; padding:7px 0; border-radius:10px; cursor:pointer; font-size:11px; font-weight:700;' + (on ? ' background:#1A1D12; color:#C6F035;' : ' color:#6B6D60;');
+    const wmH = Math.round(base * 0.042), fs = n => Math.round(base * n) + 'px';
+    return {
+      rail: Object.keys(this.TPLS).map(k => { const t = this.TPLS[k]; const vv = this.VARS[t.v]; const act = tplId === k;
+        return { n: t.n, tag: t.tag, glyph: t.serif ? 'ঈদ' : t.bn ? 'টিপ' : t.img ? '▣' : 'Aa',
+          on: () => this.setState({ tpl: k, variant: null }),
+          card: 'display:flex; align-items:center; gap:10px; padding:8px; border-radius:13px; cursor:pointer; border:1.5px solid ' + (act ? '#1A1D12' : 'rgba(26,29,18,0.08)') + '; background:' + (act ? '#ffffff' : 'transparent') + ';',
+          mock: 'width:40px; height:40px; border-radius:10px; flex-shrink:0; background:' + vv.bg + '; display:flex; align-items:center; justify-content:center; border:1px solid rgba(26,29,18,0.12);',
+          mockTxt: 'font-family:' + (t.serif ? "'Noto Serif Bengali',serif" : "'Hanken Grotesk','Noto Sans Bengali',sans-serif") + '; font-size:13px; font-weight:800; color:' + (t.v === 'ink' ? vv.acc : vv.text) + ';' }; }),
+      stageWrap: 'width:' + Math.round(W * scale) + 'px; height:' + Math.round(H * scale) + 'px; overflow:hidden; border-radius:6px; box-shadow:0 30px 70px rgba(26,29,18,0.3); flex-shrink:0;',
+      stageInner: 'width:' + W + 'px; height:' + H + 'px; transform:scale(' + scale + '); transform-origin:top left; background:' + V.bg + '; overflow:hidden; position:relative;',
+      padBox: 'position:absolute; inset:0; z-index:2; padding:' + fs(0.07) + '; display:flex; flex-direction:column; justify-content:space-between; gap:' + fs(T.img ? 0.03 : 0.03) + ';' + (T.center ? ' text-align:center;' : ''),
+      kicker: this.txt(tplId, 'kicker'), bKicker: this.save('kicker'),
+      kickerStyle: "font-family:'IBM Plex Mono','Noto Sans Bengali',monospace; font-size:" + fs(0.02) + '; font-weight:600; letter-spacing:0.14em; color:' + V.chipTx + '; border:2px solid ' + V.chipBd + '; border-radius:999px; padding:' + fs(0.011) + ' ' + fs(0.024) + '; cursor:text; max-width:78%;' + (T.center ? ' margin:0 auto; transform:translateX(' + fs(0.026) + ');' : ''),
+      markW: Math.round(base * 0.052), markStyle: 'color:' + ((st.variant || T.v) === 'lime' ? '#0F120B' : V.acc) + '; flex-shrink:0;' + (T.center ? ' position:absolute; right:0; top:0;' : ''),
+      midBox: 'position:relative; display:flex; flex-direction:column;' + (T.center ? ' align-items:center; text-align:center;' : '') + ' gap:' + fs(T.tightHead ? 0.008 : 0.024) + ';' + (isStory && !T.img ? ' margin-top:-' + fs(0.1) + ';' : ''),
+      showOrb: !!T.orb,
+      orbStyle: 'width:' + fs(0.11) + '; height:' + fs(0.11) + '; border-radius:50%; background:radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%); box-shadow:0 0 ' + fs(0.07) + ' rgba(198,240,53,0.45); animation:ssBreathe 5s ease-in-out infinite; margin-bottom:' + fs(0.012) + ';',
+      headline: this.txt(tplId, 'headline'), bHead: this.save('headline'),
+      headStyle: 'font-family:' + headFont + '; font-size:' + Math.round(base * T.hs) + 'px; line-height:' + (T.bn ? 1.22 : 1.04) + '; letter-spacing:' + (T.bn ? '0' : '-0.035em') + '; font-weight:800; color:' + V.text + '; white-space:pre-line; cursor:text;',
+      sub: this.txt(tplId, 'sub'), bSub: this.save('sub'),
+      subStyle: 'font-family:' + (T.bn ? "'Noto Sans Bengali',sans-serif" : "'Hanken Grotesk','Noto Sans Bengali',sans-serif") + '; font-size:' + fs(0.028) + '; line-height:1.5; color:' + V.sub + '; max-width:' + Math.round(W * 0.74) + 'px; cursor:text;' + (T.center ? ' margin-left:auto; margin-right:auto;' : '') + (this.txt(tplId, 'sub') ? '' : ' display:none;'),
+      hasImg: !!T.img, imgSet: !!st.img, imgEmpty: !st.img, imgSrc: st.img || '',
+      imgWrap: 'position:relative; z-index:2; flex:1; min-height:0; margin:' + fs(0.01) + ' 0; border-radius:' + fs(0.025) + '; overflow:hidden; background:rgba(255,255,255,0.04); border:2px solid ' + V.fBd + '; cursor:pointer; display:flex; flex-direction:column; box-shadow:0 ' + fs(0.03) + ' ' + fs(0.07) + ' rgba(0,0,0,0.3);',
+      imgChrome: 'flex-shrink:0; display:flex; align-items:center; gap:' + fs(0.008) + '; padding:' + fs(0.012) + ' ' + fs(0.02) + '; background:' + (V.bg === '#F4F2EA' ? '#ffffff' : 'rgba(255,255,255,0.08)') + '; border-bottom:1px solid ' + V.fBd + ';',
+      imgDot: 'width:' + fs(0.009) + '; height:' + fs(0.009) + '; border-radius:99px; background:' + V.sub + '; opacity:0.7;',
+      imgUrl: "margin-left:" + fs(0.012) + "; font-family:'IBM Plex Mono',monospace; font-size:" + fs(0.014) + '; letter-spacing:0.06em; color:' + V.sub + ';',
+      imgBody: 'flex:1; min-height:0; background-image:url(' + JSON.stringify(st.img || '') + '); background-size:cover; background-position:top center; background-repeat:no-repeat;',
+      imgPh: 'flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:' + fs(0.02) + '; color:' + V.sub + ';',
+      imgPhIcon: Math.round(base * 0.06),
+      imgPhTxt: 'font-size:' + fs(0.022) + '; text-align:center; line-height:1.5; max-width:70%;',
+      cta: this.txt(tplId, 'cta'), bCta: this.save('cta'),
+      ctaStyle: 'font-family:' + (T.bn ? "'Noto Sans Bengali',sans-serif" : "'Hanken Grotesk','Noto Sans Bengali',sans-serif") + '; display:inline-block; padding:' + fs(0.018) + ' ' + fs(0.036) + '; border-radius:999px; background:' + V.acc + '; color:' + V.accInk + '; font-size:' + fs(0.026) + '; font-weight:800; cursor:text; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:74%;',
+      wmW: Math.round(wmH * 3.59), wmH, wmStyle: 'color:' + V.text + '; opacity:0.94; flex-shrink:0;',
+      sizes: Object.keys(this.SIZES).map(k => ({ n: this.SIZES[k].n, on: () => this.setState({ size: k }), seg: seg(st.size === k) })),
+      sizeNote: S.note,
+      variants: Object.keys(this.VARS).map(k => { const vv = this.VARS[k]; const act = (st.variant || T.v) === k;
+        return { n: k, on: () => this.setState({ variant: k }),
+          sw: 'height:34px; border-radius:10px; cursor:pointer; transition:transform .12s ease; background:linear-gradient(135deg, ' + vv.bg + ' 62%, ' + vv.acc + ' 62%); border:2px solid ' + (act ? '#1A1D12' : 'rgba(26,29,18,0.14)') + ';' + (act ? ' box-shadow:inset 0 0 0 2px #FBFAF5;' : '') }; }),
+      pickImg: () => { const f = (this.el || document).querySelector('.ss-file'); if (f) f.click(); },
+      onImg: ev => { const file = ev.target.files && ev.target.files[0]; if (!file) return;
+        const rd = new FileReader(); rd.onload = () => { this.setState({ img: rd.result }); this.toast('Screenshot placed — it exports exactly as shown'); }; rd.readAsDataURL(file); ev.target.value = ''; },
+      clearImg: () => { this.setState({ img: null }); this.toast('Image removed'); },
+      imgBtnLabel: st.img ? 'Replace screenshot' : 'Upload screenshot',
+      resetTxt: () => { this.setState(s => { const o = { ...s.over }; delete o[tplId]; return { over: o }; }); this.toast('Text reset to template'); },
+      exportLabel: S.W + ' × ' + S.H + ' PNG',
+      download: () => this.download(),
+      toastOn: !!st.toastMsg, toastMsg: st.toastMsg,
+    };
+  }
+}
+</script>
+</body>
+</html>

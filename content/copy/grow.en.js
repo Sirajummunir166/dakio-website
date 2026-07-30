@@ -1,9 +1,9 @@
-// Grow Labs copy — English.
+// Grow Suite copy — English.
 
 import Mark from "../../components/Mark";
 
 export const MONO = {
-  heroBadge: "GROW LABS · THE BUSINESS GROW STUDIO",
+  heroBadge: "GROW SUITE · THE BUSINESS GROW SUITE",
   chartTitle: "SHAHRQEE · REVENUE, ONE QUARTER",
   chartLegendGrey: "— YOU, DOING EVERYTHING",
   chartLegendLime: "— YOU + NOVA",
@@ -26,12 +26,10 @@ export const MONO = {
 
 const grow = {
   meta: {
-    title: "Grow Labs — The Business Grow Studio | Dakio",
+    title: "Grow Suite — The Business Grow Suite | Dakio",
     description:
       "Six growth levers — campaigns, content, reach, research, pricing, goals — pulled professionally by Nova while you sleep. See the curve bend.",
   },
-
-  navCta: "Appoint Nova",
 
   hero: {
     h1: (
@@ -43,7 +41,7 @@ const grow = {
     ctaPrimary: "Start growing free",
     ctaSecondary: "See it live",
     pins: ["Cart won back · ৳2,300", "Reel hit 7:30 PM slot", "Eid campaign scaled", "Best month ever"],
-    chartNote: "Demo store, one quarter in the Grow Studio. The grey line is the same shop without it.",
+    chartNote: "Demo store, one quarter in the Grow Suite. The grey line is the same shop without it.",
   },
 
   midnight: {
@@ -94,7 +92,7 @@ const grow = {
   cta: {
     h2: "Your curve is still the grey one.",
     primary: "Bend it — start free",
-    secondary: "Open the Grow Studio",
+    secondary: "Open the Grow Suite",
   },
 };
 

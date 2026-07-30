@@ -50,7 +50,7 @@ const sw = {
     newBill: [
       { n: "Store + Store Studio", d: "Design it yourself — theme gallery, Bangla fonts" },
       { n: "COD, bKash & Nagad", d: "Native checkout, no gateway workarounds" },
-      { n: "Couriers + Grow Labs", d: "Steadfast · Pathao · RedX, campaigns, broadcasts" },
+      { n: "Couriers + Grow Suite", d: "Steadfast · Pathao · RedX, campaigns, broadcasts" },
       { n: "Nova — your Acting CEO", d: "Marketing, support, ops. On duty 24/7" },
     ],
     newTotalLabel: "One plan — Growth",

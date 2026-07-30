@@ -12,7 +12,7 @@ const seo = {
 
   offers: [
     { name: "Starter", price: "0", priceCurrency: "BDT", description: "Free forever — store, orders, couriers and Nova Advisor (50 tasks/mo)." },
-    { name: "Growth", price: "1490", priceCurrency: "BDT", description: "৳1,490/month — Nova Operator, 750 tasks/mo, Grow Labs, Supplier Network." },
+    { name: "Growth", price: "1490", priceCurrency: "BDT", description: "৳1,490/month — Nova Operator, 750 tasks/mo, Grow Suite, Supplier Network." },
     { name: "Business", price: "3990", priceCurrency: "BDT", description: "৳3,990/month — Nova L4 Acting CEO, 2,500 tasks/mo, voice minutes, playbooks." },
   ],
 
@@ -21,7 +21,7 @@ const seo = {
     "/nova": "Nova",
     "/store": "The Complete Store",
     "/store-studio": "Store Studio",
-    "/grow": "Grow Labs",
+    "/grow": "Grow Suite",
     "/ads": "Ads Gallery",
     "/front-office": "Front Office",
     "/switch": "Switch to Dakio",

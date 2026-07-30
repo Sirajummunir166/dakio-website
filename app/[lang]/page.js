@@ -97,6 +97,36 @@ export default async function Home({ params }) {
         </div>
       </div>
 
+      {/* ================= CHOOSE YOUR PATH ================= */}
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 28px 0" }}>
+        <div data-reveal className="m-paths" style={{ display: "grid", gridTemplateColumns: "auto 1fr 1fr", gap: 14, alignItems: "stretch" }}>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", paddingRight: 14 }}>
+            <div style={{ fontFamily: MONOFONT, fontSize: 9.5, fontWeight: 600, letterSpacing: "0.14em", color: "#3E7A45" }}>{MONO.pathsKicker}</div>
+            <div className="m-paths-h" style={{ fontSize: 22, fontWeight: 800, letterSpacing: "-0.6px", marginTop: 6, whiteSpace: "nowrap", ...T.h3 }}>{c.paths.h2}</div>
+          </div>
+          <a href="#launch" className="hv-up3-border-ink" style={{ display: "flex", alignItems: "center", gap: 18, padding: "22px 24px", borderRadius: 20, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)" }}>
+            <div style={{ minWidth: 0, flex: 1 }}>
+              <div style={{ fontFamily: MONOFONT, fontSize: 8.5, fontWeight: 600, letterSpacing: "0.12em", color: "#3E7A45" }}>{MONO.pathsFresh}</div>
+              <div style={{ fontSize: 16.5, fontWeight: 800, letterSpacing: "-0.3px", marginTop: 5, ...T.h3 }}>{c.paths.fresh.t}</div>
+              <div style={{ fontSize: 12.5, color: "#6B6D60", lineHeight: 1.5, marginTop: 4, ...T.small }}>{c.paths.fresh.d}</div>
+            </div>
+            <span className="m-paths-cta" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700, whiteSpace: "nowrap", borderBottom: "2px solid #C6F035", paddingBottom: 2, ...T.label }}>
+              {c.paths.fresh.cta} <Arrow size={13} />
+            </span>
+          </a>
+          <a href="#switch" className="hv-up3" style={{ display: "flex", alignItems: "center", gap: 18, padding: "22px 24px", borderRadius: 20, background: "#0F120B", color: "#E9EFDC" }}>
+            <div style={{ minWidth: 0, flex: 1 }}>
+              <div style={{ fontFamily: MONOFONT, fontSize: 8.5, fontWeight: 600, letterSpacing: "0.12em", color: "#8CBF33" }}>{MONO.pathsSelling}</div>
+              <div style={{ fontSize: 16.5, fontWeight: 800, letterSpacing: "-0.3px", marginTop: 5, color: "#FBFBF4", ...T.h3 }}>{c.paths.selling.t}</div>
+              <div style={{ fontSize: 12.5, color: "#A9AD98", lineHeight: 1.5, marginTop: 4, ...T.small }}>{c.paths.selling.d}</div>
+            </div>
+            <span className="m-paths-cta" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700, whiteSpace: "nowrap", color: "#C6F035", borderBottom: "2px solid rgba(198,240,53,0.5)", paddingBottom: 2, ...T.label }}>
+              {c.paths.selling.cta} <Arrow size={13} />
+            </span>
+          </a>
+        </div>
+      </div>
+
       {/* ================= LAUNCH IN MINUTES ================= */}
       <div id="launch" style={{ maxWidth: 1200, margin: "0 auto", padding: "88px 28px 8px" }}>
         <div style={{ textAlign: "center" }} data-reveal>

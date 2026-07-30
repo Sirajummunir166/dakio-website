@@ -39,7 +39,7 @@ const sw = {
     newBill: [
       { n: "দোকান + Store Studio", d: "নিজেই ডিজাইন করুন — থিম গ্যালারি, বাংলা ফন্ট" },
       { n: "COD, bKash আর Nagad", d: "ভেতরেই চেকআউট, গেটওয়ের ঘুরপথ নেই" },
-      { n: "কুরিয়ার + Grow Labs", d: "Steadfast · Pathao · RedX, ক্যাম্পেইন, ব্রডকাস্ট" },
+      { n: "কুরিয়ার + Grow Suite", d: "Steadfast · Pathao · RedX, ক্যাম্পেইন, ব্রডকাস্ট" },
       { n: "Nova — আপনার Acting CEO", d: "মার্কেটিং, সাপোর্ট, অপারেশন। ২৪ ঘণ্টা ডিউটিতে" },
     ],
     newTotalLabel: "একটাই প্ল্যান — Growth",

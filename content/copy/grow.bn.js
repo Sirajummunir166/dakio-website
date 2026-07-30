@@ -1,4 +1,4 @@
-// Grow Labs copy — Bangla.
+// Grow Suite copy — Bangla.
 //
 // The page runs on one contrast: the exhausted midnight founder versus the
 // studio that worked through the night. The Bangla leans into that — the
@@ -9,12 +9,10 @@ import Mark from "../../components/Mark";
 
 const grow = {
   meta: {
-    title: "Grow Labs — ব্যবসা বাড়ানোর স্টুডিও | Dakio",
+    title: "Grow Suite — ব্যবসা বাড়ানোর সব লিভার এক জায়গায় | Dakio",
     description:
       "ছয়টা গ্রোথ লিভার — ক্যাম্পেইন, কনটেন্ট, রিচ, রিসার্চ, প্রাইসিং, লক্ষ্য — আপনি ঘুমানোর সময় Nova পেশাদারের মতো টানে। বিক্রির লাইনটা বেঁকে যেতে দেখুন।",
   },
-
-  navCta: "Nova নিয়োগ দিন",
 
   hero: {
     h1: (
@@ -26,7 +24,7 @@ const grow = {
     ctaPrimary: "ফ্রিতে বাড়তে শুরু করুন",
     ctaSecondary: "সরাসরি দেখুন",
     pins: ["কার্ট ফিরে এল · ৳2,300", "রিল গেল 7:30 PM স্লটে", "ঈদ ক্যাম্পেইন বড় হলো", "সেরা মাস", ],
-    chartNote: "ডেমো দোকান, Grow Studio-তে এক কোয়ার্টার। ধূসর লাইনটা একই দোকান, স্টুডিও ছাড়া।",
+    chartNote: "ডেমো দোকান, Grow Suite-এ এক কোয়ার্টার। ধূসর লাইনটা একই দোকান, Grow Suite ছাড়া।",
   },
 
   midnight: {
@@ -77,7 +75,7 @@ const grow = {
   cta: {
     h2: "আপনার লাইনটা এখনো ধূসরটাই।",
     primary: "বাঁকিয়ে দিন — ফ্রি শুরু",
-    secondary: "Grow Studio খুলুন",
+    secondary: "Grow Suite খুলুন",
   },
 };
 

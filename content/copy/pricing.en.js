@@ -45,7 +45,7 @@ const pricing = {
       n: "Growth", audience: "The default for running shops",
       prMo: "৳1,490", prYr: "৳1,242", sub: "/month", noteMo: "billed monthly", noteYr: "billed ৳14,900/year",
       cta: "Choose Growth", dark: false, pop: true,
-      feats: ["Everything in Starter, unlimited products", "Nova Operator — 750 tasks/mo", "Grow Labs + Supplier Network", "Ads Gallery — static exports", "Decision desk, receipts & undo"],
+      feats: ["Everything in Starter, unlimited products", "Nova Operator — 750 tasks/mo", "Grow Suite + Supplier Network", "Ads Gallery — static exports", "Decision desk, receipts & undo"],
     },
     {
       n: "Business", audience: "The full CEO seat",

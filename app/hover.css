@@ -23,4 +23,5 @@
 .hv-bg-ink05:hover { background: rgba(26, 29, 18, 0.05); }
 .hv-up3-border25:hover { transform: translateY(-3px); border-color: rgba(26, 29, 18, 0.25); }
 .hv-up3-border18:hover { transform: translateY(-3px); border-color: rgba(26, 29, 18, 0.18); }
+.hv-up3-border-ink:hover { transform: translateY(-3px); border-color: #1A1D12; }
 .company-root a.hv-green:hover, .hv-green:hover { color: #3E7A45; }

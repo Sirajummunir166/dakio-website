@@ -1,4 +1,4 @@
-// Grow Labs — 1:1 port of "Dakio Grow Labs Page.dc.html", localized.
+// Grow Suite — 1:1 port of "Dakio Grow Suite Page.dc.html", localized.
 
 import { Nav, Footer } from "../../../components/Chrome";
 import Reveal from "../../../components/Reveal";
@@ -46,7 +46,7 @@ export default async function GrowPage({ params }) {
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />
 
-      <Nav lang={lang} route={ROUTE} active="grow" ctaHref="#cta" ctaLabel={c.navCta} style={{ position: "sticky", top: 0, zIndex: 60 }} />
+      <Nav lang={lang} route={ROUTE} active="grow" ctaHref="#cta" style={{ position: "sticky", top: 0, zIndex: 60 }} />
 
       {/* HERO: the diverging curve */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 28px 20px" }}>

@@ -17,6 +17,11 @@
   .m-foot { grid-template-columns: repeat(2, 1fr) !important; }
   .m-foot > div:first-child { grid-column: 1 / -1; }
 
+  /* "How are you starting?" — label above, the two path cards under it */
+  .m-paths { grid-template-columns: minmax(0, 1fr) !important; }
+  .m-paths > div:first-child { padding-right: 0 !important; }
+  .m-paths-h { white-space: normal !important; }
+
   .m-pad-hero { padding: 48px 24px 44px !important; }
   .m-pad-band { padding: 36px 24px !important; }
   .m-pad-cta { padding: 52px 24px !important; }
@@ -64,6 +69,9 @@
   /* grow hero chart: keep right-side pins inside the card */
   .m-pin-3 { transform: translate(-75%, -100%) !important; }
   .m-pin-4 { transform: translate(-92%, -100%) !important; }
+
+  /* path cards: the link drops under the copy instead of fighting it for width */
+  .m-paths > a { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; padding: 20px !important; }
 
   /* department/agent chips: 2-col grid of stacked cards (name top, role below) */
   .m-chip-grid { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }

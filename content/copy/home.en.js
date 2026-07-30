@@ -8,14 +8,17 @@ import Mark from "../../components/Mark";
 export const MONO = {
   heroBadge: "THE COMMERCE OS FOR BANGLADESH",
   heroStrip: ["STORE LIVE IN MINUTES", "NO CODE", "৳ · bKASH · COD"],
-  heroDuty: "ON DUTY 24/7 · EVERY ACTION AUDITABLE",
+  heroDuty: "ON DUTY 24/7 · EVERY ACTION RECORDED",
   heroReceipt: "RECEIPT",
+  pathsKicker: "TWO WAYS IN",
+  pathsFresh: "STARTING FRESH",
+  pathsSelling: "ALREADY SELLING",
   launchKicker: "FIRST THINGS FIRST — THE STORE",
   launchStep: "STEP",
   launchAvailable: "AVAILABLE ✓",
   launchLive: "LIVE",
   briefKicker: "06:00 · EVERY MORNING",
-  briefBadge: "MORNING BRIEF · WHILE YOU SLEPT",
+  briefBadge: "MORNING BRIEF · SHAHRQEE DEMO STORE",
   briefApprove: "APPROVE / LATER",
   orgKicker: "THE ORGANIZATION",
   orgCeoJob: "PLANS · COORDINATES ALL",
@@ -37,7 +40,7 @@ export const MONO = {
   bdSeasons: ["EID", "PUJA", "BOISHAKH", "11.11", "MONSOON"],
   switchKicker: "SWITCHING?",
   pricingKicker: "PRICING",
-  ctaStrip: "FREE TO START · GUARDRAILS ON DAY ONE · UNDO EVERYTHING",
+  ctaStrip: "FREE TO START · GUARDRAILS ON DAY ONE · EVERY ACTION RECORDED",
 };
 
 // Brand names in the partner marquee never translate.
@@ -58,7 +61,7 @@ const home = {
     ),
     sub: (
       <>
-        Store, couriers, payments — and <b style={{ color: "#E9EFDC" }}>Nova</b>, an AI CEO that runs it all. Even while you sleep.
+        Your store, customers, orders, couriers and payments — operated by <b style={{ color: "#E9EFDC" }}>Nova</b>, your AI Acting CEO. Even while you sleep.
       </>
     ),
     ctaPrimary: "Open your store",
@@ -67,6 +70,24 @@ const home = {
   },
 
   marquee: { worksWith: "Works with" },
+
+  paths: {
+    h2: (
+      <>
+        How are you<br />starting?
+      </>
+    ),
+    fresh: {
+      t: "Build your first store",
+      d: "A designed store, your products — or a supplier’s. No developer.",
+      cta: "Start from zero",
+    },
+    selling: {
+      t: "Move your business over",
+      d: "Products, customers, domain and operations — brought across for you.",
+      cta: "Plan my switch",
+    },
+  },
 
   launch: {
     h2: (
@@ -96,7 +117,7 @@ const home = {
       note: "Share the link on Facebook, Instagram, anywhere — orders, bKash and couriers already work.",
       ceo: "…and your CEO clocks in.",
     },
-    foot: "No code, no theme marketplace, no developer — the store is the easy part here.",
+    foot: "No code. No developer. Your store is live in minutes — and that is only the beginning.",
     footLink: "See everything included →",
   },
 
@@ -106,7 +127,7 @@ const home = {
         Wake up to work<br />already <Mark>done</Mark>.
       </>
     ),
-    p: "Nova works the night shift and reports at 06:00 — every line backed by a receipt you can open, and undo.",
+    p: "Nova works the night shift and reports at 06:00 — every line backed by evidence you can inspect, with undo wherever the action is reversible.",
     link: "See Nova HQ live",
     hearCall: "Hear it as a call",
     tiles: [
@@ -172,8 +193,8 @@ const home = {
       byNova: "BY NOVA",
     },
     grow: {
-      n: "Grow Labs",
-      d: "The business Grow Studio — six levers, one team.",
+      n: "Grow Suite",
+      d: "The business Grow Suite — six levers, one team.",
       levers: [
         { n: "Campaigns", j: "PROMOTE" }, { n: "Content", j: "CREATE" }, { n: "Broadcast", j: "REACH" },
         { n: "Research", j: "DISCOVER" }, { n: "Growth", j: "IMPROVE" }, { n: "Goals", j: "LEAD" },
@@ -267,8 +288,8 @@ const home = {
     popular: "POPULAR",
     plans: [
       { n: "Starter", pr: "Free", sub: "forever", d: "Store, orders, couriers and Nova at L0–L1 — watch it work before you trust it.", cta: "Start free", dark: false },
-      { n: "Growth", pr: "৳1,490", sub: "/month", d: "Unlimited products, supplier network, Grow Labs, Nova Operator — 750 tasks/mo.", cta: "Choose Growth", dark: true, pop: true },
-      { n: "Business", pr: "৳3,990", sub: "/month", d: "The full L4 Acting CEO seat — 2,500 tasks, voice calls, playbooks, staff logins.", cta: "Start 14-day free trial", dark: false },
+      { n: "Growth", pr: "৳1,490", sub: "/month", d: "Unlimited products, supplier network, Grow Suite, Nova Operator — 750 tasks/mo.", cta: "Choose Growth", dark: true, pop: true },
+      { n: "Business", pr: "৳3,990", sub: "/month", d: "Complete Nova access — 2,500 tasks, voice calls, playbooks, staff logins. Acting CEO autonomy unlocks as trust is earned.", cta: "Start 14-day free trial", dark: false },
     ],
     foot: "Every plan includes Nova. Autonomy is earned, not bought.",
     footLink: "Full pricing →",

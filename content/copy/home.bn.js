@@ -4,7 +4,7 @@
 // own ("Not translated for it." → "অনুবাদ করা নয়।").
 //
 // Kept in English on purpose: product surface names (Nova, Nova HQ, Store
-// Studio, Grow Labs, Front Office, Ads Gallery, Supplier Network), payment and
+// Studio, Grow Suite, Front Office, Ads Gallery, Supplier Network), payment and
 // courier brands, competitor names, and every mono/all-caps label (those come
 // from home.en.js — Bengali has no uppercase and shatters under the tracking).
 // Numerals stay Western so prices match the app, invoices and the ad accounts.
@@ -26,7 +26,7 @@ const home = {
     ),
     sub: (
       <>
-        দোকান, কুরিয়ার, পেমেন্ট — আর <b style={{ color: "#E9EFDC" }}>Nova</b>, আপনার AI CEO। আপনি ঘুমালেও ব্যবসা চলে।
+        আপনার দোকান, কাস্টমার, অর্ডার, কুরিয়ার আর পেমেন্ট — সব চালায় <b style={{ color: "#E9EFDC" }}>Nova</b>, আপনার AI Acting CEO। আপনি ঘুমালেও।
       </>
     ),
     ctaPrimary: "স্টোর খুলুন",
@@ -35,6 +35,24 @@ const home = {
   },
 
   marquee: { worksWith: "যাদের সাথে চলে" },
+
+  paths: {
+    h2: (
+      <>
+        আপনি কোথা থেকে<br />শুরু করছেন?
+      </>
+    ),
+    fresh: {
+      t: "প্রথম দোকানটা বানান",
+      d: "সাজানো একটা দোকান, আপনার প্রোডাক্ট — বা সাপ্লায়ারের। ডেভেলপার লাগবে না।",
+      cta: "শূন্য থেকে শুরু",
+    },
+    selling: {
+      t: "ব্যবসাটা এখানে নিয়ে আসুন",
+      d: "প্রোডাক্ট, কাস্টমার, ডোমেইন আর পুরো অপারেশন — আমরাই এনে দিই।",
+      cta: "আমার সুইচ প্ল্যান করুন",
+    },
+  },
 
   launch: {
     h2: (
@@ -64,7 +82,7 @@ const home = {
       note: "ফেসবুক, ইনস্টাগ্রাম, যেখানে খুশি লিংক দিন — অর্ডার, bKash আর কুরিয়ার আগে থেকেই চালু।",
       ceo: "…আর আপনার CEO কাজে বসে গেল।",
     },
-    foot: "কোড নেই, থিম কেনা নেই, ডেভেলপার নেই — দোকান বানানোটাই এখানে সবচেয়ে সহজ কাজ।",
+    foot: "কোড নেই, ডেভেলপার নেই। কয়েক মিনিটেই দোকান লাইভ — আর এটা তো শুধু শুরু।",
     footLink: "ভেতরে কী কী আছে দেখুন →",
   },
 
@@ -74,7 +92,7 @@ const home = {
         ঘুম থেকে উঠে দেখুন<br />কাজ <Mark>শেষ</Mark>।
       </>
     ),
-    p: "Nova রাতের শিফটে কাজ করে, সকাল ৬টায় রিপোর্ট দেয় — প্রতিটা লাইনের পেছনে রসিদ, চাইলে ফিরিয়েও নেওয়া যায়।",
+    p: "Nova রাতের শিফটে কাজ করে, সকাল ৬টায় রিপোর্ট দেয় — প্রতিটা লাইনের পেছনে প্রমাণ, নিজে যাচাই করতে পারবেন; যে কাজ ফেরানো যায়, সেটা ফিরিয়েও নিতে পারবেন।",
     link: "Nova HQ সরাসরি দেখুন",
     hearCall: "কল করে শুনুন",
     tiles: [
@@ -140,8 +158,8 @@ const home = {
       byNova: "BY NOVA",
     },
     grow: {
-      n: "Grow Labs",
-      d: "ব্যবসা বাড়ানোর স্টুডিও — ছয়টা লিভার, একটাই টিম।",
+      n: "Grow Suite",
+      d: "ব্যবসা বাড়ানোর পুরো Grow Suite — ছয়টা লিভার, একটাই টিম।",
       levers: [
         { n: "ক্যাম্পেইন", j: "PROMOTE" }, { n: "কনটেন্ট", j: "CREATE" }, { n: "ব্রডকাস্ট", j: "REACH" },
         { n: "রিসার্চ", j: "DISCOVER" }, { n: "গ্রোথ", j: "IMPROVE" }, { n: "লক্ষ্য", j: "LEAD" },
@@ -235,8 +253,8 @@ const home = {
     popular: "POPULAR",
     plans: [
       { n: "Starter", pr: "ফ্রি", sub: "চিরকাল", d: "দোকান, অর্ডার, কুরিয়ার আর L0–L1 লেভেলে Nova — বিশ্বাস করার আগে কাজ দেখে নিন।", cta: "ফ্রি শুরু করুন", dark: false },
-      { n: "Growth", pr: "৳1,490", sub: "/মাস", d: "আনলিমিটেড প্রোডাক্ট, সাপ্লায়ার নেটওয়ার্ক, Grow Labs, Nova Operator — মাসে 750 কাজ।", cta: "Growth নিন", dark: true, pop: true },
-      { n: "Business", pr: "৳3,990", sub: "/মাস", d: "পূর্ণ L4 Acting CEO — 2,500 কাজ, ভয়েস কল, প্লেবুক, স্টাফ লগইন।", cta: "14 দিন ফ্রি ট্রায়াল", dark: false },
+      { n: "Growth", pr: "৳1,490", sub: "/মাস", d: "আনলিমিটেড প্রোডাক্ট, সাপ্লায়ার নেটওয়ার্ক, Grow Suite, Nova Operator — মাসে 750 কাজ।", cta: "Growth নিন", dark: true, pop: true },
+      { n: "Business", pr: "৳3,990", sub: "/মাস", d: "Nova-র সবকিছু — 2,500 কাজ, ভয়েস কল, প্লেবুক, স্টাফ লগইন। Acting CEO-র স্বাধীনতা খোলে বিশ্বাস অর্জনের সাথে সাথে।", cta: "14 দিন ফ্রি ট্রায়াল", dark: false },
     ],
     foot: "সব প্ল্যানেই Nova আছে। স্বাধীনতা কেনা যায় না, অর্জন করতে হয়।",
     footLink: "পুরো প্রাইসিং →",

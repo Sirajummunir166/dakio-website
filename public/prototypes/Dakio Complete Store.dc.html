@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/tokens/tokens.css">
+  <script src="_ds/dakio-design-system-5f08f719-c37c-4fcb-9406-733257f5efd1/_ds_bundle.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; background:#F4F2EA; }
+    a { color:inherit; text-decoration:none; }
+    a:hover { color:inherit; }
+    @keyframes heroUp { 0% { opacity:0; transform:translateY(18px); } 100% { opacity:1; transform:translateY(0); } }
+    @keyframes orbitcw { to { transform:rotate(360deg); } }
+    @keyframes pulseRing { 0% { box-shadow:0 0 0 0 rgba(198,240,53,0.4); } 70% { box-shadow:0 0 0 14px rgba(198,240,53,0); } 100% { box-shadow:0 0 0 0 rgba(198,240,53,0); } }
+    @keyframes pipeFlow { 0% { background-position:0 0; } 100% { background-position:0 44px; } }
+  </style>
+</helmet>
+
+<div style="font-family:var(--dk-font-sans), 'Noto Sans Bengali', sans-serif; color:#1A1D12; background:#F4F2EA; overflow-x:hidden;" data-screen-label="Complete Store Page">
+
+  <dc-import name="SiteNav" active="store" cta-href="Dakio Home.dc.html#cta" hint-size="100%,58px" style="position:sticky; top:0; z-index:60;"></dc-import>
+
+  <!-- HERO -->
+  <div style="max-width:1200px; margin:18px auto 0; padding:0 20px;">
+    <div style="position:relative; border-radius:36px; background:#0F120B; color:#E9EFDC; overflow:hidden; padding:76px 64px 70px;">
+      <div style="position:absolute; top:-220px; right:-140px; width:640px; height:640px; border-radius:50%; background:radial-gradient(closest-side, rgba(198,240,53,0.18), rgba(198,240,53,0));"></div>
+      <div style="position:relative; max-width:640px;">
+        <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:99px; border:1px solid rgba(198,240,53,0.35); font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.12em; color:#C6F035; animation:heroUp .6s ease both;">THE FOUNDATION · EVERYTHING INCLUDED</div>
+        <h1 style="margin:22px 0 0; font-size:62px; line-height:1.03; letter-spacing:-2.5px; font-weight:800; color:#FBFBF4; animation:heroUp .6s .08s ease both;">A store that runs<br>itself<span style="color:#C6F035;">.</span></h1>
+        <p style="margin:20px 0 0; font-size:16.5px; line-height:1.6; color:#A9AD98; max-width:470px; animation:heroUp .6s .16s ease both;">Payments, couriers, orders, stock — on other platforms this is your daily work. On Dakio it <b style="color:#E9EFDC;">happens on its own</b>, with proof you can check anytime.</p>
+        <div style="display:flex; align-items:center; gap:18px; margin-top:26px; animation:heroUp .6s .24s ease both; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.1em; color:#878B76;">
+          <span style="color:#C6F035;">READY ON DAY ONE</span><span style="opacity:.4;">·</span><span>WORKS ON ITS OWN</span><span style="opacity:.4;">·</span><span>EVERY ৳ ON RECORD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONE ORDER, START TO SETTLED -->
+  <div style="max-width:1200px; margin:0 auto; padding:88px 28px 20px;">
+    <div style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:start;" data-reveal>
+      <div style="position:sticky; top:96px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.14em; color:#3E7A45;">PROOF · ORDER #1044, LAST TUESDAY</div>
+        <h2 style="margin:14px 0 0; font-size:48px; line-height:1.05; letter-spacing:-1.9px; font-weight:800;">One order,<br>start to <span style="position:relative; white-space:nowrap;">finish<span style="position:absolute; left:0; right:0; bottom:5px; height:13px; background:#C6F035; z-index:-1; border-radius:3px;"></span></span>.</h2>
+        <p style="margin:18px 0 0; font-size:15px; line-height:1.65; color:#6B6D60; max-width:360px;">A real order, step by step. Every step has a time and a record — and the owner did none of it.</p>
+        <div style="margin-top:22px; display:inline-flex; align-items:center; gap:10px; padding:13px 18px; border-radius:16px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.08);">
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.1em; color:#6B6D60;">YOUR PART IN THIS ORDER</span>
+          <span style="font-size:15px; font-weight:800;">nothing.</span>
+        </div>
+      </div>
+      <div style="position:relative; padding-left:34px;">
+        <div style="position:absolute; left:10px; top:8px; bottom:8px; width:3px; border-radius:99px; background-image:linear-gradient(#C6F035 55%, rgba(198,240,53,0.15) 55%); background-size:100% 44px; animation:pipeFlow 1.6s linear infinite;"></div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <sc-for list="{{ stages }}" as="sg" hint-placeholder-count="6">
+            <div style="position:relative; border-radius:18px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.07); padding:16px 18px;">
+              <div style="position:absolute; left:-30px; top:22px; width:11px; height:11px; border-radius:99px; background:#C6F035; border:2px solid #1A1D12;"></div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:9px; font-weight:600; letter-spacing:0.1em; color:#3E7A45;">{{ sg.time }}</span>
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; letter-spacing:0.1em; color:#6B6D60; margin-left:auto;">{{ sg.pipe }}</span>
+              </div>
+              <div style="font-size:15.5px; font-weight:800; letter-spacing:-0.2px; margin-top:6px;">{{ sg.t }}</div>
+              <div style="font-size:12.5px; color:#6B6D60; line-height:1.55; margin-top:4px;">{{ sg.d }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE UTILITIES -->
+  <div style="max-width:1200px; margin:0 auto; padding:88px 28px 20px;">
+    <div style="text-align:center; margin-bottom:38px;" data-reveal>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.14em; color:#3E7A45;">SIX PARTS · ALL INCLUDED · ALL AUTOMATIC</div>
+      <h2 style="margin:14px auto 0; font-size:48px; line-height:1.05; letter-spacing:-1.9px; font-weight:800; max-width:640px;">Everything included. Everything automatic.</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:14px;" data-reveal>
+      <sc-for list="{{ utils }}" as="u" hint-placeholder-count="6">
+        <div style="border-radius:24px; background:#FBFAF5; border:1px solid rgba(26,29,18,0.07); padding:22px;" style-hover="transform:translateY(-3px); border-color:rgba(26,29,18,0.18)">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span style="width:38px; height:38px; border-radius:12px; background:#1A1D12; color:#C6F035; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600;">{{ u.mono }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.1em; color:#3E7A45; border:1px solid rgba(62,122,69,0.35); border-radius:99px; padding:3px 9px;">{{ u.verb }}</span>
+          </div>
+          <div style="font-size:17px; font-weight:800; letter-spacing:-0.3px; margin-top:14px;">{{ u.n }}</div>
+          <div style="font-size:12.5px; color:#6B6D60; line-height:1.6; margin-top:5px;">{{ u.d }}</div>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:14px;">
+            <sc-for list="{{ u.chips }}" as="c" hint-placeholder-count="3">
+              <span style="padding:5px 11px; border-radius:99px; background:#EEEBDF; font-size:10.5px; font-weight:700; color:#1A1D12;">{{ c.t }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div data-reveal style="text-align:center; margin-top:18px; font-size:13px; color:#6B6D60;">All of this comes with every store. Nothing extra to install, nothing extra to pay for.</div>
+  </div>
+
+  <!-- 2020 vs NOW BAND -->
+  <div style="max-width:1200px; margin:0 auto; padding:88px 28px 20px;">
+    <div data-reveal style="border-radius:32px; background:#1A1D12; color:#F0EFE6; padding:52px 56px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; position:relative; overflow:hidden;">
+      <div style="position:absolute; right:-60px; bottom:-120px; width:420px; height:420px; border-radius:50%; border:1px dashed rgba(198,240,53,0.25); animation:orbitcw 60s linear infinite;"></div>
+      <div style="position:relative;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.14em; color:#8CBF33;">THE DIFFERENCE</div>
+        <h2 style="margin:14px 0 0; font-size:40px; line-height:1.1; letter-spacing:-1.5px; font-weight:800; color:#FBFBF4;">On other platforms, you do the work.<br><span style="color:#C6F035;">On Dakio, the work is done for you.</span></h2>
+      </div>
+      <div style="position:relative; display:flex; flex-direction:column; gap:9px;">
+        <sc-for list="{{ vs }}" as="v" hint-placeholder-count="3">
+          <div style="padding:14px 16px; border-radius:14px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
+            <div style="font-size:12px; color:#878B76; text-decoration:line-through;">{{ v.old }}</div>
+            <div style="font-size:13.5px; font-weight:700; color:#E9EFDC; margin-top:4px;">{{ v.now }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div id="cta" style="max-width:1200px; margin:70px auto 0; padding:0 20px 60px;">
+    <div data-reveal style="border-radius:36px; background:#C6F035; padding:72px 40px; text-align:center; position:relative; overflow:hidden;">
+      <div style="position:absolute; left:50%; top:-160px; transform:translateX(-50%); width:520px; height:520px; border-radius:50%; border:1px dashed rgba(26,29,18,0.2); animation:orbitcw 50s linear infinite;"></div>
+      <h2 style="position:relative; margin:0 auto; font-size:56px; line-height:1.03; letter-spacing:-2.3px; font-weight:800; max-width:720px;">Everything ready.<br>Open your store today.</h2>
+      <div style="position:relative; display:flex; justify-content:center; gap:12px; margin-top:32px;">
+        <a href="Dakio Home.dc.html#cta" style="display:inline-flex; align-items:center; gap:9px; padding:16px 30px; border-radius:99px; background:#1A1D12; color:#C6F035; font-size:15.5px; font-weight:700;" style-hover="transform:translateY(-2px)">
+          <span style="width:8px; height:8px; border-radius:99px; background:#C6F035; animation:pulseRing 2.2s infinite;"></span>Open your store</a>
+        <a href="Dakio Nova.dc.html" style="display:inline-flex; align-items:center; padding:16px 26px; border-radius:99px; border:1.5px solid rgba(26,29,18,0.35); color:#1A1D12; font-size:15.5px; font-weight:700;" style-hover="background:rgba(26,29,18,0.08)">Then appoint Nova</a>
+      </div>
+      <div style="position:relative; margin-top:20px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.14em; color:rgba(26,29,18,0.6);">FREE TO START · ৳ · bKASH · NAGAD · COD · COURIERS WIRED</div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const els = this.el ? this.el.querySelectorAll('[data-reveal]') : document.querySelectorAll('[data-reveal]');
+    els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(22px)'; el.style.transition = 'opacity .7s ease, transform .7s ease'; });
+    const reveal = (el, animate) => { if (!animate) el.style.transition = 'none'; el.style.opacity = '1'; el.style.transform = 'translateY(0)'; el.dataset.revealed = '1'; };
+    const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < (window.innerHeight || 800); };
+    els.forEach(el => { if (inView(el)) reveal(el, false); });
+    this._io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { reveal(e.target, true); this._io.unobserve(e.target); } });
+    }, { threshold: 0.14 });
+    els.forEach(el => { if (!el.dataset.revealed) this._io.observe(el); });
+    const onScroll = () => { els.forEach(el => { if (!el.dataset.revealed && inView(el)) reveal(el, true); }); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    setTimeout(onScroll, 1200);
+  }
+  renderVals() {
+    return {
+      stages: [
+        { time: 'TUE 21:12', pipe: 'FRONT OFFICE', t: 'A customer messages', d: '"Dam koto? M ase?" — Nova answers in Bangla, the customer says yes, order #1044 is created. No message missed.' },
+        { time: '21:14', pipe: 'PAYMENT', t: 'Payment arrives by itself', d: '৳2,300 comes in over bKash — confirmed and recorded. Nagad, cards and cash on delivery work from day one too.' },
+        { time: '21:15', pipe: 'COURIER', t: 'Courier gets booked', d: 'Pathao pickup set for 9 AM, tracking number made, customer told. Steadfast and RedX as backup.' },
+        { time: 'WED 08:40', pipe: 'STOCK', t: 'The product ships', d: 'This one came from a trusted supplier — they hold the stock, Dakio packs and ships. Selling your own stock? The count simply updates: 125 → 124.' },
+        { time: 'WED 14:38', pipe: 'DELIVERY', t: 'Delivered, Chattogram', d: 'Delivery proof saved. If this were cash on delivery, the cash would reach your balance automatically.' },
+        { time: 'WED 14:39', pipe: 'MONEY', t: 'Money counted, recorded', d: 'Courier and gateway fees listed, profit calculated, record #A-1044 saved. Tomorrow\u2019s 6 AM report will mention it.' }],
+      utils: [
+        { mono: 'SF', verb: 'READY AT SIGNUP', n: 'Storefront & link', d: 'A ready-made store at name.dakio.shop the moment you register — your own domain when you want it.', chips: [{ t: 'name.dakio.shop' }, { t: 'own domain' }, { t: 'বাংলা + EN' }] },
+        { mono: 'CK', verb: 'PAYMENTS COME IN', n: 'Checkout', d: 'The payments Bangladesh actually uses, already set up — nothing to install, no dollar fees.', chips: [{ t: 'bKash' }, { t: 'Nagad' }, { t: 'cards · SSLCommerz' }, { t: 'cash on delivery' }] },
+        { mono: 'CR', verb: 'BOOKED FOR YOU', n: 'Couriers', d: 'Order confirmed → pickup booked, tracking made, customer told. COD cash reaches your balance after delivery.', chips: [{ t: 'Steadfast' }, { t: 'Pathao' }, { t: 'RedX' }] },
+        { mono: 'OD', verb: 'ANSWERED FOR YOU', n: 'Order desk', d: 'Storefront, Messenger, Instagram, WhatsApp — one list. Nova replies, and places an order only after the customer says yes.', chips: [{ t: 'one list' }, { t: 'asks first' }, { t: 'fewer fake orders' }] },
+        { mono: 'ST', verb: 'SHIPPED FOR YOU', n: 'Stock — yours or theirs', d: 'Keep your own stock, or sell from trusted suppliers who hold it for you. Dakio ships either way.', chips: [{ t: 'own stock' }, { t: 'supplier network' }, { t: 'no stock needed' }] },
+        { mono: 'LG', verb: 'COUNTED FOR YOU', n: 'Money records', d: 'Every taka in and out — fees, COD cash, courier charges — written down automatically. Profit you can trust.', chips: [{ t: 'every ৳ on record' }, { t: 'profit view' }, { t: 'mistakes can be undone' }] }],
+      vs: [
+        { old: 'Set up payments yourself — forms, papers, monthly fees', now: 'bKash payment reaches you from your very first order' },
+        { old: 'Book every courier yourself, copy-paste addresses', now: 'Pickup is booked the moment an order confirms' },
+        { old: 'Buy stock first, hope it sells', now: 'Sell first — a trusted supplier ships it for you' }],
+    };
+  }
+}
+</script>
+</body>
+</html>

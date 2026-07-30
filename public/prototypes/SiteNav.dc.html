@@ -58,36 +58,137 @@
   <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ close }}" style="position:fixed; inset:0; z-index:-1;"></div>
     <div onMouseEnter="{{ openMenu }}" onMouseLeave="{{ scheduleClose }}" style="position:absolute; top:100%; left:0; right:0; padding:10px 28px 0;">
-      <div onClick="{{ stop }}" style="max-width:1020px; margin:0 auto; border-radius:24px; background:#FBFBF4; border:1px solid rgba(26,29,18,0.08); box-shadow:0 34px 80px rgba(26,29,18,0.22); padding:22px; display:grid; grid-template-columns:1fr 1.4fr 0.9fr; gap:20px; animation:nvDrop .18s ease both;">
+      <div onClick="{{ stop }}" style="max-width:1150px; margin:0 auto; border-radius:24px; background:#FBFBF4; border:1px solid rgba(26,29,18,0.08); box-shadow:0 34px 80px rgba(26,29,18,0.22); padding:22px; display:grid; grid-template-columns:0.95fr 0.95fr 1.02fr 1.05fr; gap:16px; animation:nvDrop .18s ease both;">
         <div>
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; font-weight:600; letter-spacing:0.14em; color:#3E7A45; padding:0 10px;">RUN BY NOVA</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; font-weight:600; letter-spacing:0.14em; color:#3E7A45; padding:0 10px;">START HERE</div>
           <div style="display:flex; flex-direction:column; gap:2px; margin-top:10px;">
-            <sc-for list="{{ novaItems }}" as="it" hint-placeholder-count="2">
-              <a href="{{ it.href }}" style="display:flex; align-items:center; gap:12px; padding:10px; border-radius:14px;" style-hover="background:#F0EFE4">
+            <sc-for list="{{ startItems }}" as="it" hint-placeholder-count="3">
+              <a href="{{ it.href }}" onMouseEnter="{{ it.hov }}" style="display:flex; align-items:center; gap:12px; padding:10px; border-radius:14px;" style-hover="background:#F0EFE4">
+                <span style="width:38px; height:38px; border-radius:12px; background:#C6F035; color:#1A1D12; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; flex-shrink:0;">{{ it.mono }}</span>
+                <span style="min-width:0;"><span style="display:block; font-size:13.5px; font-weight:700;">{{ it.n }}</span><span style="display:block; font-size:11px; color:#6B6D60; margin-top:1px;">{{ it.d }}</span></span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+        <div style="border-left:1px solid rgba(26,29,18,0.07); padding-left:16px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; font-weight:600; letter-spacing:0.14em; color:#3E7A45; padding:0 10px;">RUN WITH NOVA</div>
+          <div style="display:flex; flex-direction:column; gap:2px; margin-top:10px;">
+            <sc-for list="{{ novaItems }}" as="it" hint-placeholder-count="3">
+              <a href="{{ it.href }}" onMouseEnter="{{ it.hov }}" style="display:flex; align-items:center; gap:12px; padding:10px; border-radius:14px;" style-hover="background:#F0EFE4">
                 <span style="width:38px; height:38px; border-radius:12px; background:#14170E; color:#C6F035; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; flex-shrink:0;">{{ it.mono }}</span>
                 <span style="min-width:0;"><span style="display:block; font-size:13.5px; font-weight:700;">{{ it.n }}</span><span style="display:block; font-size:11px; color:#6B6D60; margin-top:1px;">{{ it.d }}</span></span>
               </a>
             </sc-for>
           </div>
         </div>
-        <div style="border-left:1px solid rgba(26,29,18,0.07); padding-left:20px;">
+        <div style="border-left:1px solid rgba(26,29,18,0.07); padding-left:16px;">
           <div style="font-family:'IBM Plex Mono',monospace; font-size:8.5px; font-weight:600; letter-spacing:0.14em; color:#3E7A45; padding:0 10px;">BUILD &amp; GROW</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:10px;">
-            <sc-for list="{{ buildItems }}" as="it" hint-placeholder-count="4">
-              <a href="{{ it.href }}" style="display:flex; align-items:center; gap:12px; padding:10px; border-radius:14px;" style-hover="background:#F0EFE4">
-                <span style="width:38px; height:38px; border-radius:12px; background:#EEF4D4; color:#3A5212; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; flex-shrink:0;">{{ it.mono }}</span>
-                <span style="min-width:0;"><span style="display:block; font-size:13.5px; font-weight:700;">{{ it.n }}</span><span style="display:block; font-size:11px; color:#6B6D60; margin-top:1px;">{{ it.d }}</span></span>
+          <div style="display:flex; flex-direction:column; gap:2px; margin-top:10px;">
+            <sc-for list="{{ buildItems }}" as="it" hint-placeholder-count="5">
+              <a href="{{ it.href }}" onMouseEnter="{{ it.hov }}" style="display:flex; align-items:center; gap:12px; padding:8px 10px; border-radius:14px;" style-hover="background:#F0EFE4">
+                <span style="width:34px; height:34px; border-radius:11px; background:#EEF4D4; color:#3A5212; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; flex-shrink:0;">{{ it.mono }}</span>
+                <span style="min-width:0;"><span style="display:block; font-size:13px; font-weight:700;">{{ it.n }}</span><span style="display:block; font-size:10.5px; color:#6B6D60; margin-top:1px;">{{ it.d }}</span></span>
               </a>
             </sc-for>
           </div>
         </div>
-        <a href="Dakio Home.dc.html#rooms" style="display:flex; flex-direction:column; justify-content:space-between; border-radius:16px; background:#0F120B; color:#E9EFDC; padding:18px;" style-hover="transform:translateY(-2px)">
-          <div>
-            <span style="display:inline-block; width:22px; height:22px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%);"></span>
-            <div style="font-size:14.5px; font-weight:800; margin-top:10px; color:#FBFBF4;">The 60-second tour</div>
-            <div style="font-size:11px; color:#A9AD98; margin-top:4px; line-height:1.55;">Every room, clickable — real product, not mockups.</div>
+        <a href="{{ pvHref }}" style="display:flex; flex-direction:column; border-radius:16px; background:#0F120B; color:#E9EFDC; padding:16px; overflow:hidden;" style-hover="transform:translateY(-2px)">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="width:16px; height:16px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%); flex-shrink:0;"></span>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:8px; font-weight:600; letter-spacing:0.14em; color:#8CBF33;">{{ pvLabel }}</span>
           </div>
-          <div style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#C6F035; margin-top:14px;">Take it <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+          <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:7px; margin-top:12px; margin-bottom:12px;">
+            <sc-if value="{{ pvTour }}" hint-placeholder-val="{{ true }}">
+              <div style="font-size:14.5px; font-weight:800; color:#FBFBF4; line-height:1.3;">See Dakio run a store</div>
+              <div style="font-size:11px; color:#A9AD98; line-height:1.55;">Approve a decision, restyle a storefront, turn a message into an order — every room is the real product.</div>
+              <div style="font-size:10.5px; color:#878B76; margin-top:4px;">Hover any item for a preview →</div>
+            </sc-if>
+            <sc-if value="{{ pvStore }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; align-items:center; gap:7px; padding:9px 11px; border-radius:10px; background:rgba(255,255,255,0.07); border:1px solid rgba(198,242,62,0.3);">
+                <span style="font-size:12px; font-weight:700; color:#FBFBF4;">shahrqee</span>
+                <span style="margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:7.5px; letter-spacing:0.1em; color:#8CBF33;">AVAILABLE ✓</span>
+              </div>
+              <div style="padding:8px 11px; border-radius:10px; background:rgba(255,255,255,0.05); font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:#C6F035;">shahrqee.dakio.shop</div>
+              <div style="font-size:10.5px; color:#A9AD98; line-height:1.5;">A designed storefront, yours the moment you sign up.</div>
+            </sc-if>
+            <sc-if value="{{ pvSwitch }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; align-items:center; gap:7px; padding:8px 11px; border-radius:10px; background:rgba(255,255,255,0.06); font-size:11px; color:#E9EFDC;">Products &amp; photos <span style="margin-left:auto; color:#8CBF33;">✓ moved</span></div>
+              <div style="display:flex; align-items:center; gap:7px; padding:8px 11px; border-radius:10px; background:rgba(255,255,255,0.06); font-size:11px; color:#E9EFDC;">Customers &amp; orders <span style="margin-left:auto; color:#8CBF33;">✓ moved</span></div>
+              <div style="display:flex; align-items:center; gap:7px; padding:8px 11px; border-radius:10px; background:rgba(255,255,255,0.06); font-size:11px; color:#E9EFDC;">Your domain <span style="margin-left:auto; color:#8CBF33;">✓ connected</span></div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.1em; color:#878B76;">OVER A GUIDED WEEKEND</div>
+            </sc-if>
+            <sc-if value="{{ pvSupplier }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; gap:5px;">
+                <div style="padding:7px 11px; border-radius:9px; background:rgba(255,255,255,0.06); font-size:10.5px; color:#E9EFDC;">Supplier holds the stock</div>
+                <div style="padding:7px 11px; border-radius:9px; background:rgba(255,255,255,0.06); font-size:10.5px; color:#E9EFDC;">Your store makes the sale</div>
+                <div style="padding:7px 11px; border-radius:9px; background:rgba(255,255,255,0.06); font-size:10.5px; color:#E9EFDC;">Dakio packs &amp; ships</div>
+                <div style="padding:7px 11px; border-radius:9px; background:rgba(198,242,62,0.12); border:1px solid rgba(198,242,62,0.3); font-size:10.5px; font-weight:700; color:#C6F035;">COD cash → your balance</div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ pvNova }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:14px; font-weight:800; color:#FBFBF4;">One appointment.<br>A whole back office.</div>
+              <div style="display:flex; gap:4px; flex-wrap:wrap; margin-top:2px;">
+                <span style="padding:4px 8px; border-radius:99px; border:1px solid rgba(255,255,255,0.18); font-family:'IBM Plex Mono',monospace; font-size:8px; color:#A9AD98;">L0</span>
+                <span style="padding:4px 8px; border-radius:99px; border:1px solid rgba(255,255,255,0.18); font-family:'IBM Plex Mono',monospace; font-size:8px; color:#A9AD98;">L1</span>
+                <span style="padding:4px 8px; border-radius:99px; border:1px solid rgba(255,255,255,0.18); font-family:'IBM Plex Mono',monospace; font-size:8px; color:#A9AD98;">L2</span>
+                <span style="padding:4px 8px; border-radius:99px; background:#C6F035; font-family:'IBM Plex Mono',monospace; font-size:8px; font-weight:600; color:#0F120B;">L3 OPERATOR</span>
+                <span style="padding:4px 8px; border-radius:99px; border:1px dashed rgba(198,242,62,0.5); font-family:'IBM Plex Mono',monospace; font-size:8px; color:#C6F035;">L4 CEO</span>
+              </div>
+              <div style="font-size:10.5px; color:#A9AD98; line-height:1.5;">Autonomy is earned — receipts for everything.</div>
+            </sc-if>
+            <sc-if value="{{ pvNovahq }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:10px 12px; border-radius:11px; background:rgba(255,255,255,0.06); border:1px solid rgba(198,242,62,0.25);">
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:7.5px; letter-spacing:0.1em; color:#E3B54A;">DECISION · MARKETING</div>
+                <div style="font-size:11.5px; font-weight:700; color:#FBFBF4; margin-top:5px;">Scale "Muslin drop" ৳800 → ৳1,200/day</div>
+                <div style="display:flex; gap:6px; margin-top:8px;">
+                  <span style="padding:5px 12px; border-radius:99px; background:#C6F035; color:#0F120B; font-size:9.5px; font-weight:700;">Approve</span>
+                  <span style="padding:5px 10px; border-radius:99px; border:1px solid rgba(233,239,220,0.2); font-size:9.5px; color:#A9AD98;">Later</span>
+                </div>
+              </div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.08em; color:#8CBF33;">+৳9,400 EST · RECEIPT ATTACHED</div>
+            </sc-if>
+            <sc-if value="{{ pvFront }}" hint-placeholder-val="{{ false }}">
+              <div style="align-self:flex-start; max-width:90%; padding:7px 10px; border-radius:10px 10px 10px 3px; background:rgba(255,255,255,0.09); font-size:10.5px; color:#E9EFDC;">Dam koto? Size M ase?</div>
+              <div style="align-self:flex-end; max-width:90%; padding:7px 10px; border-radius:10px 10px 3px 10px; background:#C6F035; font-size:10.5px; color:#0F120B;">৳2,300, M ase — order kore dei?</div>
+              <div style="align-self:center; padding:5px 10px; border-radius:99px; background:rgba(140,191,51,0.15); font-family:'IBM Plex Mono',monospace; font-size:7.5px; letter-spacing:0.08em; color:#8CBF33;">CUSTOMER CONFIRMED → ORDER #1044</div>
+            </sc-if>
+            <sc-if value="{{ pvComplete }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; align-items:center; padding:8px 11px; border-radius:10px; background:rgba(255,255,255,0.06); font-size:10.5px; color:#E9EFDC;">bKash ৳2,300 <span style="margin-left:auto; color:#8CBF33;">received ✓</span></div>
+              <div style="display:flex; align-items:center; padding:8px 11px; border-radius:10px; background:rgba(255,255,255,0.06); font-size:10.5px; color:#E9EFDC;">Pathao pickup <span style="margin-left:auto; color:#8CBF33;">booked ✓</span></div>
+              <div style="display:flex; align-items:center; padding:8px 11px; border-radius:10px; background:rgba(255,255,255,0.06); font-size:10.5px; color:#E9EFDC;">Profit &amp; fees <span style="margin-left:auto; color:#8CBF33;">recorded ✓</span></div>
+              <div style="font-size:10.5px; color:#A9AD98;">…and you did none of it.</div>
+            </sc-if>
+            <sc-if value="{{ pvStudio }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:10px 12px; border-radius:11px; background:#F6EFE3;">
+                <div style="height:26px; border-radius:7px; background:#3A2418; display:flex; align-items:center; padding:0 9px;"><span style="font-size:8.5px; font-weight:700; color:#F6EFE3; font-family:Georgia,serif;">Eid Muslin Collection</span></div>
+                <div style="display:flex; gap:5px; margin-top:8px; align-items:center;">
+                  <span style="width:13px; height:13px; border-radius:99px; background:#8C2F1B; border:2px solid #fff;"></span>
+                  <span style="width:13px; height:13px; border-radius:99px; background:#C6F035; border:2px solid #fff;"></span>
+                  <span style="width:13px; height:13px; border-radius:99px; background:#1F6E63; border:2px solid #fff;"></span>
+                  <span style="width:13px; height:13px; border-radius:99px; background:#171420; border:2px solid #fff;"></span>
+                  <span style="font-size:8.5px; font-weight:700; color:#6B6D60; margin-left:3px;">one-tap looks</span>
+                </div>
+              </div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.1em; color:#8CBF33;">DARK MODE · বাংলা FONTS · UNDO</div>
+            </sc-if>
+            <sc-if value="{{ pvGrow }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:10px 12px; border-radius:11px; background:rgba(255,255,255,0.06); border:1px solid rgba(198,242,62,0.25);">
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:7.5px; letter-spacing:0.1em; color:#8CBF33;">OPPORTUNITY FOUND</div>
+                <div style="font-size:11.5px; font-weight:700; color:#FBFBF4; margin-top:5px;">Eid Muslin searches up ×3.2</div>
+                <div style="font-size:10px; color:#A9AD98; margin-top:3px;">38 past buyers match this collection</div>
+              </div>
+              <span style="align-self:flex-start; padding:6px 13px; border-radius:99px; background:#C6F035; color:#0F120B; font-size:10px; font-weight:700;">Prepare campaign</span>
+            </sc-if>
+            <sc-if value="{{ pvAds }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; gap:6px; align-items:flex-end;">
+                <div style="flex:1; height:52px; border-radius:8px; background:linear-gradient(160deg, #3A2418, #8C2F1B); position:relative;"><span style="position:absolute; top:5px; right:6px; font-family:'IBM Plex Mono',monospace; font-size:6px; color:#FFF1EA; opacity:.7;">1:1</span></div>
+                <div style="flex:1; height:64px; border-radius:8px; background:linear-gradient(160deg, #1F2A16, #4C7A3F); position:relative;"><span style="position:absolute; top:5px; right:6px; font-family:'IBM Plex Mono',monospace; font-size:6px; color:#F2F6E9; opacity:.7;">4:5</span></div>
+                <div style="flex:1; height:78px; border-radius:8px; background:linear-gradient(170deg, #171420, #3A4C8C); position:relative;"><span style="position:absolute; top:5px; right:6px; font-family:'IBM Plex Mono',monospace; font-size:6px; color:#EDF0FC; opacity:.7;">9:16</span></div>
+              </div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:0.1em; color:#8CBF33;">ONE CLICK · ON-BRAND · MOTION TOO</div>
+            </sc-if>
+          </div>
+          <div style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#C6F035;">{{ pvCta }} <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
         </a>
         <div style="grid-column:1 / -1; display:flex; align-items:center; gap:16px; padding:12px 10px 2px; border-top:1px solid rgba(26,29,18,0.08); flex-wrap:wrap;">
           <span style="font-family:'IBM Plex Mono',monospace; font-size:8px; font-weight:600; letter-spacing:0.14em; color:#878B76;">COMPANY</span>
@@ -101,21 +202,36 @@
   </sc-if>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:420},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;home&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;nova&quot;,&quot;switch&quot;,&quot;pricing&quot;,&quot;store-studio&quot;,&quot;grow&quot;,&quot;ads&quot;,&quot;front-office&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;lang&quot;:{&quot;editor&quot;:null,&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en' | 'bn'&quot;},&quot;onToggleLang&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;ctaHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#cta&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Appoint Nova&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:560},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;home&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;nova&quot;,&quot;switch&quot;,&quot;pricing&quot;,&quot;store&quot;,&quot;store-studio&quot;,&quot;grow&quot;,&quot;ads&quot;,&quot;front-office&quot;,&quot;supplier&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;lang&quot;:{&quot;editor&quot;:null,&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en' | 'bn'&quot;},&quot;onToggleLang&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;ctaHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#cta&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Open your store&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
-  state = { open: false };
+  state = { open: false, pv: 'tour' };
   renderVals() {
     const active = this.props.active ?? 'home';
     const lang = this.props.lang ?? 'en';
     const link = key => 'font-size:13.5px; font-weight:' + (active === key ? '700; color:#1A1D12; border-bottom:2px solid #C6F035; padding-bottom:2px;' : '600; color:#6B6D60;');
     const seg = on => 'padding:5px 11px; border-radius:99px; font-size:11.5px; font-weight:700;' + (on ? ' background:#1A1D12; color:#C6F035;' : ' color:#6B6D60;');
-    const prodActive = ['store-studio', 'grow', 'ads', 'front-office'].includes(active);
+    const prodActive = ['store', 'store-studio', 'grow', 'ads', 'front-office', 'supplier'].includes(active);
+    const hov = k => () => { if (this.state.pv !== k) this.setState({ pv: k }); };
+    const meta = {
+      tour: { label: 'THE 60-SECOND TOUR', cta: 'Start the tour', href: 'Dakio Home.dc.html#rooms' },
+      store: { label: 'OPEN YOUR FIRST STORE', cta: 'Start from zero', href: 'Dakio Home.dc.html#launch' },
+      switch: { label: 'MOVE TO DAKIO', cta: 'Plan my switch', href: 'Dakio Switch.dc.html' },
+      supplier: { label: 'SUPPLIER NETWORK', cta: 'See how it works', href: 'Dakio Supplier Dashboard.dc.html' },
+      nova: { label: 'NOVA · YOUR ACTING CEO', cta: 'Meet Nova', href: 'Dakio Nova.dc.html' },
+      novahq: { label: 'NOVA HQ', cta: 'Open Nova HQ', href: 'Nova HQ Prototype v7.dc.html' },
+      front: { label: 'FRONT OFFICE', cta: 'See the inbox', href: 'Dakio Front Office Page.dc.html' },
+      complete: { label: 'THE COMPLETE STORE', cta: 'See everything included', href: 'Dakio Complete Store.dc.html' },
+      studio: { label: 'STORE STUDIO', cta: 'Try the builder', href: 'Dakio Store Studio Page.dc.html' },
+      grow: { label: 'GROW SUITE', cta: 'Walk the floors', href: 'Dakio Grow Suite Page.dc.html' },
+      ads: { label: 'ADS GALLERY', cta: 'Make an ad', href: 'Dakio Ads Page.dc.html' } };
+    const pv = meta[this.state.pv] ? this.state.pv : 'tour';
+    const m = meta[pv];
     return {
       open: this.state.open,
-      toggleOpen: () => { clearTimeout(this._closeT); this.setState(s => ({ open: !s.open })); },
-      openMenu: () => { clearTimeout(this._closeT); if (!this.state.open) this.setState({ open: true }); },
-      scheduleClose: () => { clearTimeout(this._closeT); this._closeT = setTimeout(() => this.setState({ open: false }), 260); },
-      close: () => { clearTimeout(this._closeT); this.setState({ open: false }); },
+      toggleOpen: () => { clearTimeout(this._closeT); this.setState(s => ({ open: !s.open, pv: 'tour' })); },
+      openMenu: () => { clearTimeout(this._closeT); if (!this.state.open) this.setState({ open: true, pv: 'tour' }); },
+      scheduleClose: () => { clearTimeout(this._closeT); this._closeT = setTimeout(() => this.setState({ open: false, pv: 'tour' }), 260); },
+      close: () => { clearTimeout(this._closeT); this.setState({ open: false, pv: 'tour' }); },
       stop: e => e.stopPropagation(),
       prodStyle: 'display:inline-flex; align-items:center; gap:6px; cursor:pointer; user-select:none; ' + link(prodActive ? active : '_') + (this.state.open ? ' color:#1A1D12;' : ''),
       caret: 'transition:transform .18s ease;' + (this.state.open ? ' transform:rotate(180deg);' : ''),
@@ -123,15 +239,25 @@ class Component extends DCLogic {
       hasLang: !!this.props.onToggleLang,
       onLang: this.props.onToggleLang, langEnSeg: seg(lang !== 'bn'), langBnSeg: seg(lang === 'bn'),
       ctaHref: this.props.ctaHref ?? '#cta',
-      ctaLabel: this.props.ctaLabel ?? 'Appoint Nova',
+      ctaLabel: this.props.ctaLabel ?? 'Open your store',
+      pvLabel: m.label, pvCta: m.cta, pvHref: m.href,
+      pvTour: pv === 'tour', pvStore: pv === 'store', pvSwitch: pv === 'switch', pvSupplier: pv === 'supplier',
+      pvNova: pv === 'nova', pvNovahq: pv === 'novahq', pvFront: pv === 'front', pvComplete: pv === 'complete',
+      pvStudio: pv === 'studio', pvGrow: pv === 'grow', pvAds: pv === 'ads',
+      startItems: [
+        { mono: 'GO', n: 'Open your first store', d: 'A designed store, live in minutes', href: 'Dakio Home.dc.html#launch', hov: hov('store') },
+        { mono: 'MV', n: 'Move to Dakio', d: 'Products, customers & domain — brought over', href: 'Dakio Switch.dc.html', hov: hov('switch') },
+        { mono: 'ZS', n: 'Sell without inventory', d: 'Suppliers hold and ship for you', href: 'Dakio Supplier Dashboard.dc.html', hov: hov('supplier') }],
       novaItems: [
-        { mono: 'HQ', n: 'Nova HQ', d: 'Supervise your Acting CEO', href: 'Dakio Nova.dc.html' },
-        { mono: 'FO', n: 'Front Office', d: 'Nova sells in your inbox', href: 'Dakio Front Office Page.dc.html' }],
+        { mono: 'NV', n: 'Nova', d: 'Meet your AI Acting CEO', href: 'Dakio Nova.dc.html', hov: hov('nova') },
+        { mono: 'HQ', n: 'Nova HQ', d: 'Supervise decisions, receipts and results', href: 'Nova HQ Prototype v7.dc.html', hov: hov('novahq') },
+        { mono: 'FO', n: 'Front Office', d: 'Nova sells in your inbox', href: 'Dakio Front Office Page.dc.html', hov: hov('front') }],
       buildItems: [
-        { mono: 'SS', n: 'Store Studio', d: 'Design without a developer', href: 'Dakio Store Studio Page.dc.html' },
-        { mono: 'GL', n: 'Grow Labs', d: 'The business Grow Studio', href: 'Dakio Grow Labs Page.dc.html' },
-        { mono: 'AD', n: 'Ads Gallery', d: 'Product → on-brand ad', href: 'Dakio Ads Page.dc.html' },
-        { mono: 'SN', n: 'Supplier Network', d: 'Sell with zero inventory', href: 'Dakio Supplier Dashboard.dc.html' }],
+        { mono: 'CS', n: 'The Complete Store', d: 'Payments, couriers, orders — ready day one', href: 'Dakio Complete Store.dc.html', hov: hov('complete') },
+        { mono: 'SS', n: 'Store Studio', d: 'Design a storefront without a developer', href: 'Dakio Store Studio Page.dc.html', hov: hov('studio') },
+        { mono: 'GL', n: 'Grow Suite', d: 'Promote, create, discover, improve', href: 'Dakio Grow Suite Page.dc.html', hov: hov('grow') },
+        { mono: 'AD', n: 'Ads Gallery', d: 'Product → on-brand ad in one click', href: 'Dakio Ads Page.dc.html', hov: hov('ads') },
+        { mono: 'SN', n: 'Supplier Network', d: 'Sell without holding inventory', href: 'Dakio Supplier Dashboard.dc.html', hov: hov('supplier') }],
     };
   }
 }

@@ -35,7 +35,7 @@ const pricing = {
       n: "Growth", audience: "চালু দোকানের জন্য স্বাভাবিক পছন্দ",
       prMo: "৳1,490", prYr: "৳1,242", sub: "/মাস", noteMo: "মাসে মাসে বিল", noteYr: "বছরে ৳14,900 বিল",
       cta: "Growth নিন", dark: false, pop: true,
-      feats: ["Starter-এর সব, আনলিমিটেড প্রোডাক্ট", "Nova Operator — মাসে 750 কাজ", "Grow Labs + Supplier Network", "Ads Gallery — স্থির অ্যাড এক্সপোর্ট", "ডিসিশন ডেস্ক, রসিদ আর undo"],
+      feats: ["Starter-এর সব, আনলিমিটেড প্রোডাক্ট", "Nova Operator — মাসে 750 কাজ", "Grow Suite + Supplier Network", "Ads Gallery — স্থির অ্যাড এক্সপোর্ট", "ডিসিশন ডেস্ক, রসিদ আর undo"],
     },
     {
       n: "Business", audience: "পূর্ণ CEO-র চেয়ার",

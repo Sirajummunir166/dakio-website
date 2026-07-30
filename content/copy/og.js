@@ -33,7 +33,7 @@ const CLAIMS = {
     bn: "ডেভেলপার ছাড়াই দোকান ডিজাইন করুন।",
   },
   "/grow": {
-    en: "The business Grow Studio — see the curve bend.",
+    en: "The business Grow Suite — see the curve bend.",
     bn: "ব্যবসা বাড়ানোর স্টুডিও — লাইনটা বেঁকে যেতে দেখুন।",
   },
   "/ads": {
