@@ -7,6 +7,7 @@
 // Copy arrives as props from the route file so this stays a pure view — the
 // only locale-aware logic here is the type deltas and href().
 
+import Link from "next/link";
 import { useState } from "react";
 import { Nav, Footer } from "../Chrome";
 import Reveal from "../Reveal";
@@ -152,9 +153,9 @@ export default function PricingClient({ lang = "en", copy, mono }) {
             <div style={{ fontFamily: MONOFONT, fontSize: 9, letterSpacing: "0.12em", color: "#3E7A45" }}>{mono.switchKicker}</div>
             <div style={{ fontSize: 24, fontWeight: 800, letterSpacing: "-0.7px", marginTop: 8, ...T.h3 }}>{c.switchStrip.headline}</div>
           </div>
-          <a href={L("/switch")} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 24px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 14, fontWeight: 700, flexShrink: 0, ...T.label }}>
+          <Link href={L("/switch")} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 24px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 14, fontWeight: 700, flexShrink: 0, ...T.label }}>
             {c.switchStrip.cta} <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -182,7 +183,7 @@ export default function PricingClient({ lang = "en", copy, mono }) {
             <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700, ...T.label }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />{c.cta.primary}
             </a>
-            <a href={L("/")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</a>
+            <Link href={L("/")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</Link>
           </div>
           <div style={{ position: "relative", marginTop: 20, fontFamily: MONOFONT, fontSize: 9.5, letterSpacing: "0.14em", color: "rgba(26,29,18,0.6)" }}>{mono.ctaStrip}</div>
         </div>

@@ -6,6 +6,7 @@
 // the URL points its canonical there rather than pretending to be a separate
 // page.
 
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Nav, Footer } from "../../../../components/Chrome";
 import LogoDefs, { MK_PATH } from "../../../../components/Logo";
@@ -57,10 +58,10 @@ export default async function BlogPostPage({ params }) {
 
       {/* Article header */}
       <div style={{ maxWidth: 820, margin: "0 auto", padding: "56px 28px 0" }}>
-        <a href={listHref} className="hv-ink" style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 13.5, fontWeight: 600, color: "#8a8f7c" }}>
+        <Link href={listHref} className="hv-ink" style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 13.5, fontWeight: 600, color: "#8a8f7c" }}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M11 18l-6-6 6-6" /></svg>
           {c.back}
-        </a>
+        </Link>
 
         <div style={{ marginTop: 24 }}>
           <span style={{ padding: "6px 13px", borderRadius: 99, background: "rgba(198,240,53,0.35)", border: "1px solid rgba(27,30,21,0.10)", color: "#3E7A45", fontSize: 12, fontWeight: 600 }}>{post.category}</span>
@@ -91,19 +92,19 @@ export default async function BlogPostPage({ params }) {
         <div style={{ maxWidth: 1160, margin: "72px auto 0", padding: "0 28px" }}>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 20, marginBottom: 22 }}>
             <h2 style={{ margin: 0, fontSize: 28, letterSpacing: "-0.8px", fontWeight: 750, ...T.h3 }}>{c.related}</h2>
-            <a href={listHref} className="hv-green" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13.5, fontWeight: 700, color: "#3E7A45" }}>
+            <Link href={listHref} className="hv-green" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13.5, fontWeight: 700, color: "#3E7A45" }}>
               {c.allPosts} <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
+            </Link>
           </div>
           <div className="m-grid2-1" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 14 }}>
             {related.map(r => (
-              <a key={r.slug} href={postHref(r)} className="hv-up3" style={{ display: "flex", flexDirection: "column", borderRadius: 22, background: "#FBFAF5", border: "1px solid rgba(27,30,21,0.06)", overflow: "hidden" }}>
+              <Link key={r.slug} href={postHref(r)} className="hv-up3" style={{ display: "flex", flexDirection: "column", borderRadius: 22, background: "#FBFAF5", border: "1px solid rgba(27,30,21,0.06)", overflow: "hidden" }}>
                 <Thumb variant={r.thumb || "cream"} height={130} mark={48} />
                 <div style={{ padding: "18px 20px 22px" }}>
                   <div style={{ fontSize: 11.5, color: "#8a8f7c", fontWeight: 600 }}>{formatDate(r.date, lang)} &nbsp;·&nbsp; {r.mins} {c.min}</div>
                   <div style={{ margin: "8px 0 0", fontSize: 15.5, fontWeight: 700, lineHeight: 1.45 }}>{r.title}</div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

@@ -1,6 +1,7 @@
 // Custom blocks authors can drop into a .mdx post — ported from dakio-landing,
 // token vars resolved to this site's literal values. Server-safe (no hooks).
 
+import SmartLink from "../SmartLink";
 import { REGISTER_URL } from "../../lib/urls";
 
 const INK = "#1A1D12";
@@ -58,9 +59,9 @@ export function MidCTA({ title, children, cta = "ফ্রি শুরু ক�
         <div style={{ fontSize: 18, fontWeight: 700, letterSpacing: "-0.3px", color: "#fff" }}>{title}</div>
         {children ? <div style={{ fontSize: 13.5, color: ON_INK_MUTED, marginTop: 6, lineHeight: 1.6 }}>{children}</div> : null}
       </div>
-      <a href={href} className="hv-up3" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "12px 22px", borderRadius: 12, background: LIME, color: INK, fontSize: 14, fontWeight: 700, whiteSpace: "nowrap", flexShrink: 0 }}>
+      <SmartLink href={href} className="hv-up3" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "12px 22px", borderRadius: 12, background: LIME, color: INK, fontSize: 14, fontWeight: 700, whiteSpace: "nowrap", flexShrink: 0 }}>
         {cta} <ArrowRight />
-      </a>
+      </SmartLink>
     </div>
   );
 }

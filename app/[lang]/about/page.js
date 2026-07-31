@@ -2,6 +2,7 @@
 // (About/Blog/Contact) uses plain var(--dk-font-sans), a green pulseRing
 // variant and a page-wide a:hover ink rule (.company-root).
 
+import Link from "next/link";
 import { Nav, Footer } from "../../../components/Chrome";
 import Reveal from "../../../components/Reveal";
 import LogoDefs from "../../../components/Logo";
@@ -190,7 +191,7 @@ export default async function AboutPage({ params }) {
             <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "15px 28px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15, fontWeight: 700, ...T.label }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRingGreen 2.2s infinite" }} />{c.cta.primary}
             </a>
-            <a href={L("/nova")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "15px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15, fontWeight: 700, ...T.label }}>{c.cta.secondary}</a>
+            <Link href={L("/nova")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "15px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15, fontWeight: 700, ...T.label }}>{c.cta.secondary}</Link>
           </div>
         </div>
       </div>

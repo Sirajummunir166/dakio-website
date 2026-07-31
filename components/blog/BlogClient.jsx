@@ -4,6 +4,7 @@
 // MDX registry (lib/blog) via props, and cards link to the post's own locale.
 // Client component for the category filter only.
 
+import Link from "next/link";
 import { useState } from "react";
 import { Nav, Footer } from "../Chrome";
 import LogoDefs from "../Logo";
@@ -76,7 +77,7 @@ export default function BlogClient({ lang = "en", copy, posts, categories, allCa
       {/* FEATURED */}
       {featured ? (
         <div style={{ maxWidth: 1160, margin: "0 auto", padding: "0 28px 14px" }}>
-          <a href={postHref(featured)} className="hv-up3 m-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderRadius: 26, background: "#1A1D12", color: "#F0EFE6", overflow: "hidden", minHeight: 320 }}>
+          <Link href={postHref(featured)} className="hv-up3 m-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderRadius: 26, background: "#1A1D12", color: "#F0EFE6", overflow: "hidden", minHeight: 320 }}>
             <div style={{ position: "relative", background: "linear-gradient(135deg, #2a2e1f, #1A1D12)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="110" height="110" viewBox="0 5.4 23 23" style={{ color: "rgba(198,240,53,0.25)" }}><use href="#mk" /></svg>
               <span style={{ position: "absolute", top: 18, left: 18, padding: "6px 13px", borderRadius: 99, background: "rgba(198,240,53,0.16)", color: "#C6F035", fontSize: 11.5, fontWeight: 600 }}>{featured.category}</span>
@@ -87,7 +88,7 @@ export default function BlogClient({ lang = "en", copy, posts, categories, allCa
               <div style={{ marginTop: 12, fontSize: 14.5, lineHeight: 1.7, color: "rgba(240,239,230,0.6)" }}>{featured.excerpt}</div>
               <span style={{ marginTop: 20, display: "inline-flex", alignItems: "center", gap: 7, fontSize: 14, fontWeight: 700, color: "#C6F035" }}>{c.read} <Arrow /></span>
             </div>
-          </a>
+          </Link>
         </div>
       ) : null}
 
@@ -97,7 +98,7 @@ export default function BlogClient({ lang = "en", copy, posts, categories, allCa
           {grid.map((p, i) => {
             const t = THUMBS[i % 3];
             return (
-              <a key={p.slug} href={postHref(p)} className="hv-up3" style={{ display: "flex", flexDirection: "column", borderRadius: 22, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.06)", overflow: "hidden" }}>
+              <Link key={p.slug} href={postHref(p)} className="hv-up3" style={{ display: "flex", flexDirection: "column", borderRadius: 22, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.06)", overflow: "hidden" }}>
                 <div style={{ position: "relative", height: 150, background: t.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <svg width="54" height="54" viewBox="0 5.4 23 23" style={{ color: t.mark }}><use href="#mk" /></svg>
                   <span style={{ position: "absolute", top: 14, left: 14, padding: "5px 11px", borderRadius: 99, background: "rgba(251,250,245,0.9)", color: "#1A1D12", fontSize: 10.5, fontWeight: 600 }}>{p.category}</span>
@@ -108,7 +109,7 @@ export default function BlogClient({ lang = "en", copy, posts, categories, allCa
                   <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.65, color: "#6B6D60", flex: 1 }}>{p.excerpt}</div>
                   <span style={{ marginTop: 14, display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700, color: "#3E7A45" }}>{c.read} <Arrow size={13} /></span>
                 </div>
-              </a>
+              </Link>
             );
           })}
         </div>
@@ -120,9 +121,9 @@ export default function BlogClient({ lang = "en", copy, posts, categories, allCa
           <h2 className="m-h2b" style={{ margin: "0 auto", fontSize: 38, lineHeight: 1.1, letterSpacing: "-1.4px", fontWeight: 800, maxWidth: 560, ...T.h2b }}>{c.cta.h2}</h2>
           <p style={{ margin: "14px auto 0", fontSize: 15.5, color: "#1A1D12", maxWidth: 420, lineHeight: 1.65, ...T.body }}>{c.cta.p}</p>
           <div style={{ display: "flex", justifyContent: "center", marginTop: 26 }}>
-            <a href={`${href(lang, "/")}#cta`} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 26px", borderRadius: 10, background: "#1A1D12", color: "#F4F2EA", fontSize: 15, fontWeight: 700, ...T.label }}>
+            <Link href={`${href(lang, "/")}#cta`} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 26px", borderRadius: 10, background: "#1A1D12", color: "#F4F2EA", fontSize: 15, fontWeight: 700, ...T.label }}>
               {c.cta.button} <Arrow size={15} />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

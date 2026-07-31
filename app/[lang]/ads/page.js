@@ -1,5 +1,6 @@
 // Ads Gallery — 1:1 port of "Dakio Ads Page.dc.html", localized.
 
+import Link from "next/link";
 import PlayFirstPage from "../../../components/PlayFirstPage";
 import pfEn, { MONO } from "../../../content/copy/playfirst.en";
 import pfBn from "../../../content/copy/playfirst.bn";
@@ -52,7 +53,7 @@ export default async function AdsPage({ params }) {
       featsNote={
         <div data-reveal style={{ marginTop: 20, fontSize: 13, color: "#6B6D60", ...T.small }}>
           {c.noteBefore}<i>{c.noteEm}</i>{c.noteAfter}
-          <a href={href(lang, "/store-studio")} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>{c.noteLink}</a>{c.noteEnd}
+          <Link href={href(lang, "/store-studio")} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>{c.noteLink}</Link>{c.noteEnd}
         </div>
       }
       ctaH2={c.ctaH2}

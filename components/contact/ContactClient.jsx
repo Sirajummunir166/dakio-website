@@ -3,6 +3,7 @@
 // Contact — 1:1 port of "Dakio Contact.dc.html". Client for the demo
 // send-message state swap (form → "Message sent" card). Copy arrives as props.
 
+import Link from "next/link";
 import { useState } from "react";
 import { Nav, Footer } from "../Chrome";
 import Reveal from "../Reveal";
@@ -79,10 +80,10 @@ export default function ContactClient({ lang = "en", copy }) {
                 <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: "-0.2px", color: "#fff", ...T.h3 }}>{c.promo.title}</div>
               </div>
               <div style={{ fontSize: 13.5, color: "rgba(240,239,230,0.6)", marginTop: 8, lineHeight: 1.55, ...T.small }}>{c.promo.body}</div>
-              <a href={`${href(lang, "/")}#cta`} className="hv-up2" style={{ marginTop: 16, display: "inline-flex", alignItems: "center", gap: 7, padding: "11px 22px", borderRadius: 99, background: "#C6F035", color: "#1A1D12", fontSize: 14, fontWeight: 700, ...T.label }}>
+              <Link href={`${href(lang, "/")}#cta`} className="hv-up2" style={{ marginTop: 16, display: "inline-flex", alignItems: "center", gap: 7, padding: "11px 22px", borderRadius: 99, background: "#C6F035", color: "#1A1D12", fontSize: 14, fontWeight: 700, ...T.label }}>
                 {c.promo.cta}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
+              </Link>
             </div>
           </div>
 

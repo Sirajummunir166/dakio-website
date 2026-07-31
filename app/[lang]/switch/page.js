@@ -1,6 +1,7 @@
 // Switch — 1:1 port of "Dakio Switch.dc.html", localized. The platform name is
 // a constant in the copy files (PLATFORM, default "Shopify"), as in the source.
 
+import Link from "next/link";
 import { Nav, Footer } from "../../../components/Chrome";
 import Reveal from "../../../components/Reveal";
 import LogoDefs from "../../../components/Logo";
@@ -148,12 +149,12 @@ export default async function SwitchPage({ params }) {
             <div style={{ fontSize: 13, color: "#6B6D60", marginTop: 7, lineHeight: 1.6, ...T.small }}>{c.gain.cards[1].d}</div>
             <div style={{ display: "flex", gap: 6, marginTop: 14 }}>{c.gain.cards[1].chips.map(t => <span key={t} style={{ padding: "5px 11px", borderRadius: 99, background: "#EEEBDF", fontSize: 10.5, fontWeight: 700 }}>{t}</span>)}</div>
           </div>
-          <a href={L("/nova")} className="hv-up3" style={{ display: "block", borderRadius: 26, background: "#0F120B", color: "#E9EFDC", padding: 26 }}>
+          <Link href={L("/nova")} className="hv-up3" style={{ display: "block", borderRadius: 26, background: "#0F120B", color: "#E9EFDC", padding: 26 }}>
             <span style={{ display: "inline-block", width: 30, height: 30, borderRadius: "50%", background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)", animation: "breathe 5s ease-in-out infinite" }} />
             <div style={{ fontSize: 17, fontWeight: 800, letterSpacing: "-0.3px", marginTop: 10, color: "#FBFBF4", ...T.h3 }}>{c.gain.nova.t}</div>
             <div style={{ fontSize: 13, color: "#A9AD98", marginTop: 7, lineHeight: 1.6, ...T.small }}>{c.gain.nova.d}</div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 7, marginTop: 14, fontSize: 12.5, fontWeight: 700, color: "#C6F035", ...T.label }}>{c.gain.nova.cta} <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></div>
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -181,7 +182,7 @@ export default async function SwitchPage({ params }) {
             <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700, ...T.label }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />{c.cta.primary}
             </a>
-            <a href={L("/")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</a>
+            <Link href={L("/")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</Link>
           </div>
           <div style={{ position: "relative", marginTop: 20, fontFamily: MONOFONT, fontSize: 9.5, letterSpacing: "0.14em", color: "rgba(26,29,18,0.6)" }}>{MONO.ctaStrip}</div>
         </div>

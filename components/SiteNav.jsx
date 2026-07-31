@@ -11,7 +11,14 @@
 // Localized: copy arrives as a prop (chrome.<lang>.js), internal links go
 // through href(lang, …), and the EN/বাং switch is a real <a> to the same page
 // in the other locale — not client state — so both locales are crawlable.
+//
+// Routes are <Link> so navigation stays client-side. Three things stay plain
+// anchors on purpose: the app subdomain, the /prototypes embeds, and the EN/বাং
+// switch — [lang] is the root layout's own segment, so a locale change is a new
+// document either way, and a hard nav keeps <html lang> honest.
 
+import Link from "next/link";
+import SmartLink from "./SmartLink";
 import { useRef, useState } from "react";
 import LogoDefs from "./Logo";
 import NavPreview from "./NavPreview";
@@ -122,7 +129,7 @@ export default function SiteNav({
 
   // One menu row: mono badge + name + one-liner, and it drives the preview card.
   const Item = ({ it, badgeStyle, pad, nameSize, descSize }) => (
-    <a
+    <SmartLink
       href={dest(it.href)}
       className="hv-bg-f0efe4"
       onMouseEnter={() => setPv(it.pv)}
@@ -134,7 +141,7 @@ export default function SiteNav({
         <span style={{ display: "block", fontSize: nameSize, fontWeight: 700, ...T.label }}>{it.n}</span>
         <span style={{ display: "block", fontSize: descSize, color: "#6B6D60", marginTop: 1, ...T.chip }}>{it.d}</span>
       </span>
-    </a>
+    </SmartLink>
   );
 
   // `nav-lang` is display:none under 900px (responsive.css) — the mobile panel
@@ -156,10 +163,10 @@ export default function SiteNav({
       <LogoDefs mkId="nv-mk" wmId="nv-wm" />
 
       <div className="nav-row" style={{ maxWidth: 1200, margin: "0 auto", padding: "14px 28px", display: "flex", alignItems: "center", gap: 24 }}>
-        <a href={L("/")} aria-label={c.homeAria} style={{ display: "flex", alignItems: "center", gap: 9, flexShrink: 0 }}>
+        <Link href={L("/")} aria-label={c.homeAria} style={{ display: "flex", alignItems: "center", gap: 9, flexShrink: 0 }}>
           <svg width="26" height="26" viewBox="0 5.4 23 23" style={{ color: "#1A1D12" }}><use href="#nv-mk" /></svg>
           <svg width="88" height="25" viewBox="31 0 104 29" style={{ color: "#1A1D12" }}><use href="#nv-wm" /></svg>
-        </a>
+        </Link>
         <div className="nav-desktop-links" style={{ flex: 1, display: "flex", alignItems: "center", gap: 22, marginLeft: 12 }}>
           <div
             role="button"
@@ -178,15 +185,15 @@ export default function SiteNav({
             {c.explore}
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ transition: "transform .18s ease", ...(open ? { transform: "rotate(180deg)" } : {}) }}><path d="M6 9l6 6 6-6" /></svg>
           </div>
-          <a href={L("/nova")} className="hv-ink" style={link("nova")}>{c.nova}</a>
-          <a href={L("/switch")} className="hv-ink" style={link("switch")}>{c.switch}</a>
-          <a href={L("/pricing")} className="hv-ink" style={link("pricing")}>{c.pricing}</a>
+          <Link href={L("/nova")} className="hv-ink" style={link("nova")}>{c.nova}</Link>
+          <Link href={L("/switch")} className="hv-ink" style={link("switch")}>{c.switch}</Link>
+          <Link href={L("/pricing")} className="hv-ink" style={link("pricing")}>{c.pricing}</Link>
         </div>
         <LangSwitch className="nav-lang" />
         <a href={LOGIN_URL} className="nav-login" style={{ fontSize: 14, fontWeight: 600, color: "#1A1D12", ...T.label }}>{c.login}</a>
-        <a href={ctaHref} className="hv-up1 m-nav-cta" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "10px 18px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 13.5, fontWeight: 700, whiteSpace: "nowrap", ...T.label }}>
+        <SmartLink href={ctaHref} className="hv-up1 m-nav-cta" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "10px 18px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 13.5, fontWeight: 700, whiteSpace: "nowrap", ...T.label }}>
           <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", animation: "nvPulse 2.2s infinite" }} />{ctaLabel || c.cta}
-        </a>
+        </SmartLink>
         <button
           type="button"
           className="nav-burger"
@@ -209,19 +216,19 @@ export default function SiteNav({
               <LangSwitch />
             </div>
             <div className="nav-mobile-label">{MONO_LABELS.navStart}</div>
-            {startItems.map(it => <a key={it.mono} href={dest(it.href)} style={T.label}><span style={{ ...badge("#C6F035", "#1A1D12", 30), borderRadius: 10, fontSize: 10 }}>{it.mono}</span>{it.n}</a>)}
+            {startItems.map(it => <SmartLink key={it.mono} href={dest(it.href)} style={T.label}><span style={{ ...badge("#C6F035", "#1A1D12", 30), borderRadius: 10, fontSize: 10 }}>{it.mono}</span>{it.n}</SmartLink>)}
             <div className="nav-mobile-label">{MONO_LABELS.navNova}</div>
-            {novaItems.map(it => <a key={it.mono} href={dest(it.href)} style={T.label}><span style={{ ...badge("#14170E", "#C6F035", 30), borderRadius: 10, fontSize: 10 }}>{it.mono}</span>{it.n}</a>)}
+            {novaItems.map(it => <SmartLink key={it.mono} href={dest(it.href)} style={T.label}><span style={{ ...badge("#14170E", "#C6F035", 30), borderRadius: 10, fontSize: 10 }}>{it.mono}</span>{it.n}</SmartLink>)}
             <div className="nav-mobile-label">{MONO_LABELS.navBuild}</div>
-            {buildItems.map(it => <a key={it.mono} href={dest(it.href)} style={T.label}><span style={{ ...badge("#EEF4D4", "#3A5212", 30), borderRadius: 10, fontSize: 10 }}>{it.mono}</span>{it.n}</a>)}
+            {buildItems.map(it => <SmartLink key={it.mono} href={dest(it.href)} style={T.label}><span style={{ ...badge("#EEF4D4", "#3A5212", 30), borderRadius: 10, fontSize: 10 }}>{it.mono}</span>{it.n}</SmartLink>)}
             <div className="nav-mobile-divider" />
-            <a href={L("/nova")} style={T.label}>{c.nova}</a>
-            <a href={L("/switch")} style={T.label}>{c.switch}</a>
-            <a href={L("/pricing")} style={T.label}>{c.pricing}</a>
+            <Link href={L("/nova")} style={T.label}>{c.nova}</Link>
+            <Link href={L("/switch")} style={T.label}>{c.switch}</Link>
+            <Link href={L("/pricing")} style={T.label}>{c.pricing}</Link>
             <div className="nav-mobile-divider" />
-            <a href={L("/about")} style={T.label}>{c.about}</a>
-            <a href={L("/blog")} style={T.label}>{c.blog}</a>
-            <a href={L("/contact")} style={T.label}>{c.contact}</a>
+            <Link href={L("/about")} style={T.label}>{c.about}</Link>
+            <Link href={L("/blog")} style={T.label}>{c.blog}</Link>
+            <Link href={L("/contact")} style={T.label}>{c.contact}</Link>
             <div className="nav-mobile-divider" />
             <a href={LOGIN_URL} style={T.label}>{c.login}</a>
           </div>
@@ -257,7 +264,7 @@ export default function SiteNav({
                   ))}
                 </div>
               </div>
-              <a href={PREVIEW_HREF[preview]} className="hv-up2" style={{ display: "flex", flexDirection: "column", borderRadius: 16, background: "#0F120B", color: "#E9EFDC", padding: 16, overflow: "hidden" }}>
+              <SmartLink href={PREVIEW_HREF[preview]} className="hv-up2" style={{ display: "flex", flexDirection: "column", borderRadius: 16, background: "#0F120B", color: "#E9EFDC", padding: 16, overflow: "hidden" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <span style={{ width: 16, height: 16, borderRadius: "50%", background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)", flexShrink: 0 }} />
                   <span style={{ fontFamily: MONO, fontSize: 8, fontWeight: 600, letterSpacing: "0.14em", color: "#8CBF33" }}>{PREVIEW_MONO[preview]}</span>
@@ -268,12 +275,12 @@ export default function SiteNav({
                 <div style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 12, fontWeight: 700, color: "#C6F035", ...T.label }}>
                   {c.previews[preview].cta} <ArrowIcon />
                 </div>
-              </a>
+              </SmartLink>
               <div style={{ gridColumn: "1 / -1", display: "flex", alignItems: "center", gap: 16, padding: "12px 10px 2px", borderTop: "1px solid rgba(26,29,18,0.08)", flexWrap: "wrap" }}>
                 <span style={{ fontFamily: MONO, fontSize: 8, fontWeight: 600, letterSpacing: "0.14em", color: "#878B76" }}>{MONO_LABELS.navCompany}</span>
-                <a href={L("/about")} className="hv-ink" style={{ fontSize: 12.5, fontWeight: 700, color: "#6B6D60", ...T.label }}>{c.about}</a>
-                <a href={L("/blog")} className="hv-ink" style={{ fontSize: 12.5, fontWeight: 700, color: "#6B6D60", ...T.label }}>{c.blog}</a>
-                <a href={L("/contact")} className="hv-ink" style={{ fontSize: 12.5, fontWeight: 700, color: "#6B6D60", ...T.label }}>{c.contact}</a>
+                <Link href={L("/about")} className="hv-ink" style={{ fontSize: 12.5, fontWeight: 700, color: "#6B6D60", ...T.label }}>{c.about}</Link>
+                <Link href={L("/blog")} className="hv-ink" style={{ fontSize: 12.5, fontWeight: 700, color: "#6B6D60", ...T.label }}>{c.blog}</Link>
+                <Link href={L("/contact")} className="hv-ink" style={{ fontSize: 12.5, fontWeight: 700, color: "#6B6D60", ...T.label }}>{c.contact}</Link>
                 <span style={{ marginLeft: "auto", fontFamily: MONO, fontSize: 8, letterSpacing: "0.1em", color: "#878B76" }}>{MONO_LABELS.navRegion}</span>
               </div>
             </div>

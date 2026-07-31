@@ -2,6 +2,7 @@
 // Copy lives in content/copy/home.<lang>.js; the layout below never changes
 // between locales, only the strings and the type deltas from lib/type.js.
 
+import Link from "next/link";
 import { Fragment } from "react";
 import HomeTop from "../../components/home/HomeTop";
 import { Footer } from "../../components/Chrome";
@@ -206,7 +207,7 @@ export default async function Home({ params }) {
         </div>
         <div data-reveal style={{ textAlign: "center", marginTop: 16, fontSize: 13, color: "#6B6D60", ...T.small }}>
           {c.launch.foot}{" "}
-          <a href={L("/store")} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>{c.launch.footLink}</a>
+          <Link href={L("/store")} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>{c.launch.footLink}</Link>
         </div>
       </div>
 
@@ -585,9 +586,9 @@ export default async function Home({ params }) {
               {c.switch.h2}
             </h2>
             <p style={{ margin: "18px 0 0", fontSize: 15.5, lineHeight: 1.65, color: "#6B6D60", maxWidth: 400, ...T.body }}>{c.switch.p}</p>
-            <a href={L("/switch")} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 24, padding: "13px 22px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 14, fontWeight: 700, ...T.label }}>
+            <Link href={L("/switch")} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 24, padding: "13px 22px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 14, fontWeight: 700, ...T.label }}>
               {c.switch.cta} <Arrow />
-            </a>
+            </Link>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {c.switch.rows.map(sw => (
@@ -624,7 +625,7 @@ export default async function Home({ params }) {
         </div>
         <div data-reveal style={{ textAlign: "center", marginTop: 14, fontSize: 12.5, color: "#6B6D60", ...T.small }}>
           {c.pricing.foot}{" "}
-          <a href={L("/pricing")} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>{c.pricing.footLink}</a>
+          <Link href={L("/pricing")} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>{c.pricing.footLink}</Link>
         </div>
       </div>
 
@@ -637,7 +638,7 @@ export default async function Home({ params }) {
             <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700, ...T.label }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />{c.cta.primary}
             </a>
-            <a href={L("/nova")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</a>
+            <Link href={L("/nova")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</Link>
           </div>
           <div style={{ position: "relative", marginTop: 20, fontFamily: MONOFONT, fontSize: 9.5, letterSpacing: "0.14em", color: "rgba(26,29,18,0.6)" }}>{MONO.ctaStrip}</div>
         </div>

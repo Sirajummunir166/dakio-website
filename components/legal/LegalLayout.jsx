@@ -1,6 +1,7 @@
 // Legal page chrome + typography. Copy ported verbatim from dakio-landing's
 // PolicyLayout pages, restyled to the v3 site language (ink/lime/cream).
 
+import SmartLink from "../SmartLink";
 import { notFound } from "next/navigation";
 import { Nav, Footer } from "../Chrome";
 import LogoDefs from "../Logo";
@@ -61,9 +62,9 @@ export function Step({ number, title, children }) {
 export function A({ href, children, subject }) {
   const h = subject ? `${href}?subject=${encodeURIComponent(subject)}` : href;
   return (
-    <a href={h} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>
+    <SmartLink href={h} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>
       {children}
-    </a>
+    </SmartLink>
   );
 }
 

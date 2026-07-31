@@ -6,6 +6,7 @@
 // The legal links stay unprefixed by design — policy copy is English-only and
 // governs in English (see lib/i18n.js LEGAL_PATHS).
 
+import Link from "next/link";
 import LogoDefs from "./Logo";
 import { REGISTER_URL } from "../lib/urls";
 import { href } from "../lib/i18n";
@@ -70,7 +71,7 @@ export default function SiteFooter({ lang = "en", copy }) {
               <div style={{ fontFamily: MONO, fontSize: 8.5, fontWeight: 600, letterSpacing: "0.14em", color: "#878B76" }}>{col.title}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 15 }}>
                 {col.links.map(([key, path]) => (
-                  <a key={key} href={L(path)} className="hv-lime" style={{ fontSize: 13, color: "#A9AD98", ...T.label }}>{col.group[key]}</a>
+                  <Link key={key} href={L(path)} className="hv-lime" style={{ fontSize: 13, color: "#A9AD98", ...T.label }}>{col.group[key]}</Link>
                 ))}
               </div>
             </div>
@@ -86,10 +87,10 @@ export default function SiteFooter({ lang = "en", copy }) {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, marginTop: 20, paddingTop: 20, borderTop: "1px solid rgba(233,239,220,0.1)", flexWrap: "wrap" }}>
           <span style={{ fontSize: 12, color: "#878B76", lineHeight: 1.6, ...T.small }}>{c.legalLine}</span>
           <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
-            <a href="/privacy" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76", ...T.label }}>{c.privacy}</a>
-            <a href="/terms" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76", ...T.label }}>{c.terms}</a>
-            <a href="/refund-policy" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76", ...T.label }}>{c.refund}</a>
-            <a href="/data-deletion" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76", ...T.label }}>{c.dataDeletion}</a>
+            <Link href="/privacy" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76", ...T.label }}>{c.privacy}</Link>
+            <Link href="/terms" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76", ...T.label }}>{c.terms}</Link>
+            <Link href="/refund-policy" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76", ...T.label }}>{c.refund}</Link>
+            <Link href="/data-deletion" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76", ...T.label }}>{c.dataDeletion}</Link>
             <a href={REGISTER_URL} className="hv-up1" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "8px 16px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 12, fontWeight: 700, ...T.label }}>{c.cta}</a>
           </div>
         </div>
