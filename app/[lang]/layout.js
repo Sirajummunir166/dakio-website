@@ -1,8 +1,10 @@
 import { Archivo, Noto_Sans_Bengali, IBM_Plex_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "../globals.css";
 import "../hover.css";
 import "../responsive.css";
 import { LOCALES } from "../../lib/i18n";
+import { GA_MEASUREMENT_ID, analyticsEnabled } from "../../lib/analytics";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -46,6 +48,9 @@ export default async function RootLayout({ children, params }) {
       <body>
         <main style={{ display: "block" }}>{children}</main>
       </body>
+      {/* Loads after hydration, so it never blocks first paint. Both locales
+          report into the one stream — `lang` on <html> is what separates them. */}
+      {analyticsEnabled ? <GoogleAnalytics gaId={GA_MEASUREMENT_ID} /> : null}
     </html>
   );
 }
