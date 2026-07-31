@@ -74,7 +74,7 @@ export default async function BlogPostPage({ params }) {
           </div>
           <div>
             <div style={{ fontSize: 13.5, fontWeight: 700 }}>{c.author}</div>
-            <div style={{ fontSize: 12.5, color: "#8a8f7c", marginTop: 1 }}>{formatDate(post.date)} &nbsp;·&nbsp; {post.mins} {c.minRead}</div>
+            <div style={{ fontSize: 12.5, color: "#8a8f7c", marginTop: 1 }}>{formatDate(post.date, lang)} &nbsp;·&nbsp; {post.mins} {c.minRead}</div>
           </div>
         </div>
 
@@ -100,7 +100,7 @@ export default async function BlogPostPage({ params }) {
               <a key={r.slug} href={postHref(r)} className="hv-up3" style={{ display: "flex", flexDirection: "column", borderRadius: 22, background: "#FBFAF5", border: "1px solid rgba(27,30,21,0.06)", overflow: "hidden" }}>
                 <Thumb variant={r.thumb || "cream"} height={130} mark={48} />
                 <div style={{ padding: "18px 20px 22px" }}>
-                  <div style={{ fontSize: 11.5, color: "#8a8f7c", fontWeight: 600 }}>{formatDate(r.date)} &nbsp;·&nbsp; {r.mins} min</div>
+                  <div style={{ fontSize: 11.5, color: "#8a8f7c", fontWeight: 600 }}>{formatDate(r.date, lang)} &nbsp;·&nbsp; {r.mins} {c.min}</div>
                   <div style={{ margin: "8px 0 0", fontSize: 15.5, fontWeight: 700, lineHeight: 1.45 }}>{r.title}</div>
                 </div>
               </a>

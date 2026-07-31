@@ -22,7 +22,7 @@ export default async function BlogPage({ params }) {
   const { lang } = await params;
   const c = COPY[lang] || COPY.en;
   const meta = posts.map(({ Content, ...p }) => p);
-  const formattedDates = Object.fromEntries(posts.map(p => [p.slug, formatDate(p.date)]));
+  const formattedDates = Object.fromEntries(posts.map(p => [p.slug, formatDate(p.date, lang)]));
 
   return (
     <>
