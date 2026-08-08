@@ -65,7 +65,7 @@ export default async function NovaPage({ params }) {
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />
 
-      <Nav lang={lang} route={ROUTE} active="nova" ctaHref="#cta" style={{ position: "sticky", top: 0, zIndex: 60 }} />
+      <Nav lang={lang} route={ROUTE} active="nova" style={{ position: "sticky", top: 0, zIndex: 60 }} />
 
       {/* HERO */}
       <div className="m-bleed-wrap m-hero-wrap" style={{ maxWidth: 1200, margin: "18px auto 0", padding: "0 20px" }}>

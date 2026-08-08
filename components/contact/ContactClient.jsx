@@ -44,7 +44,7 @@ export default function ContactClient({ lang = "en", copy }) {
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />
 
-      <Nav lang={lang} route={ROUTE} ctaHref={`${href(lang, "/")}#cta`} style={{ position: "sticky", top: 0, zIndex: 60 }} />
+      <Nav lang={lang} route={ROUTE} style={{ position: "sticky", top: 0, zIndex: 60 }} />
 
       {/* HERO */}
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "80px 28px 48px", textAlign: "center", position: "relative" }}>

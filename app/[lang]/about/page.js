@@ -71,7 +71,7 @@ export default async function AboutPage({ params }) {
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />
 
-      <Nav lang={lang} route={ROUTE} ctaHref="#cta" style={{ position: "sticky", top: 0, zIndex: 60 }} />
+      <Nav lang={lang} route={ROUTE} style={{ position: "sticky", top: 0, zIndex: 60 }} />
 
       {/* HERO */}
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "88px 28px 64px", textAlign: "center", position: "relative" }}>

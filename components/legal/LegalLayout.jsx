@@ -72,7 +72,7 @@ export default function LegalLayout({ title, lastUpdated, children }) {
   return (
     <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", color: "#1A1D12", background: "#F4F2EA", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <LogoDefs mkId="mk" wmId="wm" />
-      <Nav lang={DEFAULT_LOCALE} route="/" ctaHref="/#cta" style={{ position: "sticky", top: 0, zIndex: 60 }} />
+      <Nav lang={DEFAULT_LOCALE} route="/" style={{ position: "sticky", top: 0, zIndex: 60 }} />
       <div style={{ flex: 1, maxWidth: 760, margin: "0 auto", padding: "64px 28px 88px", width: "100%" }}>
         <div style={{ marginBottom: 40 }}>
           <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#3E7A45" }}>DAKIO · LEGAL</div>

@@ -43,7 +43,7 @@ export default function BlogClient({ lang = "en", copy, posts, categories, allCa
     <div className="company-root" style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", color: "#1A1D12", background: "#F4F2EA", overflowX: "hidden" }}>
       <LogoDefs mkId="mk" wmId="wm" />
 
-      <Nav lang={lang} route={ROUTE} ctaHref={`${href(lang, "/")}#cta`} style={{ position: "sticky", top: 0, zIndex: 60 }} />
+      <Nav lang={lang} route={ROUTE} style={{ position: "sticky", top: 0, zIndex: 60 }} />
 
       {/* HERO */}
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "76px 28px 40px", textAlign: "center", position: "relative" }}>
