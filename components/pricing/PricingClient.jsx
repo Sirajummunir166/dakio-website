@@ -54,12 +54,17 @@ export default function PricingClient({ lang = "en", copy, mono }) {
 
       {/* PLANS */}
       <div id="plans" style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 28px 20px" }}>
-        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, alignItems: "stretch" }}>
+        {/* Column count follows the number of plans on sale. It was hardcoded to 3
+            when three tiers were hand-written here; now that the catalogue is live,
+            withdrawing a plan in the admin app would otherwise leave an empty
+            column on the page. Capped at 3 so a fourth plan wraps instead of
+            squeezing the cards. */}
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(c.plans.length, 3)}, 1fr)`, gap: 14, alignItems: "stretch", maxWidth: c.plans.length < 3 ? 800 : "none", margin: c.plans.length < 3 ? "0 auto" : undefined }}>
           {c.plans.map((p, i) => (
             <div key={p.n} style={{ padding: 28, borderRadius: 26, display: "flex", flexDirection: "column", ...(p.dark ? { background: "#0F120B", color: "#E9EFDC", boxShadow: "0 28px 60px rgba(15,18,11,0.3)" } : p.pop ? { background: "#FBFAF5", border: "2px solid #1A1D12" } : { background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)" }) }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <span style={{ fontSize: 17, fontWeight: 800, letterSpacing: "-0.3px", ...(p.dark ? { color: "#FBFBF4" } : {}) }}>{p.n}</span>
-                <span style={{ fontFamily: MONOFONT, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.08em", padding: "4px 9px", borderRadius: 99, ...(p.dark ? { background: "rgba(198,240,53,0.16)", color: "#C6F035" } : { background: "rgba(26,29,18,0.07)", color: "#3E7A45" }) }}>{mono.planLevels[i]}</span>
+                <span style={{ fontFamily: MONOFONT, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.08em", padding: "4px 9px", borderRadius: 99, ...(p.dark ? { background: "rgba(198,240,53,0.16)", color: "#C6F035" } : { background: "rgba(26,29,18,0.07)", color: "#3E7A45" }) }}>{p.level || mono.planLevels[i]}</span>
               </div>
               <div style={{ fontSize: 12.5, marginTop: 5, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.audience}</div>
               <div style={{ marginTop: 18, display: "flex", alignItems: "baseline", gap: 6 }}>
