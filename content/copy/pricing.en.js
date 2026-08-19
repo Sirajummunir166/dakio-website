@@ -18,9 +18,12 @@ export const MONO = {
 
 const pricing = {
   meta: {
-    title: "Dakio Pricing — Plans in Taka, AI CEO Included | Free to Start",
+    // The metadata is NOT fetched — generateMetadata runs off this copy, so a
+    // free-tier claim here would keep appearing in search results long after the
+    // tier was withdrawn. It says trial, because that is what is on offer.
+    title: "Dakio Pricing — Plans in Taka, AI CEO Included | 14-Day Free Trial",
     description:
-      "Free forever to start. Growth ৳1,490/mo, Business ৳3,990/mo — every plan includes Nova. Honest task metering, no hidden fees, courier rates passed through.",
+      "Start with a 14-day free trial, no card. Growth ৳1,490/mo, Business ৳3,990/mo — every plan includes Nova. Honest task metering, no hidden fees, courier rates passed through.",
   },
 
   hero: {
@@ -34,18 +37,15 @@ const pricing = {
     annual: "Annual — 2 months free",
   },
 
+  // FALLBACK ONLY — the live cards come from lib/plans.js#getPricingCopy. The
+  // Starter tier is gone from here because it is no longer on sale; existing free
+  // stores keep it, but nobody new can be sent to it.
   plans: [
-    {
-      n: "Starter", audience: "Get online, meet Nova",
-      prMo: "Free", prYr: "Free", sub: "forever", noteMo: "no card needed", noteYr: "no card needed",
-      cta: "Start free", dark: false, pop: false,
-      feats: ["Store + Store Studio & theme gallery", "Orders, couriers & COD · bKash · Nagad", "Nova Advisor — 50 tasks/mo", "Morning brief, read-only", "Up to 30 products"],
-    },
     {
       n: "Growth", audience: "The default for running shops",
       prMo: "৳1,490", prYr: "৳1,242", sub: "/month", noteMo: "billed monthly", noteYr: "billed ৳14,900/year",
       cta: "Choose Growth", dark: false, pop: true,
-      feats: ["Everything in Starter, unlimited products", "Nova Operator — 750 tasks/mo", "Grow Suite + Supplier Network", "Ads Gallery — static exports", "Decision desk, receipts & undo"],
+      feats: ["Unlimited products, no daily order cap", "Nova Operator — 750 tasks/mo", "Grow Suite + Supplier Network", "Ads Gallery — static exports", "Decision desk, receipts & undo"],
     },
     {
       n: "Business", audience: "The full CEO seat",
@@ -57,7 +57,7 @@ const pricing = {
 
   plansNote: (
     <>
-      Every new store gets <b style={{ color: "#1A1D12" }}>14 days of Business, free</b> — meet the full CEO before you choose. Courier deliveries billed per shipment on all plans.
+      Every package starts with a <b style={{ color: "#1A1D12" }}>14-day free trial</b> — no card needed. Courier deliveries billed per shipment on all plans.
     </>
   ),
 

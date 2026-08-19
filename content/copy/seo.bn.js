@@ -12,7 +12,6 @@ const seo = {
     "বাংলাদেশের জন্য তৈরি অল-ইন-ওয়ান ই-কমার্স প্ল্যাটফর্ম। স্টোরফ্রন্ট, কুরিয়ার, bKash, Nagad ও COD পেমেন্ট থেকে মার্কেটিং ও কাস্টমার সাপোর্ট—সব সামলায় AI CEO Nova; প্রতিটি কাজের প্রমাণ থাকে এবং সম্ভব হলে ফিরিয়ে নেওয়া যায়।",
 
   offers: [
-    { name: "Starter", price: "0", priceCurrency: "BDT", description: "চিরকাল ফ্রি—স্টোর, অর্ডার, কুরিয়ার ও Nova Advisor; মাসে 50টি কাজ।" },
     { name: "Growth", price: "1490", priceCurrency: "BDT", description: "৳1,490/মাস—Nova Operator, মাসে 750টি কাজ, Grow Suite ও Supplier Network।" },
     { name: "Business", price: "3990", priceCurrency: "BDT", description: "৳3,990/মাস—Nova L4 Acting CEO, মাসে 2,500টি কাজ, ভয়েস মিনিট ও Playbook।" },
   ],

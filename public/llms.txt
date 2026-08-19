@@ -1,6 +1,6 @@
 # Dakio
 
-> Dakio is the commerce OS for Bangladesh — an all-in-one e-commerce platform (storefront, couriers, bKash, Nagad, cash on delivery) where every store appoints Nova, an AI Acting CEO, on day one. Nova plans, executes and reports 24/7 inside founder-set guardrails; every action carries a receipt and can be undone. Built by Digidhaka Communication Limited (Dhaka, Bangladesh). Pricing in taka: Starter is free forever (Nova Advisor, 50 tasks/mo), Growth is ৳1,490/month (Nova Operator, 750 tasks/mo, Grow Suite, Supplier Network), Business is ৳3,990/month (Nova L4 Acting CEO, 2,500 tasks/mo, voice calls, seasonal playbooks). Every plan includes Nova; courier deliveries are billed per shipment at cost.
+> Dakio is the commerce OS for Bangladesh — an all-in-one e-commerce platform (storefront, couriers, bKash, Nagad, cash on delivery) where every store appoints Nova, an AI Acting CEO, on day one. Nova plans, executes and reports 24/7 inside founder-set guardrails; every action carries a receipt and can be undone. Built by Digidhaka Communication Limited (Dhaka, Bangladesh). Pricing in taka: every package starts with a 14-day free trial (no card); Growth is ৳1,490/month (Nova Operator, 750 tasks/mo, Grow Suite, Supplier Network), Business is ৳3,990/month (Nova L4 Acting CEO, 2,500 tasks/mo, voice calls, seasonal playbooks). Every plan includes Nova; courier deliveries are billed per shipment at cost.
 
 ## Pages
 
