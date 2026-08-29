@@ -50,7 +50,7 @@ const home = {
   meta: {
     title: "Dakio — Appoint an AI CEO to Your Online Store | Bangladesh",
     description:
-      "Store, couriers, bKash, Nagad & COD — plus Nova, an AI CEO that runs marketing, support and ops 24/7 with a receipt for everything. Start free, no card.",
+      "Store, couriers, bKash, Nagad & COD — plus Nova, an AI CEO that runs marketing, support and ops 24/7 with a receipt for everything. Start a free trial, no card.",
   },
 
   hero: {
@@ -286,9 +286,12 @@ const home = {
   pricing: {
     h2: "Taka. Not dollars.",
     popular: "POPULAR",
+    // FALLBACK ONLY. The cards on the page come from the live catalogue via
+    // lib/plans.js#getHomePricing; these render only if the API is unreachable.
+    // There is no free tier here any more — it was withdrawn from sale, and a
+    // "Free / forever" card sent visitors to a signup that cannot deliver it.
     plans: [
-      { n: "Starter", pr: "Free", sub: "forever", d: "Store, orders, couriers and Nova at L0–L1 — watch it work before you trust it.", cta: "Start free", dark: false },
-      { n: "Growth", pr: "৳1,490", sub: "/month", d: "Unlimited products, supplier network, Grow Suite, Nova Operator — 750 tasks/mo.", cta: "Choose Growth", dark: true, pop: true },
+      { n: "Growth", pr: "৳1,490", sub: "/month", d: "Unlimited products, supplier network, Grow Suite, Nova Operator — 750 tasks/mo.", cta: "Start 14-day free trial", dark: true, pop: true },
       { n: "Business", pr: "৳3,990", sub: "/month", d: "Complete Nova access — 2,500 tasks, voice calls, playbooks, staff logins. Acting CEO autonomy unlocks as trust is earned.", cta: "Start 14-day free trial", dark: false },
     ],
     foot: "Every plan includes Nova. Autonomy is earned, not bought.",
@@ -301,7 +304,7 @@ const home = {
         Your store. Your CEO.<br />Today.
       </>
     ),
-    primary: "Open your store — free",
+    primary: "Start your free trial",
     secondary: "Then appoint Nova",
   },
 };

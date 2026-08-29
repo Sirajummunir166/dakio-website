@@ -14,8 +14,15 @@ import { href, languageAlternates } from "../../lib/i18n";
 import { type } from "../../lib/type";
 import homeEn, { MONO, MARQUEE } from "../../content/copy/home.en";
 import homeBn from "../../content/copy/home.bn";
+import { getHomePricing, getJsonLdOffers } from "../../lib/plans";
 
 const COPY = { en: homeEn, bn: homeBn };
+
+// The pricing strip and the JSON-LD offers read live prices from the API (see
+// lib/plans.js), so this page revalidates instead of being frozen at build time:
+// a founder changing a price in the admin app must not need a deploy for the
+// front page of the site to agree with the till.
+export const revalidate = 300;
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -72,13 +79,17 @@ export default async function Home({ params }) {
   const T = type(lang);
   const L = p => href(lang, p);
 
+  // Live catalogue for the pricing strip and the structured data. Both fall back
+  // to the committed copy if the API is unreachable — see lib/plans.js.
+  const [pricing, offers] = await Promise.all([getHomePricing(lang), getJsonLdOffers(lang)]);
+
   // The CEO Office is the hub, the rest ring it — sliced to the spoke count so a
   // copy edit can never index past RADIAL_SPOKES.
   const departments = c.org.depts.slice(0, RADIAL_SPOKES.length);
 
   return (
     <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", color: "#1A1D12", background: "#F4F2EA", overflowX: "hidden" }}>
-      <PageJsonLd route="/" lang={lang} />
+      <PageJsonLd route="/" lang={lang} offers={offers} />
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />
 
@@ -605,27 +616,29 @@ export default async function Home({ params }) {
       <div id="pricing" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 36 }} data-reveal>
           <div style={kicker}>{MONO.pricingKicker}</div>
-          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, ...T.h2 }}>{c.pricing.h2}</h2>
+          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, ...T.h2 }}>{pricing.h2}</h2>
         </div>
-        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
-          {c.pricing.plans.map(p => (
+        {/* Columns follow the plan count. Hardcoding 3 left a phantom third
+            column the day the free tier was withdrawn from sale. */}
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${pricing.plans.length}, 1fr)`, gap: 14, maxWidth: pricing.plans.length < 3 ? 800 : "none", margin: "0 auto" }} data-reveal>
+          {pricing.plans.map(p => (
             <div key={p.n} style={{ padding: 28, borderRadius: 26, display: "flex", flexDirection: "column", ...(p.dark ? { background: "#0F120B", color: "#E9EFDC", boxShadow: "0 24px 54px rgba(15,18,11,0.3)" } : { background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)" }) }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <span style={{ fontSize: 16, fontWeight: 800, letterSpacing: "-0.2px", ...(p.dark ? { color: "#FBFBF4" } : {}) }}>{p.n}</span>
-                {p.pop ? <span style={{ padding: "4px 10px", borderRadius: 99, background: "rgba(198,240,53,0.16)", color: "#C6F035", fontSize: 9, fontWeight: 700, letterSpacing: "0.06em" }}>{c.pricing.popular}</span> : null}
+                {p.pop ? <span style={{ padding: "4px 10px", borderRadius: 99, background: "rgba(198,240,53,0.16)", color: "#C6F035", fontSize: 9, fontWeight: 700, letterSpacing: "0.06em" }}>{pricing.popular}</span> : null}
               </div>
               <div style={{ marginTop: 14, display: "flex", alignItems: "baseline", gap: 5 }}>
                 <span style={{ fontSize: 38, fontWeight: 800, letterSpacing: "-1.4px", ...(p.dark ? { color: "#FBFBF4" } : {}) }}>{p.pr}</span>
                 <span style={{ fontSize: 13, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.sub}</span>
               </div>
               <div style={{ fontSize: 13, lineHeight: 1.6, marginTop: 10, flex: 1, color: p.dark ? "#A9AD98" : "#6B6D60", ...T.small }}>{p.d}</div>
-              <a href="#cta" style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
+              <a href={p.href || REGISTER_URL} style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
             </div>
           ))}
         </div>
         <div data-reveal style={{ textAlign: "center", marginTop: 14, fontSize: 12.5, color: "#6B6D60", ...T.small }}>
-          {c.pricing.foot}{" "}
-          <Link href={L("/pricing")} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>{c.pricing.footLink}</Link>
+          {pricing.foot}{" "}
+          <Link href={L("/pricing")} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>{pricing.footLink}</Link>
         </div>
       </div>
 

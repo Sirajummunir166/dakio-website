@@ -8,9 +8,9 @@ import Mark from "../../components/Mark";
 
 const pricing = {
   meta: {
-    title: "Dakio প্ল্যান ও দাম — টাকায়, AI CEO-সহ | ফ্রিতে শুরু",
+    title: "Dakio প্ল্যান ও দাম — টাকায়, AI CEO-সহ | 14 দিনের ফ্রি ট্রায়াল",
     description:
-      "Starter চিরকাল ফ্রি। Growth ৳1,490/মাস, Business ৳3,990/মাস—প্রতিটি প্ল্যানেই Nova আছে। পরিষ্কার টাস্ক লিমিট, কোনো লুকানো ফি নেই।",
+      "14 দিনের ফ্রি ট্রায়াল, কার্ড লাগবে না। Growth ৳1,490/মাস, Business ৳3,990/মাস—প্রতিটি প্ল্যানেই Nova আছে। পরিষ্কার টাস্ক লিমিট, কোনো লুকানো ফি নেই।",
   },
 
   hero: {
@@ -24,18 +24,13 @@ const pricing = {
     annual: "বার্ষিক — 2 মাস ফ্রি",
   },
 
+  // FALLBACK ONLY — see the note in pricing.en.js. No free tier on sale.
   plans: [
-    {
-      n: "Starter", audience: "অনলাইনে শুরু করুন, Nova-কে জানুন",
-      prMo: "ফ্রি", prYr: "ফ্রি", sub: "চিরকাল", noteMo: "কার্ড লাগে না", noteYr: "কার্ড লাগে না",
-      cta: "ফ্রিতে শুরু করুন", dark: false, pop: false,
-      feats: ["স্টোর, Store Studio ও থিম গ্যালারি", "অর্ডার, কুরিয়ার, COD, bKash ও Nagad", "Nova Advisor — মাসে 50টি কাজ", "সকালের রিপোর্ট — শুধু দেখার জন্য", "সর্বোচ্চ 30টি প্রোডাক্ট"],
-    },
     {
       n: "Growth", audience: "চলতি ব্যবসার সবচেয়ে জনপ্রিয় প্ল্যান",
       prMo: "৳1,490", prYr: "৳1,242", sub: "/মাস", noteMo: "মাসে মাসে বিল", noteYr: "বছরে ৳14,900 বিল",
       cta: "Growth নিন", dark: false, pop: true,
-      feats: ["Starter-এর সব সুবিধা ও আনলিমিটেড প্রোডাক্ট", "Nova Operator — মাসে 750টি কাজ", "Grow Suite ও Supplier Network", "Ads Gallery থেকে স্ট্যাটিক অ্যাড এক্সপোর্ট", "Decision Desk, কাজের প্রমাণ ও Undo"],
+      feats: ["আনলিমিটেড প্রোডাক্ট, দিনের অর্ডারে কোনো সীমা নেই", "Nova Operator — মাসে 750টি কাজ", "Grow Suite ও Supplier Network", "Ads Gallery থেকে স্ট্যাটিক অ্যাড এক্সপোর্ট", "Decision Desk, কাজের প্রমাণ ও Undo"],
     },
     {
       n: "Business", audience: "Nova-র সম্পূর্ণ CEO ক্ষমতা",
@@ -47,7 +42,7 @@ const pricing = {
 
   plansNote: (
     <>
-      প্রতিটি নতুন স্টোরে <b style={{ color: "#1A1D12" }}>14 দিনের Business প্ল্যান ফ্রি</b>—প্ল্যান বেছে নেওয়ার আগে Nova-র সম্পূর্ণ ক্ষমতা দেখে নিন। সব প্ল্যানেই কুরিয়ার খরচ প্রতি ডেলিভারি অনুযায়ী যোগ হবে।
+      প্রতিটি প্যাকেজে <b style={{ color: "#1A1D12" }}>14 দিনের ফ্রি ট্রায়াল</b>—কার্ড লাগবে না। সব প্ল্যানেই কুরিয়ার খরচ প্রতি ডেলিভারি অনুযায়ী যোগ হবে।
     </>
   ),
 
