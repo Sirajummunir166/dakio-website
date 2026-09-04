@@ -291,8 +291,8 @@ const home = {
     // There is no free tier here any more — it was withdrawn from sale, and a
     // "Free / forever" card sent visitors to a signup that cannot deliver it.
     plans: [
-      { n: "Growth", pr: "৳1,490", sub: "/month", d: "Unlimited products, supplier network, Grow Suite, Nova Operator — 750 tasks/mo.", cta: "Start 14-day free trial", dark: true, pop: true },
-      { n: "Business", pr: "৳3,990", sub: "/month", d: "Complete Nova access — 2,500 tasks, voice calls, playbooks, staff logins. Acting CEO autonomy unlocks as trust is earned.", cta: "Start 14-day free trial", dark: false },
+      { n: "Growth", pr: "৳1,490", sub: "/month", d: "Unlimited products, supplier network, Grow Suite, Nova Operator — 750 Nova credits/mo.", cta: "Start 14-day free trial", dark: true, pop: true },
+      { n: "Business", pr: "৳3,990", sub: "/month", d: "Complete Nova access — 2,500 Nova credits, voice calls, playbooks, staff logins. Acting CEO autonomy unlocks as trust is earned.", cta: "Start 14-day free trial", dark: false },
     ],
     foot: "Every plan includes Nova. Autonomy is earned, not bought.",
     footLink: "Full pricing →",

@@ -88,7 +88,7 @@ export default function PricingClient({ lang = "en", copy, mono }) {
         <div style={{ textAlign: "center", marginTop: 18, fontSize: 13, color: "#6B6D60", ...T.small }}>{c.plansNote}</div>
       </div>
 
-      {/* WHAT'S A NOVA TASK */}
+      {/* WHAT'S A NOVA CREDIT */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "88px 28px 20px" }}>
         <div className="m-grid m-gap" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }} data-reveal>
           <div>

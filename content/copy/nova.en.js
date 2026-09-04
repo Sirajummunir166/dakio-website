@@ -74,7 +74,7 @@ const nova = {
     },
     promotion: (
       <>
-        Trust review complete — <b style={{ color: "#E9EFDC" }}>50 tasks, 100% approved.</b> Nova is ready for L4 Acting CEO. Your call.
+        Trust review complete — <b style={{ color: "#E9EFDC" }}>50 actions, 100% approved.</b> Nova is ready for L4 Acting CEO. Your call.
       </>
     ),
   },

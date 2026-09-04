@@ -253,8 +253,8 @@ const home = {
     popular: "জনপ্রিয়",
     // FALLBACK ONLY — see the note in home.en.js. No free tier.
     plans: [
-      { n: "Growth", pr: "৳1,490", sub: "/মাস", d: "আনলিমিটেড প্রোডাক্ট, Supplier Network, Grow Suite এবং Nova Operator—মাসে 750টি কাজ।", cta: "14 দিনের ফ্রি ট্রায়াল", dark: true, pop: true },
-      { n: "Business", pr: "৳3,990", sub: "/মাস", d: "Nova-র সম্পূর্ণ সুবিধা—2,500টি কাজ, ভয়েস কল, Playbook ও স্টাফ লগইন। আস্থা বাড়ার সঙ্গে সঙ্গে Acting CEO হিসেবে Nova আরও স্বাধীনভাবে কাজ করবে।", cta: "14 দিনের ফ্রি ট্রায়াল", dark: false },
+      { n: "Growth", pr: "৳1,490", sub: "/মাস", d: "আনলিমিটেড প্রোডাক্ট, Supplier Network, Grow Suite এবং Nova Operator—মাসে 750 Nova ক্রেডিট।", cta: "14 দিনের ফ্রি ট্রায়াল", dark: true, pop: true },
+      { n: "Business", pr: "৳3,990", sub: "/মাস", d: "Nova-র সম্পূর্ণ সুবিধা—2,500 Nova ক্রেডিট, ভয়েস কল, Playbook ও স্টাফ লগইন। আস্থা বাড়ার সঙ্গে সঙ্গে Acting CEO হিসেবে Nova আরও স্বাধীনভাবে কাজ করবে।", cta: "14 দিনের ফ্রি ট্রায়াল", dark: false },
     ],
     foot: "প্রতিটি প্ল্যানেই Nova আছে। কতটা স্বাধীনভাবে কাজ করবে, তা নির্ধারণ করবে আপনার আস্থা।",
     footLink: "সব প্ল্যান দেখুন →",

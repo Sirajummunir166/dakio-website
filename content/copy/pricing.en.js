@@ -6,10 +6,10 @@ export const MONO = {
   heroBadge: "৳ BANGLADESH PRICING · GOING GLOBAL SOON",
   planLevels: ["NOVA L0–L1 ADVISOR", "NOVA L3 OPERATOR", "NOVA L4 ACTING CEO"],
   meterKicker: "THE METER, IN PLAIN WORDS",
-  perTask: "= 1 TASK",
+  perTask: "= 1 CREDIT",
   voiceMinutes: "= NOVA MINUTES",
-  runOut: "WHEN TASKS RUN OUT",
-  draftMode: "DRAFT MODE · TASKS USED 750/750",
+  runOut: "WHEN CREDITS RUN OUT",
+  draftMode: "DRAFT MODE · CREDITS USED 750/750",
   anchorKicker: "THE REAL COMPARISON",
   anchorFoot: "PREMIUM WORK · REASONABLE TAKA · WE’RE NOT THE CHEAPEST, WE’RE THE BEST HIRE",
   switchKicker: "COMING FROM SHOPIFY?",
@@ -23,7 +23,7 @@ const pricing = {
     // tier was withdrawn. It says trial, because that is what is on offer.
     title: "Dakio Pricing — Plans in Taka, AI CEO Included | 14-Day Free Trial",
     description:
-      "Start with a 14-day free trial, no card. Growth ৳1,490/mo, Business ৳3,990/mo — every plan includes Nova. Honest task metering, no hidden fees, courier rates passed through.",
+      "Start with a 14-day free trial, no card. Growth ৳1,490/mo, Business ৳3,990/mo — every plan includes Nova. Honest credit metering, no hidden fees, courier rates passed through.",
   },
 
   hero: {
@@ -45,13 +45,13 @@ const pricing = {
       n: "Growth", audience: "The default for running shops",
       prMo: "৳1,490", prYr: "৳1,242", sub: "/month", noteMo: "billed monthly", noteYr: "billed ৳14,900/year",
       cta: "Choose Growth", dark: false, pop: true,
-      feats: ["Unlimited products, no daily order cap", "Nova Operator — 750 tasks/mo", "Grow Suite + Supplier Network", "Ads Gallery — static exports", "Decision desk, receipts & undo"],
+      feats: ["Unlimited products, no daily order cap", "Nova Operator — 750 Nova credits/mo", "Grow Suite + Supplier Network", "Ads Gallery — static exports", "Decision desk, receipts & undo"],
     },
     {
       n: "Business", audience: "The full CEO seat",
       prMo: "৳3,990", prYr: "৳3,325", sub: "/month", noteMo: "billed monthly", noteYr: "billed ৳39,900/year",
       cta: "Start 14-day free trial", dark: true, pop: false,
-      feats: ["Everything in Growth", "Acting CEO — 2,500 tasks/mo", "60 Nova voice minutes — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)", "Motion ad renders + staff logins", "Concierge migration included"],
+      feats: ["Everything in Growth", "Acting CEO — 2,500 Nova credits/mo", "60 Nova voice minutes — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)", "Motion ad renders + staff logins", "Concierge migration included"],
     },
   ],
 
@@ -62,14 +62,14 @@ const pricing = {
   ),
 
   meter: {
-    h2: "What’s a Nova task?",
-    p: "One finished piece of work — not a token, not an API call. The Hours-Saved report shows you every task and what it was worth.",
+    h2: "What’s a Nova credit?",
+    p: "One credit is one finished piece of work — not a token, not an API call. The Hours-Saved report shows you every one and what it was worth.",
     chips: ["Customer reply answered", "Listing written from a photo", "Ad creative generated", "Abandoned cart recovered", "Reorder drafted"],
     voiceChip: "Voice call",
     draft: {
       h3: "Nova never just stops. It shifts to Draft mode.",
       quote: "“I’ve queued 12 replies and 2 campaigns as drafts — nothing executes until you top up or the month resets. Nothing is lost.”",
-      topUp: "Top up — ৳250 / 250 tasks",
+      topUp: "Top up — ৳250 / 250 credits",
       wait: "Wait for reset",
       note: "Prepared work executes the moment you top up. Honest billing is the same product as honest AI.",
     },
@@ -108,7 +108,7 @@ const pricing = {
     h2: "Fair questions.",
     items: [
       { q: "Why not unlimited AI?", a: "Nova does real work on real compute — unlimited would mean either fake AI or hidden throttling. We'd rather sell you an honest meter with receipts than a soft lie." },
-      { q: "What happens when my tasks run out?", a: "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 250 tasks) or the month resets. Nothing is lost, nothing is silent." },
+      { q: "What happens when my credits run out?", a: "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 250 credits) or the month resets. Nothing is lost, nothing is silent." },
       { q: "What do couriers cost?", a: "Per-delivery, passed through at the courier's rate (Steadfast, Pathao, RedX) on every plan — we don't mark up shipping." },
       { q: "I'm not in Bangladesh — can I use Dakio?", a: "Soon. We built for Bangladesh first — ৳, bKash, COD, Bangla — and global markets open next with local pricing, not conversions. Join the waitlist from the signup page." },
     ],

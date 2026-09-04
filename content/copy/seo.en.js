@@ -14,8 +14,8 @@ const seo = {
   // (lib/plans.js#getJsonLdOffers). The withdrawn Starter tier is gone: a
   // schema.org Offer at price 0 is a rich-result promise Google keeps showing.
   offers: [
-    { name: "Growth", price: "1490", priceCurrency: "BDT", description: "৳1,490/month — Nova Operator, 750 tasks/mo, Grow Suite, Supplier Network." },
-    { name: "Business", price: "3990", priceCurrency: "BDT", description: "৳3,990/month — Nova L4 Acting CEO, 2,500 tasks/mo, voice minutes, playbooks." },
+    { name: "Growth", price: "1490", priceCurrency: "BDT", description: "৳1,490/month — Nova Operator, 750 Nova credits/mo, Grow Suite, Supplier Network." },
+    { name: "Business", price: "3990", priceCurrency: "BDT", description: "৳3,990/month — Nova L4 Acting CEO, 2,500 Nova credits/mo, voice minutes, playbooks." },
   ],
 
   pageNames: {
@@ -35,7 +35,7 @@ const seo = {
 
   pricingFaq: [
     ["Why not unlimited AI?", "Nova does real work on real compute — unlimited would mean either fake AI or hidden throttling. We'd rather sell you an honest meter with receipts than a soft lie."],
-    ["What happens when my tasks run out?", "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 250 tasks) or the month resets. Nothing is lost, nothing is silent."],
+    ["What happens when my credits run out?", "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 250 credits) or the month resets. Nothing is lost, nothing is silent."],
     ["What do couriers cost?", "Per-delivery, passed through at the courier's rate (Steadfast, Pathao, RedX) on every plan — we don't mark up shipping."],
     ["I'm not in Bangladesh — can I use Dakio?", "Soon. We built for Bangladesh first — ৳, bKash, COD, Bangla — and global markets open next with local pricing, not conversions. Join the waitlist from the signup page."],
   ],
