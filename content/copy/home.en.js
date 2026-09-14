@@ -33,8 +33,9 @@ export const MONO = {
   roomsAdsClick: "1 CLICK",
   roomsAdsCheck: "3 SIZES + MOTION · EDITABLE · ON-BRAND BY DEFAULT",
   trustKicker: "WHY FOUNDERS TRUST AN AI CEO",
-  trustReceiptNo: "RECEIPT · #A-4471",
-  trustNoTouch: ["SAREE PRICING", "REFUNDS"],
+  trustSpend: "৳5,000 / DAY",
+  trustDiscount: "MAX 15%",
+  trustNoTouch: "REFUNDS · CONTRACTS",
   bdKicker: "HOME GROUND",
   bdSeason: "SEASON-AWARE PLANNING",
   bdSeasons: ["EID", "PUJA", "BOISHAKH", "11.11", "MONSOON"],
@@ -228,34 +229,21 @@ const home = {
 
   trust: {
     h2: "You hold the guardrails.",
-    receipt: {
-      title: "Every action has a receipt",
-      action: "Paused “Boishakh Reels” campaign",
-      evidence: "CPA rose 43% over 3 days · evidence: 72h spend window",
-      before: "BEFORE ৳1,200/day",
-      after: "AFTER PAUSED",
-      undo: "Undo · 24h window",
-    },
-    limits: {
-      title: "You set the limits",
-      rows: [
-        { l: "Daily spend cap", v: "৳5,000" },
-        { l: "Max discount", v: "15%" },
-      ],
-      noTouch: "No-touch list",
-      note: "Refunds, bulk changes and contracts stay founder-only. Always.",
-    },
-    ladder: {
-      title: "Authority is earned",
-      levels: [
-        { l: "L0", n: "Observe", note: "REPORTS ONLY", on: false },
-        { l: "L1", n: "Suggest", note: "ASKS FIRST", on: false },
-        { l: "L2", n: "Draft", note: "PREPARES, YOU APPROVE", on: false },
-        { l: "L3", n: "Operator", note: "DAY-ONE DEFAULT", on: true },
-        { l: "L4", n: "Acting CEO", note: "EARNED", on: false, lime: true },
-      ],
-      note: "Trust is computed from the ledger — approvals move Nova up, undos move it down.",
-    },
+    lede: "Nova runs the day inside a boundary you draw. Every move is logged, every limit is yours, and authority is earned one approval at a time.",
+    points: [
+      { k: "01", t: "Every action has a receipt.", d: "What Nova did, the evidence it acted on, and an undo that stays open for 24 hours." },
+      { k: "02", t: "You set the limits.", d: "A daily spend cap, a max discount and a no-touch list. Refunds, bulk changes and contracts stay founder-only. Always." },
+      { k: "03", t: "Authority is earned.", d: "Nova starts as an Operator. Acting CEO is earned from the ledger — approvals move it up, undos move it down." },
+    ],
+    cta: "See how Nova earns it",
+    // the dial's labels
+    levels: [
+      { l: "L0", n: "Observe" },
+      { l: "L1", n: "Suggest" },
+      { l: "L2", n: "Draft" },
+      { l: "L3", n: "Operator" },
+      { l: "L4", n: "Acting CEO" },
+    ],
   },
 
   bd: {

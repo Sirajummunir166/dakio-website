@@ -5,6 +5,7 @@
 import Link from "next/link";
 import { Fragment } from "react";
 import HomeTop from "../../components/home/HomeTop";
+import GuardrailDial from "../../components/home/GuardrailDial";
 import { Footer } from "../../components/Chrome";
 import Reveal from "../../components/Reveal";
 import LogoDefs from "../../components/Logo";
@@ -305,60 +306,30 @@ export default async function Home({ params }) {
       </div>
 
       {/* ================= TRUST ================= */}
+      {/* One argument, one instrument: text on the left, the guardrail dial on
+          the right — deliberately not another row of three cards. */}
       <div id="trust" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
-        <div style={{ textAlign: "center", marginBottom: 40 }} data-reveal>
-          <div style={kicker}>{MONO.trustKicker}</div>
-          <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 640, ...T.h2 }}>{c.trust.h2}</h2>
-        </div>
-        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }} data-reveal>
-          <div style={{ borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 26 }}>
-            <div style={{ fontSize: 16, fontWeight: 800, letterSpacing: "-0.3px", ...T.h3 }}>{c.trust.receipt.title}</div>
-            <div style={{ marginTop: 16, borderRadius: 14, background: "#ffffff", border: "1px solid rgba(26,29,18,0.09)", padding: 16 }}>
-              <div style={{ fontFamily: MONOFONT, fontSize: 8, letterSpacing: "0.12em", color: "#6B6D60" }}>{MONO.trustReceiptNo}</div>
-              <div style={{ fontSize: 13, fontWeight: 700, marginTop: 7, ...T.chip }}>{c.trust.receipt.action}</div>
-              <div style={{ fontSize: 11.5, color: "#6B6D60", marginTop: 5, lineHeight: 1.55, ...T.small }}>{c.trust.receipt.evidence}</div>
-              <div style={{ display: "flex", gap: 6, marginTop: 12 }}>
-                <span style={{ padding: "5px 11px", borderRadius: 99, background: "#EEEBDF", fontSize: 10, fontWeight: 700, color: "#6B6D60" }}>{c.trust.receipt.before}</span>
-                <span style={{ padding: "5px 11px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 10, fontWeight: 700 }}>{c.trust.receipt.after}</span>
-              </div>
-              <span className="hv-ink-lime" style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 12, padding: "7px 14px", borderRadius: 99, border: "1.5px solid #1A1D12", fontSize: 11, fontWeight: 700, cursor: "pointer", ...T.chip }}>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7v6h6M3 13a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 9" /></svg>{c.trust.receipt.undo}
-              </span>
-            </div>
-          </div>
-          <div style={{ borderRadius: 26, background: "#0F120B", color: "#E9EFDC", padding: 26 }}>
-            <div style={{ fontSize: 16, fontWeight: 800, letterSpacing: "-0.3px", color: "#FBFBF4", ...T.h3 }}>{c.trust.limits.title}</div>
-            <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 9 }}>
-              {c.trust.limits.rows.map(r => (
-                <div key={r.l} style={{ padding: "13px 15px", borderRadius: 13, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span style={{ fontSize: 12, color: "#A9AD98", ...T.chip }}>{r.l}</span>
-                  <span style={{ fontSize: 13, fontWeight: 800, color: "#C6F035" }}>{r.v}</span>
-                </div>
-              ))}
-              <div style={{ padding: "13px 15px", borderRadius: 13, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                <div style={{ fontSize: 12, color: "#A9AD98", ...T.chip }}>{c.trust.limits.noTouch}</div>
-                <div style={{ display: "flex", gap: 6, marginTop: 8 }}>
-                  {MONO.trustNoTouch.map(t => (
-                    <span key={t} style={{ padding: "4px 10px", borderRadius: 99, border: "1px dashed rgba(198,242,62,0.5)", fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.08em", color: "#C6F035" }}>{t}</span>
-                  ))}
-                </div>
-              </div>
-              <div style={{ fontSize: 11, color: "#878B76", lineHeight: 1.55, marginTop: 4, ...T.small }}>{c.trust.limits.note}</div>
-            </div>
-          </div>
-          <div style={{ borderRadius: 26, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 26 }}>
-            <div style={{ fontSize: 16, fontWeight: 800, letterSpacing: "-0.3px", ...T.h3 }}>{c.trust.ladder.title}</div>
-            <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 7 }}>
-              {c.trust.ladder.levels.map(lv => (
-                <div key={lv.l} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 12, ...(lv.on ? { background: "#1A1D12", color: "#F0EFE6" } : lv.lime ? { background: "rgba(198,240,53,0.35)", border: "1px dashed rgba(26,29,18,0.3)" } : { background: "#ffffff", border: "1px solid rgba(26,29,18,0.08)" }) }}>
-                  <span style={{ fontFamily: "IBM Plex Mono,monospace", fontSize: 9, fontWeight: 600, letterSpacing: "0.06em", padding: "3px 8px", borderRadius: 6, ...(lv.on ? { background: "#C6F035", color: "#0F120B" } : { background: "rgba(26,29,18,0.08)", color: "#1A1D12" }) }}>{lv.l}</span>
-                  <span style={{ fontSize: 12.5, fontWeight: 700, ...T.chip }}>{lv.n}</span>
-                  <span style={{ marginLeft: "auto", fontFamily: MONOFONT, fontSize: 8, letterSpacing: "0.08em", color: "#6B6D60" }}>{lv.note}</span>
+        <div data-reveal className="m-grid m-pad-band" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.08fr)", gap: 48, alignItems: "center", borderRadius: 32, padding: "56px 60px", background: "linear-gradient(180deg, #F7F5EC 0%, #EFECDF 100%)", border: "1px solid rgba(26,29,18,0.08)", backgroundImage: "radial-gradient(rgba(26,29,18,0.09) 1px, transparent 1px), linear-gradient(180deg, #F7F5EC 0%, #EFECDF 100%)", backgroundSize: "22px 22px, 100% 100%" }}>
+          <div>
+            <div style={kicker}>{MONO.trustKicker}</div>
+            <h2 className="m-h2" style={{ margin: "14px 0 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, ...T.h2 }}>{c.trust.h2}</h2>
+            <p style={{ margin: "18px 0 0", maxWidth: 440, fontSize: 16, lineHeight: 1.6, color: "#4C4F42", ...T.lead }}>{c.trust.lede}</p>
+            <div style={{ marginTop: 32, display: "flex", flexDirection: "column" }}>
+              {c.trust.points.map(pt => (
+                <div key={pt.k} style={{ display: "grid", gridTemplateColumns: "44px minmax(0, 1fr)", gap: 6, padding: "18px 0", borderTop: "1px solid rgba(26,29,18,0.12)" }}>
+                  <span style={{ fontFamily: MONOFONT, fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", color: "#9A7A22", paddingTop: 4 }}>{pt.k}</span>
+                  <div>
+                    <div style={{ fontSize: 17, fontWeight: 800, letterSpacing: "-0.3px", ...T.h3 }}>{pt.t}</div>
+                    <div style={{ marginTop: 5, fontSize: 13.5, lineHeight: 1.6, color: "#6B6D60", maxWidth: 420, ...T.small }}>{pt.d}</div>
+                  </div>
                 </div>
               ))}
             </div>
-            <div style={{ fontSize: 11, color: "#6B6D60", lineHeight: 1.55, marginTop: 12, ...T.small }}>{c.trust.ladder.note}</div>
+            <Link href={href(lang, "/nova")} className="hv-ink" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 22, fontSize: 14, fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 3, ...T.label }}>
+              {c.trust.cta} <Arrow size={14} />
+            </Link>
           </div>
+          <GuardrailDial levels={c.trust.levels} spend={MONO.trustSpend} discount={MONO.trustDiscount} noTouch={MONO.trustNoTouch} style={{ maxWidth: 600, margin: "0 auto" }} />
         </div>
       </div>
 
