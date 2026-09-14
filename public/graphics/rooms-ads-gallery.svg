@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Ads Gallery: one product, three ad sizes (1:1, 4:5, 9:16) -->
+  <rect x="80" y="112" width="88" height="88" rx="16" fill="#E6EFC9"/>
+  <circle cx="106" cy="138" r="8" fill="#C6F035" stroke-width="2.5"/>
+  <path d="M92 188l26-28 16 14 12-10 12 24z" fill="#D3E4A0" stroke-width="2.5"/>
+  <rect x="150" y="80" width="96" height="120" rx="16" fill="#FBFCF5"/>
+  <rect x="164" y="94" width="68" height="58" rx="10" fill="#D3E4A0" stroke-width="2.5"/>
+  <path d="M180 138c8-18 26-18 36-30" stroke-width="2.5"/>
+  <rect x="164" y="164" width="52" height="8" rx="4" fill="#3E7A45" stroke="none" opacity=".7"/>
+  <rect x="164" y="180" width="32" height="8" rx="4" fill="#C6F035" stroke="none"/>
+  <rect x="228" y="44" width="92" height="156" rx="18" fill="#C6F035"/>
+  <circle cx="274" cy="122" r="22" fill="#FBFCF5"/>
+  <path d="M268 111l17 11-17 11z" fill="#3E7A45" stroke-width="2"/>
+  <rect x="244" y="176" width="40" height="7" rx="3.5" fill="#3E7A45" stroke="none" opacity=".55"/>
+  <rect x="244" y="58" width="22" height="6" rx="3" fill="#3E7A45" stroke="none" opacity=".4"/>
+  <path d="M340 70c2 9 5 12 14 14-9 2-12 5-14 14-2-9-5-12-14-14 9-2 12-5 14-14z" fill="#FBFCF5" stroke-width="2.5"/>
+</svg>

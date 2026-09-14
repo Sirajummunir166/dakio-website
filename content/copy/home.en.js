@@ -33,8 +33,9 @@ export const MONO = {
   roomsAdsClick: "1 CLICK",
   roomsAdsCheck: "3 SIZES + MOTION · EDITABLE · ON-BRAND BY DEFAULT",
   trustKicker: "WHY FOUNDERS TRUST AN AI CEO",
-  trustReceiptNo: "RECEIPT · #A-4471",
-  trustNoTouch: ["SAREE PRICING", "REFUNDS"],
+  trustSpend: "৳5,000 / DAY",
+  trustDiscount: "MAX 15%",
+  trustNoTouch: "REFUNDS · CONTRACTS",
   bdKicker: "HOME GROUND",
   bdSeason: "SEASON-AWARE PLANNING",
   bdSeasons: ["EID", "PUJA", "BOISHAKH", "11.11", "MONSOON"],
@@ -111,6 +112,7 @@ const home = {
       b: { n: "Jamdani stole — teal", p: "৳1,850" },
       enough: "photo + price is enough",
       supplier: "no stock? pick from suppliers — Dakio ships",
+      note: "A photo and a price is enough. No stock? Pick from suppliers — Dakio ships.",
     },
     live: {
       domain: "shahrqee.dakio.shop",
@@ -227,34 +229,21 @@ const home = {
 
   trust: {
     h2: "You hold the guardrails.",
-    receipt: {
-      title: "Every action has a receipt",
-      action: "Paused “Boishakh Reels” campaign",
-      evidence: "CPA rose 43% over 3 days · evidence: 72h spend window",
-      before: "BEFORE ৳1,200/day",
-      after: "AFTER PAUSED",
-      undo: "Undo · 24h window",
-    },
-    limits: {
-      title: "You set the limits",
-      rows: [
-        { l: "Daily spend cap", v: "৳5,000" },
-        { l: "Max discount", v: "15%" },
-      ],
-      noTouch: "No-touch list",
-      note: "Refunds, bulk changes and contracts stay founder-only. Always.",
-    },
-    ladder: {
-      title: "Authority is earned",
-      levels: [
-        { l: "L0", n: "Observe", note: "REPORTS ONLY", on: false },
-        { l: "L1", n: "Suggest", note: "ASKS FIRST", on: false },
-        { l: "L2", n: "Draft", note: "PREPARES, YOU APPROVE", on: false },
-        { l: "L3", n: "Operator", note: "DAY-ONE DEFAULT", on: true },
-        { l: "L4", n: "Acting CEO", note: "EARNED", on: false, lime: true },
-      ],
-      note: "Trust is computed from the ledger — approvals move Nova up, undos move it down.",
-    },
+    lede: "Nova runs the day inside a boundary you draw. Every move is logged, every limit is yours, and authority is earned one approval at a time.",
+    points: [
+      { k: "01", t: "Every action has a receipt.", d: "What Nova did, the evidence it acted on, and an undo that stays open for 24 hours." },
+      { k: "02", t: "You set the limits.", d: "A daily spend cap, a max discount and a no-touch list. Refunds, bulk changes and contracts stay founder-only. Always." },
+      { k: "03", t: "Authority is earned.", d: "Nova starts as an Operator. Acting CEO is earned from the ledger — approvals move it up, undos move it down." },
+    ],
+    cta: "See how Nova earns it",
+    // the dial's labels
+    levels: [
+      { l: "L0", n: "Observe" },
+      { l: "L1", n: "Suggest" },
+      { l: "L2", n: "Draft" },
+      { l: "L3", n: "Operator" },
+      { l: "L4", n: "Acting CEO" },
+    ],
   },
 
   bd: {
@@ -284,18 +273,19 @@ const home = {
   },
 
   pricing: {
-    h2: "Taka. Not dollars.",
+    h2: "Less than one employee.",
+    // sub + foot come from the pricing page copy (lib/plans.js) so the two pages agree.
     popular: "POPULAR",
-    // FALLBACK ONLY. The cards on the page come from the live catalogue via
-    // lib/plans.js#getHomePricing; these render only if the API is unreachable.
-    // There is no free tier here any more — it was withdrawn from sale, and a
-    // "Free / forever" card sent visitors to a signup that cannot deliver it.
+    // FALLBACK ONLY. The cards come from the live catalogue via
+    // lib/plans.js#getHomePricing — these mirror the pricing page's committed
+    // cards and render only if the API is unreachable. No free tier.
     plans: [
-      { n: "Growth", pr: "৳1,490", sub: "/month", d: "Unlimited products, supplier network, Grow Suite, Nova Operator — 750 Nova credits/mo.", cta: "Start 14-day free trial", dark: true, pop: true },
-      { n: "Business", pr: "৳3,990", sub: "/month", d: "Complete Nova access — 2,500 Nova credits, voice calls, playbooks, staff logins. Acting CEO autonomy unlocks as trust is earned.", cta: "Start 14-day free trial", dark: false },
+      { n: "Growth", audience: "The default for running shops", pr: "৳1,490", sub: "/month", yr: "or ৳1,242/month billed annually", level: "NOVA L3 OPERATOR", cta: "Choose Growth", dark: false, pop: true,
+        feats: ["Unlimited products, no daily order cap", "Nova Operator — 750 Nova credits/mo", "Grow Suite + Supplier Network", "Decision desk, receipts & undo"] },
+      { n: "Business", audience: "The full CEO seat", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA L4 ACTING CEO", cta: "Start 14-day free trial", dark: true, pop: false,
+        feats: ["Everything in Growth", "Acting CEO — 2,500 Nova credits/mo", "60 Nova voice minutes — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)"] },
     ],
-    foot: "Every plan includes Nova. Autonomy is earned, not bought.",
-    footLink: "Full pricing →",
+    footLink: "See full pricing →",
   },
 
   cta: {

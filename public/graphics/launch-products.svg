@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Step 2: add products — folded saree + stole, a price tag, the add button -->
+  <rect x="92" y="68" width="200" height="136" rx="22" fill="#FBFCF5"/>
+  <rect x="112" y="150" width="84" height="18" rx="9" fill="#E6EFC9" stroke-width="2.5"/>
+  <rect x="116" y="96" width="76" height="56" rx="12" fill="#C6F035"/>
+  <path d="M116 132h76" stroke-width="2.5"/>
+  <rect x="164" y="96" width="10" height="56" fill="#3E7A45" stroke="none" opacity=".35"/>
+  <rect x="200" y="160" width="76" height="16" rx="8" fill="#D3E4A0" stroke-width="2.5"/>
+  <rect x="204" y="118" width="68" height="44" rx="12" fill="#E6EFC9"/>
+  <path d="M204 148h68" stroke-width="2.5"/>
+  <circle cx="222" cy="133" r="3" fill="#3E7A45" stroke="none"/>
+  <circle cx="238" cy="133" r="3" fill="#3E7A45" stroke="none"/>
+  <circle cx="254" cy="133" r="3" fill="#3E7A45" stroke="none"/>
+  <path d="M252 36h40l16 16-16 16h-40z" fill="#C6F035"/>
+  <circle cx="264" cy="52" r="4.5" fill="#FBFCF5" stroke-width="2.5"/>
+  <path d="M278 46h16M278 58h10" stroke-width="2.5"/>
+  <path d="M258 62c-6 14-14 22-26 30" stroke-width="2.5" stroke-dasharray="1 7"/>
+  <circle cx="292" cy="200" r="22" fill="#C6F035"/>
+  <path d="M292 189v22M281 200h22" stroke-width="3.5"/>
+  <circle cx="72" cy="104" r="5" fill="#D3E4A0" stroke="none"/>
+</svg>

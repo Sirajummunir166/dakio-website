@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Front Office: a customer asks, Nova answers -->
+  <path d="M112 58h112a22 22 0 0 1 22 22v24a22 22 0 0 1-22 22h-78l-24 18 4-18h-14a22 22 0 0 1-22-22V80a22 22 0 0 1 22-22z" fill="#FBFCF5"/>
+  <rect x="112" y="80" width="92" height="8" rx="4" fill="#D3E4A0" stroke="none"/>
+  <rect x="112" y="96" width="60" height="8" rx="4" fill="#D3E4A0" stroke="none"/>
+  <path d="M176 118h112a22 22 0 0 1 22 22v24a22 22 0 0 1-22 22h-14l4 18-24-18h-78a22 22 0 0 1-22-22v-24a22 22 0 0 1 22-22z" fill="#C6F035"/>
+  <rect x="176" y="140" width="100" height="8" rx="4" fill="#3E7A45" stroke="none" opacity=".75"/>
+  <rect x="176" y="156" width="64" height="8" rx="4" fill="#3E7A45" stroke="none" opacity=".4"/>
+  <circle cx="318" cy="104" r="15" fill="#C6F035">
+    <animate attributeName="r" values="15;16.5;15" dur="2.4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="313" cy="99" r="4.5" fill="#FBFCF5" stroke="none"/>
+  <circle cx="318" cy="104" r="24" stroke="#D3E4A0" stroke-width="2.5"/>
+  <!-- every channel, one thread -->
+  <circle cx="98" cy="176" r="10" fill="#C6F035" stroke-width="2.5"/>
+  <circle cx="126" cy="176" r="10" fill="#D3E4A0" stroke-width="2.5"/>
+  <circle cx="154" cy="176" r="10" fill="#FBFCF5" stroke-width="2.5"/>
+  <path d="M166 176h14" stroke-dasharray="1 5" stroke-width="2.5"/>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Step 3: share your link — the store on a phone, the link going out, Nova arrives -->
+  <rect x="156" y="36" width="96" height="184" rx="20" fill="#FBFCF5"/>
+  <rect x="190" y="46" width="28" height="6" rx="3" fill="#D3E4A0" stroke="none"/>
+  <path d="M174 96h60l6 18h-72z" fill="#C6F035" stroke-width="2.5"/>
+  <rect x="176" y="114" width="56" height="46" fill="#E6EFC9" stroke-width="2.5"/>
+  <rect x="196" y="132" width="16" height="28" rx="2" fill="#D3E4A0" stroke-width="2.5"/>
+  <rect x="172" y="174" width="64" height="16" rx="8" fill="#C6F035" stroke-width="2.5"/>
+  <rect x="64" y="126" width="80" height="36" rx="18" fill="#E6EFC9"/>
+  <rect x="80" y="138" width="26" height="12" rx="6" stroke-width="2.5"/>
+  <rect x="98" y="138" width="26" height="12" rx="6" stroke-width="2.5"/>
+  <path d="M144 144h10" stroke-dasharray="1 6"/>
+  <path d="M268 80l18-12M274 104h22M268 128l18 12"/>
+  <circle cx="104" cy="74" r="18" fill="#C6F035">
+    <animate attributeName="cy" values="74;69;74" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="98" cy="68" r="5" fill="#FBFCF5" stroke="none">
+    <animate attributeName="cy" values="68;63;68" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="104" cy="74" r="28" stroke="#D3E4A0" stroke-width="2.5">
+    <animate attributeName="r" values="26;32;26" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;.2;1" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="318" cy="176" r="12" fill="#C6F035" stroke-width="2.5"/>
+  <path d="M312 176l4 4 8-8" stroke-width="2.5"/>
+</svg>

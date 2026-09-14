@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Store Studio: a storefront page being styled -->
+  <rect x="88" y="40" width="220" height="158" rx="18" fill="#FBFCF5"/>
+  <path d="M88 66h220"/>
+  <circle cx="106" cy="53" r="4" fill="#D3E4A0" stroke="none"/>
+  <circle cx="120" cy="53" r="4" fill="#D3E4A0" stroke="none"/>
+  <circle cx="134" cy="53" r="4" fill="#D3E4A0" stroke="none"/>
+  <rect x="104" y="80" width="188" height="52" rx="12" fill="#C6F035"/>
+  <rect x="120" y="96" width="72" height="8" rx="4" fill="#3E7A45" stroke="none"/>
+  <rect x="120" y="112" width="44" height="6" rx="3" fill="#3E7A45" stroke="none" opacity=".45"/>
+  <rect x="104" y="144" width="56" height="40" rx="10" fill="#E6EFC9" stroke-width="2.5"/>
+  <rect x="170" y="144" width="56" height="40" rx="10" fill="#E6EFC9" stroke-width="2.5"/>
+  <rect x="236" y="144" width="56" height="40" rx="10" fill="#E6EFC9" stroke-width="2.5"/>
+  <path d="M296 166c-22 0-38 14-38 30s14 26 30 26c10 0 12-8 20-8 12 0 20-8 20-20 0-16-14-28-32-28z" fill="#E6EFC9"/>
+  <circle cx="280" cy="186" r="6" fill="#C6F035" stroke-width="2.5"/>
+  <circle cx="300" cy="180" r="6" fill="#3E7A45" stroke="none"/>
+  <circle cx="318" cy="192" r="6" fill="#FBFCF5" stroke-width="2.5"/>
+  <circle cx="284" cy="206" r="5" fill="#D3E4A0" stroke-width="2.5"/>
+  <path d="M332 70c2 9 5 12 14 14-9 2-12 5-14 14-2-9-5-12-14-14 9-2 12-5 14-14z" fill="#C6F035" stroke-width="2.5"/>
+</svg>
