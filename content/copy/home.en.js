@@ -273,18 +273,19 @@ const home = {
   },
 
   pricing: {
-    h2: "Taka. Not dollars.",
+    h2: "Less than one employee.",
+    // sub + foot come from the pricing page copy (lib/plans.js) so the two pages agree.
     popular: "POPULAR",
-    // FALLBACK ONLY. The cards on the page come from the live catalogue via
-    // lib/plans.js#getHomePricing; these render only if the API is unreachable.
-    // There is no free tier here any more — it was withdrawn from sale, and a
-    // "Free / forever" card sent visitors to a signup that cannot deliver it.
+    // FALLBACK ONLY. The cards come from the live catalogue via
+    // lib/plans.js#getHomePricing — these mirror the pricing page's committed
+    // cards and render only if the API is unreachable. No free tier.
     plans: [
-      { n: "Growth", pr: "৳1,490", sub: "/month", d: "Unlimited products, supplier network, Grow Suite, Nova Operator — 750 Nova credits/mo.", cta: "Start 14-day free trial", dark: true, pop: true },
-      { n: "Business", pr: "৳3,990", sub: "/month", d: "Complete Nova access — 2,500 Nova credits, voice calls, playbooks, staff logins. Acting CEO autonomy unlocks as trust is earned.", cta: "Start 14-day free trial", dark: false },
+      { n: "Growth", audience: "The default for running shops", pr: "৳1,490", sub: "/month", yr: "or ৳1,242/month billed annually", level: "NOVA L3 OPERATOR", cta: "Choose Growth", dark: false, pop: true,
+        feats: ["Unlimited products, no daily order cap", "Nova Operator — 750 Nova credits/mo", "Grow Suite + Supplier Network", "Decision desk, receipts & undo"] },
+      { n: "Business", audience: "The full CEO seat", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA L4 ACTING CEO", cta: "Start 14-day free trial", dark: true, pop: false,
+        feats: ["Everything in Growth", "Acting CEO — 2,500 Nova credits/mo", "60 Nova voice minutes — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)"] },
     ],
-    foot: "Every plan includes Nova. Autonomy is earned, not bought.",
-    footLink: "Full pricing →",
+    footLink: "See full pricing →",
   },
 
   cta: {

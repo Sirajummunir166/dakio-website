@@ -390,32 +390,45 @@ export default async function Home({ params }) {
       </div>
 
       {/* ================= PRICING ================= */}
+      {/* A summary of /pricing, not a second pitch: same lede, same two cards
+          (light Growth with the badge, dark Business), same bullets, same note. */}
       <div id="pricing" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 36 }} data-reveal>
           <div style={kicker}>{MONO.pricingKicker}</div>
           <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, ...T.h2 }}>{pricing.h2}</h2>
+          <p style={{ margin: "16px auto 0", maxWidth: 560, fontSize: 16, lineHeight: 1.6, color: "#4C4F42", ...T.lead }}>{pricing.sub}</p>
         </div>
         {/* Columns follow the plan count. Hardcoding 3 left a phantom third
             column the day the free tier was withdrawn from sale. */}
-        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${pricing.plans.length}, 1fr)`, gap: 14, maxWidth: pricing.plans.length < 3 ? 800 : "none", margin: "0 auto" }} data-reveal>
+        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${pricing.plans.length}, minmax(0, 1fr))`, gap: 14, maxWidth: pricing.plans.length < 3 ? 820 : "none", margin: "0 auto" }} data-reveal>
           {pricing.plans.map(p => (
             <div key={p.n} style={{ padding: 28, borderRadius: 26, display: "flex", flexDirection: "column", ...(p.dark ? { background: "#0F120B", color: "#E9EFDC", boxShadow: "0 24px 54px rgba(15,18,11,0.3)" } : { background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)" }) }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <span style={{ fontSize: 16, fontWeight: 800, letterSpacing: "-0.2px", ...(p.dark ? { color: "#FBFBF4" } : {}) }}>{p.n}</span>
-                {p.pop ? <span style={{ padding: "4px 10px", borderRadius: 99, background: "rgba(198,240,53,0.16)", color: "#C6F035", fontSize: 9, fontWeight: 700, letterSpacing: "0.06em" }}>{pricing.popular}</span> : null}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+                <span style={{ fontSize: 18, fontWeight: 800, letterSpacing: "-0.3px", ...(p.dark ? { color: "#FBFBF4" } : {}) }}>{p.n}</span>
+                {p.pop ? <span style={{ padding: "4px 10px", borderRadius: 99, fontSize: 9, fontWeight: 700, letterSpacing: "0.06em", ...(p.dark ? { background: "rgba(198,240,53,0.16)", color: "#C6F035" } : { background: "#1A1D12", color: "#C6F035" }) }}>{pricing.popular}</span> : null}
               </div>
-              <div style={{ marginTop: 14, display: "flex", alignItems: "baseline", gap: 5 }}>
+              {p.audience ? <div style={{ marginTop: 3, fontSize: 12.5, color: p.dark ? "#A9AD98" : "#6B6D60", ...T.chip }}>{p.audience}</div> : null}
+              <div style={{ marginTop: 16, display: "flex", alignItems: "baseline", gap: 5 }}>
                 <span style={{ fontSize: 38, fontWeight: 800, letterSpacing: "-1.4px", ...(p.dark ? { color: "#FBFBF4" } : {}) }}>{p.pr}</span>
                 <span style={{ fontSize: 13, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.sub}</span>
               </div>
-              <div style={{ fontSize: 13, lineHeight: 1.6, marginTop: 10, flex: 1, color: p.dark ? "#A9AD98" : "#6B6D60", ...T.small }}>{p.d}</div>
+              {p.yr ? <div style={{ marginTop: 4, fontSize: 12, color: p.dark ? "#878B76" : "#6B6D60", ...T.small }}>{p.yr}</div> : null}
+              {p.level ? <div style={{ marginTop: 14, display: "inline-flex", alignSelf: "flex-start", padding: "4px 10px", borderRadius: 99, fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.1em", ...(p.dark ? { border: "1px solid rgba(198,240,53,0.4)", color: "#C6F035" } : { background: "rgba(62,122,69,0.1)", color: "#3E7A45" }) }}>{p.level}</div> : null}
+              <ul style={{ listStyle: "none", margin: "16px 0 0", padding: 0, flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+                {(p.feats || []).map(f => (
+                  <li key={f} style={{ display: "flex", gap: 9, alignItems: "flex-start", fontSize: 13, lineHeight: 1.5, color: p.dark ? "#C9CDB8" : "#4C4F42", ...T.small }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={p.dark ? "#C6F035" : "#3E7A45"} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 3 }}><path d="M20 6L9 17l-5-5" /></svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
               <a href={p.href || REGISTER_URL} style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
             </div>
           ))}
         </div>
-        <div data-reveal style={{ textAlign: "center", marginTop: 14, fontSize: 12.5, color: "#6B6D60", ...T.small }}>
+        <div data-reveal style={{ textAlign: "center", margin: "16px auto 0", maxWidth: 640, fontSize: 12.5, lineHeight: 1.6, color: "#6B6D60", ...T.small }}>
           {pricing.foot}{" "}
-          <Link href={L("/pricing")} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>{pricing.footLink}</Link>
+          <Link href={L("/pricing")} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1, whiteSpace: "nowrap" }}>{pricing.footLink}</Link>
         </div>
       </div>
 

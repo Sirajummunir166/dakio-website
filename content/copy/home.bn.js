@@ -236,15 +236,17 @@ const home = {
   },
 
   pricing: {
-    h2: "হিসাব টাকায়। ডলারে নয়।",
+    h2: "একজন কর্মীর বেতনের চেয়েও কম।",
+    // sub + foot come from the pricing page copy (lib/plans.js) so the two pages agree.
     popular: "জনপ্রিয়",
     // FALLBACK ONLY — see the note in home.en.js. No free tier.
     plans: [
-      { n: "Growth", pr: "৳1,490", sub: "/মাস", d: "আনলিমিটেড প্রোডাক্ট, Supplier Network, Grow Suite এবং Nova Operator—মাসে 750 Nova ক্রেডিট।", cta: "14 দিনের ফ্রি ট্রায়াল", dark: true, pop: true },
-      { n: "Business", pr: "৳3,990", sub: "/মাস", d: "Nova-র সম্পূর্ণ সুবিধা—2,500 Nova ক্রেডিট, ভয়েস কল, Playbook ও স্টাফ লগইন। আস্থা বাড়ার সঙ্গে সঙ্গে Acting CEO হিসেবে Nova আরও স্বাধীনভাবে কাজ করবে।", cta: "14 দিনের ফ্রি ট্রায়াল", dark: false },
+      { n: "Growth", audience: "চলতি ব্যবসার সবচেয়ে জনপ্রিয় প্ল্যান", pr: "৳1,490", sub: "/মাস", yr: "বার্ষিক বিলে মাসে ৳1,242", level: "NOVA L3 অপারেটর", cta: "Growth নিন", dark: false, pop: true,
+        feats: ["আনলিমিটেড প্রোডাক্ট, দিনের অর্ডারে কোনো সীমা নেই", "Nova Operator — মাসে 750 Nova ক্রেডিট", "Grow Suite ও Supplier Network", "Decision Desk, কাজের প্রমাণ ও Undo"] },
+      { n: "Business", audience: "Nova-র সম্পূর্ণ CEO ক্ষমতা", pr: "৳3,990", sub: "/মাস", yr: "বার্ষিক বিলে মাসে ৳3,325", level: "NOVA L4 ভারপ্রাপ্ত সিইও", cta: "14 দিনের ফ্রি ট্রায়াল", dark: true, pop: false,
+        feats: ["Growth-এর সব সুবিধা", "Acting CEO — মাসে 2,500 Nova ক্রেডিট", "Nova Voice-এর 60 মিনিট — ব্রিফ, অ্যালার্ট ও COD confirm", "ঈদ, পূজা ও 11.11-এর মৌসুমি পরিকল্পনা"] },
     ],
-    foot: "প্রতিটি প্ল্যানেই Nova আছে। কতটা স্বাধীনভাবে কাজ করবে, তা নির্ধারণ করবে আপনার আস্থা।",
-    footLink: "সব প্ল্যান দেখুন →",
+    footLink: "সব প্ল্যান ও দাম দেখুন →",
   },
 
   cta: {
