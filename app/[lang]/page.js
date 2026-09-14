@@ -322,179 +322,30 @@ export default async function Home({ params }) {
           <div style={kicker}>{MONO.roomsKicker}</div>
           <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 620, ...T.h2 }}>{c.rooms.h2}</h2>
         </div>
-        <div className="m-rooms" style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 14 }}>
-          {/* Nova HQ (big) */}
-          <a href="/prototypes/Nova HQ Prototype v7.dc.html" data-reveal className="hv-up4" style={{ gridColumn: "span 3", display: "block", borderRadius: 28, background: "#0F120B", color: "#E9EFDC", padding: 28, overflow: "hidden", position: "relative" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={{ ...monoTile, background: "#C6F035", color: "#0F120B" }}>HQ</span>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 19, fontWeight: 800, letterSpacing: "-0.4px", color: "#FBFBF4", ...T.h3 }}>{c.rooms.hq.n}</div>
-                <div style={{ fontSize: 12.5, color: "#A9AD98", marginTop: 1, ...T.chip }}>{c.rooms.hq.d}</div>
+        {/* One card per room: a graphic, the name, one line — the rooms themselves
+            (the prototypes) carry the detail. Graphics: public/graphics/rooms-*.svg */}
+        <div className="m-rooms" style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 14 }}>
+          {[
+            { key: "hq", href: "/prototypes/Nova HQ Prototype v7.dc.html", img: "rooms-nova-hq" },
+            { key: "studio", href: "/prototypes/Dakio Store Studio.dc.html", img: "rooms-store-studio" },
+            { key: "frontOffice", href: "/prototypes/Nova Inbox - Front Office.dc.html", img: "rooms-front-office" },
+            { key: "grow", href: "/prototypes/Dakio Grow Modules.dc.html", img: "rooms-grow-suite" },
+            { key: "ads", href: "/prototypes/Dakio Nova Motion Ads.dc.html", img: "rooms-ads-gallery" },
+            { key: "supplier", href: "/prototypes/Dakio Supplier Dashboard.dc.html", img: "rooms-supplier-network" },
+          ].map(r => (
+            <a key={r.key} href={r.href} data-reveal className="hv-up4" style={{ display: "flex", flexDirection: "column", borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 14, overflow: "hidden" }}>
+              <div style={{ height: 210, borderRadius: 20, background: "#F4F5EE", overflow: "hidden" }}>
+                <img src={`/graphics/${r.img}.svg`} alt="" width={420} height={420} loading="lazy" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
-              <span style={{ fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.1em", color: "#8CBF33" }}>{MONO.roomsOpen}</span>
-            </div>
-            <div style={{ marginTop: 20, borderRadius: 16, background: "#14170E", border: "1px solid rgba(198,242,62,0.18)", padding: 16 }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <span style={{ fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.14em", color: "#E3B54A" }}>{MONO.roomsDecision}</span>
-                <span style={{ fontFamily: MONOFONT, fontSize: 8.5, color: "#8CBF33" }}>{MONO.roomsDecisionEst}</span>
-              </div>
-              <div style={{ fontSize: 13.5, fontWeight: 700, marginTop: 8, color: "#FBFBF4", ...T.chip }}>{c.rooms.hq.decision}</div>
-              <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-                <span style={{ padding: "7px 16px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 11.5, fontWeight: 700, ...T.chip }}>{c.rooms.hq.approve}</span>
-                <span style={{ padding: "7px 14px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.2)", fontSize: 11.5, fontWeight: 600, color: "#A9AD98", ...T.chip }}>{c.rooms.hq.later}</span>
-              </div>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 7, marginTop: 12 }}>
-              {c.rooms.hq.feed.map(f => (
-                <div key={f.at} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 11, color: "#A9AD98", ...T.chip }}>
-                  <span style={{ width: 5, height: 5, borderRadius: 99, background: "#8CBF33" }} />{f.t}
-                  <span style={{ marginLeft: "auto", fontFamily: MONOFONT, fontSize: 8, color: "#878B76" }}>{f.at}</span>
+              <div style={{ padding: "18px 12px 10px", display: "flex", alignItems: "flex-start", gap: 12 }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 20, fontWeight: 800, letterSpacing: "-0.4px", ...T.h3 }}>{c.rooms[r.key].n}</div>
+                  <div style={{ fontSize: 13.5, lineHeight: 1.5, color: "#6B6D60", marginTop: 4, ...T.chip }}>{c.rooms[r.key].d}</div>
                 </div>
-              ))}
-            </div>
-          </a>
-          {/* Store Studio (big) */}
-          <a href="/prototypes/Dakio Store Studio.dc.html" data-reveal className="hv-up4" style={{ gridColumn: "span 3", display: "block", borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 28, overflow: "hidden" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={monoTile}>SS</span>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 19, fontWeight: 800, letterSpacing: "-0.4px", ...T.h3 }}>{c.rooms.studio.n}</div>
-                <div style={{ fontSize: 12.5, color: "#6B6D60", marginTop: 1, ...T.chip }}>{c.rooms.studio.d}</div>
+                <span style={{ fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.1em", color: "#6B6D60", marginTop: 7, whiteSpace: "nowrap" }}>{MONO.roomsOpen}</span>
               </div>
-              <span style={{ fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.1em", color: "#6B6D60" }}>{MONO.roomsOpen}</span>
-            </div>
-            <div style={{ marginTop: 20, borderRadius: 16, border: "1px solid rgba(26,29,18,0.1)", overflow: "hidden", background: "#F6EFE3" }}>
-              <div style={{ height: 26, background: "#FFFDF8", borderBottom: "1px solid rgba(26,29,18,0.07)", display: "flex", alignItems: "center", gap: 5, padding: "0 12px" }}>
-                <span style={{ width: 6, height: 6, borderRadius: 99, background: "rgba(26,29,18,0.2)" }} /><span style={{ width: 6, height: 6, borderRadius: 99, background: "rgba(26,29,18,0.12)" }} />
-                <span style={{ marginLeft: 8, fontSize: 8.5, fontWeight: 700, color: "#3A2418" }}>{c.rooms.studio.previewDomain}</span>
-              </div>
-              <div style={{ padding: 16, display: "flex", flexDirection: "column", gap: 10 }}>
-                <div style={{ height: 58, borderRadius: 10, background: "#3A2418", display: "flex", alignItems: "center", padding: "0 16px" }}><span style={{ fontSize: 14, fontWeight: 700, color: "#F6EFE3", fontFamily: "Georgia,serif" }}>{c.rooms.studio.previewHeadline}</span></div>
-                <div style={{ display: "flex", gap: 8 }}>
-                  <div style={{ flex: 1, height: 44, borderRadius: 8, background: "#FFFDF8", border: "1px solid rgba(26,29,18,0.08)" }} />
-                  <div style={{ flex: 1, height: 44, borderRadius: 8, background: "#FFFDF8", border: "1px solid rgba(26,29,18,0.08)" }} />
-                  <div style={{ flex: 1, height: 44, borderRadius: 8, background: "#FFFDF8", border: "1px solid rgba(26,29,18,0.08)" }} />
-                </div>
-              </div>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 14 }}>
-              <span style={{ fontSize: 10.5, fontWeight: 700, color: "#6B6D60" }}>{c.rooms.studio.themes}</span>
-              {["#8C2F1B", "#C6F035", "#1F6E63", "#171420"].map(sw => (
-                <span key={sw} style={{ width: 16, height: 16, borderRadius: 99, background: sw, border: "2px solid #fff", boxShadow: "0 0 0 1px rgba(26,29,18,0.15)" }} />
-              ))}
-              <span style={{ fontSize: 10.5, fontWeight: 700, color: "#6B6D60", marginLeft: 4, ...T.chip }}>{c.rooms.studio.themesNote}</span>
-            </div>
-          </a>
-          {/* Front Office */}
-          <a href="/prototypes/Nova Inbox - Front Office.dc.html" data-reveal className="hv-up4" style={{ gridColumn: "span 2", display: "block", borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 24 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={monoTile}>FO</span>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 19, fontWeight: 800, letterSpacing: "-0.4px", ...T.h3 }}>{c.rooms.frontOffice.n}</div>
-                <div style={{ fontSize: 12.5, color: "#6B6D60", marginTop: 1, ...T.chip }}>{c.rooms.frontOffice.d}</div>
-              </div>
-              <span style={{ fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.1em", color: "#6B6D60" }}>{MONO.roomsOpen}</span>
-            </div>
-            <div style={{ display: "flex", gap: 6, marginTop: 14 }}>
-              <span title="Messenger" style={{ width: 26, height: 26, borderRadius: 8, background: "#F4F2EA", border: "1px solid rgba(26,29,18,0.09)", display: "flex", alignItems: "center", justifyContent: "center" }}><svg width="13" height="13" viewBox="0 0 24 24" fill="#1A1D12"><path d="M12 2C6.5 2 2 6.1 2 11.2c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.3S17.5 2 12 2zm1.1 12.5L10.5 11.7l-4.9 2.8 5.4-5.7 2.6 2.7 4.8-2.7-5.3 5.7z" /></svg></span>
-              <span title="Instagram" style={{ width: 26, height: 26, borderRadius: 8, background: "#F4F2EA", border: "1px solid rgba(26,29,18,0.09)", display: "flex", alignItems: "center", justifyContent: "center" }}><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1A1D12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" /><circle cx="12" cy="12" r="4.2" /><circle cx="17.4" cy="6.6" r="0.8" fill="#1A1D12" stroke="none" /></svg></span>
-              <span title="WhatsApp" style={{ width: 26, height: 26, borderRadius: 8, background: "#F4F2EA", border: "1px solid rgba(26,29,18,0.09)", display: "flex", alignItems: "center", justifyContent: "center" }}><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1A1D12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.5 8.5 0 01-12.4 7.5L3 21l2-5.4A8.5 8.5 0 1121 11.5z" /><path d="M9 9.5c.5 2.5 3 5 5.5 5.5l1-1.5-2-1-1 .5c-.8-.5-1.5-1.2-2-2l.5-1-1-2z" fill="#1A1D12" stroke="none" /></svg></span>
-              <span title="Email" style={{ width: 26, height: 26, borderRadius: 8, background: "#F4F2EA", border: "1px solid rgba(26,29,18,0.09)", display: "flex", alignItems: "center", justifyContent: "center" }}><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1A1D12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" /><path d="M3 6.5l9 6.5 9-6.5" /></svg></span>
-              <span style={{ alignSelf: "center", marginLeft: 4, fontFamily: MONOFONT, fontSize: 7.5, letterSpacing: "0.08em", color: "#6B6D60" }}>{MONO.roomsChannels}</span>
-            </div>
-            <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 7 }}>
-              {c.rooms.frontOffice.chat.map((m, i) =>
-                m.from === "customer" ? (
-                  <div key={i} style={{ alignSelf: "flex-start", maxWidth: "88%", padding: "8px 12px", borderRadius: "12px 12px 12px 3px", background: "#EEEBDF", fontSize: 11.5, ...T.chip }}>{m.t}</div>
-                ) : (
-                  <div key={i} style={{ alignSelf: "flex-end", maxWidth: "88%", padding: "8px 12px", borderRadius: "12px 12px 3px 12px", background: "#1A1D12", color: "#F0EFE6", fontSize: 11.5, ...T.chip }}>
-                    {m.t} <span style={{ fontFamily: MONOFONT, fontSize: 7.5, color: "#8CBF33" }}>{c.rooms.frontOffice.byNova}</span>
-                  </div>
-                )
-              )}
-              <div style={{ alignSelf: "center", marginTop: 3, padding: "6px 12px", borderRadius: 99, background: "rgba(62,122,69,0.12)", color: "#2c5c31", fontSize: 10, fontWeight: 700 }}>{MONO.roomsOrder}</div>
-            </div>
-          </a>
-          {/* Grow Modules */}
-          <a href="/prototypes/Dakio Grow Modules.dc.html" data-reveal className="hv-up4" style={{ gridColumn: "span 2", display: "block", borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 24 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={monoTile}>GL</span>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 19, fontWeight: 800, letterSpacing: "-0.4px", ...T.h3 }}>{c.rooms.grow.n}</div>
-                <div style={{ fontSize: 12.5, color: "#6B6D60", marginTop: 1, ...T.chip }}>{c.rooms.grow.d}</div>
-              </div>
-              <span style={{ fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.1em", color: "#6B6D60" }}>{MONO.roomsOpen}</span>
-            </div>
-            <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 7 }}>
-              {c.rooms.grow.levers.map(g => (
-                <div key={g.j} style={{ padding: "9px 12px", borderRadius: 11, background: "rgba(26,29,18,0.92)", color: "#F0EFE6" }}>
-                  <div style={{ fontSize: 11.5, fontWeight: 700, ...T.chip }}>{g.n}</div>
-                  <div style={{ fontFamily: MONOFONT, fontSize: 7.5, letterSpacing: "0.1em", color: "#C6F035", marginTop: 2 }}>{g.j}</div>
-                </div>
-              ))}
-            </div>
-            <div style={{ marginTop: 14, padding: "13px 15px", borderRadius: 13, background: "#14170E", color: "#E9EFDC" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ width: 14, height: 14, borderRadius: "50%", background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)", flexShrink: 0 }} />
-                <span style={{ fontFamily: MONOFONT, fontSize: 7.5, letterSpacing: "0.12em", color: "#8CBF33" }}>{MONO.roomsGrowNova}</span>
-              </div>
-              <div style={{ fontSize: 12, marginTop: 7, lineHeight: 1.5, ...T.small }}>{c.rooms.grow.novaLine}</div>
-              <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 10 }}>
-                <span style={{ padding: "6px 14px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 10.5, fontWeight: 700, cursor: "pointer", ...T.chip }}>{c.rooms.grow.review}</span>
-                <span style={{ padding: "6px 12px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.25)", color: "#A9AD98", fontSize: 10.5, fontWeight: 600, cursor: "pointer", ...T.chip }}>{c.rooms.grow.dismiss}</span>
-                <span style={{ marginLeft: "auto", fontFamily: MONOFONT, fontSize: 7, letterSpacing: "0.08em", color: "#8CBF33" }}>{MONO.roomsGrowRecovered}</span>
-              </div>
-            </div>
-          </a>
-          {/* Ads Content Gallery */}
-          <a href="/prototypes/Dakio Nova Motion Ads.dc.html" data-reveal className="hv-up4" style={{ gridColumn: "span 2", display: "block", borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 24 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={monoTile}>AD</span>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 19, fontWeight: 800, letterSpacing: "-0.4px", ...T.h3 }}>{c.rooms.ads.n}</div>
-                <div style={{ fontSize: 12.5, color: "#6B6D60", marginTop: 1, ...T.chip }}>{c.rooms.ads.d}</div>
-              </div>
-              <span style={{ fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.1em", color: "#6B6D60" }}>{MONO.roomsOpen}</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 9, marginTop: 14 }}>
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "5px 10px 5px 5px", borderRadius: 99, background: "#F4F2EA", border: "1px solid rgba(26,29,18,0.09)" }}>
-                <span style={{ width: 22, height: 22, borderRadius: 99, background: "linear-gradient(140deg, #8C2F1B, #D9A62E)", border: "1px solid rgba(26,29,18,0.15)" }} />
-                <span style={{ fontSize: 10.5, fontWeight: 700, ...T.chip }}>{c.rooms.ads.product}</span>
-              </span>
-              <Arrow size={14} sw={2.2} style={{ flexShrink: 0, color: "#6B6D60" }} />
-              <span style={{ padding: "4px 10px", borderRadius: 99, background: "#C6F035", fontFamily: MONOFONT, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.1em", color: "#0F120B" }}>{MONO.roomsAdsClick}</span>
-            </div>
-            <div style={{ marginTop: 12, display: "flex", gap: 8, alignItems: "flex-end" }}>
-              <div style={{ flex: 1, aspectRatio: "1/1", borderRadius: 10, background: "linear-gradient(160deg, #3A2418, #8C2F1B)", position: "relative", overflow: "hidden" }}><span style={{ position: "absolute", left: 8, bottom: 7, fontSize: 8, fontWeight: 800, color: "#FFF1EA" }}>{c.rooms.ads.creatives[0]}</span><span style={{ position: "absolute", top: 7, right: 7, fontFamily: MONOFONT, fontSize: 6.5, color: "#FFF1EA", opacity: 0.7 }}>1:1</span></div>
-              <div style={{ flex: 1, aspectRatio: "4/5", borderRadius: 10, background: "linear-gradient(160deg, #1F2A16, #4C7A3F)", position: "relative", overflow: "hidden" }}><span style={{ position: "absolute", left: 8, bottom: 7, fontSize: 8, fontWeight: 800, color: "#F2F6E9" }}>{c.rooms.ads.creatives[1]}</span><span style={{ position: "absolute", top: 7, right: 7, fontFamily: MONOFONT, fontSize: 6.5, color: "#F2F6E9", opacity: 0.7 }}>4:5</span></div>
-              <div style={{ flex: 1, aspectRatio: "9/16", borderRadius: 10, background: "linear-gradient(170deg, #171420, #3A4C8C)", position: "relative", overflow: "hidden" }}>
-                <span style={{ position: "absolute", top: 7, right: 7, fontFamily: MONOFONT, fontSize: 6.5, color: "#EDF0FC", opacity: 0.7 }}>9:16</span>
-                <span style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: 20, height: 20, borderRadius: 99, background: "#C6F035", display: "flex", alignItems: "center", justifyContent: "center" }}><svg width="8" height="8" viewBox="0 0 24 24" fill="#0F120B"><path d="M8 5l12 7-12 7z" /></svg></span>
-              </div>
-            </div>
-            <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 7, fontFamily: MONOFONT, fontSize: 8, letterSpacing: "0.1em", color: "#3E7A45" }}><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>{MONO.roomsAdsCheck}</div>
-          </a>
-          {/* Dropshipping */}
-          <a href="/prototypes/Dakio Supplier Dashboard.dc.html" data-reveal className="hv-up3 m-wrap" style={{ gridColumn: "span 6", display: "flex", alignItems: "center", gap: 28, borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: "24px 28px" }}>
-            <div style={{ flexShrink: 0, display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={monoTile}>SN</span>
-              <div>
-                <div style={{ fontSize: 19, fontWeight: 800, letterSpacing: "-0.4px", ...T.h3 }}>{c.rooms.supplier.n}</div>
-                <div style={{ fontSize: 12.5, color: "#6B6D60", marginTop: 1, maxWidth: 280, ...T.chip }}>{c.rooms.supplier.d}</div>
-              </div>
-            </div>
-            <div className="m-wrap" style={{ flex: 1, display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
-              {c.rooms.supplier.flow.map((sf, i) => (
-                <div key={sf.j} style={{ flex: 1, display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
-                  <div style={{ flex: 1, padding: "12px 14px", borderRadius: 12, background: "#ffffff", border: "1px solid rgba(26,29,18,0.08)", textAlign: "center" }}>
-                    <div style={{ fontSize: 12, fontWeight: 700, whiteSpace: "nowrap", ...T.chip }}>{sf.n}</div>
-                    <div style={{ fontFamily: MONOFONT, fontSize: 7.5, letterSpacing: "0.08em", color: "#6B6D60", marginTop: 2, whiteSpace: "nowrap" }}>{sf.j}</div>
-                  </div>
-                  {i < c.rooms.supplier.flow.length - 1 ? <Arrow size={14} sw={2.2} style={{ flexShrink: 0, color: "#6B6D60" }} /> : null}
-                </div>
-              ))}
-            </div>
-          </a>
+            </a>
+          ))}
         </div>
       </div>
 

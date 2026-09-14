@@ -80,6 +80,7 @@
 
 @media (min-width: 621px) and (max-width: 900px) {
   .m-grid2-1 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .m-rooms { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
 }
 
 /* Mobile nav panel */
