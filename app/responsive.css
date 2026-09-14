@@ -96,44 +96,119 @@
   color: #1a1d12;
   flex-shrink: 0;
 }
+/* Full-height sheet under the bar. The nav root has backdrop-filter, which
+   makes it the containing block for fixed children — so the sheet is absolute
+   at top:100% and SiteNav sets its height to the viewport minus the bar. */
 .nav-mobile-panel {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  padding: 8px 14px 14px;
-}
-.nav-mobile-card {
-  border-radius: 20px;
-  background: #fbfbf4;
-  border: 1px solid rgba(26, 29, 18, 0.08);
-  box-shadow: 0 34px 80px rgba(26, 29, 18, 0.22);
-  padding: 10px;
   display: flex;
   flex-direction: column;
-  animation: nvDrop 0.18s ease both;
-  max-height: calc(100vh - 90px);
-  overflow-y: auto;
+  background: #f4f5ee;
+  border-top: 1px solid rgba(26, 29, 18, 0.07);
+  animation: nvSheet 0.22s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
-.nav-mobile-card a {
+@keyframes nvSheet { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+.nav-m-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 8px 20px 24px;
+}
+
+/* top-level rows — the same four entries as the desktop bar */
+.nav-m-row {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 11px 12px;
-  border-radius: 12px;
-  font-size: 14.5px;
+  justify-content: space-between;
+  padding: 18px 2px;
+  border: 0;
+  border-bottom: 1px solid rgba(26, 29, 18, 0.08);
+  background: none;
+  font: inherit;
+  font-size: 24px;
   font-weight: 700;
+  letter-spacing: -0.02em;
   color: #1a1d12;
+  text-align: left;
+  cursor: pointer;
 }
-.nav-mobile-card a:active { background: #f0efe4; }
-.nav-mobile-label {
-  padding: 12px 12px 4px;
-  font-size: 8.5px;
+.nav-m-row svg { color: #9a9d8a; flex-shrink: 0; transition: transform 0.2s ease, color 0.2s ease; }
+.nav-m-row.is-active { box-shadow: inset 3px 0 0 #c6f035; padding-left: 14px; }
+.nav-m-row:active svg { color: #1a1d12; }
+
+.nav-m-explore {
+  padding: 4px 0 10px;
+  border-bottom: 1px solid rgba(26, 29, 18, 0.08);
+  animation: nvSheet 0.2s ease both;
+}
+.nav-m-label {
+  padding: 16px 2px 6px;
+  font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.14em;
   color: #3e7a45;
 }
-.nav-mobile-divider { height: 1px; background: rgba(26, 29, 18, 0.08); margin: 8px 4px; }
+.nav-m-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 9px 8px;
+  margin: 0 -8px;
+  border-radius: 14px;
+  color: #1a1d12;
+}
+.nav-m-item:active { background: #e9eadf; }
+.nav-m-item-n { display: block; font-size: 15px; font-weight: 700; }
+.nav-m-item-d { display: block; font-size: 12px; color: #6b6d60; margin-top: 1px; }
+
+.nav-m-company {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding: 22px 2px 0;
+}
+.nav-m-company span { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; color: #878b76; width: 100%; }
+.nav-m-company a { font-size: 15px; font-weight: 600; color: #6b6d60; }
+
+/* pinned footer — language, Log in and the CTA are always one tap away */
+.nav-m-foot {
+  flex-shrink: 0;
+  padding: 12px 20px calc(16px + env(safe-area-inset-bottom));
+  background: #fbfbf4;
+  border-top: 1px solid rgba(26, 29, 18, 0.08);
+  box-shadow: 0 -18px 40px rgba(26, 29, 18, 0.06);
+}
+.nav-m-foot-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.nav-m-foot-meta > span { font-size: 8.5px; font-weight: 600; letter-spacing: 0.12em; color: #878b76; }
+.nav-m-actions { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 10px; }
+.nav-m-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 50px;
+  padding: 0 14px;
+  border-radius: 99px;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.nav-m-btn--ghost { color: #1a1d12; border: 1.5px solid rgba(26, 29, 18, 0.18); background: #fff; }
+.nav-m-btn--ink { color: #c6f035; background: #1a1d12; }
+.nav-m-btn:active { transform: scale(0.98); }
 
 /* ===== Bangla display type below the breakpoints =====
    The mobile heading rules above carry !important (they have to beat the
