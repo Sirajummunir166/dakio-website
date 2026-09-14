@@ -111,6 +111,7 @@ const home = {
       b: { n: "Jamdani stole — teal", p: "৳1,850" },
       enough: "photo + price is enough",
       supplier: "no stock? pick from suppliers — Dakio ships",
+      note: "A photo and a price is enough. No stock? Pick from suppliers — Dakio ships.",
     },
     live: {
       domain: "shahrqee.dakio.shop",

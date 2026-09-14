@@ -57,9 +57,9 @@ const RADIAL_SPOKES = [
 ];
 
 const LAUNCH_SHAPE = [
-  { i: "01", kind: "name", arrow: true },
-  { i: "02", kind: "products", arrow: true },
-  { i: "03", kind: "live", arrow: false },
+  { i: "01", kind: "name", img: "launch-name", arrow: true },
+  { i: "02", kind: "products", img: "launch-products", arrow: true },
+  { i: "03", kind: "live", img: "launch-live", arrow: false },
 ];
 
 function Arrow({ size = 14, sw = 2.4, style }) {
@@ -157,56 +157,11 @@ export default async function Home({ params }) {
                   <span style={{ fontFamily: MONOFONT, fontSize: 9, fontWeight: 600, letterSpacing: "0.08em", color: "#3E7A45" }}>{step.time}</span>
                 </div>
                 <div style={{ fontSize: 19, fontWeight: 800, letterSpacing: "-0.4px", marginTop: 10, ...T.h3 }}>{step.t}</div>
-                <div style={{ marginTop: 14 }}>
-                  {ls.kind === "name" ? (
-                    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 14px", borderRadius: 12, background: "#ffffff", border: "1.5px solid #1A1D12" }}>
-                        <span style={{ fontSize: 13, fontWeight: 700 }}>{c.launch.name.handle}</span>
-                        <span style={{ width: 2, height: 16, background: "#C6F035", animation: "pulseRing 1.4s infinite" }} />
-                        <span style={{ marginLeft: "auto", fontFamily: MONOFONT, fontSize: 8, letterSpacing: "0.1em", color: "#3E7A45" }}>{MONO.launchAvailable}</span>
-                      </div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 12px", borderRadius: 12, background: "#EEEBDF" }}>
-                        <span style={{ fontFamily: MONOFONT, fontSize: 10.5, fontWeight: 600, color: "#1A1D12" }}>{c.launch.name.domain}</span>
-                        <span style={{ marginLeft: "auto", fontSize: 10, fontWeight: 700, color: "#6B6D60", ...T.chip }}>{c.launch.name.yours}</span>
-                      </div>
-                      <div style={{ fontSize: 12, color: "#6B6D60", lineHeight: 1.55, ...T.small }}>{c.launch.name.note}</div>
-                    </div>
-                  ) : null}
-                  {ls.kind === "products" ? (
-                    <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "9px 12px", borderRadius: 12, background: "#ffffff", border: "1px solid rgba(26,29,18,0.08)" }}>
-                        <span style={{ width: 26, height: 26, borderRadius: 8, background: "#8C2F1B", flexShrink: 0 }} />
-                        <span style={{ fontSize: 12, fontWeight: 700, ...T.chip }}>{c.launch.products.a.n}</span>
-                        <span style={{ marginLeft: "auto", fontFamily: MONOFONT, fontSize: 9, color: "#3E7A45" }}>{c.launch.products.a.p}</span>
-                      </div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "9px 12px", borderRadius: 12, background: "#ffffff", border: "1px solid rgba(26,29,18,0.08)" }}>
-                        <span style={{ width: 26, height: 26, borderRadius: 8, background: "#1F6E63", flexShrink: 0 }} />
-                        <span style={{ fontSize: 12, fontWeight: 700, ...T.chip }}>{c.launch.products.b.n}</span>
-                        <span style={{ marginLeft: "auto", fontFamily: MONOFONT, fontSize: 9, color: "#3E7A45" }}>{c.launch.products.b.p}</span>
-                      </div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", borderRadius: 12, border: "1.5px dashed rgba(26,29,18,0.18)", fontSize: 11, fontWeight: 700, color: "#6B6D60", ...T.chip }}>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>{c.launch.products.enough}
-                      </div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", borderRadius: 12, background: "rgba(198,240,53,0.16)", border: "1px solid rgba(198,240,53,0.5)", fontSize: 11, fontWeight: 700, ...T.chip }}>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 3h5v5M21 3l-7 7M8 3H3v18h18v-5" /></svg>{c.launch.products.supplier}
-                      </div>
-                    </div>
-                  ) : null}
-                  {ls.kind === "live" ? (
-                    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "11px 14px", borderRadius: 99, background: "#0F120B" }}>
-                        <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite", flexShrink: 0 }} />
-                        <span style={{ fontFamily: MONOFONT, fontSize: 11, fontWeight: 600, color: "#C6F035" }}>{c.launch.live.domain}</span>
-                        <span style={{ marginLeft: "auto", fontFamily: MONOFONT, fontSize: 8, letterSpacing: "0.1em", color: "#8CBF33" }}>{MONO.launchLive}</span>
-                      </div>
-                      <div style={{ fontSize: 12, color: "#6B6D60", lineHeight: 1.55, ...T.small }}>{c.launch.live.note}</div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 12px", borderRadius: 12, background: "rgba(198,240,53,0.16)", border: "1px solid rgba(198,240,53,0.5)" }}>
-                        <span style={{ width: 16, height: 16, borderRadius: "50%", background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)", flexShrink: 0 }} />
-                        <span style={{ fontSize: 11.5, fontWeight: 700, ...T.chip }}>{c.launch.live.ceo}</span>
-                      </div>
-                    </div>
-                  ) : null}
+                {/* One graphic + one line per step (Gemini 3.1 Flash Image, public/graphics/launch-*.webp) */}
+                <div style={{ marginTop: 14, height: 190, borderRadius: 18, background: "#F2F3EC", overflow: "hidden" }}>
+                  <img src={`/graphics/${ls.img}.webp`} alt="" width={1000} height={747} loading="lazy" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
+                <div style={{ marginTop: 14, fontSize: 13, color: "#6B6D60", lineHeight: 1.55, ...T.small }}>{c.launch[ls.kind].note}</div>
                 {ls.arrow ? (
                   <div className="m-hide" style={{ position: "absolute", right: -14, top: "50%", transform: "translateY(-50%)", zIndex: 2, width: 26, height: 26, borderRadius: 99, background: "#1A1D12", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C6F035" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
