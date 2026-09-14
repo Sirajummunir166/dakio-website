@@ -19,7 +19,7 @@
 
 import Link from "next/link";
 import SmartLink from "./SmartLink";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LogoDefs from "./Logo";
 import NavPreview from "./NavPreview";
 import { LOGIN_URL, REGISTER_URL } from "../lib/urls";
@@ -76,6 +76,35 @@ export default function SiteNav({
   const [mobileOpen, setMobileOpen] = useState(false);
   const [pv, setPv] = useState("tour");
   const closeT = useRef(null);
+  const rootRef = useRef(null);
+  // The phone sheet mirrors the desktop bar: Explore (collapsible, the same
+  // three groups as the mega-menu) → the top-level links → company row, with
+  // language + Log in + the CTA pinned at the bottom so they never need a scroll.
+  const [exploreOpen, setExploreOpen] = useState(false);
+  const [barBottom, setBarBottom] = useState(64);
+
+  const toggleMobile = () => {
+    if (!mobileOpen && rootRef.current) {
+      setBarBottom(Math.max(0, rootRef.current.getBoundingClientRect().bottom));
+      setExploreOpen(false);
+    }
+    setMobileOpen(o => !o);
+  };
+
+  useEffect(() => {
+    if (!mobileOpen) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = e => { if (e.key === "Escape") setMobileOpen(false); };
+    const onResize = () => { if (window.innerWidth > 900) setMobileOpen(false); };
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onResize);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [mobileOpen]);
 
   const c = copy || chromeEn.nav;
   const T = type(lang);
@@ -161,7 +190,7 @@ export default function SiteNav({
   );
 
   return (
-    <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", position: "relative", backdropFilter: "blur(10px)", background: "rgba(239,241,233,0.88)", borderBottom: "1px solid rgba(26,29,18,0.06)", ...style }}>
+    <div ref={rootRef} style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", position: "relative", backdropFilter: "blur(10px)", background: "rgba(239,241,233,0.88)", borderBottom: "1px solid rgba(26,29,18,0.06)", ...style }}>
       <LogoDefs mkId="nv-mk" wmId="nv-wm" />
 
       <div className="nav-row" style={{ maxWidth: 1200, margin: "0 auto", padding: "14px 28px", display: "flex", alignItems: "center", gap: 24 }}>
@@ -200,7 +229,8 @@ export default function SiteNav({
           type="button"
           className="nav-burger"
           aria-label={mobileOpen ? c.closeMenu : c.openMenu}
-          onClick={() => setMobileOpen(o => !o)}
+          aria-expanded={mobileOpen}
+          onClick={toggleMobile}
         >
           {mobileOpen ? (
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
@@ -211,28 +241,71 @@ export default function SiteNav({
       </div>
 
       {mobileOpen ? (
-        <div className="nav-mobile-panel">
-          <div className="nav-mobile-card">
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px 2px" }}>
-              <span style={{ fontSize: 13, fontWeight: 700, color: "#6B6D60", ...T.label }}>{c.languageLabel}</span>
+        <div
+          className="nav-mobile-panel"
+          style={{ height: `calc(100dvh - ${barBottom}px)` }}
+          onClick={e => { if (e.target.closest("a")) setMobileOpen(false); }}
+        >
+          <div className="nav-m-scroll">
+            <button
+              type="button"
+              className={`nav-m-row${prodActive ? " is-active" : ""}`}
+              aria-expanded={exploreOpen}
+              onClick={() => setExploreOpen(o => !o)}
+              style={T.label}
+            >
+              {c.explore}
+              <svg className="nav-m-caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={exploreOpen ? { transform: "rotate(180deg)" } : undefined}><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            {exploreOpen ? (
+              <div className="nav-m-explore">
+                {[
+                  { title: MONO_LABELS.navStart, items: startItems, bg: "#C6F035", fg: "#1A1D12" },
+                  { title: MONO_LABELS.navNova, items: novaItems, bg: "#14170E", fg: "#C6F035" },
+                  { title: MONO_LABELS.navBuild, items: buildItems, bg: "#EEF4D4", fg: "#3A5212" },
+                ].map(g => (
+                  <div key={g.title}>
+                    <div className="nav-m-label" style={{ fontFamily: MONO }}>{g.title}</div>
+                    {g.items.map(it => (
+                      <SmartLink key={`${g.title}-${it.mono}`} href={dest(it.href)} className="nav-m-item">
+                        <span style={{ ...badge(g.bg, g.fg, 34), fontSize: 10 }}>{it.mono}</span>
+                        <span style={{ minWidth: 0 }}>
+                          <span className="nav-m-item-n" style={T.label}>{it.n}</span>
+                          <span className="nav-m-item-d" style={T.chip}>{it.d}</span>
+                        </span>
+                      </SmartLink>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            ) : null}
+            {[
+              { key: "nova", p: "/nova", label: c.nova },
+              { key: "switch", p: "/switch", label: c.switch },
+              { key: "pricing", p: "/pricing", label: c.pricing },
+            ].map(r => (
+              <Link key={r.key} href={L(r.p)} className={`nav-m-row${active === r.key ? " is-active" : ""}`} style={T.label}>
+                {r.label}<ArrowIcon size={15} />
+              </Link>
+            ))}
+            <div className="nav-m-company">
+              <span style={{ fontFamily: MONO }}>{MONO_LABELS.navCompany}</span>
+              <Link href={L("/about")} style={T.label}>{c.about}</Link>
+              <Link href={L("/blog")} style={T.label}>{c.blog}</Link>
+              <Link href={L("/contact")} style={T.label}>{c.contact}</Link>
+            </div>
+          </div>
+          <div className="nav-m-foot">
+            <div className="nav-m-foot-meta">
+              <span style={{ fontFamily: MONO }}>{MONO_LABELS.navRegion}</span>
               <LangSwitch />
             </div>
-            <div className="nav-mobile-label">{MONO_LABELS.navStart}</div>
-            {startItems.map(it => <SmartLink key={it.mono} href={dest(it.href)} style={T.label}><span style={{ ...badge("#C6F035", "#1A1D12", 30), borderRadius: 10, fontSize: 10 }}>{it.mono}</span>{it.n}</SmartLink>)}
-            <div className="nav-mobile-label">{MONO_LABELS.navNova}</div>
-            {novaItems.map(it => <SmartLink key={it.mono} href={dest(it.href)} style={T.label}><span style={{ ...badge("#14170E", "#C6F035", 30), borderRadius: 10, fontSize: 10 }}>{it.mono}</span>{it.n}</SmartLink>)}
-            <div className="nav-mobile-label">{MONO_LABELS.navBuild}</div>
-            {buildItems.map(it => <SmartLink key={it.mono} href={dest(it.href)} style={T.label}><span style={{ ...badge("#EEF4D4", "#3A5212", 30), borderRadius: 10, fontSize: 10 }}>{it.mono}</span>{it.n}</SmartLink>)}
-            <div className="nav-mobile-divider" />
-            <Link href={L("/nova")} style={T.label}>{c.nova}</Link>
-            <Link href={L("/switch")} style={T.label}>{c.switch}</Link>
-            <Link href={L("/pricing")} style={T.label}>{c.pricing}</Link>
-            <div className="nav-mobile-divider" />
-            <Link href={L("/about")} style={T.label}>{c.about}</Link>
-            <Link href={L("/blog")} style={T.label}>{c.blog}</Link>
-            <Link href={L("/contact")} style={T.label}>{c.contact}</Link>
-            <div className="nav-mobile-divider" />
-            <a href={LOGIN_URL} style={T.label}>{c.login}</a>
+            <div className="nav-m-actions">
+              <a href={LOGIN_URL} className="nav-m-btn nav-m-btn--ghost" style={T.label}>{c.login}</a>
+              <SmartLink href={ctaHref} className="nav-m-btn nav-m-btn--ink" style={T.label}>
+                <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", animation: "nvPulse 2.2s infinite", flexShrink: 0 }} />{ctaLabel || c.cta}
+              </SmartLink>
+            </div>
           </div>
         </div>
       ) : null}
