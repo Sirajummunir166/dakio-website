@@ -157,9 +157,9 @@ export default async function Home({ params }) {
                   <span style={{ fontFamily: MONOFONT, fontSize: 9, fontWeight: 600, letterSpacing: "0.08em", color: "#3E7A45" }}>{step.time}</span>
                 </div>
                 <div style={{ fontSize: 19, fontWeight: 800, letterSpacing: "-0.4px", marginTop: 10, ...T.h3 }}>{step.t}</div>
-                {/* One graphic + one line per step (Gemini 3.1 Flash Image, public/graphics/launch-*.webp) */}
-                <div style={{ marginTop: 14, height: 190, borderRadius: 18, background: "#F2F3EC", overflow: "hidden" }}>
-                  <img src={`/graphics/${ls.img}.webp`} alt="" width={1000} height={747} loading="lazy" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
+                {/* One graphic + one line per step (hand-drawn SVG, public/graphics/launch-*.svg) */}
+                <div style={{ marginTop: 14, aspectRatio: "400 / 240", borderRadius: 18, background: "#F2F3EC", overflow: "hidden" }}>
+                  <img src={`/graphics/${ls.img}.svg`} alt="" width={400} height={240} loading="lazy" style={{ display: "block", width: "100%", height: "100%", objectFit: "contain" }} />
                 </div>
                 <div style={{ marginTop: 14, fontSize: 13, color: "#6B6D60", lineHeight: 1.55, ...T.small }}>{c.launch[ls.kind].note}</div>
                 {ls.arrow ? (
@@ -278,7 +278,7 @@ export default async function Home({ params }) {
           <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 620, ...T.h2 }}>{c.rooms.h2}</h2>
         </div>
         {/* One card per room: a graphic, the name, one line — the rooms themselves
-            (the prototypes) carry the detail. Graphics: public/graphics/rooms-*.svg */}
+            (the prototypes) carry the detail. Graphics: hand-drawn SVG, public/graphics/rooms-*.svg */}
         <div className="m-rooms" style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 14 }}>
           {[
             { key: "hq", href: "/prototypes/Nova HQ Prototype v7.dc.html", img: "rooms-nova-hq" },
@@ -289,8 +289,8 @@ export default async function Home({ params }) {
             { key: "supplier", href: "/prototypes/Dakio Supplier Dashboard.dc.html", img: "rooms-supplier-network" },
           ].map(r => (
             <a key={r.key} href={r.href} data-reveal className="hv-up4" style={{ display: "flex", flexDirection: "column", borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 14, overflow: "hidden" }}>
-              <div style={{ height: 210, borderRadius: 20, background: "#F4F5EE", overflow: "hidden" }}>
-                <img src={`/graphics/${r.img}.svg`} alt="" width={420} height={420} loading="lazy" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
+              <div style={{ aspectRatio: "400 / 240", borderRadius: 20, background: "#F4F5EE", overflow: "hidden" }}>
+                <img src={`/graphics/${r.img}.svg`} alt="" width={400} height={240} loading="lazy" style={{ display: "block", width: "100%", height: "100%", objectFit: "contain" }} />
               </div>
               <div style={{ padding: "18px 12px 10px", display: "flex", alignItems: "flex-start", gap: 12 }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
