@@ -191,7 +191,7 @@ export default function PhotoFrameClient() {
       <footer style={styles.footer}>
         <a href="https://www.dakio.io/" target="_blank" rel="noopener" style={styles.footerLink}>
           <span>Visit</span>
-          <img src="/brand/dakio-lockup-light-bg.svg" alt="dakio.io" style={{ height: 16, width: "auto", display: "block" }} />
+          <img src="/assets/nsgettogather26/dakio-logo.svg" alt="dakio.io" style={{ height: 17, width: "auto", display: "block" }} />
         </a>
       </footer>
     </div>
