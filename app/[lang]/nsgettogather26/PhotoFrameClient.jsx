@@ -26,6 +26,12 @@ const FRAMES = [
     src: "/assets/nsgettogather26/frames/frame-sponsor.png",
     box: { x: 66, centerY: 1015, width: 182, maxSize: 34, minSize: 15 },
   },
+  {
+    key: "organizer",
+    label: "দায়িত্বশীল",
+    src: "/assets/nsgettogather26/frames/frame-organizer.png",
+    box: { x: 66, centerY: 1015, width: 182, maxSize: 34, minSize: 15 },
+  },
 ];
 
 export default function PhotoFrameClient() {
@@ -373,11 +379,12 @@ const styles = {
     width: "min(94vw, 480px)",
     maxWidth: "100%",
     display: "flex",
+    flexWrap: "wrap",
     gap: 8,
     marginBottom: 14,
   },
   typeBtn: {
-    flex: 1,
+    flex: "1 1 calc(50% - 4px)",
     border: "1.5px solid #d8dccb",
     background: "#fff",
     color: "#555",
