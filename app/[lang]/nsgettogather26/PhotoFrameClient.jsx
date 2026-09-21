@@ -1,14 +1,37 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const SIZE = 1500;
-const FRAME_SRC = "/assets/nsgettogather26/frame.png";
+
+// Per-frame badge geometry: where the "শিক্ষাবর্ষ:" value goes (left edge,
+// vertical center, max available width) so the typed session text fits
+// inside the same green box the label was printed on in the source PNG.
+const FRAMES = [
+  {
+    key: "participant",
+    label: "অংশগ্রহণকারী",
+    src: "/assets/nsgettogather26/frames/frame-participant.png",
+    box: { x: 66, centerY: 1015, width: 182, maxSize: 34, minSize: 15 },
+  },
+  {
+    key: "volunteer",
+    label: "স্বেচ্ছাসেবক",
+    src: "/assets/nsgettogather26/frames/frame-volunteer.png",
+    box: { x: 66, centerY: 1015, width: 182, maxSize: 34, minSize: 15 },
+  },
+  {
+    key: "sponsor",
+    label: "স্পন্সর",
+    src: "/assets/nsgettogather26/frames/frame-sponsor.png",
+    box: { x: 55, centerY: 893, width: 165, maxSize: 30, minSize: 14 },
+  },
+];
 
 export default function PhotoFrameClient() {
   const canvasRef = useRef(null);
   const stageRef = useRef(null);
-  const frameImgRef = useRef(null);
+  const frameImagesRef = useRef({});
   const userImgRef = useRef(null);
 
   const baseScaleRef = useRef(1);
@@ -16,8 +39,43 @@ export default function PhotoFrameClient() {
   const offsetRef = useRef({ x: 0, y: 0 });
   const dragRef = useRef({ dragging: false, lastX: 0, lastY: 0 });
 
+  const [frameType, setFrameType] = useState("participant");
   const [hasPhoto, setHasPhoto] = useState(false);
   const [zoom, setZoom] = useState(100);
+  const [session, setSession] = useState("");
+
+  const frameTypeRef = useRef(frameType);
+  const sessionRef = useRef(session);
+  useEffect(() => {
+    frameTypeRef.current = frameType;
+  }, [frameType]);
+  useEffect(() => {
+    sessionRef.current = session;
+  }, [session]);
+
+  const currentFrame = () => FRAMES.find(f => f.key === frameTypeRef.current) || FRAMES[0];
+
+  const fitFontSize = (ctx, text, box) => {
+    let size = box.maxSize;
+    while (size > box.minSize) {
+      ctx.font = `700 ${size}px 'Archivo','Noto Sans Bengali',sans-serif`;
+      if (ctx.measureText(text).width <= box.width) break;
+      size -= 1;
+    }
+    return size;
+  };
+
+  const drawSessionText = ctx => {
+    const text = sessionRef.current.trim();
+    if (!text) return;
+    const { box } = currentFrame();
+    const size = fitFontSize(ctx, text, box);
+    ctx.font = `700 ${size}px 'Archivo','Noto Sans Bengali',sans-serif`;
+    ctx.fillStyle = "#ffffff";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "left";
+    ctx.fillText(text, box.x, box.centerY);
+  };
 
   const draw = () => {
     const canvas = canvasRef.current;
@@ -35,11 +93,24 @@ export default function PhotoFrameClient() {
       ctx.drawImage(userImg, x, y, w, h);
     }
 
-    const frameImg = frameImgRef.current;
+    const frameImg = frameImagesRef.current[frameTypeRef.current];
     if (frameImg && frameImg.complete) {
       ctx.drawImage(frameImg, 0, 0, SIZE, SIZE);
     }
+
+    drawSessionText(ctx);
   };
+
+  useEffect(() => {
+    FRAMES.forEach(f => {
+      const img = new Image();
+      img.src = f.src;
+      img.onload = draw;
+      frameImagesRef.current[f.key] = img;
+    });
+    draw();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const clampOffsets = () => {
     const userImg = userImgRef.current;
@@ -53,14 +124,18 @@ export default function PhotoFrameClient() {
     offsetRef.current.y = Math.min(maxY, Math.max(-maxY, offsetRef.current.y));
   };
 
-  useEffect(() => {
-    const frameImg = new Image();
-    frameImg.src = FRAME_SRC;
-    frameImg.onload = draw;
-    frameImgRef.current = frameImg;
+  const handleFrameSelect = key => {
+    setFrameType(key);
+    frameTypeRef.current = key;
     draw();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
+
+  const handleSessionChange = e => {
+    const val = e.target.value;
+    setSession(val);
+    sessionRef.current = val;
+    draw();
+  };
 
   const handleFile = e => {
     const file = e.target.files?.[0];
@@ -114,11 +189,14 @@ export default function PhotoFrameClient() {
     dragRef.current.dragging = false;
   };
 
+  const canDownload = hasPhoto && session.trim().length > 0;
+
   const handleDownload = () => {
+    if (!canDownload) return;
     const canvas = canvasRef.current;
     canvas.toBlob(async blob => {
       if (!blob) return;
-      const fileName = "NS-Get-Together-2026.png";
+      const fileName = `NS-Get-Together-2026-${frameTypeRef.current}.png`;
       const file = new File([blob], fileName, { type: "image/png" });
 
       // On phones, navigator.share's native sheet offers "Save Image" /
@@ -152,7 +230,20 @@ export default function PhotoFrameClient() {
         <br />
         ফটো ফ্রেম
       </h1>
-      <p style={styles.sub}>আপনার ছবি আপলোড করুন, ফ্রেমে বসিয়ে ডাউনলোড করুন</p>
+      <p style={styles.sub}>ধরন বাছাই করুন, ছবি আপলোড করুন, ফ্রেমে বসিয়ে ডাউনলোড করুন</p>
+
+      <div style={styles.typeSelect}>
+        {FRAMES.map(f => (
+          <button
+            key={f.key}
+            type="button"
+            onClick={() => handleFrameSelect(f.key)}
+            style={{ ...styles.typeBtn, ...(frameType === f.key ? styles.typeBtnActive : null) }}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
 
       <div
         ref={stageRef}
@@ -185,6 +276,21 @@ export default function PhotoFrameClient() {
       </div>
 
       <div style={styles.controls}>
+        <div style={styles.field}>
+          <label htmlFor="sessionInput" style={styles.fieldLabel}>
+            শিক্ষাবর্ষ লিখুন
+          </label>
+          <input
+            id="sessionInput"
+            type="text"
+            value={session}
+            onChange={handleSessionChange}
+            placeholder="যেমন: দাখিল ২০২৩"
+            maxLength={40}
+            style={styles.fieldInput}
+          />
+        </div>
+
         <div style={styles.row}>
           <label style={styles.uploadBtn} htmlFor="fileInput">
             📷 ছবি আপলোড করুন
@@ -193,8 +299,8 @@ export default function PhotoFrameClient() {
           <button
             type="button"
             onClick={handleDownload}
-            disabled={!hasPhoto}
-            style={{ ...styles.button, ...(hasPhoto ? styles.downloadBtnActive : styles.downloadBtnDisabled) }}
+            disabled={!canDownload}
+            style={{ ...styles.button, ...(canDownload ? styles.downloadBtnActive : styles.downloadBtnDisabled) }}
           >
             ⬇ ডাউনলোড করুন
           </button>
@@ -257,12 +363,33 @@ const styles = {
     color: GREEN,
   },
   sub: {
-    margin: "0 0 18px",
+    margin: "0 0 16px",
     textAlign: "center",
     color: "#555",
     fontSize: "clamp(12.5px,3.4vw,14px)",
     padding: "0 8px",
   },
+  typeSelect: {
+    width: "min(94vw, 480px)",
+    maxWidth: "100%",
+    display: "flex",
+    gap: 8,
+    marginBottom: 14,
+  },
+  typeBtn: {
+    flex: 1,
+    border: "1.5px solid #d8dccb",
+    background: "#fff",
+    color: "#555",
+    padding: "10px 6px",
+    borderRadius: 10,
+    fontSize: "clamp(12px,3.4vw,13.5px)",
+    fontWeight: 600,
+    textAlign: "center",
+    cursor: "pointer",
+    WebkitTapHighlightColor: "transparent",
+  },
+  typeBtnActive: { background: GREEN, borderColor: GREEN, color: "#fff" },
   stage: {
     position: "relative",
     width: "min(94vw, 480px)",
@@ -296,6 +423,25 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gap: 12,
+  },
+  field: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 6,
+    background: "#fff",
+    padding: "12px 14px",
+    borderRadius: 10,
+    boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+  },
+  fieldLabel: { fontSize: 13, color: "#666", fontWeight: 600 },
+  fieldInput: {
+    border: "1.5px solid #d8dccb",
+    borderRadius: 8,
+    padding: "10px 12px",
+    fontSize: 15,
+    fontFamily: "inherit",
+    color: INK,
+    outline: "none",
   },
   row: { display: "flex", gap: 10, flexWrap: "wrap" },
   uploadBtn: {
