@@ -189,9 +189,9 @@ export default function PhotoFrameClient() {
       </div>
 
       <footer style={styles.footer}>
-        Visit{" "}
         <a href="https://www.dakio.io/" target="_blank" rel="noopener" style={styles.footerLink}>
-          <img src="/brand/dakio-lockup-light-bg.svg" alt="dakio.io" style={{ height: 18, width: "auto", display: "block" }} />
+          <span>Visit</span>
+          <img src="/brand/dakio-lockup-light-bg.svg" alt="dakio.io" style={{ height: 16, width: "auto", display: "block" }} />
         </a>
       </footer>
     </div>
@@ -314,14 +314,18 @@ const styles = {
   hint: { textAlign: "center", fontSize: 12.5, color: "#8a8f7d", marginTop: 4 },
   footer: {
     marginTop: 28,
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
     fontSize: "clamp(12px,3.2vw,13px)",
     color: "#8a8f7d",
     textAlign: "center",
   },
   footerLink: {
-    display: "inline-flex",
+    display: "flex",
     alignItems: "center",
     gap: 6,
+    lineHeight: 1,
     color: GREEN,
     fontWeight: 600,
     textDecoration: "none",
