@@ -24,7 +24,7 @@ const FRAMES = [
     key: "sponsor",
     label: "স্পন্সর",
     src: "/assets/nsgettogather26/frames/frame-sponsor.png",
-    box: { x: 55, centerY: 893, width: 165, maxSize: 30, minSize: 14 },
+    box: { x: 66, centerY: 1015, width: 182, maxSize: 34, minSize: 15 },
   },
 ];
 
