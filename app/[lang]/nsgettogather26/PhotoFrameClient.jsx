@@ -116,10 +116,32 @@ export default function PhotoFrameClient() {
 
   const handleDownload = () => {
     const canvas = canvasRef.current;
-    const link = document.createElement("a");
-    link.download = "NS-Get-Together-2026.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+    canvas.toBlob(async blob => {
+      if (!blob) return;
+      const fileName = "NS-Get-Together-2026.png";
+      const file = new File([blob], fileName, { type: "image/png" });
+
+      // On phones, navigator.share's native sheet offers "Save Image" /
+      // "Save to Photos" — that lands in the gallery. A plain <a download>
+      // instead drops into internal storage/Downloads, invisible in the
+      // gallery app, so prefer share whenever the OS can share this file.
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({ files: [file], title: fileName });
+          return;
+        } catch (err) {
+          if (err && err.name === "AbortError") return;
+          // fall through to the download link on any other failure
+        }
+      }
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.download = fileName;
+      link.href = url;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 30000);
+    }, "image/png");
   };
 
   return (
