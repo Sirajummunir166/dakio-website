@@ -4,34 +4,16 @@ import { useRef, useState, useEffect } from "react";
 
 const SIZE = 1500;
 
-// Per-frame badge geometry: where the "শিক্ষাবর্ষ:" value goes (left edge,
-// vertical center, max available width) so the typed session text fits
-// inside the same green box the label was printed on in the source PNG.
+// Same text box on every frame: the badge graphic was removed from all four
+// PNGs so the typed session line sits directly above "আমি থাকছি" / "আমি
+// অংশগ্রহণ করছি" and reads as one continuous sentence.
+const SESSION_BOX = { x: 59, bottomY: 1050, width: 430, maxSize: 62, minSize: 26 };
+
 const FRAMES = [
-  {
-    key: "participant",
-    label: "অংশগ্রহণকারী",
-    src: "/assets/nsgettogather26/frames/frame-participant.png",
-    box: { x: 66, centerY: 1015, width: 182, maxSize: 34, minSize: 15 },
-  },
-  {
-    key: "volunteer",
-    label: "স্বেচ্ছাসেবক",
-    src: "/assets/nsgettogather26/frames/frame-volunteer.png",
-    box: { x: 66, centerY: 1015, width: 182, maxSize: 34, minSize: 15 },
-  },
-  {
-    key: "sponsor",
-    label: "স্পন্সর",
-    src: "/assets/nsgettogather26/frames/frame-sponsor.png",
-    box: { x: 66, centerY: 1015, width: 182, maxSize: 34, minSize: 15 },
-  },
-  {
-    key: "organizer",
-    label: "দায়িত্বশীল",
-    src: "/assets/nsgettogather26/frames/frame-organizer.png",
-    box: { x: 66, centerY: 1015, width: 182, maxSize: 34, minSize: 15 },
-  },
+  { key: "participant", label: "অংশগ্রহণকারী", src: "/assets/nsgettogather26/frames/frame-participant.png" },
+  { key: "volunteer", label: "স্বেচ্ছাসেবক", src: "/assets/nsgettogather26/frames/frame-volunteer.png" },
+  { key: "sponsor", label: "স্পন্সর", src: "/assets/nsgettogather26/frames/frame-sponsor.png" },
+  { key: "organizer", label: "দায়িত্বশীল", src: "/assets/nsgettogather26/frames/frame-organizer.png" },
 ];
 
 export default function PhotoFrameClient() {
@@ -59,8 +41,6 @@ export default function PhotoFrameClient() {
     sessionRef.current = session;
   }, [session]);
 
-  const currentFrame = () => FRAMES.find(f => f.key === frameTypeRef.current) || FRAMES[0];
-
   const fitFontSize = (ctx, text, box) => {
     let size = box.maxSize;
     while (size > box.minSize) {
@@ -72,15 +52,16 @@ export default function PhotoFrameClient() {
   };
 
   const drawSessionText = ctx => {
-    const text = sessionRef.current.trim();
-    if (!text) return;
-    const { box } = currentFrame();
+    const typed = sessionRef.current.trim();
+    if (!typed) return;
+    const text = `${typed} থেকে`;
+    const box = SESSION_BOX;
     const size = fitFontSize(ctx, text, box);
     ctx.font = `700 ${size}px 'Archivo','Noto Sans Bengali',sans-serif`;
-    ctx.fillStyle = "#ffffff";
-    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#000000";
+    ctx.textBaseline = "bottom";
     ctx.textAlign = "left";
-    ctx.fillText(text, box.x, box.centerY);
+    ctx.fillText(text, box.x, box.bottomY);
   };
 
   const draw = () => {
@@ -284,17 +265,20 @@ export default function PhotoFrameClient() {
       <div style={styles.controls}>
         <div style={styles.field}>
           <label htmlFor="sessionInput" style={styles.fieldLabel}>
-            দাখিল সাল লিখুন
+            শিক্ষাবর্ষ লিখুন
           </label>
-          <input
-            id="sessionInput"
-            type="text"
-            value={session}
-            onChange={handleSessionChange}
-            placeholder="যেমন: ২০০৫"
-            maxLength={40}
-            style={styles.fieldInput}
-          />
+          <div style={styles.sessionRow}>
+            <input
+              id="sessionInput"
+              type="text"
+              value={session}
+              onChange={handleSessionChange}
+              placeholder="যেমন: দাখিল ২০০৫"
+              maxLength={30}
+              style={styles.fieldInput}
+            />
+            <span style={styles.sessionSuffix}>থেকে</span>
+          </div>
         </div>
 
         <div style={styles.row}>
@@ -441,7 +425,10 @@ const styles = {
     boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
   },
   fieldLabel: { fontSize: 13, color: "#666", fontWeight: 600 },
+  sessionRow: { display: "flex", alignItems: "center", gap: 8 },
   fieldInput: {
+    flex: 1,
+    minWidth: 0,
     border: "1.5px solid #d8dccb",
     borderRadius: 8,
     padding: "10px 12px",
@@ -450,6 +437,7 @@ const styles = {
     color: INK,
     outline: "none",
   },
+  sessionSuffix: { flexShrink: 0, fontSize: 14, fontWeight: 700, color: GREEN },
   row: { display: "flex", gap: 10, flexWrap: "wrap" },
   uploadBtn: {
     flex: "1 1 140px",
