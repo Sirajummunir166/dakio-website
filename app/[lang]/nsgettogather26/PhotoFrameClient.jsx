@@ -284,14 +284,14 @@ export default function PhotoFrameClient() {
       <div style={styles.controls}>
         <div style={styles.field}>
           <label htmlFor="sessionInput" style={styles.fieldLabel}>
-            শিক্ষাবর্ষ লিখুন
+            দাখিল সাল লিখুন
           </label>
           <input
             id="sessionInput"
             type="text"
             value={session}
             onChange={handleSessionChange}
-            placeholder="যেমন: দাখিল ২০২৩"
+            placeholder="যেমন: ২০০৫"
             maxLength={40}
             style={styles.fieldInput}
           />
