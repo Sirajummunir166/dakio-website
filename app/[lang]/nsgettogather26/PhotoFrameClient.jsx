@@ -54,7 +54,7 @@ export default function PhotoFrameClient() {
   const drawSessionText = ctx => {
     const typed = sessionRef.current.trim();
     if (!typed) return;
-    const text = `${typed} থেকে`;
+    const text = `${typed} ব্যাচ থেকে`;
     const box = SESSION_BOX;
     const size = fitFontSize(ctx, text, box);
     ctx.font = `700 ${size}px 'Archivo','Noto Sans Bengali',sans-serif`;
@@ -277,7 +277,7 @@ export default function PhotoFrameClient() {
               maxLength={30}
               style={styles.fieldInput}
             />
-            <span style={styles.sessionSuffix}>থেকে</span>
+            <span style={styles.sessionSuffix}>ব্যাচ থেকে</span>
           </div>
         </div>
 
