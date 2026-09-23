@@ -15,7 +15,9 @@ export const revalidate = 300;
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
-  const c = COPY[lang] || COPY.en;
+  // Live prices when the catalogue answers (same cached fetch the page makes),
+  // the committed copy when it does not.
+  const c = await getPricingCopy(lang).catch(() => COPY[lang] || COPY.en);
   return {
     title: c.meta.title,
     description: c.meta.description,

@@ -1,8 +1,11 @@
 "use client";
 
 // Pricing — 1:1 port of "Dakio Pricing.dc.html". Client component because the
-// Monthly/Annual toggle reprices the plan cards (৳1,490→৳1,242, ৳3,990→৳3,325,
-// "billed ৳…/year"). Prerendered HTML ships the Monthly default.
+// billing-period tabs reprice the plan cards. With the live catalogue the tabs
+// are every period a plan is sold on (Monthly / 6 months / Yearly), each saying
+// how much it saves against paying monthly, and the page opens on the longest —
+// the term Dakio wants to sell. The committed fallback copy keeps the old
+// two-way Monthly/Annual toggle.
 //
 // Copy arrives as props from the route file so this stays a pure view — the
 // only locale-aware logic here is the type deltas and href().
@@ -20,9 +23,10 @@ const MONOFONT = "var(--dk-font-mono), monospace";
 const ROUTE = "/pricing";
 
 export default function PricingClient({ lang = "en", copy, mono }) {
-  const [billing, setBilling] = useState("mo");
-  const yr = billing === "yr";
   const c = copy;
+  const live = Boolean(c.billing?.tabs?.length);
+  const [billing, setBilling] = useState(live ? c.billing.defaultKey : "mo");
+  const yr = billing === "yr";
   const T = type(lang);
   const L = p => href(lang, p);
 
@@ -46,10 +50,31 @@ export default function PricingClient({ lang = "en", copy, mono }) {
           {c.hero.h1}
         </h1>
         <p style={{ margin: "18px auto 0", fontSize: 16, lineHeight: 1.6, color: "#6B6D60", maxWidth: 480, animation: "heroUp .6s .16s ease both", ...T.lead }}>{c.hero.sub}</p>
-        <div style={{ display: "inline-flex", padding: 3, borderRadius: 99, background: "#E9EBE0", marginTop: 28, animation: "heroUp .6s .24s ease both" }}>
-          <span onClick={() => setBilling("mo")} style={seg(!yr)}>{c.hero.monthly}</span>
-          <span onClick={() => setBilling("yr")} style={seg(yr)}>{c.hero.annual}</span>
-        </div>
+        {live ? (
+          <div role="tablist" aria-label="Billing period" className="m-wrap" style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", gap: 3, padding: 4, borderRadius: 22, background: "#E9EBE0", marginTop: 28, animation: "heroUp .6s .24s ease both" }}>
+            {c.billing.tabs.map((t) => {
+              const on = billing === t.key;
+              const best = t.key === c.billing.bestKey;
+              return (
+                <button key={t.key} type="button" role="tab" aria-selected={on} onClick={() => setBilling(t.key)}
+                  style={{ ...seg(on), border: "none", display: "inline-flex", alignItems: "center", gap: 8, padding: t.saving ? "8px 10px 8px 18px" : "9px 18px", fontFamily: "inherit" }}>
+                  {t.label}
+                  {t.saving && (
+                    <span style={{ padding: "4px 9px", borderRadius: 99, fontSize: 11, fontWeight: 800, whiteSpace: "nowrap",
+                      ...(on ? { background: "#C6F035", color: "#0F120B" } : best ? { background: "#1A1D12", color: "#C6F035" } : { background: "rgba(62,122,69,0.14)", color: "#3E7A45" }) }}>
+                      {t.saving}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        ) : (
+          <div style={{ display: "inline-flex", padding: 3, borderRadius: 99, background: "#E9EBE0", marginTop: 28, animation: "heroUp .6s .24s ease both" }}>
+            <span onClick={() => setBilling("mo")} style={seg(!yr)}>{c.hero.monthly}</span>
+            <span onClick={() => setBilling("yr")} style={seg(yr)}>{c.hero.annual}</span>
+          </div>
+        )}
       </div>
 
       {/* PLANS */}
@@ -67,11 +92,17 @@ export default function PricingClient({ lang = "en", copy, mono }) {
                 <span style={{ fontFamily: MONOFONT, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.08em", padding: "4px 9px", borderRadius: 99, ...(p.dark ? { background: "rgba(198,240,53,0.16)", color: "#C6F035" } : { background: "rgba(26,29,18,0.07)", color: "#3E7A45" }) }}>{p.level || mono.planLevels[i]}</span>
               </div>
               <div style={{ fontSize: 12.5, marginTop: 5, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.audience}</div>
-              <div style={{ marginTop: 18, display: "flex", alignItems: "baseline", gap: 6 }}>
-                <span style={{ fontSize: 38, fontWeight: 800, letterSpacing: "-1.4px", ...(p.dark ? { color: "#C6F035" } : {}) }}>{yr ? p.prYr : p.prMo}</span>
-                <span style={{ fontSize: 13, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.sub}</span>
-              </div>
-              <div style={{ fontSize: 11.5, marginTop: 3, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{yr ? p.noteYr : p.noteMo}</div>
+              {live ? (
+                <PeriodPrice p={p} v={p.periods?.[billing]} T={T} notSold={c.billing.notSold} onNudge={() => setBilling(c.billing.bestKey)} />
+              ) : (
+                <>
+                  <div style={{ marginTop: 18, display: "flex", alignItems: "baseline", gap: 6 }}>
+                    <span style={{ fontSize: 38, fontWeight: 800, letterSpacing: "-1.4px", ...(p.dark ? { color: "#C6F035" } : {}) }}>{yr ? p.prYr : p.prMo}</span>
+                    <span style={{ fontSize: 13, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.sub}</span>
+                  </div>
+                  <div style={{ fontSize: 11.5, marginTop: 3, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{yr ? p.noteYr : p.noteMo}</div>
+                </>
+              )}
               <div style={{ height: 1, margin: "20px 0", background: p.dark ? "rgba(240,239,230,0.12)" : "rgba(26,29,18,0.08)" }} />
               <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
                 {p.feats.map(t => (
@@ -195,6 +226,42 @@ export default function PricingClient({ lang = "en", copy, mono }) {
       </div>
 
       <Footer lang={lang} />
+    </div>
+  );
+}
+
+// One card's price for the selected period: the struck-through monthly price,
+// the per-month price, what is actually billed, and the saving in taka. A plan
+// with no price on this period says so rather than showing another period's
+// number under this tab's name.
+function PeriodPrice({ p, v, T, notSold, onNudge }) {
+  const muted = p.dark ? "#878B76" : "#6B6D60";
+  if (!v) {
+    return (
+      <div style={{ marginTop: 18, minHeight: 86, fontSize: 13, color: muted, ...T.chip }}>
+        {notSold}
+      </div>
+    );
+  }
+  return (
+    <div style={{ marginTop: 18, minHeight: 86 }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
+        {v.strike && (
+          <span style={{ fontSize: 17, fontWeight: 700, textDecoration: "line-through", textDecorationThickness: 2, color: p.dark ? "#6B6F5C" : "#A3A596" }}>{v.strike}</span>
+        )}
+        <span style={{ fontSize: 38, fontWeight: 800, letterSpacing: "-1.4px", ...(p.dark ? { color: "#C6F035" } : {}) }}>{v.price}</span>
+        <span style={{ fontSize: 13, color: muted, ...T.chip }}>{p.sub}</span>
+      </div>
+      <div style={{ fontSize: 11.5, marginTop: 3, color: muted, ...T.chip }}>{v.billed || p.noteMo}</div>
+      {v.save && (
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 10, padding: "5px 11px", borderRadius: 99, fontSize: 12, fontWeight: 800,
+          ...(p.dark ? { background: "rgba(198,240,53,0.16)", color: "#C6F035" } : { background: "rgba(198,240,53,0.45)", color: "#1A1D12" }), ...T.chip }}>
+          {v.save}{v.saveBadge && <span style={{ fontWeight: 600, opacity: 0.75 }}>· {v.saveBadge}</span>}
+        </div>
+      )}
+      {!v.save && v.nudge && (
+        <button type="button" onClick={onNudge} style={{ marginTop: 10, padding: 0, border: "none", background: "none", cursor: "pointer", fontFamily: "inherit", fontSize: 12, fontWeight: 700, color: p.dark ? "#C6F035" : "#3E7A45", textDecoration: "underline", textUnderlineOffset: 3, ...T.chip }}>{v.nudge} →</button>
+      )}
     </div>
   );
 }
