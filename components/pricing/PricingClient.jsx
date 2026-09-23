@@ -112,7 +112,9 @@ export default function PricingClient({ lang = "en", copy, mono }) {
                   </div>
                 ))}
               </div>
-              <a href={REGISTER_URL} style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : p.pop ? { background: "#1A1D12", color: "#C6F035" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
+              {/* The card's own plan rides along: a bare REGISTER_URL gave every card the
+                  default trial, so "Start 14-day free trial" on Business started Growth. */}
+              <a href={p.code ? `${REGISTER_URL}?plan=${encodeURIComponent(p.code)}` : REGISTER_URL} style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : p.pop ? { background: "#1A1D12", color: "#C6F035" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
             </div>
           ))}
         </div>
