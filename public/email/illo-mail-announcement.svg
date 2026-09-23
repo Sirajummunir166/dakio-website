@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 190" width="1040" height="380">
+  <!-- Merchant Mail hero: announcement (News / feature launch). Email band 520×190, cream baked in for Outlook. -->
+  <rect width="520" height="190" fill="#F4F2EA"/>
+  <circle cx="260" cy="94" r="82" fill="#ECEDE2"/>
+  <ellipse cx="260" cy="176" rx="112" ry="6" fill="#E6E4D8"/>
+  <g fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- parcel, waiting to be announced: front, lid, side, and a tape stripe -->
+    <path d="M160 118 H198 V148 H160 Z" fill="#FBFCF5"/>
+    <path d="M160 118 L171 107 H209 L198 118 Z" fill="#D3E4A0"/>
+    <path d="M198 118 L209 107 V137 L198 148 Z" fill="#E6EFC9"/>
+    <path d="M179 118 V132 M185 107 L174 118" stroke-width="2.5"/>
+    <!-- megaphone -->
+    <path d="M226 106 L238 136 Q240 141 245 141 L253 141 Q258 141 256 136 L247 112" fill="#D3E4A0"/>
+    <rect x="208" y="80" width="22" height="30" rx="6" fill="#FBFCF5"/>
+    <path d="M228 82 L292 54 Q302 50 302 61 L302 129 Q302 140 292 136 L228 108 Z" fill="#E6EFC9"/>
+    <ellipse cx="302" cy="95" rx="9" ry="36" fill="#D3E4A0"/>
+    <!-- sound -->
+    <path d="M322 74 Q334 95 322 116" stroke-width="2.5"/>
+    <path d="M336 62 Q354 95 336 128" stroke-width="2.5" opacity=".6"/>
+  </g>
+  <!-- the one lime spark -->
+  <path d="M346 36 L350.5 46.5 L361 51 L350.5 55.5 L346 66 L341.5 55.5 L331 51 L341.5 46.5 Z" fill="#C6F035" stroke="#3E7A45" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

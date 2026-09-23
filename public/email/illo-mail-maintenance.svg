@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 190" width="1040" height="380">
+  <!-- Merchant Mail hero: scheduled maintenance. Email band 520×190, cream baked in for Outlook. -->
+  <rect width="520" height="190" fill="#F4F2EA"/>
+  <circle cx="260" cy="94" r="82" fill="#ECEDE2"/>
+  <ellipse cx="260" cy="176" rx="112" ry="6" fill="#E6E4D8"/>
+  <g fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- gear -->
+    <g transform="translate(246 100)">
+      <g fill="#E6EFC9">
+        <rect x="-8" y="-50" width="16" height="18" rx="3"/>
+        <rect x="-8" y="-50" width="16" height="18" rx="3" transform="rotate(45)"/>
+        <rect x="-8" y="-50" width="16" height="18" rx="3" transform="rotate(90)"/>
+        <rect x="-8" y="-50" width="16" height="18" rx="3" transform="rotate(135)"/>
+        <rect x="-8" y="-50" width="16" height="18" rx="3" transform="rotate(180)"/>
+        <rect x="-8" y="-50" width="16" height="18" rx="3" transform="rotate(225)"/>
+        <rect x="-8" y="-50" width="16" height="18" rx="3" transform="rotate(270)"/>
+        <rect x="-8" y="-50" width="16" height="18" rx="3" transform="rotate(315)"/>
+      </g>
+      <circle r="38" fill="#E6EFC9"/>
+      <circle r="14" fill="#FBFCF5"/>
+    </g>
+    <!-- wrench, across the gear -->
+    <g transform="translate(270 104) rotate(40)">
+      <rect x="-7" y="-12" width="14" height="66" rx="7" fill="#D3E4A0"/>
+      <path d="M-6 -38.8 L-6 -27 L6 -27 L6 -38.8 A17 17 0 1 1 -6 -38.8 Z" fill="#D3E4A0"/>
+      <circle cy="44" r="3" fill="#FBFCF5" stroke-width="2.5"/>
+    </g>
+  </g>
+  <!-- the lime accent: a small clock — "at a set time" -->
+  <g transform="translate(322 50)" stroke="#3E7A45" stroke-linecap="round">
+    <circle r="21" fill="#C6F035" stroke-width="3"/>
+    <circle r="15" fill="#FBFCF5" stroke-width="2"/>
+    <path d="M0 0 V-9 M0 0 L7 4" stroke-width="2.5" fill="none"/>
+    <circle r="2" fill="#3E7A45" stroke="none"/>
+  </g>
+</svg>
