@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 import HomeTop from "../../components/home/HomeTop";
 import GuardrailDial from "../../components/home/GuardrailDial";
+import NovaField from "../../components/home/NovaField";
 import { Footer } from "../../components/Chrome";
 import Reveal from "../../components/Reveal";
 import LogoDefs from "../../components/Logo";
@@ -41,22 +42,6 @@ const BN = "var(--dk-font-bn), sans-serif";
 // The marquee runs the partner list twice so the loop has no seam.
 const MARQUEE_LOOP = [...MARQUEE, ...MARQUEE];
 
-// Radial org chart. Each spoke: chip anchor (% of container) plus the start/end
-// trim of its dashed line. The svg is preserveAspectRatio="none", so a single
-// trim ratio would render wildly different gaps per direction — these are
-// pre-solved per spoke to leave an even ~14px gap at both the hub and the chip.
-const RADIAL_SPOKES = [
-  { pos: [24, 19], trim: [0.310, 0.779] },
-  { pos: [50, 7], trim: [0.244, 0.802] },
-  { pos: [76, 19], trim: [0.310, 0.779] },
-  { pos: [16, 37], trim: [0.416, 0.635] },
-  { pos: [84, 37], trim: [0.416, 0.635] },
-  { pos: [16, 67], trim: [0.416, 0.655] },
-  { pos: [84, 67], trim: [0.416, 0.655] },
-  { pos: [29, 89], trim: [0.260, 0.809] },
-  { pos: [71, 89], trim: [0.260, 0.809] },
-];
-
 const LAUNCH_SHAPE = [
   { i: "01", kind: "name", img: "launch-name", arrow: true },
   { i: "02", kind: "products", img: "launch-products", arrow: true },
@@ -83,10 +68,6 @@ export default async function Home({ params }) {
   // Live catalogue for the pricing strip and the structured data. Both fall back
   // to the committed copy if the API is unreachable — see lib/plans.js.
   const [pricing, offers] = await Promise.all([getHomePricing(lang), getJsonLdOffers(lang)]);
-
-  // The CEO Office is the hub, the rest ring it — sliced to the spoke count so a
-  // copy edit can never index past RADIAL_SPOKES.
-  const departments = c.org.depts.slice(0, RADIAL_SPOKES.length);
 
   return (
     <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", color: "#1A1D12", background: "#F4F2EA", overflowX: "hidden" }}>
@@ -223,7 +204,7 @@ export default async function Home({ params }) {
         </div>
       </div>
 
-      {/* ================= ORG / TEAM — radial: CEO at the hub, departments around ================= */}
+      {/* ================= ORG / TEAM — Nova's office as a living field ================= */}
       <div className="m-org-section" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px", textAlign: "center" }}>
         <div data-reveal>
           <div style={kicker}>{MONO.orgKicker}</div>
@@ -240,34 +221,15 @@ export default async function Home({ params }) {
             ))}
           </div>
         </div>
-        <div data-reveal className="org-radial" style={{ position: "relative", maxWidth: 760, height: 400, margin: "22px auto 0" }}>
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} aria-hidden="true">
-            {RADIAL_SPOKES.map(({ pos: [x, y], trim: [t0, t1] }, i) => {
-              const at = t => [50 + (x - 50) * t, 50 + (y - 50) * t];
-              const [x1, y1] = at(t0);
-              const [x2, y2] = at(t1);
-              return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(26,29,18,0.25)" strokeWidth="1" strokeDasharray="4 5" vectorEffect="non-scaling-stroke" />;
-            })}
-          </svg>
-          {departments.map((d, i) => {
-            const [x, y] = RADIAL_SPOKES[i].pos;
-            return (
-              <div key={d.n} className="org-radial-chip" style={{ position: "absolute", left: `${x}%`, top: `${y}%`, transform: "translate(-50%,-50%)", display: "inline-flex", alignItems: "center", gap: 9, padding: "11px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.08)", whiteSpace: "nowrap" }}>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
-                  <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", border: "1px solid rgba(26,29,18,0.25)" }} />
-                  <span style={{ fontSize: 13.5, fontWeight: 700, ...T.label }}>{d.n}</span>
-                </span>
-                <span style={{ fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.06em", color: "#6B6D60" }}>{d.j}</span>
-              </div>
-            );
-          })}
-          <div className="org-radial-ceo" style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "16px 28px", borderRadius: 18, background: "#1A1D12", color: "#F0EFE6", boxShadow: "0 18px 44px rgba(15,18,11,0.25)" }}>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
-              <span style={{ width: 12, height: 12, borderRadius: 99, background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)", animation: "breathe 5s ease-in-out infinite" }} />
-              <span style={{ fontSize: 15, fontWeight: 800, color: "#FBFBF4", ...T.label }}>{c.org.ceo}</span>
-            </span>
-            <span style={{ fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.1em", color: "#C6F035" }}>{MONO.orgCeoJob}</span>
-          </div>
+        <div data-reveal style={{ marginTop: 34 }}>
+          <NovaField
+            copy={c.org.field}
+            badge={MONO.orgFieldBadge}
+            storeName="Shahrqee"
+            deptNames={c.org.depts.map(d => d.n)}
+            href={L("/nova")}
+            T={T}
+          />
         </div>
         <div data-reveal style={{ marginTop: 18, fontSize: 13, color: "#6B6D60", ...T.small }}>{c.org.note}</div>
       </div>
