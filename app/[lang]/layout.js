@@ -5,6 +5,7 @@ import "../hover.css";
 import "../responsive.css";
 import { LOCALES } from "../../lib/i18n";
 import { GA_MEASUREMENT_ID, analyticsEnabled } from "../../lib/analytics";
+import CouponStrip from "../../components/CouponStrip";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -46,6 +47,8 @@ export default async function RootLayout({ children, params }) {
       className={`${archivo.variable} ${notoSansBengali.variable} ${ibmPlexMono.variable}`}
     >
       <body>
+        {/* Influencer code from dakio.io/c/CODE — renders nothing without one. */}
+        <CouponStrip lang={lang} />
         <main style={{ display: "block" }}>{children}</main>
       </body>
       {/* Loads after hydration, so it never blocks first paint. Both locales
