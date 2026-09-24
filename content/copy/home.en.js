@@ -21,7 +21,7 @@ export const MONO = {
   briefBadge: "MORNING BRIEF · SHAHRQEE DEMO STORE",
   briefApprove: "APPROVE / LATER",
   orgKicker: "THE ORGANIZATION",
-  orgFieldBadge: "NOVA'S OFFICE · LIVE",
+  orgCeoJob: "PLANS · COORDINATES ALL",
   roomsKicker: "THE PRODUCT — NOT MOCKUPS. CLICK ANY CARD.",
   roomsOpen: "OPEN ↗",
   roomsDecision: "DECISION · MARKETING",
@@ -33,9 +33,7 @@ export const MONO = {
   roomsAdsClick: "1 CLICK",
   roomsAdsCheck: "3 SIZES + MOTION · EDITABLE · ON-BRAND BY DEFAULT",
   trustKicker: "WHY FOUNDERS TRUST AN AI CEO",
-  trustSpend: "৳5,000 / DAY",
-  trustDiscount: "MAX 15%",
-  trustNoTouch: "REFUNDS · CONTRACTS",
+  trustFieldBadge: "NOVA'S OFFICE · LIVE",
   bdKicker: "HOME GROUND",
   bdSeason: "SEASON-AWARE PLANNING",
   bdSeasons: ["EID", "PUJA", "BOISHAKH", "11.11", "MONSOON"],
@@ -154,24 +152,12 @@ const home = {
       { v: "10", l: "departments" },
       { v: "65", l: "named duties" },
     ],
+    ceo: "CEO Office",
     depts: [
       { n: "Marketing", j: "PROMOTES" }, { n: "Sales", j: "CLOSES" }, { n: "Support", j: "ANSWERS" },
       { n: "Research", j: "DISCOVERS" }, { n: "Inventory", j: "PREDICTS" }, { n: "Shipping", j: "DELIVERS" },
       { n: "Finance", j: "COUNTS" }, { n: "Operations", j: "SOURCES" }, { n: "Growth", j: "EXPERIMENTS" },
     ],
-    field: {
-      caption: "Nova runs your departments while you sleep.",
-      legend: ["A ring is a department and its grade", "A line is Nova connected to that department", "Amber waits for your call"],
-      link: "Meet Nova",
-      idle: "Nova is at the core, watching the store",
-      lines: {
-        many: "Nova is running in {n} departments · {duties}",
-        one: "Nova is running in {room} · {duty}",
-        gather: "Nova is gathering the whole store · {duty}",
-        watch: "Nova is on watch at {room}",
-        idle: "Nova is at the core · {n} live lines open",
-      },
-    },
     note: "Every duty lands in a real module you could run by hand. Nova just never sleeps.",
   },
 
@@ -242,20 +228,20 @@ const home = {
   trust: {
     h2: "You hold the guardrails.",
     lede: "Nova runs the day inside a boundary you draw. Every move is logged, every limit is yours, and authority is earned one approval at a time.",
-    points: [
-      { k: "01", t: "Every action has a receipt.", d: "What Nova did, the evidence it acted on, and an undo that stays open for 24 hours." },
-      { k: "02", t: "You set the limits.", d: "A daily spend cap, a max discount and a no-touch list. Refunds, bulk changes and contracts stay founder-only. Always." },
-      { k: "03", t: "Authority is earned.", d: "Nova starts as an Operator. Acting CEO is earned from the ledger — approvals move it up, undos move it down." },
-    ],
-    cta: "See how Nova earns it",
-    // the dial's labels
-    levels: [
-      { l: "L0", n: "Observe" },
-      { l: "L1", n: "Suggest" },
-      { l: "L2", n: "Draft" },
-      { l: "L3", n: "Operator" },
-      { l: "L4", n: "Acting CEO" },
-    ],
+    // Nova's office as a living field (components/home/NovaField)
+    field: {
+      caption: "Nova runs your departments while you sleep.",
+      legend: ["A ring is a department and its grade", "A line is Nova connected to that department", "Amber waits for your call"],
+      link: "Meet Nova",
+      idle: "Nova is at the core, watching the store",
+      lines: {
+        many: "Nova is running in {n} departments · {duties}",
+        one: "Nova is running in {room} · {duty}",
+        gather: "Nova is gathering the whole store · {duty}",
+        watch: "Nova is on watch at {room}",
+        idle: "Nova is at the core · {n} live lines open",
+      },
+    }
   },
 
   bd: {
