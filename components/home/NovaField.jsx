@@ -236,12 +236,14 @@ export default function NovaField({
       <div ref={mount} aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse at 50% 42%, rgba(0,0,0,0) 50%, rgba(3,4,8,0.6) 100%)" }} />
 
-      <div style={{ position: "absolute", left: 20, top: 20, display: "inline-flex", alignItems: "center", gap: 10, padding: "8px 14px", borderRadius: 99, background: "rgba(8,10,14,0.86)", border: "1px solid rgba(198,240,53,0.16)", fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#C6F035", whiteSpace: "nowrap" }}>
+      {/* On a phone the badge sheds the sky word and tightens (responsive.css
+          .m-field-badge / .m-field-sky); the clock trims before the edge would. */}
+      <div className="m-field-badge" style={{ position: "absolute", left: 20, top: 20, display: "inline-flex", alignItems: "center", gap: 10, padding: "8px 14px", borderRadius: 99, background: "rgba(8,10,14,0.86)", border: "1px solid rgba(198,240,53,0.16)", fontFamily: MONO, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color: "#C6F035", whiteSpace: "nowrap" }}>
         <span style={{ width: 7, height: 7, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite", flexShrink: 0 }} />
         <span>{badge}</span>
         <span style={{ width: 1, height: 12, background: "rgba(233,239,220,0.18)" }} />
-        <span style={{ color: "#A9AD98", fontVariantNumeric: "tabular-nums" }}>
-          <span ref={clockRef}>{pad(Math.floor(s0 / 3600)) + ":" + pad(Math.floor(s0 / 60) % 60) + " " + TZ}</span> · <span ref={skyRef}>{skyWord(s0 / 3600)}</span>
+        <span style={{ color: "#A9AD98", fontVariantNumeric: "tabular-nums", minWidth: 0, overflow: "hidden", textOverflow: "ellipsis" }}>
+          <span ref={clockRef}>{pad(Math.floor(s0 / 3600)) + ":" + pad(Math.floor(s0 / 60) % 60) + " " + TZ}</span><span className="m-field-sky"> · <span ref={skyRef}>{skyWord(s0 / 3600)}</span></span>
         </span>
       </div>
 

@@ -230,6 +230,11 @@
 }
 @media (max-width: 620px) {
   .m-field { height: 400px !important; border-radius: 20px !important; }
+  /* The badge is ~334px of tracked mono; a 360px phone gives it ~288px. Drop
+     the sky word, tighten the tracking, and cap the pill so the clock trims
+     with an ellipsis rather than being cut at the rounded edge. */
+  .m-field-badge { max-width: calc(100% - 40px) !important; overflow: hidden !important; gap: 8px !important; padding: 8px 12px !important; letter-spacing: 0.08em !important; }
+  .m-field-sky { display: none !important; }
   .m-field-caption { font-size: 19px !important; }
   .m-field-legend { display: none !important; }
 }
