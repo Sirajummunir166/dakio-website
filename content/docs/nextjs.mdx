@@ -1,0 +1,80 @@
+The Next.js pattern: read the catalog in **server components** (fast, and Google sees real content), and check out in a **client component**. One client key serves both.
+
+```ts
+// lib/dakio.ts
+import { createDakio } from '@dakio/sdk'
+export const dakio = createDakio({ key: process.env.NEXT_PUBLIC_DAKIO_KEY! })
+```
+
+```tsx
+// app/p/[slug]/page.tsx — a server component
+import { notFound } from 'next/navigation'
+import { dakio } from '@/lib/dakio'
+import { BuyBox } from '@/components/BuyBox' // 'use client': variant picker + useCart
+
+export const revalidate = 60
+
+export default async function ProductPage({ params }) {
+  const { slug } = await params
+  const product = await dakio.products.get(slug)
+  if (!product) notFound()
+  return <BuyBox product={product} />
+}
+```
+
+## SEO
+
+`@dakio/sdk/next` returns plain objects in Next's shapes; it doesn't import Next itself.
+
+```tsx
+import { productMetadata, productJsonLd, jsonLdScript } from '@dakio/sdk/next'
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params
+  const [product, store] = await Promise.all([dakio.products.get(slug), dakio.store.get()])
+  return product ? productMetadata(product, store, { url: `https://mybrand.com.bd/p/${slug}` }) : {}
+}
+
+// in the page:
+<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(productJsonLd(product, store, { url })) }} />
+```
+
+`productMetadata` sets the title (`Product | Store`, absolute so a layout template doesn't double it), description, canonical and Open Graph. `productJsonLd` emits schema.org `Product` with price, currency and stock for rich results.
+
+```ts
+// app/sitemap.ts
+import { dakioSitemap } from '@dakio/sdk/next'
+export default () => dakioSitemap(dakio, { baseUrl: 'https://mybrand.com.bd' })
+
+// app/robots.ts
+import { dakioRobots } from '@dakio/sdk/next'
+export default () => dakioRobots({ baseUrl: 'https://mybrand.com.bd' })
+```
+
+The sitemap lists home, `/shop`, every category with products and every published product (paged, up to `maxProducts`, default 5,000). Pass `productPath` / `categoryPath` if your routes aren't `/p/<slug>` and `/shop/<slug>`. `dakioRobots({ noindex: true })` keeps a staging site out of Google.
+
+## Instant refresh
+
+Server-rendered pages refresh on their `revalidate` timer. To refresh the moment something changes in Dakio, add a webhook route:
+
+```ts
+// app/api/dakio/revalidate/route.ts
+import { revalidatePath, revalidateTag } from 'next/cache'
+import { createRevalidateRoute } from '@dakio/sdk/next'
+
+export const POST = createRevalidateRoute({
+  secret: process.env.DAKIO_WEBHOOK_SECRET!,
+  revalidatePath,
+  revalidateTag,
+})
+```
+
+Then in Dakio, **Settings → Developers → Webhooks → Add webhook**: the URL `https://mybrand.com.bd/api/dakio/revalidate`, the events *A product changes*, *A product is deleted*, *Stock changes* and *Store settings change*, and put its signing secret in `DAKIO_WEBHOOK_SECRET`.
+
+The route checks the signature (an unsigned request gets `400`), then refreshes the product page, `/shop` and home; a store change (name, delivery rates, a sale starting) refreshes every page. Routes of your own? Pass `targets: (event) => ({ paths: […] })`, or `productPath`. `onEvent` runs for every verified event. In testing, an edited price showed on a Next.js home page **6.4 seconds** after the edit.
+
+## Checkout in Next.js
+
+Keep checkout in a client component (`'use client'`) with [`useCheckout`](/developers/docs/react#checkout): it runs in the buyer's browser, so fake-order protection sees their IP. If checkout must be a server action, use a [secret key with the buyer's IP](/developers/docs/secret-keys#checkout-from-a-server).
+
+The [Next.js starter](https://github.com/alasim/dakio-sdk/tree/main/examples/next) is all of this put together: catalog, product pages with JSON-LD, bag, checkout with the code step, tracking, "my orders", sitemap, robots and the revalidate route.

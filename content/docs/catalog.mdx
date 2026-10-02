@@ -1,0 +1,90 @@
+Catalog reads work anywhere, server or browser, with any key. They retry network failures on their own.
+
+## The store
+
+```js
+const store = await dakio.store.get()
+```
+
+<Table
+  head={["Field", "What it is"]}
+  rows={[
+    ["name, description, logoUrl, faviconUrl, accentColor", "The store's brand"],
+    ["contact", "{ phone, email, address, city, whatsapp }"],
+    ["social", "{ website, facebook, instagram }"],
+    ["announcement", "A running campaign's banner text, else the store's own announcement"],
+    ["campaignBanner", "{ text, campaignId } while a sale runs, else null"],
+    ["delivery", "{ insideDhaka, outsideDhaka } — the two delivery rates"],
+    ["tracking", "{ metaPixelId, gtmContainerId }"],
+    ["canonicalHost", "The one address the store counts as on the web, for canonical links"],
+    ["currency, paymentMethods", "'BDT', ['COD']"],
+  ]}
+/>
+
+## Categories
+
+```js
+const categories = await dakio.categories.list()
+// [{ id, name, slug, parentId, productCount }]
+```
+
+A flat list. Build the tree from `parentId`. `productCount` counts published products directly in the category, not its children.
+
+## Products
+
+```js
+const page = await dakio.products.list({
+  category: 'shirts',   // id or slug; sub-categories are included
+  search: 'oxford',     // name or SKU, any case
+  sort: 'price_asc',    // newest · oldest · price_asc · price_desc · name_asc
+  page: 1,
+  limit: 24,            // up to 100
+})
+// { data: Product[], page, limit, total, totalPages }
+
+const product = await dakio.products.get('oxford-shirt') // id or slug; null when not published
+```
+
+`ids: ['…', '…']` fetches specific products, for a "recently viewed" row.
+
+### A product
+
+<Table
+  head={["Field", "What it is"]}
+  rows={[
+    ["id, slug, name, sku", "Identity. Link to /p/<slug>."],
+    ["price", "What checkout charges now, sale included"],
+    ["compareAtPrice, onSale", "The pre-sale price during a sale (else the merchant's higher compare-at price)"],
+    ["campaign", "{ id, name, percent } of the running sale, or null"],
+    ["images", "Image URLs, the first is the main photo"],
+    ["description, shortDescription", "Sanitised HTML"],
+    ["contentTabs", "[{ key, title, html }] — Specifications, Size Guide, Shipping & Returns…"],
+    ["category", "{ id, name, slug } or null"],
+    ["attributes", "[{ name, values }] — the options a buyer picks, e.g. Size: S, M, L"],
+    ["variants", "[{ id, name, sku, attrs: [{ name, value }], price, compareAtPrice, stock, inStock }]"],
+    ["stock", "{ total, inStock }"],
+    ["isNew, createdAt", "isNew is true for 30 days after it’s added"],
+  ]}
+/>
+
+A product with variants needs a `variantId` in the bag; checkout answers `OPTION_REQUIRED` otherwise. Find the variant whose `attrs` match the buyer's picks:
+
+```js
+const pick = { Size: 'M', Color: 'Blue' }
+const variant = product.variants.find(v => v.attrs.every(a => pick[a.name] === a.value))
+```
+
+Prices in `description` text are the merchant's own words; trust `price`.
+
+## Delivery
+
+```js
+await dakio.shipping.get('Gazipur')   // { zone: 'outside_dhaka', charge: 120 }
+await dakio.shipping.zones()          // both zones and their charges
+```
+
+**Dhaka district** pays the store's inside-Dhaka rate. Every other district, Gazipur and Narayanganj included, pays the outside rate. A quote applies the same rule, so what you show is what's charged.
+
+## Freshness
+
+Prices, stock and sales change in Dakio at any time. In a server-rendered site, refresh catalog pages every minute or so, or instantly with a [webhook](/developers/docs/webhooks) (Next.js: [`createRevalidateRoute`](/developers/docs/nextjs#instant-refresh)). The quote is always live, so checkout is never wrong even when a page is a minute old.

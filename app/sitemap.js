@@ -1,8 +1,9 @@
 import { SITE_URL, abs } from "../lib/seo";
 import { LOCALES, href, LEGAL_PATHS } from "../lib/i18n";
 import { posts } from "../lib/blog";
+import { docs, docHref } from "../lib/docs";
 
-const ROUTES = ["/", "/nova", "/store", "/store-studio", "/grow", "/ads", "/front-office", "/switch", "/pricing", "/about", "/blog", "/contact"];
+const ROUTES = ["/", "/nova", "/store", "/store-studio", "/grow", "/ads", "/front-office", "/switch", "/pricing", "/about", "/blog", "/contact", "/developers"];
 
 const priority = route => {
   if (route === "/") return 1;
@@ -51,5 +52,13 @@ export default function sitemap() {
     priority: 0.3,
   }));
 
-  return [...pages, ...articles, ...legal];
+  // Developer docs are English-only, one URL each.
+  const devDocs = docs.map(d => ({
+    url: `${SITE_URL}${docHref(d.slug)}`,
+    lastModified: new Date("2026-10-02"),
+    changeFrequency: "monthly",
+    priority: d.slug ? 0.5 : 0.7,
+  }));
+
+  return [...pages, ...articles, ...legal, ...devDocs];
 }

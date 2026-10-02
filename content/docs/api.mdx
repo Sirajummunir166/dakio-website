@@ -1,0 +1,93 @@
+`@dakio/sdk` wraps this API; you can call it directly from any language.
+
+```bash
+curl https://dakio-api-production.up.railway.app/api/sdk/v1/products?limit=2 \
+  -H "Dakio-Key: dk_pub_test_…"
+```
+
+## Basics
+
+<Table
+  head={["", ""]}
+  mono={[]}
+  rows={[
+    ["Base URL", <code>https://dakio-api-production.up.railway.app/api/sdk/v1</code>],
+    ["Auth", <span><code>Dakio-Key: dk_…</code> or <code>Authorization: Bearer dk_…</code></span>],
+    ["Body", "JSON, with Content-Type: application/json"],
+    ["Success", <span><code>{"{ \"data\": … }"}</code> — except <code>GET /products</code> and <code>GET /orders</code>, which answer the page object <code>{"{ data, page, limit, total, totalPages }"}</code></span>],
+    ["Error", <code>{"{ \"error\": { \"code\": \"OUT_OF_STOCK\", \"message\": \"…\" } }"}</code>],
+    ["Writes", <span><code>Idempotency-Key</code> (8–200 characters) on <code>POST /checkout</code> and <code>/checkout/verify-otp</code>: the same key replays the first success</span>],
+    ["CORS", "Browsers may call it from your allowed websites (client keys); secret keys are refused from browsers"],
+    ["Versioning", "v1 only adds fields; nothing is renamed or removed. A breaking change would be /api/sdk/v2."],
+  ]}
+/>
+
+## Endpoints
+
+<Table
+  head={["Method & path", "Key", "What it does"]}
+  mono={[0]}
+  rows={[
+    ["GET /store", "any", "The store's brand, contact, delivery rates, banner, Pixel/GTM ids"],
+    ["GET /categories", "any", "Flat list with parentId and productCount"],
+    ["GET /products", "any", "?category, search, ids (comma-separated), page, limit (≤100), sort"],
+    ["GET /products/:idOrSlug", "any", "One published product, 404 otherwise"],
+    ["GET /shipping", "any", "?district → { district, zone, charge, currency }; without it, both zones"],
+    ["POST /cart/quote", "any", "{ items, couponCode?, district? } → the priced bag"],
+    ["POST /coupons/validate", "any", "{ code, subtotal } → { valid, reason, discount, coupon }"],
+    ["POST /checkout", "any*", "Place a COD order → 201 PLACED or 202 OTP_REQUIRED"],
+    ["POST /checkout/verify-otp", "any*", "{ sessionToken, otp } → 201"],
+    ["POST /leads", "any*", "An abandoned cart"],
+    ["POST /account/otp", "any*", "{ phone } → { sessionToken, expiresAt }"],
+    ["POST /account/orders", "any*", "{ sessionToken, otp } → the phone's last 10 orders"],
+    ["GET /orders/track", "any", "?orderNumber & phone → status and timeline, 404 when no match"],
+    ["POST /visits", "any", "{ sessionId, page } — the live-visitors count"],
+    ["GET /orders", "secret", "?page, limit, createdSince, updatedSince, phone"],
+    ["GET /orders/:idOrNumber", "secret", "One order"],
+    ["GET /webhooks", "live secret", "The store's webhooks"],
+    ["POST /webhooks", "live secret", "{ url, events, description? } → with its signing secret, once"],
+    ["DELETE /webhooks/:id", "live secret", "Remove one"],
+  ]}
+/>
+
+\* From a **server** these need a secret key plus `Dakio-Buyer-Ip` (and ideally `Dakio-Buyer-Agent`) — see [Secret keys](/developers/docs/secret-keys#checkout-from-a-server). The SDK refuses them on a server with a client key.
+
+## Checkout body
+
+```json
+{
+  "customer": { "name": "Rahim", "phone": "01712345678", "address": "House 4, Road 2", "district": "Dhaka", "city": "Mirpur", "email": null },
+  "items": [{ "productId": "cm…", "variantId": null, "qty": 2 }],
+  "couponCode": "EID10",
+  "note": "Call after 5pm",
+  "eventId": "pur_…"
+}
+```
+
+`201` → `{ "data": { "orderNumber": "#ABC-1234", "orderId": "cm…", "total": 1060 } }`. `202` → `{ "data": { "status": "OTP_REQUIRED", "sessionToken": "…", "maskedPhone": "01*******78", "expiresAt": "…" } }`. Test keys add `"test": true`. Up to 50 lines, quantities 1–999.
+
+## Error codes
+
+<Table
+  head={["HTTP", "code", "Meaning"]}
+  mono={[0, 1]}
+  rows={[
+    ["401", "KEY_MISSING · INVALID_KEY · KEY_REVOKED", "No key, not a Dakio key, or revoked"],
+    ["403", "ORIGIN_NOT_ALLOWED", "A browser on a website not in the live key's list"],
+    ["403", "SECRET_KEY_IN_BROWSER", "A secret key sent from a browser — revoke it"],
+    ["403", "SECRET_KEY_REQUIRED · LIVE_KEY_REQUIRED", "This route needs a (live) secret key"],
+    ["403", "STORE_CLOSED · STORE_NOT_TAKING_ORDERS", "Store switched off, or its plan can't take orders now"],
+    ["400", "INVALID_PARAM · INVALID_INPUT · EMPTY_CART", "Bad query or body"],
+    ["400", "BUYER_IP_REQUIRED · INVALID_BUYER_IP", "Server call without a usable Dakio-Buyer-Ip"],
+    ["400", "INVALID_PHONE · DISTRICT_REQUIRED · CITY_REQUIRED", "Checkout address"],
+    ["400", "OUT_OF_STOCK · OPTION_REQUIRED · NOT_AVAILABLE · PRICE_CHANGED · COUPON_UNAVAILABLE", "Bag problems; productId when it's one product"],
+    ["400", "OTP_INCORRECT (attemptsLeft) · SESSION_NOT_FOUND", "The code step"],
+    ["404", "NOT_FOUND", "No such product, order or endpoint"],
+    ["409", "IDEMPOTENCY_IN_PROGRESS · SESSION_USED", "Same Idempotency-Key still running; code already used"],
+    ["410", "OTP_EXPIRED", "Ask for a new code"],
+    ["429", "RATE_LIMITED · TOO_MANY_ATTEMPTS", "Slow down; see Retry-After"],
+    ["5xx", "SERVER_ERROR", "Retry with the same Idempotency-Key"],
+  ]}
+/>
+
+Rate limits are on the [Keys](/developers/docs/keys#limits) page.

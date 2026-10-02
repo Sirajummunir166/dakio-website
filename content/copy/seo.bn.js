@@ -29,6 +29,7 @@ const seo = {
     "/about": "Dakio সম্পর্কে",
     "/blog": "ব্লগ",
     "/contact": "যোগাযোগ",
+    "/developers": "ডেভেলপার",
   },
 
   pricingFaq: [

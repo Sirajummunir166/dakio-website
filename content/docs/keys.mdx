@@ -1,0 +1,52 @@
+Every call carries a key. There are two kinds, each in a test and a live version. Make them in **Settings → Developers**; only the store owner can, and Dakio support can see and revoke them.
+
+<Table
+  head={["Key", "For", "Works from"]}
+  rows={[
+    ["dk_pub_test_…", "Building your website", "Any website, localhost included. Orders are test orders."],
+    ["dk_pub_live_…", "Your real website", "Only the websites you list under Allowed websites (HTTPS)."],
+    ["dk_sec_test_…", "Building your server code", "Servers only. Orders are test orders."],
+    ["dk_sec_live_…", "Your server", "Servers only. A browser request carrying it is refused."],
+  ]}
+/>
+
+Send the key in the `Dakio-Key` header (the SDK does it for you). `Authorization: Bearer dk_…` works too.
+
+## Client keys (`dk_pub_`)
+
+A client key is made to sit in browser code, in plain sight. It can only do what a shopper can already do on the store: read the catalog, price a bag, place cash-on-delivery orders, track an order with its number and phone, and look up "my orders" with an SMS code. It can't read the store's customers, money, settings or order list.
+
+What keeps a live client key to your website is its **allowed websites** list, not secrecy:
+
+- A browser request whose `Origin` isn't on the list gets `403 ORIGIN_NOT_ALLOWED`.
+- Add each address your site runs on: `www.mybrand.com.bd` and `mybrand.com.bd`. A shared host like `vercel.app` on its own is refused; `mybrand.vercel.app` is fine.
+- Requests with no `Origin` (a Next.js server rendering catalog pages, a script) are allowed. They meet the same per-IP limits and fake-order checks as the built-in store.
+
+A store can have 10 live and 10 test client keys.
+
+## Secret keys (`dk_sec_`)
+
+A secret key is for **your server**. It adds what needs one: reading the store's orders, managing webhooks, and placing orders from a server on a shopper's behalf. See [Secret keys](/developers/docs/secret-keys).
+
+- Dakio shows it **once**, when you create it, and keeps only a hash. Copy it straight into a server-only environment variable, never one starting with `NEXT_PUBLIC_`.
+- Any request carrying it with a browser `Origin` is refused (`SECRET_KEY_IN_BROWSER`), and `createDakio` refuses to start with one in a browser. If one ever reaches front-end code, revoke it.
+- Up to 5 live and 5 test secret keys per store.
+
+## Revoking
+
+**Revoke** in Settings → Developers is immediate and final: the next request gets `401 KEY_REVOKED`. Revoked keys stay listed, greyed, so you can see who switched what off.
+
+## Limits
+
+<Table
+  head={["Limit", "Value"]}
+  mono={[]}
+  rows={[
+    ["Requests per key", "1,200 a minute"],
+    ["Checkouts per key", "120 a minute, across all shoppers"],
+    ["Checkouts per shopper IP", "20 every 10 minutes (the built-in store's limit)"],
+    ["Codes (OTP) per shopper IP", "10 a minute"],
+  ]}
+/>
+
+Over a limit you get `429 RATE_LIMITED` with `Retry-After`. The SDK retries network failures and `502`/`503`/`504` on its own, never a `429`.

@@ -22,6 +22,7 @@ const PRODUCT_LINKS = [
   ["grow", "/grow"],
   ["ads", "/ads"],
   ["frontOffice", "/front-office"],
+  ["developers", "/developers"],
   ["pricing", "/pricing"],
 ];
 

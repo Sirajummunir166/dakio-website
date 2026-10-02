@@ -51,6 +51,7 @@ const BUILD_KEYS = [
   { mono: "GL", href: "/grow", pv: "grow" },
   { mono: "AD", href: "/ads", pv: "ads" },
   { mono: "SN", href: SUPPLIER_HREF, pv: "supplier" },
+  { mono: "DV", href: "/developers", pv: "developers" },
 ];
 
 function ArrowIcon({ size = 12, strokeWidth = 2.4 }) {

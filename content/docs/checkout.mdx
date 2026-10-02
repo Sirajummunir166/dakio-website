@@ -1,0 +1,105 @@
+One rule runs through all of this: **prices never come from your code.** A bag holds `{ productId, variantId, qty }`. Every price on screen comes from a quote, and checkout charges exactly the quote. Any price field you send is ignored.
+
+## Quote
+
+```js
+const quote = await dakio.cart.quote({ items, couponCode: 'EID10', district: 'Gazipur' })
+```
+
+<Table
+  head={["Field", "What it is"]}
+  rows={[
+    ["ok", "true when this exact bag can be ordered now"],
+    ["lines", "Each line priced: unitPrice, compareAtPrice, lineTotal, name, variantName, imageUrl, problem"],
+    ["problems", "[{ index, productId, code, message, available? }]"],
+    ["subtotal, discount, total", "Taka, rounded like the order will be"],
+    ["coupon", "{ code, valid, reason, minOrder } or null"],
+    ["shipping", "{ zone, charge }, or null until a district is given"],
+    ["storeAcceptingOrders", "false when the store can't take orders (plan expired, daily limit)"],
+  ]}
+/>
+
+A line with a problem is left out of the totals. Problem codes: `OUT_OF_STOCK` (with `available`), `OPTION_REQUIRED` (pick a variant), `NOT_FOUND`, `NOT_AVAILABLE`, `NOT_FOR_SALE`.
+
+Coupon reasons when `valid` is false: `NOT_FOUND`, `NOT_STARTED`, `EXPIRED`, `USED_UP`, `MIN_ORDER` (with `minOrder`), `CAMPAIGN_NOT_RUNNING`. For a coupon box that only checks a code, `dakio.coupons.validate({ code, subtotal })` answers `{ valid, reason, discount, coupon }`.
+
+## Checkout
+
+```js
+const result = await dakio.checkout.create({
+  customer: {
+    name: 'Rahim',
+    phone: '01712345678',      // a Bangladesh mobile; +880 forms are fine
+    address: 'House 4, Road 2',
+    district: 'Dhaka',         // one of the 64 districts (see @dakio/sdk/bd)
+    city: 'Mirpur',            // thana / upazila
+    email: 'optional@mail.com',
+  },
+  items: [{ productId: 'cm…', variantId: 'cm…', qty: 1 }],
+  couponCode: 'EID10',         // optional
+  note: 'Call after 5pm',      // optional
+  eventId: 'pur_…',            // optional: your browser Pixel's Purchase eventID
+})
+```
+
+Payment is always **cash on delivery**. `checkout.create` never throws for a refusal; it returns one of three results:
+
+<Table
+  head={["status", "Then"]}
+  rows={[
+    ["PLACED", "{ orderNumber, orderId, total } — the order is in the store's Orders, stock is taken, the courier flow can start"],
+    ["OTP_REQUIRED", "{ sessionToken, maskedPhone, expiresAt } — fake-order protection sent the buyer an SMS code"],
+    ["ERROR", "{ code, message, productId?, attemptsLeft? }"],
+  ]}
+/>
+
+## The code step
+
+When the store's fake-order protection is on and an order trips one of its rules — one phone ordering again and again in a day, a repeat from the same phone and IP within the hour, the same bag under a different phone, or many orders from one IP — Dakio texts the buyer a 6-digit code instead of placing the order (in the store's strict mode; in its gentler mode the order goes through, flagged for the merchant to check):
+
+```js
+if (result.status === 'OTP_REQUIRED') {
+  const code = await askBuyer(`Enter the code sent to ${result.maskedPhone}`)
+  const placed = await dakio.checkout.verifyOtp({ sessionToken: result.sessionToken, otp: code })
+  // PLACED, or ERROR with code OTP_INCORRECT and attemptsLeft, OTP_EXPIRED, TOO_MANY_ATTEMPTS
+}
+```
+
+The code lasts 5 minutes. In React, [`useCheckout`](/developers/docs/react#checkout) runs this whole step for you.
+
+## Why checkout runs in the browser
+
+Fake-order protection, the per-IP order limit and Meta's server events all judge the buyer by IP address. From the browser Dakio sees each buyer's own IP with no setup. From your server every buyer would share one IP and get blocked after a few orders — so with a client key the SDK refuses there (`CHECKOUT_MUST_RUN_IN_BROWSER`). Need server-side checkout? Use a [secret key and send the buyer's IP](/developers/docs/secret-keys#checkout-from-a-server).
+
+## Double taps and retries
+
+Every `checkout.create` sends an `Idempotency-Key` header. The same key always gets the first answer back instead of a second order, so a double-tapped button or a retry after a dropped connection never orders twice. The SDK makes a fresh key per call and reuses it on its own retries. To control it (one key per checkout attempt across page reloads):
+
+```js
+await dakio.checkout.create(input, { idempotencyKey: attemptId })
+```
+
+Only successes are remembered; a refusal (out of stock, wrong phone) stays retryable with the same key once it's fixed.
+
+## Refusal codes
+
+<Table
+  head={["code", "Meaning"]}
+  rows={[
+    ["INVALID_PHONE", "Not a Bangladesh mobile (01XXXXXXXXX)"],
+    ["DISTRICT_REQUIRED, CITY_REQUIRED", "Address incomplete"],
+    ["EMPTY_CART, INVALID_INPUT", "Nothing to order, or a malformed bag"],
+    ["NOT_FOUND, NOT_AVAILABLE, OPTION_REQUIRED", "A product is gone, hidden, or needs a variant (productId says which)"],
+    ["OUT_OF_STOCK", "Not enough left (productId says which)"],
+    ["PRICE_CHANGED", "A price moved since the page loaded; quote again"],
+    ["COUPON_UNAVAILABLE", "The coupon stopped working since the quote"],
+    ["STORE_NOT_TAKING_ORDERS", "The store's plan has expired or reached its daily order limit"],
+    ["STORE_CLOSED", "The store is switched off"],
+    ["RATE_LIMITED", "Too many orders from this buyer's IP; wait and retry"],
+    ["NETWORK_ERROR", "Couldn't reach Dakio (after the SDK's own retries)"],
+  ]}
+/>
+
+## After the order
+
+Show `orderNumber` and send the buyer to tracking. The merchant sees the order in Dakio's Orders with a **Website** tag, and everything after — confirmation, the courier, delivery, the books — runs there as for any order.

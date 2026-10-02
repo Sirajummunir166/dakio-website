@@ -44,6 +44,10 @@ const CLAIMS = {
     en: "AI that sells in your inbox.",
     bn: "যে AI আপনার ইনবক্সেই বিক্রি করে।",
   },
+  "/developers": {
+    en: "Build any store. Dakio runs the business.",
+    bn: "যেমন খুশি দোকান বানান। ব্যবসা চালাবে Dakio।",
+  },
   "/switch": {
     en: "Switch from Shopify in one weekend.",
     bn: "এক উইকেন্ডেই Shopify ছেড়ে আসুন।",

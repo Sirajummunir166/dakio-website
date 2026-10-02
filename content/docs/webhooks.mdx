@@ -1,0 +1,77 @@
+Webhooks tell your server the moment something changes in the store, so you don't poll. Add them in **Settings → Developers → Webhooks** (or with a [secret key](/developers/docs/secret-keys#manage-webhooks)): an `https://` address on your server, and the events you want.
+
+## Events
+
+<Table
+  head={["Event", "data", "When"]}
+  rows={[
+    ["product.updated", "{ id, slug, published, product }", "Added or edited — price, photos, text, stock total, shown or hidden. product is what products.get answers now, null when not published."],
+    ["product.deleted", "{ id, slug, published: false, product: null }", "Deleted"],
+    ["stock.changed", "{ productId, variantId, slug, stock, inStock, productStock }", "A product's or variant's shelf count moved (a sale, a purchase, a count)"],
+    ["order.created", "{ order }", "Any new order, wherever it was placed"],
+    ["order.status_changed", "{ from, to, order }", "placed → confirmed → … → delivered, or cancelled / returned"],
+    ["store.updated", "{ store }", "Anything store.get() answers: name, logo, delivery charges, announcement, a sale banner"],
+  ]}
+/>
+
+`order` has the same shape as [`orders.get`](/developers/docs/secret-keys#read-orders); `store` the same as `store.get()`. Changes arrive within a few seconds; `store.updated` within about 30.
+
+## A delivery
+
+```http
+POST /api/dakio HTTP/1.1
+Content-Type: application/json
+Dakio-Event: order.created
+Dakio-Delivery: cmuqj7th4000jm6xy…
+Dakio-Signature: t=1790919478,v1=f3d9b3dee2562cfd9fc8…
+
+{"id":"evt_hIDrcuzdAdv0dNoA1LPxzA7k","type":"order.created","createdAt":"2026-10-02T05:37:58.264Z","storeId":"cm…","data":{"order":{…}}}
+```
+
+## Verify it
+
+Check the signature with the webhook's **signing secret** (`whsec_…`, shown in Settings → Developers) before trusting anything in the body:
+
+```ts
+import { verifyWebhook } from '@dakio/sdk/webhooks'
+
+export async function POST(req: Request) {
+  let event
+  try {
+    event = await verifyWebhook({
+      body: await req.text(),                       // the RAW body — parsed and re-stringified JSON won't match
+      signature: req.headers.get('dakio-signature'),
+      secret: process.env.DAKIO_WEBHOOK_SECRET!,
+    })
+  } catch {
+    return new Response('bad signature', { status: 400 })
+  }
+
+  if (event.type === 'order.created') await saveOrder(event.data.order)
+  if (event.type === 'order.status_changed' && event.data.to === 'delivered') await thankBuyer(event.data.order)
+  return new Response('ok')
+}
+```
+
+`verifyWebhook` uses Web Crypto, so it runs on Node 18+, Next.js (Node or Edge), Cloudflare Workers, Bun and Deno. Not using the SDK? The signature is `v1 = hex(HMAC-SHA256(secret, t + "." + body))` from the `t=` and `v1=` parts of `Dakio-Signature`; compare in constant time, and refuse a `t` more than 5 minutes old.
+
+## Answer, retries, order
+
+- Answer with any **2xx** within **10 seconds**. Do slow work after answering.
+- Anything else (an error, a timeout, a redirect) is retried after 10 s, 1 min, 5 min, 30 min, 1 h, 2 h, 4 h, then every 8 h, for **24 hours**. Redirects aren't followed: use the final URL.
+- An event can arrive **twice** or **out of order**. Dedupe on `event.id`, and treat `data` as the latest state rather than a diff.
+- Turning a webhook off drops what was waiting for it.
+
+## Test and debug
+
+Each webhook in Settings → Developers has **Send test** (a `ping` event, tried once, with your server's answer shown right away) and **Recent deliveries**: the last 50, each with its status, HTTP code, your server's answer and exactly what was sent, plus **Send again**.
+
+**New secret** rotates the signing secret; the old one stops at once, so update your server first.
+
+## Rules
+
+- Up to 5 webhooks per store. Only the store owner adds, edits and sees signing secrets; Dakio support can see deliveries and turn a webhook off.
+- Webhooks are only sent to public `https://` addresses — never to a private network or `localhost`. To test locally, expose your dev server with a tunnel (ngrok, Cloudflare Tunnel) and use its https address.
+- A webhook hears changes made after it was added, not the store's history; use `orders.list` for that.
+
+For Next.js, [`createRevalidateRoute`](/developers/docs/nextjs#instant-refresh) is a ready-made webhook route that refreshes your pages.

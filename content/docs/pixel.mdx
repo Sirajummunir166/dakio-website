@@ -1,0 +1,36 @@
+Dakio already sends the server side of **Purchase**, **Lead** and **InitiateCheckout** (Meta's Conversions API) for every store with a Pixel set up in Dakio. Send the browser side with the **same event id** and Meta counts each event once, with better matching than either side alone.
+
+```js
+import { loadPixel, trackPixel, newEventId, productParams, purchaseParams } from '@dakio/sdk/pixel'
+
+const store = await dakio.store.get()
+loadPixel(store.tracking.metaPixelId)          // does nothing when the store has no Pixel
+
+trackPixel('ViewContent', productParams(product), newEventId())
+trackPixel('AddToCart', productParams(product, qty), newEventId())
+```
+
+## Purchase, deduplicated
+
+Make the id before checkout, pass it as `eventId`, and fire the browser event with it once the order is placed:
+
+```js
+const eventId = newEventId('pur')
+const result = await dakio.checkout.create({ ...input, eventId })
+if (result.status === 'PLACED') trackPixel('Purchase', purchaseParams(quote), eventId)
+```
+
+Dakio's server event for that order carries the same `eventId`, so Meta merges the two.
+
+<Table
+  head={["Export", "What it does"]}
+  rows={[
+    ["loadPixel(id)", "Adds Meta's pixel script once and fires PageView"],
+    ["trackPixel(event, params, eventId?)", "fbq('track', …) with eventID; a no-op on the server"],
+    ["newEventId(prefix?)", "A unique id like pur_k3p9…"],
+    ["productParams(product, qty?)", "{ content_ids, content_name, content_type, value, currency, num_items }"],
+    ["purchaseParams(quote)", "The same, for a whole priced bag"],
+  ]}
+/>
+
+Google Tag Manager: `store.tracking.gtmContainerId` holds the store's container id if it has one, and every `trackPixel` call also pushes `dakio_<Event>` (with the same params and `eventId`) to `dataLayer`.

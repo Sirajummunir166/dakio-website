@@ -37,6 +37,7 @@ const chrome = {
       GL: { n: "Grow Suite", d: "ক্যাম্পেইন থেকে বিক্রি বাড়ানো—সব এক জায়গায়" },
       AD: { n: "Ads Gallery", d: "প্রোডাক্ট থেকে এক ক্লিকে ব্র্যান্ডের অ্যাড" },
       SN: { n: "Supplier Network", d: "নিজের স্টক ছাড়াই বিক্রি করুন" },
+      DV: { n: "ডেভেলপার", d: "নিজের ওয়েবসাইট, পেছনে Dakio — @dakio/sdk" },
     },
     previews: {
       tour: {
@@ -105,6 +106,7 @@ const chrome = {
         button: "ক্যাম্পেইন প্রস্তুত করুন",
       },
       ads: { cta: "অ্যাড বানিয়ে দেখুন" },
+      developers: { cta: "কুইকস্টার্ট পড়ুন", note: "নিজের React বা Next.js দোকান — পেছনে COD চেকআউট, কুরিয়ার আর Nova।" },
     },
     about: "Dakio সম্পর্কে",
     blog: "ব্লগ",
@@ -120,6 +122,7 @@ const chrome = {
       ads: "Ads Gallery",
       frontOffice: "Front Office",
       pricing: "প্ল্যান ও দাম",
+      developers: "ডেভেলপার",
     },
     tryLive: {
       hq: "Nova HQ",

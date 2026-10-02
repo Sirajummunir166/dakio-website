@@ -158,6 +158,25 @@ export default function NavPreview({ pv, copy, T }) {
     );
   }
 
+  if (pv === "developers") {
+    const line = (parts) => (
+      <div style={{ fontFamily: MONO, fontSize: 9.5, lineHeight: 1.7, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+        {parts.map(([t, col], i) => <span key={i} style={{ color: col }}>{t}</span>)}
+      </div>
+    );
+    return (
+      <>
+        <div style={{ padding: "10px 12px", borderRadius: 11, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(198,242,62,0.2)" }}>
+          {line([["const ", "#E2A63B"], ["dakio = ", "#E9EFDC"], ["createDakio", "#8CBF33"], ["({ key })", "#E9EFDC"]])}
+          {line([["await ", "#E2A63B"], ["dakio.checkout.", "#E9EFDC"], ["create", "#8CBF33"], ["(order)", "#E9EFDC"]])}
+          {line([["// → PLACED · COD · #K3P-9QXA", "#878B76"]])}
+        </div>
+        <div style={{ fontSize: 10.5, color: "#A9AD98", lineHeight: 1.5, ...T.chip }}>{c.note}</div>
+        <div style={monoFoot}>{PM.devFoot}</div>
+      </>
+    );
+  }
+
   // default: the 60-second tour
   return (
     <>

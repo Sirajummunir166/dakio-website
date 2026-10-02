@@ -1,0 +1,32 @@
+With a test key (`dk_pub_test_…` or `dk_sec_test_…`) every check runs exactly as it does live — prices, sales, coupons, stock, the store's plan — but no real order is made.
+
+## What a test order does
+
+- It gets a number like `#TEST-K3P9QX` and the same answers a live order would.
+- No stock moves, no SMS is sent, no Pixel event fires, and nothing appears in the store's Orders.
+- It can be tracked (`orders.track`) and found in "my orders" with the same phone.
+- It disappears after 7 days.
+
+## Fixed values
+
+So you can build the code screens without real SMS:
+
+<Table
+  head={["", "Value"]}
+  rows={[
+    ["Phone that always asks for a checkout code", "01700000001"],
+    ["Checkout code", "000000"],
+    ['"My orders" code', "0000"],
+  ]}
+  mono={[1]}
+/>
+
+Any other phone places the test order straight away.
+
+## Abandoned carts and visits
+
+`leads.capture` and `visits.ping` answer `{ ok: true, test: true }` with a test key and store nothing, so a developer's testing never shows up in the merchant's Incomplete Orders or live-visitors view.
+
+## Going live
+
+Swap the test key for a live one; nothing else changes. Run the [going-live checklist](/developers/docs/going-live) first.

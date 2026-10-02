@@ -1,0 +1,40 @@
+Two ways for a buyer to find an order, neither needing an account or a password (Dakio has no customer accounts on purpose).
+
+## Track one order
+
+```js
+const order = await dakio.orders.track({ orderNumber: 'ABC-1234', phone: '01712345678' })
+// null when nothing matches
+```
+
+It needs the number **and** the buyer's phone; a wrong phone answers exactly like a missing order, so the call can't be used to discover order numbers. The `#` is optional.
+
+<Table
+  head={["Field", "What it is"]}
+  rows={[
+    ["status", "placed → confirmed → preparing → shipped → on_the_way → out_for_delivery → delivered, or cancelled / returned"],
+    ["statusLabel", "The same words the Dakio tracking page uses, e.g. 'Out for Delivery'"],
+    ["isFinal", "true once delivered, cancelled or returned"],
+    ["timeline", "[{ key, label, done, current, at }] for a progress bar"],
+    ["courier", "'Steadfast', 'Pathao', 'RedX'… once it's with one"],
+    ["items, subtotal, shipping, discount, total", "What was ordered"],
+    ["codAmount", "What the buyer hands the courier: what's still owed, not the order total"],
+    ["placedAt, updatedAt", "ISO dates"],
+  ]}
+/>
+
+## "My orders" by phone
+
+A phone plus an SMS code shows the buyer their last 10 orders:
+
+```js
+const { sessionToken } = await dakio.account.sendCode('01712345678')   // Dakio texts a code
+const orders = await dakio.account.orders({ sessionToken, otp: '1234' })
+// [{ orderNumber, status, statusLabel, total, placedAt }]
+```
+
+Like checkout, these run in the browser with a client key (the SMS limits are per buyer IP). With a test key the code is `0000` and no SMS is sent.
+
+## Telling buyers by SMS
+
+Dakio already texts buyers about their order the way the store has set up (confirmation, courier updates). You don't send these from your site. To react to status changes on your own server, use the [`order.status_changed` webhook](/developers/docs/webhooks).

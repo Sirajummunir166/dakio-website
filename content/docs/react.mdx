@@ -1,0 +1,87 @@
+`@dakio/sdk/react` gives you the bag, the live quote and checkout with its code step. Client components only; React 18 or 19.
+
+```jsx
+'use client'
+import { createDakio } from '@dakio/sdk'
+import { CartProvider } from '@dakio/sdk/react'
+
+const dakio = createDakio({ key: process.env.NEXT_PUBLIC_DAKIO_KEY })
+
+export function Providers({ children }) {
+  return <CartProvider dakio={dakio}>{children}</CartProvider>
+}
+```
+
+## The bag
+
+```jsx
+import { useCart } from '@dakio/sdk/react'
+
+function AddToBag({ product, variant }) {
+  const cart = useCart()
+  return <button onClick={() => { cart.add({ productId: product.id, variantId: variant?.id ?? null }); cart.open() }}>Add to bag</button>
+}
+
+function Bag() {
+  const { lines, quote, quoting, setQty, remove, couponCode, setCouponCode, district, setDistrict } = useCart()
+  if (!quote) return <p>Your bag is empty</p>
+  return (
+    <>
+      {quote.lines.map(l => (
+        <div key={l.productId + l.variantId}>
+          {l.name} {l.variantName} × {l.qty} = {l.lineTotal}
+          {l.problem && <em>{l.problem.message}</em>}
+        </div>
+      ))}
+      <p>Delivery {quote.shipping?.charge ?? '—'} · Total {quote.total}</p>
+    </>
+  )
+}
+```
+
+<Table
+  head={["useCart()", "What it is"]}
+  rows={[
+    ["lines, count, ready", "The bag (saved in localStorage, synced across tabs); ready is false until it's read"],
+    ["add, setQty, remove, clear", "Change it. setQty(…, 0) removes. Quantities cap at maxQty (default 10)."],
+    ["quote, quoting, quoteError", "The bag priced by Dakio, refreshed as it changes; null when empty"],
+    ["couponCode, setCouponCode", "Re-quotes with the coupon"],
+    ["district, setDistrict", "Re-quotes with the delivery charge"],
+    ["isOpen, open, close", "For a bag drawer"],
+  ]}
+/>
+
+`CartProvider` takes `storageKey` (one per store if a domain hosts several) and `maxQty`. Instead of `dakio` you can pass `quote={fn}` to price the bag yourself, for example through a server action.
+
+## Checkout
+
+```jsx
+import { useCart, useCheckout } from '@dakio/sdk/react'
+
+function Checkout({ customer }) {
+  const cart = useCart()
+  const checkout = useCheckout(dakio, { onPlaced: (o) => router.push(`/order/${o.orderNumber.slice(1)}`) })
+
+  if (checkout.phase === 'otp' || checkout.phase === 'verifying') {
+    return <CodeForm sentTo={checkout.otp.maskedPhone} error={checkout.error?.message} onSubmit={(code) => checkout.verify(code)} />
+  }
+  return (
+    <button disabled={checkout.phase === 'submitting'} onClick={() => checkout.submit({ customer, items: cart.lines, couponCode: cart.couponCode || undefined })}>
+      Place order · {cart.quote?.total}
+    </button>
+  )
+}
+```
+
+`phase` is `idle`, `submitting`, `otp`, `verifying`, `placed` or `error`. `error` holds the last refusal `{ code, message, productId?, attemptsLeft? }`; `reset()` starts over. One Idempotency-Key is kept per attempt, so a double tap or retry never orders twice, and the bag is cleared once the order is placed.
+
+## Abandoned carts and live visitors
+
+```jsx
+import { useAbandonedCart, useVisitPing } from '@dakio/sdk/react'
+
+useAbandonedCart(dakio, { name, phone, address, district, city, items: cart.lines })
+useVisitPing(dakio, pathname)
+```
+
+See [Abandoned carts](/developers/docs/abandoned-carts).

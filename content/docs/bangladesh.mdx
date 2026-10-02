@@ -1,0 +1,29 @@
+`@dakio/sdk/bd` holds the address and phone rules Dakio itself uses, so your forms agree with checkout.
+
+```js
+import { DISTRICTS, getThanas, detectLocation, isBdPhone, normalizeBdPhone, deliveryZone, formatTaka } from '@dakio/sdk/bd'
+
+DISTRICTS.length                                 // 64
+getThanas('Dhaka')                               // ['Adabor', 'Badda', …, 'Mirpur', …]
+detectLocation('House 4, Mirpur 10, Dhaka')      // { district: 'Dhaka', thana: 'Mirpur' }
+isBdPhone('017-1234 5678')                       // true
+normalizeBdPhone('+880 1712-345678')             // '01712345678'
+deliveryZone('Gazipur')                          // 'outside_dhaka'
+formatTaka(125000)                               // '৳1,25,000'
+```
+
+## Address forms
+
+Ask for **district** (a select of `DISTRICTS`), then **thana** (`getThanas(district)`), then the street address. Checkout requires district and city (thana). `detectLocation` fills both from a pasted address, which helps buyers who type everything in one line.
+
+## Phones
+
+Checkout accepts Bangladesh mobiles: `01` + 9 digits, with or without `+880` / `880`, spaces or dashes. Validate with `isBdPhone` before submitting to save a round trip.
+
+## Delivery
+
+`deliveryZone` is the same rule the quote uses: only **Dhaka district** is inside Dhaka; Gazipur and Narayanganj are outside. Show the charge from `dakio.shipping.get(district)` or the quote, never a number of your own.
+
+## Money
+
+Prices are taka. `formatTaka` groups the Bangladeshi way (lakh, crore): `৳1,25,000`. `formatTaka(n, { bangla: true })` uses Bangla digits.

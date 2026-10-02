@@ -1,0 +1,42 @@
+Before you point real buyers at your store:
+
+## Keys
+
+- Create a **live** client key (`dk_pub_live_…`) and list every address the site runs on under **Allowed websites**: `www.mybrand.com.bd` *and* `mybrand.com.bd`, plus a preview domain if you use one (`mybrand.vercel.app`).
+- Swap the test key for it in production only. Keep the test key for local work and previews.
+- A secret key, if you use one, lives in a server-only variable and nowhere else.
+
+## Checkout
+
+- Place one real order from the live site with your own phone, then cancel it in Dakio → Orders.
+- Check the code step: in Dakio → Settings, fake-order protection on, and order twice quickly from the same phone; the second should ask for a code.
+- Show quote `problems` in the bag (out of stock, choose an option), and the checkout `ERROR` messages in the form.
+- Disable the Place order button while `submitting` — the Idempotency-Key already stops double orders, but buyers like to see it.
+
+## Prices and stock
+
+- Every price on screen comes from `products.*` or `cart.quote`, never typed into your code.
+- Server-rendered pages refresh at least every minute, or instantly with a webhook ([Next.js](/developers/docs/nextjs#instant-refresh)).
+- Delivery charges come from the quote or `shipping.get(district)`.
+
+## Abandoned carts, Pixel, visitors
+
+- `useAbandonedCart` (or `leads.capture`) on the checkout form, so Incomplete Orders fill up.
+- If the store has a Pixel: `loadPixel(store.tracking.metaPixelId)` and the Purchase event with the same `eventId` you sent to checkout.
+- `useVisitPing` so the merchant sees live visitors.
+
+## SEO
+
+- Canonical links point at your own domain; `dakioSitemap` and `dakioRobots` are in place; product pages carry `productJsonLd`.
+- Tell the merchant: in Dakio, Store Studio's own storefront still exists at `<slug>.dakio.shop`. If your site replaces it, keep their custom domain pointed at your site, not at Studio.
+
+## Buyers
+
+- An order page that shows the order number and links to tracking (`orders.track`).
+- A "my orders" page (`account.sendCode` → `account.orders`).
+- The store's phone and WhatsApp from `store.get()` in the footer, for buyers who'd rather call.
+
+## Last
+
+- Revoke test keys you no longer use.
+- Tell the merchant where orders from the site appear: Dakio → Orders, tagged **Website**.

@@ -12,6 +12,7 @@
 - [Ads Gallery](https://dakio.io/ads): Pick a product, get an editable on-brand ad in 3 sizes, static and motion, checked by the Creative Doctor.
 - [Front Office](https://dakio.io/front-office): One inbox for Messenger, Instagram, WhatsApp and email — Nova sells in Bangla and takes orders only after the customer confirms.
 - [Switch](https://dakio.io/switch): Move from Shopify to Dakio in one weekend — free concierge migration, SEO redirects intact, COD + bKash native.
+- [Developers](https://dakio.io/developers): @dakio/sdk — build your own React or Next.js storefront on Dakio's commerce backend (catalog, server-priced quotes, cash-on-delivery checkout with fake-order protection, couriers, abandoned carts, Meta Pixel, webhooks). No backend needed; every plan includes API keys.
 - [Pricing](https://dakio.io/pricing): Plans in taka, free to start, AI CEO included on every tier — honest task metering, no hidden fees.
 
 ## Languages
@@ -29,3 +30,12 @@ English version governs.
 ## What is Nova?
 
 Nova is an AI Acting CEO for e-commerce stores on Dakio. It starts as an L3 Operator on day one and earns the full L4 Acting CEO seat through approved work. Nova never touches a store directly: every action passes an authority check, executes, writes a ledger receipt, and lands in a product surface the founder can inspect and undo. Refunds, guardrails and contract signing stay founder-only, forever.
+
+## Developer docs
+
+English-only reference for @dakio/sdk (npm) and the HTTP API at https://dakio-api-production.up.railway.app/api/sdk/v1:
+
+- [Quickstart](https://dakio.io/developers/docs): a test key, `npm install @dakio/sdk`, products on screen, a test order.
+- [Keys & security](https://dakio.io/developers/docs/keys): client keys (dk_pub_, browser-safe, domain-locked), secret keys (dk_sec_, server only), limits.
+- [Bag, quote & checkout](https://dakio.io/developers/docs/checkout): prices only from quotes; COD checkout; the SMS code step; Idempotency-Key.
+- [React](https://dakio.io/developers/docs/react), [Next.js](https://dakio.io/developers/docs/nextjs), [Webhooks](https://dakio.io/developers/docs/webhooks), [Secret keys](https://dakio.io/developers/docs/secret-keys), [HTTP API](https://dakio.io/developers/docs/api), [Going live](https://dakio.io/developers/docs/going-live).

@@ -1,0 +1,39 @@
+A buyer who fills in their phone at checkout and then leaves is a sale worth chasing. Send them to Dakio and they land in the merchant's **Incomplete Orders**, where the team (or Nova's cart follow-up) can call or message them. Dakio also sends Meta's server-side **Lead** and **InitiateCheckout** events for stores with a Pixel.
+
+## In React
+
+```jsx
+import { useAbandonedCart } from '@dakio/sdk/react'
+
+function CheckoutForm() {
+  const cart = useCart()
+  const [form, setForm] = useState({ name: '', phone: '', address: '', district: '', city: '' })
+  useAbandonedCart(dakio, { ...form, items: cart.lines })
+  // …
+}
+```
+
+It sends once a usable phone (and a name or address) has been typed and 20 seconds have passed, and once more when the page is hidden (the buyer switches app or closes the tab). The same details are never sent twice.
+
+## Without React
+
+```js
+await dakio.leads.capture({
+  phone: '01712345678',
+  name: 'Rahim',
+  address: 'House 4, Road 2',
+  district: 'Dhaka',
+  city: 'Mirpur',
+  items: cart.lines,                  // { productId, variantId, qty } — Dakio prices them
+  sourceUrl: location.href,
+}, { keepalive: true })               // keepalive: survives the page closing
+```
+
+Requires a phone and a name or an address, and at least one item. The cart is priced by Dakio, not by what you send.
+
+## What Dakio skips
+
+- If the same phone placed an order in the last 24 hours, the lead is skipped (`{ ok: true, skipped: true }`) — the buyer already ordered.
+- With a test key nothing is stored (`{ ok: true, test: true }`).
+
+Like checkout, leads come from the browser with a client key; from a server use a secret key with the buyer's IP.

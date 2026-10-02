@@ -43,6 +43,8 @@ export const PREVIEW_MONO = {
   opportunity: "OPPORTUNITY FOUND",
   adsFoot: "ONE CLICK · ON-BRAND · MOTION TOO",
   adRatios: ["1:1", "4:5", "9:16"],
+  developers: "@DAKIO/SDK",
+  devFoot: "REACT · NEXT.JS · ANY JS · NO BACKEND NEEDED",
 };
 
 const chrome = {
@@ -75,6 +77,7 @@ const chrome = {
       GL: { n: "Grow Suite", d: "Promote, create, discover, improve" },
       AD: { n: "Ads Gallery", d: "Product → on-brand ad in one click" },
       SN: { n: "Supplier Network", d: "Sell without holding inventory" },
+      DV: { n: "Developers", d: "Your own site, Dakio behind it — @dakio/sdk" },
     },
     // One entry per preview state of the Explore card. `cta` is the lime
     // footer link; the rest is the vignette's own copy.
@@ -145,6 +148,7 @@ const chrome = {
         button: "Prepare campaign",
       },
       ads: { cta: "Make an ad" },
+      developers: { cta: "Read the quickstart", note: "Your own React or Next.js store — COD checkout, couriers and Nova behind it." },
     },
     about: "About",
     blog: "Blog",
@@ -160,6 +164,7 @@ const chrome = {
       ads: "Ads Gallery",
       frontOffice: "Front Office",
       pricing: "Pricing",
+      developers: "Developers",
     },
     tryLive: {
       hq: "Nova HQ",

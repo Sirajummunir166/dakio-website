@@ -1,0 +1,74 @@
+Dakio runs the business: catalog, sale prices, coupons, cash-on-delivery checkout with fake-order protection, stock, couriers, abandoned carts, Meta Pixel and Nova. You build the store. This page gets a product on your screen and a test order placed in about five minutes.
+
+## 1. Get a test key
+
+In Dakio, open **Settings → Developers → Website keys → Create key** and choose **Test**. You get a key like `dk_pub_test_…`. A test key works on any website, `localhost` included, and its orders are test orders: no stock moves, no SMS, nothing lands in the store's Orders.
+
+No store yet? [Open one free](https://app.dakio.io/register): every plan includes API keys.
+
+## 2. Install
+
+```bash
+npm install @dakio/sdk
+```
+
+It has no dependencies, ships ESM and CommonJS with types, and runs in every browser, Node 18+, Next.js, Vercel, Cloudflare and Bun.
+
+## 3. Show your products
+
+```js
+import { createDakio } from '@dakio/sdk'
+
+const dakio = createDakio({ key: 'dk_pub_test_…' })
+
+const store = await dakio.store.get()
+const { data: products } = await dakio.products.list({ limit: 12 })
+
+for (const p of products) {
+  console.log(p.name, p.price, p.onSale ? `was ${p.compareAtPrice}` : '')
+}
+```
+
+`price` already includes any running sale. You never compute a price yourself.
+
+## 4. Price a bag
+
+A bag holds only `{ productId, variantId, qty }`. Ask Dakio what it costs:
+
+```js
+const quote = await dakio.cart.quote({
+  items: [{ productId: products[0].id, variantId: null, qty: 2 }],
+  district: 'Dhaka',
+  couponCode: 'EID10', // optional
+})
+
+quote.subtotal   // 1000
+quote.discount   // 100
+quote.shipping   // { zone: 'inside_dhaka', charge: 60 }
+quote.total      // 960 — exactly what checkout will charge
+quote.problems   // [] or [{ code: 'OUT_OF_STOCK', available: 1, … }]
+```
+
+## 5. Place an order (in the browser)
+
+```js
+const result = await dakio.checkout.create({
+  customer: { name: 'Rahim', phone: '01712345678', address: 'House 4, Road 2', district: 'Dhaka', city: 'Mirpur' },
+  items: [{ productId: products[0].id, variantId: null, qty: 2 }],
+})
+
+if (result.status === 'PLACED') console.log('Order', result.orderNumber)          // #TEST-K3P9QX
+if (result.status === 'OTP_REQUIRED') console.log('Code sent to', result.maskedPhone)
+if (result.status === 'ERROR') console.log(result.code, result.message)
+```
+
+Checkout runs in the **browser** so Dakio's fake-order protection sees each shopper's own IP. From a server the SDK refuses it with a client key (`CHECKOUT_MUST_RUN_IN_BROWSER`); use a [secret key](/developers/docs/secret-keys) there.
+
+With a test key, phone `01700000001` always asks for a code, and the code is `000000`. Everything else is in [Test mode](/developers/docs/test-mode).
+
+## Next
+
+- React? [`CartProvider`, `useCart`, `useCheckout`](/developers/docs/react) handle the bag, the quote and the OTP step.
+- Next.js? [Server-rendered catalog, sitemap, JSON-LD and instant refresh](/developers/docs/nextjs).
+- Want a head start? Two complete starter stores, React and Next.js, are in [the SDK repo](https://github.com/alasim/dakio-sdk/tree/main/examples).
+- Going live? Make a live key and run the [going-live checklist](/developers/docs/going-live).

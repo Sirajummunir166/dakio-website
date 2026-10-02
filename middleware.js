@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { LEGAL_PATHS } from "./lib/i18n";
+import { LEGAL_PATHS, isEnglishOnlyPath } from "./lib/i18n";
 
 // Every page lives under app/[lang]/. English keeps the bare URLs it was
 // indexed on, so /about is *rewritten* (not redirected) to /en/about — the URL
@@ -48,9 +48,10 @@ export function middleware(request) {
   }
 
   if (pathname === "/bn" || pathname.startsWith("/bn/")) {
-    // Legal copy exists in English only — send /bn/privacy to /privacy.
+    // Legal copy and the developer docs exist in English only — send
+    // /bn/privacy to /privacy, /bn/developers/docs/… to /developers/docs/….
     const bare = pathname.slice(3) || "/";
-    if (isLegalPath(bare)) return NextResponse.redirect(new URL(bare, request.url), 308);
+    if (isLegalPath(bare) || isEnglishOnlyPath(bare)) return NextResponse.redirect(new URL(bare, request.url), 308);
     return NextResponse.next();
   }
 
