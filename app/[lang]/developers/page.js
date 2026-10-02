@@ -45,10 +45,10 @@ const HERO_CODE = `import { createDakio } from '@dakio/sdk'
 
 const dakio = createDakio({ key: 'dk_pub_live_…' })
 
-// Your design, Dakio's catalog — sale prices included
-const { data: products } = await dakio.products.list({ limit: 12 })
+// Your design, Dakio's catalog (sale prices included)
+const { data } = await dakio.products.list()
 
-// Cash on delivery, fake-order protection, straight to Orders
+// Cash on delivery + fake-order protection → Orders
 const order = await dakio.checkout.create({ customer, items })
 // → { status: 'PLACED', orderNumber: '#K3P-9QXA' }`;
 
@@ -90,9 +90,9 @@ export default async function DevelopersPage({ params }) {
             </Link>
             <a href={KEYS_URL} className="hv-bg-ink05" style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12", fontSize: 15, fontWeight: 700, ...T.label }}>{c.hero.ctaSecondary}</a>
           </div>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 12, marginTop: 22, padding: "8px 8px 8px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.09)", animation: "heroUp .6s .3s ease both" }}>
+          <div className="dev-install" style={{ display: "inline-flex", alignItems: "center", gap: 12, marginTop: 22, padding: "8px 8px 8px 16px", borderRadius: 99, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.09)", animation: "heroUp .6s .3s ease both" }}>
             <span style={{ ...kicker("#6B6D60"), fontSize: 9 }}>{MONO.install}</span>
-            <code style={{ fontFamily: MONOFONT, fontSize: 13, color: "#1A1D12" }}>npm install @dakio/sdk</code>
+            <code style={{ fontFamily: MONOFONT, fontSize: 13, color: "#1A1D12", whiteSpace: "nowrap" }}>npm install @dakio/sdk</code>
             <CopyButton text="npm install @dakio/sdk" label={c.copy} done={c.copied} />
           </div>
         </div>
@@ -144,9 +144,9 @@ export default async function DevelopersPage({ params }) {
           <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 44, lineHeight: 1.06, letterSpacing: "-1.7px", fontWeight: 800, ...T.h2 }}>{c.steps.h2}</h2>
         </div>
         <div data-reveal style={{ position: "relative" }}>
-          <div style={{ position: "absolute", left: 21, top: 20, bottom: 20, width: 2, background: "repeating-linear-gradient(to bottom, rgba(62,122,69,0.45) 0 6px, transparent 6px 12px)" }} />
           {c.steps.items.map((s, i) => (
             <div key={s.t} style={{ position: "relative", display: "flex", gap: 20, paddingBottom: i === c.steps.items.length - 1 ? 0 : 26 }}>
+              {i < c.steps.items.length - 1 && <div style={{ position: "absolute", left: 21, top: 48, bottom: 4, width: 2, background: "repeating-linear-gradient(to bottom, rgba(62,122,69,0.45) 0 6px, transparent 6px 12px)" }} />}
               <span style={{ width: 44, height: 44, borderRadius: 99, flexShrink: 0, display: "grid", placeItems: "center", background: i === c.steps.items.length - 1 ? "#C6F035" : "#FBFAF5", border: "2px solid #3E7A45", fontWeight: 800, fontSize: 16 }}>{i + 1}</span>
               <div style={{ flex: 1, minWidth: 0, paddingTop: 4 }}>
                 <div style={{ fontSize: 18, fontWeight: 800, letterSpacing: "-0.3px", ...T.h3 }}>{s.t}</div>

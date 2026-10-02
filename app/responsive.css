@@ -255,3 +255,7 @@
   .dev-flow-step { flex-direction: column !important; align-items: flex-start !important; flex: none !important; }
   .dev-flow-line { flex: none !important; width: 2px !important; min-width: 2px !important; height: 16px !important; margin: 4px 0 4px 22px !important; background: repeating-linear-gradient(to bottom, #C9A86A 0 4px, transparent 4px 8px) !important; }
 }
+@media (max-width: 620px) {
+  .dev-install { gap: 8px !important; padding: 7px 7px 7px 12px !important; }
+  .dev-install code { font-size: 11.5px !important; }
+}

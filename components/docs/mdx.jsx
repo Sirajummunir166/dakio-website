@@ -59,7 +59,7 @@ export function Table({ head, rows, mono = [0] }) {
           {rows.map((r, i) => (
             <tr key={i}>
               {r.map((cell, j) => (
-                <td key={j} style={{ padding: "10px 14px", verticalAlign: "top", borderTop: i ? "1px solid rgba(26,29,18,0.06)" : "none", color: "#2E3126", ...(mono.includes(j) ? { fontFamily: MONO, fontSize: 12.5, whiteSpace: "nowrap", color: INK } : {}) }}>{cell}</td>
+                <td key={j} style={{ padding: "10px 14px", verticalAlign: "top", borderTop: i ? "1px solid rgba(26,29,18,0.06)" : "none", color: "#2E3126", ...(mono.includes(j) ? { fontFamily: MONO, fontSize: 12.5, color: INK, overflowWrap: "anywhere", minWidth: 110 } : {}) }}>{cell}</td>
               ))}
             </tr>
           ))}
