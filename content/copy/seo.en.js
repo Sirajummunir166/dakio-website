@@ -32,6 +32,7 @@ const seo = {
     "/blog": "Blog",
     "/contact": "Contact",
     "/developers": "Developers",
+    "/themes": "Themes",
   },
 
   pricingFaq: [

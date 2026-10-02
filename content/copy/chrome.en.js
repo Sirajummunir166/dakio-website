@@ -44,6 +44,8 @@ export const PREVIEW_MONO = {
   adsFoot: "ONE CLICK · ON-BRAND · MOTION TOO",
   adRatios: ["1:1", "4:5", "9:16"],
   developers: "@DAKIO/SDK",
+  themes: "DAKIO THEMES",
+  themesFoot: "8 THEMES · FASHION TO GROCERY",
   devFoot: "REACT · NEXT.JS · ANY JS · NO BACKEND NEEDED",
 };
 
@@ -77,6 +79,7 @@ const chrome = {
       GL: { n: "Grow Suite", d: "Promote, create, discover, improve" },
       AD: { n: "Ads Gallery", d: "Product → on-brand ad in one click" },
       SN: { n: "Supplier Network", d: "Sell without holding inventory" },
+      TH: { n: "Themes", d: "Designer storefronts for every kind of shop" },
       DV: { n: "Developers", d: "Your own site, Dakio behind it — @dakio/sdk" },
     },
     // One entry per preview state of the Explore card. `cta` is the lime
@@ -148,6 +151,7 @@ const chrome = {
         button: "Prepare campaign",
       },
       ads: { cta: "Make an ad" },
+      themes: { cta: "See the themes", note: "Your own website in a look made for your shop. Dakio runs the checkout behind it." },
       developers: { cta: "Read the quickstart", note: "Your own React or Next.js store — COD checkout, couriers and Nova behind it." },
     },
     about: "About",
@@ -165,6 +169,7 @@ const chrome = {
       frontOffice: "Front Office",
       pricing: "Pricing",
       developers: "Developers",
+      themes: "Themes",
     },
     tryLive: {
       hq: "Nova HQ",

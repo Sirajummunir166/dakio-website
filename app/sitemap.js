@@ -2,8 +2,9 @@ import { SITE_URL, abs } from "../lib/seo";
 import { LOCALES, href, LEGAL_PATHS } from "../lib/i18n";
 import { posts } from "../lib/blog";
 import { docs, docHref } from "../lib/docs";
+import { THEME_KEYS } from "../lib/themes";
 
-const ROUTES = ["/", "/nova", "/store", "/store-studio", "/grow", "/ads", "/front-office", "/switch", "/pricing", "/about", "/blog", "/contact", "/developers"];
+const ROUTES = ["/", "/nova", "/store", "/store-studio", "/grow", "/ads", "/front-office", "/switch", "/pricing", "/about", "/blog", "/contact", "/developers", "/themes", ...THEME_KEYS.map(k => `/themes/${k}`)];
 
 const priority = route => {
   if (route === "/") return 1;

@@ -158,6 +158,21 @@ export default function NavPreview({ pv, copy, T }) {
     );
   }
 
+  if (pv === "themes") {
+    const shots = ["saril", "bloome", "freshcart"];
+    return (
+      <>
+        <div style={{ position: "relative", height: 112, marginBottom: 4 }}>
+          {shots.map((k, i) => (
+            <img key={k} src={`/themes/${k}/hero.webp`} alt="" width={144} height={90} style={{ position: "absolute", left: i * 34, top: 4 + (2 - i) * 6, width: 144, height: 90, objectFit: "cover", objectPosition: "top", borderRadius: 8, border: "1px solid rgba(255,255,255,0.12)", boxShadow: "0 10px 24px rgba(0,0,0,0.45)", transform: `rotate(${(i - 1) * 3}deg)` }} />
+          ))}
+        </div>
+        <div style={{ fontSize: 10.5, color: "#A9AD98", lineHeight: 1.5, ...T.chip }}>{c.note}</div>
+        <div style={monoFoot}>{PM.themesFoot}</div>
+      </>
+    );
+  }
+
   if (pv === "developers") {
     const line = (parts) => (
       <div style={{ fontFamily: MONO, fontSize: 9.5, lineHeight: 1.7, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>

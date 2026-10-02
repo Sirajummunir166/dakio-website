@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 import HomeTop from "../../components/home/HomeTop";
 import NovaField from "../../components/home/NovaField";
+import ThemesBand from "../../components/home/ThemesBand";
 import { Footer } from "../../components/Chrome";
 import Reveal from "../../components/Reveal";
 import LogoDefs from "../../components/Logo";
@@ -177,6 +178,9 @@ export default async function Home({ params }) {
           <Link href={L("/store")} style={{ fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 1 }}>{c.launch.footLink}</Link>
         </div>
       </div>
+
+      {/* ================= THEMES — a belt of the eight storefronts ================= */}
+      <ThemesBand lang={lang} L={L} T={T} />
 
       {/* ================= MORNING BRIEF ================= */}
       <div id="nova" style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 28px 20px" }}>

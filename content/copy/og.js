@@ -48,6 +48,10 @@ const CLAIMS = {
     en: "Build any store. Dakio runs the business.",
     bn: "যেমন খুশি দোকান বানান। ব্যবসা চালাবে Dakio।",
   },
+  "/themes": {
+    en: "A storefront made for your kind of shop.",
+    bn: "আপনার দোকানের জন্যই বানানো স্টোরফ্রন্ট।",
+  },
   "/switch": {
     en: "Switch from Shopify in one weekend.",
     bn: "এক উইকেন্ডেই Shopify ছেড়ে আসুন।",

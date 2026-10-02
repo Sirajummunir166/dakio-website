@@ -1,0 +1,54 @@
+/* Dakio Themes — /themes, /themes/<key> and the home page band.
+   The rest of the site styles inline; these need hover, sticky, marquee and
+   breakpoints, so they live here under a th- prefix. */
+
+.th-frame { display: block; border-radius: 12px 12px 0 0; overflow: hidden; background: #FBFAF5; box-shadow: 0 0 0 1px rgba(26,29,18,0.1); transition: transform .35s ease; }
+.th-bar { display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 11px; background: #E5E7DE; }
+.th-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(26,29,18,0.22); }
+.th-bar span { margin-left: 8px; font-family: var(--dk-font-mono), monospace; font-size: 10.5px; color: #6B6D60; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.th-frame img { display: block; width: 100%; height: auto; aspect-ratio: 1440 / 900; object-fit: cover; object-position: top; }
+.th-phone { position: absolute; right: 22px; bottom: 0; width: 23%; height: auto; aspect-ratio: 780 / 1688; max-height: 88%; object-fit: cover; object-position: top; border: 5px solid #111; border-bottom: 0; border-radius: 16px 16px 0 0; box-shadow: -10px 0 30px -12px rgba(0,0,0,0.45); transition: transform .35s ease; }
+
+/* Showroom card */
+.th-card { display: grid; grid-template-rows: auto 1fr; overflow: hidden; border-radius: 26px; background: #FBFAF5; border: 1px solid rgba(26,29,18,0.07); box-shadow: 0 1px 2px rgba(26,29,18,0.05), 0 18px 40px -22px rgba(26,29,18,0.3); scroll-margin-top: 90px; }
+.th-shot { position: relative; display: block; padding: 22px 22px 0; background: #EEF0E6; border-bottom: 1px solid rgba(26,29,18,0.08); }
+.th-shot .th-frame { margin-right: 18%; }
+.th-shot:hover .th-frame { transform: translateY(-4px); }
+.th-shot:hover .th-phone { transform: translateY(-8px); }
+.th-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+
+/* Detail page */
+.th-detail { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 28px; align-items: start; }
+.th-side { position: sticky; top: 92px; display: grid; gap: 22px; }
+.th-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.th-tab { border: 1px solid rgba(26,29,18,0.14); background: #FBFAF5; color: #1A1D12; padding: 8px 15px; border-radius: 99px; font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; }
+.th-tab[aria-pressed="true"] { background: #C6F035; border-color: #C6F035; }
+.th-tab:focus-visible, .th-shot:focus-visible { outline: 2px solid #3E7A45; outline-offset: 3px; }
+.th-mobframe { width: 340px; max-width: 100%; margin: 0 auto; border: 9px solid #111; border-radius: 38px; overflow: hidden; background: #111; }
+.th-mobframe img { display: block; width: 100%; height: auto; border-radius: 28px; }
+
+/* Home band: a slow belt of storefronts */
+.th-belt { position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.th-belt-track { display: flex; width: max-content; animation: thBelt 70s linear infinite; padding-block: 8px 4px; }
+.th-belt:hover .th-belt-track, .th-belt:focus-within .th-belt-track { animation-play-state: paused; }
+.th-belt-item { width: 380px; flex: 0 0 auto; margin-right: 22px; text-decoration: none; color: inherit; }
+.th-belt-item .th-frame { border-radius: 12px; box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 24px 50px -20px rgba(0,0,0,0.6); }
+.th-belt-item:hover .th-frame { transform: translateY(-6px); }
+@keyframes thBelt { to { transform: translateX(-50%); } }
+
+@media (max-width: 900px) {
+  .th-grid { grid-template-columns: minmax(0, 1fr); }
+  .th-detail { grid-template-columns: minmax(0, 1fr); }
+  .th-side { position: static; }
+}
+@media (max-width: 520px) {
+  .th-shot { padding: 14px 14px 0; }
+  .th-phone { right: 14px; }
+  .th-belt-item { width: 270px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .th-frame, .th-phone { transition: none; }
+  .th-belt { overflow-x: auto; }
+  .th-belt-track { animation: none; }
+  .th-belt-item[aria-hidden="true"] { display: none; }
+}

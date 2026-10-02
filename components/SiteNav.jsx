@@ -51,6 +51,7 @@ const BUILD_KEYS = [
   { mono: "GL", href: "/grow", pv: "grow" },
   { mono: "AD", href: "/ads", pv: "ads" },
   { mono: "SN", href: SUPPLIER_HREF, pv: "supplier" },
+  { mono: "TH", href: "/themes", pv: "themes" },
   { mono: "DV", href: "/developers", pv: "developers" },
 ];
 
@@ -130,7 +131,7 @@ export default function SiteNav({
     padding: "5px 11px", borderRadius: 99, fontSize: 11.5, fontWeight: 700,
     ...(on ? { background: "#1A1D12", color: "#C6F035" } : { color: "#6B6D60" }),
   });
-  const prodActive = ["store", "store-studio", "grow", "ads", "front-office", "supplier"].includes(active);
+  const prodActive = ["store", "store-studio", "grow", "ads", "front-office", "supplier", "themes", "developers"].includes(active);
 
   const startItems = START_KEYS.map(k => ({ ...k, ...c.startItems[k.mono] }));
   const novaItems = NOVA_KEYS.map(k => ({ ...k, ...c.novaItems[k.mono] }));
@@ -150,6 +151,8 @@ export default function SiteNav({
     studio: L("/store-studio"),
     grow: L("/grow"),
     ads: L("/ads"),
+    themes: L("/themes"),
+    developers: L("/developers"),
   };
 
   const colTitle = { fontFamily: MONO, fontSize: 8.5, fontWeight: 600, letterSpacing: "0.14em", color: "#3E7A45", padding: "0 10px" };
