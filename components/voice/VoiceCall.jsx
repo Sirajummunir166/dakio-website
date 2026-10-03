@@ -53,6 +53,7 @@ const COPY = {
 };
 
 const VOICE_RMS = 0.02; // above this the visitor is talking
+const GREET_NOTE = "(The call has just connected. Greet the visitor now.)";
 const BN = /[ঀ-৿]/;
 const clock = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
 const textOf = (m) => (m.parts ?? []).filter((p) => p.type === "text").map((p) => p.text).join("").trim();
@@ -136,7 +137,7 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
     let reply = 0;
     for (const m of messages) {
       const text = textOf(m);
-      if (!text) continue;
+      if (!text || text === GREET_NOTE) continue;
       if (m.role === "user") turns.push({ said: text, reply: "", tools: [], gapMs: null });
       else {
         if (!turns.length || turns[turns.length - 1].reply) turns.push({ said: "", reply: "", tools: [], gapMs: null });
@@ -206,7 +207,13 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
     if (stream) {
       try { rt.startAudioCapture(stream); } catch { /* the mic button can still start it */ }
     }
-    try { rt.requestResponse(); } catch { /* without a greeting the visitor simply talks first */ }
+    // A bare "your turn" is not enough for every model: Gemini Live waits for
+    // something to answer. So the greeting rides on a hidden note — never
+    // shown, never saved (see `report`).
+    (async () => {
+      await rt.sendEvent({ type: "conversation-item-create", item: { type: "text-message", role: "user", text: GREET_NOTE } });
+      rt.requestResponse();
+    })().catch(() => { /* without a greeting the visitor simply talks first */ });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, stream]);
 
