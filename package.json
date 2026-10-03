@@ -8,12 +8,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ai-sdk/gateway": "^4.0.103",
+    "@ai-sdk/react": "^4.0.130",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^15.5.22",
     "@next/third-parties": "^15.5.22",
+    "ai": "^7.0.127",
+    "botid": "^1.5.11",
     "next": "15.5.22",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react": "19.1.2",
+    "react-dom": "19.1.2"
   }
 }

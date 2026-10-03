@@ -1,4 +1,5 @@
 import createMDX from "@next/mdx";
+import { withBotId } from "botid/next/config";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -11,4 +12,6 @@ const nextConfig = {
 
 const withMDX = createMDX({});
 
-export default withMDX(nextConfig);
+// withBotId proxies Vercel's bot check through this domain; only the Nova
+// voice guide's ticket route uses it (app/api/voice-guide/open).
+export default withBotId(withMDX(nextConfig));

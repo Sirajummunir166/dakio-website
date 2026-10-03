@@ -3,9 +3,11 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import "../globals.css";
 import "../hover.css";
 import "../responsive.css";
+import "../voice.css";
 import { LOCALES } from "../../lib/i18n";
 import { GA_MEASUREMENT_ID, analyticsEnabled } from "../../lib/analytics";
 import CouponStrip from "../../components/CouponStrip";
+import VoiceGuide from "../../components/voice/VoiceGuide";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -50,6 +52,8 @@ export default async function RootLayout({ children, params }) {
         {/* Influencer code from dakio.io/c/CODE — renders nothing without one. */}
         <CouponStrip lang={lang} />
         <main style={{ display: "block" }}>{children}</main>
+        {/* "Talk to Nova" — one button; the call itself loads on intent. */}
+        <VoiceGuide lang={lang} />
       </body>
       {/* Loads after hydration, so it never blocks first paint. Both locales
           report into the one stream — `lang` on <html> is what separates them. */}

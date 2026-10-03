@@ -1,0 +1,167 @@
+/* Nova voice guide — the floating "Talk to Nova" button and its call panel
+   (components/voice). Nova is the faceless lime ball from the home hero: the
+   same gradient and glow, no face, and it moves like it is alive — it breathes
+   when idle, leans in with the visitor's voice and squashes and stretches as
+   it talks. */
+
+:root {
+  --vg-ink: #1A1D12;
+  --vg-ink-2: #23271A;
+  --vg-line: #2E3122;
+  --vg-cream: #F4F2EA;
+  --vg-muted: #A3A693;
+  --vg-lime: #C6F035;
+  --vg-orb: radial-gradient(circle at 32% 28%, #F4FFD6 0%, #C6F035 40%, #6FA524 75%, #2E4710 100%);
+}
+
+@keyframes vgBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@keyframes vgTalk {
+  0%, 100% { transform: scale(1, 1); }
+  25% { transform: scale(1.1, 0.92); }
+  50% { transform: scale(0.95, 1.07); }
+  75% { transform: scale(1.06, 0.96); }
+}
+@keyframes vgSpin { to { transform: rotate(360deg); } }
+@keyframes vgIn { 0% { opacity: 0; transform: translateY(12px) scale(0.98); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes vgHalo { 0% { box-shadow: 0 0 0 0 rgba(198, 240, 53, 0.45); } 70% { box-shadow: 0 0 0 12px rgba(198, 240, 53, 0); } 100% { box-shadow: 0 0 0 0 rgba(198, 240, 53, 0); } }
+
+.vg-root {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  font-family: var(--dk-font-sans);
+  color: var(--vg-cream);
+}
+
+/* ---- the launcher ---- */
+.vg-launch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 16px 7px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--vg-line);
+  background: var(--vg-ink);
+  color: var(--vg-cream);
+  font: 600 14px/1 var(--dk-font-sans);
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(26, 29, 18, 0.28);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.vg-launch:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(26, 29, 18, 0.34); }
+.vg-launch:focus-visible { outline: 2px solid var(--vg-lime); outline-offset: 3px; }
+.vg-launch[disabled] { cursor: progress; }
+.vg-launch .vg-orb { width: 34px; height: 34px; }
+.vg-launch-bn { font-family: var(--dk-font-bn); font-weight: 600; }
+
+.vg-orb {
+  position: relative;
+  flex: none;
+  border-radius: 50%;
+  background: var(--vg-orb);
+  box-shadow: 0 0 22px rgba(198, 240, 53, 0.35);
+  animation: vgBreathe 5s ease-in-out infinite;
+  will-change: transform;
+}
+.vg-orb[data-state="listening"] { animation: none; transition: transform 0.08s linear; }
+.vg-orb[data-state="speaking"] { animation: vgTalk 0.9s ease-in-out infinite; }
+.vg-orb[data-state="connecting"]::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--vg-lime);
+  animation: vgSpin 0.9s linear infinite;
+}
+.vg-orb[data-state="listening"]::after,
+.vg-orb[data-state="idle-call"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: vgHalo 2s ease-out infinite;
+}
+
+/* ---- the panel ---- */
+.vg-panel {
+  width: min(360px, calc(100vw - 32px));
+  border-radius: 20px;
+  border: 1px solid var(--vg-line);
+  background: var(--vg-ink);
+  box-shadow: 0 18px 50px rgba(26, 29, 18, 0.4);
+  padding: 16px;
+  animation: vgIn 0.22s ease both;
+}
+.vg-head { display: flex; align-items: center; gap: 12px; }
+.vg-head .vg-orb { width: 52px; height: 52px; }
+.vg-title { font-weight: 700; font-size: 15px; }
+.vg-status { font: 500 12px/1.4 var(--dk-font-mono); color: var(--vg-muted); letter-spacing: 0.02em; margin-top: 2px; }
+.vg-clock { margin-left: auto; align-self: flex-start; font: 500 12px/1 var(--dk-font-mono); color: var(--vg-muted); }
+.vg-clock[data-late="true"] { color: #E7B85C; }
+
+.vg-captions {
+  margin-top: 14px;
+  min-height: 72px;
+  max-height: 220px;
+  overflow-y: auto;
+  display: grid;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 1.55;
+  overscroll-behavior: contain;
+}
+.vg-line-you { color: var(--vg-muted); font-size: 13.5px; }
+.vg-line-you::before { content: attr(data-who) " · "; font: 500 11px var(--dk-font-mono); letter-spacing: 0.04em; }
+.vg-line-nova { color: var(--vg-cream); }
+.vg-line-note { color: #E7B85C; font-size: 13px; }
+.vg-bn { font-family: var(--dk-font-bn); line-height: 1.75; }
+
+.vg-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.vg-btn {
+  appearance: none;
+  border: 1px solid var(--vg-line);
+  background: var(--vg-ink-2);
+  color: var(--vg-cream);
+  border-radius: 999px;
+  padding: 9px 14px;
+  font: 600 13px/1 var(--dk-font-sans);
+  cursor: pointer;
+}
+.vg-btn:hover { border-color: #4A4F37; }
+.vg-btn:focus-visible { outline: 2px solid var(--vg-lime); outline-offset: 2px; }
+.vg-btn-lime { background: var(--vg-lime); border-color: var(--vg-lime); color: var(--vg-ink); }
+.vg-btn-lime:hover { border-color: #DDF77F; background: #D3F55B; }
+.vg-btn-end { margin-left: auto; }
+.vg-btn-bn { font-family: var(--dk-font-bn); }
+
+.vg-type { display: flex; gap: 8px; margin-top: 12px; }
+.vg-type input {
+  flex: 1;
+  min-width: 0;
+  border-radius: 12px;
+  border: 1px solid var(--vg-line);
+  background: var(--vg-ink-2);
+  color: var(--vg-cream);
+  padding: 10px 12px;
+  font: 400 14px var(--dk-font-sans);
+}
+.vg-type input:focus { outline: 2px solid var(--vg-lime); outline-offset: 0; }
+
+.vg-note { margin-top: 12px; font-size: 11.5px; line-height: 1.5; color: #7E8270; }
+.vg-note a { text-decoration: underline; }
+.vg-close-x {
+  appearance: none; border: 0; background: transparent; color: var(--vg-muted);
+  font-size: 20px; line-height: 1; cursor: pointer; padding: 2px 4px; margin-left: 6px;
+}
+
+@media (max-width: 560px) {
+  .vg-root { right: 16px; bottom: 16px; }
+  .vg-launch { padding-right: 14px; font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vg-orb, .vg-orb[data-state="speaking"], .vg-orb::after { animation: none !important; }
+  .vg-panel { animation: none; }
+}

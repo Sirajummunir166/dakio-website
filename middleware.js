@@ -60,8 +60,10 @@ export function middleware(request) {
 
 export const config = {
   matcher: [
-    // Skip Next internals, the verbatim prototype embeds, brand/static assets
-    // and anything with a file extension (robots.txt, sitemap.xml, llms.txt).
-    "/((?!_next/|prototypes/|brand/|assets/|.*\\.).*)",
+    // Skip Next internals, route handlers (api/), the verbatim prototype
+    // embeds, brand/static assets, Vercel BotID's proxy path (next.config
+    // withBotId) and anything with a file extension (robots.txt, sitemap.xml,
+    // llms.txt).
+    "/((?!_next/|api/|prototypes/|brand/|assets/|149e9513-01fa-4fb0-aad4-566afd725d1b/|.*\\.).*)",
   ],
 };
