@@ -24,44 +24,30 @@ import { REGISTER_URL } from "../../lib/urls";
 const COPY = {
   en: {
     connecting: "Connecting…",
-    listening: "Listening",
-    speaking: "Nova is speaking",
-    thinking: "One moment…",
-    you: "YOU",
+    listening: "Listening…",
+    muted: "Muted",
+    speaking: "Speaking",
     mute: "Mute",
     unmute: "Unmute",
     end: "End",
-    cantHear: "Can't hear Nova?",
-    type: "Type instead",
-    typePh: "Ask Nova anything…",
-    send: "Send",
     startFree: "Start free trial",
-    micBlocked: "Your microphone is blocked. You can type to Nova instead.",
-    lowTime: "20 seconds left",
+    micBlocked: "Allow the microphone to talk to Nova",
     ended: "Thanks for talking with Nova.",
     close: "Close",
-    note: "Voice is processed by our AI provider. We keep a text transcript for 30 days to improve answers, never the audio.",
     error: "The call dropped. Please try again.",
   },
   bn: {
     connecting: "সংযোগ হচ্ছে…",
-    listening: "শুনছে",
-    speaking: "Nova বলছে",
-    thinking: "এক মুহূর্ত…",
-    you: "আপনি",
+    listening: "শুনছি…",
+    muted: "মিউট করা",
+    speaking: "বলছি",
     mute: "মিউট",
     unmute: "আনমিউট",
     end: "শেষ",
-    cantHear: "Nova-কে শুনতে পাচ্ছেন না?",
-    type: "লিখে জিজ্ঞেস করুন",
-    typePh: "Nova-কে যা খুশি জিজ্ঞেস করুন…",
-    send: "পাঠান",
     startFree: "ফ্রি ট্রায়াল শুরু করুন",
-    micBlocked: "আপনার মাইক্রোফোন বন্ধ আছে। চাইলে লিখে জিজ্ঞেস করতে পারেন।",
-    lowTime: "আর ২০ সেকেন্ড",
+    micBlocked: "Nova-র সাথে কথা বলতে মাইক্রোফোন চালু করুন",
     ended: "Nova-র সাথে কথা বলার জন্য ধন্যবাদ।",
     close: "বন্ধ করুন",
-    note: "ভয়েস আমাদের AI প্রোভাইডার প্রসেস করে। উত্তর আরও ভালো করতে আমরা ৩০ দিন লেখা ট্রান্সক্রিপ্ট রাখি, অডিও কখনো না।",
     error: "কলটি কেটে গেছে। আবার চেষ্টা করুন।",
   },
 };
@@ -87,8 +73,6 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
   const router = useRouter();
   const [stream, setStream] = useState(null);
   const [micBlocked, setMicBlocked] = useState(false);
-  const [typing, setTyping] = useState(false);
-  const [draft, setDraft] = useState("");
   const [showSignup, setShowSignup] = useState(false);
   const [startedAt, setStartedAt] = useState(null);
   const [elapsed, setElapsed] = useState(0);
@@ -105,7 +89,6 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
   const toolsUsed = useRef([]);
   const signupClicked = useRef(false);
   const finished = useRef(false);
-  const captionsEnd = useRef(null);
 
   const model = useMemo(() => gateway.experimental_realtime(ticket.model), [ticket.model]);
 
@@ -197,7 +180,6 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
         media = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
       } catch {
         setMicBlocked(true);
-        setTyping(true);
       }
       if (cancelled) { media?.getTracks().forEach((t) => t.stop()); return; }
       if (media) setStream(media);
@@ -205,9 +187,6 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
         await connect(media ? { stream: media } : { capture: false });
         if (cancelled) return;
         setStartedAt(Date.now());
-        // The greeting: Nova's own recorded voice, while the session settles.
-        const hello = new Audio(`/nova-guide/greeting.${lang}.mp3`);
-        hello.play().catch(() => { /* no clip yet: the caption greets */ });
         if (ticket.tapAt) track("voice_ready", { ms: Math.round(performance.now() - ticket.tapAt) });
       } catch {
         if (!cancelled) setFailed(true);
@@ -216,6 +195,20 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Once the call is up: open the microphone and let Nova speak first. The
+  // SDK only REMEMBERS a stream handed to connect() — nothing is sent until
+  // capture is started, which is why every call used to begin muted.
+  const greeted = useRef(false);
+  useEffect(() => {
+    if (status !== "connected" || greeted.current) return;
+    greeted.current = true;
+    if (stream) {
+      try { rt.startAudioCapture(stream); } catch { /* the mic button can still start it */ }
+    }
+    try { rt.requestResponse(); } catch { /* without a greeting the visitor simply talks first */ }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status, stream]);
 
   // The microphone level: drives the orb, and marks when the visitor stops talking.
   useEffect(() => {
@@ -269,18 +262,18 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
     return () => { window.removeEventListener("pagehide", bye); bye(); };
   }, [ticket.closeUrl]);
 
-  useEffect(() => { captionsEnd.current?.scrollIntoView({ block: "end" }); }, [messages]);
-
   const bn = lang === "bn";
-  const lines = messages.map((m) => ({ id: m.id, who: m.role, text: textOf(m) })).filter((l) => l.text).slice(-6);
+  // Only what Nova is saying now: the conversation is heard, not read.
+  const lastNova = [...messages].reverse().find((m) => m.role === "assistant" && textOf(m));
+  const caption = lastNova ? textOf(lastNova) : "";
   const live = status === "connected" && !ended;
   const state = !live ? "connecting" : isPlaying ? "speaking" : "listening";
-  const statusText = failed ? copy.error : ended ? copy.ended : !live ? copy.connecting : isPlaying ? copy.speaking : copy.listening;
-  const lean = state === "listening" ? 1 + level * 0.22 : 1;
+  const statusText = failed ? copy.error : ended ? copy.ended : micBlocked ? copy.micBlocked : !live ? copy.connecting : isPlaying ? copy.speaking : isCapturing ? copy.listening : copy.muted;
+  const lean = state === "listening" && isCapturing ? 1 + level * 0.22 : 1;
   const late = live && ticket.maxSeconds - elapsed <= 20;
 
   return (
-    <div className="vg-panel" role="dialog" aria-label="Nova">
+    <div className="vg-panel vg-call" role="dialog" aria-label="Nova">
       <div className="vg-head">
         <div
           className="vg-orb"
@@ -288,52 +281,20 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
           style={state === "listening" ? { transform: `scale(${lean}, ${1 + (lean - 1) * 0.6})` } : undefined}
           aria-hidden
         />
-        <div>
+        <div style={{ minWidth: 0 }}>
           <div className="vg-title">Nova</div>
           <div className={`vg-status${bn ? " vg-bn" : ""}`} aria-live="polite">{statusText}</div>
         </div>
-        {live ? <div className="vg-clock" data-late={late}>{late ? copy.lowTime : `${clock(elapsed)} / ${clock(ticket.maxSeconds)}`}</div> : null}
+        {live ? <div className="vg-clock" data-late={late}>{clock(elapsed)}</div> : null}
       </div>
 
-      <div className="vg-captions" aria-live="polite">
-        {lines.length === 0 && !ended ? (
-          <div className={`vg-line-nova${bn ? " vg-bn" : ""}`}>{ticket.greeting}</div>
-        ) : (
-          lines.map((l) => (
-            <div
-              key={l.id}
-              className={`${l.who === "user" ? "vg-line-you" : "vg-line-nova"}${BN.test(l.text) ? " vg-bn" : ""}`}
-              data-who={copy.you}
-            >
-              {l.text}
-            </div>
-          ))
-        )}
-        {micBlocked ? <div className={`vg-line-note${bn ? " vg-bn" : ""}`}>{copy.micBlocked}</div> : null}
-        <div ref={captionsEnd} />
-      </div>
-
-      {typing && live ? (
-        <form
-          className="vg-type"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const text = draft.trim();
-            if (!text) return;
-            rt.sendTextMessage(text);
-            setDraft("");
-          }}
-        >
-          <input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder={copy.typePh} aria-label={copy.typePh} className={bn ? "vg-bn" : undefined} />
-          <button type="submit" className={`vg-btn${bn ? " vg-btn-bn" : ""}`}>{copy.send}</button>
-        </form>
-      ) : null}
+      {caption ? <p className={`vg-caption${BN.test(caption) ? " vg-bn" : ""}`}>{caption}</p> : null}
 
       <div className="vg-actions">
         {ended || failed ? (
           <>
             <a className={`vg-btn vg-btn-lime${bn ? " vg-btn-bn" : ""}`} href={signupUrl()} onClick={() => { signupClicked.current = true; track("voice_signup_click"); }}>{copy.startFree}</a>
-            <button type="button" className={`vg-btn${bn ? " vg-btn-bn" : ""}`} onClick={async () => { if (!finished.current) await finish(failed ? "error" : "visitor"); onEnded(); }}>{copy.close}</button>
+            <button type="button" className={`vg-btn vg-btn-end${bn ? " vg-btn-bn" : ""}`} onClick={async () => { if (!finished.current) await finish(failed ? "error" : "visitor"); onEnded(); }}>{copy.close}</button>
           </>
         ) : (
           <>
@@ -351,25 +312,24 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
             {stream ? (
               <button
                 type="button"
-                className={`vg-btn${bn ? " vg-btn-bn" : ""}`}
+                className="vg-icon-btn"
+                data-off={!isCapturing}
                 onClick={() => (isCapturing ? rt.stopAudioCapture() : rt.resumeAudioCapture().catch(() => {}))}
                 disabled={!live}
+                aria-label={isCapturing ? copy.mute : copy.unmute}
+                title={isCapturing ? copy.mute : copy.unmute}
               >
-                {isCapturing ? copy.mute : copy.unmute}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <rect x="9" y="2" width="6" height="12" rx="3" />
+                  <path d="M5 10a7 7 0 0 0 14 0M12 17v5" />
+                  {!isCapturing ? <path d="M3 3l18 18" /> : null}
+                </svg>
               </button>
             ) : null}
-            {!typing ? <button type="button" className={`vg-btn${bn ? " vg-btn-bn" : ""}`} onClick={() => setTyping(true)} disabled={!live}>{copy.type}</button> : null}
-            <button type="button" className={`vg-btn vg-btn-end${bn ? " vg-btn-bn" : ""}`} onClick={() => finish("visitor")}>{copy.end}</button>
+            <button type="button" className={`vg-btn vg-btn-hangup${bn ? " vg-btn-bn" : ""}`} onClick={() => finish("visitor")}>{copy.end}</button>
           </>
         )}
       </div>
-
-      {live && !isPlaying && messages.some((m) => m.role === "assistant") ? (
-        <button type="button" className="vg-note" style={{ background: "none", border: 0, padding: 0, cursor: "pointer", color: "#A3A693" }} onClick={() => rt.resumePlayback().catch(() => {})}>
-          {copy.cantHear}
-        </button>
-      ) : null}
-      <p className={`vg-note${bn ? " vg-bn" : ""}`}>{copy.note}</p>
     </div>
   );
 }

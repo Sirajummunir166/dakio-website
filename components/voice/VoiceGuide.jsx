@@ -22,6 +22,7 @@ export const VOICE_COPY = {
   en: {
     launch: "Talk to Nova",
     launchText: "Chat with Nova",
+    note: "Voice is processed by our AI provider. We keep a text transcript for 30 days, never the audio.",
     opening: "Connecting…",
     title: "Nova",
     refusedTitle: "Nova can't talk right now",
@@ -32,6 +33,7 @@ export const VOICE_COPY = {
   bn: {
     launch: "Nova-র সাথে কথা বলুন",
     launchText: "Nova-কে লিখুন",
+    note: "ভয়েস আমাদের AI প্রোভাইডার প্রসেস করে। আমরা ৩০ দিন লেখা ট্রান্সক্রিপ্ট রাখি, অডিও কখনো না।",
     opening: "সংযোগ হচ্ছে…",
     title: "Nova",
     refusedTitle: "Nova এখন কথা বলতে পারছে না",
@@ -170,6 +172,7 @@ export default function VoiceGuide({ lang = "en" }) {
           onClick={start}
           disabled={phase === "opening"}
           aria-label={mode === "text" ? copy.launchText : copy.launch}
+          title={copy.note}
         >
           <span className="vg-orb" data-state={phase === "opening" ? "connecting" : undefined} aria-hidden />
           <span className={bn ? "vg-launch-bn" : undefined}>{phase === "opening" ? copy.opening : mode === "text" ? copy.launchText : copy.launch}</span>

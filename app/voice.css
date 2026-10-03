@@ -84,6 +84,38 @@
   animation: vgHalo 2s ease-out infinite;
 }
 
+/* ---- the call: an orb, a status, what Nova is saying, two buttons ---- */
+.vg-call { width: min(320px, calc(100vw - 32px)); }
+.vg-call .vg-head .vg-orb { width: 56px; height: 56px; }
+.vg-caption {
+  margin: 14px 0 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--vg-cream);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.vg-caption.vg-bn { line-height: 1.75; }
+.vg-icon-btn {
+  appearance: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--vg-line);
+  background: var(--vg-ink-2);
+  color: var(--vg-cream);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.vg-icon-btn[data-off="true"] { color: #E7B85C; border-color: #5A4A2A; }
+.vg-icon-btn:focus-visible { outline: 2px solid var(--vg-lime); outline-offset: 2px; }
+.vg-btn-hangup { margin-left: auto; background: #4A2420; border-color: #6B2F28; color: #F6D5CF; }
+.vg-btn-hangup:hover { border-color: #8A3A31; }
+
 /* ---- the panel ---- */
 .vg-panel {
   width: min(360px, calc(100vw - 32px));
