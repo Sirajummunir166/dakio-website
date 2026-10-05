@@ -9,7 +9,7 @@ import { Nav, Footer } from "../../../components/Chrome";
 import Reveal from "../../../components/Reveal";
 import LogoDefs from "../../../components/Logo";
 import PageJsonLd from "../../../components/PageJsonLd";
-import { REGISTER_URL } from "../../../lib/urls";
+import { TRIAL_URL } from "../../../lib/urls";
 import { href, languageAlternates } from "../../../lib/i18n";
 import { type } from "../../../lib/type";
 import { THEMES, shot, wordmarkStyle } from "../../../lib/themes";
@@ -71,7 +71,7 @@ export default async function ThemesPage({ params }) {
           <p style={{ margin: "20px 0 0", fontSize: 17, lineHeight: 1.6, color: "#A9AD98", maxWidth: 640, textWrap: "pretty", animation: "heroUp .6s .16s ease both", ...T.lead }}>{c.hero.sub}</p>
           <div className="m-wrap" style={{ display: "flex", gap: 12, marginTop: 30, animation: "heroUp .6s .24s ease both" }}>
             <a href="#themes" className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 26px", borderRadius: 99, background: "#C6F035", color: "#1A1D12", fontSize: 15, fontWeight: 700, ...T.label }}>{c.hero.ctaPrimary}<Arrow /></a>
-            <a href={REGISTER_URL} style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1.5px solid rgba(244,242,234,0.25)", color: "#F4F2EA", fontSize: 15, fontWeight: 700, ...T.label }}>{c.hero.ctaSecondary}</a>
+            <a href={TRIAL_URL} style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1.5px solid rgba(244,242,234,0.25)", color: "#F4F2EA", fontSize: 15, fontWeight: 700, ...T.label }}>{c.hero.ctaSecondary}</a>
           </div>
           <nav aria-label={MONO.kicker} style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 34, animation: "heroUp .6s .3s ease both" }}>
             {THEMES.map(t => (
@@ -180,7 +180,7 @@ export default async function ThemesPage({ params }) {
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
           <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.04, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: 720, ...T.ctaH2 }}>{c.cta.h2}</h2>
           <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
-            <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700, ...T.label }}>
+            <a href={TRIAL_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700, ...T.label }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />{c.cta.primary}
             </a>
             <Link href={L("/contact")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</Link>

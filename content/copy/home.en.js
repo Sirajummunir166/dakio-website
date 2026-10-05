@@ -22,8 +22,8 @@ export const MONO = {
   briefApprove: "APPROVE / LATER",
   orgKicker: "THE ORGANIZATION",
   orgCeoJob: "PLANS · COORDINATES ALL",
-  roomsKicker: "THE PRODUCT — NOT MOCKUPS. CLICK ANY CARD.",
-  roomsOpen: "OPEN ↗",
+  roomsKicker: "THE PRODUCT — CLICK ANY CARD.",
+  roomsOpen: "MORE →",
   roomsDecision: "DECISION · MARKETING",
   roomsDecisionEst: "+৳9,400 EST",
   roomsChannels: "ONE THREAD, EVERY CHANNEL",
@@ -128,7 +128,7 @@ const home = {
       </>
     ),
     p: "Nova works the night shift and reports at 06:00 — every line backed by evidence you can inspect, with undo wherever the action is reversible.",
-    link: "See Nova HQ live",
+    link: "See how Nova works",
     hearCall: "Hear it as a call",
     tiles: [
       { v: "৳46,200", l: "revenue overnight" },
@@ -150,7 +150,7 @@ const home = {
     stats: [
       { v: "1", l: "Acting CEO" },
       { v: "10", l: "departments" },
-      { v: "65", l: "named duties" },
+      { v: "12", l: "duties from day one" },
     ],
     ceo: "CEO Office",
     depts: [

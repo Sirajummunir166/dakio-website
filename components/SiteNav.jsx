@@ -22,7 +22,7 @@ import SmartLink from "./SmartLink";
 import { useEffect, useRef, useState } from "react";
 import LogoDefs from "./Logo";
 import NavPreview from "./NavPreview";
-import { LOGIN_URL, REGISTER_URL } from "../lib/urls";
+import { LOGIN_URL, TRIAL_URL } from "../lib/urls";
 import { href, otherLocaleHref } from "../lib/i18n";
 import chromeEn, { MONO_LABELS, PREVIEW_MONO } from "../content/copy/chrome.en";
 import { type } from "../lib/type";
@@ -70,7 +70,7 @@ export default function SiteNav({
   copy,
   // "Open your store" goes straight to signup; pages that repurpose the nav
   // CTA (switch "Plan my switch" → #cta, pricing → #plans) pass their own href.
-  ctaHref = REGISTER_URL,
+  ctaHref = TRIAL_URL,
   ctaLabel,
   style,
 }) {

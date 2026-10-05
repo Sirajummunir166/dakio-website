@@ -8,7 +8,7 @@
 
 import Link from "next/link";
 import LogoDefs from "./Logo";
-import { REGISTER_URL } from "../lib/urls";
+import { TRIAL_URL } from "../lib/urls";
 import { href } from "../lib/i18n";
 import chromeEn, { MONO_LABELS } from "../content/copy/chrome.en";
 import { type } from "../lib/type";
@@ -93,7 +93,7 @@ export default function SiteFooter({ lang = "en", copy }) {
             <Link href="/terms" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76", ...T.label }}>{c.terms}</Link>
             <Link href="/refund-policy" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76", ...T.label }}>{c.refund}</Link>
             <Link href="/data-deletion" className="hv-cream-e9" style={{ fontSize: 12, color: "#878B76", ...T.label }}>{c.dataDeletion}</Link>
-            <a href={REGISTER_URL} className="hv-up1" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "8px 16px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 12, fontWeight: 700, ...T.label }}>{c.cta}</a>
+            <a href={TRIAL_URL} className="hv-up1" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "8px 16px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 12, fontWeight: 700, ...T.label }}>{c.cta}</a>
           </div>
         </div>
       </div>

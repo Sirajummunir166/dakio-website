@@ -12,7 +12,7 @@ import { Footer } from "../../components/Chrome";
 import Reveal from "../../components/Reveal";
 import LogoDefs from "../../components/Logo";
 import PageJsonLd from "../../components/PageJsonLd";
-import { REGISTER_URL } from "../../lib/urls";
+import { TRIAL_URL } from "../../lib/urls";
 import { href, languageAlternates } from "../../lib/i18n";
 import { type } from "../../lib/type";
 import homeEn, { MONO, MARQUEE } from "../../content/copy/home.en";
@@ -194,9 +194,9 @@ export default async function Home({ params }) {
             <p style={{ margin: "18px 0 0", fontSize: 15.5, lineHeight: 1.65, color: "#6B6D60", maxWidth: 380, ...T.body }}>
               {c.brief.p}
             </p>
-            <a href="/prototypes/Nova HQ Prototype v7.dc.html" className="hv-gap12" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 24, fontSize: 14, fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 3, ...T.label }}>
+            <Link href={L("/nova")} className="hv-gap12" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 24, fontSize: 14, fontWeight: 700, color: "#1A1D12", borderBottom: "2px solid #C6F035", paddingBottom: 3, ...T.label }}>
               {c.brief.link} <Arrow />
-            </a>
+            </Link>
           </div>
           <div style={{ borderRadius: 28, background: "#0F120B", padding: 28, color: "#E9EFDC", boxShadow: "0 34px 80px rgba(15,18,11,0.35)" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
@@ -284,17 +284,17 @@ export default async function Home({ params }) {
           <h2 className="m-h2" style={{ margin: "14px auto 0", fontSize: 52, lineHeight: 1.05, letterSpacing: "-2px", fontWeight: 800, maxWidth: 620, ...T.h2 }}>{c.rooms.h2}</h2>
         </div>
         {/* One card per room: a graphic, the name, one line — the rooms themselves
-            (the prototypes) carry the detail. Graphics: hand-drawn SVG, public/graphics/rooms-*.svg */}
+            (their product pages) carry the detail. Graphics: hand-drawn SVG, public/graphics/rooms-*.svg */}
         <div className="m-rooms" style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 14 }}>
           {[
-            { key: "hq", href: "/prototypes/Nova HQ Prototype v7.dc.html", img: "rooms-nova-hq" },
-            { key: "studio", href: "/prototypes/Dakio Store Studio.dc.html", img: "rooms-store-studio" },
-            { key: "frontOffice", href: "/prototypes/Nova Inbox - Front Office.dc.html", img: "rooms-front-office" },
-            { key: "grow", href: "/prototypes/Dakio Grow Modules.dc.html", img: "rooms-grow-suite" },
-            { key: "ads", href: "/prototypes/Dakio Nova Motion Ads.dc.html", img: "rooms-ads-gallery" },
-            { key: "supplier", href: "/prototypes/Dakio Supplier Dashboard.dc.html", img: "rooms-supplier-network" },
+            { key: "hq", href: "/nova", img: "rooms-nova-hq" },
+            { key: "studio", href: "/store-studio", img: "rooms-store-studio" },
+            { key: "frontOffice", href: "/front-office", img: "rooms-front-office" },
+            { key: "grow", href: "/grow", img: "rooms-grow-suite" },
+            { key: "ads", href: "/ads", img: "rooms-ads-gallery" },
+            { key: "supplier", href: "/store", img: "rooms-supplier-network" },
           ].map(r => (
-            <a key={r.key} href={r.href} data-reveal className="hv-up4" style={{ display: "flex", flexDirection: "column", borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 14, overflow: "hidden" }}>
+            <Link key={r.key} href={L(r.href)} data-reveal className="hv-up4" style={{ display: "flex", flexDirection: "column", borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: 14, overflow: "hidden" }}>
               <div style={{ aspectRatio: "400 / 240", borderRadius: 20, background: "#F4F5EE", overflow: "hidden" }}>
                 <img src={`/graphics/${r.img}.svg`} alt="" width={400} height={240} loading="lazy" style={{ display: "block", width: "100%", height: "100%", objectFit: "contain" }} />
               </div>
@@ -305,7 +305,7 @@ export default async function Home({ params }) {
                 </div>
                 <span style={{ fontFamily: MONOFONT, fontSize: 8.5, letterSpacing: "0.1em", color: "#6B6D60", marginTop: 7, whiteSpace: "nowrap" }}>{MONO.roomsOpen}</span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -410,7 +410,7 @@ export default async function Home({ params }) {
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
           <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 60, lineHeight: 1.03, letterSpacing: "-2.5px", fontWeight: 800, maxWidth: 720, ...T.ctaH2 }}>{c.cta.h2}</h2>
           <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 34 }}>
-            <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700, ...T.label }}>
+            <a href={TRIAL_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700, ...T.label }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />{c.cta.primary}
             </a>
             <Link href={L("/nova")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</Link>

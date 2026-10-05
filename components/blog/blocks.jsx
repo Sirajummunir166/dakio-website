@@ -2,7 +2,7 @@
 // token vars resolved to this site's literal values. Server-safe (no hooks).
 
 import SmartLink from "../SmartLink";
-import { REGISTER_URL } from "../../lib/urls";
+import { TRIAL_URL } from "../../lib/urls";
 
 const INK = "#1A1D12";
 const LIME = "#C6F035";
@@ -52,7 +52,7 @@ export function Step({ n, children }) {
 }
 
 // Mid-article ink CTA band.
-export function MidCTA({ title, children, cta = "ফ্রি শুরু করুন", href = REGISTER_URL }) {
+export function MidCTA({ title, children, cta = "ফ্রি শুরু করুন", href = TRIAL_URL }) {
   return (
     <div style={{ margin: "44px 0 0", padding: "32px 36px", borderRadius: 20, background: INK, color: "#f4f6ec", display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
       <div style={{ flex: 1, minWidth: 220 }}>

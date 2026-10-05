@@ -7,7 +7,7 @@
 import Link from "next/link";
 import { Nav } from "../Chrome";
 import { MONO } from "../../content/copy/home.en";
-import { REGISTER_URL } from "../../lib/urls";
+import { TRIAL_URL } from "../../lib/urls";
 import { href } from "../../lib/i18n";
 import { type } from "../../lib/type";
 
@@ -59,7 +59,7 @@ export default function HomeTop({ lang = "en", copy }) {
                 {c.sub}
               </p>
               <div className="m-wrap" style={{ display: "flex", gap: 12, marginTop: 32, animation: "heroUp .6s .24s ease both" }}>
-                <a href={REGISTER_URL} className="hv-up2-glow" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 26px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 15, fontWeight: 700, ...T.label }}>
+                <a href={TRIAL_URL} className="hv-up2-glow" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 26px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 15, fontWeight: 700, ...T.label }}>
                   {c.ctaPrimary} <Arrow />
                 </a>
                 <Link href={href(lang, "/nova")} className="hv-bg-wash07" style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.25)", color: "#E9EFDC", fontSize: 15, fontWeight: 700, ...T.label }}>

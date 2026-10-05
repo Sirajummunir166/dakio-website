@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { Nav, Footer } from "../../../../components/Chrome";
 import LogoDefs from "../../../../components/Logo";
 import ThemeShots from "../../../../components/themes/ThemeShots";
-import { REGISTER_URL } from "../../../../lib/urls";
+import { TRIAL_URL } from "../../../../lib/urls";
 import { href, languageAlternates } from "../../../../lib/i18n";
 import { type } from "../../../../lib/type";
 import { THEMES, themeByKey, shot, wordmarkStyle } from "../../../../lib/themes";
@@ -85,7 +85,7 @@ export default async function ThemePage({ params }) {
             ) : (
               <span style={{ padding: "12px 18px", borderRadius: 99, background: "#E5E7DE", fontSize: 13.5, fontWeight: 700, color: "#6B6D60", ...T.label }}>{c.card.soon}</span>
             )}
-            <a href={REGISTER_URL} className="hv-bg-ink05" style={{ display: "inline-flex", alignItems: "center", padding: "14px 22px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12", fontSize: 15, fontWeight: 700, ...T.label }}>{c.cta.primary}</a>
+            <a href={TRIAL_URL} className="hv-bg-ink05" style={{ display: "inline-flex", alignItems: "center", padding: "14px 22px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12", fontSize: 15, fontWeight: 700, ...T.label }}>{c.cta.primary}</a>
           </div>
         </div>
         {t.demo && <p style={{ margin: "12px 0 0", fontSize: 12.5, color: "#8B8E7E", ...T.small }}>{c.detail.demoNote}</p>}

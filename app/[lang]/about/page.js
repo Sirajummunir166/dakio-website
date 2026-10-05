@@ -7,7 +7,7 @@ import { Nav, Footer } from "../../../components/Chrome";
 import Reveal from "../../../components/Reveal";
 import LogoDefs from "../../../components/Logo";
 import PageJsonLd from "../../../components/PageJsonLd";
-import { REGISTER_URL } from "../../../lib/urls";
+import { TRIAL_URL } from "../../../lib/urls";
 import { href, languageAlternates } from "../../../lib/i18n";
 import { type } from "../../../lib/type";
 import aboutEn from "../../../content/copy/about.en";
@@ -188,7 +188,7 @@ export default async function AboutPage({ params }) {
           <h2 className="m-cta-h2" style={{ margin: "0 auto", fontSize: 44, lineHeight: 1.08, letterSpacing: "-1.6px", fontWeight: 800, maxWidth: 640, ...T.ctaH2 }}>{c.cta.h2}</h2>
           <p style={{ margin: "16px auto 0", fontSize: 16, color: "#1A1D12", maxWidth: 440, lineHeight: 1.6, ...T.body }}>{c.cta.p}</p>
           <div className="m-wrap" style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 30 }}>
-            <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "15px 28px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15, fontWeight: 700, ...T.label }}>
+            <a href={TRIAL_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "15px 28px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15, fontWeight: 700, ...T.label }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRingGreen 2.2s infinite" }} />{c.cta.primary}
             </a>
             <Link href={L("/nova")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "15px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15, fontWeight: 700, ...T.label }}>{c.cta.secondary}</Link>
