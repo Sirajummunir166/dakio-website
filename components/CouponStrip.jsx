@@ -4,6 +4,8 @@
 // (dakio.io/c/RAFI20 → middleware saves the code in the `dakio_coupon` cookie and
 // lands here with ?coupon=RAFI20). It asks dakio-api whether the code is live,
 // says what it is worth, and sends "Start free" to signup with the code attached.
+// A code that belongs to a program (admin "Program name (shown to customers)")
+// leads with it: "Founding Merchant Program · Code NAFEES saved · …".
 // The app also reads the cookie, so the code survives even if they wander off
 // and come back through the nav.
 //
@@ -96,6 +98,9 @@ export default function CouponStrip({ lang = "en" }) {
     >
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "10px 16px", display: "flex", alignItems: "center", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
         <span>
+          {/* The code's customer-facing program (NAFEES → "Founding Merchant Program"),
+              shown exactly as Dakio stored it in admin — same words on /en and /bn. */}
+          {coupon.programName && <><b style={{ fontWeight: 700 }}>{coupon.programName}</b>{" · "}</>}
           {t.lead}{" "}
           <b style={{ fontFamily: "var(--dk-font-mono)", letterSpacing: "0.06em", color: "var(--dk-lime)" }}>{coupon.code}</b>{" "}
           {t.saved} · <b>{label(coupon, lang)}</b> {t.onPlan}{periods(coupon, lang)}
