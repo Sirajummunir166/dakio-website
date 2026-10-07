@@ -1,0 +1,76 @@
+Every Dakio storefront (Store Studio, the classic theme and funnel pages) pushes one clean set of shopping events to `window.dataLayer`. If the store has a Google Tag Manager container set in Dakio (**Settings → Marketing & tracking**), that container loads on every page and can send these events to any ad or analytics platform: GA4, Google Ads, TikTok, Snapchat, Pinterest, LinkedIn, Microsoft Ads and the rest.
+
+Dakio sends **Meta** itself, from the browser and from the server, with the same event id. Don't add a Meta Pixel tag inside GTM as well, or Meta will count every event twice.
+
+## The envelope
+
+Every push looks like this. Commerce events are preceded by `{ ecommerce: null }`, so GA4 tags never mix items from two events.
+
+```js
+{
+  event: 'add_to_cart',               // GA4 recommended event names
+  event_id: 'atc_4f1c…',              // unique per event; pass it to your tags for dedup
+  dk: {
+    v: 1,
+    store: 'glameen',                 // store slug
+    store_id: 'cm…',                  // Dakio store id
+    page_type: 'product',             // home | product | list | search | cart | checkout | account | funnel | page
+    sent_by: 'dakio-store',
+    consent: { ad_storage: 'granted', analytics_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' },
+  },
+  ecommerce: {
+    currency: 'BDT',
+    value: 850,
+    items: [{
+      item_id: 'cm…',                 // Dakio product id (stable)
+      item_name: 'AFA Argentina Cap',
+      item_variant: 'Black / XL',     // size or variant name, when there is one
+      item_variant_id: 'cm…',
+      item_sku: 'CAP-01',
+      item_category: 'Caps',
+      price: 850,
+      quantity: 1,
+    }],
+  },
+}
+```
+
+There is never a name, phone number, email or address in the dataLayer. Search terms that look like a phone number or an email arrive as `[phone]` / `[email]`.
+
+## Events
+
+<Table
+  head={["Event", "When it fires", "Extra fields"]}
+  rows={[
+    ["page_view", "Every page, including page changes without a reload", "—"],
+    ["view_item_list", "A product grid or list is shown", "ecommerce.item_list_id, item_list_name"],
+    ["select_item", "A product in a list is clicked", "ecommerce.item_list_id"],
+    ["view_item", "A product page (or quick view, or a funnel's product) is shown", "ecommerce"],
+    ["add_to_cart", "Something is added (only what was really added)", "ecommerce"],
+    ["remove_from_cart", "A line is removed or its quantity goes down", "ecommerce"],
+    ["view_cart", "The bag or cart page is opened", "ecommerce"],
+    ["begin_checkout", "The checkout opens with a non-empty bag (once per bag)", "ecommerce"],
+    ["add_shipping_info", "Name, a valid phone and the delivery area are filled in", "ecommerce"],
+    ["add_payment_info", "The shopper presses Place order", "ecommerce.payment_type (COD, bKash, Nagad)"],
+    ["purchase", "Only after the order is really placed (after the SMS code, when the store asks for one)", "ecommerce.transaction_id, value, shipping, coupon"],
+    ["search", "A store search runs", "search_term"],
+    ["login", "A shopper signs in to My orders with the SMS code", "method: 'phone_otp'"],
+    ["whatsapp_click / phone_call_click / email_click", "A WhatsApp, phone or email link is clicked", "link_type, link_url (number masked)"],
+  ]}
+/>
+
+`purchase` never fires twice for one order: not on a refresh, not in a second tab. `value` is **products minus discount**; delivery is in `ecommerce.shipping`. That matches GA4, and Dakio sends Meta the same number.
+
+For one more release `add_to_cart`, `begin_checkout` and `purchase` also carry `value`, `currency` and `items` at the top level, for tags built on Dakio's older pushes.
+
+## Wiring a platform in GTM
+
+1. **Variables.** Create Data Layer Variables for `event_id`, `ecommerce.value`, `ecommerce.currency`, `ecommerce.transaction_id` and `ecommerce.items`.
+2. **Triggers.** Use Custom Event triggers on the event names above (for example `purchase`). For page views use the `page_view` event, not GTM's History Change trigger, so a page is never counted twice.
+3. **GA4.** A GA4 Event tag with "Send Ecommerce data" from the data layer works as is: the names and item fields are GA4's own.
+4. **Platforms with browser + server dedup** (TikTok, Snapchat, Pinterest, Microsoft): put `{{event_id}}` in the tag's event id field. Dakio only sends server events for Meta today, so for the others it simply makes each event unique.
+5. **Google Ads.** Use `ecommerce.transaction_id` as the conversion's transaction id and `ecommerce.value` as its value.
+
+## What Dakio sends Meta from the server
+
+When the store's Meta Pixel and Conversions API token are set in Dakio, the server also sends **Purchase**, **InitiateCheckout** and **AddShippingInfo** with the browser's event id, so Meta merges each pair. It also sends **OrderDelivered** when a courier delivers an order and **OrderCancelled** when it's cancelled, returned or fails. In Meta, build a custom conversion on `OrderDelivered` to optimise for real sales.

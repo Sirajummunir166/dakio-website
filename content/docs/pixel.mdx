@@ -1,4 +1,4 @@
-Dakio already sends the server side of **Purchase**, **Lead** and **InitiateCheckout** (Meta's Conversions API) for every store with a Pixel set up in Dakio. Send the browser side with the **same event id** and Meta counts each event once, with better matching than either side alone.
+Dakio already sends the server side of **Purchase**, **InitiateCheckout** and the checkout's contact step (**Lead** from SDK sites, **AddShippingInfo** from Dakio's own storefronts) (Meta's Conversions API) for every store with a Pixel set up in Dakio. Send the browser side with the **same event id** and Meta counts each event once, with better matching than either side alone.
 
 ```js
 import { loadPixel, trackPixel, newEventId, productParams, purchaseParams } from '@dakio/sdk/pixel'
@@ -34,3 +34,5 @@ Dakio's server event for that order carries the same `eventId`, so Meta merges t
 />
 
 Google Tag Manager: `store.tracking.gtmContainerId` holds the store's container id if it has one, and every `trackPixel` call also pushes `dakio_<Event>` (with the same params and `eventId`) to `dataLayer`.
+
+Dakio's own storefronts (Store Studio, the classic theme, funnels) already do all of this for you: see [Storefront dataLayer & GTM](/developers/docs/datalayer).
