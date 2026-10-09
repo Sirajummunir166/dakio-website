@@ -1,0 +1,86 @@
+The store owner can switch on a chat bubble in Dakio → **Add-ons → Website chat**. Visitors' messages land in the store's **Front Office**, next to Messenger, Instagram and WhatsApp, and Nova answers them the same way she answers Messenger. The owner picks the colour, the corner and the opening line; your site only has to load the bubble.
+
+Dakio's own storefronts (Store Studio and the classic theme) and the Dakio themes already include it. Add it yourself only on a site you built with the SDK.
+
+## Add it
+
+In React or Next.js, put it once in your root layout:
+
+```tsx
+import { DakioChat } from '@dakio/sdk/react'
+
+<DakioChat dakioKey={process.env.NEXT_PUBLIC_DAKIO_KEY!} />
+```
+
+Anywhere else, call `loadChat` once in the browser:
+
+```js
+import { loadChat } from '@dakio/sdk'
+
+loadChat({ key: 'dk_pub_live_…' })
+```
+
+No build step? One line before `</body>` does the same. The owner can copy this line, with their key in it, from the Website chat card:
+
+```html
+<script src="https://dakio-api-production.up.railway.app/webchat/v1/widget.js" data-key="dk_pub_live_…" async></script>
+```
+
+While the owner has chat switched off, the bubble shows nothing, so it's safe to ship before they turn it on.
+
+## Your own "Chat with us" button
+
+```js
+import { openChat } from '@dakio/sdk'
+
+<button onClick={openChat}>Chat with us</button>
+```
+
+Without the SDK, call `window.DakioChat.open()` and `window.DakioChat.close()`.
+
+## Keys and websites
+
+Use your **publishable** key. A live key only works on the websites in its allowed list (Settings → Developers), the same list the rest of the SDK uses. A test key works anywhere, `localhost` included. `loadChat` refuses a secret key rather than put it in a page.
+
+<Note tone="warn" title="One key, one store">
+The bubble belongs to the store that owns the key. Messages from your site go to that store's Front Office and spend that store's Nova credits.
+</Note>
+
+## What visitors and the store see
+
+<Table
+  head={["", "What happens"]}
+  mono={[]}
+  rows={[
+    ["The bubble", "The store's colour, logo and opening line. It draws inside a shadow root, so your CSS can't change it and it can't change your page. Full screen on phones."],
+    ["Language", "English or Bangla, following <html lang>. Force one with the lang option (or data-lang on the script tag)."],
+    ["Replies", "Nova's and the founder's replies arrive live, with typing dots. The thread stays with the visitor's browser for 30 days, across pages and visits."],
+    ["The page", "Each message carries the page the visitor is on, so Nova and the founder know which product \"is this in stock?\" means."],
+    ["No answer", "If nobody replies within two minutes, the bubble asks for a phone number so the store can call back."],
+    ["Front Office", "Threads show under the Website chip. The founder can take over and reply like any other chat."],
+  ]}
+/>
+
+The bubble keeps one item in the visitor's browser storage, the chat's session token, and sets no cookies.
+
+## Reference
+
+<Table
+  head={["Export", "What it does"]}
+  rows={[
+    ["DakioChat (@dakio/sdk/react)", "Loads the bubble once; renders nothing itself. Props: dakioKey, baseUrl?, lang?"],
+    ["loadChat({ key, baseUrl?, lang? })", "Adds the bubble's script once; a no-op on the server"],
+    ["openChat() / closeChat()", "Open or close the panel"],
+    ["chatScriptUrl(baseUrl?)", "Where the bubble's script lives for an API base url"],
+  ]}
+/>
+
+<Table
+  head={["Script attribute", "Meaning"]}
+  rows={[
+    ["data-key", "Your publishable key"],
+    ["data-lang", "\"en\" or \"bn\" to force the language"],
+  ]}
+/>
+
+Pass `baseUrl` only if you also pass it to `createDakio`. Website chat needs `@dakio/sdk` 0.3.0 or later.
