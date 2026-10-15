@@ -117,7 +117,11 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
 /* Portrait display — the stall's floor-standing kiosk (1080×1920): video on
    top, panel below. */
 @media (max-aspect-ratio: 1/1) and (min-width: 701px) {
-  .kz { grid-template-columns: 1fr; grid-template-rows: 29% 1fr; }
+  /* The event video is 16:9 — the stage takes exactly that, so it fills edge to edge. */
+  .kz { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); }
+  .kz-stage { aspect-ratio: 16 / 9; margin: 1.6vmin 1.6vmin 0; }
+  .kz-stage video { object-fit: cover; }
+  .kz-lede { display: none; }
   .kz-benefits span { display: none; }
   .kz-benefits { gap: 1.2vmin; }
   .kz-panel { padding: 1vmin 4vmin 3vmin; }
