@@ -165,8 +165,9 @@ export default function EventKiosk({ code, signupUrl, offerEnds, offer, qrSvg, c
         )}
 
         {/* Facebook's promotion rules: entry may not require sharing to a
-            timeline or tagging friends, and it must say Facebook has no part
-            in it. Following the page stays an invitation. */}
+            timeline or tagging friends, so following the page stays an
+            invitation. The "not associated with Facebook" line lives on the
+            Dakio page's announcement post, not on this screen (owner's call). */}
         {!ended && contest && (
           <p className="kz-gift">
             🎁 Nova-র সঙ্গে কথা বলে <b>{contest.hashtag}</b> দিয়ে পোস্ট করুন — লটারিতে {contest.winners} জন পাবেন উপহার
@@ -174,7 +175,7 @@ export default function EventKiosk({ code, signupUrl, offerEnds, offer, qrSvg, c
         )}
 
         <footer className="kz-foot">
-          <span>বিস্তারিত Dakio স্টলে · fb.com/dakio.official · এই আয়োজনের সঙ্গে Facebook-এর সম্পর্ক নেই</span>
+          <span>বিস্তারিত Dakio স্টলে · fb.com/dakio.official</span>
           <span className="kz-url">dakio.io/nsgt26</span>
         </footer>
       </section>
