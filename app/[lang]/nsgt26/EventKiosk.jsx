@@ -2,7 +2,7 @@
 
 // The kiosk screen for dakio.io/nsgt26 — read from a few steps away at a busy
 // stall, so it says ONE thing: the event film, one line about Nova, and one
-// offer card (70%, the code, one QR). The #DakioNovaDay gift is a single quiet
+// offer card (70%, the code with a countdown, one QR, the prices). The #DakioNovaDay gift is a single quiet
 // line; staff explain the rest in person.
 //
 // It keeps the display awake, reloads itself every 10 minutes (recovers from a
@@ -13,16 +13,30 @@ import { useEffect, useRef, useState } from "react";
 
 const RELOAD_MS = 10 * 60 * 1000;
 
-function useEnded(offerEnds) {
-  const [ended, setEnded] = useState(false);
+const INTERVAL_BN = { MONTHLY: "মাসিক", YEARLY: "বার্ষিক" };
+const PER_BN = { MONTHLY: "/মাস", YEARLY: "/বছর" };
+
+function useNow() {
+  const [now, setNow] = useState(null);
   useEffect(() => {
-    const end = new Date(offerEnds).getTime();
-    const tick = () => setEnded(Date.now() >= end);
-    tick();
-    const id = setInterval(tick, 30 * 1000);
+    setNow(Date.now());
+    const id = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(id);
-  }, [offerEnds]);
-  return ended;
+  }, []);
+  return now;
+}
+
+function Countdown({ ms }) {
+  const s = Math.max(0, Math.floor(ms / 1000));
+  const pad = n => String(n).padStart(2, "0");
+  const parts = [[Math.floor(s / 3600), "ঘণ্টা"], [Math.floor((s % 3600) / 60), "মিনিট"], [s % 60, "সেকেন্ড"]];
+  return (
+    <div className="kz-count" aria-label="অফার শেষ হতে বাকি">
+      {parts.map(([v, l]) => (
+        <span key={l}><b>{pad(v)}</b><i>{l}</i></span>
+      ))}
+    </div>
+  );
 }
 
 function useKioskBehaviour() {
@@ -83,9 +97,12 @@ function Stage({ video }) {
   );
 }
 
-export default function EventKiosk({ code, signupUrl, offerEnds, firstPayments, qrSvg, contest, video }) {
+export default function EventKiosk({ code, signupUrl, offerEnds, offer, qrSvg, contest, video }) {
   useKioskBehaviour();
-  const ended = useEnded(offerEnds);
+  const now = useNow();
+  const endMs = new Date(offerEnds).getTime();
+  const ended = now != null && now >= endMs;
+  const byPlan = offer.rows.reduce((m, r) => ((m[r.plan] = m[r.plan] || []).push(r), m), {});
 
   return (
     <div className="kz">
@@ -112,16 +129,38 @@ export default function EventKiosk({ code, signupUrl, offerEnds, firstPayments, 
         ) : (
           <div className="kz-offer">
             <div className="kz-offer-main">
-              <div className="kz-offer-kicker">শুধু আজ</div>
               <div className="kz-offer-big">70% <span>ছাড়</span></div>
-              <div className="kz-offer-sub">{firstPayments}, কোড দিয়ে</div>
-              <div className="kz-code">{code}</div>
+              <div className="kz-offer-sub">{offer.firstPayments} · শুধু আজ রাত 11:59 পর্যন্ত</div>
+              <div className="kz-code-row">
+                <div className="kz-code">কোড <b>{code}</b></div>
+                {now != null && <Countdown ms={endMs - now} />}
+              </div>
             </div>
             <div className="kz-qr">
               <div className="kz-qr-box" dangerouslySetInnerHTML={{ __html: qrSvg }} />
-              <b>স্ক্যান করে শুরু করুন</b>
+              <div className="kz-qr-text">
+                <b>ফোনের ক্যামেরায় স্ক্যান করুন</b>
+                <span>কোডসহ সাইন আপ খুলে যাবে</span>
+              </div>
               <a className="kz-cta" href={signupUrl}>70% ছাড়ে শুরু করুন →</a>
             </div>
+            {Object.keys(byPlan).length > 0 && (
+              <div className="kz-prices">
+                {Object.entries(byPlan).map(([plan, rows]) => (
+                  <div key={plan} className="kz-price">
+                    <b>{plan}</b>
+                    {rows.map(r => (
+                      <div key={r.interval}>
+                        <span className="kz-iv">{INTERVAL_BN[r.interval]}</span>
+                        <s>{r.list}</s>
+                        <strong>{r.final}</strong>
+                        <span className="kz-per">{PER_BN[r.interval]}</span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
 

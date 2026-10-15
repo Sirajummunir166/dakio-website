@@ -31,19 +31,36 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
 .kz-lede { margin: 2vmin 0 0; font-size: 2.6vmin; line-height: 1.5; color: var(--muted); }
 .kz-lede b { color: var(--cream); }
 
-/* The one offer card. */
-.kz-offer { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3vmin; align-items: center; padding: 3.6vmin; border-radius: 3.2vmin; background: var(--lime); color: var(--ink); }
-.kz-offer-kicker { display: inline-block; padding: .6vmin 1.6vmin; border-radius: 99px; background: var(--ink); color: var(--lime); font-size: 1.9vmin; font-weight: 700; }
-.kz-offer-big { margin-top: 1.2vmin; font-size: 12vmin; line-height: 1; font-weight: 900; letter-spacing: -.045em; white-space: nowrap; }
-.kz-offer-big span { font-size: 6vmin; letter-spacing: 0; }
-.kz-offer-sub { margin-top: 1.4vmin; font-size: 2.4vmin; font-weight: 600; color: #2F3A12; }
-.kz-code { display: inline-block; margin-top: 1.6vmin; padding: 1vmin 2.4vmin; border-radius: 1.6vmin; border: .35vmin dashed var(--ink); font-family: var(--font-plex-mono), monospace; font-size: 4.6vmin; font-weight: 600; letter-spacing: .08em; }
+/* The offer card — the look the owner signed off: 70%, the code with a live
+   countdown beside it, one QR, the four prices underneath. */
+.kz-offer { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.8vmin 2.4vmin; align-items: stretch; padding: 2.4vmin; border-radius: 3vmin; background: var(--lime); color: var(--ink); }
+.kz-offer-main { align-self: center; }
+.kz-offer-big { font-size: 9vmin; line-height: .95; font-weight: 900; letter-spacing: -.04em; white-space: nowrap; }
+.kz-offer-big span { font-size: 5vmin; letter-spacing: 0; }
+.kz-offer-sub { margin-top: .8vmin; font-size: 2vmin; font-weight: 700; }
+.kz-code-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.4vmin; margin-top: 1.6vmin; }
+.kz-code { display: inline-flex; align-items: center; gap: 1.2vmin; padding: .9vmin 1.2vmin .9vmin 1.8vmin; border-radius: 1.4vmin; background: var(--ink); color: var(--muted); font-size: 1.9vmin; font-weight: 700; }
+.kz-code b { padding: .5vmin 1.4vmin; border-radius: 1vmin; border: 2px dashed var(--lime); color: var(--lime); font-family: var(--font-plex-mono), monospace; font-size: 3.4vmin; letter-spacing: .08em; }
+.kz-count { display: flex; gap: 1vmin; }
+.kz-count span { display: grid; justify-items: center; min-width: 8vmin; padding: .8vmin 1vmin; border-radius: 1.2vmin; background: var(--ink); color: var(--lime); }
+.kz-count b { font-family: var(--font-plex-mono), monospace; font-size: 3.2vmin; font-variant-numeric: tabular-nums; }
+.kz-count i { font-style: normal; font-size: 1.3vmin; color: var(--muted); }
 
-.kz-qr { display: grid; justify-items: center; gap: 1.4vmin; padding: 2.2vmin; border-radius: 2.4vmin; background: #fff; text-align: center; }
-.kz-qr-box { width: 24vmin; aspect-ratio: 1; }
+.kz-qr { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.4vmin; padding: 2vmin; border-radius: 2.2vmin; background: #fff; text-align: center; }
+.kz-qr-box { width: 22vmin; aspect-ratio: 1; }
 .kz-qr-box svg { display: block; width: 100%; height: 100%; }
-.kz-qr b { font-size: 2vmin; }
+.kz-qr-text b { display: block; font-size: 2vmin; }
+.kz-qr-text span { display: block; font-size: 1.6vmin; color: #4C4F42; margin-top: .3vmin; }
 .kz-cta { display: none; }
+
+.kz-prices { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2vmin; }
+.kz-price { padding: 1.2vmin 1.4vmin; border-radius: 1.4vmin; background: rgba(15,18,11,.08); font-size: 1.7vmin; }
+.kz-price > b { display: block; font-size: 1.9vmin; margin-bottom: .4vmin; }
+.kz-price > div { display: flex; align-items: baseline; gap: 1vmin; white-space: nowrap; }
+.kz-iv { min-width: 6.4vmin; color: #3D4A1C; font-weight: 600; }
+.kz-price s { color: #5E6B3A; font-size: 1.6vmin; }
+.kz-price strong { margin-left: auto; font-size: 2.3vmin; font-weight: 900; }
+.kz-per { color: #3D4A1C; font-size: 1.5vmin; }
 
 .kz-ended { grid-template-columns: 1fr; }
 .kz-ended-big { margin-top: 0; font-size: 9vmin; }
@@ -67,14 +84,23 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
   .kz-event { font-size: 2.4vmin; }
   .kz-h1 { font-size: 8vmin; }
   .kz-lede { font-size: 3.2vmin; }
-  .kz-offer { padding: 4.4vmin; gap: 4vmin; }
-  .kz-offer-kicker { font-size: 2.4vmin; }
-  .kz-offer-big { font-size: 13vmin; }
-  .kz-offer-big span { font-size: 7vmin; }
-  .kz-offer-sub { font-size: 3vmin; }
-  .kz-code { font-size: 5.6vmin; }
-  .kz-qr-box { width: 27vmin; }
-  .kz-qr b { font-size: 2.6vmin; }
+  .kz-offer { padding: 3vmin; gap: 2.2vmin 3vmin; border-radius: 3.6vmin; }
+  .kz-offer-big { font-size: 11.5vmin; }
+  .kz-offer-big span { font-size: 6.4vmin; }
+  .kz-offer-sub { font-size: 2.5vmin; }
+  .kz-code { font-size: 2vmin; }
+  .kz-code b { font-size: 3.3vmin; }
+  .kz-count span { min-width: 7.4vmin; }
+  .kz-count b { font-size: 3.5vmin; }
+  .kz-count i { font-size: 1.5vmin; }
+  .kz-qr-box { width: 23vmin; }
+  .kz-qr-text b { font-size: 2vmin; }
+  .kz-qr-text span { font-size: 1.7vmin; }
+  .kz-price { padding: 1.5vmin 1.8vmin; font-size: 2.1vmin; }
+  .kz-price > b { font-size: 2.4vmin; }
+  .kz-price s { font-size: 2vmin; }
+  .kz-price strong { font-size: 2.9vmin; }
+  .kz-per { font-size: 1.8vmin; }
   .kz-gift { font-size: 2.8vmin; }
   .kz-foot { font-size: 1.8vmin; }
 }
@@ -89,15 +115,27 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
   .kz-event { font-size: 13px; }
   .kz-h1 { font-size: 32px; }
   .kz-lede { font-size: 16px; margin-top: 10px; }
-  .kz-offer { grid-template-columns: 1fr; padding: 22px; border-radius: 22px; gap: 18px; }
-  .kz-offer-kicker { font-size: 13px; padding: 4px 12px; }
-  .kz-offer-big { font-size: 72px; margin-top: 8px; }
-  .kz-offer-big span { font-size: 34px; }
-  .kz-offer-sub { font-size: 15px; margin-top: 8px; }
-  .kz-code { font-size: 26px; margin-top: 10px; padding: 6px 16px; border-radius: 10px; border-width: 2px; }
+  .kz-offer { grid-template-columns: 1fr; padding: 18px; border-radius: 20px; gap: 16px; }
+  .kz-offer-big { font-size: 64px; }
+  .kz-offer-big span { font-size: 32px; }
+  .kz-offer-sub { font-size: 13.5px; }
+  .kz-code-row { gap: 8px; margin-top: 12px; }
+  .kz-code { font-size: 13px; gap: 8px; padding: 6px 8px 6px 12px; border-radius: 10px; }
+  .kz-code b { font-size: 20px; padding: 3px 10px; border-radius: 7px; }
+  .kz-count { gap: 6px; }
+  .kz-count span { min-width: 54px; padding: 5px; border-radius: 9px; }
+  .kz-count b { font-size: 19px; }
+  .kz-count i { font-size: 10px; }
   .kz-qr { background: none; padding: 0; }
-  .kz-qr-box, .kz-qr b { display: none; }
+  .kz-qr-box, .kz-qr-text { display: none; }
   .kz-cta { display: flex; width: 100%; justify-content: center; padding: 16px; border-radius: 99px; background: var(--ink); color: var(--lime); font-size: 17px; font-weight: 800; text-decoration: none; }
+  .kz-prices { grid-template-columns: 1fr; gap: 8px; }
+  .kz-price { font-size: 12.5px; padding: 9px 12px; border-radius: 10px; }
+  .kz-price > b { font-size: 14px; }
+  .kz-iv { min-width: 44px; }
+  .kz-price s { font-size: 11.5px; }
+  .kz-price strong { font-size: 16px; }
+  .kz-per { font-size: 11px; }
   .kz-ended-big { font-size: 44px; }
   .kz-ended p { font-size: 15px; }
   .kz-gift { font-size: 15px; }
