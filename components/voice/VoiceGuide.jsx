@@ -45,10 +45,13 @@ export const VOICE_COPY = {
 
 const TICKET_FRESH_MS = 4 * 60 * 1000; // tickets live 5 minutes on the api
 
-/** Pages the button stays off: legal copy and the developer reference. */
+/** Event kiosk screens: a full-screen display at a stall, nobody to call from it. */
+const KIOSK_PATHS = ["/nsgt26"];
+
+/** Pages the button stays off: legal copy, the developer reference, event kiosks. */
 function hiddenOn(pathname) {
   const bare = String(pathname || "/").replace(/^\/(en|bn)(?=\/|$)/, "") || "/";
-  return LEGAL_PATHS.includes(bare) || isEnglishOnlyPath(bare);
+  return LEGAL_PATHS.includes(bare) || isEnglishOnlyPath(bare) || KIOSK_PATHS.includes(bare);
 }
 
 let botReady = false;

@@ -1,0 +1,152 @@
+/* dakio.io/nsgt26 — the stall kiosk. Sized in vmin so one screen fits any
+   display, landscape or portrait; phones get a normal scrolling page. */
+
+.kz {
+  --ink: #0F120B; --ink2: #14170E; --lime: #C6F035; --cream: #FBFBF4; --wash: #E9EFDC; --muted: #A9AD98; --dim: #6B6F5C;
+  position: fixed; inset: 0; z-index: 10;
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+  background: radial-gradient(120% 90% at 0% 0%, #1B2410 0%, var(--ink) 55%);
+  color: var(--wash);
+  font-family: var(--font-archivo), var(--font-noto-bengali), sans-serif;
+  overflow: hidden;
+}
+body.kz-idle, body.kz-idle * { cursor: none !important; }
+
+/* ── Stage: the event video, or Nova while there is none ─────────────── */
+.kz-stage { position: relative; margin: 2.4vmin; border-radius: 3vmin; overflow: hidden; background: #000; }
+.kz-stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
+.kz-sound { position: absolute; left: 2vmin; bottom: 2vmin; padding: 1.1vmin 2vmin; border-radius: 99px; border: 1px solid rgba(233,239,220,.3); background: rgba(15,18,11,.7); color: var(--wash); font: inherit; font-size: 1.7vmin; font-weight: 700; cursor: pointer; backdrop-filter: blur(6px); }
+
+.kz-stage-nova { background: radial-gradient(60% 60% at 50% 48%, rgba(198,240,53,.16), transparent 70%), var(--ink2); display: grid; place-items: center; }
+.kz-ring { position: absolute; width: 62%; aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(198,240,53,.22); border-top-color: rgba(198,240,53,.7); animation: kzSpin 14s linear infinite; }
+.kz-orb { position: relative; width: 30%; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: end center; padding-bottom: 12%;
+  background: radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%);
+  box-shadow: 0 0 12vmin rgba(198,240,53,.35); animation: kzBreathe 5s ease-in-out infinite; }
+.kz-orb span { font-family: var(--font-plex-mono), monospace; font-size: 1.5vmin; letter-spacing: .3em; color: #2C3A10; font-weight: 600; }
+.kz-chip { position: absolute; display: flex; align-items: center; gap: 1.2vmin; padding: 1.3vmin 2vmin; border-radius: 1.6vmin; background: rgba(15,18,11,.86); border: 1px solid rgba(233,239,220,.14); font-size: 1.9vmin; font-weight: 700; color: var(--cream); white-space: nowrap; animation: kzFloat 6s ease-in-out infinite; }
+.kz-chip i { width: 1vmin; height: 1vmin; border-radius: 50%; background: var(--lime); }
+.kz-chip em { font-style: normal; font-family: var(--font-plex-mono), monospace; font-size: 1.1vmin; letter-spacing: .12em; color: #8CBF33; border: 1px solid rgba(198,240,53,.35); border-radius: 99px; padding: .3vmin 1vmin; }
+.kz-chip-0 { top: 16%; right: 8%; }
+.kz-chip-1 { top: 44%; left: 6%; animation-delay: -2s; }
+.kz-chip-2 { bottom: 18%; right: 10%; animation-delay: -4s; }
+.kz-duty { position: absolute; bottom: 5%; font-family: var(--font-plex-mono), monospace; font-size: 1.4vmin; letter-spacing: .14em; color: var(--muted); }
+
+/* ── Panel: claim, benefits, offer, QR ───────────────────────────────── */
+.kz-panel { display: flex; flex-direction: column; min-height: 0; padding: 3.4vmin 4.4vmin 2.4vmin 2vmin; gap: 1.8vmin; }
+.kz-top { display: flex; align-items: center; justify-content: space-between; gap: 2vmin; }
+.kz-logo { height: 4.2vmin; width: auto; }
+.kz-event { display: grid; justify-items: end; gap: .3vmin; text-align: right; }
+.kz-event b { padding: .8vmin 1.8vmin; border-radius: 99px; background: rgba(198,240,53,.14); border: 1px solid rgba(198,240,53,.4); color: var(--lime); font-size: 2vmin; white-space: nowrap; }
+.kz-event span { font-size: 1.5vmin; color: var(--muted); }
+.kz-h1 { margin: .2vmin 0 0; font-size: 5.2vmin; line-height: 1.12; font-weight: 800; color: var(--cream); letter-spacing: -.02em; }
+.kz-h1 span { color: var(--lime); white-space: nowrap; }
+.kz-lede { margin: 0; font-size: 2.3vmin; line-height: 1.5; color: var(--muted); }
+.kz-lede b { color: var(--cream); }
+
+.kz-benefits { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1vmin; }
+.kz-benefits li { display: flex; gap: 1.6vmin; align-items: flex-start; font-size: 2.6vmin; }
+.kz-benefits svg { flex: 0 0 auto; margin-top: .4vmin; color: var(--lime); }
+.kz-benefits b { display: block; font-size: 2.3vmin; color: var(--cream); }
+.kz-benefits span { display: block; margin-top: .3vmin; font-size: 1.75vmin; line-height: 1.45; color: var(--muted); }
+
+.kz-offer { margin-top: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.8vmin 2.4vmin; align-items: stretch; padding: 2.2vmin 2.4vmin; border-radius: 3vmin; background: var(--lime); color: var(--ink); }
+.kz-offer-big { font-size: 9vmin; line-height: .95; font-weight: 900; letter-spacing: -.04em; }
+.kz-offer-big span { font-size: 5vmin; letter-spacing: 0; }
+.kz-offer-sub { margin-top: .8vmin; font-size: 2vmin; font-weight: 700; }
+.kz-code { display: inline-flex; align-items: center; gap: 1.2vmin; margin-top: 1.4vmin; padding: .9vmin 1.2vmin .9vmin 1.8vmin; border-radius: 1.4vmin; background: var(--ink); color: var(--muted); font-size: 1.9vmin; font-weight: 700; }
+.kz-code b { padding: .5vmin 1.4vmin; border-radius: 1vmin; border: 2px dashed var(--lime); color: var(--lime); font-family: var(--font-plex-mono), monospace; font-size: 3.4vmin; letter-spacing: .08em; }
+.kz-prices { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2vmin; }
+.kz-price { padding: 1.2vmin 1.4vmin; border-radius: 1.4vmin; background: rgba(15,18,11,.08); font-size: 1.7vmin; }
+.kz-price > b { display: block; font-size: 1.9vmin; margin-bottom: .4vmin; }
+.kz-price > div { display: flex; align-items: baseline; gap: 1vmin; white-space: nowrap; }
+.kz-price strong { margin-left: auto; }
+.kz-iv { min-width: 6.4vmin; color: #3D4A1C; font-weight: 600; }
+.kz-price s { color: #5E6B3A; font-size: 1.6vmin; }
+.kz-price strong { font-size: 2.3vmin; font-weight: 900; }
+.kz-per { color: #3D4A1C; font-size: 1.5vmin; }
+.kz-count { display: flex; gap: 1vmin; margin-top: 1.6vmin; }
+.kz-count span { display: grid; justify-items: center; min-width: 8vmin; padding: .8vmin 1vmin; border-radius: 1.2vmin; background: var(--ink); color: var(--lime); }
+.kz-count b { font-family: var(--font-plex-mono), monospace; font-size: 3.2vmin; font-variant-numeric: tabular-nums; }
+.kz-count i { font-style: normal; font-size: 1.3vmin; color: var(--muted); }
+
+.kz-qr { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.4vmin; padding: 2vmin; border-radius: 2.2vmin; background: #fff; text-align: center; }
+.kz-qr-box { width: 22vmin; aspect-ratio: 1; }
+.kz-qr-box svg { display: block; width: 100%; height: 100%; }
+.kz-qr-text b { display: block; font-size: 2vmin; }
+.kz-qr-text span { display: block; font-size: 1.6vmin; color: #4C4F42; margin-top: .3vmin; }
+.kz-cta { display: none; }
+
+.kz-ended { display: block; }
+.kz-ended .kz-offer-big { font-size: 5vmin; line-height: 1.15; letter-spacing: -.02em; }
+.kz-ended p { margin: 1.4vmin 0 0; font-size: 2.2vmin; font-weight: 600; }
+
+.kz-foot { display: flex; justify-content: space-between; align-items: baseline; gap: 2vmin; font-size: 1.55vmin; color: var(--muted); }
+.kz-url { white-space: nowrap; }
+.kz-url { font-family: var(--font-plex-mono), monospace; color: var(--lime); letter-spacing: .04em; }
+
+@keyframes kzSpin { to { transform: rotate(360deg); } }
+@keyframes kzBreathe { 50% { transform: scale(1.05); box-shadow: 0 0 16vmin rgba(198,240,53,.45); } }
+@keyframes kzFloat { 50% { transform: translateY(-1.2vmin); } }
+
+/* Wide screens (a laptop opening the link): one screen still, so the benefit
+   lines keep their headline and drop the small print. */
+@media (min-aspect-ratio: 1/1) and (min-width: 701px) {
+  .kz-benefits span { display: none; }
+  .kz-benefits { gap: 1.4vmin; }
+}
+
+/* Portrait display — the stall's floor-standing kiosk (1080×1920): video on
+   top, panel below. */
+@media (max-aspect-ratio: 1/1) and (min-width: 701px) {
+  .kz { grid-template-columns: 1fr; grid-template-rows: 40% 1fr; }
+  .kz-panel { padding: 1vmin 4vmin 3vmin; }
+  .kz-h1 { font-size: 6.4vmin; }
+}
+
+/* Phone: someone opened the link — a normal page, a button instead of the QR. */
+@media (max-width: 700px) {
+  .kz { position: static; display: block; min-height: 100dvh; overflow: visible; }
+  .kz-stage { margin: 12px; aspect-ratio: 16 / 10; border-radius: 20px; }
+  .kz-orb span { font-size: 9px; }
+  .kz-chip { font-size: 11px; padding: 7px 10px; gap: 6px; border-radius: 10px; }
+  .kz-chip i { width: 6px; height: 6px; }
+  .kz-chip em, .kz-duty { display: none; }
+  .kz-panel { padding: 8px 16px 28px; gap: 16px; }
+  .kz-logo { height: 24px; }
+  .kz-event b { font-size: 12px; padding: 5px 11px; }
+  .kz-event span { font-size: 10.5px; }
+  .kz-h1 { font-size: 30px; }
+  .kz-lede { font-size: 15px; }
+  .kz-benefits li { font-size: 16px; gap: 10px; }
+  .kz-benefits b { font-size: 15.5px; }
+  .kz-benefits span { font-size: 13px; }
+  .kz-offer { grid-template-columns: 1fr; padding: 18px; border-radius: 20px; gap: 16px; }
+  .kz-offer-big { font-size: 64px; }
+  .kz-offer-big span { font-size: 32px; }
+  .kz-offer-sub { font-size: 13.5px; }
+  .kz-code { font-size: 13px; gap: 8px; padding: 6px 8px 6px 12px; border-radius: 10px; }
+  .kz-code b { font-size: 20px; padding: 3px 10px; border-radius: 7px; }
+  .kz-prices { gap: 8px; grid-template-columns: 1fr; }
+  .kz-price { font-size: 12px; padding: 9px 10px; border-radius: 10px; }
+  .kz-price > b { font-size: 14px; }
+  .kz-price > div { gap: 5px; }
+  .kz-iv { min-width: 40px; }
+  .kz-price s { font-size: 11px; }
+  .kz-price strong { font-size: 15px; }
+  .kz-per { font-size: 11px; }
+  .kz-count { gap: 6px; }
+  .kz-count span { min-width: 56px; padding: 6px; border-radius: 9px; }
+  .kz-count b { font-size: 20px; }
+  .kz-count i { font-size: 10px; }
+  .kz-qr { background: none; padding: 0; }
+  .kz-qr-box, .kz-qr-text { display: none; }
+  .kz-cta { display: flex; width: 100%; justify-content: center; padding: 16px; border-radius: 99px; background: var(--ink); color: var(--lime); font-size: 17px; font-weight: 800; text-decoration: none; }
+  .kz-ended .kz-offer-big { font-size: 26px; }
+  .kz-ended p { font-size: 14px; }
+  .kz-foot { font-size: 12.5px; flex-wrap: wrap; }
+  .kz-sound { font-size: 12px; padding: 7px 12px; left: 10px; bottom: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kz-ring, .kz-orb, .kz-chip { animation: none; }
+}
