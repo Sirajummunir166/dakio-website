@@ -243,9 +243,9 @@ const home = {
     // FALLBACK ONLY — see the note in home.en.js. No free tier.
     plans: [
       { n: "Growth", audience: "চলতি ব্যবসার সবচেয়ে জনপ্রিয় প্ল্যান", pr: "৳1,490", sub: "/মাস", yr: "বার্ষিক বিলে মাসে ৳1,242", level: "NOVA L3 অপারেটর", cta: "Growth নিন", dark: false, pop: true,
-        feats: ["আনলিমিটেড প্রোডাক্ট, দিনের অর্ডারে কোনো সীমা নেই", "Nova Operator — মাসে 750 Nova ক্রেডিট", "Grow Suite ও Supplier Network", "Decision Desk, কাজের প্রমাণ ও Undo"] },
+        feats: ["আনলিমিটেড প্রোডাক্ট, দিনের অর্ডারে কোনো সীমা নেই", "Nova Operator — মাসে 7,500 Nova ক্রেডিট", "Grow Suite ও Supplier Network", "Decision Desk, কাজের প্রমাণ ও Undo"] },
       { n: "Business", audience: "Nova-র সম্পূর্ণ CEO ক্ষমতা", pr: "৳3,990", sub: "/মাস", yr: "বার্ষিক বিলে মাসে ৳3,325", level: "NOVA L4 ভারপ্রাপ্ত সিইও", cta: "14 দিনের ফ্রি ট্রায়াল", dark: true, pop: false,
-        feats: ["Growth-এর সব সুবিধা", "Acting CEO — মাসে 2,500 Nova ক্রেডিট", "Nova Voice-এর 60 মিনিট — ব্রিফ, অ্যালার্ট ও COD confirm", "ঈদ, পূজা ও 11.11-এর মৌসুমি পরিকল্পনা"] },
+        feats: ["Growth-এর সব সুবিধা", "Acting CEO — মাসে 25,000 Nova ক্রেডিট", "Nova Voice-এর মাসে 60 মিনিট — ব্রিফ, অ্যালার্ট ও COD confirm", "ঈদ, পূজা ও 11.11-এর মৌসুমি পরিকল্পনা"] },
     ],
     footLink: "সব প্ল্যান ও দাম দেখুন →",
   },

@@ -30,13 +30,13 @@ const pricing = {
       n: "Growth", audience: "চলতি ব্যবসার সবচেয়ে জনপ্রিয় প্ল্যান",
       prMo: "৳1,490", prYr: "৳1,242", sub: "/মাস", noteMo: "মাসে মাসে বিল", noteYr: "বছরে ৳14,900 বিল",
       cta: "Growth নিন", dark: false, pop: true,
-      feats: ["আনলিমিটেড প্রোডাক্ট, দিনের অর্ডারে কোনো সীমা নেই", "Nova Operator — মাসে 750 Nova ক্রেডিট", "Grow Suite ও Supplier Network", "Ads Gallery থেকে স্ট্যাটিক অ্যাড এক্সপোর্ট", "Decision Desk, কাজের প্রমাণ ও Undo"],
+      feats: ["আনলিমিটেড প্রোডাক্ট, দিনের অর্ডারে কোনো সীমা নেই", "Nova Operator — মাসে 7,500 Nova ক্রেডিট", "Grow Suite ও Supplier Network", "Ads Gallery থেকে স্ট্যাটিক অ্যাড এক্সপোর্ট", "Decision Desk, কাজের প্রমাণ ও Undo"],
     },
     {
       n: "Business", audience: "Nova-র সম্পূর্ণ CEO ক্ষমতা",
       prMo: "৳3,990", prYr: "৳3,325", sub: "/মাস", noteMo: "মাসে মাসে বিল", noteYr: "বছরে ৳39,900 বিল",
       cta: "14 দিনের ফ্রি ট্রায়াল", dark: true, pop: false,
-      feats: ["Growth-এর সব সুবিধা", "Acting CEO — মাসে 2,500 Nova ক্রেডিট", "Nova Voice-এর 60 মিনিট — ব্রিফ, অ্যালার্ট ও COD confirm", "ঈদ, পূজা ও 11.11-এর মৌসুমি পরিকল্পনা", "মোশন অ্যাড ও স্টাফ লগইন", "মাইগ্রেশনে আমাদের সরাসরি সহায়তা"],
+      feats: ["Growth-এর সব সুবিধা", "Acting CEO — মাসে 25,000 Nova ক্রেডিট", "Nova Voice-এর মাসে 60 মিনিট — ব্রিফ, অ্যালার্ট ও COD confirm", "ঈদ, পূজা ও 11.11-এর মৌসুমি পরিকল্পনা", "মোশন অ্যাড ও স্টাফ লগইন", "মাইগ্রেশনে আমাদের সরাসরি সহায়তা"],
     },
   ],
 

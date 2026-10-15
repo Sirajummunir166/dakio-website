@@ -279,9 +279,9 @@ const home = {
     // cards and render only if the API is unreachable. No free tier.
     plans: [
       { n: "Growth", audience: "The default for running shops", pr: "৳1,490", sub: "/month", yr: "or ৳1,242/month billed annually", level: "NOVA L3 OPERATOR", cta: "Choose Growth", dark: false, pop: true,
-        feats: ["Unlimited products, no daily order cap", "Nova Operator — 750 Nova credits/mo", "Grow Suite + Supplier Network", "Decision desk, receipts & undo"] },
+        feats: ["Unlimited products, no daily order cap", "Nova Operator — 7,500 Nova credits/month", "Grow Suite + Supplier Network", "Decision desk, receipts & undo"] },
       { n: "Business", audience: "The full CEO seat", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA L4 ACTING CEO", cta: "Start 14-day free trial", dark: true, pop: false,
-        feats: ["Everything in Growth", "Acting CEO — 2,500 Nova credits/mo", "60 Nova voice minutes — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)"] },
+        feats: ["Everything in Growth", "Acting CEO — 25,000 Nova credits/month", "60 Nova voice minutes/month — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)"] },
     ],
     footLink: "See full pricing →",
   },

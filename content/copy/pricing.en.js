@@ -45,13 +45,13 @@ const pricing = {
       n: "Growth", audience: "The default for running shops",
       prMo: "৳1,490", prYr: "৳1,242", sub: "/month", noteMo: "billed monthly", noteYr: "billed ৳14,900/year",
       cta: "Choose Growth", dark: false, pop: true,
-      feats: ["Unlimited products, no daily order cap", "Nova Operator — 750 Nova credits/mo", "Grow Suite + Supplier Network", "Ads Gallery — static exports", "Decision desk, receipts & undo"],
+      feats: ["Unlimited products, no daily order cap", "Nova Operator — 7,500 Nova credits/month", "Grow Suite + Supplier Network", "Ads Gallery — static exports", "Decision desk, receipts & undo"],
     },
     {
       n: "Business", audience: "The full CEO seat",
       prMo: "৳3,990", prYr: "৳3,325", sub: "/month", noteMo: "billed monthly", noteYr: "billed ৳39,900/year",
       cta: "Start 14-day free trial", dark: true, pop: false,
-      feats: ["Everything in Growth", "Acting CEO — 2,500 Nova credits/mo", "60 Nova voice minutes — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)", "Motion ad renders + staff logins", "Concierge migration included"],
+      feats: ["Everything in Growth", "Acting CEO — 25,000 Nova credits/month", "60 Nova voice minutes/month — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)", "Motion ad renders + staff logins", "Concierge migration included"],
     },
   ],
 
