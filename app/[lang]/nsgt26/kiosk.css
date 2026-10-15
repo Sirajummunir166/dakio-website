@@ -9,7 +9,9 @@
   background: var(--ink);
   color: var(--wash);
   font-family: var(--font-archivo), var(--font-noto-bengali), sans-serif;
-  overflow: hidden;
+  /* One screen on the kiosk; a shorter window (a desktop with toolbars, a
+     narrow browser) scrolls instead of cutting the bottom off. */
+  overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain;
 }
 body.kz-idle, body.kz-idle * { cursor: none !important; }
 
@@ -21,7 +23,7 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
 .kz-orb { width: 26%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%); box-shadow: 0 0 10vmin rgba(198,240,53,.3); animation: kzBreathe 6s ease-in-out infinite; }
 
 /* ── Panel ───────────────────────────────────────────────────────────── */
-.kz-panel { display: flex; flex-direction: column; justify-content: space-between; min-height: 0; padding: 5vmin 5vmin 3vmin 2vmin; }
+.kz-panel { display: flex; flex-direction: column; justify-content: space-between; gap: 1.6vmin; padding: 5vmin 5vmin 3vmin 2vmin; }
 .kz-top { display: flex; align-items: center; justify-content: space-between; gap: 2vmin; }
 .kz-logo { height: 4vmin; width: auto; }
 .kz-event { font-size: 2vmin; color: var(--muted); }
@@ -94,10 +96,21 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
 
 @keyframes kzBreathe { 50% { transform: scale(1.04); } }
 
+/* Wide screens (a desktop previewing the page): a touch tighter so a full-HD
+   window still fits on one screen; shorter windows scroll. */
+@media (min-aspect-ratio: 1/1) and (min-width: 701px) {
+  .kz-panel { padding-top: 3.6vmin; }
+  .kz-h1 { font-size: 5.2vmin; }
+  .kz-lede { font-size: 2.2vmin; margin-top: 1.4vmin; }
+  .kz-offer-big { font-size: 8vmin; }
+  .kz-qr-box { width: 19vmin; }
+  .kz-fbqr .kz-qr-box { width: 17vmin; }
+}
+
 /* Portrait — the stall's floor kiosk: the film across the top, the panel below
    with the same few things, bigger. */
 @media (max-aspect-ratio: 1/1) and (min-width: 701px) {
-  .kz { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); }
+  .kz { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
   .kz-stage { margin: 3vmin 3vmin 0; align-self: start; }
   .kz-panel { padding: 5vmin 6vmin 4vmin; }
   .kz-logo { height: 5vmin; }
