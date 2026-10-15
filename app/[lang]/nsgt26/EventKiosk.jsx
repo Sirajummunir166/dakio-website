@@ -111,7 +111,37 @@ function Stage({ video }) {
   );
 }
 
-export default function EventKiosk({ code, signupUrl, offerEnds, offer, qrSvg, video }) {
+// The #DakioNovaDay draw: talk to Nova in the demo store at the stall (staff
+// film it if the visitor wants), then post the experience publicly with the
+// hashtag and a CEO rating out of 10. Facebook's promotion rules: entry may not
+// require sharing to a timeline or tagging friends, and the promotion must say
+// Facebook has no part in it — so following the page is an invitation only.
+function Contest({ contest, ended }) {
+  return (
+    <div className="kz-contest">
+      <div className="kz-contest-body">
+        <div className="kz-contest-h">🎁 পোস্ট করুন, উপহার জিতুন</div>
+        {ended ? (
+          <p className="kz-contest-done">ধন্যবাদ! লটারিতে বাছাই করা {contest.winners} জন বিজয়ীর নাম Dakio পেজে ঘোষণা করা হবে।</p>
+        ) : (
+          <ol>
+            <li>স্টলে আমাদের <b>ডেমো স্টোরে Nova-র সঙ্গে কথা বলুন</b> — কাস্টমার হয়ে প্রশ্ন করুন, অর্ডার দিন। চাইলে ভিডিও করে দেব।</li>
+            <li>অভিজ্ঞতা <b>পাবলিক পোস্ট</b> করুন <b className="kz-tag">{contest.hashtag}</b> দিয়ে — <b>CEO হিসেবে Nova-কে ১০-এ কত দেবেন?</b></li>
+            <li>লটারিতে <b>{contest.winners} জন</b> পাবেন Dakio-র উপহার</li>
+          </ol>
+        )}
+        <small>আজ রাত 11:59 পর্যন্ত পোস্ট · বিজয়ী ঘোষণা ১৭ অক্টোবর, Dakio পেজে · এই আয়োজনের সঙ্গে Facebook-এর কোনো সম্পর্ক নেই</small>
+      </div>
+      <a className="kz-contest-qr" href={contest.page} target="_blank" rel="noopener">
+        <span className="kz-contest-qr-box" dangerouslySetInnerHTML={{ __html: contest.qrSvg }} />
+        <b>বিজয়ী জানতে পেজ ফলো করুন</b>
+        <span className="kz-contest-qr-url">fb.com/dakio.official</span>
+      </a>
+    </div>
+  );
+}
+
+export default function EventKiosk({ code, signupUrl, offerEnds, offer, qrSvg, contest, video }) {
   useKioskBehaviour();
   const now = useNow();
   const endMs = new Date(offerEnds).getTime();
@@ -144,6 +174,8 @@ export default function EventKiosk({ code, signupUrl, offerEnds, offer, qrSvg, v
           ))}
         </ul>
 
+        {contest && <Contest contest={contest} ended={ended} />}
+
         {ended ? (
           <div className="kz-offer kz-ended">
             <div className="kz-offer-big">পুনর্মিলনীর অফার শেষ হয়েছে</div>
@@ -154,8 +186,10 @@ export default function EventKiosk({ code, signupUrl, offerEnds, offer, qrSvg, v
             <div className="kz-offer-main">
               <div className="kz-offer-big">70% <span>ছাড়</span></div>
               <div className="kz-offer-sub">{firstPayments} · শুধু আজ রাত 11:59 পর্যন্ত</div>
-              <div className="kz-code">কোড <b>{code}</b></div>
-              {now != null && <Countdown ms={endMs - now} />}
+              <div className="kz-code-row">
+                <div className="kz-code">কোড <b>{code}</b></div>
+                {now != null && <Countdown ms={endMs - now} />}
+              </div>
             </div>
 
             <div className="kz-qr">

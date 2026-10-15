@@ -64,7 +64,9 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
 .kz-price s { color: #5E6B3A; font-size: 1.6vmin; }
 .kz-price strong { font-size: 2.3vmin; font-weight: 900; }
 .kz-per { color: #3D4A1C; font-size: 1.5vmin; }
-.kz-count { display: flex; gap: 1vmin; margin-top: 1.6vmin; }
+.kz-code-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.4vmin; margin-top: 1.4vmin; }
+.kz-code-row .kz-code { margin-top: 0; }
+.kz-count { display: flex; gap: 1vmin; }
 .kz-count span { display: grid; justify-items: center; min-width: 8vmin; padding: .8vmin 1vmin; border-radius: 1.2vmin; background: var(--ink); color: var(--lime); }
 .kz-count b { font-family: var(--font-plex-mono), monospace; font-size: 3.2vmin; font-variant-numeric: tabular-nums; }
 .kz-count i { font-style: normal; font-size: 1.3vmin; color: var(--muted); }
@@ -80,6 +82,19 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
 .kz-ended .kz-offer-big { font-size: 5vmin; line-height: 1.15; letter-spacing: -.02em; }
 .kz-ended p { margin: 1.4vmin 0 0; font-size: 2.2vmin; font-weight: 600; }
 
+.kz-contest { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2vmin; align-items: center; padding: 1.8vmin 2vmin; border-radius: 2.4vmin; background: rgba(198,240,53,.07); border: 1.5px solid rgba(198,240,53,.45); }
+.kz-contest-h { font-size: 2.6vmin; font-weight: 800; color: var(--cream); }
+.kz-contest ol { margin: 1vmin 0 0; padding-left: 2.6vmin; display: grid; gap: .5vmin; font-size: 1.8vmin; line-height: 1.4; color: var(--wash); }
+.kz-contest ol b { color: var(--cream); }
+.kz-tag { color: var(--lime) !important; font-family: var(--font-plex-mono), monospace; letter-spacing: .02em; }
+.kz-contest-done { margin: 1vmin 0 0; font-size: 2vmin; line-height: 1.45; color: var(--wash); }
+.kz-contest small { display: block; margin-top: 1vmin; font-size: 1.3vmin; color: var(--dim); }
+.kz-contest-qr { display: grid; justify-items: center; gap: .6vmin; padding: 1.2vmin; border-radius: 1.6vmin; background: #fff; color: var(--ink); text-decoration: none; text-align: center; }
+.kz-contest-qr-box { width: 13vmin; aspect-ratio: 1; }
+.kz-contest-qr-box svg { display: block; width: 100%; height: 100%; }
+.kz-contest-qr b { font-size: 1.5vmin; }
+.kz-contest-qr-url { font-size: 1.2vmin; color: #4C4F42; font-family: var(--font-plex-mono), monospace; }
+
 .kz-foot { display: flex; justify-content: space-between; align-items: baseline; gap: 2vmin; font-size: 1.55vmin; color: var(--muted); }
 .kz-url { white-space: nowrap; }
 .kz-url { font-family: var(--font-plex-mono), monospace; color: var(--lime); letter-spacing: .04em; }
@@ -91,16 +106,22 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
 /* Wide screens (a laptop opening the link): one screen still, so the benefit
    lines keep their headline and drop the small print. */
 @media (min-aspect-ratio: 1/1) and (min-width: 701px) {
-  .kz-benefits span { display: none; }
-  .kz-benefits { gap: 1.4vmin; }
+  .kz-benefits { display: none; }
+  .kz-h1 { font-size: 4.8vmin; }
+  /* The stall kiosk is portrait; a wide screen is someone previewing — let it scroll. */
+  .kz-panel { overflow-y: auto; }
+  .kz-offer { margin-top: 0; }
+  .kz-contest small { display: none; }
 }
 
 /* Portrait display — the stall's floor-standing kiosk (1080×1920): video on
    top, panel below. */
 @media (max-aspect-ratio: 1/1) and (min-width: 701px) {
-  .kz { grid-template-columns: 1fr; grid-template-rows: 40% 1fr; }
+  .kz { grid-template-columns: 1fr; grid-template-rows: 29% 1fr; }
+  .kz-benefits span { display: none; }
+  .kz-benefits { gap: 1.2vmin; }
   .kz-panel { padding: 1vmin 4vmin 3vmin; }
-  .kz-h1 { font-size: 6.4vmin; }
+  .kz-h1 { font-size: 6vmin; }
 }
 
 /* Phone: someone opened the link — a normal page, a button instead of the QR. */
@@ -143,6 +164,14 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
   .kz-cta { display: flex; width: 100%; justify-content: center; padding: 16px; border-radius: 99px; background: var(--ink); color: var(--lime); font-size: 17px; font-weight: 800; text-decoration: none; }
   .kz-ended .kz-offer-big { font-size: 26px; }
   .kz-ended p { font-size: 14px; }
+  .kz-contest { grid-template-columns: 1fr; padding: 14px; border-radius: 16px; gap: 12px; }
+  .kz-contest-h { font-size: 17px; }
+  .kz-contest ol { font-size: 14px; padding-left: 18px; gap: 4px; }
+  .kz-contest-done { font-size: 14px; }
+  .kz-contest small { font-size: 11px; }
+  .kz-contest-qr { grid-auto-flow: column; justify-content: center; align-items: center; padding: 12px; border-radius: 99px; background: #1877F2; color: #fff; }
+  .kz-contest-qr-box, .kz-contest-qr-url { display: none; }
+  .kz-contest-qr b { font-size: 15px; }
   .kz-foot { font-size: 12.5px; flex-wrap: wrap; }
   .kz-sound { font-size: 12px; padding: 7px 12px; left: 10px; bottom: 10px; }
 }

@@ -26,6 +26,9 @@ const CODE = "NSGT26";
 const OFFER_ENDS = "2026-10-16T23:59:59+06:00";
 const API_BASE = process.env.DAKIO_API_URL || "https://dakio-api-production.up.railway.app";
 const SIGNUP_URL = `${REGISTER_URL}?code=${CODE}`;
+// The #DakioNovaDay draw: post about Nova, 10 winners picked at random.
+const FB_PAGE = "https://www.facebook.com/dakio.official";
+const HASHTAG = "#DakioNovaDay";
 // Drop the event video here and push — the page picks it up on the next build.
 const VIDEO = { file: "public/assets/nsgt26/event.mp4", src: "/assets/nsgt26/event.mp4", poster: "/assets/nsgt26/poster.jpg" };
 
@@ -84,9 +87,11 @@ async function offerPrices() {
 }
 
 export default async function NsGt26Page() {
-  const [offer, qr] = await Promise.all([
+  const qrOpts = { type: "svg", margin: 0, errorCorrectionLevel: "M", color: { dark: "#0F120B", light: "#FFFFFF" } };
+  const [offer, qr, fbQr] = await Promise.all([
     offerPrices(),
-    QRCode.toString(SIGNUP_URL, { type: "svg", margin: 0, errorCorrectionLevel: "M", color: { dark: "#0F120B", light: "#FFFFFF" } }),
+    QRCode.toString(SIGNUP_URL, qrOpts),
+    QRCode.toString(FB_PAGE, qrOpts),
   ]);
   const hasVideo = fs.existsSync(path.join(process.cwd(), VIDEO.file));
   const hasPoster = fs.existsSync(path.join(process.cwd(), "public/assets/nsgt26/poster.jpg"));
@@ -98,6 +103,7 @@ export default async function NsGt26Page() {
       offerEnds={OFFER_ENDS}
       offer={offer}
       qrSvg={qr}
+      contest={{ hashtag: HASHTAG, page: FB_PAGE, qrSvg: fbQr, winners: 10 }}
       video={hasVideo ? { src: VIDEO.src, poster: hasPoster ? VIDEO.poster : undefined } : null}
     />
   );
