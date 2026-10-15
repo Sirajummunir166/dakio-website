@@ -46,7 +46,7 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
 .kz-count b { font-family: var(--font-plex-mono), monospace; font-size: 3.2vmin; font-variant-numeric: tabular-nums; }
 .kz-count i { font-style: normal; font-size: 1.3vmin; color: var(--muted); }
 
-.kz-qr { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.4vmin; padding: 2vmin; border-radius: 2.2vmin; background: #fff; text-align: center; }
+.kz-qr { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.4vmin; padding: 2vmin; border-radius: 2.2vmin; background: #fff; color: var(--ink); text-align: center; }
 .kz-qr-box { width: 22vmin; aspect-ratio: 1; }
 .kz-qr-box svg { display: block; width: 100%; height: 100%; }
 .kz-qr-text b { display: block; font-size: 2vmin; }
@@ -61,6 +61,26 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
 .kz-price s { color: #5E6B3A; font-size: 1.6vmin; }
 .kz-price strong { margin-left: auto; font-size: 2.3vmin; font-weight: 900; }
 .kz-per { color: #3D4A1C; font-size: 1.5vmin; }
+
+/* The switch staff tap between the offer and #DakioNovaDay. */
+.kz-switch { display: grid; grid-template-columns: 1fr 1fr; gap: .8vmin; padding: .8vmin; border-radius: 99px; background: rgba(233,239,220,.08); border: 1px solid rgba(233,239,220,.12); }
+.kz-switch button { border: 0; border-radius: 99px; padding: 1.5vmin 2vmin; background: transparent; color: var(--muted); font: inherit; font-size: 2.2vmin; font-weight: 800; cursor: pointer; transition: background .2s, color .2s; }
+.kz-switch button[aria-selected="true"] { background: var(--lime); color: var(--ink); }
+.kz-switch button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+
+/* The #DakioNovaDay card — same footprint as the offer card, ink with a lime edge. */
+.kz-nova { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2vmin 3vmin; align-items: center; padding: 3vmin; border-radius: 3vmin; background: var(--ink2); border: .3vmin solid var(--lime); }
+.kz-nova-tag { font-family: var(--font-plex-mono), monospace; font-size: 4.4vmin; font-weight: 600; color: var(--lime); letter-spacing: -.01em; }
+.kz-nova-h { margin-top: .6vmin; font-size: 3.6vmin; font-weight: 800; color: var(--cream); }
+.kz-steps { list-style: none; margin: 2.2vmin 0 0; padding: 0; display: grid; gap: 1.6vmin; counter-reset: kz; }
+.kz-steps li { position: relative; padding-left: 5.4vmin; counter-increment: kz; }
+.kz-steps li::before { content: counter(kz); position: absolute; left: 0; top: .1vmin; width: 3.8vmin; height: 3.8vmin; border-radius: 50%; display: grid; place-items: center; background: var(--lime); color: var(--ink); font-size: 2.1vmin; font-weight: 900; }
+.kz-steps b { display: block; font-size: 2.5vmin; color: var(--cream); }
+.kz-steps span { display: block; margin-top: .3vmin; font-size: 1.9vmin; line-height: 1.45; color: var(--muted); }
+.kz-steps em { font-style: normal; font-family: var(--font-plex-mono), monospace; color: var(--lime); }
+.kz-nova-done { margin: 2vmin 0 0; font-size: 2.4vmin; line-height: 1.5; color: var(--wash); }
+.kz-nova-foot { grid-column: 1 / -1; padding-top: 1.6vmin; border-top: 1px solid rgba(233,239,220,.12); font-size: 1.8vmin; color: var(--muted); }
+.kz-fbqr .kz-qr-box { width: 20vmin; }
 
 .kz-ended { grid-template-columns: 1fr; }
 .kz-ended-big { margin-top: 0; font-size: 9vmin; }
@@ -101,6 +121,15 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
   .kz-price s { font-size: 2vmin; }
   .kz-price strong { font-size: 2.9vmin; }
   .kz-per { font-size: 1.8vmin; }
+  .kz-switch button { font-size: 2.6vmin; padding: 1.8vmin 2vmin; }
+  .kz-nova { padding: 3.6vmin; }
+  .kz-nova-tag { font-size: 5vmin; }
+  .kz-nova-h { font-size: 4vmin; }
+  .kz-steps b { font-size: 2.9vmin; }
+  .kz-steps span { font-size: 2.2vmin; }
+  .kz-steps li { padding-left: 6vmin; }
+  .kz-steps li::before { width: 4.2vmin; height: 4.2vmin; font-size: 2.3vmin; }
+  .kz-fbqr .kz-qr-box { width: 22vmin; }
   .kz-gift { font-size: 2.8vmin; }
   .kz-foot { font-size: 1.8vmin; }
 }
@@ -136,6 +165,18 @@ body.kz-idle, body.kz-idle * { cursor: none !important; }
   .kz-price s { font-size: 11.5px; }
   .kz-price strong { font-size: 16px; }
   .kz-per { font-size: 11px; }
+  .kz-switch button { font-size: 14px; padding: 11px 8px; }
+  .kz-nova { grid-template-columns: 1fr; padding: 18px; border-radius: 20px; border-width: 2px; gap: 16px; }
+  .kz-nova-tag { font-size: 22px; }
+  .kz-nova-h { font-size: 18px; }
+  .kz-steps { gap: 12px; margin-top: 14px; }
+  .kz-steps li { padding-left: 36px; }
+  .kz-steps li::before { width: 26px; height: 26px; font-size: 13px; }
+  .kz-steps b { font-size: 15.5px; }
+  .kz-steps span { font-size: 13.5px; }
+  .kz-nova-done { font-size: 14.5px; }
+  .kz-nova-foot { font-size: 12.5px; padding-top: 12px; }
+  .kz-cta-fb { background: #1877F2; color: #fff; }
   .kz-ended-big { font-size: 44px; }
   .kz-ended p { font-size: 15px; }
   .kz-gift { font-size: 15px; }
