@@ -3,7 +3,7 @@
 // The thin bar a visitor sees after arriving from an influencer link
 // (dakio.io/c/RAFI20 → middleware saves the code in the `dakio_coupon` cookie and
 // lands here with ?coupon=RAFI20). It asks dakio-api whether the code is live,
-// says what it is worth, and sends "Start free" to signup with the code attached.
+// says what it is worth, and sends "Open your store" to signup with the code attached.
 // A code that belongs to a program (admin "Program name (shown to customers)")
 // leads with it: "Founding Merchant Program · Code NAFEES saved · …".
 // The app also reads the cookie, so the code survives even if they wander off
@@ -21,8 +21,8 @@ const CODE_RE = /^[A-Z0-9_-]{3,32}$/;
 const HIDE_KEY = "dakio_coupon_hidden";
 
 const COPY = {
-  en: { lead: "Code", saved: "saved", onPlan: "on your first plan payment", cta: "Start free", close: "Hide" },
-  bn: { lead: "কোড", saved: "সেভ হয়েছে", onPlan: "প্রথম প্ল্যান পেমেন্টে", cta: "ফ্রি শুরু করুন", close: "লুকান" },
+  en: { lead: "Code", saved: "saved", onPlan: "on your first plan payment", cta: "Open your store", close: "Hide" },
+  bn: { lead: "কোড", saved: "সেভ হয়েছে", onPlan: "প্রথম প্ল্যান পেমেন্টে", cta: "স্টোর খুলুন", close: "লুকান" },
 };
 
 // Said out loud when a code only fits some billing periods, so nobody is surprised at checkout.

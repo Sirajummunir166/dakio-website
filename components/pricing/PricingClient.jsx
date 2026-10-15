@@ -15,7 +15,8 @@ import { useState } from "react";
 import { Nav, Footer } from "../Chrome";
 import Reveal from "../Reveal";
 import LogoDefs from "../Logo";
-import { REGISTER_URL, TRIAL_URL } from "../../lib/urls";
+import { REGISTER_URL, buyHref } from "../../lib/urls";
+import TrialLine from "./TrialLine";
 import { href } from "../../lib/i18n";
 import { type } from "../../lib/type";
 import { PeriodTabs, PeriodPrice } from "./Periods";
@@ -96,13 +97,14 @@ export default function PricingClient({ lang = "en", copy, mono }) {
                   </div>
                 ))}
               </div>
-              {/* The card's own plan rides along: a bare REGISTER_URL gave every card the
-                  default trial, so "Start 14-day free trial" on Business started Growth. */}
-              <a href={p.code ? `${REGISTER_URL}?plan=${encodeURIComponent(p.code)}` : REGISTER_URL} style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : p.pop ? { background: "#1A1D12", color: "#C6F035" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
+              {/* The card's own plan AND the period on screen ride along, so signup
+                  opens on paying for exactly this card. */}
+              <a href={buyHref(p.code, live ? billing : null)} style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : p.pop ? { background: "#1A1D12", color: "#C6F035" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
             </div>
           ))}
         </div>
         <div style={{ textAlign: "center", marginTop: 18, fontSize: 13, color: "#6B6D60", ...T.small }}>{c.plansNote}</div>
+        <TrialLine trial={c.trial} T={T} />
       </div>
 
       {/* WHAT'S A NOVA CREDIT */}
@@ -202,7 +204,7 @@ export default function PricingClient({ lang = "en", copy, mono }) {
           <div style={{ position: "absolute", left: "50%", top: -160, transform: "translateX(-50%)", width: 520, height: 520, borderRadius: "50%", border: "1px dashed rgba(26,29,18,0.2)", animation: "orbitcw 50s linear infinite" }} />
           <h2 className="m-cta-h2" style={{ position: "relative", margin: "0 auto", fontSize: 56, lineHeight: 1.03, letterSpacing: "-2.3px", fontWeight: 800, maxWidth: 700, ...T.ctaH2 }}>{c.cta.h2}</h2>
           <div className="m-wrap" style={{ position: "relative", display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
-            <a href={TRIAL_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700, ...T.label }}>
+            <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700, ...T.label }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />{c.cta.primary}
             </a>
             <Link href={L("/")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</Link>

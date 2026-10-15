@@ -9,7 +9,7 @@ export const MONO = {
   yourPart: "YOUR PART IN THIS ORDER",
   utilsKicker: "SIX PARTS · ALL INCLUDED · ALL AUTOMATIC",
   diffKicker: "THE DIFFERENCE",
-  ctaStrip: "FREE TO START · ৳ · bKASH · NAGAD · COD · COURIERS WIRED",
+  ctaStrip: "LIVE IN MINUTES · ৳ · bKASH · NAGAD · COD · COURIERS WIRED",
   stageTimes: ["TUE 21:12", "21:14", "21:15", "WED 08:40", "WED 14:38", "WED 14:39"],
   stagePipes: ["FRONT OFFICE", "PAYMENT", "COURIER", "STOCK", "DELIVERY", "MONEY"],
   utilVerbs: ["READY AT SIGNUP", "PAYMENTS COME IN", "BOOKED FOR YOU", "ANSWERED FOR YOU", "SHIPPED FOR YOU", "COUNTED FOR YOU"],

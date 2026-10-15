@@ -24,8 +24,8 @@ const contact = {
 
   promo: {
     title: "Start for free",
-    body: "Open a free account — and appoint your CEO on day one. No card required.",
-    cta: "Start free",
+    body: "Open your store — and appoint your CEO on day one.",
+    cta: "Open your store",
   },
 
   form: {

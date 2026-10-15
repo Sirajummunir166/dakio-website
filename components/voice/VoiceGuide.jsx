@@ -27,7 +27,7 @@ export const VOICE_COPY = {
     title: "Nova",
     refusedTitle: "Nova can't talk right now",
     email: "Email the team",
-    startFree: "Start free trial",
+    startFree: "Open your store",
     close: "Close",
   },
   bn: {
@@ -38,7 +38,7 @@ export const VOICE_COPY = {
     title: "Nova",
     refusedTitle: "Nova এখন কথা বলতে পারছে না",
     email: "টিমকে ইমেইল করুন",
-    startFree: "ফ্রি ট্রায়াল শুরু করুন",
+    startFree: "স্টোর খুলুন",
     close: "বন্ধ করুন",
   },
 };

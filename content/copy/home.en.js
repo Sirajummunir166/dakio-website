@@ -39,7 +39,7 @@ export const MONO = {
   bdSeasons: ["EID", "PUJA", "BOISHAKH", "11.11", "MONSOON"],
   switchKicker: "SWITCHING?",
   pricingKicker: "PRICING",
-  ctaStrip: "FREE TO START · GUARDRAILS ON DAY ONE · EVERY ACTION RECORDED",
+  ctaStrip: "LIVE IN MINUTES · GUARDRAILS ON DAY ONE · EVERY ACTION RECORDED",
 };
 
 // Brand names in the partner marquee never translate.
@@ -49,7 +49,7 @@ const home = {
   meta: {
     title: "Dakio — Appoint an AI CEO to Your Online Store | Bangladesh",
     description:
-      "Store, couriers, bKash, Nagad & COD — plus Nova, an AI CEO that runs marketing, support and ops 24/7 with a receipt for everything. Start a free trial, no card.",
+      "Store, couriers, bKash, Nagad & COD — plus Nova, an AI CEO that runs marketing, support and ops 24/7 with a receipt for everything.",
   },
 
   hero: {
@@ -280,7 +280,7 @@ const home = {
     plans: [
       { n: "Growth", audience: "The default for running shops", pr: "৳1,490", sub: "/month", yr: "or ৳1,242/month billed annually", level: "NOVA L3 OPERATOR", cta: "Choose Growth", dark: false, pop: true,
         feats: ["Unlimited products, no daily order cap", "Nova Operator — 7,500 Nova credits/month", "Grow Suite + Supplier Network", "Decision desk, receipts & undo"] },
-      { n: "Business", audience: "The full CEO seat", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA L4 ACTING CEO", cta: "Start 14-day free trial", dark: true, pop: false,
+      { n: "Business", audience: "The full CEO seat", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA L4 ACTING CEO", cta: "Choose Business", dark: true, pop: false,
         feats: ["Everything in Growth", "Acting CEO — 25,000 Nova credits/month", "60 Nova voice minutes/month — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)"] },
     ],
     footLink: "See full pricing →",
@@ -292,7 +292,7 @@ const home = {
         Your store. Your CEO.<br />Today.
       </>
     ),
-    primary: "Start your free trial",
+    primary: "Open your store",
     secondary: "Then appoint Nova",
   },
 };

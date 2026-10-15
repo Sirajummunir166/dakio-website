@@ -14,7 +14,7 @@ const chrome = {
     switch: "Dakio-তে আসুন",
     pricing: "প্ল্যান ও দাম",
     login: "লগ ইন",
-    cta: "ফ্রিতে স্টোর খুলুন",
+    cta: "স্টোর খুলুন",
     homeAria: "Dakio — হোম",
     languageLabel: "ভাষা",
     toBangla: "ভাষা বাংলা করুন",
@@ -152,7 +152,7 @@ const chrome = {
     terms: "ব্যবহারের শর্ত",
     refund: "রিটার্ন ও রিফান্ড নীতি",
     dataDeletion: "ডেটা মুছে ফেলা",
-    cta: "ফ্রিতে স্টোর খুলুন",
+    cta: "স্টোর খুলুন",
   },
 };
 

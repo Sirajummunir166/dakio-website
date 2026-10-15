@@ -18,7 +18,7 @@ const about = {
         We started by giving Bangladesh&apos;s entrepreneurs world-class tools. Then we realized tools weren&apos;t the real gap — <b style={{ color: "#1A1D12" }}>a team was</b>. So every Dakio store now comes with a CEO.
       </>
     ),
-    ctaPrimary: "Start selling free",
+    ctaPrimary: "Open your store",
     ctaSecondary: "Get in touch",
   },
 
@@ -82,8 +82,8 @@ const about = {
 
   cta: {
     h2: "Join 1,000+ merchants who don't run alone.",
-    p: "Start free today — and appoint your CEO on day one. No card, no setup fee.",
-    primary: "Start selling free",
+    p: "Open your store today — and appoint your CEO on day one. No setup fee.",
+    primary: "Open your store",
     secondary: "Meet Nova",
   },
 };

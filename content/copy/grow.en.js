@@ -38,7 +38,7 @@ const grow = {
       </>
     ),
     sub: "Campaigns, content, reach, research, pricing, goals — six growth levers in one studio. You pull them by hand, or Nova pulls them around the clock.",
-    ctaPrimary: "Start growing free",
+    ctaPrimary: "Start growing",
     ctaSecondary: "See it live",
     pins: ["Cart won back · ৳2,300", "Reel hit 7:30 PM slot", "Eid campaign scaled", "Best month ever"],
     chartNote: "Demo store, one quarter in the Grow Suite. The grey line is the same shop without it.",
@@ -91,7 +91,7 @@ const grow = {
 
   cta: {
     h2: "Your curve is still the grey one.",
-    primary: "Bend it — start free",
+    primary: "Bend it — open your store",
     secondary: "Open the Grow Suite",
   },
 };

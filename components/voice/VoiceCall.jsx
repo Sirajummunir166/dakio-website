@@ -30,7 +30,7 @@ const COPY = {
     mute: "Mute",
     unmute: "Unmute",
     end: "End",
-    startFree: "Start free trial",
+    startFree: "Open your store",
     micBlocked: "Allow the microphone to talk to Nova",
     ended: "Thanks for talking with Nova.",
     close: "Close",
@@ -44,7 +44,7 @@ const COPY = {
     mute: "মিউট",
     unmute: "আনমিউট",
     end: "শেষ",
-    startFree: "ফ্রি ট্রায়াল শুরু করুন",
+    startFree: "স্টোর খুলুন",
     micBlocked: "Nova-র সাথে কথা বলতে মাইক্রোফোন চালু করুন",
     ended: "Nova-র সাথে কথা বলার জন্য ধন্যবাদ।",
     close: "বন্ধ করুন",
@@ -105,7 +105,7 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
     }
     if (toolCall.toolName === "start_signup") {
       setShowSignup(true);
-      return { shown: "A Start free trial button is now on their screen, in the call panel. Ask them to tap it." };
+      return { shown: "An Open your store button is now on their screen, in the call panel. Ask them to tap it." };
     }
     return { error: "unknown tool" };
   }, [router, lang]);

@@ -13,7 +13,7 @@ export const MONO = {
   anchorKicker: "THE REAL COMPARISON",
   anchorFoot: "PREMIUM WORK · REASONABLE TAKA · WE’RE NOT THE CHEAPEST, WE’RE THE BEST HIRE",
   switchKicker: "COMING FROM SHOPIFY?",
-  ctaStrip: "NO CARD TO START · MONTHLY BILLING · YOUR DATA EXPORTS ANYTIME",
+  ctaStrip: "PAY IN TAKA · bKASH, NAGAD OR CARD · YOUR DATA EXPORTS ANYTIME",
 };
 
 const pricing = {
@@ -21,9 +21,9 @@ const pricing = {
     // The metadata is NOT fetched — generateMetadata runs off this copy, so a
     // free-tier claim here would keep appearing in search results long after the
     // tier was withdrawn. It says trial, because that is what is on offer.
-    title: "Dakio Pricing — Plans in Taka, AI CEO Included | 14-Day Free Trial",
+    title: "Dakio Pricing — Plans in Taka, AI CEO Included",
     description:
-      "Start with a 14-day free trial, no card. Growth ৳1,490/mo, Business ৳3,990/mo — every plan includes Nova. Honest credit metering, no hidden fees, courier rates passed through.",
+      "Growth ৳1,490/mo, Business ৳3,990/mo — every plan includes Nova. Honest credit metering, no hidden fees, courier rates passed through.",
   },
 
   hero: {
@@ -50,16 +50,12 @@ const pricing = {
     {
       n: "Business", audience: "The full CEO seat",
       prMo: "৳3,990", prYr: "৳3,325", sub: "/month", noteMo: "billed monthly", noteYr: "billed ৳39,900/year",
-      cta: "Start 14-day free trial", dark: true, pop: false,
+      cta: "Choose Business", dark: true, pop: false,
       feats: ["Everything in Growth", "Acting CEO — 25,000 Nova credits/month", "60 Nova voice minutes/month — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)", "Motion ad renders + staff logins", "Concierge migration included"],
     },
   ],
 
-  plansNote: (
-    <>
-      Every package starts with a <b style={{ color: "#1A1D12" }}>14-day free trial</b> — no card needed. Courier deliveries billed per shipment on all plans.
-    </>
-  ),
+  plansNote: "Courier deliveries are billed per shipment on all plans.",
 
   meter: {
     h2: "What’s a Nova credit?",
@@ -115,8 +111,8 @@ const pricing = {
   },
 
   cta: {
-    h2: "Fourteen days with the full CEO. Free.",
-    primary: "Start the Business trial",
+    h2: "Your store. Your CEO. Today.",
+    primary: "Open your store",
     secondary: "Back to Dakio",
   },
 };

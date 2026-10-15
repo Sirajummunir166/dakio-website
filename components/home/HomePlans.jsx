@@ -7,7 +7,7 @@
 // periods and keeps its single monthly price.
 
 import { useState } from "react";
-import { REGISTER_URL } from "../../lib/urls";
+import { REGISTER_URL, buyHref } from "../../lib/urls";
 import { PeriodTabs, PeriodPrice } from "../pricing/Periods";
 
 const MONOFONT = "var(--dk-font-mono), monospace";
@@ -55,7 +55,7 @@ export default function HomePlans({ pricing, T }) {
                 </li>
               ))}
             </ul>
-            <a href={p.href || REGISTER_URL} style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
+            <a href={p.code ? buyHref(p.code, live ? period : null) : REGISTER_URL} style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
           </div>
         ))}
       </div>

@@ -52,7 +52,7 @@ const playfirst = {
     feats: ["Theme Studio", "Theme gallery", "বাংলা font packs", "Dark storefront", "14 section types", "Inline editing", "Mobile control", "Undo & versions"],
     note: "No developer, no theme marketplace, no publish anxiety — the canvas is the store.",
     ctaH2: <>Liked the demo store?<br />Make yours.</>,
-    ctaPrimary: "Start free — no card",
+    ctaPrimary: "Open your store",
   },
 
   ads: {
@@ -81,7 +81,7 @@ const playfirst = {
     noteLink: "Store Studio",
     noteEnd: ".",
     ctaH2: "Your next ad is one click in.",
-    ctaPrimary: "Start free — no card",
+    ctaPrimary: "Open your store",
   },
 
   frontOffice: {

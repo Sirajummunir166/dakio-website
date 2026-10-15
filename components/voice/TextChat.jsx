@@ -6,7 +6,7 @@
 // Same Nova, same facts, same two actions as the voice call, written instead
 // of spoken: dakio-api streams each answer (POST /chat), built from the sheet
 // it holds; the browser only sends the conversation and its one-chat ticket.
-// "Open a page" and "Start free trial" run here — a page is a client-side
+// "Open a page" and "Open your store" run here — a page is a client-side
 // navigation (the layout survives it, so the chat does too).
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -24,7 +24,7 @@ const COPY = {
     placeholder: "Ask Nova anything…",
     send: "Send",
     end: "End",
-    startFree: "Start free trial",
+    startFree: "Open your store",
     close: "Close",
     ended: "Thanks for chatting with Nova.",
     note: "Answers come from our AI. We keep the chat text for 30 days to improve answers.",
@@ -37,7 +37,7 @@ const COPY = {
     placeholder: "Nova-কে যা খুশি জিজ্ঞেস করুন…",
     send: "পাঠান",
     end: "শেষ",
-    startFree: "ফ্রি ট্রায়াল শুরু করুন",
+    startFree: "স্টোর খুলুন",
     close: "বন্ধ করুন",
     ended: "Nova-র সাথে কথা বলার জন্য ধন্যবাদ।",
     note: "উত্তর দেয় আমাদের AI। উত্তর আরও ভালো করতে আমরা ৩০ দিন চ্যাটের লেখা রাখি।",
@@ -87,7 +87,7 @@ export default function TextChat({ ticket, lang, onEnded }) {
         chat.addToolOutput({ tool: "open_page", toolCallId: toolCall.toolCallId, output: { opened: path } });
       } else if (toolCall.toolName === "start_signup") {
         setShowSignup(true);
-        chat.addToolOutput({ tool: "start_signup", toolCallId: toolCall.toolCallId, output: { shown: "A Start free trial button is now under the chat. Ask them to tap it." } });
+        chat.addToolOutput({ tool: "start_signup", toolCallId: toolCall.toolCallId, output: { shown: "An Open your store button is now under the chat. Ask them to tap it." } });
       }
     },
   });
