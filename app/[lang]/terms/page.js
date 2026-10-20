@@ -13,7 +13,7 @@ export default async function TermsPage({ params }) {
   englishOnly(lang);
 
   return (
-    <LegalLayout title="Terms of Service" lastUpdated="June 2026">
+    <LegalLayout title="Terms of Service" lastUpdated="October 2026">
       <Section title="Overview">
         <P>These Terms of Service (&quot;Terms&quot;) govern your use of the Dakio platform and all related services (&quot;Dakio&quot; or the &quot;Service&quot;). By registering for or using Dakio, you agree to these Terms. Please read them carefully.</P>
         <P>Dakio provides an ecommerce management platform designed for merchants in Bangladesh, offering tools for order management, storefront creation, inventory, customer management, courier booking, dropshipping, reporting, and related integrations.</P>
@@ -71,7 +71,7 @@ export default async function TermsPage({ params }) {
       </Section>
 
       <Section title="Integrations and Third-Party Services">
-        <P>Dakio integrates with third-party services including courier providers (Pathao, RedX, Steadfast, Sundarban, and others), payment processors (bKash, Nagad, SSLCommerz), and optional marketing tools (Meta Pixel, Google Tag Manager, and others). These integrations are provided as a convenience.</P>
+        <P>Dakio integrates with third-party services including courier providers (Pathao, RedX, Steadfast, Sundarban, and others), payment processors (bKash, Nagad, SSLCommerz, and Paddle for businesses outside Bangladesh), and optional marketing tools (Meta Pixel, Google Tag Manager, and others). These integrations are provided as a convenience.</P>
         <P>Third-party services are governed by their own terms of service and privacy policies. Dakio is not responsible for the performance, availability, or actions of third-party platforms. If a third-party service changes its policies or becomes unavailable, Dakio will make reasonable efforts to maintain service continuity but cannot guarantee uninterrupted availability of specific integrations.</P>
         <P>Merchants are responsible for their own use of any third-party integrations they enable through the platform, including compliance with those platforms&apos; advertising and data policies.</P>
       </Section>
@@ -79,6 +79,7 @@ export default async function TermsPage({ params }) {
       <Section title="Subscription, Billing, and Charges">
         <P>Access to Dakio requires an active paid subscription. Pricing details, plan limits, and billing cycles are described on the Dakio website and may be updated from time to time. By subscribing, you authorize Dakio to charge your selected payment method for the applicable subscription fee.</P>
         <P>Subscription fees are generally non-refundable. Refund eligibility, if any, is described in our <A href="/refund-policy">Return and Refund Policy</A>. If you cancel, your access continues until the end of the current billing period.</P>
+        <P><strong>Businesses based outside Bangladesh.</strong> Our order process for businesses outside Bangladesh is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all those orders: Paddle charges you in US dollars, adds and remits any sales tax or VAT that applies, issues the invoice, and handles billing enquiries and refunds for those payments under the <A href="https://www.paddle.com/legal/checkout-buyer-terms">Paddle Buyer Terms</A>. These subscriptions renew automatically at the end of each billing period until you cancel; you can cancel at any time from Billing in the app, and access continues until the end of the period you paid for.</P>
         <P>In addition to subscription fees, merchants may incur operational charges for platform services such as dropshipping fulfillment, courier service fees, and any other charges disclosed at time of use. Dakio reserves the right to adjust pricing with reasonable notice.</P>
       </Section>
 

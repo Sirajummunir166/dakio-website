@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { LEGAL_PATHS, isEnglishOnlyPath } from "./lib/i18n";
+import { REGION_COOKIE, countryFromHeader } from "./lib/region";
 
 // Every page lives under app/[lang]/. English keeps the bare URLs it was
 // indexed on, so /about is *rewritten* (not redirected) to /en/about — the URL
@@ -19,6 +20,28 @@ const isLegalPath = path => LEGAL_PATHS.some(p => path === p);
 // money moves (dakio-api lib/planCoupons.js); nothing here grants a discount.
 const COUPON_PATH = /^\/(?:(bn)\/)?c\/([A-Za-z0-9_-]{3,32})\/?$/;
 const COUPON_MAX_AGE = 30 * 24 * 60 * 60;
+const REGION_MAX_AGE = 30 * 24 * 60 * 60;
+
+/**
+ * The visitor's country for the price they see (lib/region.js): Vercel's
+ * `x-vercel-ip-country`, kept in `dakio_region` on .dakio.io so app.dakio.io's
+ * signup can pre-fill it too. Written only when it changes. Outside production,
+ * `?region=DE` (or BD) overrides it, so the dollar page can be checked without a
+ * VPN. No header and no override → no cookie → taka.
+ */
+function withRegion(request, res) {
+  const override = process.env.VERCEL_ENV !== "production" ? countryFromHeader(request.nextUrl.searchParams.get("region")) : null;
+  const country = override || countryFromHeader(request.headers.get("x-vercel-ip-country"));
+  if (!country || request.cookies.get(REGION_COOKIE)?.value === country) return res;
+  const host = request.nextUrl.hostname;
+  res.cookies.set(REGION_COOKIE, country, {
+    path: "/",
+    maxAge: REGION_MAX_AGE,
+    sameSite: "lax",
+    ...(host === "dakio.io" || host.endsWith(".dakio.io") ? { domain: ".dakio.io", secure: true } : {}),
+  });
+  return res;
+}
 
 export function middleware(request) {
   const { pathname } = request.nextUrl;
@@ -52,10 +75,10 @@ export function middleware(request) {
     // /bn/privacy to /privacy, /bn/developers/docs/… to /developers/docs/….
     const bare = pathname.slice(3) || "/";
     if (isLegalPath(bare) || isEnglishOnlyPath(bare)) return NextResponse.redirect(new URL(bare, request.url), 308);
-    return NextResponse.next();
+    return withRegion(request, NextResponse.next());
   }
 
-  return NextResponse.rewrite(new URL(`/en${pathname === "/" ? "" : pathname}`, request.url));
+  return withRegion(request, NextResponse.rewrite(new URL(`/en${pathname === "/" ? "" : pathname}`, request.url)));
 }
 
 export const config = {

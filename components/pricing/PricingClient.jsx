@@ -28,6 +28,14 @@ export default function PricingClient({ lang = "en", copy, mono }) {
   const c = copy;
   const live = Boolean(c.billing?.tabs?.length);
   const [billing, setBilling] = useState(live ? c.billing.defaultKey : "mo");
+  // The dollar set (visitors outside Bangladesh — lib/region.js). Rendered beside
+  // the taka set; CSS shows one. Each has its own period tabs.
+  const usd = live && c.usd ? c.usd : null;
+  const [usdPeriod, setUsdPeriod] = useState(usd ? usd.billing.defaultKey : null);
+  // One class per set when both exist; none when only taka is on the page.
+  const cls = cur => (usd ? (cur === "USD" ? "cur-usd" : "cur-bdt") : undefined);
+  // A label with a dollar twin: both spans, CSS shows the visitor's.
+  const dual = (bdt, intl) => (usd && intl ? <><span className="cur-bdt">{bdt}</span><span className="cur-usd">{intl}</span></> : bdt);
   const yr = billing === "yr";
   const T = type(lang);
   const L = p => href(lang, p);
@@ -47,13 +55,16 @@ export default function PricingClient({ lang = "en", copy, mono }) {
 
       {/* HERO */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "72px 28px 8px", textAlign: "center" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, background: "rgba(198,240,53,0.35)", border: "1px solid rgba(26,29,18,0.1)", fontFamily: MONOFONT, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "#3E7A45", animation: "heroUp .6s ease both" }}>{mono.heroBadge}</div>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 99, background: "rgba(198,240,53,0.35)", border: "1px solid rgba(26,29,18,0.1)", fontFamily: MONOFONT, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "#3E7A45", animation: "heroUp .6s ease both" }}>{dual(mono.heroBadge, mono.heroBadgeIntl)}</div>
         <h1 className="m-h1" style={{ margin: "22px auto 0", fontSize: 60, lineHeight: 1.04, letterSpacing: "-2.5px", fontWeight: 800, maxWidth: 780, animation: "heroUp .6s .08s ease both", ...T.h1 }}>
           {c.hero.h1}
         </h1>
         <p style={{ margin: "18px auto 0", fontSize: 16, lineHeight: 1.6, color: "#6B6D60", maxWidth: 480, animation: "heroUp .6s .16s ease both", ...T.lead }}>{c.hero.sub}</p>
         {live ? (
-          <PeriodTabs billing={c.billing} value={billing} onChange={setBilling} T={T} style={{ marginTop: 28, animation: "heroUp .6s .24s ease both" }} />
+          <>
+            <div className={cls("BDT")}><PeriodTabs billing={c.billing} value={billing} onChange={setBilling} T={T} style={{ marginTop: 28, animation: "heroUp .6s .24s ease both" }} /></div>
+            {usd && <div className={cls("USD")}><PeriodTabs billing={usd.billing} value={usdPeriod} onChange={setUsdPeriod} T={T} style={{ marginTop: 28, animation: "heroUp .6s .24s ease both" }} /></div>}
+          </>
         ) : (
           <div style={{ display: "inline-flex", padding: 3, borderRadius: 99, background: "#E9EBE0", marginTop: 28, animation: "heroUp .6s .24s ease both" }}>
             <span onClick={() => setBilling("mo")} style={seg(!yr)}>{c.hero.monthly}</span>
@@ -69,40 +80,45 @@ export default function PricingClient({ lang = "en", copy, mono }) {
             withdrawing a plan in the admin app would otherwise leave an empty
             column on the page. Capped at 3 so a fourth plan wraps instead of
             squeezing the cards. */}
-        <div className="m-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(c.plans.length, 3)}, 1fr)`, gap: 14, alignItems: "stretch", maxWidth: c.plans.length < 3 ? 800 : "none", margin: c.plans.length < 3 ? "0 auto" : undefined }}>
-          {c.plans.map((p, i) => (
-            <div key={p.n} style={{ padding: 28, borderRadius: 26, display: "flex", flexDirection: "column", ...(p.dark ? { background: "#0F120B", color: "#E9EFDC", boxShadow: "0 28px 60px rgba(15,18,11,0.3)" } : p.pop ? { background: "#FBFAF5", border: "2px solid #1A1D12" } : { background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)" }) }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <span style={{ fontSize: 17, fontWeight: 800, letterSpacing: "-0.3px", ...(p.dark ? { color: "#FBFBF4" } : {}) }}>{p.n}</span>
-                <span style={{ fontFamily: MONOFONT, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.08em", padding: "4px 9px", borderRadius: 99, ...(p.dark ? { background: "rgba(198,240,53,0.16)", color: "#C6F035" } : { background: "rgba(26,29,18,0.07)", color: "#3E7A45" }) }}>{p.level || mono.planLevels[i]}</span>
+        {[
+          { cur: "BDT", plans: c.plans, billing: c.billing, period: billing, setPeriod: setBilling },
+          ...(usd ? [{ cur: "USD", plans: usd.plans, billing: usd.billing, period: usdPeriod, setPeriod: setUsdPeriod }] : []),
+        ].map(set => (
+          <div key={set.cur} className={["m-grid", cls(set.cur)].filter(Boolean).join(" ")} style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(set.plans.length, 3)}, 1fr)`, gap: 14, alignItems: "stretch", maxWidth: set.plans.length < 3 ? 800 : "none", margin: set.plans.length < 3 ? "0 auto" : undefined }}>
+            {set.plans.map((p, i) => (
+              <div key={p.n} style={{ padding: 28, borderRadius: 26, display: "flex", flexDirection: "column", ...(p.dark ? { background: "#0F120B", color: "#E9EFDC", boxShadow: "0 28px 60px rgba(15,18,11,0.3)" } : p.pop ? { background: "#FBFAF5", border: "2px solid #1A1D12" } : { background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)" }) }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <span style={{ fontSize: 17, fontWeight: 800, letterSpacing: "-0.3px", ...(p.dark ? { color: "#FBFBF4" } : {}) }}>{p.n}</span>
+                  <span style={{ fontFamily: MONOFONT, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.08em", padding: "4px 9px", borderRadius: 99, ...(p.dark ? { background: "rgba(198,240,53,0.16)", color: "#C6F035" } : { background: "rgba(26,29,18,0.07)", color: "#3E7A45" }) }}>{p.level || mono.planLevels[i]}</span>
+                </div>
+                <div style={{ fontSize: 12.5, marginTop: 5, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.audience}</div>
+                {live ? (
+                  <PeriodPrice p={p} v={p.periods?.[set.period]} T={T} notSold={set.billing.notSold} onNudge={() => set.setPeriod(set.billing.bestKey)} />
+                ) : (
+                  <>
+                    <div style={{ marginTop: 18, display: "flex", alignItems: "baseline", gap: 6 }}>
+                      <span style={{ fontSize: 38, fontWeight: 800, letterSpacing: "-1.4px", ...(p.dark ? { color: "#C6F035" } : {}) }}>{yr ? p.prYr : p.prMo}</span>
+                      <span style={{ fontSize: 13, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.sub}</span>
+                    </div>
+                    <div style={{ fontSize: 11.5, marginTop: 3, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{yr ? p.noteYr : p.noteMo}</div>
+                  </>
+                )}
+                <div style={{ height: 1, margin: "20px 0", background: p.dark ? "rgba(240,239,230,0.12)" : "rgba(26,29,18,0.08)" }} />
+                <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+                  {p.feats.map(t => (
+                    <div key={t} style={{ display: "flex", alignItems: "flex-start", gap: 9 }}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={p.dark ? "#C6F035" : "#1A1D12"} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 2 }}><path d="M20 6L9 17l-5-5" /></svg>
+                      <span style={{ fontSize: 13, lineHeight: 1.5, ...(p.dark ? { color: "#E9EFDC" } : {}), ...T.small }}>{t}</span>
+                    </div>
+                  ))}
+                </div>
+                {/* The card's own plan AND the period on screen ride along, so signup
+                    opens on paying for exactly this card. */}
+                <a href={buyHref(p.code, live ? set.period : null)} style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : p.pop ? { background: "#1A1D12", color: "#C6F035" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
               </div>
-              <div style={{ fontSize: 12.5, marginTop: 5, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.audience}</div>
-              {live ? (
-                <PeriodPrice p={p} v={p.periods?.[billing]} T={T} notSold={c.billing.notSold} onNudge={() => setBilling(c.billing.bestKey)} />
-              ) : (
-                <>
-                  <div style={{ marginTop: 18, display: "flex", alignItems: "baseline", gap: 6 }}>
-                    <span style={{ fontSize: 38, fontWeight: 800, letterSpacing: "-1.4px", ...(p.dark ? { color: "#C6F035" } : {}) }}>{yr ? p.prYr : p.prMo}</span>
-                    <span style={{ fontSize: 13, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.sub}</span>
-                  </div>
-                  <div style={{ fontSize: 11.5, marginTop: 3, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{yr ? p.noteYr : p.noteMo}</div>
-                </>
-              )}
-              <div style={{ height: 1, margin: "20px 0", background: p.dark ? "rgba(240,239,230,0.12)" : "rgba(26,29,18,0.08)" }} />
-              <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-                {p.feats.map(t => (
-                  <div key={t} style={{ display: "flex", alignItems: "flex-start", gap: 9 }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={p.dark ? "#C6F035" : "#1A1D12"} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 2 }}><path d="M20 6L9 17l-5-5" /></svg>
-                    <span style={{ fontSize: 13, lineHeight: 1.5, ...(p.dark ? { color: "#E9EFDC" } : {}), ...T.small }}>{t}</span>
-                  </div>
-                ))}
-              </div>
-              {/* The card's own plan AND the period on screen ride along, so signup
-                  opens on paying for exactly this card. */}
-              <a href={buyHref(p.code, live ? billing : null)} style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : p.pop ? { background: "#1A1D12", color: "#C6F035" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ))}
         <div style={{ textAlign: "center", marginTop: 18, fontSize: 13, color: "#6B6D60", ...T.small }}>{c.plansNote}</div>
         <TrialLine trial={c.trial} T={T} />
       </div>
@@ -131,7 +147,7 @@ export default function PricingClient({ lang = "en", copy, mono }) {
               </div>
               <div style={{ fontSize: 12, marginTop: 8, lineHeight: 1.55, color: "#A9AD98", ...T.small }}>{c.meter.draft.quote}</div>
               <div style={{ display: "flex", gap: 6, marginTop: 12 }}>
-                <span style={{ padding: "6px 14px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 10.5, fontWeight: 700, cursor: "pointer", ...T.chip }}>{c.meter.draft.topUp}</span>
+                <span style={{ padding: "6px 14px", borderRadius: 99, background: "#C6F035", color: "#0F120B", fontSize: 10.5, fontWeight: 700, cursor: "pointer", ...T.chip }}>{dual(c.meter.draft.topUp, usd?.topUp)}</span>
                 <span style={{ padding: "6px 12px", borderRadius: 99, border: "1px solid rgba(233,239,220,0.25)", color: "#A9AD98", fontSize: 10.5, fontWeight: 600, cursor: "pointer", ...T.chip }}>{c.meter.draft.wait}</span>
               </div>
             </div>
@@ -209,7 +225,7 @@ export default function PricingClient({ lang = "en", copy, mono }) {
             </a>
             <Link href={L("/")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</Link>
           </div>
-          <div style={{ position: "relative", marginTop: 20, fontFamily: MONOFONT, fontSize: 9.5, letterSpacing: "0.14em", color: "rgba(26,29,18,0.6)" }}>{mono.ctaStrip}</div>
+          <div style={{ position: "relative", marginTop: 20, fontFamily: MONOFONT, fontSize: 9.5, letterSpacing: "0.14em", color: "rgba(26,29,18,0.6)" }}>{dual(mono.ctaStrip, mono.ctaStripIntl)}</div>
         </div>
       </div>
 

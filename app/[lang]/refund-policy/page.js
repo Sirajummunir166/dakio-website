@@ -35,6 +35,11 @@ export default async function RefundPolicyPage({ params }) {
         <P>Approved refunds are processed back to the original payment method (bKash, Nagad, card, or other method used via SSLCommerz) within <strong>7 to 10 working days</strong> from the date of approval. Actual time for the funds to appear may vary slightly depending on your bank or mobile wallet provider&apos;s own processing time.</P>
       </Section>
 
+      <Section title="Payments Made Outside Bangladesh (Paddle)">
+        <P>If your business is based outside Bangladesh, your subscription is sold to you by our reseller Paddle.com, which is the Merchant of Record for those payments. Refund requests for those payments are handled by Paddle under the <A href="https://www.paddle.com/legal/checkout-buyer-terms">Paddle Buyer Terms</A>; you can contact Paddle through the link on your receipt, or write to <A href="mailto:hello@dakio.io">hello@dakio.io</A> and we will raise it with Paddle for you. Approved refunds go back to the card or PayPal account you paid with.</P>
+        <P>These subscriptions renew automatically. Cancelling stops the next renewal; the period you already paid for is not refunded unless one of the cases above applies or the Paddle Buyer Terms give you a right to a refund.</P>
+      </Section>
+
       <Section title="Purchases Made From a Dakio Merchant Store">
         <P>If you bought a product or service from a store built on Dakio (a merchant&apos;s own storefront), your purchase is a transaction between you and that merchant, not with Dakio. Dakio provides the underlying platform and payment infrastructure but is not the seller of record.</P>
         <P>For returns, exchanges, or refunds on such a purchase, please contact the merchant directly using the contact details published on their store. Merchants are responsible for setting and honoring their own return and refund terms, and for processing eligible refunds within a reasonable timeframe, consistent with applicable consumer protection law.</P>

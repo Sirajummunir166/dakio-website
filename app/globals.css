@@ -102,3 +102,9 @@ a:hover { color: inherit; }
 .nf-pay-1row { display:block; }
 .nf-pay-2rows { display:none; }
 @media (max-width: 760px) { .nf-pay-1row { display:none; } .nf-pay-2rows { display:block; } }
+
+/* Taka or dollars (lib/region.js, DAKIO_GLOBAL_BILLING_PLAN.md §6.1). Both price
+   sets are in the static HTML; the head script sets data-region before paint.
+   No data-region (script blocked) = taka, the site's default. */
+html[data-region="INTL"] .cur-bdt { display: none !important; }
+html:not([data-region="INTL"]) .cur-usd { display: none !important; }

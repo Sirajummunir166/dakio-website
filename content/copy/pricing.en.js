@@ -4,6 +4,8 @@ import Mark from "../../components/Mark";
 
 export const MONO = {
   heroBadge: "৳ BANGLADESH PRICING · GOING GLOBAL SOON",
+  // Outside Bangladesh (lib/region.js): the dollar page's badge and strip.
+  heroBadgeIntl: "US DOLLAR PRICING · TAX ADDED WHERE IT APPLIES",
   planLevels: ["NOVA L0–L1 ADVISOR", "NOVA L3 OPERATOR", "NOVA L4 ACTING CEO"],
   meterKicker: "THE METER, IN PLAIN WORDS",
   perTask: "= 1 CREDIT",
@@ -14,6 +16,7 @@ export const MONO = {
   anchorFoot: "PREMIUM WORK · REASONABLE TAKA · WE’RE NOT THE CHEAPEST, WE’RE THE BEST HIRE",
   switchKicker: "COMING FROM SHOPIFY?",
   ctaStrip: "PAY IN TAKA · bKASH, NAGAD OR CARD · YOUR DATA EXPORTS ANYTIME",
+  ctaStripIntl: "PAY BY CARD OR PAYPAL · BILLED IN USD · CANCEL ANYTIME · YOUR DATA EXPORTS ANYTIME",
 };
 
 const pricing = {
@@ -106,7 +109,7 @@ const pricing = {
       { q: "Why not unlimited AI?", a: "Nova does real work on real compute — unlimited would mean either fake AI or hidden throttling. We'd rather sell you an honest meter with receipts than a soft lie." },
       { q: "What happens when my credits run out?", a: "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 250 credits) or the month resets. Nothing is lost, nothing is silent." },
       { q: "What do couriers cost?", a: "Per-delivery, passed through at the courier's rate (Steadfast, Pathao, RedX) on every plan — we don't mark up shipping." },
-      { q: "I'm not in Bangladesh — can I use Dakio?", a: "Soon. We built for Bangladesh first — ৳, bKash, COD, Bangla — and global markets open next with local pricing, not conversions. Join the waitlist from the signup page." },
+      { q: "I'm not in Bangladesh — can I use Dakio?", a: "Yes. Outside Bangladesh you pay in US dollars by card or PayPal, with tax added where it applies, and the plan renews by itself until you cancel. Your inbox, Nova and customer records work everywhere today; the online store and courier partners are Bangladesh-only for now and come to more countries next." },
     ],
   },
 

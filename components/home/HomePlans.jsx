@@ -13,10 +13,20 @@ import { PeriodTabs, PeriodPrice } from "../pricing/Periods";
 const MONOFONT = "var(--dk-font-mono), monospace";
 
 export default function HomePlans({ pricing, T }) {
-  const billing = pricing.billing;
+  // Taka for Bangladesh, dollars everywhere else (lib/region.js): both sets are
+  // rendered and CSS shows the visitor's. Only taka when there is no dollar set.
+  const usd = pricing.billing?.tabs?.length && pricing.usd ? pricing.usd : null;
+  return (
+    <>
+      <div className={usd ? "cur-bdt" : undefined}><PlanSet pricing={pricing} plans={pricing.plans} billing={pricing.billing} T={T} /></div>
+      {usd && <div className="cur-usd"><PlanSet pricing={pricing} plans={usd.plans} billing={usd.billing} T={T} /></div>}
+    </>
+  );
+}
+
+function PlanSet({ pricing, plans, billing, T }) {
   const live = Boolean(billing?.tabs?.length);
   const [period, setPeriod] = useState(live ? billing.defaultKey : null);
-  const plans = pricing.plans;
 
   return (
     <>

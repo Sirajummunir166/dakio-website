@@ -8,6 +8,7 @@ import { LOCALES } from "../../lib/i18n";
 import { GA_MEASUREMENT_ID, analyticsEnabled } from "../../lib/analytics";
 import CouponStrip from "../../components/CouponStrip";
 import VoiceGuide from "../../components/voice/VoiceGuide";
+import { REGION_SCRIPT } from "../../lib/region";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -47,7 +48,14 @@ export default async function RootLayout({ children, params }) {
     <html
       lang={lang}
       className={`${archivo.variable} ${notoSansBengali.variable} ${ibmPlexMono.variable}`}
+      // The head script below adds data-region before React hydrates.
+      suppressHydrationWarning
     >
+      <head>
+        {/* Taka or dollars, decided before paint (lib/region.js): both price
+            sets are in the static HTML and CSS hides the other one. */}
+        <script dangerouslySetInnerHTML={{ __html: REGION_SCRIPT }} />
+      </head>
       <body>
         {/* Influencer code from dakio.io/c/CODE — renders nothing without one. */}
         <CouponStrip lang={lang} />
