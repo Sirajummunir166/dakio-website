@@ -109,7 +109,7 @@ const pricing = {
       { q: "Why not unlimited AI?", a: "Nova does real work on real compute — unlimited would mean either fake AI or hidden throttling. We'd rather sell you an honest meter with receipts than a soft lie." },
       { q: "What happens when my credits run out?", a: "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 250 credits) or the month resets. Nothing is lost, nothing is silent." },
       { q: "What do couriers cost?", a: "Per-delivery, passed through at the courier's rate (Steadfast, Pathao, RedX) on every plan — we don't mark up shipping." },
-      { q: "I'm not in Bangladesh — can I use Dakio?", a: "Yes. Outside Bangladesh you pay in US dollars by card or PayPal, with tax added where it applies, and the plan renews by itself until you cancel. Your inbox, Nova and customer records work everywhere today; the online store and courier partners are Bangladesh-only for now and come to more countries next." },
+      { q: "I'm not in Bangladesh — can I use Dakio?", a: "Yes. Outside Bangladesh you pay in US dollars by card or PayPal, with tax added where it applies, and the plan renews by itself until you cancel. Your inbox, Nova and customer records work everywhere today; the online store and courier partners are Bangladesh-only for now and come to more countries next. Paddle, our reseller, charges only for Dakio software (your plan and Nova credits): Dakio doesn't sell or ship physical goods; you sell your own products to your own customers." },
     ],
   },
 

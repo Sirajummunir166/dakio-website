@@ -16,7 +16,9 @@ export default async function TermsPage({ params }) {
     <LegalLayout title="Terms of Service" lastUpdated="October 2026">
       <Section title="Overview">
         <P>These Terms of Service (&quot;Terms&quot;) govern your use of the Dakio platform and all related services (&quot;Dakio&quot; or the &quot;Service&quot;). By registering for or using Dakio, you agree to these Terms. Please read them carefully.</P>
-        <P>Dakio provides an ecommerce management platform designed for merchants in Bangladesh, offering tools for order management, storefront creation, inventory, customer management, courier booking, dropshipping, reporting, and related integrations.</P>
+        <P>Dakio is operated by <strong>Digidhaka Communication Limited</strong>, a company registered in Bangladesh (Trade License No. TRAD/DSCC/041467/2021; registered office: 253-254 Dr. Kudrat-e-Khuda Road, Kataban, Dhaka, Bangladesh). In these Terms, &quot;we&quot;, &quot;us&quot; and &quot;Dakio&quot; mean Digidhaka Communication Limited.</P>
+        <P>Dakio is software: a subscription-based ecommerce management platform for merchants in Bangladesh and in other countries. It includes a shared inbox with an AI assistant (Nova), customer records (CRM), order management, inventory, reporting and related integrations. Some services (the online storefront, courier booking, dropshipping and the Dakio warehouse) are currently available to merchants in Bangladesh only.</P>
+        <P>Dakio does not sell or ship physical goods to merchants or their customers. Merchants sell their own products to their own customers; Dakio provides the software they use to do it.</P>
       </Section>
 
       <Section title="Eligibility and Account Responsibility">
@@ -51,7 +53,7 @@ export default async function TermsPage({ params }) {
       </Section>
 
       <Section title="Dropshipping and Fulfillment Operations">
-        <P>Dakio&apos;s dropshipping service connects merchants with supplier inventory for fulfillment. When a merchant sells a dropship product, Dakio coordinates warehouse reservation, packing, and courier handover on behalf of the merchant. Merchants are charged for dropship costs as described in applicable service documentation.</P>
+        <P>The dropshipping and fulfillment service is available to merchants in Bangladesh only and is not sold through Paddle. Dakio&apos;s dropshipping service connects merchants with supplier inventory for fulfillment. When a merchant sells a dropship product, Dakio coordinates warehouse reservation, packing, and courier handover on behalf of the merchant. Merchants are charged for dropship costs as described in applicable service documentation.</P>
         <P>Dakio does not guarantee continuous availability of any specific dropship product. Stock availability is subject to supplier inventory levels and warehouse capacity. Merchants should not commit to customers for orders that cannot be fulfilled.</P>
       </Section>
 
@@ -79,7 +81,7 @@ export default async function TermsPage({ params }) {
       <Section title="Subscription, Billing, and Charges">
         <P>Access to Dakio requires an active paid subscription. Pricing details, plan limits, and billing cycles are described on the Dakio website and may be updated from time to time. By subscribing, you authorize Dakio to charge your selected payment method for the applicable subscription fee.</P>
         <P>Subscription fees are generally non-refundable. Refund eligibility, if any, is described in our <A href="/refund-policy">Return and Refund Policy</A>. If you cancel, your access continues until the end of the current billing period.</P>
-        <P><strong>Businesses based outside Bangladesh.</strong> Our order process for businesses outside Bangladesh is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all those orders: Paddle charges you in US dollars, adds and remits any sales tax or VAT that applies, issues the invoice, and handles billing enquiries and refunds for those payments under the <A href="https://www.paddle.com/legal/checkout-buyer-terms">Paddle Buyer Terms</A>. These subscriptions renew automatically at the end of each billing period until you cancel; you can cancel at any time from Billing in the app, and access continues until the end of the period you paid for.</P>
+        <P><strong>Businesses based outside Bangladesh.</strong> Our order process for businesses outside Bangladesh is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all those orders: Paddle charges you in US dollars, adds and remits any sales tax or VAT that applies, issues the invoice, and handles billing enquiries and refunds for those payments under the <A href="https://www.paddle.com/legal/checkout-buyer-terms">Paddle Buyer Terms</A>. Payments through Paddle are for Dakio software only: plan subscriptions and Nova credit top-ups. These subscriptions renew automatically at the end of each billing period until you cancel; you can cancel at any time from Billing in the app, and access continues until the end of the period you paid for.</P>
         <P>In addition to subscription fees, merchants may incur operational charges for platform services such as dropshipping fulfillment, courier service fees, and any other charges disclosed at time of use. Dakio reserves the right to adjust pricing with reasonable notice.</P>
       </Section>
 
