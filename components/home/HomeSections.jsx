@@ -206,6 +206,63 @@ export function Contrast({ c }) {
   );
 }
 
+/* ---------------- 3 · Where Nova works ---------------- */
+
+// A small preview of Nova at work in each part: plain markup, no images, the
+// same example stores as the rest of the page.
+function PartPreview({ k, v }) {
+  if (!v) return null;
+  let inner = null;
+  if (k === "inbox") inner = (
+    <div className="hm-pv-chat">
+      <span className="hm-pv-them">{v.them}</span>
+      <span className="hm-pv-nova">{v.nova}</span>
+      <span className="hm-pv-voice"><i /><i /><i /><i /><i /><i /><em>{v.voice}</em></span>
+    </div>
+  );
+  if (k === "customers") inner = (
+    <div className="hm-pv-card">
+      <div className="hm-pv-who"><span className="hm-pv-av">{v.name.slice(0, 1)}</span><b>{v.name}</b><span className="hm-pv-tag">{v.saved}</span></div>
+      <div className="hm-pv-facts">{v.facts.map(f => <span key={f}>{f}</span>)}</div>
+      <div className="hm-pv-task">{v.task}</div>
+    </div>
+  );
+  if (k === "orders") inner = (
+    <div className="hm-pv-card">
+      <div className="hm-pv-row"><b>{v.id}</b><span className="hm-pv-status">{v.status}</span></div>
+      <div className="hm-pv-track"><i className="is-on" /><i className="is-on" /><i className="is-on" /><i /></div>
+      <span className="hm-pv-nova">{v.msg}</span>
+    </div>
+  );
+  if (k === "bookings") inner = (
+    <div className="hm-pv-card">
+      <div className="hm-pv-row"><b>{v.day}</b></div>
+      {v.slots.map(([t, w], i) => <div key={t} className={`hm-pv-slot${i === 1 ? " is-on" : ""}`}><b>{t}</b><span>{w}</span></div>)}
+      <div className="hm-pv-task">{v.note}</div>
+    </div>
+  );
+  if (k === "marketing") inner = (
+    <div className="hm-pv-card hm-pv-post">
+      <img src="/demo/saril/peacock-teal-panjabi.jpg" alt="" width={56} height={72} loading="lazy" />
+      <div><span className="hm-pv-tag">{v.tag}</span><p>{v.text}</p><div className="hm-pv-btns"><span className="is-go">{v.approve}</span><span>{v.edit}</span></div></div>
+    </div>
+  );
+  if (k === "money") inner = (
+    <div className="hm-pv-card">
+      <div className="hm-pv-row"><span className="hm-pv-orb" /><b>{v.title}</b></div>
+      {v.lines.map(([a, b]) => <div key={a} className="hm-pv-line"><span>{a}</span><b>{b}</b></div>)}
+    </div>
+  );
+  if (k === "website") inner = (
+    <div className="hm-pv-site">
+      <div className="hm-pv-bar"><b>{v.store}</b>{v.nav.map(n => <span key={n}>{n}</span>)}</div>
+      <div className="hm-pv-hero"><img src="/demo/saril/peacock-teal-panjabi.jpg" alt="" width={90} height={110} loading="lazy" /><div><i /><i /><i /></div></div>
+      <span className="hm-pv-bubble"><span className="hm-pv-orb" />{v.bubble}</span>
+    </div>
+  );
+  return <div className="hm-pv" aria-hidden="true">{inner}</div>;
+}
+
 /* ---------------- 3 · Everything in one place ---------------- */
 
 const PART_ORDER = [
@@ -224,8 +281,8 @@ export function Parts({ c, L }) {
       <div className="hm-parts">
         {PART_ORDER.map(([k, show]) => (
           <div key={k} className={`hm-part hm-part-${k}`} data-show={show || undefined}>
-            <span className="hm-part-icon"><Icon name={k} /></span>
-            <h3 className="hm-h3">{p.cards[k].t}</h3>
+            <PartPreview k={k} v={p.previews[k]} />
+            <div className="hm-part-head"><span className="hm-part-icon"><Icon name={k} /></span><h3 className="hm-h3">{p.cards[k].t}</h3></div>
             <p className="hm-body">{p.cards[k].d}</p>
             {k === "website" ? <Link href={L("/themes")} className="hm-link">{p.link} <Arrow size={13} /></Link> : null}
           </div>

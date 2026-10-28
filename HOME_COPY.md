@@ -450,6 +450,36 @@ _The full business, one card per part, each saying what you get and what Nova do
 - EN: See the website designs
 - BN: ওয়েবসাইটের ডিজাইনগুলো দেখুন
 
+_Each card opens with a small preview of Nova at work in that part (plain markup, the same example stores)._
+
+**Preview · inbox**
+- EN: Eta ase? 40 size? · Ji, ase! ৳2,350, 2 dine pouchabe. · Voice note · heard: delivery koto?
+- BN: এটা আছে? ৪০ সাইজ? · জি, আছে! ৳২,৩৫০, ২ দিনে পৌঁছাবে। · ভয়েস মেসেজ · শুনেছে: ডেলিভারি কত?
+
+**Preview · customers**
+- EN: Nusrat Jahan · Wedding 12 Dec / Uttara / Budget ৳35,000 · Saved by Nova · Call back tomorrow, 11:00
+- BN: নুসরাত জাহান · বিয়ে ১২ ডিসেম্বর / উত্তরা / বাজেট ৳৩৫,০০০ · Nova সেভ করেছে · কাল ১১টায় কল ব্যাক
+
+**Preview · orders**
+- EN: #6BB-VHQ6 · Shipped · Steadfast · Nova: Your parcel is on the way. Tracking link sent.
+- BN: #6BB-VHQ6 · পাঠানো হয়েছে · Steadfast · Nova: আপনার পার্সেল রওনা দিয়েছে। ট্র্যাকিং লিংক পাঠালাম।
+
+**Preview · bookings**
+- EN: Friday · 2:00 Threading · Rupa / 4:00 Bridal trial · Nusrat / 6:00 Party makeup · Sadia · Reminder goes out Thursday
+- BN: শুক্রবার · ২:০০ থ্রেডিং · রূপা / ৪:০০ ব্রাইডাল ট্রায়াল · নুসরাত / ৬:০০ পার্টি মেকআপ · সাদিয়া · বৃহস্পতিবার রিমাইন্ডার যাবে
+
+**Preview · marketing**
+- EN: Draft post · New in: Peacock Teal Panjabi, 38 to 46. ৳2,350. · Approve · Edit
+- BN: পোস্টের খসড়া · নতুন এসেছে: পিকক টিল পাঞ্জাবি, ৩৮ থেকে ৪৬। ৳২,৩৫০। · অনুমোদন · এডিট
+
+**Preview · money**
+- EN: Weekly money note · Came in ৳38,500 / Orders 21 / Couriers holding ৳12,400
+- BN: সাপ্তাহিক টাকার হিসাব · এসেছে ৳৩৮,৫০০ / অর্ডার ২১ / কুরিয়ারের কাছে ৳১২,৪০০
+
+**Preview · website**
+- EN: Saril · New in / Panjabi / Saree · Ask Nova
+- BN: Saril · নতুন / পাঞ্জাবি / শাড়ি · Nova-কে জিজ্ঞেস করুন
+
 ### 4 · After the chat
 
 _The proof that the reply is only the start. Five steps, swapped by the switch._

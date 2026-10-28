@@ -155,6 +155,16 @@ const home = {
       website: { t: "Website", d: "A designed shop or booking site from day one, on your own domain, with Nova in the chat bubble." },
     },
     link: "See the website designs",
+    // A small preview of Nova at work in each part (HomeSections.jsx PartPreview).
+    previews: {
+      inbox: { them: "Eta ase? 40 size?", nova: "Ji, ase! ৳2,350, 2 dine pouchabe.", voice: "Voice note · heard: delivery koto?" },
+      customers: { name: "Nusrat Jahan", facts: ["Wedding 12 Dec", "Uttara", "Budget ৳35,000"], saved: "Saved by Nova", task: "Call back tomorrow, 11:00" },
+      orders: { id: "#6BB-VHQ6", status: "Shipped · Steadfast", msg: "Nova: Your parcel is on the way. Tracking link sent." },
+      bookings: { day: "Friday", slots: [["2:00", "Threading · Rupa"], ["4:00", "Bridal trial · Nusrat"], ["6:00", "Party makeup · Sadia"]], note: "Reminder goes out Thursday" },
+      marketing: { tag: "Draft post", text: "New in: Peacock Teal Panjabi, 38 to 46. ৳2,350.", approve: "Approve", edit: "Edit" },
+      money: { title: "Weekly money note", lines: [["Came in", "৳38,500"], ["Orders", "21"], ["Couriers holding", "৳12,400"]] },
+      website: { store: "Saril", nav: ["New in", "Panjabi", "Saree"], bubble: "Ask Nova" },
+    },
   },
 
   flow: {
