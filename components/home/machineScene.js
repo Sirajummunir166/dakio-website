@@ -114,7 +114,39 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
     if (tone) outline(m, tone);
     return m;
   }
-  const box = (w, h, d, parent = world, tone = "main") => shape(new THREE.BoxGeometry(w, h, d), parent, tone);
+  // A box with rounded corners. "face" rounds the front (screens, tiles);
+  // "plan" rounds it seen from above (pedestal, belt, parcels). The outline
+  // is the two rounded rims plus one line at each corner, where the eye
+  // expects the side to turn.
+  function box(w, h, d, parent = world, tone = "main", r = 0.08, round = "face") {
+    const plan = round === "plan";
+    const a = w, b = plan ? d : h, depth = plan ? h : d;
+    const rad = Math.min(r, a / 2 - 0.001, b / 2 - 0.001);
+    const sh = new THREE.Shape();
+    const x0 = -a / 2, y0 = -b / 2;
+    sh.moveTo(x0 + rad, y0); sh.lineTo(x0 + a - rad, y0); sh.absarc(x0 + a - rad, y0 + rad, rad, -Math.PI / 2, 0);
+    sh.lineTo(x0 + a, y0 + b - rad); sh.absarc(x0 + a - rad, y0 + b - rad, rad, 0, Math.PI / 2);
+    sh.lineTo(x0 + rad, y0 + b); sh.absarc(x0 + rad, y0 + b - rad, rad, Math.PI / 2, Math.PI);
+    sh.lineTo(x0, y0 + rad); sh.absarc(x0 + rad, y0 + rad, rad, Math.PI, Math.PI * 1.5);
+    const g = keep(new THREE.ExtrudeGeometry(sh, { depth, bevelEnabled: false, curveSegments: 10 }));
+    g.translate(0, 0, -depth / 2);
+    // Shape space to world: (x, y, z) stays, or for "plan" becomes (x, z, -y).
+    const to = (x, y, z) => (plan ? [x, z, -y] : [x, y, z]);
+    if (plan) g.rotateX(-Math.PI / 2);
+    const m = new THREE.Mesh(g, FILL);
+    parent.add(m);
+    if (!tone) return m;
+    const pos = [...new THREE.EdgesGeometry(g, 30).attributes.position.array];
+    const k = Math.SQRT1_2 * rad;
+    for (const [sx, sy] of [[1, 1], [1, -1], [-1, 1], [-1, -1]]) {
+      const cx = sx * (a / 2 - rad) + sx * k, cy = sy * (b / 2 - rad) + sy * k;
+      pos.push(...to(cx, cy, -depth / 2), ...to(cx, cy, depth / 2));
+    }
+    const seg = new LineSegments2(keep(new LineSegmentsGeometry().setPositions(pos)), L[tone]);
+    seg.userData.tone = tone;
+    m.add(seg);
+    return m;
+  }
   const cyl = (rt, rb, h, parent = world, seg = 40, tone = "main") => shape(new THREE.CylinderGeometry(rt, rb, h, seg), parent, tone);
 
   // ---------- canvas textures ----------
@@ -151,21 +183,6 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
   // Light strokes on a clear canvas, for icons and signs.
   const pen = (ctx, color = CSS.text, width = 8) => { ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = width; ctx.lineCap = "round"; ctx.lineJoin = "round"; };
 
-  // Floor: a fine grid that fades out.
-  {
-    const g = canvasTex(1024, 1024);
-    const ctx = g.ctx;
-    ctx.strokeStyle = "rgba(233,239,220,0.05)"; ctx.lineWidth = 1.2;
-    for (let i = 0; i <= 1024; i += 1024 / 40) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 1024); ctx.moveTo(0, i); ctx.lineTo(1024, i); ctx.stroke(); }
-    ctx.globalCompositeOperation = "destination-in";
-    const fade = ctx.createRadialGradient(512, 512, 120, 512, 512, 512);
-    fade.addColorStop(0, "rgba(0,0,0,1)"); fade.addColorStop(1, "rgba(0,0,0,0)");
-    ctx.fillStyle = fade; ctx.fillRect(0, 0, 1024, 1024);
-    g.tex.needsUpdate = true;
-    const grid = plane(40, 40, g.tex, world, true);
-    grid.rotation.x = -Math.PI / 2; grid.position.set(0.5, 0.002, 0.4);
-  }
-
   // ---------- station 01: channels + phone ----------
   const st = {};
   st.in = new THREE.Group(); world.add(st.in);
@@ -182,7 +199,7 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
     tile.rotation.x = -0.12;
     tile.userData.base = tile.position.y;
     st.in.add(tile);
-    const t = box(0.84, 0.84, 0.12, tile, "main");
+    const t = box(0.84, 0.84, 0.12, tile, "main", 0.22);
     tile.userData.edges = t.children[0];
     const face = canvasTex(256, 256, 2);
     ch.draw(face.ctx); face.tex.needsUpdate = true;
@@ -194,7 +211,7 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
   phone.position.set(-3.8, 1.2, 0.3);
   phone.rotation.x = -0.16;
   st.in.add(phone);
-  box(1.18, 2.32, 0.08, phone, "main");
+  box(1.18, 2.32, 0.08, phone, "main", 0.18);
   const phoneTex = canvasTex(512, 1000, 1.5);
   plane(1.06, 2.18, phoneTex.tex, phone).position.z = 0.042;
 
@@ -202,7 +219,7 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
   st.nova = new THREE.Group(); world.add(st.nova);
   // One pedestal, its top ringed in lime light. Nova floats over it.
   const PED = { w: 1.6, h: 0.95 };
-  const block = box(PED.w, PED.h, PED.w, st.nova, "main");
+  const block = box(PED.w, PED.h, PED.w, st.nova, "main", 0.3, "plan");
   block.position.set(0, PED.h / 2, 0.3);
   const top = PED.h;
   const ring = new THREE.Mesh(keep(new THREE.TorusGeometry(0.52, 0.014, 12, 128)), keep(new THREE.MeshBasicMaterial({ color: COL.lime })));
@@ -225,27 +242,17 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
 
   // ---------- station 03: the app on a monitor ----------
   st.app = new THREE.Group(); world.add(st.app);
-  const arm = box(0.9, 1.85, 0.04, st.app, "soft");
+  const arm = box(0.9, 1.85, 0.04, st.app, "soft", 0.1);
   arm.position.set(3.6, 0.95, -2.62); arm.rotation.x = 0.2;
   const monitor = new THREE.Group(); monitor.position.set(3.6, 2.66, -2.42); monitor.rotation.x = -0.04; st.app.add(monitor);
-  box(4.3, 2.62, 0.1, monitor, "main");
+  box(4.3, 2.62, 0.1, monitor, "main", 0.14);
   const appTex = canvasTex(1100, 660, 1.5);
   plane(4.12, 2.44, appTex.tex, monitor).position.z = 0.052;
 
   // ---------- station 04a: courier belt (shops) ----------
   st.outShop = new THREE.Group(); world.add(st.outShop);
   const BELT = { x: 5.3, z: 2.6, y: 0.12, len: 4.2 };
-  for (const x of [BELT.x - BELT.len / 2, BELT.x + BELT.len / 2]) {
-    const r = cyl(0.1, 0.1, 1.18, st.outShop, 40, "main"); r.rotation.x = Math.PI / 2; r.position.set(x, BELT.y, BELT.z);
-  }
-  box(BELT.len, 0.08, 1.16, st.outShop, "main").position.set(BELT.x, BELT.y, BELT.z);
-  // The belt's ribs: light lines that run while a parcel rides.
-  const ribs = canvasTex(512, 64);
-  ribs.ctx.strokeStyle = "rgba(233,239,220,0.22)"; ribs.ctx.lineWidth = 2;
-  for (let x = 16; x < 512; x += 32) { ribs.ctx.beginPath(); ribs.ctx.moveTo(x, 6); ribs.ctx.lineTo(x, 58); ribs.ctx.stroke(); }
-  ribs.tex.wrapS = THREE.RepeatWrapping; ribs.tex.repeat.set(2.4, 1); ribs.tex.needsUpdate = true;
-  const beltTop = plane(BELT.len - 0.1, 1.1, ribs.tex, st.outShop, true);
-  beltTop.rotation.x = -Math.PI / 2; beltTop.position.set(BELT.x, BELT.y + 0.042, BELT.z);
+  box(BELT.len, 0.08, 1.16, st.outShop, "main", 0.4, "plan").position.set(BELT.x, BELT.y, BELT.z);
   cyl(0.03, 0.03, 2.1, st.outShop, 12, "soft").position.set(8.3, 1.05, 2.6);
   const signTex = canvasTex(256, 256, 2); glyphCourier(signTex.ctx); signTex.tex.needsUpdate = true;
   const signDisc = cyl(0.5, 0.5, 0.04, st.outShop, 64, null);
@@ -254,7 +261,7 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
   const labelTex = canvasTex(256, 160, 2); drawShippingLabel(labelTex.ctx); labelTex.tex.needsUpdate = true;
   const parcels = [0, 1, 2].map(() => {
     const p = new THREE.Group();
-    box(0.72, 0.5, 0.62, p, "main");
+    box(0.72, 0.5, 0.62, p, "main", 0.1, "plan");
     const l = plane(0.34, 0.21, labelTex.tex, p, true); l.rotation.x = -Math.PI / 2; l.position.set(0.12, 0.252, 0.1);
     p.visible = false; st.outShop.add(p);
     return { g: p, t0: -1 };
@@ -263,7 +270,7 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
   // ---------- station 04b: desk calendar (services) ----------
   st.outSvc = new THREE.Group(); world.add(st.outSvc);
   const cal = new THREE.Group(); cal.position.set(7.7, 0.95, -0.7); cal.rotation.x = -0.22; st.outSvc.add(cal);
-  box(2.2, 1.72, 0.06, cal, "main");
+  box(2.2, 1.72, 0.06, cal, "main", 0.12);
   const calTex = canvasTex(640, 500, 2);
   plane(2.1, 1.62, calTex.tex, cal).position.z = 0.032;
   // The reminder rises from the calendar's corner.
@@ -362,9 +369,9 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
     bar(ctx, 98, 46, 150, CSS.line, 9); bar(ctx, 98, 70, 90, CSS.soft, 7);
 
     // Bubbles laid out bottom up, newest at the bottom.
-    const msgs = p.msgs.slice(0, phoneShown);
+    const msgs = p.msgs.slice(0, phoneShown).slice(-3);
     const blocks = msgs.map(m => {
-      const n = Math.max(1, Math.min(3, Math.ceil(String(m.t).length / 26)));
+      const n = Math.max(1, Math.min(2, Math.ceil(String(m.t).length / 30)));
       const bw = Math.min(320, 70 + String(m.t).length * 6.5);
       const imgH = m.img ? 150 : 0;
       const cardH = m.card ? 70 : 0;
@@ -414,22 +421,20 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
     ctx.fillStyle = CSS.bg; ctx.fillRect(0, 0, W, H);
     ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(200, 0); ctx.lineTo(200, H); ctx.stroke();
     bar(ctx, 34, 52, 80, CSS.lime, 12);
-    a.menu.forEach((m, i) => bar(ctx, 34, 120 + i * 50, barW(m, 120, 9), i === 0 ? CSS.line : CSS.soft, 8));
+    a.menu.slice(0, 3).forEach((m, i) => bar(ctx, 34, 120 + i * 56, barW(m, 120, 9), i === 0 ? CSS.line : CSS.soft, 8));
     bar(ctx, 244, 60, barW(a.title, 260, 22), CSS.line, 18);
     bar(ctx, 244, 98, 220, CSS.soft, 7);
     // The table: one bar per cell, the new row in lime.
     const cols = a.cols;
     const top = 136;
     const rows = appNew ? [a.fresh, ...a.rows] : a.rows;
-    rows.slice(0, 6).forEach((r, i) => {
-      const y = top + 34 + i * 76;
+    rows.slice(0, 4).forEach((r, i) => {
+      const y = top + 40 + i * 104;
       const fresh = appNew && i === 0;
-      if (fresh) { ctx.strokeStyle = CSS.lime; ctx.lineWidth = 2.5; rr(ctx, 228, y, W - 258, 62, 14); ctx.stroke(); }
-      else { ctx.strokeStyle = CSS.soft; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(228, y + 66); ctx.lineTo(W - 30, y + 66); ctx.stroke(); }
-      cols.forEach((c, j) => {
-        const room = (cols[j + 1]?.x ?? W - 300) - c.x - 30;
-        bar(ctx, 250 + c.x, y + 31, barW(r[j], room, 8), fresh ? CSS.lime : (j === 0 ? CSS.line : CSS.dim), 7);
-      });
+      ctx.strokeStyle = fresh ? CSS.lime : CSS.soft; ctx.lineWidth = fresh ? 3 : 2; rr(ctx, 228, y, W - 258, 80, 16); ctx.stroke();
+      // Who and how much: two bars a row.
+      bar(ctx, 256, y + 40, 300, fresh ? CSS.lime : CSS.line, 9);
+      bar(ctx, W - 200, y + 40, barW(r[cols.length - 2], 140, 10), fresh ? CSS.lime : CSS.dim, 9);
     });
     tex.needsUpdate = true;
   }
@@ -441,8 +446,8 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
     ctx.fillStyle = CSS.bg; ctx.fillRect(0, 0, W, H);
     ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 92); ctx.lineTo(W, 92); ctx.stroke();
     bar(ctx, 34, 48, 140, CSS.line, 14);
-    c.slots.forEach((s, i) => {
-      const y = 116 + i * 92;
+    c.slots.slice(0, 3).forEach((s, i) => {
+      const y = 122 + i * 120;
       const lit = s.fresh && calLit;
       if (s.fresh && !calLit) { ctx.setLineDash([10, 8]); ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2.5; rr(ctx, 30, y, W - 60, 74, 16); ctx.stroke(); ctx.setLineDash([]); return; }
       ctx.strokeStyle = lit ? CSS.lime : CSS.soft; ctx.lineWidth = lit ? 3 : 2; rr(ctx, 30, y, W - 60, 74, 16); ctx.stroke();
@@ -603,7 +608,6 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
       p.g.position.set(Math.min(x, 7.9), BELT.y + 0.29 - drop * drop * 1.6, BELT.z);
       if (p.g.position.y < -0.6) { p.g.visible = false; p.t0 = -1; }
     }
-    if (parcels.some(p => p.t0 >= 0)) ribs.tex.offset.x -= dt * 1.15 / (BELT.len / ribs.tex.repeat.x);
     // The bell rings and the SMS rises.
     if (sms.visible) {
       const u = t - sms.userData.t0;
