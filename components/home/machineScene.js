@@ -38,14 +38,19 @@ const ANCHORS = {
 };
 
 export function createMachine({ canvas, labels, data, fontFamily, reduced, coarse, dark, onPhase, onPick }) {
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" });
-  const pr = Math.min(window.devicePixelRatio || 1, 2);
+  // Default power: a laptop should not wake its big GPU for a hero. 1.5x is
+  // sharp on Retina with MSAA; the quality ladder below can drop it to 1x.
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  let pr = Math.min(window.devicePixelRatio || 1, 1.5);
   renderer.setPixelRatio(pr);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NeutralToneMapping;
   renderer.toneMappingExposure = 1.0;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFShadowMap;
+  // The shadows are of things that stand still: drawn once, again only when
+  // the scene changes (audience). What moves casts none.
+  renderer.shadowMap.autoUpdate = false;
   // Dark: the hero's ink, so the scene sits in the hero with no frame.
   renderer.setClearColor(dark ? 0x0F120B : COL.bg, 1);
   const aniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
@@ -100,6 +105,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   // Ambient occlusion on capable screens: the soft contact shadows where
   // things meet the floor. Phones render straight, without it.
   let composer = null, gtao = null;
+  const noAO = [];
   if (!coarse) {
     try {
       const rt = new THREE.WebGLRenderTarget(4, 4, { type: THREE.HalfFloatType, samples: 4 });
@@ -109,11 +115,12 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
       gtao = new GTAOPass(scene, camera, 4, 4);
       gtao.updateGtaoMaterial({ radius: 0.55, distanceExponent: 1.4, thickness: 1.2, scale: 1, samples: 16 });
       gtao.blendIntensity = 0.85;
-      // Glows and see-through parts would cast AO halos: hide them from it.
+      // Glows and see-through parts would cast AO halos: hide them from it
+      // (the list is collected once the scene is built).
       const hide = gtao._overrideVisibility.bind(gtao);
       gtao._overrideVisibility = () => {
         hide();
-        scene.traverse(o => { if (o.visible && (o.isSprite || o.userData.noAO)) { o.visible = false; gtao._visibilityCache.push(o); } });
+        for (const o of noAO) if (o.visible) { o.visible = false; gtao._visibilityCache.push(o); }
       };
       composer.addPass(gtao);
       composer.addPass(new OutputPass());
@@ -255,7 +262,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   st.in.add(phone);
   box(1.18, 2.32, 0.1, 0.17, M.alu, phone);
   box(1.14, 2.28, 0.02, 0.15, M.glass, phone).position.z = 0.046;
-  const phoneTex = canvasTex(512, 1000, 2);
+  const phoneTex = canvasTex(512, 1000, 1.5);
   screen(1.04, 2.14, phoneTex.tex, phone, 0.058);
 
   // ---------- station 02: Nova ----------
@@ -283,7 +290,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   const nova = new THREE.Group(); nova.position.copy(novaHome); st.nova.add(nova);
   const ballMat = keep(new THREE.MeshPhysicalMaterial({ color: 0xC6F035, emissive: 0x8DC21F, emissiveIntensity: 0.55, roughness: 0.22, clearcoat: 1, clearcoatRoughness: 0.06 }));
   const ball = new THREE.Mesh(keep(new THREE.SphereGeometry(0.55, 64, 48)), ballMat);
-  ball.castShadow = true; nova.add(ball);
+  nova.add(ball);
   const novaLight = new THREE.PointLight(0xC6F035, 2.2, 4.5, 2);
   nova.add(novaLight);
   const glowTex = radialTex([[0, "rgba(214,250,90,0.5)"], [0.35, "rgba(198,240,53,0.18)"], [1, "rgba(198,240,53,0)"]]);
@@ -304,7 +311,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   const monitor = new THREE.Group(); monitor.position.set(3.6, 2.66, -2.42); monitor.rotation.x = -0.04; st.app.add(monitor);
   box(4.3, 2.62, 0.12, 0.09, M.alu, monitor);
   box(4.26, 2.58, 0.02, 0.07, M.glass, monitor).position.z = 0.062;
-  const appTex = canvasTex(1100, 660, 2);
+  const appTex = canvasTex(1100, 660, 1.5);
   screen(4.08, 2.4, appTex.tex, monitor, 0.074);
 
   // ---------- station 04a: courier belt (shops) ----------
@@ -338,6 +345,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     box(0.72, 0.52, 0.62, 0.04, M.kraft, p);
     box(0.74, 0.012, 0.16, 0.005, M.tape, p).position.y = 0.262;
     const l = decal(0.34, 0.21, labelTex.tex, p); l.rotation.x = -Math.PI / 2; l.position.set(0.12, 0.27, 0.12);
+    p.traverse(o => { o.castShadow = false; });
     p.visible = false; st.outShop.add(p);
     return { g: p, t0: -1 };
   });
@@ -415,7 +423,6 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   pulse.add(new THREE.Mesh(keep(new THREE.SphereGeometry(0.12, 24, 16)), keep(new THREE.MeshBasicMaterial({ color: 0xE4FF8A }))));
   const pglow = new THREE.Sprite(keep(new THREE.SpriteMaterial({ map: glowTex, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true })));
   pglow.scale.set(1.2, 1.2, 1); pulse.add(pglow);
-  const pulseLight = new THREE.PointLight(0xC6F035, 1.6, 2.2, 2); pulse.add(pulseLight);
   pulse.visible = false; world.add(pulse);
 
   // Invisible hit boxes, so a click on a station focuses it.
@@ -432,6 +439,8 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   hit("app", 4.5, 4.4, 1.4, 3.6, 2.2, -2.4);
   hit("outShop", 5.6, 2.4, 1.6, 5.6, 1.1, 2.6);
   hit("outSvc", 3.4, 2.4, 2.0, 8.0, 1.1, -0.6);
+
+  world.traverse(o => { if (o.isSprite || o.userData.noAO) noAO.push(o); });
 
   // ---------- drawing the screens ----------
   const img = new Image();
@@ -660,6 +669,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     st.outShop.visible = a !== "svc";
     st.outSvc.visible = a !== "shop";
     hits.forEach(h => { if (h.userData.key === "outShop") h.visible = a !== "svc"; if (h.userData.key === "outSvc") h.visible = a !== "shop"; });
+    renderer.shadowMap.needsUpdate = true;
     tCycle = reduced ? 9 : 0; round = 0;
     startCycle();
     if (reduced) poseStill();
@@ -854,6 +864,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     size = { w, h };
     renderer.setSize(w, h, false);
     composer?.setSize(w, h);
+    renderer.shadowMap.needsUpdate = true;
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     homeDist = BASE_DIST * fitScale();
@@ -863,32 +874,63 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   let focused = false;
 
   // ---------- loop ----------
+  // At most 60 frames a second (a 120 Hz screen would double the work), and
+  // a quality ladder: if frames run slow, drop the AO pass, then go to 1x.
   const clock = new THREE.Clock(false);
   let raf = 0;
   let running = false;
   let paused = !!reduced;
   let dirty = true;
-  function frame() {
+  let lastAt = 0;
+  const MIN_GAP = 1000 / 60 - 2;
+  const gaps = [];
+  let warm = 0;
+  function degrade() {
+    if (composer) { composer.dispose?.(); gtao?.dispose?.(); composer = null; gtao = null; }
+    else if (pr > 1) { pr = 1; renderer.setPixelRatio(1); renderer.setSize(size.w, size.h, false); }
+    gaps.length = 0; warm = 0; dirty = true;
+  }
+  function watch(gap) {
+    if (++warm < 90) return; // let shaders compile and textures upload first
+    gaps.push(gap);
+    if (gaps.length < 90) return;
+    const sorted = [...gaps].sort((x, y) => x - y);
+    gaps.length = 0;
+    if (sorted[45] > 24 && (composer || pr > 1)) degrade();
+  }
+  function frame(now) {
     raf = requestAnimationFrame(frame);
+    if (now - lastAt < MIN_GAP) return;
+    if (lastAt) watch(now - lastAt);
+    lastAt = now;
     const dt = Math.min(0.25, clock.getDelta());
     const moving = !paused;
     if (moving) step(dt);
     stepTween(dt);
-    controls.update();
+    if (controls.update()) dirty = true;
     if (moving || tween || dirty || gazeDir.distanceTo(gazeWant) > 0.01) {
       animateNova(dt, moving);
-      placeLabels();
+      if (dirty || tween) placeLabels();
       if (composer) composer.render(); else renderer.render(scene, camera);
       dirty = false;
     }
   }
-  function start() { if (running) return; running = true; clock.start(); raf = requestAnimationFrame(frame); }
+  function start() { if (running) return; running = true; lastAt = 0; warm = 0; gaps.length = 0; clock.start(); raf = requestAnimationFrame(frame); }
   function stop() { running = false; cancelAnimationFrame(raf); clock.stop(); }
+
+  // Compile every material now, hidden parts too, so the first parcel or
+  // SMS does not stall a frame while its shader builds.
+  {
+    const hidden = [];
+    scene.traverse(o => { if (!o.visible) { hidden.push(o); o.visible = true; } });
+    renderer.compile(scene, camera);
+    hidden.forEach(o => { o.visible = false; });
+  }
 
   return {
     setAudience,
     focus(key) { focused = !!key; focus(key || (follow() ? curKey : null)); },
-    setPaused(p) { paused = p; dirty = true; },
+    setPaused(p) { paused = p; dirty = true; gaps.length = 0; warm = 0; },
     resize, start, stop,
     dispose() {
       stop();
