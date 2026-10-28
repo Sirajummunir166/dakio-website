@@ -5,7 +5,7 @@
 // app/home.css hides what does not apply. Styles live in app/home.css (hm-*).
 
 import Link from "next/link";
-import { AudienceSwitch, StickySwitch, StartLink } from "./Audience";
+import { AudienceSwitch, StartLink } from "./Audience";
 import RotatingHead from "./RotatingHead";
 import ChatDemo from "./ChatDemo";
 import NovaMachine from "./NovaMachine";
@@ -81,7 +81,6 @@ export function Hero({ c, lang, L, head = null }) {
             <div className="hm-under">{h.under}</div>
           </div>
         </div>
-        {head ? null : <StickySwitch label={h.showing} opts={h.opts} />}
         {/* Nova's machine: a chat becoming an order or a booking (NovaMachine.jsx). */}
         <div className="hm-hero-stage">
           <NovaMachine m={c.machine} chat={c.chat} dark />

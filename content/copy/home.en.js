@@ -32,7 +32,6 @@ const home = {
         { t: "photography studio", k: "svc" }, { t: "men's salon", k: "svc" },
       ],
     },
-    showing: "Showing",
     accent: "With an AI manager built in.",
     ask: "What do you sell?",
     opts: { shop: "Products", svc: "Services", both: "Both" },

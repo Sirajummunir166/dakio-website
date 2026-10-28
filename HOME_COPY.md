@@ -40,7 +40,7 @@ _Says what Dakio is in five seconds: a role everyone knows (a manager) and the w
 - EN: Run your whole business from one app.
 - BN: পুরো ব্যবসা চালান এক অ্যাপে।
 
-_The page opens on Both. The headline names a business in turn (shops and service businesses alternate, every 2.2 seconds, in lime); with Products or Services picked it names only that side. Phones, reduced motion and search engines get the fallback sentence. The AI line under it is now light, not lime. Links can open the page narrowed: ?for=shops, ?for=services, ?for=both. Once the hero scrolls away a pill (Showing: Products · Services · Both) follows the reader._
+_The page opens on Both. The headline names a business in turn (shops and service businesses alternate, every 2.2 seconds, in lime); with Products or Services picked it names only that side. Phones, reduced motion and search engines get the fallback sentence. The AI line under it is now light, not lime. Links can open the page narrowed: ?for=shops, ?for=services, ?for=both._
 
 **Headline (rotating)**
 - EN: Run your [business] from one app.
@@ -53,10 +53,6 @@ _The page opens on Both. The headline names a business in turn (shops and servic
 **Businesses in turn**
 - EN: clothing shop · beauty parlour · gadget shop · coaching centre · grocery shop · doctor's chamber · photography studio · men's salon
 - BN: পোশাকের দোকান · বিউটি পার্লার · গ্যাজেটের দোকান · কোচিং সেন্টার · মুদি দোকান · ডাক্তারের চেম্বার · ফটোগ্রাফি স্টুডিও · জেন্টস সেলুন
-
-**Pill label**
-- EN: Showing
-- BN: দেখাচ্ছে
 
 **Headline, second line**
 - EN: With an AI manager built in.
@@ -220,7 +216,7 @@ _Right under the hero. The whole system, stage by stage, so a visitor sees Dakio
 
 ### 1c · The real app (new)
 
-_Real screens of the merchant app (public/app/*.webp, 1600x800), taken on the example stores Saril (clothing, real catalogue and photos) and Glow Studio (beauty parlour), with demo orders, chats, bookings and deals on a throwaway copy of the demo database. One card per feature with its own screen, stacking as you scroll (each sticks under the menu as the next slides over). Laptops: words left, screen right; phones: screen under the words. Follows the switch; in Both each card says For shops or For services. No section switch here (the sticky pill covers it). Nova's order in the inbox and the Orders list is #6BB-VHQ6, the same number the chat card and the hero use._
+_Real screens of the merchant app (public/app/*.webp, 1600x800), taken on the example stores Saril (clothing, real catalogue and photos) and Glow Studio (beauty parlour), with demo orders, chats, bookings and deals on a throwaway copy of the demo database. One card per feature with its own screen, stacking as you scroll (each sticks under the menu as the next slides over). Laptops: words left, screen right; phones: screen under the words. Follows the switch; in Both each card says For shops or For services. Nova's order in the inbox and the Orders list is #6BB-VHQ6, the same number the chat card and the hero use._
 
 **Kicker**
 - EN: THE REAL APP
