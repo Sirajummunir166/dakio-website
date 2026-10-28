@@ -1,6 +1,6 @@
-# dakio.io copy — home, services, shops, Nova
+# dakio.io copy: home, services, shops, Nova
 
-Copy deck for the home redesign (branch `feat/home-focus`). Source: the review at https://claude.ai/artifact/SkBPykfaBiSZSkiadpfEzE. Every row has English and Bangla. `{chats}` is still to fill — see *Before it goes live*.
+Copy deck for the home redesign (branch `feat/home-focus`), "AI manager" version. Source review: https://claude.ai/artifact/SkBPykfaBiSZSkiadpfEzE. Every row has English and Bangla. `{chats}` is still to fill; see *Before it goes live*. House rule: no en dash or em dash anywhere.
 
 ## Home (dakio.io)
 
@@ -9,16 +9,16 @@ Copy deck for the home redesign (branch `feat/home-focus`). Source: the review a
 _What Google and link previews show._
 
 **Title**
-- EN: Dakio — AI that answers your customers and takes the order | Bangladesh
-- BN: Dakio — কাস্টমারের মেসেজের উত্তর দেয়, অর্ডার নেয় | বাংলাদেশ
+- EN: Dakio | An AI manager for your whole business, made in Bangladesh
+- BN: Dakio | আপনার পুরো ব্যবসার জন্য একজন AI ম্যানেজার
 
 **Description**
-- EN: Nova answers your Facebook, Instagram, WhatsApp and website messages in Bangla, day and night, and turns them into orders and bookings. Couriers, bKash and cash on delivery included.
-- BN: ফেসবুক, ইনস্টাগ্রাম, হোয়াটসঅ্যাপ আর ওয়েবসাইটের মেসেজের উত্তর দেয় Nova, বাংলায়, দিনরাত, আর কথাবার্তাকে অর্ডার বা বুকিংয়ে বদলে দেয়। কুরিয়ার, বিকাশ আর ক্যাশ অন ডেলিভারি সব সাথেই।
+- EN: Website, orders, customers, couriers, bookings and payments in one app, with Nova, your AI manager, working in every part. Bangla first, bKash and cash on delivery built in.
+- BN: ওয়েবসাইট, অর্ডার, কাস্টমার, কুরিয়ার, বুকিং আর পেমেন্ট, সব এক অ্যাপে। প্রতিটা কাজে আছে আপনার AI ম্যানেজার Nova। বাংলায়, বিকাশ আর ক্যাশ অন ডেলিভারি সহ।
 
 ### Top menu
 
-_Two audience pages replace the long Explore list; the old pages stay in the footer._
+_Two audience pages replace the long Explore list. The old pages stay in the footer._
 
 **Menu items**
 - EN: For shops · For services · Nova · Pricing
@@ -30,15 +30,15 @@ _Two audience pages replace the long Explore list; the old pages stay in the foo
 
 ### 1 · Hero
 
-_Answers "what is this?" in five seconds. The switch swaps the sub line, the demo chat and the result card. Default: Products._
+_Says what Dakio is in five seconds: a role everyone knows (a manager) and the whole business it runs. The switch swaps the sub line and Nova's day. Default: Products._
 
 **Badge**
-- EN: FOR BUSINESSES THAT SELL IN CHAT
-- BN: যারা চ্যাটে বিক্রি করেন, তাদের জন্য
+- EN: FOR SHOPS AND SERVICE BUSINESSES IN BANGLADESH
+- BN: বাংলাদেশের দোকান আর সার্ভিস ব্যবসার জন্য
 
 **Headline**
-- EN: Never miss a customer again.
-- BN: একটা কাস্টমারও আর হাতছাড়া হবে না।
+- EN: An AI manager for your whole business.
+- BN: আপনার পুরো ব্যবসার জন্য একজন AI ম্যানেজার।
 
 **Switch label**
 - EN: What do you sell?
@@ -49,16 +49,16 @@ _Answers "what is this?" in five seconds. The switch swaps the sub line, the dem
 - BN: পণ্য · সার্ভিস · দুটোই
 
 **Sub · Products**
-- EN: Nova answers every message on Facebook, Instagram, WhatsApp and your website, in Bangla, day and night. She tells the price and the delivery charge and takes the order. Couriers, bKash and cash on delivery are already set up.
-- BN: ফেসবুক, ইনস্টাগ্রাম, হোয়াটসঅ্যাপ আর ওয়েবসাইটের প্রতিটা মেসেজের উত্তর দেয় Nova, বাংলায়, দিনরাত। দাম বলে, ডেলিভারি চার্জ বলে, অর্ডার নিয়ে নেয়। কুরিয়ার, বিকাশ, ক্যাশ অন ডেলিভারি সব আগে থেকেই রেডি।
+- EN: Website, orders, customers, couriers and payments in one app, with Nova working in every part. She answers customers, takes orders, keeps buyers updated and tells you what needs you.
+- BN: ওয়েবসাইট, অর্ডার, কাস্টমার, কুরিয়ার আর পেমেন্ট, সব এক অ্যাপে। প্রতিটা কাজে আছে Nova। কাস্টমারের উত্তর দেয়, অর্ডার নেয়, ক্রেতাকে আপডেট জানায়, আর কোনটায় আপনাকে লাগবে সেটা বলে দেয়।
 
 **Sub · Services**
-- EN: Nova answers every message on Facebook, Instagram, WhatsApp and your website, in Bangla, day and night. She offers your free times, takes the booking and reminds the customer the day before.
-- BN: ফেসবুক, ইনস্টাগ্রাম, হোয়াটসঅ্যাপ আর ওয়েবসাইটের প্রতিটা মেসেজের উত্তর দেয় Nova, বাংলায়, দিনরাত। খালি সময় জানায়, বুকিং নেয়, আর আগের দিন কাস্টমারকে মনে করিয়ে দেয়।
+- EN: Website, bookings, calendar, clients and invoices in one app, with Nova working in every part. She answers, books, reminds clients and tells you what needs you.
+- BN: ওয়েবসাইট, বুকিং, ক্যালেন্ডার, ক্লায়েন্ট আর ইনভয়েস, সব এক অ্যাপে। প্রতিটা কাজে আছে Nova। উত্তর দেয়, বুকিং নেয়, ক্লায়েন্টকে মনে করিয়ে দেয়, আর কোনটায় আপনাকে লাগবে সেটা বলে দেয়।
 
 **Sub · Both**
-- EN: Products or services, Nova answers every message in Bangla, day and night, and turns the chat into an order or a booking.
-- BN: পণ্য হোক বা সার্ভিস, প্রতিটা মেসেজের উত্তর দেয় Nova, বাংলায়, দিনরাত, আর কথাবার্তাকে অর্ডার বা বুকিংয়ে বদলে দেয়।
+- EN: Products and services, orders and bookings, all in one app, with Nova working in every part of it.
+- BN: পণ্য আর সার্ভিস, অর্ডার আর বুকিং, সব এক অ্যাপে। আর প্রতিটা কাজে আছে Nova।
 
 **Main button**
 - EN: Get started
@@ -69,232 +69,328 @@ _Answers "what is this?" in five seconds. The switch swaps the sub line, the dem
 - BN: ৫ মিনিটে চালু · কোনো ডেভেলপার লাগবে না
 
 **Second link**
-- EN: See how it works
-- BN: কীভাবে কাজ করে দেখুন
+- EN: See Nova at work
+- BN: Nova-র কাজ দেখুন
 
-### 1a · Demo chat in the hero
+### 1a · Nova's day (hero visual)
 
-_The English page shows Banglish, because that is how customers write; the Bangla page shows Bangla. Store names are examples and say so._
+_Proof of breadth in one glance: real work in four different parts of the business. Every card is something Nova does today. Store names are examples and say so._
 
-**Shop · header**
-- EN: Saril · Messenger · 11:48 PM
-- BN: Saril · Messenger · রাত ১১:৪৮
+**Strip title**
+- EN: Nova's last 24 hours
+- BN: Nova-র গত ২৪ ঘণ্টা
 
-**Customer**
-- EN: Apu eta dam koto? M size ase?
-- BN: আপু এটার দাম কত? M সাইজ আছে?
+**Shop · 11:48 PM**
+- EN: Answered Taspia on Messenger and took her order. ৳2,370, cash on delivery.
+- BN: রাত ১১:৪৮ · মেসেঞ্জারে তাসপিয়ার উত্তর দিয়ে অর্ডার নিয়েছে। ৳২,৩৭০, ক্যাশ অন ডেলিভারি।
 
-**Nova**
-- EN: ৳2,300. M size stock e ase. Dhakar moddhe delivery ৳70, 2 dine pouchabe. Order kore dibo?
-- BN: ৳২,৩০০। M সাইজ স্টকে আছে। ঢাকার ভেতরে ডেলিভারি ৳৭০, ২ দিনে পৌঁছাবে। অর্ডার করে দিই?
+**Shop · 6:00 AM**
+- EN: Sent you the morning report: 23 orders, 84 chats answered, 3 that need you.
+- BN: সকাল ৬:০০ · আপনাকে সকালের রিপোর্ট পাঠিয়েছে: ২৩টা অর্ডার, ৮৪টা চ্যাটের উত্তর, ৩টায় আপনাকে লাগবে।
 
-**Customer**
-- EN: Ha den
-- BN: হ্যাঁ দেন
+**Shop · 2:30 PM**
+- EN: Told Taspia her parcel is on the way.
+- BN: দুপুর ২:৩০ · তাসপিয়াকে জানিয়েছে তার পার্সেল পথে আছে।
 
-**Result card**
-- EN: Order #1044 · ৳2,370 — Cash on delivery · receipt sent to the customer
-- BN: অর্ডার #১০৪৪ · ৳২,৩৭০ — ক্যাশ অন ডেলিভারি · কাস্টমারকে রসিদ পাঠানো হয়েছে
+**Shop · 4:00 PM**
+- EN: Followed up with 5 customers who stopped replying. 2 ordered.
+- BN: বিকেল ৪:০০ · যে ৫ জন উত্তর দেওয়া থামিয়েছিল, তাদের আবার মনে করিয়েছে। ২ জন অর্ডার করেছে।
 
-**Service · header**
-- EN: Glow Studio · Instagram · 10:15 PM
-- BN: Glow Studio · Instagram · রাত ১০:১৫
+**Service · 10:15 PM**
+- EN: Booked a bridal trial for Friday at 4 PM on Instagram.
+- BN: রাত ১০:১৫ · ইনস্টাগ্রামে শুক্রবার বিকেল ৪টায় ব্রাইডাল ট্রায়াল বুক করেছে।
 
-**Customer**
-- EN: Friday bridal trial kora jabe?
-- BN: শুক্রবার ব্রাইডাল ট্রায়াল করা যাবে?
+**Service · 10:20 PM**
+- EN: Saved the bride's wedding date and budget to her client page.
+- BN: রাত ১০:২০ · কনের বিয়ের তারিখ আর বাজেট তার ক্লায়েন্ট পেজে লিখে রেখেছে।
 
-**Nova**
-- EN: Ji, Friday bikel 4ta ar 6ta khali ase. Trial ৳1,500, ek ghonta lage. Konta rakhbo?
-- BN: জি, শুক্রবার বিকেল ৪টা আর ৬টা খালি আছে। ট্রায়াল ৳১,৫০০, এক ঘণ্টা লাগে। কোনটা রাখব?
+**Service · 8:00 AM**
+- EN: Sent each artist their bookings for the day.
+- BN: সকাল ৮:০০ · প্রত্যেক আর্টিস্টকে তার আজকের বুকিংয়ের তালিকা পাঠিয়েছে।
 
-**Customer**
-- EN: 4ta
-- BN: ৪টা
-
-**Result card**
-- EN: Booking · Friday 4:00 PM — Bridal trial · reminder the day before
-- BN: বুকিং · শুক্রবার বিকেল ৪:০০ — ব্রাইডাল ট্রায়াল · আগের দিন রিমাইন্ডার যাবে
+**Service · 6:00 PM**
+- EN: Reminded tomorrow's 7 clients by SMS.
+- BN: সন্ধ্যা ৬:০০ · কালকের ৭ জন ক্লায়েন্টকে SMS-এ মনে করিয়ে দিয়েছে।
 
 **Caption**
-- EN: Example chat. The owner was asleep; Nova answered.
-- BN: উদাহরণ। মালিক তখন ঘুমিয়ে, উত্তর দিয়েছে Nova।
+- EN: Example store. Every card is work Nova does today.
+- BN: উদাহরণ দোকান। প্রতিটা কার্ড Nova-র আজকের আসল কাজ।
 
-### 2 · Works with
-
-_Answers "will it fit my setup?". Brand names stay in English._
-
-**Label**
-- EN: Works with what you already use
-- BN: যা ব্যবহার করছেন, তার সাথেই চলে
-
-**Items**
+**Works with (strip under the hero)**
 - EN: Messenger · Instagram · WhatsApp · Website chat · bKash · Nagad · Cash on delivery · Steadfast · Pathao · RedX
 - BN: Messenger · Instagram · WhatsApp · ওয়েবসাইট চ্যাট · bKash · Nagad · ক্যাশ অন ডেলিভারি · Steadfast · Pathao · RedX
 
-### 3 · Set up in 5 minutes
+### 2 · Other tools vs Dakio
 
-_The real start is the inbox, not the website. Step 2 follows the switch._
-
-**Kicker**
-- EN: SET UP
-- BN: শুরু করা
+_Takes us out of the chatbot box on purpose. Compares with "a chatbot" in general and names no competitor, so we never claim a rival lacks something it has._
 
 **Heading**
-- EN: Answering customers in 5 minutes.
-- BN: ৫ মিনিটেই কাস্টমারের উত্তর দেওয়া শুরু।
+- EN: Other tools answer messages. Nova runs the business behind them.
+- BN: অন্যরা শুধু মেসেজের উত্তর দেয়। Nova সামলায় পুরো ব্যবসা।
 
-**Step 1**
-- EN: Connect your page — Facebook, Instagram, WhatsApp, or the chat on your Dakio website. Your old chats stay where they are.
-- BN: পেজ যুক্ত করুন — ফেসবুক, ইনস্টাগ্রাম, হোয়াটসঅ্যাপ, বা আপনার Dakio ওয়েবসাইটের চ্যাট। আগের চ্যাট যেমন আছে তেমনই থাকবে।
+**Columns**
+- EN: A chatbot · Dakio with Nova
+- BN: চ্যাটবট · Nova সহ Dakio
 
-**Step 2 · Products**
-- EN: Add your products and prices — a photo, a price and the sizes you have. Nova quotes only what is in your shop.
-- BN: পণ্য আর দাম দিন — ছবি, দাম আর কোন সাইজ আছে। Nova শুধু আপনার দোকানে যা আছে সেটাই বলে।
+**Row 1 (both)**
+- EN: Answers messages in Bangla
+- BN: বাংলায় মেসেজের উত্তর
 
-**Step 2 · Services**
-- EN: Add your services and hours — what you offer, the price, how long it takes and when you are open. Nova offers only the times you are free.
-- BN: সার্ভিস আর সময় দিন — কী সার্ভিস দেন, দাম, কতক্ষণ লাগে আর কখন খোলা থাকেন। Nova শুধু খালি সময়গুলোই অফার করে।
+**Row 2 (Dakio)**
+- EN: Takes the order with stock and price checked
+- BN: স্টক আর দাম মিলিয়ে অর্ডার নেয়
 
-**Step 3**
-- EN: Turn Nova on — one switch. She starts answering right away, and one tap turns her off.
-- BN: Nova চালু করুন — একটা সুইচ। সাথে সাথে উত্তর দেওয়া শুরু করে, আর এক চাপেই বন্ধ।
+**Row 3 (Dakio)**
+- EN: Courier, cash on delivery and bKash in the same place
+- BN: কুরিয়ার, ক্যাশ অন ডেলিভারি আর বিকাশ একই জায়গায়
+
+**Row 4 (Dakio)**
+- EN: Every customer's full history on one page
+- BN: প্রতিটা কাস্টমারের পুরো ইতিহাস এক পাতায়
+
+**Row 5 (Dakio)**
+- EN: Bookings, calendar and reminders
+- BN: বুকিং, ক্যালেন্ডার আর রিমাইন্ডার
+
+**Row 6 (Dakio)**
+- EN: Your own website, ready on day one
+- BN: প্রথম দিন থেকেই নিজের ওয়েবসাইট
+
+**Row 7 (Dakio)**
+- EN: Follows up and brings customers back
+- BN: ফলো-আপ করে কাস্টমার ফিরিয়ে আনে
+
+**Row 8 (Dakio)**
+- EN: Reports to you every morning
+- BN: প্রতিদিন সকালে আপনাকে রিপোর্ট দেয়
+
+**Under the table**
+- EN: One app, one bill. No more stitching five tools together.
+- BN: এক অ্যাপ, এক বিল। পাঁচটা টুল জোড়া লাগানোর ঝামেলা নেই।
+
+### 3 · Everything in one place
+
+_The full business, one card per part, each saying what you get and what Nova does there. Cards follow the switch (Bookings shows for services, Orders for shops)._
+
+**Kicker**
+- EN: ONE APP
+- BN: এক অ্যাপ
+
+**Heading**
+- EN: Your whole business in one place. Nova works in every part.
+- BN: পুরো ব্যবসা এক জায়গায়। প্রতিটা কাজে আছে Nova।
+
+**Inbox · title**
+- EN: Inbox
+- BN: ইনবক্স
+
+**Inbox · text**
+- EN: Messenger, Instagram, WhatsApp and website chat in one list. Nova answers, understands voice messages and screenshots, and leaves the hard ones for you.
+- BN: মেসেঞ্জার, ইনস্টাগ্রাম, হোয়াটসঅ্যাপ আর ওয়েবসাইট চ্যাট এক তালিকায়। Nova উত্তর দেয়, ভয়েস মেসেজ আর স্ক্রিনশট বোঝে, আর কঠিনগুলো আপনার জন্য রেখে দেয়।
+
+**Customers · title**
+- EN: Customers
+- BN: কাস্টমার
+
+**Customers · text**
+- EN: Every chat, order, booking and payment on one page per customer. Nova saves what they tell her and reminds you who to call back.
+- BN: প্রতিটা কাস্টমারের চ্যাট, অর্ডার, বুকিং আর পেমেন্ট এক পাতায়। কাস্টমার যা বলে Nova লিখে রাখে, আর কাকে আবার ফোন করতে হবে মনে করিয়ে দেয়।
+
+**Orders · title**
+- EN: Orders and delivery
+- BN: অর্ডার আর ডেলিভারি
+
+**Orders · text**
+- EN: Orders from chat and from your website in one list, with Steadfast, Pathao and RedX built in. Nova keeps every buyer updated.
+- BN: চ্যাট আর ওয়েবসাইটের অর্ডার এক তালিকায়, সাথে Steadfast, Pathao আর RedX। প্রতিটা ক্রেতাকে আপডেট জানায় Nova।
+
+**Bookings · title**
+- EN: Bookings
+- BN: বুকিং
+
+**Bookings · text**
+- EN: A calendar for you and your team, with no double booking. Nova offers free times, books and sends reminders.
+- BN: আপনার আর টিমের জন্য একটা ক্যালেন্ডার, একই সময়ে দুটো বুকিং হয় না। Nova খালি সময় জানায়, বুক করে, রিমাইন্ডার পাঠায়।
+
+**Marketing · title**
+- EN: Marketing
+- BN: মার্কেটিং
+
+**Marketing · text**
+- EN: Offers by SMS, email and chat to the customers you pick. Nova drafts posts from your product photos for you to approve.
+- BN: আপনার বাছাই করা কাস্টমারদের SMS, ইমেইল আর চ্যাটে অফার। পণ্যের ছবি থেকে পোস্টের ড্রাফট বানায় Nova, আপনি অনুমোদন দিলেই যায়।
+
+**Money · title**
+- EN: Money
+- BN: টাকার হিসাব
+
+**Money · text**
+- EN: Payments, invoices, expenses and courier cash in one ledger. Nova tells you every morning what came in.
+- BN: পেমেন্ট, ইনভয়েস, খরচ আর কুরিয়ারের টাকা এক হিসাবে। প্রতিদিন সকালে কত এল, Nova জানিয়ে দেয়।
+
+**Website · title**
+- EN: Website
+- BN: ওয়েবসাইট
+
+**Website · text**
+- EN: A designed shop or booking site from day one, on your own domain, with Nova in the chat bubble.
+- BN: প্রথম দিন থেকেই সাজানো দোকান বা বুকিংয়ের ওয়েবসাইট, নিজের ডোমেইনে, চ্যাট বাবলে Nova সহ।
+
+**Link**
+- EN: See the website designs
+- BN: ওয়েবসাইটের ডিজাইনগুলো দেখুন
 
 ### 4 · After the chat
 
-_The part a reply bot cannot copy. Five steps, swapped by the switch._
-
-**Kicker**
-- EN: AFTER THE CHAT
-- BN: চ্যাটের পরে
+_The proof that the reply is only the start. Five steps, swapped by the switch._
 
 **Heading · Products**
-- EN: From chat to doorstep, in one place.
-- BN: চ্যাট থেকে কাস্টমারের দরজা পর্যন্ত, এক জায়গায়।
+- EN: From the first message to the doorstep.
+- BN: প্রথম মেসেজ থেকে কাস্টমারের দরজা পর্যন্ত।
 
 **Heading · Services**
-- EN: From chat to appointment, in one place.
-- BN: চ্যাট থেকে অ্যাপয়েন্টমেন্ট পর্যন্ত, এক জায়গায়।
-
-**Lede**
-- EN: Most AI tools stop at the reply. Dakio does the work that comes next.
-- BN: বেশিরভাগ AI টুল উত্তর দিয়েই থেমে যায়। এরপরের কাজগুলো করে Dakio।
+- EN: From the first message to the appointment.
+- BN: প্রথম মেসেজ থেকে অ্যাপয়েন্টমেন্ট পর্যন্ত।
 
 **Products 1**
-- EN: The order is written down — price, size and stock checked, with the customer's phone and address.
-- BN: অর্ডার লেখা হয়ে যায় — দাম, সাইজ আর স্টক মিলিয়ে, কাস্টমারের ফোন আর ঠিকানা সহ।
+- EN: The order is written down. Price, size and stock are checked, with the customer's phone and address.
+- BN: অর্ডার লেখা হয়ে যায়। দাম, সাইজ আর স্টক মিলিয়ে, কাস্টমারের ফোন আর ঠিকানা সহ।
 
 **Products 2**
-- EN: A receipt in the chat — and a tracking link, right where the customer ordered.
-- BN: চ্যাটেই রসিদ — আর ট্র্যাকিং লিংক, যেখানে কাস্টমার অর্ডার করেছে সেখানেই।
+- EN: A receipt arrives in the chat, with a tracking link.
+- BN: চ্যাটেই রসিদ আসে, সাথে ট্র্যাকিং লিংক।
 
 **Products 3**
-- EN: The courier is booked — Steadfast, Pathao or RedX, from the order page. Cash on delivery or bKash.
-- BN: কুরিয়ার বুক হয় — অর্ডারের পাতা থেকেই Steadfast, Pathao বা RedX। ক্যাশ অন ডেলিভারি বা বিকাশ।
+- EN: You book the courier from the order page. Cash on delivery or bKash.
+- BN: অর্ডারের পাতা থেকেই কুরিয়ার বুক করেন। ক্যাশ অন ডেলিভারি বা বিকাশ।
 
 **Products 4**
-- EN: Updates on the way — shipped, on the way, delivered. Nova tells the customer in the same chat.
-- BN: পথের খবর — পাঠানো হয়েছে, পথে আছে, পৌঁছে গেছে। একই চ্যাটে কাস্টমারকে জানায় Nova।
+- EN: Shipped, on the way, delivered: Nova tells the customer in the same chat.
+- BN: পাঠানো হয়েছে, পথে আছে, পৌঁছে গেছে: একই চ্যাটে কাস্টমারকে জানায় Nova।
 
 **Products 5**
-- EN: They come back — a review request after delivery, a follow-up to people who went quiet, and offers when you want to send them.
-- BN: কাস্টমার আবার আসে — ডেলিভারির পর রিভিউ চাওয়া, যারা চুপ হয়ে গেছে তাদের মনে করানো, আর আপনি চাইলে অফার।
+- EN: After delivery, Nova asks for a review. Customers who went quiet get a follow-up.
+- BN: ডেলিভারির পর Nova রিভিউ চায়। যারা চুপ হয়ে গেছে, তাদের আবার মনে করায়।
 
 **Services 1**
-- EN: The booking lands on your calendar — the time, the service and who does it. No double booking.
-- BN: বুকিং ক্যালেন্ডারে উঠে যায় — সময়, সার্ভিস আর কে করবে। একই সময়ে দুটো বুকিং হয় না।
+- EN: The booking lands on your calendar: the time, the service and who does it.
+- BN: বুকিং ক্যালেন্ডারে উঠে যায়: সময়, সার্ভিস আর কে করবে।
 
 **Services 2**
-- EN: Confirmation in the chat — the customer gets every detail where they asked.
-- BN: চ্যাটেই কনফার্মেশন — যেখানে জিজ্ঞেস করেছে, সেখানেই কাস্টমার সব তথ্য পায়।
+- EN: The client gets every detail in the chat where they asked.
+- BN: যেখানে জিজ্ঞেস করেছে, সেই চ্যাটেই ক্লায়েন্ট সব তথ্য পায়।
 
 **Services 3**
-- EN: A reminder the day before — by SMS or email, so fewer people forget to come.
-- BN: আগের দিন রিমাইন্ডার — SMS বা ইমেইলে, যাতে কেউ আসতে ভুলে না যায়।
+- EN: A reminder goes out the day before by SMS or email, so fewer people forget to come.
+- BN: আগের দিন SMS বা ইমেইলে রিমাইন্ডার যায়, যাতে কেউ আসতে ভুলে না যায়।
 
 **Services 4**
-- EN: Quote, invoice, payment — the customer accepts online and you record what they paid.
-- BN: কোটেশন, ইনভয়েস, পেমেন্ট — কাস্টমার অনলাইনে Accept করে, আর আপনি পেমেন্ট লিখে রাখেন।
+- EN: Send a quote or an invoice. The client accepts online and you record what they paid.
+- BN: কোটেশন বা ইনভয়েস পাঠান। ক্লায়েন্ট অনলাইনে Accept করে, আর আপনি পেমেন্ট লিখে রাখেন।
 
 **Services 5**
-- EN: They come back — every customer stays in one list with their whole history, ready for your next offer by SMS, email or chat.
-- BN: কাস্টমার আবার আসে — প্রতিটা কাস্টমার পুরো ইতিহাস সহ এক তালিকায় থাকে, পরের অফার পাঠাতে SMS, ইমেইল বা চ্যাটে।
+- EN: The client stays on one page with their whole history, ready for your next offer.
+- BN: ক্লায়েন্ট পুরো ইতিহাস সহ এক পাতায় থাকে, আপনার পরের অফারের জন্য তৈরি।
 
 **Bottom line**
 - EN: Made for Bangladesh: taka, bKash, Nagad, cash on delivery, Bangla and English, Dhaka time.
 - BN: বাংলাদেশের জন্য বানানো: টাকা, বিকাশ, নগদ, ক্যাশ অন ডেলিভারি, বাংলা আর ইংরেজি, ঢাকার সময়।
 
-### 5 · You stay in charge
+### 5 · Set up in 5 minutes
 
-_Answers the real fear: "what if the AI says something wrong?". Three points, no diagram._
+_How to start. Step 2 follows the switch._
 
 **Heading**
-- EN: You stay in charge.
-- BN: নিয়ন্ত্রণ সবসময় আপনার হাতে।
+- EN: Your manager starts work in 5 minutes.
+- BN: ৫ মিনিটেই কাজ শুরু করে আপনার ম্যানেজার।
 
-**Lede**
-- EN: Nova works for you. Your decisions stay yours.
-- BN: Nova আপনার হয়ে কাজ করে। সিদ্ধান্ত আপনারই থাকে।
+**Step 1 · title**
+- EN: Connect your page
+- BN: পেজ যুক্ত করুন
 
-**Point 1**
-- EN: One switch — turn Nova on or off for messages and for comments, any time.
-- BN: একটা সুইচ — মেসেজ আর কমেন্টের জন্য আলাদা করে, যখন খুশি Nova চালু বা বন্ধ করুন।
+**Step 1 · text**
+- EN: Facebook, Instagram, WhatsApp, or the chat on your Dakio website. Your old chats stay where they are.
+- BN: ফেসবুক, ইনস্টাগ্রাম, হোয়াটসঅ্যাপ, বা আপনার Dakio ওয়েবসাইটের চ্যাট। আগের চ্যাট যেমন আছে তেমনই থাকবে।
 
-**Point 2**
-- EN: Hard ones come to you — a complaint, a refund, an angry customer. Nova leaves those chats for you and tells you right away.
-- BN: কঠিনগুলো আপনার কাছে — অভিযোগ, টাকা ফেরত, রাগী কাস্টমার। এসব চ্যাট Nova আপনার জন্য রেখে দেয়, আর সাথে সাথে জানায়।
+**Step 2 · title · Products**
+- EN: Add your products and prices
+- BN: পণ্য আর দাম দিন
 
-**Point 3**
-- EN: Every reply in front of you — read every chat, step in whenever you like, and teach her with your own best replies.
-- BN: প্রতিটা উত্তর আপনার চোখের সামনে — সব চ্যাট দেখুন, যখন খুশি নিজে উত্তর দিন, আর আপনার ভালো উত্তরগুলো দিয়ে তাকে শেখান।
+**Step 2 · text · Products**
+- EN: A photo, a price and the sizes you have. Nova quotes only what is in your shop.
+- BN: ছবি, দাম আর কোন সাইজ আছে। Nova শুধু আপনার দোকানে যা আছে সেটাই বলে।
+
+**Step 2 · title · Services**
+- EN: Add your services and hours
+- BN: সার্ভিস আর সময় দিন
+
+**Step 2 · text · Services**
+- EN: What you offer, the price, how long it takes and when you are open. Nova offers only the times you are free.
+- BN: কী সার্ভিস দেন, দাম, কতক্ষণ লাগে আর কখন খোলা থাকেন। Nova শুধু খালি সময়গুলোই অফার করে।
+
+**Step 3 · title**
+- EN: Turn Nova on
+- BN: Nova চালু করুন
+
+**Step 3 · text**
+- EN: One switch. She starts right away, and one tap turns her off.
+- BN: একটা সুইচ। সাথে সাথে কাজ শুরু করে, আর এক চাপেই বন্ধ।
+
+### 6 · You stay in charge
+
+_Answers the fear behind any AI: "what if she gets it wrong?" Three points, no diagram._
+
+**Heading**
+- EN: Nova manages. You decide.
+- BN: Nova সামলায়। সিদ্ধান্ত আপনার।
+
+**Point 1 · title**
+- EN: One switch
+- BN: একটা সুইচ
+
+**Point 1 · text**
+- EN: Turn Nova on or off for messages and for comments, any time.
+- BN: মেসেজ আর কমেন্টের জন্য আলাদা করে, যখন খুশি Nova চালু বা বন্ধ করুন।
+
+**Point 2 · title**
+- EN: Hard ones come to you
+- BN: কঠিনগুলো আপনার কাছে
+
+**Point 2 · text**
+- EN: A complaint, a refund, an angry customer. Nova leaves those chats for you and tells you right away.
+- BN: অভিযোগ, টাকা ফেরত, রাগী কাস্টমার। এসব চ্যাট Nova আপনার জন্য রেখে দেয়, আর সাথে সাথে জানায়।
+
+**Point 3 · title**
+- EN: Everything in front of you
+- BN: সবকিছু আপনার চোখের সামনে
+
+**Point 3 · text**
+- EN: Read every chat, step in whenever you like, and teach her with your own best replies.
+- BN: প্রতিটা চ্যাট দেখুন, যখন খুশি নিজে উত্তর দিন, আর আপনার ভালো উত্তরগুলো দিয়ে তাকে শেখান।
 
 **Note**
 - EN: Prices, stock and delivery charges come only from your shop. Nova does not make them up.
 - BN: দাম, স্টক আর ডেলিভারি চার্জ আসে শুধু আপনার দোকানের তথ্য থেকে। Nova নিজে থেকে বানায় না।
 
-### 6 · Your website
-
-_Kept, but lower and smaller: a shop site and a booking site side by side._
-
-**Heading**
-- EN: And a website, ready on day one.
-- BN: আর প্রথম দিন থেকেই রেডি একটা ওয়েবসাইট।
-
-**Shop site**
-- EN: A designed shop with checkout, bKash and cash on delivery. Share the link on your page.
-- BN: চেকআউট, বিকাশ আর ক্যাশ অন ডেলিভারি সহ সাজানো দোকান। লিংকটা পেজে শেয়ার করুন।
-
-**Booking site**
-- EN: A booking site with your services, prices and free times. Customers can book without sending a message.
-- BN: আপনার সার্ভিস, দাম আর খালি সময় সহ বুকিংয়ের ওয়েবসাইট। মেসেজ না করেও কাস্টমার বুক করতে পারে।
-
-**Chips**
-- EN: Your own domain · Bangla and English · Nova in a chat bubble
-- BN: নিজের ডোমেইন · বাংলা আর ইংরেজি · চ্যাট বাবলে Nova
-
-**Link**
-- EN: See the designs
-- BN: ডিজাইনগুলো দেখুন
-
 ### 7 · Pricing
 
-_Prices stay live from the catalogue. Plan names stay; L3/L4 and "credits" leave the cards._
+_Prices stay live from the catalogue. The anchor is now a manager's salary. L3/L4 and "credits" leave the cards._
 
 **Heading**
-- EN: Less than one staff member.
-- BN: একজন কর্মচারীর বেতনের চেয়েও কম।
+- EN: Less than one manager's salary.
+- BN: একজন ম্যানেজারের বেতনের চেয়েও কম।
 
 **Sub**
-- EN: A shop assistant costs about ৳12,000 a month and works ten hours a day. Nova answers all day and all night, and every plan includes her.
-- BN: একজন সেলস সহকারীর বেতন মাসে প্রায় ৳১২,০০০, কাজ করে দিনে দশ ঘণ্টা। Nova উত্তর দেয় সারাদিন, সারারাত, আর প্রতিটা প্ল্যানেই সে আছে।
+- EN: A shop manager costs ৳15,000 or more a month and works ten hours a day. Nova works all day and all night, and every plan includes her.
+- BN: একজন দোকান ম্যানেজারের বেতন মাসে ৳১৫,০০০ বা তার বেশি, কাজ করেন দিনে দশ ঘণ্টা। Nova কাজ করে সারাদিন, সারারাত, আর প্রতিটা প্ল্যানেই সে আছে।
 
 **Growth · for**
 - EN: For a business that sells every day
 - BN: যে ব্যবসায় প্রতিদিন বিক্রি হয়
 
 **Growth · points**
-- EN: Nova answers about {chats} customer chats a month · Unlimited products and orders · Website, couriers, bKash and cash on delivery · Follow-ups, order updates and reviews
-- BN: মাসে প্রায় {chats}টা কাস্টমার চ্যাটের উত্তর দেয় Nova · যত খুশি পণ্য আর অর্ডার · ওয়েবসাইট, কুরিয়ার, বিকাশ আর ক্যাশ অন ডেলিভারি · ফলো-আপ, অর্ডারের আপডেট আর রিভিউ
+- EN: Nova handles about {chats} customer chats a month · Unlimited products and orders · Website, couriers, bKash and cash on delivery · Customer pages, follow-ups and reviews
+- BN: মাসে প্রায় {chats}টা কাস্টমার চ্যাট সামলায় Nova · যত খুশি পণ্য আর অর্ডার · ওয়েবসাইট, কুরিয়ার, বিকাশ আর ক্যাশ অন ডেলিভারি · কাস্টমার পেজ, ফলো-আপ আর রিভিউ
 
 **Business · for**
 - EN: For a busy business with a team
@@ -305,8 +401,8 @@ _Prices stay live from the catalogue. Plan names stay; L3/L4 and "credits" leave
 - BN: Growth-এর সবকিছু · মাসে প্রায় {chats}টা কাস্টমার চ্যাট · মাসে ৬০ মিনিট Nova-র সাথে কথা বলুন · স্টাফদের আলাদা লগইন · পণ্যের ছবি থেকে ভিডিও অ্যাড
 
 **Card chip**
-- EN: NOVA OPERATOR · NOVA OPERATOR + VOICE
-- BN: NOVA অপারেটর · NOVA অপারেটর + ভয়েস
+- EN: NOVA MANAGER · NOVA MANAGER + VOICE
+- BN: NOVA ম্যানেজার · NOVA ম্যানেজার + ভয়েস
 
 **Busy month**
 - EN: Busy month? Add more chats from the app any time.
@@ -329,12 +425,28 @@ _The objections we hear, answered in one or two lines each._
 - BN: যা সবাই জানতে চান
 
 **Q**
+- EN: What is Nova?
+- BN: Nova কে?
+
+**A**
+- EN: Nova is the AI manager inside Dakio. She works in your inbox, orders, bookings and customer pages, and reports to you every morning.
+- BN: Nova হলো Dakio-র ভেতরের AI ম্যানেজার। সে কাজ করে আপনার ইনবক্স, অর্ডার, বুকিং আর কাস্টমার পেজে, আর প্রতিদিন সকালে আপনাকে রিপোর্ট দেয়।
+
+**Q**
+- EN: How is this different from a chatbot?
+- BN: চ্যাটবটের সাথে পার্থক্য কী?
+
+**A**
+- EN: A chatbot stops at the reply. Nova takes the order or the booking, keeps the customer updated, follows up, and does it inside the app where your website, couriers and accounts already live.
+- BN: চ্যাটবট উত্তর দিয়েই থেমে যায়। Nova অর্ডার বা বুকিং নেয়, কাস্টমারকে আপডেট জানায়, ফলো-আপ করে, আর সব করে সেই অ্যাপের ভেতরেই যেখানে আপনার ওয়েবসাইট, কুরিয়ার আর হিসাব আগে থেকেই আছে।
+
+**Q**
 - EN: Does Nova understand Bangla?
 - BN: Nova কি বাংলা বোঝে?
 
 **A**
 - EN: Yes: Bangla, English and Banglish, typed or as a voice message. She also recognises a product from a screenshot or a photo of your post.
-- BN: হ্যাঁ — বাংলা, ইংরেজি আর বাংলিশ, লিখে হোক বা ভয়েস মেসেজে। পোস্টের স্ক্রিনশট বা ছবি দেখেও পণ্য চিনে নেয়।
+- BN: হ্যাঁ। বাংলা, ইংরেজি আর বাংলিশ, লিখে হোক বা ভয়েস মেসেজে। পোস্টের স্ক্রিনশট বা ছবি দেখেও পণ্য চিনে নেয়।
 
 **Q**
 - EN: What if she says something wrong?
@@ -345,20 +457,12 @@ _The objections we hear, answered in one or two lines each._
 - BN: দাম, স্টক আর ডেলিভারি Nova শুধু আপনার দোকানের তথ্য থেকে বলে। ঝুঁকির কিছু হলে আপনার জন্য রেখে দেয়। প্রতিটা চ্যাট দেখতে পারবেন, যখন খুশি নিজে উত্তর দিতে পারবেন।
 
 **Q**
-- EN: Do I need a website?
-- BN: ওয়েবসাইট কি লাগবেই?
-
-**A**
-- EN: No. Nova works inside Messenger, Instagram and WhatsApp. You still get a ready website if you want one.
-- BN: না। Nova মেসেঞ্জার, ইনস্টাগ্রাম আর হোয়াটসঅ্যাপের ভেতরেই কাজ করে। তবু চাইলে একটা রেডি ওয়েবসাইট পাবেন।
-
-**Q**
 - EN: Will my Facebook page work?
 - BN: আমার ফেসবুক পেজে চলবে?
 
 **A**
-- EN: Yes. Connect it in a few clicks; your page, posts and old chats stay as they are. Nova answers comments under your posts too.
-- BN: হ্যাঁ। কয়েক ক্লিকে যুক্ত করুন; আপনার পেজ, পোস্ট আর আগের চ্যাট যেমন আছে তেমনই থাকবে। পোস্টের কমেন্টের উত্তরও দেয় Nova।
+- EN: Yes. Connect it in a few clicks. Your page, posts and old chats stay as they are, and Nova answers comments under your posts too.
+- BN: হ্যাঁ। কয়েক ক্লিকে যুক্ত করুন। আপনার পেজ, পোস্ট আর আগের চ্যাট যেমন আছে তেমনই থাকবে, আর পোস্টের কমেন্টের উত্তরও দেয় Nova।
 
 **Q**
 - EN: Do I pay per message?
@@ -373,8 +477,8 @@ _The objections we hear, answered in one or two lines each._
 - BN: আমার পার্লার, কোচিং সেন্টার বা চেম্বার। আমার জন্য কি?
 
 **A**
-- EN: Yes. Pick Services when you sign up. Nova books appointments, classes and visits, and you get a calendar, reminders and a booking website.
-- BN: হ্যাঁ। সাইন আপের সময় 'সার্ভিস' বেছে নিন। Nova অ্যাপয়েন্টমেন্ট, ক্লাস আর ভিজিট বুক করে, আর আপনি পান ক্যালেন্ডার, রিমাইন্ডার আর বুকিংয়ের ওয়েবসাইট।
+- EN: Yes. Pick Services when you sign up. Nova books appointments, classes and visits, and you get a calendar, reminders, invoices and a booking website.
+- BN: হ্যাঁ। সাইন আপের সময় 'সার্ভিস' বেছে নিন। Nova অ্যাপয়েন্টমেন্ট, ক্লাস আর ভিজিট বুক করে, আর আপনি পান ক্যালেন্ডার, রিমাইন্ডার, ইনভয়েস আর বুকিংয়ের ওয়েবসাইট।
 
 **Q**
 - EN: Can I stop any time?
@@ -389,8 +493,8 @@ _The objections we hear, answered in one or two lines each._
 _One promise, one button._
 
 **Heading**
-- EN: Tonight, every customer gets an answer.
-- BN: আজ রাত থেকেই প্রতিটা কাস্টমার উত্তর পাবে।
+- EN: Give your business a manager tonight.
+- BN: আজ রাতেই আপনার ব্যবসাকে একজন ম্যানেজার দিন।
 
 **Button**
 - EN: Get started
@@ -401,8 +505,8 @@ _One promise, one button._
 - BN: ৫ মিনিটে চালু। যখন খুশি Nova বন্ধ।
 
 **Footer tagline**
-- EN: Dakio answers your customers and does the work after the chat. Made in Bangladesh.
-- BN: Dakio আপনার কাস্টমারের উত্তর দেয়, আর চ্যাটের পরের কাজগুলো সামলায়। বাংলাদেশে তৈরি।
+- EN: Dakio runs your whole business in one app, with Nova as your AI manager. Made in Bangladesh.
+- BN: Dakio এক অ্যাপে আপনার পুরো ব্যবসা চালায়, সাথে AI ম্যানেজার Nova। বাংলাদেশে তৈরি।
 
 ## For services (/services)
 
@@ -411,16 +515,16 @@ _One promise, one button._
 _Where parlour, coaching and clinic ads land. Ships with feat/reach._
 
 **Title**
-- EN: Dakio for services — bookings answered day and night
-- BN: সার্ভিস ব্যবসার জন্য Dakio — দিনরাত বুকিংয়ের উত্তর
+- EN: Dakio for services | An AI manager for your bookings and clients
+- BN: সার্ভিস ব্যবসার জন্য Dakio | বুকিং আর ক্লায়েন্টের জন্য AI ম্যানেজার
 
 **Headline**
-- EN: Every booking request answered, even at midnight.
-- BN: রাত ১২টার বুকিংয়ের মেসেজেরও উত্তর যাবে।
+- EN: An AI manager for your bookings, clients and team.
+- BN: আপনার বুকিং, ক্লায়েন্ট আর টিমের জন্য একজন AI ম্যানেজার।
 
 **Sub**
-- EN: For parlours, salons, coaching centres, chambers, photographers and every business that sells its time. Nova answers, offers your free times and books the customer. You get the calendar, reminders, invoices and a booking website.
-- BN: পার্লার, সেলুন, কোচিং সেন্টার, চেম্বার, ফটোগ্রাফার — যারা সময় বিক্রি করেন, তাদের জন্য। Nova উত্তর দেয়, খালি সময় জানায়, বুকিং নিয়ে নেয়। আপনি পান ক্যালেন্ডার, রিমাইন্ডার, ইনভয়েস আর বুকিংয়ের ওয়েবসাইট।
+- EN: For parlours, salons, coaching centres, chambers, photographers and every business that sells its time. Nova answers, offers your free times, books the client and reminds them. You get the calendar, client pages, invoices and a booking website.
+- BN: পার্লার, সেলুন, কোচিং সেন্টার, চেম্বার, ফটোগ্রাফার, যারা সময় বিক্রি করেন তাদের জন্য। Nova উত্তর দেয়, খালি সময় জানায়, বুকিং নেয়, মনে করিয়ে দেয়। আপনি পান ক্যালেন্ডার, ক্লায়েন্ট পেজ, ইনভয়েস আর বুকিংয়ের ওয়েবসাইট।
 
 **Button**
 - EN: Get started
@@ -488,11 +592,11 @@ _Staff per service and the morning list are built (C1, D1)._
 
 ### Then
 
-_Reuses home sections 4 (Services), 5, 6 (booking site), 7 and the Questions._
+_Reuses home sections 2, 3, 4 (Services), 6, 7 and the Questions._
 
 **Closing heading**
-- EN: Your next booking could come in tonight.
-- BN: আপনার পরের বুকিং আজ রাতেই আসতে পারে।
+- EN: Your next booking could come in tonight. Let Nova take it.
+- BN: আপনার পরের বুকিং আজ রাতেই আসতে পারে। Nova-কে নিতে দিন।
 
 ## For shops (/shops)
 
@@ -501,74 +605,76 @@ _Reuses home sections 4 (Services), 5, 6 (booking site), 7 and the Questions._
 _Where shop ads land. The home with Products picked, plus what only shops need._
 
 **Title**
-- EN: Dakio for online shops — every message answered, every order written down
-- BN: অনলাইন দোকানের জন্য Dakio — প্রতিটা মেসেজের উত্তর, প্রতিটা অর্ডারের হিসাব
+- EN: Dakio for online shops | An AI manager for your page, orders and customers
+- BN: অনলাইন দোকানের জন্য Dakio | পেজ, অর্ডার আর কাস্টমারের জন্য AI ম্যানেজার
 
 **Headline**
-- EN: Every message answered. Every order written down.
-- BN: প্রতিটা মেসেজের উত্তর। প্রতিটা অর্ডারের হিসাব।
+- EN: An AI manager for your page, your orders and your customers.
+- BN: আপনার পেজ, অর্ডার আর কাস্টমারের জন্য একজন AI ম্যানেজার।
 
 **Sub**
-- EN: Nova answers your page in Bangla, day and night, and takes the order. Dakio books the courier, collects cash on delivery or bKash and keeps the customer updated.
-- BN: আপনার পেজের প্রতিটা মেসেজের উত্তর দেয় Nova, বাংলায়, দিনরাত, আর অর্ডার নিয়ে নেয়। কুরিয়ার বুক করা, ক্যাশ অন ডেলিভারি বা বিকাশ, কাস্টমারকে আপডেট দেওয়া — সব করে Dakio।
+- EN: Nova answers your page in Bangla, day and night, takes the order and keeps the buyer updated. Your website, couriers, bKash, cash on delivery and customer list are already in the same app.
+- BN: আপনার পেজের প্রতিটা মেসেজের উত্তর দেয় Nova, বাংলায়, দিনরাত। অর্ডার নেয়, ক্রেতাকে আপডেট জানায়। ওয়েবসাইট, কুরিয়ার, বিকাশ, ক্যাশ অন ডেলিভারি আর কাস্টমারের তালিকা আগে থেকেই একই অ্যাপে।
 
 ### What only shops need
 
 _Four short blocks after the home's "after the chat"._
 
 **Comments**
-- EN: Comments too — someone writes "price?" under your post, and Nova sends the price to their inbox.
-- BN: কমেন্টেও — পোস্টে কেউ "দাম কত?" লিখলে Nova তার ইনবক্সে দাম পাঠিয়ে দেয়।
+- EN: Comments too. Someone writes "price?" under your post, and Nova sends the price to their inbox.
+- BN: কমেন্টেও। পোস্টে কেউ "দাম কত?" লিখলে Nova তার ইনবক্সে দাম পাঠিয়ে দেয়।
 
 **Understands**
-- EN: Understands what they send — screenshots of your post, voice messages, a reply to an older message.
-- BN: যা পাঠায় তা বোঝে — পোস্টের স্ক্রিনশট, ভয়েস মেসেজ, পুরনো মেসেজে রিপ্লাই।
+- EN: Understands what they send: screenshots of your post, voice messages, a reply to an older message.
+- BN: যা পাঠায় তা বোঝে: পোস্টের স্ক্রিনশট, ভয়েস মেসেজ, পুরনো মেসেজে রিপ্লাই।
 
 **Suppliers**
-- EN: No stock? Sell from suppliers — pick products from verified suppliers, and Dakio packs and ships every order.
-- BN: স্টক নেই? সাপ্লায়ারের পণ্য বিক্রি করুন — যাচাই করা সাপ্লায়ারদের পণ্য বেছে নিন, প্রতিটা অর্ডার প্যাক করে পাঠায় Dakio।
+- EN: No stock? Sell from verified suppliers, and Dakio packs and ships every order.
+- BN: স্টক নেই? যাচাই করা সাপ্লায়ারদের পণ্য বিক্রি করুন, প্রতিটা অর্ডার প্যাক করে পাঠায় Dakio।
 
 **Posts**
-- EN: Posts and video ads — turn a product photo into a post or a short video ad, and schedule it.
-- BN: পোস্ট আর ভিডিও অ্যাড — পণ্যের ছবি থেকে পোস্ট বা ছোট ভিডিও অ্যাড বানিয়ে শিডিউল করুন।
+- EN: Turn a product photo into a post or a short video ad, and schedule it.
+- BN: পণ্যের ছবি থেকে পোস্ট বা ছোট ভিডিও অ্যাড বানিয়ে শিডিউল করুন।
 
 **Closing heading**
-- EN: Tonight's orders are already waiting in your inbox.
-- BN: আজ রাতের অর্ডারগুলো আপনার ইনবক্সেই অপেক্ষা করছে।
+- EN: Tonight's orders are already waiting in your inbox. Let Nova take them.
+- BN: আজ রাতের অর্ডারগুলো আপনার ইনবক্সেই অপেক্ষা করছে। Nova-কে নিতে দিন।
 
 ## Nova page (/nova) · new block
 
 ### Where Nova is going
 
-_Where the CEO idea now lives: a ladder she climbs when each step is real._
+_Where the CEO idea now lives: a ladder she climbs when each step is real. Manager is today; CEO is the top._
 
 **Heading**
-- EN: Where Nova is going.
-- BN: Nova কোথায় যাচ্ছে।
+- EN: Today a manager. Tomorrow, your CEO.
+- BN: আজ ম্যানেজার। কাল আপনার CEO।
 
 **Lede**
-- EN: She starts as your best salesperson. She takes each step up only when it works, and only when you say so.
-- BN: শুরু করে আপনার সেরা সেলসম্যান হিসেবে। প্রতিটা ধাপ ওপরে ওঠে শুধু যখন সেটা ঠিকঠাক কাজ করে, আর আপনি অনুমতি দেন।
+- EN: Nova takes each step up only when it works, and only when you say so.
+- BN: প্রতিটা ধাপ ওপরে ওঠে শুধু যখন সেটা ঠিকঠাক কাজ করে, আর আপনি অনুমতি দেন।
 
 **Today**
-- EN: Answers and sells — every chat and comment, orders and bookings, updates and follow-ups.
-- BN: আজ: উত্তর দেয়, বিক্রি করে — প্রতিটা চ্যাট আর কমেন্ট, অর্ডার আর বুকিং, আপডেট আর ফলো-আপ।
+- EN: Manages the day: answers, sells, books, follows up and reports to you every morning.
+- BN: আজ: দিনটা সামলায়। উত্তর দেয়, বিক্রি করে, বুকিং নেয়, ফলো-আপ করে, আর প্রতিদিন সকালে রিপোর্ট দেয়।
 
 **Next**
-- EN: Brings customers back — offers, reminders and win-backs by chat, SMS and email.
-- BN: এরপর: কাস্টমার ফিরিয়ে আনে — চ্যাট, SMS আর ইমেইলে অফার, রিমাইন্ডার।
+- EN: Brings customers back: offers, reminders and win-backs by chat, SMS and email.
+- BN: এরপর: কাস্টমার ফিরিয়ে আনে। চ্যাট, SMS আর ইমেইলে অফার আর রিমাইন্ডার।
 
 **Later**
-- EN: Runs your marketing — plans the month, drafts the posts and ads, and reports what worked. Your CEO, once she has earned it.
-- BN: পরে: মার্কেটিং চালায় — মাসের পরিকল্পনা, পোস্ট আর অ্যাডের ড্রাফট, কী কাজ করল তার রিপোর্ট। নিজের যোগ্যতায় আপনার CEO।
+- EN: Plans your growth: the month's plan, posts and ads drafted, and a report of what worked. Your CEO, once she has earned it.
+- BN: পরে: ব্যবসা বাড়ানোর পরিকল্পনা করে। মাসের প্ল্যান, পোস্ট আর অ্যাডের ড্রাফট, কী কাজ করল তার রিপোর্ট। নিজের যোগ্যতায় আপনার CEO।
 
 ## Before it goes live
 
-- **Facebook page connect** — As of the 2026-10-14 read, a merchant without a role on our Meta app cannot connect a Page (pages_manage_metadata needs Advanced Access). "Connect your page in a few clicks" is only true once that review passes. Website chat works today without Meta.
-- **WhatsApp** — The WhatsApp permissions are still in a draft App Review. List WhatsApp only once merchants can connect their own number.
-- **Comments** — Comment replies need pages_read_user_content, pages_manage_engagement and instagram_manage_comments (Advanced Access) for non-role merchants.
-- **{chats}** — Fill from the admin Nova usage page: the median credits per customer chat, then plan credits ÷ that, rounded down to a round number.
-- **Services copy** — Ships only with feat/reach on main. SMS reminders need the SMS company keys; Google Calendar needs the OAuth client.
-- **Courier booking** — Check that Steadfast, Pathao and RedX can each be booked from the order page for a new store.
-- **Trial days** — "14 days" comes from the Free Trial package; the page reads it live.
-- **Bangla** — Written by me, not translated, but it still needs a native read.
+- **Facebook page connect**: As of the 2026-10-14 read, a merchant without a role on our Meta app cannot connect a Page (pages_manage_metadata needs Advanced Access). "Connect your page in a few clicks" is only true once that review passes. Website chat works today without Meta.
+- **WhatsApp**: The WhatsApp permissions are still in a draft App Review. List WhatsApp only once merchants can connect their own number.
+- **Comments**: Comment replies need pages_read_user_content, pages_manage_engagement and instagram_manage_comments (Advanced Access) for merchants without a role.
+- **Customers, bookings, marketing sends**: Customer pages, follow-up reminders, bookings, the calendar, SMS and email offers and invoices are on feat/reach. That copy goes live only with the merge. SMS needs the SMS company keys; Google Calendar needs its OAuth client.
+- **Nova's day cards**: Each card is a real feature: chat orders, the morning report, order updates, chat follow-ups, bookings, client details saved from chat, the team's morning list, reminder SMS. The numbers are an example store.
+- **{chats}**: Fill from the admin Nova usage page: the median credits per customer chat, then plan credits divided by that, rounded down to a round number.
+- **Manager salary**: "৳15,000 or more" is my estimate for a Dhaka shop manager. Swap in your own figure if you have one.
+- **Plan chip**: "NOVA MANAGER" replaces "NOVA OPERATOR" from the claims fix, in lib/plans.js, when the page is built.
+- **Trial days**: "14 days" comes from the Free Trial package; the page reads it live.
+- **Bangla**: Written by me, not translated, but it still needs a native read.
