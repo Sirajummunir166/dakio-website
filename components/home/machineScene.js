@@ -193,18 +193,17 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
     { n: "Website", draw: glyphWeb },
   ];
   const chanX = [-8.0, -6.9, -5.8, -4.7];
+  // Each channel is a flat icon that always faces you, light at rest and
+  // lime when a chat comes in through it.
   const chanTiles = CHANNELS.map((ch, i) => {
-    const tile = new THREE.Group();
-    tile.position.set(chanX[i], 0.5, 2.15);
-    tile.rotation.x = -0.12;
-    tile.userData.base = tile.position.y;
-    st.in.add(tile);
-    const t = box(0.84, 0.84, 0.12, tile, "main", 0.22);
-    tile.userData.edges = t.children[0];
-    const face = canvasTex(256, 256, 2);
-    ch.draw(face.ctx); face.tex.needsUpdate = true;
-    plane(0.62, 0.62, face.tex, tile, true).position.z = 0.062;
-    return tile;
+    const glyph = (color) => { const g = canvasTex(256, 256, 2); ch.draw(g.ctx, color); g.tex.needsUpdate = true; return g.tex; };
+    const light = glyph(CSS.text), lime = glyph(CSS.lime);
+    const icon = new THREE.Sprite(keep(new THREE.SpriteMaterial({ map: light, transparent: true, depthWrite: false })));
+    icon.scale.set(0.9, 0.9, 1);
+    icon.position.set(chanX[i], 0.62, 2.15);
+    icon.userData = { base: icon.position.y, light, lime };
+    st.in.add(icon);
+    return icon;
   });
 
   const phone = new THREE.Group();
@@ -464,25 +463,25 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
     ctx.fillStyle = CSS.dim; for (let i = 0; i < 26; i++) ctx.fillRect(22 + i * 8, 92, i % 3 ? 2 : 4, 44);
   }
 
-  // Channel glyphs: line drawings, no logos, no brand colours.
+  // Channel glyphs: line drawings in one colour, no logos, no brand colours.
   function bubble(ctx) {
     ctx.beginPath(); ctx.ellipse(128, 118, 82, 70, 0, 0.62 * Math.PI, 2.5 * Math.PI); ctx.lineTo(70, 214); ctx.closePath(); ctx.stroke();
   }
-  function glyphMessenger(ctx) {
-    pen(ctx); bubble(ctx);
+  function glyphMessenger(ctx, color) {
+    pen(ctx, color, 9); bubble(ctx);
     ctx.beginPath(); ctx.moveTo(86, 136); ctx.lineTo(116, 104); ctx.lineTo(140, 128); ctx.lineTo(170, 96); ctx.stroke();
   }
-  function glyphInstagram(ctx) {
-    pen(ctx); rr(ctx, 50, 50, 156, 156, 44); ctx.stroke();
+  function glyphInstagram(ctx, color) {
+    pen(ctx, color, 9); rr(ctx, 50, 50, 156, 156, 44); ctx.stroke();
     ctx.beginPath(); ctx.arc(128, 128, 36, 0, Math.PI * 2); ctx.stroke();
     ctx.beginPath(); ctx.arc(172, 84, 6, 0, Math.PI * 2); ctx.fill();
   }
-  function glyphWhatsApp(ctx) {
-    pen(ctx); ctx.beginPath(); ctx.arc(128, 124, 80, 0.7 * Math.PI, 2.62 * Math.PI); ctx.lineTo(56, 210); ctx.closePath(); ctx.stroke();
+  function glyphWhatsApp(ctx, color) {
+    pen(ctx, color, 9); ctx.beginPath(); ctx.arc(128, 124, 80, 0.7 * Math.PI, 2.62 * Math.PI); ctx.lineTo(56, 210); ctx.closePath(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(100, 96); ctx.quadraticCurveTo(96, 150, 156, 156); ctx.stroke();
   }
-  function glyphWeb(ctx) {
-    pen(ctx); ctx.beginPath(); ctx.arc(128, 128, 80, 0, Math.PI * 2); ctx.stroke();
+  function glyphWeb(ctx, color) {
+    pen(ctx, color, 9); ctx.beginPath(); ctx.arc(128, 128, 80, 0, Math.PI * 2); ctx.stroke();
     ctx.beginPath(); ctx.ellipse(128, 128, 34, 80, 0, 0, Math.PI * 2); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(48, 128); ctx.lineTo(208, 128); ctx.stroke();
   }
@@ -572,11 +571,13 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
       placePulse(R.toApp, T.toApp[0], T.toApp[1], t) ||
       placePulse(kind === "shop" ? R.toShop : R.toSvc, T.toOut[0], T.toOut[1], t);
 
-    // The channel the chat came from hops.
+    // The channel the chat came from turns lime and hops.
     chanTiles.forEach((s, i) => {
       const k = i === ci && t < 1.0 ? Math.sin(Math.min(1, t / 0.6) * Math.PI) : 0;
-      s.position.y = s.userData.base + k * 0.3;
-      s.rotation.y = k * 0.5;
+      s.position.y = s.userData.base + k * 0.25;
+      const sc = 0.9 * (1 + k * 0.12); s.scale.set(sc, sc, 1);
+      const map = i === ci && lastPhase === "in" ? s.userData.lime : s.userData.light;
+      if (s.material.map !== map) s.material.map = map;
     });
 
     // The phone fills up, with Nova typing before each of her turns.
