@@ -110,7 +110,7 @@ const home = {
 
   flow: {
     kicker: "AFTER THE CHAT",
-    h2: { shop: "From the first message to the doorstep.", svc: "From the first message to the appointment." },
+    h2: { shop: "From the first message to the doorstep.", svc: "From the first message to the appointment.", both: "From the first message to the doorstep or the appointment." },
     shop: [
       "The order is written down. Price, size and stock are checked, with the customer's phone and address.",
       "A receipt arrives in the chat, with a tracking link.",
@@ -127,6 +127,34 @@ const home = {
     ],
     label: { shop: "For shops", svc: "For services" },
     bottom: "Made for Bangladesh: taka, bKash, Nagad, cash on delivery, Bangla and English, Dhaka time.",
+  },
+
+  // The live chat in "After the chat" (components/home/ChatDemo.jsx). The
+  // English page shows Banglish because that is how customers write. Each
+  // Nova move is a built feature: product from a screenshot, product card,
+  // delivery fee and time, chat order with receipt; free slots as tap
+  // chips, booking with a reminder SMS.
+  chat: {
+    typing: "Nova is typing",
+    input: "Message",
+    caption: "Example store. Nova's side is how she answers today.",
+    head: { shop: { name: "Saril", channel: "Messenger" }, svc: { name: "Glow Studio", channel: "Instagram" } },
+    shop: [
+      { from: "them", shot: "Muslin saree · crimson", t: "Eta ase?" },
+      { from: "nova", t: "Ji, ase! Eta amader Muslin saree, crimson.", product: { n: "Muslin saree · crimson", p: "৳2,300", note: "M and L in stock" } },
+      { from: "them", t: "M size. Mirpur e delivery koto?" },
+      { from: "nova", t: "Mirpur e delivery ৳70, 2 dine pouchabe. Total ৳2,370. Order kore dibo?" },
+      { from: "them", t: "Ha den. Mirpur 10, 01711-xxxxxx" },
+      { from: "nova", t: "Order confirmed! Receipt pathalam. Parcel pathale janabo.", card: { t: "Order #1044 · ৳2,370", d: "Cash on delivery · now in your Orders" } },
+    ],
+    svc: [
+      { from: "them", t: "Friday bridal trial kora jabe?" },
+      { from: "nova", t: "Ji! Friday bikel 4ta ar 6ta khali ase. Trial ৳1,500, ek ghonta lage.", chips: ["4:00 PM", "6:00 PM"] },
+      { from: "them", tap: true, t: "4:00 PM" },
+      { from: "nova", t: "Apnar nam ar phone number ta diben?" },
+      { from: "them", t: "Nusrat, 01812-xxxxxx" },
+      { from: "nova", t: "Booked! Friday 4 PM, bridal trial. Ager din SMS e mone koriye dibo.", card: { t: "Booking · Friday 4:00 PM", d: "Bridal trial · reminder SMS on Thursday" } },
+    ],
   },
 
   setup: {

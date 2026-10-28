@@ -39,3 +39,11 @@ export function AudienceSwitch({ label, opts }) {
     </div>
   );
 }
+
+const SELLS = { shop: "products", svc: "services", both: "both" };
+
+/** "Get started" that carries the choice to signup (?sells=), which preselects it. */
+export function StartLink({ href, className, children }) {
+  const { aud } = useContext(AudienceContext);
+  return <a href={`${href}?sells=${SELLS[aud]}`} className={className}>{children}</a>;
+}

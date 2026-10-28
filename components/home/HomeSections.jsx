@@ -5,8 +5,9 @@
 // app/home.css hides what does not apply. Styles live in app/home.css (hm-*).
 
 import Link from "next/link";
-import { AudienceSwitch } from "./Audience";
+import { AudienceSwitch, StartLink } from "./Audience";
 import NovaFeed from "./NovaFeed";
+import ChatDemo from "./ChatDemo";
 import HomePlans from "./HomePlans";
 import TrialLine from "../pricing/TrialLine";
 import { REGISTER_URL } from "../../lib/urls";
@@ -68,7 +69,7 @@ export function Hero({ c, lang, L, head = null }) {
               </>
             )}
             <div className="hm-ctas">
-              <a href={REGISTER_URL} className="hm-btn hm-btn-lime">{h.cta} <Arrow /></a>
+              <StartLink href={REGISTER_URL} className="hm-btn hm-btn-lime">{h.cta} <Arrow /></StartLink>
               <Link href={L("/nova")} className="hm-btn hm-btn-ghost">{h.second}</Link>
             </div>
             <div className="hm-under">{h.under}</div>
@@ -156,7 +157,7 @@ export function Parts({ c, L }) {
   );
 }
 
-/* ---------------- 4 · After the chat ---------------- */
+/* ---------------- 4 · After the chat: the live chat (ChatDemo.jsx) ---------------- */
 
 export function Flow({ c }) {
   const f = c.flow;
@@ -166,19 +167,9 @@ export function Flow({ c }) {
         <div className="hm-kicker">{f.kicker}</div>
         <h2 className="hm-h2" data-show="shop-only">{f.h2.shop}</h2>
         <h2 className="hm-h2" data-show="svc-only">{f.h2.svc}</h2>
+        <h2 className="hm-h2" data-show="both-only">{f.h2.both}</h2>
       </div>
-      <div className="hm-flow">
-        {["shop", "svc"].map(k => (
-          <div key={k} className="hm-flowcol" data-show={k}>
-            <h3 className="hm-flow-label" data-show="both-only">{f.label[k]}: {f.h2[k]}</h3>
-            <ol className="hm-steps">
-              {f[k].map((t, i) => (
-                <li key={i}><span className="hm-step-n">{i + 1}</span><span className="hm-body">{t}</span></li>
-              ))}
-            </ol>
-          </div>
-        ))}
-      </div>
+      <ChatDemo chat={c.chat} flow={{ shop: f.shop, svc: f.svc }} />
       <p className="hm-note hm-center">{f.bottom}</p>
     </section>
   );
@@ -294,7 +285,7 @@ export function Closing({ c, heading }) {
     <section className="hm-wrap hm-sec hm-sec-last" data-reveal>
       <div className="hm-cta">
         <h2 className="hm-cta-h2">{heading || x.h2}</h2>
-        <a href={REGISTER_URL} className="hm-btn hm-btn-ink"><span className="hm-dot" />{x.primary}</a>
+        <StartLink href={REGISTER_URL} className="hm-btn hm-btn-ink"><span className="hm-dot" />{x.primary}</StartLink>
         <div className="hm-cta-under">{x.under}</div>
       </div>
     </section>

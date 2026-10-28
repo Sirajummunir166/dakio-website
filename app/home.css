@@ -50,9 +50,10 @@
 .hm-ask { margin-top: 28px; display: grid; gap: 10px; }
 .hm-ask-label { font-family: var(--dk-font-mono), monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #878B76; }
 .hm-seg { display: inline-flex; flex-wrap: wrap; gap: 4px; width: fit-content; padding: 4px; border-radius: 99px; background: #1C2014; border: 1px solid rgba(233,239,220,0.1); }
-.hm-seg button { font: 700 14px var(--dk-font-sans), var(--dk-font-bn), sans-serif; color: #C9CDB8; background: transparent; border: 0; padding: 9px 18px; border-radius: 99px; cursor: pointer; transition: background .15s ease, color .15s ease; }
+.hm-seg button { font: 600 13.5px var(--dk-font-sans), var(--dk-font-bn), sans-serif; color: #A9AD98; background: transparent; border: 1px solid transparent; padding: 7px 16px; border-radius: 99px; cursor: pointer; transition: background .15s ease, color .15s ease, border-color .15s ease; }
 .hm-seg button:hover { color: #FBFBF4; }
-.hm-seg button[aria-pressed="true"] { background: #C6F035; color: #0F120B; }
+/* A selector, not a button: raised ink with lime text. Lime fill stays for Get started only. */
+.hm-seg button[aria-pressed="true"] { background: #2A3020; color: #C6F035; border-color: rgba(198,240,53,0.35); }
 .hm-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .hm-under { margin-top: 16px; font-size: 13px; color: #878B76; }
 
@@ -121,15 +122,54 @@
 .hm-part .hm-link { margin-top: 4px; justify-self: start; font-size: 13.5px; }
 .hm-grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 
-/* ---------- Flow ---------- */
-.hm-flow { display: grid; gap: 14px; }
-.hm[data-aud="both"] .hm-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.hm-flow-label { margin: 0 0 12px; font-size: 17px; font-weight: 800; letter-spacing: -0.3px; }
+/* ---------- Steps (used beside the live chat) ---------- */
 .hm-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; counter-reset: s; }
-.hm[data-aud="both"] .hm-steps { grid-template-columns: minmax(0, 1fr); gap: 10px; }
 .hm-steps li { display: grid; align-content: start; gap: 12px; padding: 20px; border-radius: 22px; background: #FBFAF5; border: 1px solid rgba(26,29,18,0.07); }
-.hm[data-aud="both"] .hm-steps li { grid-template-columns: 34px minmax(0, 1fr); align-items: start; padding: 16px 18px; }
 .hm-step-n { width: 34px; height: 34px; border-radius: 11px; background: #0F120B; color: #C6F035; font-family: var(--dk-font-mono), monospace; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+
+/* ---------- Live chat (ChatDemo.jsx) ---------- */
+.hm-chatdemo { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 48px; align-items: center; max-width: 1000px; margin: 0 auto; }
+.hm-phone { border-radius: 34px; background: #FFFFFF; border: 8px solid #0F120B; box-shadow: 0 30px 70px rgba(15,18,11,0.22); overflow: hidden; display: flex; flex-direction: column; height: 600px; transition: opacity .5s ease; }
+.hm-phone.is-fading { opacity: 0; }
+.hm-phone-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #ECEDE6; }
+.hm-phone-av { width: 32px; height: 32px; border-radius: 99px; background: #0F120B; color: #C6F035; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+.hm-phone-name { font-size: 15px; font-weight: 800; }
+.hm-phone-ch { margin-left: auto; font-size: 11.5px; color: #6B6D60; }
+.hm-phone-body { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; padding: 14px; overflow: hidden; background: #F7F7F2; }
+.hm-phone-input { margin: 10px 12px 12px; padding: 10px 14px; border-radius: 99px; background: #F0F1EA; font-size: 13px; color: #9A9C8E; }
+.hm-msg-wrap { display: grid; gap: 6px; max-width: 84%; }
+.hm-msg-wrap.is-them { justify-self: end; align-self: flex-end; justify-items: end; }
+.hm-msg-wrap.is-nova { align-self: flex-start; justify-items: start; }
+.hm-msg-wrap.is-in { animation: hmMsg .45s cubic-bezier(.25,.8,.25,1) both; }
+@keyframes hmMsg { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
+.hm-msg { padding: 9px 13px; border-radius: 18px; font-size: 14px; line-height: 1.45; }
+.hm-msg-them { background: #0F120B; color: #F4F2EA; border-bottom-right-radius: 6px; }
+.hm-msg-nova { background: #FFFFFF; color: #1A1D12; border: 1px solid #E3E5DA; border-bottom-left-radius: 6px; }
+.hm-msg-tap { background: #C6F035; color: #0F120B; font-weight: 700; }
+.hm-typing-bubble { align-self: flex-start; display: inline-flex; gap: 4px; padding: 12px 14px; }
+.hm-typing-bubble i { width: 6px; height: 6px; border-radius: 99px; background: #8E9180; animation: hmType 1.1s ease-in-out infinite; }
+.hm-typing-bubble i:nth-child(2) { animation-delay: .15s; }
+.hm-typing-bubble i:nth-child(3) { animation-delay: .3s; }
+.hm-shot { width: 150px; border-radius: 14px; overflow: hidden; border: 1px solid #E3E5DA; background: #FFFFFF; display: grid; }
+.hm-shot-img { height: 92px; background: radial-gradient(circle at 70% 30%, #F2C9B8 0 18%, transparent 19%), linear-gradient(135deg, #B8324A 0%, #7E1F33 60%, #4A1220 100%); }
+.hm-shot-cap { padding: 6px 9px; font-size: 11px; color: #4A4D40; }
+.hm-pcard { display: flex; gap: 10px; align-items: center; padding: 8px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E3E5DA; }
+.hm-pcard-img { width: 44px; height: 54px; border-radius: 9px; flex-shrink: 0; background: linear-gradient(135deg, #B8324A 0%, #7E1F33 60%, #4A1220 100%); }
+.hm-pcard-txt { display: grid; gap: 2px; font-size: 12.5px; color: #55584B; }
+.hm-pcard-txt b { font-size: 13px; color: #1A1D12; }
+.hm-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.hm-chips span { padding: 6px 12px; border-radius: 99px; border: 1.5px solid #3E7A45; color: #3E7A45; font-size: 12.5px; font-weight: 700; background: #FFFFFF; }
+.hm-rcard { display: flex; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 14px; background: #E6EFC9; border: 1px solid #C9DC92; }
+.hm-rcard-tick { width: 26px; height: 26px; border-radius: 99px; background: #3E7A45; color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.hm-rcard-txt { display: grid; gap: 2px; font-size: 12px; color: #3B4A12; }
+.hm-rcard-txt b { font-size: 13.5px; color: #1A1D12; }
+.hm-chatsteps { display: grid; gap: 14px; }
+.hm-steps-v { grid-template-columns: minmax(0, 1fr) !important; gap: 10px; }
+.hm-steps-v li { grid-template-columns: 34px minmax(0, 1fr); align-items: center; padding: 14px 18px; opacity: .45; transition: opacity .5s ease, border-color .5s ease, background .5s ease, transform .5s ease; }
+.hm-steps-v li.is-lit { opacity: 1; border-color: #C9DC92; background: #FBFDF2; transform: translateX(4px); }
+.hm-steps-v li .hm-step-n { transition: background .5s ease, color .5s ease; }
+.hm-steps-v li.is-lit .hm-step-n { background: #C6F035; color: #0F120B; }
+.hm-chat-cap { margin: 0; font-size: 12.5px; color: #8E9180; }
 
 /* ---------- Setup ---------- */
 .hm-setup { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
@@ -176,9 +216,9 @@
   .hm-hero-grid, .hm-charge, .hm-team { grid-template-columns: minmax(0, 1fr); }
   .hm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hm-grid4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hm-chatdemo { grid-template-columns: minmax(0, 1fr); gap: 28px; max-width: 460px; }
   .hm-h1 { font-size: clamp(36px, 8vw, 54px); letter-spacing: -1.6px; }
   .hm-h2 { font-size: clamp(30px, 6.4vw, 42px); letter-spacing: -1.2px; }
-  .hm[data-aud="both"] .hm-flow { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 760px) {
   .hm-wrap { padding-left: 16px; padding-right: 16px; }
@@ -186,6 +226,8 @@
   .hm-hero { border-radius: 0; padding: 44px 16px 28px; }
   .hm-sec { padding-top: 72px; }
   .hm-parts, .hm-setup, .hm-kinds, .hm-grid4, .hm-steps { grid-template-columns: minmax(0, 1fr); }
+  .hm-phone { height: 540px; border-width: 6px; }
+  .hm-steps-v li.is-lit { transform: none; }
   .hm-steps li { grid-template-columns: 34px minmax(0, 1fr); align-items: start; padding: 16px 18px; }
   .hm-charge { padding: 32px 20px; border-radius: 26px; }
   .hm-charge-head .hm-h2, .hm-team .hm-h2 { font-size: 30px; }
@@ -205,7 +247,7 @@
 }
 
 /* ---------- Bangla ---------- */
-html[lang="bn"] .hm-h1, html[lang="bn"] .hm-h2, html[lang="bn"] .hm-h3, html[lang="bn"] .hm-cta-h2, html[lang="bn"] .hm-flow-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; line-height: 1.3; }
+html[lang="bn"] .hm-h1, html[lang="bn"] .hm-h2, html[lang="bn"] .hm-h3, html[lang="bn"] .hm-cta-h2 { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; line-height: 1.3; }
 html[lang="bn"] .hm-h1 { font-size: 52px; }
 html[lang="bn"] .hm-h2 { font-size: 38px; }
 html[lang="bn"] .hm-cta-h2 { font-size: 46px; }
@@ -213,6 +255,7 @@ html[lang="bn"] .hm-kicker, html[lang="bn"] .hm-badge, html[lang="bn"] .hm-ask-l
 html[lang="bn"] .hm-lead, html[lang="bn"] .hm-body, html[lang="bn"] .hm-lead-dark, html[lang="bn"] .hm-note, html[lang="bn"] .hm-day-t, html[lang="bn"] .hm-faq summary, html[lang="bn"] .hm-vs-t { font-family: var(--dk-font-bn), sans-serif; line-height: 1.75; }
 html[lang="bn"] .hm-live, html[lang="bn"] .hm-day-at { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; }
 html[lang="bn"] .hm-day-at { font-size: 12px; }
+html[lang="bn"] .hm-msg, html[lang="bn"] .hm-pcard-txt, html[lang="bn"] .hm-rcard-txt, html[lang="bn"] .hm-chips, html[lang="bn"] .hm-shot-cap, html[lang="bn"] .hm-chat-cap { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
 html[lang="bn"] .hm-day-list { height: 392px; }
 html[lang="bn"] .hm-status { font-family: var(--dk-font-bn), sans-serif; }
 html[lang="bn"] .hm-seg button, html[lang="bn"] .hm-btn, html[lang="bn"] .hm-day-tag, html[lang="bn"] .hm-day-title { font-family: var(--dk-font-bn), sans-serif; }
@@ -227,5 +270,5 @@ html[lang="bn"] .hm-seg button, html[lang="bn"] .hm-btn, html[lang="bn"] .hm-day
 
 @media (prefers-reduced-motion: reduce) {
   .hm-works-run, .hm-orb, .hm-cta .hm-dot { animation: none; }
-  .hm-h1, .hm-day, .hm-day-list li, .hm-day-list li.is-new, .hm-day-list li.is-new .hm-day-row, .hm-typing i, .hm-live-dot, .hm-orb-ring { animation: none; }
+  .hm-h1, .hm-day, .hm-day-list li, .hm-day-list li.is-new, .hm-day-list li.is-new .hm-day-row, .hm-typing i, .hm-live-dot, .hm-orb-ring, .hm-msg-wrap.is-in, .hm-typing-bubble i { animation: none; }
 }

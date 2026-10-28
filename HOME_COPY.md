@@ -312,6 +312,10 @@ _The proof that the reply is only the start. Five steps, swapped by the switch._
 - EN: From the first message to the appointment.
 - BN: প্রথম মেসেজ থেকে অ্যাপয়েন্টমেন্ট পর্যন্ত।
 
+**Heading · Both**
+- EN: From the first message to the doorstep or the appointment.
+- BN: প্রথম মেসেজ থেকে দরজা বা অ্যাপয়েন্টমেন্ট পর্যন্ত।
+
 **Products 1**
 - EN: The order is written down. Price, size and stock are checked, with the customer's phone and address.
 - BN: অর্ডার লেখা হয়ে যায়। দাম, সাইজ আর স্টক মিলিয়ে, কাস্টমারের ফোন আর ঠিকানা সহ।
@@ -355,6 +359,58 @@ _The proof that the reply is only the start. Five steps, swapped by the switch._
 **Bottom line**
 - EN: Made for Bangladesh: taka, bKash, Nagad, cash on delivery, Bangla and English, Dhaka time.
 - BN: বাংলাদেশের জন্য বানানো: টাকা, বিকাশ, নগদ, ক্যাশ অন ডেলিভারি, বাংলা আর ইংরেজি, ঢাকার সময়।
+
+### 4a · Live chat (in After the chat)
+
+_A phone plays one conversation where Nova turns chat into an order or a booking; when the card lands, the five steps beside it light up one by one, then it plays again. The English page shows Banglish, the way customers write. Each Nova move is a built feature._
+
+**Shop · Saril · Messenger · Customer**
+- EN: Eta ase? [screenshot: Muslin saree · crimson]
+- BN: এটা আছে? [screenshot: মসলিন শাড়ি · লাল]
+
+**Shop · Saril · Messenger · Nova**
+- EN: Ji, ase! Eta amader Muslin saree, crimson. [product card: Muslin saree · crimson · ৳2,300 · M and L in stock]
+- BN: জি, আছে! এটা আমাদের মসলিন শাড়ি, লাল রঙ। [product card: মসলিন শাড়ি · লাল · ৳২,৩০০ · M আর L সাইজ স্টকে আছে]
+
+**Shop · Saril · Messenger · Customer**
+- EN: M size. Mirpur e delivery koto?
+- BN: M সাইজ। মিরপুরে ডেলিভারি কত?
+
+**Shop · Saril · Messenger · Nova**
+- EN: Mirpur e delivery ৳70, 2 dine pouchabe. Total ৳2,370. Order kore dibo?
+- BN: মিরপুরে ডেলিভারি ৳৭০, ২ দিনে পৌঁছাবে। মোট ৳২,৩৭০। অর্ডার করে দিই?
+
+**Shop · Saril · Messenger · Customer**
+- EN: Ha den. Mirpur 10, 01711-xxxxxx
+- BN: হ্যাঁ দেন। মিরপুর ১০, 01711-xxxxxx
+
+**Shop · Saril · Messenger · Nova**
+- EN: Order confirmed! Receipt pathalam. Parcel pathale janabo. [card: Order #1044 · ৳2,370 · Cash on delivery · now in your Orders]
+- BN: অর্ডার কনফার্ম! রসিদ পাঠালাম। পার্সেল পাঠালে জানাব। [card: অর্ডার #১০৪৪ · ৳২,৩৭০ · ক্যাশ অন ডেলিভারি · আপনার অর্ডার তালিকায় উঠে গেছে]
+
+**Service · Glow Studio · Instagram · Customer**
+- EN: Friday bridal trial kora jabe?
+- BN: শুক্রবার ব্রাইডাল ট্রায়াল করা যাবে?
+
+**Service · Glow Studio · Instagram · Nova**
+- EN: Ji! Friday bikel 4ta ar 6ta khali ase. Trial ৳1,500, ek ghonta lage. [tap: 4:00 PM, 6:00 PM]
+- BN: জি! শুক্রবার বিকেল ৪টা আর ৬টা খালি আছে। ট্রায়াল ৳১,৫০০, এক ঘণ্টা লাগে। [tap: বিকেল ৪টা, সন্ধ্যা ৬টা]
+
+**Service · Glow Studio · Instagram · Customer**
+- EN: 4:00 PM
+- BN: বিকেল ৪টা
+
+**Service · Glow Studio · Instagram · Nova**
+- EN: Apnar nam ar phone number ta diben?
+- BN: আপনার নাম আর ফোন নম্বরটা দেবেন?
+
+**Service · Glow Studio · Instagram · Customer**
+- EN: Nusrat, 01812-xxxxxx
+- BN: নুসরাত, 01812-xxxxxx
+
+**Service · Glow Studio · Instagram · Nova**
+- EN: Booked! Friday 4 PM, bridal trial. Ager din SMS e mone koriye dibo. [card: Booking · Friday 4:00 PM · Bridal trial · reminder SMS on Thursday]
+- BN: বুক হয়ে গেছে! শুক্রবার বিকেল ৪টা, ব্রাইডাল ট্রায়াল। আগের দিন SMS-এ মনে করিয়ে দেব। [card: বুকিং · শুক্রবার বিকেল ৪:০০ · ব্রাইডাল ট্রায়াল · বৃহস্পতিবার রিমাইন্ডার SMS]
 
 ### 5 · Set up in 5 minutes
 
