@@ -113,9 +113,30 @@
 .hm-step-n { width: 34px; height: 34px; border-radius: 11px; background: #0F120B; color: #C6F035; font-family: var(--dk-font-mono), monospace; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
 
 /* ---------- Live chat (ChatDemo.jsx) ---------- */
-.hm-chatdemo { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 48px; align-items: center; max-width: 1000px; margin: 0 auto; }
+/* The live chat (ChatDemo.jsx): pinned while you scroll the track, one stretch per message. */
+.hm-chat-track { position: relative; height: calc(var(--beats) * 30vh + 640px); }
+.hm-chat-track.is-still { height: auto; }
+.hm-chatdemo { position: sticky; top: max(84px, calc(50vh - 300px)); display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 64px; align-items: center; max-width: 1000px; margin: 0 auto; }
+.hm-chat-track.is-still .hm-chatdemo { position: static; }
+.hm-chatside { display: grid; gap: 22px; align-content: center; min-height: 360px; }
+.hm-chatbeat { display: grid; gap: 14px; animation: hmBeat .45s cubic-bezier(.2,.8,.2,1) both; }
+.hm-chatbeat-n { font-family: var(--dk-font-mono), monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: #3E7A45; }
+.hm-chatbeat-t { margin: 0; font-size: 30px; line-height: 1.22; letter-spacing: -0.8px; font-weight: 800; color: #8E9180; text-wrap: balance; }
+.hm-chatbeat-t.is-nova { color: #1A1D12; }
+@keyframes hmBeat { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.hm-chatafter { display: grid; gap: 16px; animation: hmBeat .45s cubic-bezier(.2,.8,.2,1) both; }
+.hm-chatafter-t { margin: 0; font-size: 24px; line-height: 1.25; letter-spacing: -0.5px; font-weight: 800; color: #1A1D12; }
+.hm-chatafter-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.hm-chatafter-list li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px; align-items: start; font-size: 15px; line-height: 1.5; color: #A9AB9C; transition: color .35s ease; }
+.hm-chatafter-list li.is-on { color: #33372A; }
+.hm-chatafter-tick { width: 22px; height: 22px; margin-top: 1px; border-radius: 99px; display: grid; place-items: center; border: 1.5px solid #D6D4C8; color: transparent; transition: background .35s ease, border-color .35s ease, color .35s ease; }
+.hm-chatafter-list li.is-on .hm-chatafter-tick { background: #C6F035; border-color: #C6F035; color: #0F120B; }
+.hm-chatdots { display: flex; gap: 6px; }
+.hm-chatdots i { width: 22px; height: 4px; border-radius: 4px; background: #E2E0D4; transition: background .3s ease; }
+.hm-chatdots i.is-on { background: #3E7A45; }
+.hm-chatdots i.is-end { width: 34px; }
+.hm-chatdots i.is-end.is-on { background: #C6F035; }
 .hm-phone { border-radius: 34px; background: #FFFFFF; border: 8px solid #0F120B; box-shadow: 0 30px 70px rgba(15,18,11,0.22); overflow: hidden; display: flex; flex-direction: column; height: 600px; transition: opacity .5s ease; }
-.hm-phone.is-fading { opacity: 0; }
 .hm-phone-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #ECEDE6; }
 .hm-phone-av { width: 32px; height: 32px; border-radius: 99px; background: #0F120B; color: #C6F035; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; }
 .hm-phone-name { font-size: 15px; font-weight: 800; }
@@ -148,12 +169,6 @@
 .hm-rcard-tick { width: 26px; height: 26px; border-radius: 99px; background: #3E7A45; color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .hm-rcard-txt { display: grid; gap: 2px; font-size: 12px; color: #3B4A12; }
 .hm-rcard-txt b { font-size: 13.5px; color: #1A1D12; }
-.hm-chatsteps { display: grid; gap: 14px; }
-.hm-steps-v { grid-template-columns: minmax(0, 1fr) !important; gap: 10px; }
-.hm-steps-v li { grid-template-columns: 34px minmax(0, 1fr); align-items: center; padding: 14px 18px; opacity: .45; transition: opacity .5s ease, border-color .5s ease, background .5s ease, transform .5s ease; }
-.hm-steps-v li.is-lit { opacity: 1; border-color: #C9DC92; background: #FBFDF2; transform: translateX(4px); }
-.hm-steps-v li .hm-step-n { transition: background .5s ease, color .5s ease; }
-.hm-steps-v li.is-lit .hm-step-n { background: #C6F035; color: #0F120B; }
 .hm-chat-cap { margin: 0; font-size: 12.5px; color: #8E9180; }
 
 /* ---------- Setup ---------- */
@@ -306,7 +321,8 @@
   .hm-run-stage::before { display: none; }
   .hm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hm-grid4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hm-chatdemo { grid-template-columns: minmax(0, 1fr); gap: 28px; max-width: 460px; }
+  .hm-chatdemo { grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 36px; }
+  .hm-chatbeat-t { font-size: 24px; }
   .hm-mach-stage { height: 540px; }
   .hm-h1 { font-size: clamp(36px, 8vw, 54px); letter-spacing: -1.6px; }
   .hm-h2 { font-size: clamp(30px, 6.4vw, 42px); letter-spacing: -1.2px; }
@@ -337,8 +353,20 @@
   .hm-mach-dark .hm-mach-pause { top: 14px; right: 12px; }
   .hm-sec { padding-top: 72px; }
   .hm-parts, .hm-setup, .hm-kinds, .hm-grid4, .hm-steps { grid-template-columns: minmax(0, 1fr); }
-  .hm-phone { height: 540px; border-width: 6px; }
-  .hm-steps-v li.is-lit { transform: none; }
+  /* Phones: the phone on top, the line under it, both pinned. */
+  .hm-chat-track { height: calc(var(--beats) * 26vh + 560px); }
+  .hm-chatdemo { top: 118px; grid-template-columns: minmax(0, 1fr); gap: 14px; max-width: 420px; }
+  .hm-phone { height: min(400px, 48vh); border-width: 6px; border-radius: 28px; }
+  .hm-chatside { min-height: 0; gap: 10px; }
+  .hm-chatbeat { gap: 6px; }
+  .hm-chatbeat-t { font-size: 18px; letter-spacing: -0.3px; }
+  .hm-chatafter { gap: 8px; }
+  .hm-chatafter-t { font-size: 16px; }
+  .hm-chatafter-list { gap: 5px; }
+  .hm-chatafter-list li { font-size: 12.5px; line-height: 1.4; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; }
+  .hm-chatafter-tick { width: 17px; height: 17px; }
+  .hm-chat-cap { display: none; }
+  .hm-chatdots { display: none; }
   .hm-steps li { grid-template-columns: 34px minmax(0, 1fr); align-items: start; padding: 16px 18px; }
   .hm-charge { padding: 32px 20px; border-radius: 26px; }
   .hm-charge-head .hm-h2, .hm-team .hm-h2 { font-size: 30px; }
@@ -369,7 +397,7 @@ html[lang="bn"] .hm-h2 { font-size: 38px; }
 html[lang="bn"] .hm-cta-h2 { font-size: 46px; }
 html[lang="bn"] .hm-kicker, html[lang="bn"] .hm-badge, html[lang="bn"] .hm-ask-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; text-transform: none; font-size: 13px; }
 html[lang="bn"] .hm-lead, html[lang="bn"] .hm-body, html[lang="bn"] .hm-lead-dark, html[lang="bn"] .hm-note, html[lang="bn"] .hm-faq summary, html[lang="bn"] .hm-vs-t { font-family: var(--dk-font-bn), sans-serif; line-height: 1.75; }
-html[lang="bn"] .hm-msg, html[lang="bn"] .hm-pcard-txt, html[lang="bn"] .hm-rcard-txt, html[lang="bn"] .hm-chips, html[lang="bn"] .hm-shot-cap, html[lang="bn"] .hm-chat-cap { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
+html[lang="bn"] .hm-msg, html[lang="bn"] .hm-pcard-txt, html[lang="bn"] .hm-rcard-txt, html[lang="bn"] .hm-chips, html[lang="bn"] .hm-shot-cap, html[lang="bn"] .hm-chat-cap, html[lang="bn"] .hm-chatbeat-t, html[lang="bn"] .hm-chatafter-t, html[lang="bn"] .hm-chatafter-list li { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
 html[lang="bn"] .hm-sticky-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; text-transform: none; font-size: 12.5px; }
 html[lang="bn"] .hm-app-card-t, html[lang="bn"] .hm-app-card-d, html[lang="bn"] .hm-app-group, html[lang="bn"] .hm-run-nova, html[lang="bn"] .hm-run-t, html[lang="bn"] .hm-run-items li, html[lang="bn"] .hm-run-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; line-height: 1.6; }
 html[lang="bn"] .hm-mach-cap, html[lang="bn"] .hm-mach-cap b, html[lang="bn"] .hm-mach-steps button, html[lang="bn"] .hm-mach-pin, html[lang="bn"] .hm-mach-pause, html[lang="bn"] .hm-mach-hint, html[lang="bn"] .hm-mach-back { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
@@ -385,5 +413,5 @@ html[lang="bn"] .hm-seg button, html[lang="bn"] .hm-btn { font-family: var(--dk-
 
 @media (prefers-reduced-motion: reduce) {
   .hm-works-run, .hm-orb, .hm-cta .hm-dot { animation: none; }
-  .hm-h1, .hm-msg-wrap.is-in, .hm-typing-bubble i { animation: none; }
+  .hm-h1, .hm-msg-wrap.is-in, .hm-typing-bubble i, .hm-chatbeat, .hm-chatafter { animation: none; }
 }

@@ -488,6 +488,8 @@ _The proof that the reply is only the start. Five steps, swapped by the switch._
 
 ### 4a · Live chat (in After the chat)
 
+_Scroll-driven: the phone stays pinned while the reader scrolls; each stretch of scrolling brings the next message (Nova's after her typing dots), and a large line beside the phone says what is happening in that message, with a 01 / 06 counter. When the order or booking card lands, the side becomes "Then Dakio carries on, without you:" with the five steps from section 4 ticking in. Both plays the shop chat, then the booking chat. Reduced motion shows the whole chat and the five steps, still._
+
 _A phone plays one conversation where Nova turns chat into an order or a booking; when the card lands, the five steps beside it light up one by one, then it plays again. The English page shows Banglish, the way customers write. Each Nova move is a built feature._
 
 **Shop · Saril · Messenger · Customer**
@@ -537,6 +539,58 @@ _A phone plays one conversation where Nova turns chat into an order or a booking
 **Service · Glow Studio · Instagram · Nova**
 - EN: Booked! Friday 4 PM, bridal trial. Ager din SMS e mone koriye dibo. [card: Booking · Friday 4:00 PM · Bridal trial · reminder SMS on Thursday]
 - BN: বুক হয়ে গেছে! শুক্রবার বিকেল ৪টা, ব্রাইডাল ট্রায়াল। আগের দিন SMS-এ মনে করিয়ে দেব। [card: বুকিং · শুক্রবার বিকেল ৪:০০ · ব্রাইডাল ট্রায়াল · বৃহস্পতিবার রিমাইন্ডার SMS]
+
+**Narration · Shop 1**
+- EN: A customer sends a screenshot of your post.
+- BN: কাস্টমার আপনার পোস্টের একটা স্ক্রিনশট পাঠালেন।
+
+**Narration · Shop 2**
+- EN: Nova knows the product from the photo and shows it, with the sizes in stock.
+- BN: ছবি দেখেই Nova পণ্যটা চিনে নেয়, আর স্টকে থাকা সাইজ সহ দেখায়।
+
+**Narration · Shop 3**
+- EN: They pick a size and ask about delivery.
+- BN: কাস্টমার সাইজ বেছে ডেলিভারির কথা জিজ্ঞেস করলেন।
+
+**Narration · Shop 4**
+- EN: Nova quotes the delivery fee and time for Mirpur from your settings, and the total.
+- BN: আপনার সেটিং থেকে মিরপুরের ডেলিভারি চার্জ, সময় আর মোট টাকা জানায় Nova।
+
+**Narration · Shop 5**
+- EN: They say yes and send their address.
+- BN: কাস্টমার রাজি, ঠিকানা পাঠালেন।
+
+**Narration · Shop 6**
+- EN: Nova writes the order. It is in your Orders now, and the receipt is in the chat.
+- BN: Nova অর্ডার লিখে ফেলে। সেটা এখন আপনার অর্ডারে, আর রসিদ চ্যাটে।
+
+**Narration · Services 1**
+- EN: A client asks for a bridal trial on Friday.
+- BN: ক্লায়েন্ট শুক্রবার ব্রাইডাল ট্রায়াল চাইলেন।
+
+**Narration · Services 2**
+- EN: Nova checks your calendar and offers only the times that are really free, with the price.
+- BN: Nova আপনার ক্যালেন্ডার দেখে শুধু সত্যিই খালি সময়গুলো দেয়, দাম সহ।
+
+**Narration · Services 3**
+- EN: The client taps a time.
+- BN: ক্লায়েন্ট একটা সময় বেছে নিলেন।
+
+**Narration · Services 4**
+- EN: Nova asks for the name and phone number.
+- BN: Nova নাম আর ফোন নম্বর চায়।
+
+**Narration · Services 5**
+- EN: The client sends them.
+- BN: ক্লায়েন্ট পাঠিয়ে দিলেন।
+
+**Narration · Services 6**
+- EN: Nova books it. It is on your calendar, confirmed, and the reminder is set.
+- BN: Nova বুক করে ফেলে। ক্যালেন্ডারে উঠে গেছে, কনফার্মড, রিমাইন্ডারও সেট।
+
+**After the card**
+- EN: Then Dakio carries on, without you:
+- BN: তারপর Dakio নিজেই চালিয়ে যায়, আপনাকে ছাড়াই:
 
 ### 5 · Set up in 5 minutes
 

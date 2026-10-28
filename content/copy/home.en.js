@@ -182,6 +182,26 @@ const home = {
     typing: "Nova is typing",
     input: "Message",
     caption: "Example store. Nova's side is how she answers today.",
+    // What is happening, one line per message (ChatDemo.jsx, right side).
+    beats: {
+      shop: [
+        "A customer sends a screenshot of your post.",
+        "Nova knows the product from the photo and shows it, with the sizes in stock.",
+        "They pick a size and ask about delivery.",
+        "Nova quotes the delivery fee and time for Mirpur from your settings, and the total.",
+        "They say yes and send their address.",
+        "Nova writes the order. It is in your Orders now, and the receipt is in the chat.",
+      ],
+      svc: [
+        "A client asks for a bridal trial on Friday.",
+        "Nova checks your calendar and offers only the times that are really free, with the price.",
+        "The client taps a time.",
+        "Nova asks for the name and phone number.",
+        "The client sends them.",
+        "Nova books it. It is on your calendar, confirmed, and the reminder is set.",
+      ],
+    },
+    after: "Then Dakio carries on, without you:",
     head: { shop: { name: "Saril", channel: "Messenger" }, svc: { name: "Glow Studio", channel: "Instagram" } },
     shop: [
       { from: "them", shot: "Saril · Marigold Yellow Panjabi", img: "/demo/saril/marigold-yellow-panjabi.jpg", t: "Eta ase?" },

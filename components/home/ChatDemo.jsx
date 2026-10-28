@@ -1,112 +1,109 @@
 "use client";
 
-// The live chat in "After the chat": a phone plays one conversation where
-// Nova turns a customer's messages into an order (shop) or a booking
-// (services). Nova's turns show a typing bubble first. When the order or
-// booking card lands, the five steps beside the phone light up one by one,
-// then the scene holds, fades and plays again. "Both" alternates the two.
+// The live chat in "After the chat", driven by scrolling. The phone stays
+// pinned while you scroll through the section: each stretch of scrolling
+// brings the next message (Nova's come after her typing dots), and the line
+// on the right says what is happening in that message. When the order or
+// booking card lands, the right side becomes "Then Dakio carries on" with
+// the five steps after the chat, ticking in as you scroll. "Both" plays the
+// shop chat, then the booking chat.
 //
-// The server renders the whole conversation, still, so the section reads
-// complete with JS off; reduced motion keeps it that way. Off screen or in a
-// hidden tab the scene waits.
+// Reduced motion gets the whole chat and the five steps, still, with no pin.
 
 import { useEffect, useRef, useState } from "react";
 import { useAudience } from "./Audience";
 
-const THEIR_GAP = 1500;   // pause before a customer message
-const TYPING = 1400;      // Nova's typing bubble
-const STEP_GAP = 1000;    // between lit steps after the card
-const HOLD = 3200;        // the finished scene stays this long
-const FADE = 500;
+const TYPING = 0.45; // share of a Nova beat spent on the typing dots
 
 export default function ChatDemo({ chat, flow }) {
   const { aud } = useAudience();
-  const [kind, setKind] = useState(aud === "svc" ? "svc" : "shop");
-  const [shown, setShown] = useState(chat[aud === "svc" ? "svc" : "shop"].length);
-  const [typing, setTyping] = useState(false);
-  const [lit, setLit] = useState(0);
-  const [fading, setFading] = useState(false);
-  const [live, setLive] = useState(false);
-  const box = useRef(null);
+  const kinds = aud === "both" ? ["shop", "svc"] : [aud];
+  const per = kinds.map(k => chat[k].length + 1);       // messages + the "after" beat
+  const total = per.reduce((a, b) => a + b, 0);
+  const [x, setX] = useState(0);                         // beats scrolled, 0..total
+  const [still, setStill] = useState(false);
+  const track = useRef(null);
+  const pin = useRef(null);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setKind(aud === "svc" ? "svc" : "shop");
-      return undefined;
-    }
-    let visible = true;
-    const io = new IntersectionObserver(([en]) => { visible = en.isIntersecting; }, { threshold: 0.2 });
-    if (box.current) io.observe(box.current);
-
-    let timer;
-    let cancelled = false;
-    const wait = ms => new Promise(res => {
-      const tick = () => {
-        if (cancelled) return;
-        if (!visible || document.hidden) { timer = setTimeout(tick, 400); return; }
-        timer = setTimeout(res, ms);
-      };
-      tick();
-    });
-
-    let round = 0;
-    const play = async () => {
-      setLive(true);
-      while (!cancelled) {
-        const k = aud === "both" ? (round % 2 ? "svc" : "shop") : aud;
-        const script = chat[k];
-        setKind(k); setShown(0); setLit(0); setTyping(false); setFading(false);
-        await wait(700);
-        for (let i = 0; i < script.length && !cancelled; i++) {
-          if (script[i].from === "nova") {
-            setTyping(true); await wait(TYPING); setTyping(false);
-          } else {
-            await wait(THEIR_GAP);
-          }
-          setShown(i + 1);
-          if (script[i].from === "nova") await wait(500);
-        }
-        for (let s = 1; s <= flow[k].length && !cancelled; s++) { await wait(STEP_GAP); setLit(s); }
-        await wait(HOLD);
-        setFading(true); await wait(FADE);
-        round++;
-      }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setStill(true); return undefined; }
+    let raf = 0;
+    const read = () => {
+      raf = 0;
+      const t = track.current, p = pin.current;
+      if (!t || !p) return;
+      const room = t.offsetHeight - p.offsetHeight;
+      const done = Math.min(Math.max(-t.getBoundingClientRect().top + parseFloat(getComputedStyle(p).top), 0), room);
+      setX(room > 0 ? (done / room) * total * 0.999 : 0);
     };
-    play();
-    return () => { cancelled = true; clearTimeout(timer); io.disconnect(); };
-  }, [aud, chat, flow]);
+    const on = () => { if (!raf) raf = requestAnimationFrame(read); };
+    read();
+    window.addEventListener("scroll", on, { passive: true });
+    window.addEventListener("resize", on);
+    return () => { window.removeEventListener("scroll", on); window.removeEventListener("resize", on); cancelAnimationFrame(raf); };
+  }, [total]);
 
+  // Which chat, which beat, and how far into it.
+  let k = 0, b = x;
+  while (k < kinds.length - 1 && b >= per[k]) { b -= per[k]; k++; }
+  const kind = kinds[k];
   const script = chat[kind];
+  const beat = still ? script.length : Math.floor(b);
+  const frac = b - Math.floor(b);
+  const after = beat >= script.length;
+  const novaTurn = !after && script[beat].from === "nova";
+  const typing = !still && novaTurn && frac < TYPING;
+  const shown = after ? script.length : typing ? beat : beat + 1;
+  const ticked = still ? flow[kind].length : Math.min(flow[kind].length, Math.ceil(frac * (flow[kind].length + 1)));
   const head = chat.head[kind];
 
   return (
-    <div className="hm-chatdemo" ref={box}>
-      <div className={`hm-phone${fading ? " is-fading" : ""}`}>
-        <div className="hm-phone-head">
-          <span className="hm-phone-av" aria-hidden="true">{head.name.slice(0, 1)}</span>
-          <span className="hm-phone-name">{head.name}</span>
-          <span className="hm-phone-ch">{head.channel}</span>
+    <div ref={track} className={`hm-chat-track${still ? " is-still" : ""}`} style={{ "--beats": total }}>
+      <div ref={pin} className="hm-chatdemo">
+        <div className="hm-phone">
+          <div className="hm-phone-head">
+            <span className="hm-phone-av" aria-hidden="true">{head.name.slice(0, 1)}</span>
+            <span className="hm-phone-name">{head.name}</span>
+            <span className="hm-phone-ch">{head.channel}</span>
+          </div>
+          <div className="hm-phone-body" aria-live="off">
+            {script.slice(0, shown).map((m, i) => (
+              <Message key={`${kind}-${i}`} m={m} animate={!still} />
+            ))}
+            {typing ? (
+              <div className="hm-msg hm-msg-nova hm-typing-bubble" aria-label={chat.typing}><i /><i /><i /></div>
+            ) : null}
+          </div>
+          <div className="hm-phone-input"><span>{chat.input}</span></div>
         </div>
-        <div className="hm-phone-body" aria-live="off">
-          {script.slice(0, shown).map((m, i) => (
-            <Message key={`${kind}-${i}`} m={m} animate={live} />
-          ))}
-          {typing ? (
-            <div className="hm-msg hm-msg-nova hm-typing-bubble" aria-label={chat.typing}><i /><i /><i /></div>
-          ) : null}
-        </div>
-        <div className="hm-phone-input"><span>{chat.input}</span></div>
-      </div>
 
-      <div className="hm-chatsteps">
-        <ol className="hm-steps hm-steps-v">
-          {flow[kind].map((t, i) => (
-            <li key={`${kind}-${i}`} className={!live || lit > i ? "is-lit" : undefined}>
-              <span className="hm-step-n">{i + 1}</span><span className="hm-body">{t}</span>
-            </li>
-          ))}
-        </ol>
-        <p className="hm-chat-cap">{chat.caption}</p>
+        <div className="hm-chatside">
+          {after ? (
+            <div className="hm-chatafter" key={`${kind}-after`}>
+              <p className="hm-chatafter-t">{chat.after}</p>
+              <ol className="hm-chatafter-list">
+                {flow[kind].map((t, i) => (
+                  <li key={i} className={i < ticked ? "is-on" : undefined}>
+                    <span className="hm-chatafter-tick" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+                    </span>
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ) : (
+            <div className="hm-chatbeat" key={`${kind}-${beat}`}>
+              <span className="hm-chatbeat-n">{String(beat + 1).padStart(2, "0")} / {String(script.length).padStart(2, "0")}</span>
+              <p className={`hm-chatbeat-t${novaTurn ? " is-nova" : ""}`}>{chat.beats[kind][beat]}</p>
+            </div>
+          )}
+          <div className="hm-chatdots" aria-hidden="true">
+            {script.map((_, i) => <i key={i} className={i < shown ? "is-on" : undefined} />)}
+            <i className={`is-end${after ? " is-on" : ""}`} />
+          </div>
+          <p className="hm-chat-cap">{chat.caption}</p>
+        </div>
       </div>
     </div>
   );
