@@ -7,6 +7,7 @@
 import Link from "next/link";
 import { AudienceSwitch, StartLink } from "./Audience";
 import RotatingHead from "./RotatingHead";
+import RunWalk from "./RunWalk";
 import ChatDemo from "./ChatDemo";
 import NovaMachine from "./NovaMachine";
 import AppScreens from "./AppScreens";
@@ -140,6 +141,8 @@ export function Run({ c }) {
         <h2 className="hm-h2" data-show="both-only">{x.h2.both}</h2>
         <p className="hm-lead-dark">{x.sub}</p>
       </div>
+      {/* Laptops and tablets: Nova walks the line. Phones: the stacking cards below. */}
+      <RunWalk x={x} groups={c.flow.label} />
       <div className="hm-run">
         <div className="hm-run-nova"><span className="hm-run-orb" aria-hidden="true" />{x.nova}</div>
         {line("shop", "shop")}

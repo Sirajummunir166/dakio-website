@@ -136,7 +136,7 @@ _Below the headline, across the hero: a 3D line drawn in thin light outlines on 
 
 ### 1b · Everything to run it (new)
 
-_Right under the hero. The whole system, stage by stage, so a visitor sees Dakio is the software that runs the business, not a chat tool. Nova's band runs over every stage. The line follows the switch; Both shows the two lines, each labelled. Every item is in the app today. On phones each stage is a card that sticks under the menu as the next slides over, one stack per line._
+_Right under the hero. The whole system, stage by stage, so a visitor sees Dakio is the software that runs the business, not a chat tool. Nova's band runs over every stage. The line follows the switch; Both shows the two lines, each labelled. Every item is in the app today. Laptops and tablets: Nova walks the line. Shops left, services right, each stage facing its twin, a line icon per stage, and a lime line down the middle; as the reader scrolls the Nova orb glides down it and each row it reaches lights up on both sides (one column beside the line when Products or Services is picked). On phones each stage is a card that sticks under the menu as the next slides over, one stack per line._
 
 **Kicker**
 - EN: EVERYTHING TO RUN IT

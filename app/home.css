@@ -280,6 +280,45 @@
 .hm-run-items svg { width: 14px; height: 14px; margin-top: 2px; color: #3E7A45; }
 .hm-plans-svc { margin-top: 14px; }
 
+/* Everything to run it on laptops and tablets (RunWalk.jsx): Nova walks the line */
+.hm-walk { --node: 72px; position: relative; }
+.hm-walk.is-one { max-width: 620px; margin: 0 auto; }
+.hm-walk-head { display: grid; grid-template-columns: minmax(0, 1fr) var(--node) minmax(0, 1fr); align-items: end; margin-bottom: 22px; }
+.hm-walk.is-one .hm-walk-head { grid-template-columns: 0 var(--node) minmax(0, 1fr); }
+.hm-walk-head > .hm-walk-nova { grid-column: 1 / -1; grid-row: 1; justify-self: center; }
+.hm-walk.is-one .hm-walk-head > .hm-walk-nova { justify-self: start; }
+.hm-walk-group { grid-row: 2; margin-top: 26px; font-family: var(--dk-font-mono), monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #3E7A45; }
+.hm-walk-group:first-child { grid-column: 1; padding-left: 4px; }
+.hm-walk-group:last-child { grid-column: 3; padding-left: 4px; }
+.hm-walk-nova { display: inline-flex; align-items: center; gap: 10px; padding: 9px 16px 9px 10px; border-radius: 99px; background: #FBFAF5; border: 1px solid rgba(26,29,18,0.1); font-size: 14px; font-weight: 700; color: #1A1D12; }
+.hm-walk-orb-sm { width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #F4FFD6 0%, #C6F035 40%, #6FA524 75%, #2E4710 100%); box-shadow: 0 0 14px rgba(198,240,53,0.5); }
+.hm-walk-body { position: relative; }
+.hm-walk-rail { position: absolute; left: 50%; width: 2px; margin-left: -1px; background: #E2E0D4; border-radius: 2px; }
+.hm-walk.is-one .hm-walk-rail, .hm-walk.is-one .hm-walk-orb { left: calc(var(--node) / 2); }
+.hm-walk-fill { position: absolute; left: 0; top: 0; width: 100%; background: #3E7A45; border-radius: 2px; transition: height .12s linear; }
+.hm-walk-orb { position: absolute; left: 50%; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; z-index: 2; background: radial-gradient(circle at 32% 28%, #F4FFD6 0%, #C6F035 40%, #6FA524 75%, #2E4710 100%); box-shadow: 0 0 0 6px rgba(198,240,53,0.18), 0 0 24px rgba(198,240,53,0.6); transition: top .12s linear; }
+.hm-walk-row { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--node) minmax(0, 1fr); align-items: center; padding: 14px 0; }
+.hm-walk.is-one .hm-walk-row { grid-template-columns: 0 var(--node) minmax(0, 1fr); }
+.hm-walk-node { justify-self: center; position: relative; z-index: 1; width: 14px; height: 14px; border-radius: 50%; background: #F4F2EA; border: 2px solid #CFCBBB; transition: background .35s ease, border-color .35s ease, box-shadow .35s ease; }
+.hm-walk-row.is-lit .hm-walk-node { background: #C6F035; border-color: #0F120B; box-shadow: 0 0 0 4px rgba(198,240,53,0.25); }
+.hm-walk-stage { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; align-items: start; padding: 20px 22px; border-radius: 22px; background: #FBFAF5; border: 1px solid rgba(26,29,18,0.07); transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease; }
+.hm-walk-cell.is-left .hm-walk-stage { margin-right: 6px; }
+.hm-walk-cell.is-right .hm-walk-stage { margin-left: 6px; }
+.hm-walk-row.is-lit .hm-walk-stage { border-color: rgba(26,29,18,0.12); box-shadow: 0 14px 34px rgba(26,29,18,0.08); }
+.hm-walk-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: #F0EEE6; color: #A9AB9C; transition: background .35s ease, color .35s ease; }
+.hm-walk-icon svg { width: 24px; height: 24px; }
+.hm-walk-row.is-lit .hm-walk-icon { background: #C6F035; color: #0F120B; }
+.hm-walk-n { font-family: var(--dk-font-mono), monospace; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; color: #A9AB9C; transition: color .35s ease; }
+.hm-walk-row.is-lit .hm-walk-n { color: #3E7A45; }
+.hm-walk-t { margin: 2px 0 10px; font-size: 19px; line-height: 1.2; letter-spacing: -0.3px; font-weight: 800; color: #A9AB9C; transition: color .35s ease; }
+.hm-walk-row.is-lit .hm-walk-t { color: #1A1D12; }
+.hm-walk-items { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; opacity: 0.45; transition: opacity .45s ease; }
+.hm-walk-row.is-lit .hm-walk-items { opacity: 1; }
+.hm-walk-items li { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 7px; align-items: start; font-size: 13.5px; line-height: 1.45; color: #55584B; }
+.hm-walk-items svg { width: 14px; height: 14px; margin-top: 2px; color: #3E7A45; }
+/* The old grid is for phones only now. */
+.hm-run { display: none; }
+
 /* The real app (AppScreens.jsx): one card per feature, stacking as you scroll.
    Laptops: words left, screen right. Phones: screen under the words. */
 .hm-app-stack { list-style: none; margin: 0; padding: 0; }
@@ -330,8 +369,9 @@
   .hm-app-card-t { font-size: 19px; letter-spacing: -0.3px; }
   .hm-app-card-d { margin: 6px 0 14px; font-size: 14px; }
   .hm-app-card-shot { border-radius: 14px; aspect-ratio: 16 / 11; }
+  .hm-walk { display: none; }
   /* Phones: each stage is a card that sticks under the menu as the next slides over. */
-  .hm-run { padding: 0; background: transparent; border: 0; border-radius: 0; }
+  .hm-run { display: block; padding: 0; background: transparent; border: 0; border-radius: 0; }
   .hm-run-block { margin-top: 22px; }
   .hm-run-label { margin: 0 0 10px 4px; }
   .hm-run-line { display: block; padding: 0; }
@@ -389,7 +429,7 @@ html[lang="bn"] .hm-cta-h2 { font-size: 46px; }
 html[lang="bn"] .hm-kicker, html[lang="bn"] .hm-badge, html[lang="bn"] .hm-ask-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; text-transform: none; font-size: 13px; }
 html[lang="bn"] .hm-lead, html[lang="bn"] .hm-body, html[lang="bn"] .hm-lead-dark, html[lang="bn"] .hm-note, html[lang="bn"] .hm-faq summary, html[lang="bn"] .hm-vs-t { font-family: var(--dk-font-bn), sans-serif; line-height: 1.75; }
 html[lang="bn"] .hm-msg, html[lang="bn"] .hm-pcard-txt, html[lang="bn"] .hm-rcard-txt, html[lang="bn"] .hm-chips, html[lang="bn"] .hm-shot-cap, html[lang="bn"] .hm-chat-cap, html[lang="bn"] .hm-chatbeat-t, html[lang="bn"] .hm-chatafter-t, html[lang="bn"] .hm-chatafter-list li { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
-html[lang="bn"] .hm-app-card-t, html[lang="bn"] .hm-app-card-d, html[lang="bn"] .hm-app-group, html[lang="bn"] .hm-run-nova, html[lang="bn"] .hm-run-t, html[lang="bn"] .hm-run-items li, html[lang="bn"] .hm-run-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; line-height: 1.6; }
+html[lang="bn"] .hm-app-card-t, html[lang="bn"] .hm-app-card-d, html[lang="bn"] .hm-app-group, html[lang="bn"] .hm-walk-t, html[lang="bn"] .hm-walk-items li, html[lang="bn"] .hm-walk-nova, html[lang="bn"] .hm-walk-group, html[lang="bn"] .hm-run-nova, html[lang="bn"] .hm-run-t, html[lang="bn"] .hm-run-items li, html[lang="bn"] .hm-run-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; line-height: 1.6; }
 html[lang="bn"] .hm-mach-cap, html[lang="bn"] .hm-mach-cap b, html[lang="bn"] .hm-mach-steps button, html[lang="bn"] .hm-mach-pin, html[lang="bn"] .hm-mach-pause, html[lang="bn"] .hm-mach-hint, html[lang="bn"] .hm-mach-back { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
 html[lang="bn"] .hm-seg button, html[lang="bn"] .hm-btn { font-family: var(--dk-font-bn), sans-serif; }
 @media (max-width: 980px) {
