@@ -40,7 +40,7 @@ export default async function Home({ params }) {
   const [pricing, offers] = await Promise.all([getHomePricing(lang), getJsonLdOffers(lang)]);
 
   return (
-    <AudienceRoot initial="shop">
+    <AudienceRoot initial="both">
       <PageJsonLd route="/" lang={lang} offers={offers} />
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />

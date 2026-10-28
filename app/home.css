@@ -281,6 +281,26 @@
 .hm-app-shot img.is-on { opacity: 1; }
 .hm-app-cap { padding: 14px 20px 16px; font-size: 14px; line-height: 1.55; color: #55584B; border-top: 1px solid rgba(26,29,18,0.08); }
 
+/* The rotating business name in the headline (RotatingHead.jsx) */
+.hm-rot { display: inline-block; color: #C6F035; }
+.hm-rot-word { display: inline-block; }
+.hm-rot-word.is-in { animation: hmRot .4s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes hmRot { from { opacity: 0.25; transform: translateY(0.25em); } to { opacity: 1; transform: none; filter: none; } }
+/* The AI line is quieter now that the business name is lime. */
+.hm-h1 .hm-h1-accent { color: #E9EFDC; opacity: 0.72; }
+
+/* The choice inside a section, and the pill that follows you (Audience.jsx) */
+.hm-secswitch { display: flex; justify-content: center; margin: -14px 0 26px; }
+.hm-seg-light { background: #ECEAE0; border-color: rgba(26,29,18,0.08); }
+.hm-seg-light button { color: #55584B; }
+.hm-seg-light button:hover { color: #1A1D12; }
+.hm-seg-light button[aria-pressed="true"] { background: #0F120B; color: #C6F035; border-color: #0F120B; }
+.hm-sticky { position: fixed; left: 50%; bottom: 22px; z-index: 70; display: flex; align-items: center; gap: 12px; padding: 6px 6px 6px 18px; border-radius: 99px; background: rgba(15,18,11,0.92); border: 1px solid rgba(198,240,53,0.22); box-shadow: 0 14px 40px rgba(15,18,11,0.3); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transform: translate(-50%, 24px); opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s ease; }
+.hm-sticky.is-on { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
+.hm-sticky-label { font-family: var(--dk-font-mono), monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #878B76; }
+.hm-seg-sticky { background: transparent; border-color: transparent; padding: 0; flex-wrap: nowrap; }
+.hm-sticky .hm-seg button { white-space: nowrap; }
+
 /* ---------- Phones and tablets ---------- */
 @media (max-width: 980px) {
   .hm-hero-top, .hm-charge, .hm-team { grid-template-columns: minmax(0, 1fr); gap: 28px; }
@@ -303,6 +323,10 @@
   .hm-hero-wrap { padding-left: 0; padding-right: 0; margin-top: 0; }
   .hm-hero { border-radius: 0; padding: 44px 16px 28px; }
   .hm-hero-stage { margin: 18px -16px -28px; }
+  .hm-sticky { bottom: auto; top: 72px; padding: 4px; transform: translate(-50%, -12px); }
+  .hm-sticky-label { display: none; }
+  .hm-sticky .hm-seg button { padding: 7px 13px; }
+  .hm-secswitch { margin: -18px 0 20px; }
   .hm-run { padding: 20px 18px 24px; border-radius: 24px; }
   .hm-app-tabs { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px 14px; padding: 0 16px; scrollbar-width: none; }
   .hm-app-tab { white-space: nowrap; flex-shrink: 0; }
@@ -351,6 +375,7 @@ html[lang="bn"] .hm-cta-h2 { font-size: 46px; }
 html[lang="bn"] .hm-kicker, html[lang="bn"] .hm-badge, html[lang="bn"] .hm-ask-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; text-transform: none; font-size: 13px; }
 html[lang="bn"] .hm-lead, html[lang="bn"] .hm-body, html[lang="bn"] .hm-lead-dark, html[lang="bn"] .hm-note, html[lang="bn"] .hm-faq summary, html[lang="bn"] .hm-vs-t { font-family: var(--dk-font-bn), sans-serif; line-height: 1.75; }
 html[lang="bn"] .hm-msg, html[lang="bn"] .hm-pcard-txt, html[lang="bn"] .hm-rcard-txt, html[lang="bn"] .hm-chips, html[lang="bn"] .hm-shot-cap, html[lang="bn"] .hm-chat-cap { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
+html[lang="bn"] .hm-sticky-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; text-transform: none; font-size: 12.5px; }
 html[lang="bn"] .hm-app-tab, html[lang="bn"] .hm-app-cap, html[lang="bn"] .hm-run-nova, html[lang="bn"] .hm-run-t, html[lang="bn"] .hm-run-items li, html[lang="bn"] .hm-run-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; line-height: 1.6; }
 html[lang="bn"] .hm-mach-cap, html[lang="bn"] .hm-mach-cap b, html[lang="bn"] .hm-mach-steps button, html[lang="bn"] .hm-mach-pin, html[lang="bn"] .hm-mach-pause, html[lang="bn"] .hm-mach-hint, html[lang="bn"] .hm-mach-back { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
 html[lang="bn"] .hm-seg button, html[lang="bn"] .hm-btn { font-family: var(--dk-font-bn), sans-serif; }

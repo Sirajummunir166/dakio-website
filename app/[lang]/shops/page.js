@@ -38,7 +38,7 @@ export default async function ShopsPage({ params }) {
   const pricing = await getHomePricing(lang);
 
   return (
-    <AudienceRoot initial="shop">
+    <AudienceRoot initial="shop" switchable={false}>
       <PageJsonLd route={ROUTE} lang={lang} />
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />

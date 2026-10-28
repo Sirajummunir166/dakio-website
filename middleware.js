@@ -67,14 +67,15 @@ export function middleware(request) {
   if (pathname === "/en" || pathname.startsWith("/en/")) {
     if (pathname.includes("/opengraph-image") || pathname.includes("/icon")) return NextResponse.next();
     const bare = pathname.slice(3) || "/";
-    return NextResponse.redirect(new URL(bare, request.url), 301);
+    // Keep the query (?for=, utm_*, fbclid): ads and links must survive the hop.
+    return NextResponse.redirect(new URL(bare + request.nextUrl.search, request.url), 301);
   }
 
   if (pathname === "/bn" || pathname.startsWith("/bn/")) {
     // Legal copy and the developer docs exist in English only — send
     // /bn/privacy to /privacy, /bn/developers/docs/… to /developers/docs/….
     const bare = pathname.slice(3) || "/";
-    if (isLegalPath(bare) || isEnglishOnlyPath(bare)) return NextResponse.redirect(new URL(bare, request.url), 308);
+    if (isLegalPath(bare) || isEnglishOnlyPath(bare)) return NextResponse.redirect(new URL(bare + request.nextUrl.search, request.url), 308);
     return withRegion(request, NextResponse.next());
   }
 

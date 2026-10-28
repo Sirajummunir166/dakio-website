@@ -38,7 +38,7 @@ export default async function ServicesPage({ params }) {
   const pricing = await getHomePricing(lang);
 
   return (
-    <AudienceRoot initial="svc">
+    <AudienceRoot initial="svc" switchable={false}>
       <PageJsonLd route={ROUTE} lang={lang} />
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />

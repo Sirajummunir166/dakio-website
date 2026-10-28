@@ -40,7 +40,25 @@ _Says what Dakio is in five seconds: a role everyone knows (a manager) and the w
 - EN: Run your whole business from one app.
 - BN: পুরো ব্যবসা চালান এক অ্যাপে।
 
-**Headline, second line (lime)**
+_The page opens on Both. The headline names a business in turn (shops and service businesses alternate, every 2.2 seconds, in lime); with Products or Services picked it names only that side. Phones, reduced motion and search engines get the fallback sentence. The AI line under it is now light, not lime. Links can open the page narrowed: ?for=shops, ?for=services, ?for=both. Once the hero scrolls away a pill (Showing: Products · Services · Both) follows the reader; Everything to run it, The real app and the live chat carry the same three tabs._
+
+**Headline (rotating)**
+- EN: Run your [business] from one app.
+- BN: আপনার [ব্যবসা] চালান এক অ্যাপে।
+
+**Fallback (phones, search)**
+- EN: Run your shop or service business from one app.
+- BN: আপনার দোকান বা সার্ভিস ব্যবসা চালান এক অ্যাপে।
+
+**Businesses in turn**
+- EN: clothing shop · beauty parlour · gadget shop · coaching centre · grocery shop · doctor's chamber · photography studio · men's salon
+- BN: পোশাকের দোকান · বিউটি পার্লার · গ্যাজেটের দোকান · কোচিং সেন্টার · মুদি দোকান · ডাক্তারের চেম্বার · ফটোগ্রাফি স্টুডিও · জেন্টস সেলুন
+
+**Pill label**
+- EN: Showing
+- BN: দেখাচ্ছে
+
+**Headline, second line**
 - EN: With an AI manager built in.
 - BN: সাথে আছে একজন AI ম্যানেজার।
 

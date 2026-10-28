@@ -5,7 +5,8 @@
 // app/home.css hides what does not apply. Styles live in app/home.css (hm-*).
 
 import Link from "next/link";
-import { AudienceSwitch, StartLink } from "./Audience";
+import { AudienceSwitch, SectionSwitch, StickySwitch, StartLink } from "./Audience";
+import RotatingHead from "./RotatingHead";
 import ChatDemo from "./ChatDemo";
 import NovaMachine from "./NovaMachine";
 import AppScreens from "./AppScreens";
@@ -58,7 +59,7 @@ export function Hero({ c, lang, L, head = null }) {
         <div className="hm-hero-top">
           <div className="hm-hero-text">
             <div className="hm-badge"><span className="hm-dot" />{head ? head.badge : h.badge}</div>
-            <h1 className="hm-h1"><span className="hm-h1-main">{head ? head.h1 : h.h1}</span><span className="hm-h1-accent">{head ? head.accent : h.accent}</span></h1>
+            <h1 className="hm-h1">{head ? <span className="hm-h1-main">{head.h1}</span> : <RotatingHead r={h.rot} />}<span className="hm-h1-accent">{head ? head.accent : h.accent}</span></h1>
           </div>
           <div className="hm-hero-act">
             {head ? null : <AudienceSwitch label={h.ask} opts={h.opts} />}
@@ -80,6 +81,7 @@ export function Hero({ c, lang, L, head = null }) {
             <div className="hm-under">{h.under}</div>
           </div>
         </div>
+        {head ? null : <StickySwitch label={h.showing} opts={h.opts} />}
         {/* Nova's machine: a chat becoming an order or a booking (NovaMachine.jsx). */}
         <div className="hm-hero-stage">
           <NovaMachine m={c.machine} chat={c.chat} dark />
@@ -139,6 +141,7 @@ export function Run({ c }) {
         <h2 className="hm-h2" data-show="both-only">{x.h2.both}</h2>
         <p className="hm-lead-dark">{x.sub}</p>
       </div>
+      <SectionSwitch label={c.hero.ask} opts={c.hero.opts} />
       <div className="hm-run">
         <div className="hm-run-nova"><span className="hm-run-orb" aria-hidden="true" />{x.nova}</div>
         {line("shop", "shop")}
@@ -160,6 +163,7 @@ export function RealApp({ c }) {
         <h2 className="hm-h2">{x.h2}</h2>
         <p className="hm-lead-dark">{x.sub}</p>
       </div>
+      <SectionSwitch label={c.hero.ask} opts={c.hero.opts} />
       <AppScreens screens={x.screens} />
     </section>
   );
@@ -235,6 +239,7 @@ export function Flow({ c }) {
         <h2 className="hm-h2" data-show="svc-only">{f.h2.svc}</h2>
         <h2 className="hm-h2" data-show="both-only">{f.h2.both}</h2>
       </div>
+      <SectionSwitch label={c.hero.ask} opts={c.hero.opts} />
       <ChatDemo chat={c.chat} flow={{ shop: f.shop, svc: f.svc }} />
       <p className="hm-note hm-center">{f.bottom}</p>
     </section>

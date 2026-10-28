@@ -20,6 +20,19 @@ const home = {
   hero: {
     badge: "FOR SHOPS AND SERVICE BUSINESSES IN BANGLADESH",
     h1: "Run your whole business from one app.",
+    // The rotating headline (components/home/RotatingHead.jsx): shops and
+    // service businesses in turn; "fallback" is what phones and search see.
+    rot: {
+      pre: "Run your",
+      post: "from one app.",
+      fallback: "shop or service business",
+      kinds: [
+        { t: "clothing shop", k: "shop" }, { t: "beauty parlour", k: "svc" }, { t: "gadget shop", k: "shop" },
+        { t: "coaching centre", k: "svc" }, { t: "grocery shop", k: "shop" }, { t: "doctor's chamber", k: "svc" },
+        { t: "photography studio", k: "svc" }, { t: "men's salon", k: "svc" },
+      ],
+    },
+    showing: "Showing",
     accent: "With an AI manager built in.",
     ask: "What do you sell?",
     opts: { shop: "Products", svc: "Services", both: "Both" },
