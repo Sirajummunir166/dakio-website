@@ -31,7 +31,7 @@ const PHASES = [["in", 0], ["nova", 2.1], ["app", 5.3], ["out", 6.6]];
 
 const ANCHORS = {
   in: [-6.35, 1.55, 2.15],
-  nova: [-0.25, 2.95, 0.2],
+  nova: [0, 2.9, 0.3],
   app: [3.6, 4.0, -2.42],
   outShop: [4.4, 0.78, 2.6],
   outSvc: [7.7, 2.1, -0.75],
@@ -259,30 +259,26 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
 
   // ---------- station 02: Nova ----------
   st.nova = new THREE.Group(); world.add(st.nova);
-  box(3.3, 0.24, 2.3, 0.1, M.porcelain, st.nova).position.set(0, 0.12, 0.3);
-  const block = box(1.5, 1.15, 1.5, 0.2, M.ink, st.nova);
-  block.position.set(-0.25, 0.24 + 0.575, 0.2);
-  const plate = canvasTex(256, 96, 2);
-  plate.ctx.fillStyle = CSS.lime; plate.ctx.font = font(800, 50); plate.ctx.textAlign = "center"; plate.ctx.textBaseline = "middle";
-  plate.ctx.fillText("NOVA", 128, 50); plate.tex.needsUpdate = true;
-  const plateMesh = screen(0.82, 0.31, plate.tex, block, 0.752);
+  box(2.7, 0.24, 2.3, 0.1, M.porcelain, st.nova).position.set(0, 0.12, 0.3);
+  // One glossy pedestal. Its top is a dark lens ringed in lime light, and
+  // Nova floats over it.
+  const PED = { w: 1.6, h: 0.95 };
+  const block = box(PED.w, PED.h, PED.w, 0.12, M.ink, st.nova);
+  block.position.set(0, 0.24 + PED.h / 2, 0.3);
+  const top = 0.24 + PED.h;
+  const lens = cyl(0.5, 0.5, 0.012, M.glass, st.nova, 96);
+  lens.position.set(0, top + 0.006, 0.3);
+  const ring = new THREE.Mesh(keep(new THREE.TorusGeometry(0.52, 0.016, 16, 128)), M.lime);
+  ring.rotation.x = Math.PI / 2; ring.position.set(0, top + 0.01, 0.3); st.nova.add(ring);
+  const plate = canvasTex(256, 64, 2);
+  plate.ctx.fillStyle = CSS.lime; plate.ctx.font = font(700, 30); plate.ctx.textAlign = "center"; plate.ctx.textBaseline = "middle";
+  if ("letterSpacing" in plate.ctx) plate.ctx.letterSpacing = "6px";
+  plate.ctx.fillText("NOVA", 128, 34); plate.tex.needsUpdate = true;
+  const plateMesh = screen(0.56, 0.14, plate.tex, block, PED.w / 2 + 0.002);
   plateMesh.material.transparent = true;
-  plateMesh.position.y = 0.12;
-  // A thin lime light line along the front, like a status strip.
-  const strip = box(0.9, 0.035, 0.02, 0.01, M.lime, block);
-  strip.position.set(0, -0.3, 0.75); strip.castShadow = false;
-  // The top: a frosted disc with a lime ring Nova floats over.
-  const disc = cyl(0.62, 0.62, 0.04, phys(0xFFFFFF, { roughness: 0.25, transparent: true, opacity: 0.55, clearcoat: 1 }), st.nova, 64);
-  disc.position.set(-0.25, 1.415, 0.2); disc.userData.noAO = true;
-  const ring = new THREE.Mesh(keep(new THREE.TorusGeometry(0.6, 0.03, 16, 96)), M.lime);
-  ring.rotation.x = Math.PI / 2; ring.position.set(-0.25, 1.44, 0.2); st.nova.add(ring);
-  // Her tools: a small block beside her (stock, prices, free times).
-  const tools = box(0.74, 0.74, 0.74, 0.14, M.ink, st.nova);
-  tools.position.set(1.05, 0.24 + 0.37, 0.75);
-  const toolTex = canvasTex(256, 256, 2); drawTools(toolTex.ctx); toolTex.tex.needsUpdate = true;
-  const toolFace = screen(0.5, 0.5, toolTex.tex, tools, 0.372); toolFace.material.transparent = true;
+  plateMesh.position.y = 0.08;
 
-  const novaHome = new THREE.Vector3(-0.25, 2.3, 0.2);
+  const novaHome = new THREE.Vector3(0, top + 1.05, 0.3);
   const nova = new THREE.Group(); nova.position.copy(novaHome); st.nova.add(nova);
   const ballMat = keep(new THREE.MeshPhysicalMaterial({ color: 0xC6F035, emissive: 0x8DC21F, emissiveIntensity: 0.55, roughness: 0.22, clearcoat: 1, clearcoatRoughness: 0.06 }));
   const ball = new THREE.Mesh(keep(new THREE.SphereGeometry(0.55, 64, 48)), ballMat);
@@ -407,8 +403,8 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   }
   const R = {
     chan: chanX.map((x, i) => cable(route([[x, 1.62], [x, 1.3], [-3.8, 1.3], [-3.8, 1.0]]), st.in, [true, i === 3])),
-    toNova: cable(route([[-2.85, 0.2], [-1.65, 0.2]]), st.nova),
-    toApp: cable(route([[1.65, 0.0], [2.2, 0.0], [2.2, -2.4], [2.9, -2.4]]), st.app),
+    toNova: cable(route([[-2.85, 0.2], [-1.35, 0.2]]), st.nova),
+    toApp: cable(route([[1.35, 0.3], [2.2, 0.3], [2.2, -2.4], [2.9, -2.4]]), st.app),
     toShop: cable(route([[4.15, -1.72], [4.15, 1.9]]), st.outShop),
     toSvc: cable(route([[4.3, -2.4], [6.0, -2.4], [6.0, -0.6], [6.4, -0.6]]), st.outSvc),
   };
@@ -431,7 +427,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     m.position.set(x, y, z); m.userData.key = key; world.add(m); hits.push(m);
   };
   hit("in", 6.2, 3.2, 4.2, -5.8, 1.4, 1.1);
-  hit("nova", 3.2, 3.2, 2.4, 0, 1.6, 0.3);
+  hit("nova", 2.8, 3.0, 2.4, 0, 1.5, 0.3);
   hit("app", 4.5, 4.4, 1.4, 3.6, 2.2, -2.4);
   hit("outShop", 5.6, 2.4, 1.6, 5.6, 1.1, 2.6);
   hit("outSvc", 3.4, 2.4, 2.0, 8.0, 1.1, -0.6);
@@ -594,13 +590,6 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     const pos = g.attributes.position, uv = g.attributes.uv;
     for (let i = 0; i < pos.count; i++) uv.setXY(i, pos.getX(i) / w + 0.5, pos.getY(i) / h + 0.5);
     return g;
-  }
-  // Her tools: three linked nodes in lime.
-  function drawTools(ctx) {
-    ctx.strokeStyle = CSS.lime; ctx.fillStyle = CSS.lime; ctx.lineWidth = 12; ctx.lineCap = "round";
-    const n = [[128, 64], [64, 184], [192, 184]];
-    ctx.beginPath(); ctx.moveTo(...n[0]); ctx.lineTo(...n[1]); ctx.moveTo(...n[0]); ctx.lineTo(...n[2]); ctx.moveTo(...n[1]); ctx.lineTo(...n[2]); ctx.stroke();
-    for (const [x, y] of n) { ctx.beginPath(); ctx.arc(x, y, 26, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = CSS.ink0; ctx.beginPath(); ctx.arc(x, y, 11, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = CSS.lime; }
   }
   // The shipping label on each parcel.
   function drawShippingLabel(ctx) {
