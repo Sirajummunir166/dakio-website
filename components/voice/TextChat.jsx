@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, lastAssistantMessageIsCompleteWithToolCalls } from "ai";
 import { href } from "../../lib/i18n";
+import { sendRequest, requestToolOutput } from "./request";
 import { REGISTER_URL } from "../../lib/urls";
 
 const COPY = {
@@ -24,7 +25,7 @@ const COPY = {
     placeholder: "Ask Nova anything…",
     send: "Send",
     end: "End",
-    startFree: "Open your store",
+    startFree: "Get started",
     close: "Close",
     ended: "Thanks for chatting with Nova.",
     note: "Answers come from our AI. We keep the chat text for 30 days to improve answers.",
@@ -37,7 +38,7 @@ const COPY = {
     placeholder: "Nova-কে যা খুশি জিজ্ঞেস করুন…",
     send: "পাঠান",
     end: "শেষ",
-    startFree: "স্টোর খুলুন",
+    startFree: "শুরু করুন",
     close: "বন্ধ করুন",
     ended: "Nova-র সাথে কথা বলার জন্য ধন্যবাদ।",
     note: "উত্তর দেয় আমাদের AI। উত্তর আরও ভালো করতে আমরা ৩০ দিন চ্যাটের লেখা রাখি।",
@@ -59,7 +60,7 @@ function signupUrl() {
   } catch { return REGISTER_URL; }
 }
 
-export default function TextChat({ ticket, lang, onEnded }) {
+export default function TextChat({ ticket, lang, siteLang = lang, onEnded }) {
   const copy = COPY[lang] || COPY.en;
   const router = useRouter();
   const [draft, setDraft] = useState("");
@@ -82,12 +83,17 @@ export default function TextChat({ ticket, lang, onEnded }) {
       const args = toolCall.input ?? {};
       if (toolCall.toolName === "open_page") {
         const path = typeof args.path === "string" && args.path.startsWith("/") ? args.path : "/";
-        router.push(href(lang, path));
+        router.push(href(siteLang, path));
         track("voice_open_page", { path, mode: "text" });
         chat.addToolOutput({ tool: "open_page", toolCallId: toolCall.toolCallId, output: { opened: path } });
       } else if (toolCall.toolName === "start_signup") {
         setShowSignup(true);
-        chat.addToolOutput({ tool: "start_signup", toolCallId: toolCall.toolCallId, output: { shown: "An Open your store button is now under the chat. Ask them to tap it." } });
+        chat.addToolOutput({ tool: "start_signup", toolCallId: toolCall.toolCallId, output: { shown: "A Get started button is now under the chat. Ask them to tap it." } });
+      } else if (toolCall.toolName === "leave_request") {
+        sendRequest({ ...args, source: "nova_text", lang }).then((res) => {
+          track("voice_leave_request", { ok: res.ok, mode: "text" });
+          chat.addToolOutput({ tool: "leave_request", toolCallId: toolCall.toolCallId, output: requestToolOutput(res) });
+        });
       }
     },
   });

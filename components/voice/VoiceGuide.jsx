@@ -17,6 +17,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { LEGAL_PATHS, isEnglishOnlyPath } from "../../lib/i18n";
+import { initBot } from "../../lib/botid";
 
 export const VOICE_COPY = {
   en: {
@@ -27,8 +28,13 @@ export const VOICE_COPY = {
     title: "Nova",
     refusedTitle: "Nova can't talk right now",
     email: "Email the team",
-    startFree: "Open your store",
+    startFree: "Get started",
     close: "Close",
+    hello: "Hi, I'm Nova, Dakio's AI manager.",
+    ask: "Can I help you understand Dakio, or find what your business needs?",
+    pick: "Which language do you prefer?",
+    typeInstead: "Type instead",
+    hear: "Hear Nova",
   },
   bn: {
     launch: "Nova-র সাথে কথা বলুন",
@@ -38,12 +44,19 @@ export const VOICE_COPY = {
     title: "Nova",
     refusedTitle: "Nova এখন কথা বলতে পারছে না",
     email: "টিমকে ইমেইল করুন",
-    startFree: "স্টোর খুলুন",
+    startFree: "শুরু করুন",
     close: "বন্ধ করুন",
+    hello: "হ্যালো, আমি Nova, Dakio-র AI ম্যানেজার।",
+    ask: "Dakio বুঝতে বা আপনার ব্যবসার যা দরকার খুঁজে পেতে সাহায্য করব?",
+    pick: "কোন ভাষায় কথা বলবেন?",
+    typeInstead: "লিখে কথা বলুন",
+    hear: "Nova-র কথা শুনুন",
   },
 };
 
 const TICKET_FRESH_MS = 4 * 60 * 1000; // tickets live 5 minutes on the api
+const WELCOME_AFTER_MS = 8000;
+const WELCOME_KEY = "dakio-nova-welcome";
 
 /** Event kiosk screens: a full-screen display at a stall, nobody to call from it. */
 const KIOSK_PATHS = ["/nsgt26"];
@@ -52,18 +65,6 @@ const KIOSK_PATHS = ["/nsgt26"];
 function hiddenOn(pathname) {
   const bare = String(pathname || "/").replace(/^\/(en|bn)(?=\/|$)/, "") || "/";
   return LEGAL_PATHS.includes(bare) || isEnglishOnlyPath(bare) || KIOSK_PATHS.includes(bare);
-}
-
-let botReady = false;
-async function initBot() {
-  if (botReady) return;
-  botReady = true;
-  try {
-    const { initBotId } = await import("botid/client/core");
-    initBotId({ protect: [{ path: "/api/voice-guide/open", method: "POST" }] });
-  } catch {
-    /* without it the api's own caps still hold */
-  }
 }
 
 function track(name, params = {}) {
@@ -90,12 +91,12 @@ export default function VoiceGuide({ lang = "en" }) {
     return () => { alive = false; (window.cancelIdleCallback || window.clearTimeout)(idle); };
   }, []);
 
-  const fetchTicket = useCallback(async () => {
+  const fetchTicket = useCallback(async (callLang = lang, want = null) => {
     await initBot();
     const r = await fetch("/api/voice-guide/open", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ lang, page: window.location.pathname }),
+      body: JSON.stringify({ lang: callLang, page: window.location.pathname, ...(want ? { want } : {}) }),
     });
     return r.json().catch(() => ({ ok: false, reason: "error" }));
   }, [lang]);
@@ -110,11 +111,24 @@ export default function VoiceGuide({ lang = "en" }) {
     }
   }, [fetchTicket, mode]);
 
-  const start = useCallback(async () => {
+  // The language the visitor picked on the welcome card (the call runs in it;
+  // pages Nova opens stay in the site's language).
+  const [callLang, setCallLang] = useState(lang);
+
+  const start = useCallback(async ({ lang: pick = lang, want = null } = {}) => {
     if (phase === "opening" || phase === "call") return;
-    warm();
+    stopClip();
+    setWelcome(false);
+    setCallLang(pick);
+    if (pick !== lang || want) {
+      // A different language or "type instead" needs its own ticket and panel.
+      mod.current = (want === "text" || mode === "text" ? import("./TextChat") : import("./VoiceCall")).catch((e) => { mod.current = null; throw e; });
+      pending.current = { at: Date.now(), promise: fetchTicket(pick, want).catch(() => ({ ok: false, reason: "error" })) };
+    } else {
+      warm();
+    }
     setPhase("opening");
-    track("voice_open", { lang, page: window.location.pathname });
+    track("voice_open", { lang: pick, want: want || "", page: window.location.pathname });
     const tapAt = performance.now();
     try {
       const [m, t] = await Promise.all([mod.current, pending.current.promise]);
@@ -126,7 +140,7 @@ export default function VoiceGuide({ lang = "en" }) {
         return;
       }
       // The server decides the mode; if it changed since this page asked, load the other panel.
-      const panel = (t.mode === "text") === (mode === "text") ? m : await (t.mode === "text" ? import("./TextChat") : import("./VoiceCall"));
+      const panel = (t.mode === "text") === (want === "text" || mode === "text") ? m : await (t.mode === "text" ? import("./TextChat") : import("./VoiceCall"));
       setTicket({ ...t, tapAt });
       setCall(() => panel.default);
       setPhase("call");
@@ -135,7 +149,7 @@ export default function VoiceGuide({ lang = "en" }) {
       setRefusal(null);
       setPhase("refused");
     }
-  }, [phase, warm, lang, mode]);
+  }, [phase, warm, lang, mode, fetchTicket]);
 
   const ended = useCallback(() => {
     setPhase("idle");
@@ -143,7 +157,43 @@ export default function VoiceGuide({ lang = "en" }) {
   }, []);
 
   // A language switch mid-visit needs a ticket in the new language.
-  useEffect(() => { pending.current = null; }, [lang]);
+  useEffect(() => { pending.current = null; setCallLang(lang); }, [lang]);
+
+  // The welcome: a few seconds in, once per visitor, Nova offers to help and
+  // asks for a language. Her greeting is a RECORDED clip (public/nova-guide/
+  // welcome-<lang>.mp3, free to play): it plays by itself if the visitor has
+  // already tapped or clicked the page (browsers allow sound only after that),
+  // otherwise the card offers "Hear Nova". The live call, which costs, starts
+  // only when they pick a language.
+  const [welcome, setWelcome] = useState(false);
+  const [hearing, setHearing] = useState("off"); // off | ready | playing | none
+  const clip = useRef(null);
+  const stopClip = () => { try { clip.current?.pause(); } catch { /* fine */ } setHearing((h) => (h === "none" ? h : "ready")); };
+  useEffect(() => {
+    if (!welcome) { stopClip(); return undefined; }
+    const a = new Audio(`/nova-guide/welcome-${lang}.mp3`);
+    clip.current = a;
+    a.onplaying = () => setHearing("playing");
+    a.onended = () => setHearing("ready");
+    a.onerror = () => setHearing("none"); // no clip yet: the card works silently
+    setHearing("ready");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (navigator.userActivation?.hasBeenActive && !reduced) a.play().catch(() => { /* blocked: "Hear Nova" stays */ });
+    return () => { a.pause(); a.onplaying = a.onended = a.onerror = null; };
+  }, [welcome, lang]);
+  const hear = () => { const a = clip.current; if (!a) return; a.currentTime = 0; a.play().catch(() => setHearing("none")); track("voice_welcome_hear", { lang }); };
+  useEffect(() => {
+    if (mode === "off" || hiddenOn(pathname)) return undefined;
+    let seen = false;
+    try { seen = !!window.localStorage.getItem(WELCOME_KEY); } catch { /* private window: show it */ }
+    if (seen) return undefined;
+    const t = window.setTimeout(() => {
+      setWelcome((w) => w || true);
+      try { window.localStorage.setItem(WELCOME_KEY, String(Date.now())); } catch { /* fine */ }
+      track("voice_welcome_shown", { lang });
+    }, WELCOME_AFTER_MS);
+    return () => window.clearTimeout(t);
+  }, [mode, pathname, lang]);
 
   if ((mode === "off" || hiddenOn(pathname)) && phase !== "call") return null;
 
@@ -151,7 +201,7 @@ export default function VoiceGuide({ lang = "en" }) {
   return (
     <div className="vg-root" lang={lang}>
       {phase === "call" && Call && ticket ? (
-        <Call ticket={ticket} lang={lang} onEnded={ended} />
+        <Call ticket={ticket} lang={callLang} siteLang={lang} onEnded={ended} />
       ) : phase === "refused" ? (
         <div className="vg-panel" role="dialog" aria-label={copy.refusedTitle}>
           <div className="vg-head">
@@ -165,6 +215,30 @@ export default function VoiceGuide({ lang = "en" }) {
             <a className={`vg-btn${bn ? " vg-btn-bn" : ""}`} href="mailto:hello@dakio.io">{copy.email}</a>
           </div>
         </div>
+      ) : welcome && phase === "idle" ? (
+        <div className="vg-panel vg-welcome" role="dialog" aria-label={copy.hello}>
+          <div className="vg-head">
+            <div className="vg-orb" data-state={hearing === "playing" ? "speaking" : undefined} style={{ width: 44, height: 44 }} aria-hidden />
+            <div className={`vg-title${bn ? " vg-bn" : ""}`}>{copy.hello}</div>
+            <button type="button" className="vg-close-x" style={{ marginLeft: "auto", alignSelf: "flex-start" }} onClick={() => { setWelcome(false); track("voice_welcome_closed"); }} aria-label={copy.close}>×</button>
+          </div>
+          <p className={`vg-welcome-ask${bn ? " vg-bn" : ""}`}>{copy.ask}</p>
+          {hearing === "ready" ? (
+            <button type="button" className={`vg-welcome-hear${bn ? " vg-bn" : ""}`} onClick={hear}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M11 5L6 9H2v6h4l5 4V5zM15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14" /></svg>
+              {copy.hear}
+            </button>
+          ) : null}
+          <div className={`vg-welcome-pick${bn ? " vg-bn" : ""}`}>{copy.pick}</div>
+          <div className="vg-welcome-langs">
+            <button type="button" className="vg-btn vg-btn-lime vg-btn-bn" onPointerEnter={warm} onClick={() => start({ lang: "bn" })}>বাংলা</button>
+            <button type="button" className="vg-btn vg-btn-lime" onPointerEnter={warm} onClick={() => start({ lang: "en" })}>English</button>
+          </div>
+          {mode === "voice" ? (
+            <button type="button" className={`vg-welcome-type${bn ? " vg-bn" : ""}`} onClick={() => start({ lang, want: "text" })}>{copy.typeInstead}</button>
+          ) : null}
+          <p className={`vg-note${bn ? " vg-bn" : ""}`}>{copy.note}</p>
+        </div>
       ) : (
         <button
           type="button"
@@ -172,7 +246,7 @@ export default function VoiceGuide({ lang = "en" }) {
           onPointerEnter={warm}
           onFocus={warm}
           onTouchStart={warm}
-          onClick={start}
+          onClick={() => { setWelcome(true); track("voice_launch_tap", { lang }); }}
           disabled={phase === "opening"}
           aria-label={mode === "text" ? copy.launchText : copy.launch}
           title={copy.note}

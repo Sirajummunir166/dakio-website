@@ -20,6 +20,7 @@ import { experimental_useRealtime } from "@ai-sdk/react";
 import { lookUpTopic } from "../../content/guide/topics";
 import { href } from "../../lib/i18n";
 import { REGISTER_URL } from "../../lib/urls";
+import { sendRequest, requestToolOutput } from "./request";
 
 const COPY = {
   en: {
@@ -30,7 +31,7 @@ const COPY = {
     mute: "Mute",
     unmute: "Unmute",
     end: "End",
-    startFree: "Open your store",
+    startFree: "Get started",
     micBlocked: "Allow the microphone to talk to Nova",
     ended: "Thanks for talking with Nova.",
     close: "Close",
@@ -44,7 +45,7 @@ const COPY = {
     mute: "মিউট",
     unmute: "আনমিউট",
     end: "শেষ",
-    startFree: "স্টোর খুলুন",
+    startFree: "শুরু করুন",
     micBlocked: "Nova-র সাথে কথা বলতে মাইক্রোফোন চালু করুন",
     ended: "Nova-র সাথে কথা বলার জন্য ধন্যবাদ।",
     close: "বন্ধ করুন",
@@ -69,7 +70,7 @@ function signupUrl() {
   } catch { return REGISTER_URL; }
 }
 
-export default function VoiceCall({ ticket, lang, onEnded }) {
+export default function VoiceCall({ ticket, lang, siteLang = lang, onEnded }) {
   const copy = COPY[lang] || COPY.en;
   const router = useRouter();
   const [stream, setStream] = useState(null);
@@ -99,16 +100,22 @@ export default function VoiceCall({ ticket, lang, onEnded }) {
     if (toolCall.toolName === "look_up") return lookUpTopic(input.topic);
     if (toolCall.toolName === "open_page") {
       const path = typeof input.path === "string" && input.path.startsWith("/") ? input.path : "/";
-      router.push(href(lang, path));
+      // The page stays in the site's language: switching it would remount the layout and end the call.
+      router.push(href(siteLang, path));
       track("voice_open_page", { path });
       return { opened: path, note: "The page is open behind this call panel." };
     }
     if (toolCall.toolName === "start_signup") {
       setShowSignup(true);
-      return { shown: "An Open your store button is now on their screen, in the call panel. Ask them to tap it." };
+      return { shown: "A Get started button is now on their screen, in the call panel. Ask them to tap it." };
+    }
+    if (toolCall.toolName === "leave_request") {
+      const res = await sendRequest({ ...input, source: "nova_voice", lang });
+      track("voice_leave_request", { ok: res.ok });
+      return requestToolOutput(res);
     }
     return { error: "unknown tool" };
-  }, [router, lang]);
+  }, [router, lang, siteLang]);
 
   const onEvent = useCallback((ev) => {
     if (ev?.type === "response-done" && ev.raw) usages.current.push(ev.raw);

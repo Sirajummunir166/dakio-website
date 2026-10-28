@@ -1,7 +1,8 @@
 "use client";
 
-// Contact — 1:1 port of "Dakio Contact.dc.html". Client for the demo
-// send-message state swap (form → "Message sent" card). Copy arrives as props.
+// Contact — 1:1 port of "Dakio Contact.dc.html". The form sends to the team
+// (/api/enquiry → a Lead in admin + an email, the same path as Nova's
+// leave_request), then swaps to the "Message sent" card. Copy arrives as props.
 
 import Link from "next/link";
 import { useState } from "react";
@@ -10,6 +11,7 @@ import Reveal from "../Reveal";
 import LogoDefs from "../Logo";
 import { href } from "../../lib/i18n";
 import { type } from "../../lib/type";
+import { sendRequest } from "../voice/request";
 
 const inputStyle = { width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid rgba(26,29,18,0.14)", background: "#ffffff", fontSize: 14, color: "#1A1D12" };
 const labelBase = { display: "block", fontSize: 12.5, fontWeight: 600, color: "#1A1D12", marginBottom: 7 };
@@ -28,6 +30,18 @@ const ICONS = {
 
 export default function ContactClient({ lang = "en", copy }) {
   const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", phone: "", email: "", subject: "", message: "" });
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState("");
+  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
+  const submit = async () => {
+    if (busy) return;
+    if (!form.name.trim() || !(form.phone.trim() || form.email.trim()) || !(form.subject.trim() || form.message.trim())) { setErr(copy.form.missing); return; }
+    setBusy(true); setErr("");
+    const r = await sendRequest({ ...form, source: "contact_form", lang });
+    setBusy(false);
+    if (r.ok) setSent(true); else setErr(r.error || copy.form.failed);
+  };
   const c = copy;
   const T = type(lang);
   const labelStyle = { ...labelBase, ...T.label };
@@ -105,27 +119,28 @@ export default function ContactClient({ lang = "en", copy }) {
                 <div className="m-grid2-1" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                   <div>
                     <label style={labelStyle}>{c.form.name.label}</label>
-                    <input type="text" placeholder={c.form.name.placeholder} style={inputStyle} />
+                    <input type="text" value={form.name} onChange={set("name")} placeholder={c.form.name.placeholder} style={inputStyle} />
                   </div>
                   <div>
                     <label style={labelStyle}>{c.form.phone.label}</label>
-                    <input type="tel" placeholder={c.form.phone.placeholder} style={inputStyle} />
+                    <input type="tel" value={form.phone} onChange={set("phone")} placeholder={c.form.phone.placeholder} style={inputStyle} />
                   </div>
                 </div>
                 <div>
                   <label style={labelStyle}>{c.form.email.label}</label>
-                  <input type="email" placeholder={c.form.email.placeholder} style={inputStyle} />
+                  <input type="email" value={form.email} onChange={set("email")} placeholder={c.form.email.placeholder} style={inputStyle} />
                 </div>
                 <div>
                   <label style={labelStyle}>{c.form.subject.label}</label>
-                  <input type="text" placeholder={c.form.subject.placeholder} style={inputStyle} />
+                  <input type="text" value={form.subject} onChange={set("subject")} placeholder={c.form.subject.placeholder} style={inputStyle} />
                 </div>
                 <div>
                   <label style={labelStyle}>{c.form.message.label}</label>
-                  <textarea placeholder={c.form.message.placeholder} rows={5} style={{ ...inputStyle, resize: "vertical", minHeight: 110 }} />
+                  <textarea value={form.message} onChange={set("message")} placeholder={c.form.message.placeholder} rows={5} style={{ ...inputStyle, resize: "vertical", minHeight: 110 }} />
                 </div>
-                <button onClick={() => setSent(true)} className="hv-up2" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "14px 0", borderRadius: 10, border: "none", background: "#C6F035", color: "#1A1D12", fontSize: 15, fontWeight: 700, cursor: "pointer", ...T.label }}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z" /></svg>{c.form.submit}
+                {err ? <div role="alert" style={{ fontSize: 13.5, color: "#B3261E", ...T.small }}>{err}</div> : null}
+                <button onClick={submit} disabled={busy} className="hv-up2" style={{ opacity: busy ? 0.7 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "14px 0", borderRadius: 10, border: "none", background: "#C6F035", color: "#1A1D12", fontSize: 15, fontWeight: 700, cursor: "pointer", ...T.label }}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z" /></svg>{busy ? c.form.sending : c.form.submit}
                 </button>
               </div>
             )}
