@@ -78,7 +78,7 @@ _Says what Dakio is in five seconds: a role everyone knows (a manager) and the w
 
 ### 1a · Nova's machine (hero visual, in motion)
 
-_Below the headline, across the hero: a 3D line on the hero's dark floor. Channels, the inbox phone, Nova on her pedestal, the Dakio app on a monitor, then a courier belt (shops) or a desk calendar with an SMS bell (services). A lime pulse carries one real conversation from the live chat along the cable every 11 seconds. Drag to look around, tap a station to fly to it; on phones the camera follows the work. The app screens stay in English; the chat on the phone follows the page's language._
+_Below the headline, across the hero: a 3D line drawn in thin light outlines on the hero's dark floor. Lime only for the cable, the pulse, Nova (the one solid thing) and the station at work, whose outline lights up. Channels, the inbox phone, Nova on her pedestal, the Dakio app on a monitor, then a courier belt (shops) or a desk calendar with an SMS bell (services). A lime pulse carries one real conversation from the live chat along the cable every 11 seconds. Drag to look around, tap a station to fly to it; on phones the camera follows the work. The app screens stay in English; the chat on the phone follows the page's language._
 
 **Line under the scene (and screen reader text)**
 - EN: This is the line Nova runs all day and all night. Drag to look around, or tap a station.
