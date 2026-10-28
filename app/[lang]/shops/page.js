@@ -7,7 +7,7 @@ import Reveal from "../../../components/Reveal";
 import LogoDefs from "../../../components/Logo";
 import PageJsonLd from "../../../components/PageJsonLd";
 import { AudienceRoot } from "../../../components/home/Audience";
-import { Hero, Works, Contrast, Parts, Flow, Setup, Charge, Pricing, Faq, Closing, ShopExtras } from "../../../components/home/HomeSections";
+import { Hero, Works, Run, Contrast, Parts, Flow, Setup, Charge, Pricing, Faq, Closing, ShopExtras } from "../../../components/home/HomeSections";
 import { href, languageAlternates } from "../../../lib/i18n";
 import { type } from "../../../lib/type";
 import homeEn, { MARQUEE as MARQUEE_EN } from "../../../content/copy/home.en";
@@ -45,6 +45,7 @@ export default async function ShopsPage({ params }) {
       <Nav lang={lang} route={ROUTE} active="shops" style={{ position: "sticky", top: 0, zIndex: 60 }} />
       <Hero c={c} lang={lang} L={L} head={c.shops} />
       <Works c={c} marquee={MARQUEE[lang] || MARQUEE_EN} />
+      <Run c={c} />
       <Contrast c={c} />
       <Flow c={c} />
       <ShopExtras c={c} />

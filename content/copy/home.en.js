@@ -34,6 +34,33 @@ const home = {
 
   works: { label: "Works with what you already use" },
 
+  // Everything to run it (HomeSections.jsx Run): the system, stage by stage,
+  // per audience. Only what is in the app today.
+  run: {
+    kicker: "EVERYTHING TO RUN IT",
+    h2: { shop: "From the product on your shelf to the money in your account.", svc: "From your price list to the money in your account.", both: "Everything a shop or a service business runs on." },
+    sub: "Dakio is the whole system, not a chat tool. Nova works in every part of it.",
+    nova: "Nova works in every part",
+    shop: [
+      { t: "Products", items: ["Sizes, colours and photos", "Categories and brands", "Edit many at once"] },
+      { t: "Stock", items: ["Stock in every warehouse", "Purchases from suppliers", "Low stock flagged by Nova"] },
+      { t: "Sell", items: ["Your own website", "Chats and comments", "POS at your counter"] },
+      { t: "Orders", items: ["Every order in one list", "Fake order check", "Coupons and add-ons"] },
+      { t: "Deliver", items: ["Steadfast, Pathao, RedX", "Tracking in the chat", "Returns tracked"] },
+      { t: "Money and team", items: ["Payments, expenses, ledger", "Courier cash matched", "Staff attendance and leave"] },
+    ],
+    svc: [
+      { t: "Services", items: ["Prices and durations", "Who does what", "Opening hours"] },
+      { t: "Get found", items: ["Your own booking website", "Enquiry form and QR code", "Chats and comments"] },
+      { t: "Book", items: ["Only times that are free", "Day and week calendar", "Google Calendar in step"] },
+      { t: "Remind", items: ["SMS or email reminders", "Each person's day list", "Follow-up tasks"] },
+      { t: "Clients", items: ["One page per client", "Pipeline from enquiry to won", "Offers by SMS, email, chat"] },
+      { t: "Money", items: ["Quotes and invoices", "Client accepts online", "Payments, part or full"] },
+    ],
+    note: "Every part above is in the app today.",
+  },
+
+
   // Nova's machine (components/home/NovaMachine.jsx): a 3D line from a chat
   // to a delivered order or a kept appointment. Every station is a built
   // feature; the courier is booked by the owner from the order page.
@@ -63,10 +90,16 @@ const home = {
     cols: ["A chatbot", "Dakio with Nova"],
     rows: [
       { t: "Answers messages in Bangla", bot: true },
-      { t: "Takes the order with stock and price checked" },
-      { t: "Courier, cash on delivery and bKash in the same place" },
+      { t: "Takes the order with stock and price checked", show: "shop-only" },
+      { t: "Courier, cash on delivery and bKash in the same place", show: "shop-only" },
+      { t: "Inventory, purchases and POS in the same app", show: "shop-only" },
+      { t: "Books only the times you are really free", show: "svc-only" },
+      { t: "Calendar, staff and reminders in the same place", show: "svc-only" },
+      { t: "Quotes and invoices your client accepts online", show: "svc-only" },
+      { t: "Takes orders and bookings, with stock and free times checked", show: "both-only" },
+      { t: "Courier, calendar and reminders in the same place", show: "both-only" },
+      { t: "Inventory, POS and invoices in the same app", show: "both-only" },
       { t: "Every customer's full history on one page" },
-      { t: "Bookings, calendar and reminders" },
       { t: "Your own website, ready on day one" },
       { t: "Follows up and brings customers back" },
       { t: "Reports to you every morning" },
@@ -75,8 +108,8 @@ const home = {
   },
 
   parts: {
-    kicker: "ONE APP",
-    h2: "Your whole business in one place. Nova works in every part.",
+    kicker: "WHERE NOVA WORKS",
+    h2: "Nova works in every part, not only the inbox.",
     cards: {
       inbox: { t: "Inbox", d: "Messenger, Instagram, WhatsApp and website chat in one list. Nova answers, understands voice messages and screenshots, and leaves the hard ones for you." },
       customers: { t: "Customers", d: "Every chat, order, booking and payment on one page per customer. Nova saves what they tell her and reminds you who to call back." },
@@ -159,13 +192,22 @@ const home = {
       { t: "Hard ones come to you", d: "A complaint, a refund, an angry customer. Nova leaves those chats for you and tells you right away." },
       { t: "Everything in front of you", d: "Read every chat, step in whenever you like, and teach her with your own best replies." },
     ],
-    note: "Prices, stock and delivery charges come only from your shop. Nova does not make them up.",
+    note: {
+      shop: "Prices, stock and delivery charges come only from your shop. Nova does not make them up.",
+      svc: "Prices and free times come only from your services and your calendar. Nova does not make them up.",
+      both: "Prices, stock, delivery charges and free times come only from your shop and your calendar. Nova does not make them up.",
+    },
   },
 
   pricing: {
     kicker: "PRICING",
     h2: "Less than one manager's salary.",
-    sub: "A shop manager costs ৳15,000 or more a month and works ten hours a day. Nova works all day and all night, and every plan includes her.",
+    sub: {
+      shop: "A shop manager costs ৳15,000 or more a month and works ten hours a day. Nova works all day and all night, and every plan includes her.",
+      svc: "A receptionist costs ৳12,000 or more a month and goes home in the evening. Nova answers and books all day and all night, and every plan includes her.",
+      both: "A manager costs ৳15,000 or more a month and works ten hours a day. Nova works all day and all night, and every plan includes her.",
+    },
+    svcLine: "For services, both plans include bookings, the calendar, reminders, quotes and invoices and a booking website.",
     busy: "Busy month? Add more from the app any time.",
     popular: "POPULAR",
     // FALLBACK ONLY. The cards come from the live catalogue via
@@ -185,9 +227,12 @@ const home = {
     items: [
       { q: "What is Nova?", a: "Nova is the AI manager inside Dakio. She works in your inbox, orders, bookings and customer pages, and reports to you every morning." },
       { q: "How is this different from a chatbot?", a: "A chatbot stops at the reply. Nova takes the order or the booking, keeps the customer updated, follows up, and does it inside the app where your website, couriers and accounts already live." },
+      { q: "Can I replace my stock sheet and my POS?", a: "Yes. Products with sizes and colours, stock in every warehouse, purchases from your suppliers and a POS for the counter are all in Dakio. A sale at the counter and an order from chat take stock from the same place." },
+      { q: "Can my staff use it?", a: "Yes. Each person gets a login with their own role: sales staff see their own customers, and attendance, leave and advances are in Employees. On a service business, each person gets their day's bookings every morning. Staff logins come with the Business plan." },
       { q: "Does Nova understand Bangla?", a: "Yes: Bangla, English and Banglish, typed or as a voice message. She also recognises a product from a screenshot or a photo of your post." },
       { q: "What if she says something wrong?", a: "She quotes prices, stock and delivery only from your shop. Anything risky, she leaves for you. You can read every chat and reply yourself at any time." },
       { q: "Will my Facebook page work?", a: "Yes. Connect it in a few clicks. Your page, posts and old chats stay as they are, and Nova answers comments under your posts too." },
+      { q: "I already sell on Facebook and use a courier. What changes?", a: "Your page stays as it is. Connect it, add your products, and enter your Steadfast, Pathao or RedX keys once. Orders from chats, comments and your new website land in one list, and you book the courier from there." },
       { q: "Do I pay per message?", a: "No. Every plan includes a monthly allowance for Nova, enough for well over a thousand customer chats. If a month is busier, add more from the app." },
       { q: "I run a parlour, a coaching centre or a chamber. Is this for me?", a: "Yes. Pick Services when you sign up. Nova books appointments, classes and visits, and you get a calendar, reminders, invoices and a booking website." },
       { q: "Can I stop any time?", a: "Yes. One switch turns Nova off, and your business keeps running in Dakio without her." },

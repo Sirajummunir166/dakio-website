@@ -235,11 +235,34 @@
 .hm-mach-dark .hm-mach-steps { display: none; }
 .hm-mach-dark .hm-mach-stage.is-failed { display: none; }
 
+/* Everything to run it (HomeSections.jsx Run): Nova's band over a line of stages */
+.hm-run { border-radius: 32px; background: #FBFAF5; border: 1px solid rgba(26,29,18,0.08); padding: 30px 30px 34px; }
+.hm-run-nova { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 18px; border-radius: 99px; background: #0F120B; color: #C6F035; font-size: 14px; font-weight: 700; }
+.hm-run-orb { width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #F4FFD6 0%, #C6F035 40%, #6FA524 75%, #2E4710 100%); box-shadow: 0 0 14px rgba(198,240,53,0.5); flex-shrink: 0; }
+.hm-run-block { margin-top: 30px; }
+.hm-run-label { margin: 0 0 6px; font-family: var(--dk-font-mono), monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #3E7A45; }
+.hm-run-line { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; }
+/* The rail through the stops, and a dashed drop from Nova's band to each one. */
+.hm-run-line::before { content: ""; position: absolute; left: 8px; right: 8px; top: 30px; height: 2px; background: #3E7A45; border-radius: 2px; }
+.hm-run-stage { position: relative; padding-top: 44px; }
+.hm-run-stage::before { content: ""; position: absolute; left: 8px; top: -30px; height: 52px; border-left: 1.5px dashed rgba(62,122,69,0.45); }
+.hm-run-block + .hm-run-block .hm-run-stage::before { display: none; }
+.hm-run-dot { position: absolute; left: 0; top: 22px; width: 18px; height: 18px; border-radius: 50%; background: #C6F035; border: 2.5px solid #0F120B; box-sizing: border-box; }
+.hm-run-n { font-family: var(--dk-font-mono), monospace; font-size: 10.5px; font-weight: 700; color: #3E7A45; letter-spacing: 0.08em; }
+.hm-run-t { margin: 4px 0 10px; font-size: 17px; line-height: 1.25; letter-spacing: -0.3px; font-weight: 800; color: #1A1D12; }
+.hm-run-items { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.hm-run-items li { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 7px; align-items: start; font-size: 13.5px; line-height: 1.4; color: #55584B; }
+.hm-run-items svg { width: 14px; height: 14px; margin-top: 2px; color: #3E7A45; }
+.hm-plans-svc { margin-top: 14px; }
+
 /* ---------- Phones and tablets ---------- */
 @media (max-width: 980px) {
   .hm-hero-top, .hm-charge, .hm-team { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .hm-hero-top { align-items: start; }
   .hm-mach-dark .hm-mach-stage { height: 520px; }
+  .hm-run-line { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 8px; }
+  .hm-run-line::before { display: none; }
+  .hm-run-stage::before { display: none; }
   .hm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hm-grid4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hm-chatdemo { grid-template-columns: minmax(0, 1fr); gap: 28px; max-width: 460px; }
@@ -252,6 +275,12 @@
   .hm-hero-wrap { padding-left: 0; padding-right: 0; margin-top: 0; }
   .hm-hero { border-radius: 0; padding: 44px 16px 28px; }
   .hm-hero-stage { margin: 18px -16px -28px; }
+  .hm-run { padding: 20px 18px 24px; border-radius: 24px; }
+  .hm-run-line { grid-template-columns: minmax(0, 1fr); gap: 0; padding-left: 4px; }
+  .hm-run-line::before { display: block; left: 12px; right: auto; top: 10px; bottom: 10px; width: 2px; height: auto; }
+  .hm-run-stage { padding: 0 0 18px 34px; }
+  .hm-run-dot { left: 4px; top: 2px; }
+  .hm-run-t { margin-top: 2px; }
   .hm-mach-dark .hm-mach-stage { height: 460px; }
   .hm-mach-dark .hm-mach-cap { left: 12px; right: 12px; bottom: 12px; }
   .hm-mach-dark .hm-mach-pause { top: 14px; right: 12px; }
@@ -290,6 +319,7 @@ html[lang="bn"] .hm-cta-h2 { font-size: 46px; }
 html[lang="bn"] .hm-kicker, html[lang="bn"] .hm-badge, html[lang="bn"] .hm-ask-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; text-transform: none; font-size: 13px; }
 html[lang="bn"] .hm-lead, html[lang="bn"] .hm-body, html[lang="bn"] .hm-lead-dark, html[lang="bn"] .hm-note, html[lang="bn"] .hm-faq summary, html[lang="bn"] .hm-vs-t { font-family: var(--dk-font-bn), sans-serif; line-height: 1.75; }
 html[lang="bn"] .hm-msg, html[lang="bn"] .hm-pcard-txt, html[lang="bn"] .hm-rcard-txt, html[lang="bn"] .hm-chips, html[lang="bn"] .hm-shot-cap, html[lang="bn"] .hm-chat-cap { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
+html[lang="bn"] .hm-run-nova, html[lang="bn"] .hm-run-t, html[lang="bn"] .hm-run-items li, html[lang="bn"] .hm-run-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; line-height: 1.6; }
 html[lang="bn"] .hm-mach-cap, html[lang="bn"] .hm-mach-cap b, html[lang="bn"] .hm-mach-steps button, html[lang="bn"] .hm-mach-pin, html[lang="bn"] .hm-mach-pause, html[lang="bn"] .hm-mach-hint, html[lang="bn"] .hm-mach-back { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
 html[lang="bn"] .hm-seg button, html[lang="bn"] .hm-btn { font-family: var(--dk-font-bn), sans-serif; }
 @media (max-width: 980px) {

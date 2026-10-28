@@ -104,6 +104,48 @@ export function Works({ c, marquee }) {
   );
 }
 
+/* ---------------- 1b · Everything to run it ---------------- */
+
+// The system stage by stage, one line per audience; "Both" shows the two
+// lines, each labelled. Nova's band runs over every stage.
+export function Run({ c }) {
+  const x = c.run;
+  const line = (k, show) => (
+    <div className="hm-run-block" data-show={show}>
+      <div className="hm-run-label" data-show="both-only">{c.flow.label[k]}</div>
+      <ol className="hm-run-line">
+        {x[k].map((st, i) => (
+          <li key={st.t} className="hm-run-stage">
+            <span className="hm-run-dot" aria-hidden="true" />
+            <span className="hm-run-n">{String(i + 1).padStart(2, "0")}</span>
+            <h3 className="hm-run-t">{st.t}</h3>
+            <ul className="hm-run-items">
+              {st.items.map(it => <li key={it}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>{it}</li>)}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+  return (
+    <section className="hm-wrap hm-sec" data-reveal>
+      <div className="hm-head">
+        <div className="hm-kicker">{x.kicker}</div>
+        <h2 className="hm-h2" data-show="shop-only">{x.h2.shop}</h2>
+        <h2 className="hm-h2" data-show="svc-only">{x.h2.svc}</h2>
+        <h2 className="hm-h2" data-show="both-only">{x.h2.both}</h2>
+        <p className="hm-lead-dark">{x.sub}</p>
+      </div>
+      <div className="hm-run">
+        <div className="hm-run-nova"><span className="hm-run-orb" aria-hidden="true" />{x.nova}</div>
+        {line("shop", "shop")}
+        {line("svc", "svc")}
+      </div>
+      <p className="hm-note hm-center">{x.note}</p>
+    </section>
+  );
+}
+
 /* ---------------- 2 · Other tools vs Dakio ---------------- */
 
 export function Contrast({ c }) {
@@ -121,7 +163,7 @@ export function Contrast({ c }) {
           <span role="columnheader" className="hm-vs-us">{x.cols[1]}</span>
         </div>
         {x.rows.map(r => (
-          <div className="hm-vs-row" role="row" key={r.t}>
+          <div className="hm-vs-row" role="row" key={r.t} data-show={r.show}>
             <span role="cell" className="hm-vs-t">{r.t}</span>
             <span role="cell" className={r.bot ? "hm-vs-yes" : "hm-vs-no"}><Check on={!!r.bot} /></span>
             <span role="cell" className="hm-vs-us hm-vs-yes"><Check /></span>
@@ -224,7 +266,9 @@ export function Charge({ c }) {
         <div className="hm-charge-head">
           <div className="hm-kicker hm-kicker-lime">{x.kicker}</div>
           <h2 className="hm-h2 hm-on-dark">{x.h2}</h2>
-          <p className="hm-charge-note">{x.note}</p>
+          <p className="hm-charge-note" data-show="shop-only">{x.note.shop}</p>
+          <p className="hm-charge-note" data-show="svc-only">{x.note.svc}</p>
+          <p className="hm-charge-note" data-show="both-only">{x.note.both}</p>
         </div>
         <div className="hm-charge-points">
           {x.points.map(pt => (
@@ -248,9 +292,12 @@ export function Pricing({ c, pricing, T, L }) {
       <div className="hm-head">
         <div className="hm-kicker">{x.kicker}</div>
         <h2 className="hm-h2">{x.h2}</h2>
-        <p className="hm-lead-dark">{x.sub}</p>
+        <p className="hm-lead-dark" data-show="shop-only">{x.sub.shop}</p>
+        <p className="hm-lead-dark" data-show="svc-only">{x.sub.svc}</p>
+        <p className="hm-lead-dark" data-show="both-only">{x.sub.both}</p>
       </div>
       <HomePlans pricing={pricing} T={T} />
+      <p className="hm-note hm-center hm-plans-svc" data-show="svc">{x.svcLine}</p>
       <p className="hm-note hm-center">
         {x.busy}{" "}
         <Link href={L("/pricing")} className="hm-link">{x.footLink} <Arrow size={13} /></Link>

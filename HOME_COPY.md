@@ -116,9 +116,89 @@ _Below the headline, across the hero: a 3D line on the hero's dark floor. Channe
 - EN: Client is reminded: An SMS or email the day before, so she comes. Your artist gets her list in the morning.
 - BN: ক্লায়েন্টকে মনে করানো: আগের দিন SMS বা ইমেইল, যাতে তিনি আসেন। আপনার আর্টিস্ট সকালে তার লিস্ট পায়।
 
+### 1b · Everything to run it (new)
+
+_Right under the hero. The whole system, stage by stage, so a visitor sees Dakio is the software that runs the business, not a chat tool. Nova's band runs over every stage. The line follows the switch; Both shows the two lines, each labelled. Every item is in the app today._
+
+**Kicker**
+- EN: EVERYTHING TO RUN IT
+- BN: চালাতে যা লাগে, সব
+
+**Heading · Products**
+- EN: From the product on your shelf to the money in your account.
+- BN: তাকের প্রোডাক্ট থেকে অ্যাকাউন্টের টাকা পর্যন্ত।
+
+**Heading · Services**
+- EN: From your price list to the money in your account.
+- BN: আপনার দামের তালিকা থেকে অ্যাকাউন্টের টাকা পর্যন্ত।
+
+**Heading · Both**
+- EN: Everything a shop or a service business runs on.
+- BN: দোকান বা সার্ভিস ব্যবসা চালাতে যা লাগে, সব।
+
+**Sub**
+- EN: Dakio is the whole system, not a chat tool. Nova works in every part of it.
+- BN: Dakio পুরো সিস্টেম, শুধু চ্যাটের টুল না। এর প্রতিটা অংশে কাজ করে Nova।
+
+**Nova band**
+- EN: Nova works in every part
+- BN: প্রতিটা অংশে কাজ করে Nova
+
+**Shops · 01 Products**
+- EN: Products: Sizes, colours and photos · Categories and brands · Edit many at once
+- BN: প্রোডাক্ট: সাইজ, রং আর ছবি · ক্যাটাগরি আর ব্র্যান্ড · একসাথে অনেকগুলো এডিট
+
+**Shops · 02 Stock**
+- EN: Stock: Stock in every warehouse · Purchases from suppliers · Low stock flagged by Nova
+- BN: স্টক: প্রতিটা গুদামের স্টক · সাপ্লায়ার থেকে কেনাকাটা · স্টক কমলে Nova জানায়
+
+**Shops · 03 Sell**
+- EN: Sell: Your own website · Chats and comments · POS at your counter
+- BN: বিক্রি: নিজের ওয়েবসাইট · চ্যাট আর কমেন্ট · কাউন্টারে POS
+
+**Shops · 04 Orders**
+- EN: Orders: Every order in one list · Fake order check · Coupons and add-ons
+- BN: অর্ডার: সব অর্ডার এক তালিকায় · ভুয়া অর্ডার চেক · কুপন আর অ্যাড-অন
+
+**Shops · 05 Deliver**
+- EN: Deliver: Steadfast, Pathao, RedX · Tracking in the chat · Returns tracked
+- BN: ডেলিভারি: Steadfast, Pathao, RedX · চ্যাটেই ট্র্যাকিং · রিটার্নের হিসাব
+
+**Shops · 06 Money and team**
+- EN: Money and team: Payments, expenses, ledger · Courier cash matched · Staff attendance and leave
+- BN: টাকা আর টিম: পেমেন্ট, খরচ আর হিসাবের খাতা · কুরিয়ারের টাকা মেলানো · স্টাফের হাজিরা আর ছুটি
+
+**Services · 01 Services**
+- EN: Services: Prices and durations · Who does what · Opening hours
+- BN: সার্ভিস: দাম আর কতক্ষণ লাগে · কে কোন কাজ করে · খোলার সময়
+
+**Services · 02 Get found**
+- EN: Get found: Your own booking website · Enquiry form and QR code · Chats and comments
+- BN: খোঁজ পাওয়া: নিজের বুকিং ওয়েবসাইট · এনকোয়ারি ফর্ম আর QR কোড · চ্যাট আর কমেন্ট
+
+**Services · 03 Book**
+- EN: Book: Only times that are free · Day and week calendar · Google Calendar in step
+- BN: বুকিং: শুধু খালি সময় · দিন আর সপ্তাহের ক্যালেন্ডার · Google Calendar-এর সাথে মিল
+
+**Services · 04 Remind**
+- EN: Remind: SMS or email reminders · Each person's day list · Follow-up tasks
+- BN: মনে করানো: SMS বা ইমেইলে রিমাইন্ডার · প্রত্যেকের দিনের তালিকা · ফলো-আপের কাজ
+
+**Services · 05 Clients**
+- EN: Clients: One page per client · Pipeline from enquiry to won · Offers by SMS, email, chat
+- BN: ক্লায়েন্ট: প্রতি ক্লায়েন্টের এক পাতা · এনকোয়ারি থেকে কনফার্ম পর্যন্ত পাইপলাইন · SMS, ইমেইল, চ্যাটে অফার
+
+**Services · 06 Money**
+- EN: Money: Quotes and invoices · Client accepts online · Payments, part or full
+- BN: টাকা: কোটেশন আর ইনভয়েস · ক্লায়েন্ট অনলাইনে রাজি হন · পুরো বা আংশিক পেমেন্ট
+
+**Note**
+- EN: Every part above is in the app today.
+- BN: উপরের প্রতিটা অংশ আজই অ্যাপে আছে।
+
 ### 2 · Other tools vs Dakio
 
-_Takes us out of the chatbot box on purpose. Compares with "a chatbot" in general and names no competitor, so we never claim a rival lacks something it has._
+_Takes us out of the chatbot box on purpose. Compares with "a chatbot" in general and names no competitor, so we never claim a rival lacks something it has. Three rows follow the switch: shops see stock, courier and inventory/POS; services see free times, calendar/staff and quotes/invoices; Both sees a merged three._
 
 **Heading**
 - EN: Other tools answer messages. Nova runs the business behind them.
@@ -128,35 +208,59 @@ _Takes us out of the chatbot box on purpose. Compares with "a chatbot" in genera
 - EN: A chatbot · Dakio with Nova
 - BN: চ্যাটবট · Nova সহ Dakio
 
-**Row 1 (both)**
+**Row 1 (both columns · shown for all)**
 - EN: Answers messages in Bangla
 - BN: বাংলায় মেসেজের উত্তর
 
-**Row 2 (Dakio)**
+**Row 2 (Dakio · shown for Products)**
 - EN: Takes the order with stock and price checked
 - BN: স্টক আর দাম মিলিয়ে অর্ডার নেয়
 
-**Row 3 (Dakio)**
+**Row 3 (Dakio · shown for Products)**
 - EN: Courier, cash on delivery and bKash in the same place
 - BN: কুরিয়ার, ক্যাশ অন ডেলিভারি আর বিকাশ একই জায়গায়
 
-**Row 4 (Dakio)**
+**Row 4 (Dakio · shown for Products)**
+- EN: Inventory, purchases and POS in the same app
+- BN: ইনভেন্টরি, কেনাকাটা আর POS একই অ্যাপে
+
+**Row 5 (Dakio · shown for Services)**
+- EN: Books only the times you are really free
+- BN: শুধু সত্যিই খালি সময়ে বুক করে
+
+**Row 6 (Dakio · shown for Services)**
+- EN: Calendar, staff and reminders in the same place
+- BN: ক্যালেন্ডার, স্টাফ আর রিমাইন্ডার একই জায়গায়
+
+**Row 7 (Dakio · shown for Services)**
+- EN: Quotes and invoices your client accepts online
+- BN: কোটেশন আর ইনভয়েস, ক্লায়েন্ট অনলাইনে রাজি হন
+
+**Row 8 (Dakio · shown for Both)**
+- EN: Takes orders and bookings, with stock and free times checked
+- BN: স্টক আর খালি সময় মিলিয়ে অর্ডার আর বুকিং নেয়
+
+**Row 9 (Dakio · shown for Both)**
+- EN: Courier, calendar and reminders in the same place
+- BN: কুরিয়ার, ক্যালেন্ডার আর রিমাইন্ডার একই জায়গায়
+
+**Row 10 (Dakio · shown for Both)**
+- EN: Inventory, POS and invoices in the same app
+- BN: ইনভেন্টরি, POS আর ইনভয়েস একই অ্যাপে
+
+**Row 11 (Dakio · shown for all)**
 - EN: Every customer's full history on one page
 - BN: প্রতিটা কাস্টমারের পুরো ইতিহাস এক পাতায়
 
-**Row 5 (Dakio)**
-- EN: Bookings, calendar and reminders
-- BN: বুকিং, ক্যালেন্ডার আর রিমাইন্ডার
-
-**Row 6 (Dakio)**
+**Row 12 (Dakio · shown for all)**
 - EN: Your own website, ready on day one
 - BN: প্রথম দিন থেকেই নিজের ওয়েবসাইট
 
-**Row 7 (Dakio)**
+**Row 13 (Dakio · shown for all)**
 - EN: Follows up and brings customers back
 - BN: ফলো-আপ করে কাস্টমার ফিরিয়ে আনে
 
-**Row 8 (Dakio)**
+**Row 14 (Dakio · shown for all)**
 - EN: Reports to you every morning
 - BN: প্রতিদিন সকালে আপনাকে রিপোর্ট দেয়
 
@@ -164,17 +268,17 @@ _Takes us out of the chatbot box on purpose. Compares with "a chatbot" in genera
 - EN: One app, one bill. No more stitching five tools together.
 - BN: এক অ্যাপ, এক বিল। পাঁচটা টুল জোড়া লাগানোর ঝামেলা নেই।
 
-### 3 · Everything in one place
+### 3 · Where Nova works
 
 _The full business, one card per part, each saying what you get and what Nova does there. Cards follow the switch (Bookings shows for services, Orders for shops)._
 
 **Kicker**
-- EN: ONE APP
-- BN: এক অ্যাপ
+- EN: WHERE NOVA WORKS
+- BN: Nova কোথায় কাজ করে
 
 **Heading**
-- EN: Your whole business in one place. Nova works in every part.
-- BN: পুরো ব্যবসা এক জায়গায়। প্রতিটা কাজে আছে Nova।
+- EN: Nova works in every part, not only the inbox.
+- BN: Nova কাজ করে প্রতিটা অংশে, শুধু ইনবক্সে না।
 
 **Inbox · title**
 - EN: Inbox
@@ -420,9 +524,17 @@ _Answers the fear behind any AI: "what if she gets it wrong?" Three points, no d
 - EN: Read every chat, step in whenever you like, and teach her with your own best replies.
 - BN: প্রতিটা চ্যাট দেখুন, যখন খুশি নিজে উত্তর দিন, আর আপনার ভালো উত্তরগুলো দিয়ে তাকে শেখান।
 
-**Note**
+**Note · Products**
 - EN: Prices, stock and delivery charges come only from your shop. Nova does not make them up.
 - BN: দাম, স্টক আর ডেলিভারি চার্জ আসে শুধু আপনার দোকানের তথ্য থেকে। Nova নিজে থেকে বানায় না।
+
+**Note · Services**
+- EN: Prices and free times come only from your services and your calendar. Nova does not make them up.
+- BN: দাম আর খালি সময় আসে শুধু আপনার সার্ভিস আর ক্যালেন্ডার থেকে। Nova নিজে থেকে বানায় না।
+
+**Note · Both**
+- EN: Prices, stock, delivery charges and free times come only from your shop and your calendar. Nova does not make them up.
+- BN: দাম, স্টক, ডেলিভারি চার্জ আর খালি সময় আসে শুধু আপনার দোকান আর ক্যালেন্ডার থেকে। Nova নিজে থেকে বানায় না।
 
 ### 7 · Pricing
 
@@ -432,9 +544,21 @@ _Prices stay live from the catalogue. The anchor is now a manager's salary. L3/L
 - EN: Less than one manager's salary.
 - BN: একজন ম্যানেজারের বেতনের চেয়েও কম।
 
-**Sub**
+**Sub · Products**
 - EN: A shop manager costs ৳15,000 or more a month and works ten hours a day. Nova works all day and all night, and every plan includes her.
 - BN: একজন দোকান ম্যানেজারের বেতন মাসে ৳১৫,০০০ বা তার বেশি, কাজ করেন দিনে দশ ঘণ্টা। Nova কাজ করে সারাদিন, সারারাত, আর প্রতিটা প্ল্যানেই সে আছে।
+
+**Sub · Services**
+- EN: A receptionist costs ৳12,000 or more a month and goes home in the evening. Nova answers and books all day and all night, and every plan includes her.
+- BN: একজন রিসেপশনিস্টের বেতন মাসে ৳১২,০০০ বা তার বেশি, সন্ধ্যায় বাড়ি চলে যান। Nova সারাদিন, সারারাত উত্তর দেয় আর বুক করে, আর প্রতিটা প্ল্যানেই সে আছে।
+
+**Sub · Both**
+- EN: A manager costs ৳15,000 or more a month and works ten hours a day. Nova works all day and all night, and every plan includes her.
+- BN: একজন ম্যানেজারের বেতন মাসে ৳১৫,০০০ বা তার বেশি, কাজ করেন দিনে দশ ঘণ্টা। Nova কাজ করে সারাদিন, সারারাত, আর প্রতিটা প্ল্যানেই সে আছে।
+
+**Under the plans · Services and Both**
+- EN: For services, both plans include bookings, the calendar, reminders, quotes and invoices and a booking website.
+- BN: সার্ভিসের জন্য দুই প্ল্যানেই আছে বুকিং, ক্যালেন্ডার, রিমাইন্ডার, কোটেশন আর ইনভয়েস, আর বুকিংয়ের ওয়েবসাইট।
 
 **Growth · for**
 - EN: For a business that sells every day
@@ -493,6 +617,22 @@ _The objections we hear, answered in one or two lines each._
 - BN: চ্যাটবট উত্তর দিয়েই থেমে যায়। Nova অর্ডার বা বুকিং নেয়, কাস্টমারকে আপডেট জানায়, ফলো-আপ করে, আর সব করে সেই অ্যাপের ভেতরেই যেখানে আপনার ওয়েবসাইট, কুরিয়ার আর হিসাব আগে থেকেই আছে।
 
 **Q**
+- EN: Can I replace my stock sheet and my POS?
+- BN: আমার স্টকের খাতা আর POS কি বাদ দিতে পারব?
+
+**A**
+- EN: Yes. Products with sizes and colours, stock in every warehouse, purchases from your suppliers and a POS for the counter are all in Dakio. A sale at the counter and an order from chat take stock from the same place.
+- BN: হ্যাঁ। সাইজ আর রং সহ প্রোডাক্ট, প্রতিটা গুদামের স্টক, সাপ্লায়ার থেকে কেনাকাটা আর কাউন্টারের POS, সব Dakio-তে আছে। কাউন্টারের বিক্রি আর চ্যাটের অর্ডার, দুটোই একই স্টক থেকে কমে।
+
+**Q**
+- EN: Can my staff use it?
+- BN: আমার স্টাফরা কি ব্যবহার করতে পারবে?
+
+**A**
+- EN: Yes. Each person gets a login with their own role: sales staff see their own customers, and attendance, leave and advances are in Employees. On a service business, each person gets their day's bookings every morning. Staff logins come with the Business plan.
+- BN: হ্যাঁ। প্রত্যেকে নিজের রোল সহ আলাদা লগইন পান: সেলসের স্টাফ দেখেন শুধু নিজের কাস্টমার, আর হাজিরা, ছুটি আর অগ্রিম থাকে Employees-এ। সার্ভিস ব্যবসায় প্রত্যেকে সকালে নিজের দিনের বুকিং পান। স্টাফ লগইন আছে Business প্ল্যানে।
+
+**Q**
 - EN: Does Nova understand Bangla?
 - BN: Nova কি বাংলা বোঝে?
 
@@ -515,6 +655,14 @@ _The objections we hear, answered in one or two lines each._
 **A**
 - EN: Yes. Connect it in a few clicks. Your page, posts and old chats stay as they are, and Nova answers comments under your posts too.
 - BN: হ্যাঁ। কয়েক ক্লিকে যুক্ত করুন। আপনার পেজ, পোস্ট আর আগের চ্যাট যেমন আছে তেমনই থাকবে, আর পোস্টের কমেন্টের উত্তরও দেয় Nova।
+
+**Q**
+- EN: I already sell on Facebook and use a courier. What changes?
+- BN: আমি তো ফেসবুকে বিক্রি করি, কুরিয়ারও আছে। কী বদলাবে?
+
+**A**
+- EN: Your page stays as it is. Connect it, add your products, and enter your Steadfast, Pathao or RedX keys once. Orders from chats, comments and your new website land in one list, and you book the courier from there.
+- BN: আপনার পেজ যেমন আছে তেমনই থাকবে। পেজ যুক্ত করুন, প্রোডাক্ট যোগ করুন, আর Steadfast, Pathao বা RedX-এর কী একবার দিন। চ্যাট, কমেন্ট আর নতুন ওয়েবসাইটের অর্ডার আসবে এক তালিকায়, আর সেখান থেকেই কুরিয়ার বুক করবেন।
 
 **Q**
 - EN: Do I pay per message?
