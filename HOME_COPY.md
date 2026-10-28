@@ -89,16 +89,16 @@ _A live card: Nova's work arrives one line at a time, every 4 to 6.5 seconds, in
 - BN: রাতের কাজ: আজকের বিক্রি দেখে কালকের কাজের তালিকা লিখে রেখেছে।
 
 **Shop · 02:10 · Inbox**
-- EN: Answered 3 Instagram messages and took 1 order. ৳1,850.
-- BN: ইনবক্স: ইনস্টাগ্রামের ৩টা মেসেজের উত্তর দিয়ে ১টা অর্ডার নিয়েছে। ৳১,৮৫০।
+- EN: Answered 3 Instagram messages and took 1 order. ৳2,450.
+- BN: ইনবক্স: ইনস্টাগ্রামের ৩টা মেসেজের উত্তর দিয়ে ১টা অর্ডার নিয়েছে। ৳২,৪৫০।
 
 **Shop · 06:00 · Report**
 - EN: Sent you the morning report: 23 orders, 84 chats answered, 3 that need you.
 - BN: রিপোর্ট: আপনাকে সকালের রিপোর্ট পাঠিয়েছে: ২৩টা অর্ডার, ৮৪টা চ্যাটের উত্তর, ৩টায় আপনাকে লাগবে।
 
 **Shop · 08:30 · Stock**
-- EN: Stock check: the Muslin saree in M is down to 2. Flagged it for restock.
-- BN: স্টক: স্টক চেক: মসলিন শাড়ির M সাইজ আছে মাত্র ২টা। রিস্টকের জন্য জানিয়ে রেখেছে।
+- EN: Stock check: the Marigold Yellow Panjabi in M is down to 2. Flagged it for restock.
+- BN: স্টক: স্টক চেক: Marigold Yellow Panjabi-র M সাইজ আছে মাত্র ২টা। রিস্টকের জন্য জানিয়ে রেখেছে।
 
 **Shop · 10:05 · Comments**
 - EN: Answered 6 comments under today's post and sent the prices to their inboxes.
@@ -109,8 +109,8 @@ _A live card: Nova's work arrives one line at a time, every 4 to 6.5 seconds, in
 - BN: কুরিয়ার: কুরিয়ার চেক: Pathao-তে ২টা পার্সেল ৩ দিন ধরে আটকে আছে। আপনাকে জানিয়েছে।
 
 **Shop · 13:00 · Marketing**
-- EN: Drafted a Facebook post for the new Jamdani stole. Waiting for your OK.
-- BN: মার্কেটিং: নতুন জামদানি স্টোলের জন্য ফেসবুক পোস্টের ড্রাফট বানিয়েছে। আপনার অনুমতির অপেক্ষায়।
+- EN: Drafted a Facebook post for the Peacock Teal Silk Saree. Waiting for your OK.
+- BN: মার্কেটিং: Peacock Teal Silk Saree-র জন্য ফেসবুক পোস্টের ড্রাফট বানিয়েছে। আপনার অনুমতির অপেক্ষায়।
 
 **Shop · 14:30 · Orders**
 - EN: Told Taspia her parcel is on the way.
@@ -129,8 +129,8 @@ _A live card: Nova's work arrives one line at a time, every 4 to 6.5 seconds, in
 - BN: হিসাব: টাকার হিসাব: এই সপ্তাহে এসেছে ৳৪৬,২০০, গত সপ্তাহের চেয়ে ৳৩,১০০ বেশি।
 
 **Shop · 23:48 · Inbox**
-- EN: Answered Taspia on Messenger and took her order. ৳2,370, cash on delivery.
-- BN: ইনবক্স: মেসেঞ্জারে তাসপিয়ার উত্তর দিয়ে অর্ডার নিয়েছে। ৳২,৩৭০, ক্যাশ অন ডেলিভারি।
+- EN: Answered Taspia on Messenger and took her order. ৳2,260, cash on delivery.
+- BN: ইনবক্স: মেসেঞ্জারে তাসপিয়ার উত্তর দিয়ে অর্ডার নিয়েছে। ৳২,২৬০, ক্যাশ অন ডেলিভারি।
 
 **Service · 00:20 · Night shift**
 - EN: Reviewed today's bookings and wrote tomorrow's list for you.
@@ -365,28 +365,28 @@ _The proof that the reply is only the start. Five steps, swapped by the switch._
 _A phone plays one conversation where Nova turns chat into an order or a booking; when the card lands, the five steps beside it light up one by one, then it plays again. The English page shows Banglish, the way customers write. Each Nova move is a built feature._
 
 **Shop · Saril · Messenger · Customer**
-- EN: Eta ase? [screenshot: Muslin saree · crimson]
-- BN: এটা আছে? [screenshot: মসলিন শাড়ি · লাল]
+- EN: Eta ase? [screenshot with photo: Saril · Marigold Yellow Panjabi]
+- BN: এটা আছে? [screenshot with photo: Saril · Marigold Yellow Panjabi]
 
 **Shop · Saril · Messenger · Nova**
-- EN: Ji, ase! Eta amader Muslin saree, crimson. [product card: Muslin saree · crimson · ৳2,300 · M and L in stock]
-- BN: জি, আছে! এটা আমাদের মসলিন শাড়ি, লাল রঙ। [product card: মসলিন শাড়ি · লাল · ৳২,৩০০ · M আর L সাইজ স্টকে আছে]
+- EN: Ji, ase! Eta amader Marigold Yellow Panjabi. [product card with photo: Marigold Yellow Panjabi · ৳2,190 · M and L in stock]
+- BN: জি, আছে! এটা আমাদের Marigold Yellow Panjabi। [product card with photo: Marigold Yellow Panjabi · ৳২,১৯০ · M আর L সাইজ স্টকে আছে]
 
 **Shop · Saril · Messenger · Customer**
 - EN: M size. Mirpur e delivery koto?
 - BN: M সাইজ। মিরপুরে ডেলিভারি কত?
 
 **Shop · Saril · Messenger · Nova**
-- EN: Mirpur e delivery ৳70, 2 dine pouchabe. Total ৳2,370. Order kore dibo?
-- BN: মিরপুরে ডেলিভারি ৳৭০, ২ দিনে পৌঁছাবে। মোট ৳২,৩৭০। অর্ডার করে দিই?
+- EN: Mirpur e delivery ৳70, 2 dine pouchabe. Total ৳2,260. Order kore dibo?
+- BN: মিরপুরে ডেলিভারি ৳৭০, ২ দিনে পৌঁছাবে। মোট ৳২,২৬০। অর্ডার করে দিই?
 
 **Shop · Saril · Messenger · Customer**
 - EN: Ha den. Mirpur 10, 01711-xxxxxx
 - BN: হ্যাঁ দেন। মিরপুর ১০, 01711-xxxxxx
 
 **Shop · Saril · Messenger · Nova**
-- EN: Order confirmed! Receipt pathalam. Parcel pathale janabo. [card: Order #1044 · ৳2,370 · Cash on delivery · now in your Orders]
-- BN: অর্ডার কনফার্ম! রসিদ পাঠালাম। পার্সেল পাঠালে জানাব। [card: অর্ডার #১০৪৪ · ৳২,৩৭০ · ক্যাশ অন ডেলিভারি · আপনার অর্ডার তালিকায় উঠে গেছে]
+- EN: Order confirmed! Receipt pathalam. Parcel pathale janabo. [card: Order #1044 · ৳2,260 · Cash on delivery · now in your Orders]
+- BN: অর্ডার কনফার্ম! রসিদ পাঠালাম। পার্সেল পাঠালে জানাব। [card: অর্ডার #১০৪৪ · ৳২,২৬০ · ক্যাশ অন ডেলিভারি · আপনার অর্ডার তালিকায় উঠে গেছে]
 
 **Service · Glow Studio · Instagram · Customer**
 - EN: Friday bridal trial kora jabe?

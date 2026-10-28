@@ -119,14 +119,14 @@ function Message({ m, animate }) {
     <div className={`hm-msg-wrap ${mine ? "is-nova" : "is-them"}${animate ? " is-in" : ""}`}>
       {m.shot ? (
         <div className="hm-shot" aria-hidden="true">
-          <span className="hm-shot-img" />
+          {m.img ? <img className="hm-shot-img" src={m.img} alt="" width={150} height={150} loading="lazy" /> : null}
           <span className="hm-shot-cap">{m.shot}</span>
         </div>
       ) : null}
       <div className={cls}>{m.t}</div>
       {m.product ? (
         <div className="hm-pcard">
-          <span className="hm-pcard-img" aria-hidden="true" />
+          {m.product.img ? <img className="hm-pcard-img" src={m.product.img} alt="" width={44} height={56} loading="lazy" /> : null}
           <span className="hm-pcard-txt">
             <b>{m.product.n}</b>
             <span>{m.product.p} · {m.product.note}</span>
