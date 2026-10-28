@@ -3,7 +3,7 @@
  * lime #C6F035, green #3E7A45, muted #6B6D60, card #FBFAF5.
  * Bangla never takes letter-spacing: see the html[lang="bn"] block at the end. */
 
-.hm { font-family: var(--dk-font-sans), var(--dk-font-bn), sans-serif; color: #1A1D12; background: #F4F2EA; overflow-x: hidden; }
+.hm { font-family: var(--dk-font-sans), var(--dk-font-bn), sans-serif; color: #1A1D12; background: #F4F2EA; overflow-x: hidden; overflow-x: clip; }
 
 /* Audience switch: hide what the choice does not cover (Audience.jsx). */
 .hm[data-aud="shop"] [data-show="svc"], .hm[data-aud="shop"] [data-show="svc-only"], .hm[data-aud="shop"] [data-show="both-only"],
@@ -294,6 +294,15 @@
 .hm-app-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; opacity: 0; transform: scale(1.015); transition: opacity .5s ease, transform .8s ease; }
 .hm-app-shot img.is-on { opacity: 1; transform: none; }
 
+/* Phones: the features as cards that stack while you scroll */
+.hm-app-stack { display: none; list-style: none; margin: 0; padding: 0; }
+.hm-app-card { position: sticky; top: calc(124px + var(--i) * 12px); margin-bottom: 28px; padding: 18px 16px 16px; border-radius: 24px; background: #FBFAF5; border: 1px solid rgba(26,29,18,0.1); box-shadow: 0 -10px 30px rgba(26,29,18,0.06), 0 16px 34px rgba(26,29,18,0.08); }
+.hm-app-card .hm-app-group { display: block; margin: 0 0 6px; }
+.hm-app-card-t { margin: 0; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; color: #1A1D12; }
+.hm-app-card-d { margin: 6px 0 14px; font-size: 14px; line-height: 1.55; color: #55584B; }
+.hm-app-card-shot { border-radius: 14px; overflow: hidden; border: 1px solid rgba(26,29,18,0.1); aspect-ratio: 16 / 11; background: #F0EEE6; }
+.hm-app-card-shot img { width: 100%; height: 100%; object-fit: cover; object-position: left top; display: block; }
+
 /* The rotating business name in the headline (RotatingHead.jsx) */
 .hm-rot { display: inline-block; color: #C6F035; }
 .hm-rot-word { display: inline-block; }
@@ -316,8 +325,8 @@
   .hm-hero-go { justify-self: start; text-align: left; margin-top: 26px; }
   .hm-hero-go .hm-ctas { justify-content: flex-start; }
   .hm-mach-dark .hm-mach-stage { height: 520px; }
-  .hm-app { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  .hm-app-frame { order: -1; }
+  .hm-app { display: none; }
+  .hm-app-stack { display: block; }
   .hm-run-line { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 8px; }
   .hm-run-line::before { display: none; }
   .hm-run-stage::before { display: none; }
@@ -337,9 +346,6 @@
   .hm-sticky-label { display: none; }
   .hm-sticky .hm-seg button { padding: 7px 13px; }
   .hm-run { padding: 20px 18px 24px; border-radius: 24px; }
-  .hm-app-frame { border-radius: 16px; margin: 0 -4px; }
-  .hm-app-item { padding: 12px 14px 14px; }
-  .hm-app-item-t { font-size: 16px; }
   .hm-run-line { grid-template-columns: minmax(0, 1fr); gap: 0; padding-left: 4px; }
   .hm-run-line::before { display: block; left: 12px; right: auto; top: 10px; bottom: 10px; width: 2px; height: auto; }
   .hm-run-stage { padding: 0 0 18px 34px; }
@@ -384,7 +390,7 @@ html[lang="bn"] .hm-kicker, html[lang="bn"] .hm-badge, html[lang="bn"] .hm-ask-l
 html[lang="bn"] .hm-lead, html[lang="bn"] .hm-body, html[lang="bn"] .hm-lead-dark, html[lang="bn"] .hm-note, html[lang="bn"] .hm-faq summary, html[lang="bn"] .hm-vs-t { font-family: var(--dk-font-bn), sans-serif; line-height: 1.75; }
 html[lang="bn"] .hm-msg, html[lang="bn"] .hm-pcard-txt, html[lang="bn"] .hm-rcard-txt, html[lang="bn"] .hm-chips, html[lang="bn"] .hm-shot-cap, html[lang="bn"] .hm-chat-cap { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
 html[lang="bn"] .hm-sticky-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; text-transform: none; font-size: 12.5px; }
-html[lang="bn"] .hm-app-item-t, html[lang="bn"] .hm-app-item-d, html[lang="bn"] .hm-app-group, html[lang="bn"] .hm-run-nova, html[lang="bn"] .hm-run-t, html[lang="bn"] .hm-run-items li, html[lang="bn"] .hm-run-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; line-height: 1.6; }
+html[lang="bn"] .hm-app-card-t, html[lang="bn"] .hm-app-card-d, html[lang="bn"] .hm-app-item-t, html[lang="bn"] .hm-app-item-d, html[lang="bn"] .hm-app-group, html[lang="bn"] .hm-run-nova, html[lang="bn"] .hm-run-t, html[lang="bn"] .hm-run-items li, html[lang="bn"] .hm-run-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; line-height: 1.6; }
 html[lang="bn"] .hm-mach-cap, html[lang="bn"] .hm-mach-cap b, html[lang="bn"] .hm-mach-steps button, html[lang="bn"] .hm-mach-pin, html[lang="bn"] .hm-mach-pause, html[lang="bn"] .hm-mach-hint, html[lang="bn"] .hm-mach-back { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
 html[lang="bn"] .hm-seg button, html[lang="bn"] .hm-btn { font-family: var(--dk-font-bn), sans-serif; }
 @media (max-width: 980px) {

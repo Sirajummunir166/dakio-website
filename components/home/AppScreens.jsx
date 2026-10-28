@@ -7,6 +7,9 @@
 // from there. Hover, keyboard focus, an off-screen section or a hidden tab
 // pause it; reduced motion never plays. The list follows the Products /
 // Services switch, and Both shows all six under two small headings.
+//
+// Phones get a stack of cards instead, one per feature with its own screen,
+// each sticking under the menu as the next slides over it (no autoplay).
 
 import { useEffect, useRef, useState } from "react";
 import { useAudience } from "./Audience";
@@ -49,6 +52,7 @@ export default function AppScreens({ screens, groups }) {
   let lastGroup = null;
 
   return (
+    <>
     <div
       ref={box}
       className={`hm-app${playing ? " is-playing" : ""}`}
@@ -102,5 +106,20 @@ export default function AppScreens({ screens, groups }) {
         </div>
       </figure>
     </div>
+
+    {/* Phones: one card per feature with its own screen, stacking as you scroll. */}
+    <ol className="hm-app-stack">
+      {visible.map((s, i) => (
+        <li key={s.key} className="hm-app-card" style={{ "--i": i }}>
+          {aud === "both" ? <span className="hm-app-group">{groups[s.show]}</span> : null}
+          <h3 className="hm-app-card-t">{s.tab}</h3>
+          <p className="hm-app-card-d">{s.cap}</p>
+          <div className="hm-app-card-shot">
+            <img src={`/app/${s.key}.webp`} alt={s.alt} width={1600} height={800} loading="lazy" decoding="async" />
+          </div>
+        </li>
+      ))}
+    </ol>
+    </>
   );
 }
