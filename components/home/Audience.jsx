@@ -12,9 +12,8 @@
 //
 // The home opens on Both, so nobody has to find the switch to see services.
 // An ad can open it narrowed: ?for=shops, ?for=services or ?for=both.
-// The choice can be changed in three places that stay in step: the hero, a
-// pill that follows you once the hero has scrolled away, and the tabs in the
-// sections that differ most (Everything to run it, The real app, the chat).
+// The choice can be changed in two places that stay in step: the hero, and a
+// pill that follows you once the hero has scrolled away.
 
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -56,17 +55,6 @@ export function AudienceSwitch({ label, opts }) {
     <div className="hm-ask">
       <span className="hm-ask-label" id="hm-ask-label">{label}</span>
       <Seg opts={opts} labelledBy="hm-ask-label" />
-    </div>
-  );
-}
-
-/** The same choice inside a section, on the paper background. */
-export function SectionSwitch({ label, opts }) {
-  const { switchable } = useContext(AudienceContext);
-  if (!switchable) return null;
-  return (
-    <div className="hm-secswitch">
-      <Seg opts={opts} className="hm-seg hm-seg-light" label={label} />
     </div>
   );
 }

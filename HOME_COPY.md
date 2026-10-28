@@ -40,7 +40,7 @@ _Says what Dakio is in five seconds: a role everyone knows (a manager) and the w
 - EN: Run your whole business from one app.
 - BN: পুরো ব্যবসা চালান এক অ্যাপে।
 
-_The page opens on Both. The headline names a business in turn (shops and service businesses alternate, every 2.2 seconds, in lime); with Products or Services picked it names only that side. Phones, reduced motion and search engines get the fallback sentence. The AI line under it is now light, not lime. Links can open the page narrowed: ?for=shops, ?for=services, ?for=both. Once the hero scrolls away a pill (Showing: Products · Services · Both) follows the reader; Everything to run it, and the live chat carry the same three tabs._
+_The page opens on Both. The headline names a business in turn (shops and service businesses alternate, every 2.2 seconds, in lime); with Products or Services picked it names only that side. Phones, reduced motion and search engines get the fallback sentence. The AI line under it is now light, not lime. Links can open the page narrowed: ?for=shops, ?for=services, ?for=both. Once the hero scrolls away a pill (Showing: Products · Services · Both) follows the reader._
 
 **Headline (rotating)**
 - EN: Run your [business] from one app.

@@ -5,7 +5,7 @@
 // app/home.css hides what does not apply. Styles live in app/home.css (hm-*).
 
 import Link from "next/link";
-import { AudienceSwitch, SectionSwitch, StickySwitch, StartLink } from "./Audience";
+import { AudienceSwitch, StickySwitch, StartLink } from "./Audience";
 import RotatingHead from "./RotatingHead";
 import ChatDemo from "./ChatDemo";
 import NovaMachine from "./NovaMachine";
@@ -141,7 +141,6 @@ export function Run({ c }) {
         <h2 className="hm-h2" data-show="both-only">{x.h2.both}</h2>
         <p className="hm-lead-dark">{x.sub}</p>
       </div>
-      <SectionSwitch label={c.hero.ask} opts={c.hero.opts} />
       <div className="hm-run">
         <div className="hm-run-nova"><span className="hm-run-orb" aria-hidden="true" />{x.nova}</div>
         {line("shop", "shop")}
@@ -238,7 +237,6 @@ export function Flow({ c }) {
         <h2 className="hm-h2" data-show="svc-only">{f.h2.svc}</h2>
         <h2 className="hm-h2" data-show="both-only">{f.h2.both}</h2>
       </div>
-      <SectionSwitch label={c.hero.ask} opts={c.hero.opts} />
       <ChatDemo chat={c.chat} flow={{ shop: f.shop, svc: f.svc }} />
       <p className="hm-note hm-center">{f.bottom}</p>
     </section>
