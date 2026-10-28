@@ -73,7 +73,7 @@ export function Hero({ c, lang, L, head = null }) {
             </div>
             <div className="hm-under">{h.under}</div>
           </div>
-          <NovaFeed d={c.day} />
+          <NovaFeed d={c.day} lang={lang} />
         </div>
       </div>
     </div>
