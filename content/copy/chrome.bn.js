@@ -12,9 +12,11 @@ const chrome = {
     explore: "ঘুরে দেখুন",
     nova: "Nova",
     switch: "Dakio-তে আসুন",
+    shops: "দোকানের জন্য",
+    services: "সার্ভিসের জন্য",
     pricing: "প্ল্যান ও দাম",
     login: "লগ ইন",
-    cta: "স্টোর খুলুন",
+    cta: "শুরু করুন",
     homeAria: "Dakio — হোম",
     languageLabel: "ভাষা",
     toBangla: "ভাষা বাংলা করুন",
@@ -27,7 +29,7 @@ const chrome = {
       ZS: { n: "স্টক ছাড়াই বিক্রি করুন", d: "সাপ্লায়ার পণ্য রাখবে, ডেলিভারি করবে Dakio" },
     },
     novaItems: {
-      NV: { n: "Nova", d: "আপনার AI CEO-র সঙ্গে পরিচিত হন" },
+      NV: { n: "Nova", d: "আপনার AI ম্যানেজারের সঙ্গে পরিচিত হন" },
       HQ: { n: "Nova HQ", d: "সিদ্ধান্ত, কাজের প্রমাণ ও ফল—সব এক জায়গায়" },
       FO: { n: "Front Office", d: "ইনবক্সে কথা বলে, অর্ডার নেয় Nova" },
     },
@@ -70,7 +72,7 @@ const chrome = {
         cta: "Nova-কে জানুন",
         title: (
           <>
-            একজন AI CEO।<br />সঙ্গে পুরো ব্যাক অফিস।
+            একজন AI ম্যানেজার।<br />সঙ্গে পুরো ব্যাক অফিস।
           </>
         ),
         note: "আস্থা বাড়লে দায়িত্ব বাড়ে—প্রতিটি কাজের প্রমাণ থাকে।",
@@ -115,9 +117,9 @@ const chrome = {
     contact: "যোগাযোগ",
   },
   footer: {
-    tagline: "বাংলাদেশের কমার্স OS—প্রতিটি স্টোরের সঙ্গে একজন AI CEO।",
+    tagline: "পুরো ব্যবসা এক অ্যাপে, সাথে আপনার AI ম্যানেজার Nova।",
     product: {
-      nova: "Nova — আপনার CEO",
+      nova: "Nova, আপনার AI ম্যানেজার",
       store: "The Complete Store",
       studio: "Store Studio",
       grow: "Grow Suite",
@@ -152,7 +154,7 @@ const chrome = {
     terms: "ব্যবহারের শর্ত",
     refund: "রিটার্ন ও রিফান্ড নীতি",
     dataDeletion: "ডেটা মুছে ফেলা",
-    cta: "স্টোর খুলুন",
+    cta: "শুরু করুন",
   },
 };
 

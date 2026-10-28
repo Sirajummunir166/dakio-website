@@ -469,8 +469,8 @@ _The objections we hear, answered in one or two lines each._
 - BN: প্রতি মেসেজে কি টাকা লাগে?
 
 **A**
-- EN: No. Your plan includes about {chats} chats a month. If a month is busier, add more from the app.
-- BN: না। আপনার প্ল্যানে মাসে প্রায় {chats}টা চ্যাট আছে। কোনো মাসে বেশি লাগলে অ্যাপ থেকেই যোগ করে নিন।
+- EN: No. Every plan includes a monthly allowance for Nova, enough for well over a thousand customer chats. If a month is busier, add more from the app.
+- BN: না। প্রতিটা প্ল্যানে Nova-র জন্য মাসিক বরাদ্দ আছে, হাজারের বেশি কাস্টমার চ্যাটের জন্য যথেষ্ট। কোনো মাসে বেশি লাগলে অ্যাপ থেকেই যোগ করে নিন।
 
 **Q**
 - EN: I run a parlour, a coaching centre or a chamber. Is this for me?

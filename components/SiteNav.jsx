@@ -220,8 +220,9 @@ export default function SiteNav({
             {c.explore}
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ transition: "transform .18s ease", ...(open ? { transform: "rotate(180deg)" } : {}) }}><path d="M6 9l6 6 6-6" /></svg>
           </div>
+          <Link href={L("/shops")} className="hv-ink" style={link("shops")}>{c.shops}</Link>
+          <Link href={L("/services")} className="hv-ink" style={link("services")}>{c.services}</Link>
           <Link href={L("/nova")} className="hv-ink" style={link("nova")}>{c.nova}</Link>
-          <Link href={L("/switch")} className="hv-ink" style={link("switch")}>{c.switch}</Link>
           <Link href={L("/pricing")} className="hv-ink" style={link("pricing")}>{c.pricing}</Link>
         </div>
         <LangSwitch className="nav-lang" />
@@ -284,8 +285,9 @@ export default function SiteNav({
               </div>
             ) : null}
             {[
+              { key: "shops", p: "/shops", label: c.shops },
+              { key: "services", p: "/services", label: c.services },
               { key: "nova", p: "/nova", label: c.nova },
-              { key: "switch", p: "/switch", label: c.switch },
               { key: "pricing", p: "/pricing", label: c.pricing },
             ].map(r => (
               <Link key={r.key} href={L(r.p)} className={`nav-m-row${active === r.key ? " is-active" : ""}`} style={T.label}>

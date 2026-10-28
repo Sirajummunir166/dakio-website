@@ -25,7 +25,7 @@ export const PREVIEW_MONO = {
   store: "OPEN YOUR FIRST STORE",
   switch: "MOVE TO DAKIO",
   supplier: "SUPPLIER NETWORK",
-  nova: "NOVA · YOUR ACTING CEO",
+  nova: "NOVA · YOUR AI MANAGER",
   novahq: "NOVA HQ",
   front: "FRONT OFFICE",
   complete: "THE COMPLETE STORE",
@@ -54,9 +54,11 @@ const chrome = {
     explore: "Explore",
     nova: "Nova",
     switch: "Switch to Dakio",
+    shops: "For shops",
+    services: "For services",
     pricing: "Pricing",
     login: "Log in",
-    cta: "Open your store",
+    cta: "Get started",
     homeAria: "Dakio — home",
     languageLabel: "Language",
     toBangla: "Switch language to Bangla",
@@ -69,7 +71,7 @@ const chrome = {
       ZS: { n: "Sell without inventory", d: "Suppliers hold and ship for you" },
     },
     novaItems: {
-      NV: { n: "Nova", d: "Meet your AI Acting CEO" },
+      NV: { n: "Nova", d: "Meet your AI manager" },
       HQ: { n: "Nova HQ", d: "Supervise decisions, receipts and results" },
       FO: { n: "Front Office", d: "Nova sells in your inbox" },
     },
@@ -159,9 +161,9 @@ const chrome = {
     contact: "Contact",
   },
   footer: {
-    tagline: "The commerce OS for Bangladesh — with an AI CEO in every store.",
+    tagline: "Your whole business in one app, with Nova as your AI manager.",
     product: {
-      nova: "Nova — your CEO",
+      nova: "Nova, your AI manager",
       store: "The Complete Store",
       studio: "Store Studio",
       grow: "Grow Suite",
@@ -196,7 +198,7 @@ const chrome = {
     terms: "Terms",
     refund: "Return & Refund Policy",
     dataDeletion: "Data Deletion",
-    cta: "Open your store",
+    cta: "Get started",
   },
 };
 

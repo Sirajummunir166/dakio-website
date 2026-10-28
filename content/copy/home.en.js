@@ -1,299 +1,216 @@
-// Home copy — English. Mirrors the section order of app/[lang]/page.js.
-// Mono/all-caps labels live in MONO (shared, never translated — see chrome.en.js
-// for why). Demo data that is really *content* (product names, chat lines) is
-// here too, because a Bangla page showing English sample messages reads fake.
+// Home copy, English. Mirrors the section order of app/[lang]/page.js.
+// The full deck with the reasoning behind every line is HOME_COPY.md.
+// House rule: no en dash or em dash anywhere in this file.
+//
+// `shop` / `svc` / `both` keys follow the "What do you sell?" switch in the
+// hero (components/home/Audience.jsx). The /shops and /services pages reuse
+// the same sections with the switch preset, plus their own blocks below.
 
-import Mark from "../../components/Mark";
-
-export const MONO = {
-  heroBadge: "THE COMMERCE OS FOR BANGLADESH",
-  heroStrip: ["STORE LIVE IN MINUTES", "NO CODE", "৳ · bKASH · COD"],
-  heroDuty: "ON DUTY 24/7 · EVERY ACTION RECORDED",
-  heroReceipt: "RECEIPT",
-  pathsKicker: "TWO WAYS IN",
-  pathsFresh: "STARTING FRESH",
-  pathsSelling: "ALREADY SELLING",
-  launchKicker: "FIRST THINGS FIRST — THE STORE",
-  launchStep: "STEP",
-  launchAvailable: "AVAILABLE ✓",
-  launchLive: "LIVE",
-  briefKicker: "06:00 · EVERY MORNING",
-  briefBadge: "MORNING BRIEF · SHAHRQEE DEMO STORE",
-  briefApprove: "APPROVE / LATER",
-  orgKicker: "THE ORGANIZATION",
-  orgCeoJob: "PLANS · COORDINATES ALL",
-  roomsKicker: "THE PRODUCT — CLICK ANY CARD.",
-  roomsOpen: "MORE →",
-  roomsDecision: "DECISION · MARKETING",
-  roomsDecisionEst: "+৳9,400 EST",
-  roomsChannels: "ONE THREAD, EVERY CHANNEL",
-  roomsOrder: "ORDER #1044 · PLACED AFTER CONFIRMATION · RTO SHIELD ✓",
-  roomsGrowNova: "NOVA PREPARED · GROWTH → BROADCAST",
-  roomsGrowRecovered: "৳1,14,200 RECOVERED SO FAR",
-  roomsAdsClick: "1 CLICK",
-  roomsAdsCheck: "3 SIZES + MOTION · EDITABLE · ON-BRAND BY DEFAULT",
-  trustKicker: "WHY FOUNDERS TRUST AN AI CEO",
-  trustFieldBadge: "NOVA'S OFFICE · LIVE",
-  bdKicker: "HOME GROUND",
-  bdSeason: "SEASON-AWARE PLANNING",
-  bdSeasons: ["EID", "PUJA", "BOISHAKH", "11.11", "MONSOON"],
-  switchKicker: "SWITCHING?",
-  pricingKicker: "PRICING",
-  ctaStrip: "LIVE IN MINUTES · GUARDRAILS ON DAY ONE · EVERY ACTION RECORDED",
-};
-
-// Brand names in the partner marquee never translate.
-export const MARQUEE = ["bKash", "Nagad", "Cash on delivery", "Steadfast", "Pathao", "RedX", "Facebook", "Instagram", "WhatsApp"];
+// Brand names in the "works with" strip. "Website chat" and "Cash on delivery"
+// are words, so each locale carries its own list.
+export const MARQUEE = ["Messenger", "Instagram", "WhatsApp", "Website chat", "bKash", "Nagad", "Cash on delivery", "Steadfast", "Pathao", "RedX"];
 
 const home = {
   meta: {
-    title: "Dakio — Appoint an AI CEO to Your Online Store | Bangladesh",
+    title: "Dakio | An AI manager for your whole business, made in Bangladesh",
     description:
-      "Store, couriers, bKash, Nagad & COD — plus Nova, an AI CEO that runs marketing, support and ops 24/7 with a receipt for everything.",
+      "Website, orders, customers, couriers, bookings and payments in one app, with Nova, your AI manager, working in every part. Bangla first, bKash and cash on delivery built in.",
   },
 
   hero: {
-    h1: (
-      <>
-        Appoint a CEO<br />to your store<span style={{ color: "#C6F035" }}>.</span>
-      </>
-    ),
-    sub: (
-      <>
-        Your store, customers, orders, couriers and payments — operated by <b style={{ color: "#E9EFDC" }}>Nova</b>, your AI Acting CEO. Even while you sleep.
-      </>
-    ),
-    ctaPrimary: "Open your store",
-    ctaSecondary: "Meet Nova",
-    chips: ["84 messages answered", "Cart recovered · ৳2,300", "Order taken in chat · ৳2,370"],
+    badge: "FOR SHOPS AND SERVICE BUSINESSES IN BANGLADESH",
+    h1: "An AI manager for your whole business.",
+    ask: "What do you sell?",
+    opts: { shop: "Products", svc: "Services", both: "Both" },
+    sub: {
+      shop: "Website, orders, customers, couriers and payments in one app, with Nova working in every part. She answers customers, takes orders, keeps buyers updated and tells you what needs you.",
+      svc: "Website, bookings, calendar, clients and invoices in one app, with Nova working in every part. She answers, books, reminds clients and tells you what needs you.",
+      both: "Products and services, orders and bookings, all in one app, with Nova working in every part of it.",
+    },
+    cta: "Get started",
+    under: "Live in 5 minutes · No developer needed",
+    second: "See Nova at work",
   },
 
-  marquee: { worksWith: "Works with" },
-
-  paths: {
-    h2: (
-      <>
-        How are you<br />starting?
-      </>
-    ),
-    fresh: {
-      t: "Build your first store",
-      d: "A designed store, your products — or a supplier’s. No developer.",
-      cta: "Start from zero",
-    },
-    selling: {
-      t: "Move your business over",
-      d: "Products, customers, domain and operations — brought across for you.",
-      cta: "Plan my switch",
-    },
-  },
-
-  launch: {
-    h2: (
-      <>
-        Name it. Fill it. <Mark>It&apos;s live.</Mark>
-      </>
-    ),
-    steps: [
-      { time: "~30 SEC", t: "Give your store a name" },
-      { time: "~5 MIN", t: "Add your products" },
-      { time: "LIVE", t: "Share your link" },
+  day: {
+    title: "Nova's last 24 hours",
+    store: { shop: "Saril · fashion", svc: "Glow Studio · beauty parlour" },
+    shop: [
+      { at: "11:48 PM", t: "Answered Taspia on Messenger and took her order. ৳2,370, cash on delivery.", tag: "Inbox" },
+      { at: "6:00 AM", t: "Sent you the morning report: 23 orders, 84 chats answered, 3 that need you.", tag: "Report" },
+      { at: "2:30 PM", t: "Told Taspia her parcel is on the way.", tag: "Orders" },
+      { at: "4:00 PM", t: "Followed up with 5 customers who stopped replying. 2 ordered.", tag: "Customers" },
     ],
-    name: {
-      handle: "shahrqee",
-      domain: "shahrqee.dakio.shop",
-      yours: "yours instantly",
-      note: "A designed storefront is ready the moment you sign up — restyle it anytime.",
-    },
-    products: {
-      a: { n: "Muslin saree — crimson", p: "৳2,300" },
-      b: { n: "Jamdani stole — teal", p: "৳1,850" },
-      enough: "photo + price is enough",
-      supplier: "no stock? pick from suppliers — Dakio ships",
-      note: "A photo and a price is enough. No stock? Pick from suppliers — Dakio ships.",
-    },
-    live: {
-      domain: "shahrqee.dakio.shop",
-      note: "Share the link on Facebook, Instagram, anywhere — orders, bKash and couriers already work.",
-      ceo: "…and your CEO clocks in.",
-    },
-    foot: "No code. No developer. Your store is live in minutes — and that is only the beginning.",
-    footLink: "See everything included →",
-  },
-
-  brief: {
-    h2: (
-      <>
-        Wake up to work<br />already <Mark>done</Mark>.
-      </>
-    ),
-    p: "Nova works the night shift and reports at 06:00 — every line backed by evidence you can inspect, with undo wherever the action is reversible.",
-    link: "See how Nova works",
-    hearCall: "Hear it as a call",
-    tiles: [
-      { v: "৳46,200", l: "revenue overnight" },
-      { v: "23", l: "orders confirmed" },
-      { v: "84", l: "messages answered" },
-      { v: "11", l: "carts recovered" },
-      { v: "31", l: "comments answered" },
-      { v: "6h 40m", l: "your hours saved" },
+    svc: [
+      { at: "10:15 PM", t: "Booked a bridal trial for Friday at 4 PM on Instagram.", tag: "Bookings" },
+      { at: "10:20 PM", t: "Saved the bride's wedding date and budget to her client page.", tag: "Clients" },
+      { at: "8:00 AM", t: "Sent each artist their bookings for the day.", tag: "Team" },
+      { at: "6:00 PM", t: "Reminded tomorrow's 7 clients by SMS.", tag: "Reminders" },
     ],
-    focus: (
-      <>
-        Today&apos;s draft: a Facebook post for the <b>Muslin drop</b>, with photo and price, <b style={{ color: "#C6F035" }}>ready to go</b>.{" "}
-      </>
-    ),
+    caption: "Example store. Every card is work Nova does today.",
   },
 
-  org: {
-    h2: "This is your team now.",
-    stats: [
-      { v: "1", l: "Acting CEO" },
-      { v: "24/7", l: "on duty" },
-      { v: "4", l: "chat channels answered" },
-    ],
-    ceo: "CEO Office",
-    depts: [
-      { n: "Marketing", j: "PROMOTES" }, { n: "Sales", j: "CLOSES" }, { n: "Support", j: "ANSWERS" },
-      { n: "Research", j: "DISCOVERS" }, { n: "Inventory", j: "PREDICTS" }, { n: "Shipping", j: "DELIVERS" },
-      { n: "Finance", j: "COUNTS" }, { n: "Operations", j: "SOURCES" }, { n: "Growth", j: "EXPERIMENTS" },
-    ],
-    note: "Every duty lands in a real module you could run by hand. Nova just never sleeps.",
-  },
+  works: { label: "Works with what you already use" },
 
-  rooms: {
-    h2: "The rooms your CEO works in.",
-    hq: {
-      n: "Nova HQ",
-      d: "Supervise your CEO — decisions, receipts, live feed.",
-      decision: "Scale “Muslin drop” budget ৳800 → ৳1,200/day",
-      approve: "Approve",
-      later: "Later",
-      feed: [
-        { t: "Replied to 12 Messenger customers", at: "02:14" },
-        { t: "Recovered cart · Taspia K. · ৳2,300", at: "03:41" },
-      ],
-    },
-    studio: {
-      n: "Store Studio",
-      d: "Design a storefront that doesn’t look like a template.",
-      previewDomain: "shahrqee.com",
-      previewHeadline: "Eid Muslin Collection",
-      themes: "THEMES",
-      themesNote: "+ বাংলা fonts · dark mode",
-    },
-    frontOffice: {
-      n: "Front Office",
-      d: "One inbox for every channel. Nova sells in it.",
-      chat: [
-        { from: "customer", t: "Dam koto? Size M ase?" },
-        { from: "nova", t: "৳2,300, M stock e ase. Confirm korle order kore dei?" },
-        { from: "customer", t: "Hae, confirm koren ✓" },
-      ],
-      byNova: "BY NOVA",
-    },
-    grow: {
-      n: "Grow Suite",
-      d: "The business Grow Suite — six levers, one team.",
-      levers: [
-        { n: "Campaigns", j: "PROMOTE" }, { n: "Content", j: "CREATE" }, { n: "Broadcast", j: "REACH" },
-        { n: "Research", j: "DISCOVER" }, { n: "Growth", j: "IMPROVE" }, { n: "Goals", j: "LEAD" },
-      ],
-      novaLine: (
-        <>
-          Eid muslin trending <b style={{ color: "#C6F035" }}>3.2×</b> — campaign drafted, 38 lapsed buyers queued. Nothing sends without you.
-        </>
-      ),
-      review: "Review",
-      dismiss: "Dismiss",
-    },
-    ads: {
-      n: "Ads Gallery",
-      d: "Pick a product. Get the ad.",
-      product: "Muslin Saree",
-      creatives: ["EID DROP", "-20%"],
-    },
-    supplier: {
-      n: "Supplier Network",
-      d: "Sell without inventory — verified suppliers hold stock, Dakio ships every order.",
-      flow: [
-        { n: "Supplier", j: "HOLDS STOCK" },
-        { n: "Your store", j: "SELLS" },
-        { n: "Dakio", j: "PACKS + SHIPS" },
-        { n: "Doorstep", j: "COD COLLECTED" },
-      ],
-    },
-  },
-
-  trust: {
-    h2: "You hold the guardrails.",
-    lede: "Nova runs the day inside a boundary you draw. Every move is logged, every limit is yours, and authority is earned one approval at a time.",
-    // Nova's office as a living field (components/home/NovaField)
-    field: {
-      caption: "Nova runs your departments while you sleep.",
-      legend: ["A ring is a department and its grade", "A line is Nova connected to that department", "Amber waits for your call"],
-      link: "Meet Nova",
-      idle: "Nova is at the core, watching the store",
-      lines: {
-        many: "Nova is running in {n} departments · {duties}",
-        one: "Nova is running in {room} · {duty}",
-        gather: "Nova is gathering the whole store · {duty}",
-        watch: "Nova is on watch at {room}",
-        idle: "Nova is at the core · {n} live lines open",
-      },
-    }
-  },
-
-  bd: {
-    h2: (
-      <>
-        Built for Bangladesh.<br /><span style={{ color: "#C6F035" }}>Not translated for it.</span>
-      </>
-    ),
-    p: "Payments, language and the retail calendar are design inputs here — not plugins.",
-    chips: ["৳ everywhere", "bKash · Nagad", "Cash on delivery", "বাংলা + English", "Bangla voice calls", "Dhaka timezone"],
-    seasonNote: "Nova proposes the Eid playbook 3 weeks early — one approval runs the month.",
-  },
-
-  switch: {
-    h2: (
-      <>
-        Leaving Shopify?<br />Bring it over a <Mark>weekend</Mark>.
-      </>
-    ),
-    p: "Concierge migration moves products, customers and order history. Your store keeps selling the whole time.",
-    cta: "Plan my switch",
+  contrast: {
+    kicker: "WHY DAKIO",
+    h2: "Other tools answer messages. Nova runs the business behind them.",
+    cols: ["A chatbot", "Dakio with Nova"],
     rows: [
-      { i: "1", t: "Concierge import", d: "Products, customers, orders and reviews — we move them, you review." },
-      { i: "2", t: "COD + bKash native", d: "No payment plugins, no USD fees. The checkout Bangladesh actually uses." },
-      { i: "3", t: "And you gain a CEO", d: "Shopify gives you tools. Dakio staffs the whole back office from day one." },
+      { t: "Answers messages in Bangla", bot: true },
+      { t: "Takes the order with stock and price checked" },
+      { t: "Courier, cash on delivery and bKash in the same place" },
+      { t: "Every customer's full history on one page" },
+      { t: "Bookings, calendar and reminders" },
+      { t: "Your own website, ready on day one" },
+      { t: "Follows up and brings customers back" },
+      { t: "Reports to you every morning" },
     ],
+    under: "One app, one bill. No more stitching five tools together.",
+  },
+
+  parts: {
+    kicker: "ONE APP",
+    h2: "Your whole business in one place. Nova works in every part.",
+    cards: {
+      inbox: { t: "Inbox", d: "Messenger, Instagram, WhatsApp and website chat in one list. Nova answers, understands voice messages and screenshots, and leaves the hard ones for you." },
+      customers: { t: "Customers", d: "Every chat, order, booking and payment on one page per customer. Nova saves what they tell her and reminds you who to call back." },
+      orders: { t: "Orders and delivery", d: "Orders from chat and from your website in one list, with Steadfast, Pathao and RedX built in. Nova keeps every buyer updated." },
+      bookings: { t: "Bookings", d: "A calendar for you and your team, with no double booking. Nova offers free times, books and sends reminders." },
+      marketing: { t: "Marketing", d: "Offers by SMS, email and chat to the customers you pick. Nova drafts posts from your product photos for you to approve." },
+      money: { t: "Money", d: "Payments, invoices, expenses and courier cash in one ledger. Nova tells you every morning what came in." },
+      website: { t: "Website", d: "A designed shop or booking site from day one, on your own domain, with Nova in the chat bubble." },
+    },
+    link: "See the website designs",
+  },
+
+  flow: {
+    kicker: "AFTER THE CHAT",
+    h2: { shop: "From the first message to the doorstep.", svc: "From the first message to the appointment." },
+    shop: [
+      "The order is written down. Price, size and stock are checked, with the customer's phone and address.",
+      "A receipt arrives in the chat, with a tracking link.",
+      "You book the courier from the order page. Cash on delivery or bKash.",
+      "Shipped, on the way, delivered: Nova tells the customer in the same chat.",
+      "After delivery, Nova asks for a review. Customers who went quiet get a follow-up.",
+    ],
+    svc: [
+      "The booking lands on your calendar: the time, the service and who does it.",
+      "The client gets every detail in the chat where they asked.",
+      "A reminder goes out the day before by SMS or email, so fewer people forget to come.",
+      "Send a quote or an invoice. The client accepts online and you record what they paid.",
+      "The client stays on one page with their whole history, ready for your next offer.",
+    ],
+    label: { shop: "For shops", svc: "For services" },
+    bottom: "Made for Bangladesh: taka, bKash, Nagad, cash on delivery, Bangla and English, Dhaka time.",
+  },
+
+  setup: {
+    kicker: "SET UP",
+    h2: "Your manager starts work in 5 minutes.",
+    steps: [
+      { t: "Connect your page", d: "Facebook, Instagram, WhatsApp, or the chat on your Dakio website. Your old chats stay where they are." },
+      {
+        t: { shop: "Add your products and prices", svc: "Add your services and hours" },
+        d: { shop: "A photo, a price and the sizes you have. Nova quotes only what is in your shop.", svc: "What you offer, the price, how long it takes and when you are open. Nova offers only the times you are free." },
+      },
+      { t: "Turn Nova on", d: "One switch. She starts right away, and one tap turns her off." },
+    ],
+  },
+
+  charge: {
+    kicker: "YOU STAY IN CHARGE",
+    h2: "Nova manages. You decide.",
+    points: [
+      { t: "One switch", d: "Turn Nova on or off for messages and for comments, any time." },
+      { t: "Hard ones come to you", d: "A complaint, a refund, an angry customer. Nova leaves those chats for you and tells you right away." },
+      { t: "Everything in front of you", d: "Read every chat, step in whenever you like, and teach her with your own best replies." },
+    ],
+    note: "Prices, stock and delivery charges come only from your shop. Nova does not make them up.",
   },
 
   pricing: {
-    h2: "Less than one employee.",
-    // sub + foot come from the pricing page copy (lib/plans.js) so the two pages agree.
+    kicker: "PRICING",
+    h2: "Less than one manager's salary.",
+    sub: "A shop manager costs ৳15,000 or more a month and works ten hours a day. Nova works all day and all night, and every plan includes her.",
+    busy: "Busy month? Add more from the app any time.",
     popular: "POPULAR",
     // FALLBACK ONLY. The cards come from the live catalogue via
-    // lib/plans.js#getHomePricing — these mirror the pricing page's committed
-    // cards and render only if the API is unreachable. No free tier.
+    // lib/plans.js#getHomePricing and render from here only if the API is down.
     plans: [
-      { n: "Growth", audience: "The default for running shops", pr: "৳1,490", sub: "/month", yr: "or ৳1,242/month billed annually", level: "NOVA OPERATOR", cta: "Choose Growth", dark: false, pop: true,
-        feats: ["Unlimited products, no daily order cap", "Nova Operator — 7,500 Nova credits/month", "Grow Suite + Supplier Network", "Decision desk, receipts & undo"] },
-      { n: "Business", audience: "The full CEO seat", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA OPERATOR + VOICE", cta: "Choose Business", dark: true, pop: false,
-        feats: ["Everything in Growth", "Acting CEO — 25,000 Nova credits/month", "60 Nova voice minutes/month — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)"] },
+      { n: "Growth", audience: "For a business that sells every day", pr: "৳1,490", sub: "/month", yr: "or ৳1,242/month billed annually", level: "NOVA MANAGER", cta: "Choose Growth", dark: false, pop: true,
+        feats: ["Unlimited products, no daily order cap", "Nova answers, sells and follows up", "Website, couriers, bKash and cash on delivery", "Customer pages, follow-ups and reviews"] },
+      { n: "Business", audience: "For a busy business with a team", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA MANAGER + VOICE", cta: "Choose Business", dark: true, pop: false,
+        feats: ["Everything in Growth", "60 minutes a month to talk to Nova by voice", "Logins for your staff", "Video ads from your product photos"] },
     ],
-    footLink: "See full pricing →",
+    footLink: "See full pricing",
+  },
+
+  faq: {
+    kicker: "QUESTIONS",
+    h2: "Questions people ask",
+    items: [
+      { q: "What is Nova?", a: "Nova is the AI manager inside Dakio. She works in your inbox, orders, bookings and customer pages, and reports to you every morning." },
+      { q: "How is this different from a chatbot?", a: "A chatbot stops at the reply. Nova takes the order or the booking, keeps the customer updated, follows up, and does it inside the app where your website, couriers and accounts already live." },
+      { q: "Does Nova understand Bangla?", a: "Yes: Bangla, English and Banglish, typed or as a voice message. She also recognises a product from a screenshot or a photo of your post." },
+      { q: "What if she says something wrong?", a: "She quotes prices, stock and delivery only from your shop. Anything risky, she leaves for you. You can read every chat and reply yourself at any time." },
+      { q: "Will my Facebook page work?", a: "Yes. Connect it in a few clicks. Your page, posts and old chats stay as they are, and Nova answers comments under your posts too." },
+      { q: "Do I pay per message?", a: "No. Every plan includes a monthly allowance for Nova, enough for well over a thousand customer chats. If a month is busier, add more from the app." },
+      { q: "I run a parlour, a coaching centre or a chamber. Is this for me?", a: "Yes. Pick Services when you sign up. Nova books appointments, classes and visits, and you get a calendar, reminders, invoices and a booking website." },
+      { q: "Can I stop any time?", a: "Yes. One switch turns Nova off, and your business keeps running in Dakio without her." },
+    ],
   },
 
   cta: {
-    h2: (
-      <>
-        Your store. Your CEO.<br />Today.
-      </>
-    ),
-    primary: "Open your store",
-    secondary: "Then appoint Nova",
+    h2: "Give your business a manager tonight.",
+    primary: "Get started",
+    under: "Live in 5 minutes. Turn Nova off any time.",
+  },
+
+  shops: {
+    meta: {
+      title: "Dakio for online shops | An AI manager for your page, orders and customers",
+      description: "Nova answers your page in Bangla, day and night, takes the order and keeps the buyer updated. Website, couriers, bKash, cash on delivery and customer list in the same app.",
+    },
+    badge: "FOR ONLINE SHOPS",
+    h1: "An AI manager for your page, your orders and your customers.",
+    sub: "Nova answers your page in Bangla, day and night, takes the order and keeps the buyer updated. Your website, couriers, bKash, cash on delivery and customer list are already in the same app.",
+    extraKicker: "MADE FOR SHOPS",
+    extraH2: "What a shop needs, already here.",
+    extra: [
+      { t: "Comments too", d: "Someone writes \"price?\" under your post, and Nova sends the price to their inbox." },
+      { t: "Understands what they send", d: "Screenshots of your post, voice messages, a reply to an older message." },
+      { t: "No stock? Sell from suppliers", d: "Pick products from verified suppliers, and Dakio packs and ships every order." },
+      { t: "Posts and video ads", d: "Turn a product photo into a post or a short video ad, and schedule it." },
+    ],
+    closing: "Tonight's orders are already waiting in your inbox. Let Nova take them.",
+  },
+
+  services: {
+    meta: {
+      title: "Dakio for services | An AI manager for your bookings and clients",
+      description: "For parlours, salons, coaching centres, chambers and photographers. Nova answers, offers your free times, books the client and reminds them. Calendar, client pages, invoices and a booking website in one app.",
+    },
+    badge: "FOR SERVICE BUSINESSES",
+    h1: "An AI manager for your bookings, clients and team.",
+    sub: "For parlours, salons, coaching centres, chambers, photographers and every business that sells its time. Nova answers, offers your free times, books the client and reminds them. You get the calendar, client pages, invoices and a booking website.",
+    kindsKicker: "READY SETUPS",
+    kindsH2: "A ready setup for your kind of business.",
+    kinds: [
+      { n: "Beauty parlour", d: "Bridal trials, party makeup, facials" },
+      { n: "Men's salon", d: "Haircuts and grooming by the slot" },
+      { n: "Coaching centre", d: "Admission enquiries and trial classes" },
+      { n: "Home tutor", d: "Trial lessons and monthly fees" },
+      { n: "Doctor's chamber", d: "Serials by day and time" },
+      { n: "Photographer", d: "Shoot dates and packages" },
+      { n: "Event hall", d: "Date enquiries and visits to see the hall" },
+      { n: "Home repair", d: "Home visits and quotes" },
+      { n: "Interior and events", d: "Consultations and quotes" },
+    ],
+    teamH2: "The right person for every booking.",
+    team: "Give each service to the people on your team who do it. Nova books only when one of them is free, and each one gets their day's list in the morning.",
+    gcal: "Already on Google Calendar? Connect it and both stay in step.",
+    closing: "Your next booking could come in tonight. Let Nova take it.",
   },
 };
 

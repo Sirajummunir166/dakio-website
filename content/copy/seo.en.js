@@ -5,10 +5,10 @@ const seo = {
   home: "Home",
 
   organizationDescription:
-    "Dakio is the commerce OS for Bangladesh — store, couriers, bKash, Nagad & COD, plus Nova, an AI Acting CEO in every store.",
+    "Dakio runs a whole business in one app: website, orders, customers, couriers, bookings and payments, with Nova, an AI manager, working in every part. Made in Bangladesh.",
 
   applicationDescription:
-    "All-in-one e-commerce platform for Bangladesh with Nova, an AI Acting CEO: storefront, couriers, bKash/Nagad/COD payments, marketing and support — every action receipted and undoable.",
+    "One app for shops and service businesses in Bangladesh, with Nova, an AI manager: website, inbox, orders, couriers, bookings, customer pages, bKash, Nagad and cash on delivery.",
 
   // FALLBACK ONLY — the emitted offers come from the live catalogue
   // (lib/plans.js#getJsonLdOffers). The withdrawn Starter tier is gone: a
@@ -27,6 +27,8 @@ const seo = {
     "/ads": "Ads Gallery",
     "/front-office": "Front Office",
     "/switch": "Switch to Dakio",
+    "/shops": "For shops",
+    "/services": "For services",
     "/pricing": "Pricing",
     "/about": "About",
     "/blog": "Blog",
