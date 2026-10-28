@@ -72,53 +72,157 @@ _Says what Dakio is in five seconds: a role everyone knows (a manager) and the w
 - EN: See Nova at work
 - BN: Nova-র কাজ দেখুন
 
-### 1a · Nova's day (hero visual)
+### 1a · Nova's clock (hero, in motion)
 
-_Proof of breadth in one glance: real work in four different parts of the business. Every card is something Nova does today. Store names are examples and say so._
+_A live card: a clock starting at the real Dhaka time replays one example day in about 90 seconds. As it passes each duty, that work slides into the feed, its dot lights on the day track and the orb pulses. Lines follow the switch; every one is a real duty or automation._
 
-**Strip title**
-- EN: Nova's last 24 hours
-- BN: Nova-র গত ২৪ ঘণ্টা
+**Card title**
+- EN: Nova on duty
+- BN: Nova কাজে আছে
 
-**Shop · 11:48 PM**
-- EN: Answered Taspia on Messenger and took her order. ৳2,370, cash on delivery.
-- BN: রাত ১১:৪৮ · মেসেঞ্জারে তাসপিয়ার উত্তর দিয়ে অর্ডার নিয়েছে। ৳২,৩৭০, ক্যাশ অন ডেলিভারি।
+**Status line**
+- EN: Watching Messenger, Instagram, WhatsApp and website chat
+- BN: মেসেঞ্জার, ইনস্টাগ্রাম, হোয়াটসঅ্যাপ আর ওয়েবসাইট চ্যাট দেখছে
 
-**Shop · 6:00 AM**
+**Shop · 00:15 · Night shift**
+- EN: Reviewed today's sales and wrote tomorrow's list for you.
+- BN: রাতের কাজ: আজকের বিক্রি দেখে কালকের কাজের তালিকা লিখে রেখেছে।
+
+**Shop · 02:10 · Inbox**
+- EN: Answered 3 Instagram messages and took 1 order. ৳1,850.
+- BN: ইনবক্স: ইনস্টাগ্রামের ৩টা মেসেজের উত্তর দিয়ে ১টা অর্ডার নিয়েছে। ৳১,৮৫০।
+
+**Shop · 06:00 · Report**
 - EN: Sent you the morning report: 23 orders, 84 chats answered, 3 that need you.
-- BN: সকাল ৬:০০ · আপনাকে সকালের রিপোর্ট পাঠিয়েছে: ২৩টা অর্ডার, ৮৪টা চ্যাটের উত্তর, ৩টায় আপনাকে লাগবে।
+- BN: রিপোর্ট: আপনাকে সকালের রিপোর্ট পাঠিয়েছে: ২৩টা অর্ডার, ৮৪টা চ্যাটের উত্তর, ৩টায় আপনাকে লাগবে।
 
-**Shop · 2:30 PM**
+**Shop · 08:30 · Stock**
+- EN: Stock check: the Muslin saree in M is down to 2. Flagged it for restock.
+- BN: স্টক: স্টক চেক: মসলিন শাড়ির M সাইজ আছে মাত্র ২টা। রিস্টকের জন্য জানিয়ে রেখেছে।
+
+**Shop · 10:05 · Comments**
+- EN: Answered 6 comments under today's post and sent the prices to their inboxes.
+- BN: কমেন্ট: আজকের পোস্টের ৬টা কমেন্টের উত্তর দিয়ে ইনবক্সে দাম পাঠিয়েছে।
+
+**Shop · 11:20 · Courier**
+- EN: Courier check: 2 parcels stuck with Pathao for 3 days. Flagged them for you.
+- BN: কুরিয়ার: কুরিয়ার চেক: Pathao-তে ২টা পার্সেল ৩ দিন ধরে আটকে আছে। আপনাকে জানিয়েছে।
+
+**Shop · 13:00 · Marketing**
+- EN: Drafted a Facebook post for the new Jamdani stole. Waiting for your OK.
+- BN: মার্কেটিং: নতুন জামদানি স্টোলের জন্য ফেসবুক পোস্টের ড্রাফট বানিয়েছে। আপনার অনুমতির অপেক্ষায়।
+
+**Shop · 14:30 · Orders**
 - EN: Told Taspia her parcel is on the way.
-- BN: দুপুর ২:৩০ · তাসপিয়াকে জানিয়েছে তার পার্সেল পথে আছে।
+- BN: অর্ডার: তাসপিয়াকে জানিয়েছে তার পার্সেল পথে আছে।
 
-**Shop · 4:00 PM**
+**Shop · 16:00 · Customers**
 - EN: Followed up with 5 customers who stopped replying. 2 ordered.
-- BN: বিকেল ৪:০০ · যে ৫ জন উত্তর দেওয়া থামিয়েছিল, তাদের আবার মনে করিয়েছে। ২ জন অর্ডার করেছে।
+- BN: কাস্টমার: যে ৫ জন উত্তর দেওয়া থামিয়েছিল, তাদের আবার মনে করিয়েছে। ২ জন অর্ডার করেছে।
 
-**Service · 10:15 PM**
-- EN: Booked a bridal trial for Friday at 4 PM on Instagram.
-- BN: রাত ১০:১৫ · ইনস্টাগ্রামে শুক্রবার বিকেল ৪টায় ব্রাইডাল ট্রায়াল বুক করেছে।
+**Shop · 18:40 · Reviews**
+- EN: Asked 4 customers whose parcels arrived for a review.
+- BN: রিভিউ: যাদের পার্সেল পৌঁছেছে, এমন ৪ জনের কাছে রিভিউ চেয়েছে।
 
-**Service · 10:20 PM**
-- EN: Saved the bride's wedding date and budget to her client page.
-- BN: রাত ১০:২০ · কনের বিয়ের তারিখ আর বাজেট তার ক্লায়েন্ট পেজে লিখে রেখেছে।
+**Shop · 20:15 · Money**
+- EN: Money note: ৳46,200 came in this week, ৳3,100 more than last week.
+- BN: হিসাব: টাকার হিসাব: এই সপ্তাহে এসেছে ৳৪৬,২০০, গত সপ্তাহের চেয়ে ৳৩,১০০ বেশি।
 
-**Service · 8:00 AM**
+**Shop · 23:48 · Inbox**
+- EN: Answered Taspia on Messenger and took her order. ৳2,370, cash on delivery.
+- BN: ইনবক্স: মেসেঞ্জারে তাসপিয়ার উত্তর দিয়ে অর্ডার নিয়েছে। ৳২,৩৭০, ক্যাশ অন ডেলিভারি।
+
+**Shop · 00:20 · Night shift**
+- EN: Reviewed today's bookings and wrote tomorrow's list for you.
+- BN: রাতের কাজ: আজকের বুকিং দেখে কালকের কাজের তালিকা লিখে রেখেছে।
+
+**Shop · 07:30 · Report**
+- EN: Sent you the morning report: 9 bookings today, 2 new enquiries, 1 that needs you.
+- BN: রিপোর্ট: আপনাকে সকালের রিপোর্ট পাঠিয়েছে: আজ ৯টা বুকিং, ২টা নতুন খোঁজ, ১টায় আপনাকে লাগবে।
+
+**Shop · 08:00 · Team**
 - EN: Sent each artist their bookings for the day.
-- BN: সকাল ৮:০০ · প্রত্যেক আর্টিস্টকে তার আজকের বুকিংয়ের তালিকা পাঠিয়েছে।
+- BN: টিম: প্রত্যেক আর্টিস্টকে তার আজকের বুকিংয়ের তালিকা পাঠিয়েছে।
 
-**Service · 6:00 PM**
+**Shop · 09:45 · Pipeline**
+- EN: Pipeline check: 3 bridal enquiries waiting over 2 days. Listed them for you.
+- BN: পাইপলাইন: পাইপলাইন চেক: ৩টা ব্রাইডাল খোঁজ ২ দিনের বেশি অপেক্ষায়। আপনার জন্য তালিকা করেছে।
+
+**Shop · 11:10 · Inbox**
+- EN: Answered 4 Instagram messages and booked 2 facials.
+- BN: ইনবক্স: ইনস্টাগ্রামের ৪টা মেসেজের উত্তর দিয়ে ২টা ফেসিয়াল বুক করেছে।
+
+**Shop · 13:00 · Marketing**
+- EN: Drafted a post for the Eid bridal package. Waiting for your OK.
+- BN: মার্কেটিং: ঈদের ব্রাইডাল প্যাকেজের পোস্টের ড্রাফট বানিয়েছে। আপনার অনুমতির অপেক্ষায়।
+
+**Shop · 15:30 · Clients**
+- EN: Saved a new bride's wedding date and budget to her client page.
+- BN: ক্লায়েন্ট: কনের বিয়ের তারিখ আর বাজেট তার ক্লায়েন্ট পেজে লিখে রেখেছে।
+
+**Shop · 17:00 · Follow-up**
+- EN: Reminded you to call Nadia back about her quote.
+- BN: ফলো-আপ: নাদিয়ার কোটেশন নিয়ে তাকে ফোন করতে আপনাকে মনে করিয়ে দিয়েছে।
+
+**Shop · 18:00 · Reminders**
 - EN: Reminded tomorrow's 7 clients by SMS.
-- BN: সন্ধ্যা ৬:০০ · কালকের ৭ জন ক্লায়েন্টকে SMS-এ মনে করিয়ে দিয়েছে।
+- BN: রিমাইন্ডার: কালকের ৭ জন ক্লায়েন্টকে SMS-এ মনে করিয়ে দিয়েছে।
+
+**Shop · 20:30 · Money**
+- EN: Money note: ৳38,500 came in this week from 21 visits.
+- BN: হিসাব: টাকার হিসাব: এই সপ্তাহে ২১টা ভিজিট থেকে এসেছে ৳৩৮,৫০০।
+
+**Shop · 22:15 · Bookings**
+- EN: Booked a bridal trial for Friday at 4 PM on Instagram.
+- BN: বুকিং: ইনস্টাগ্রামে শুক্রবার বিকেল ৪টায় ব্রাইডাল ট্রায়াল বুক করেছে।
+
+**Service · 00:20 · Night shift**
+- EN: Reviewed today's bookings and wrote tomorrow's list for you.
+- BN: রাতের কাজ: আজকের বুকিং দেখে কালকের কাজের তালিকা লিখে রেখেছে।
+
+**Service · 07:30 · Report**
+- EN: Sent you the morning report: 9 bookings today, 2 new enquiries, 1 that needs you.
+- BN: রিপোর্ট: আপনাকে সকালের রিপোর্ট পাঠিয়েছে: আজ ৯টা বুকিং, ২টা নতুন খোঁজ, ১টায় আপনাকে লাগবে।
+
+**Service · 08:00 · Team**
+- EN: Sent each artist their bookings for the day.
+- BN: টিম: প্রত্যেক আর্টিস্টকে তার আজকের বুকিংয়ের তালিকা পাঠিয়েছে।
+
+**Service · 09:45 · Pipeline**
+- EN: Pipeline check: 3 bridal enquiries waiting over 2 days. Listed them for you.
+- BN: পাইপলাইন: পাইপলাইন চেক: ৩টা ব্রাইডাল খোঁজ ২ দিনের বেশি অপেক্ষায়। আপনার জন্য তালিকা করেছে।
+
+**Service · 11:10 · Inbox**
+- EN: Answered 4 Instagram messages and booked 2 facials.
+- BN: ইনবক্স: ইনস্টাগ্রামের ৪টা মেসেজের উত্তর দিয়ে ২টা ফেসিয়াল বুক করেছে।
+
+**Service · 13:00 · Marketing**
+- EN: Drafted a post for the Eid bridal package. Waiting for your OK.
+- BN: মার্কেটিং: ঈদের ব্রাইডাল প্যাকেজের পোস্টের ড্রাফট বানিয়েছে। আপনার অনুমতির অপেক্ষায়।
+
+**Service · 15:30 · Clients**
+- EN: Saved a new bride's wedding date and budget to her client page.
+- BN: ক্লায়েন্ট: কনের বিয়ের তারিখ আর বাজেট তার ক্লায়েন্ট পেজে লিখে রেখেছে।
+
+**Service · 17:00 · Follow-up**
+- EN: Reminded you to call Nadia back about her quote.
+- BN: ফলো-আপ: নাদিয়ার কোটেশন নিয়ে তাকে ফোন করতে আপনাকে মনে করিয়ে দিয়েছে।
+
+**Service · 18:00 · Reminders**
+- EN: Reminded tomorrow's 7 clients by SMS.
+- BN: রিমাইন্ডার: কালকের ৭ জন ক্লায়েন্টকে SMS-এ মনে করিয়ে দিয়েছে।
+
+**Service · 20:30 · Money**
+- EN: Money note: ৳38,500 came in this week from 21 visits.
+- BN: হিসাব: টাকার হিসাব: এই সপ্তাহে ২১টা ভিজিট থেকে এসেছে ৳৩৮,৫০০।
+
+**Service · 22:15 · Bookings**
+- EN: Booked a bridal trial for Friday at 4 PM on Instagram.
+- BN: বুকিং: ইনস্টাগ্রামে শুক্রবার বিকেল ৪টায় ব্রাইডাল ট্রায়াল বুক করেছে।
 
 **Caption**
-- EN: Example store. Every card is work Nova does today.
-- BN: উদাহরণ দোকান। প্রতিটা কার্ড Nova-র আজকের আসল কাজ।
-
-**Works with (strip under the hero)**
-- EN: Messenger · Instagram · WhatsApp · Website chat · bKash · Nagad · Cash on delivery · Steadfast · Pathao · RedX
-- BN: Messenger · Instagram · WhatsApp · ওয়েবসাইট চ্যাট · bKash · Nagad · ক্যাশ অন ডেলিভারি · Steadfast · Pathao · RedX
+- EN: Example store, one day replayed fast. Every line is work Nova does today.
+- BN: উদাহরণ দোকান, একটা দিন দ্রুত দেখানো হচ্ছে। প্রতিটা লাইন Nova-র আজকের আসল কাজ।
 
 ### 2 · Other tools vs Dakio
 

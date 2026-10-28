@@ -14,6 +14,9 @@ import { createContext, useContext, useState } from "react";
 
 const AudienceContext = createContext({ aud: "shop", setAud: () => {} });
 
+/** The current choice, for client components that render per audience (NovaClock). */
+export const useAudience = () => useContext(AudienceContext);
+
 export function AudienceRoot({ initial = "shop", children }) {
   const [aud, setAud] = useState(initial);
   return (

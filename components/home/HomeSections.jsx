@@ -6,6 +6,7 @@
 
 import Link from "next/link";
 import { AudienceSwitch } from "./Audience";
+import NovaClock from "./NovaClock";
 import HomePlans from "./HomePlans";
 import TrialLine from "../pricing/TrialLine";
 import { REGISTER_URL } from "../../lib/urls";
@@ -72,38 +73,9 @@ export function Hero({ c, lang, L, head = null }) {
             </div>
             <div className="hm-under">{h.under}</div>
           </div>
-          <NovaDay c={c} />
+          <NovaClock d={c.day} lang={lang} />
         </div>
       </div>
-    </div>
-  );
-}
-
-function NovaDay({ c }) {
-  const d = c.day;
-  // For "both", the first two cards of each kind show; the rest are single-choice only.
-  const items = [
-    ...d.shop.map((x, i) => ({ ...x, show: i < 2 ? "shop" : "shop-only", k: `s${i}` })),
-    ...d.svc.map((x, i) => ({ ...x, show: i < 2 ? "svc" : "svc-only", k: `v${i}` })),
-  ];
-  return (
-    <div className="hm-day" aria-label={d.title}>
-      <div className="hm-day-head">
-        <span className="hm-orb" aria-hidden="true" />
-        <span className="hm-day-title">{d.title}</span>
-        <span className="hm-day-store" data-show="shop-only">{d.store.shop}</span>
-        <span className="hm-day-store" data-show="svc-only">{d.store.svc}</span>
-      </div>
-      <ol className="hm-day-list">
-        {items.map(it => (
-          <li key={it.k} data-show={it.show}>
-            <span className="hm-day-at">{it.at}</span>
-            <span className="hm-day-t">{it.t}</span>
-            <span className="hm-day-tag">{it.tag}</span>
-          </li>
-        ))}
-      </ol>
-      <div className="hm-day-cap">{d.caption}</div>
     </div>
   );
 }

@@ -32,23 +32,48 @@ const home = {
     second: "See Nova at work",
   },
 
+  // Nova's clock in the hero (components/home/NovaClock.jsx). Times are 24h
+  // "HH:MM" data; the card formats them per locale and replays the day fast.
+  // Every line is a real duty or automation: night_shift, morning_brief,
+  // weekly_stock_check, comment_desk, weekly_shipping_summary, content_draft,
+  // order updates, chat follow-ups, review requests, weekly_finance_summary,
+  // pipeline_check, team agendas, booking reminders, the services desk.
   day: {
-    title: "Nova's last 24 hours",
+    title: "Nova on duty",
+    live: "LIVE",
+    status: "Watching Messenger, Instagram, WhatsApp and website chat",
     store: { shop: "Saril · fashion", svc: "Glow Studio · beauty parlour" },
+    marks: ["12 AM", "6 AM", "12 PM", "6 PM"],
     shop: [
-      { at: "11:48 PM", t: "Answered Taspia on Messenger and took her order. ৳2,370, cash on delivery.", tag: "Inbox" },
-      { at: "6:00 AM", t: "Sent you the morning report: 23 orders, 84 chats answered, 3 that need you.", tag: "Report" },
-      { at: "2:30 PM", t: "Told Taspia her parcel is on the way.", tag: "Orders" },
-      { at: "4:00 PM", t: "Followed up with 5 customers who stopped replying. 2 ordered.", tag: "Customers" },
+      { at: "00:15", tag: "Night shift", t: "Reviewed today's sales and wrote tomorrow's list for you." },
+      { at: "02:10", tag: "Inbox", t: "Answered 3 Instagram messages and took 1 order. ৳1,850." },
+      { at: "06:00", tag: "Report", t: "Sent you the morning report: 23 orders, 84 chats answered, 3 that need you." },
+      { at: "08:30", tag: "Stock", t: "Stock check: the Muslin saree in M is down to 2. Flagged it for restock." },
+      { at: "10:05", tag: "Comments", t: "Answered 6 comments under today's post and sent the prices to their inboxes." },
+      { at: "11:20", tag: "Courier", t: "Courier check: 2 parcels stuck with Pathao for 3 days. Flagged them for you." },
+      { at: "13:00", tag: "Marketing", t: "Drafted a Facebook post for the new Jamdani stole. Waiting for your OK." },
+      { at: "14:30", tag: "Orders", t: "Told Taspia her parcel is on the way." },
+      { at: "16:00", tag: "Customers", t: "Followed up with 5 customers who stopped replying. 2 ordered." },
+      { at: "18:40", tag: "Reviews", t: "Asked 4 customers whose parcels arrived for a review." },
+      { at: "20:15", tag: "Money", t: "Money note: ৳46,200 came in this week, ৳3,100 more than last week." },
+      { at: "23:48", tag: "Inbox", t: "Answered Taspia on Messenger and took her order. ৳2,370, cash on delivery." },
     ],
     svc: [
-      { at: "10:15 PM", t: "Booked a bridal trial for Friday at 4 PM on Instagram.", tag: "Bookings" },
-      { at: "10:20 PM", t: "Saved the bride's wedding date and budget to her client page.", tag: "Clients" },
-      { at: "8:00 AM", t: "Sent each artist their bookings for the day.", tag: "Team" },
-      { at: "6:00 PM", t: "Reminded tomorrow's 7 clients by SMS.", tag: "Reminders" },
+      { at: "00:20", tag: "Night shift", t: "Reviewed today's bookings and wrote tomorrow's list for you." },
+      { at: "07:30", tag: "Report", t: "Sent you the morning report: 9 bookings today, 2 new enquiries, 1 that needs you." },
+      { at: "08:00", tag: "Team", t: "Sent each artist their bookings for the day." },
+      { at: "09:45", tag: "Pipeline", t: "Pipeline check: 3 bridal enquiries waiting over 2 days. Listed them for you." },
+      { at: "11:10", tag: "Inbox", t: "Answered 4 Instagram messages and booked 2 facials." },
+      { at: "13:00", tag: "Marketing", t: "Drafted a post for the Eid bridal package. Waiting for your OK." },
+      { at: "15:30", tag: "Clients", t: "Saved a new bride's wedding date and budget to her client page." },
+      { at: "17:00", tag: "Follow-up", t: "Reminded you to call Nadia back about her quote." },
+      { at: "18:00", tag: "Reminders", t: "Reminded tomorrow's 7 clients by SMS." },
+      { at: "20:30", tag: "Money", t: "Money note: ৳38,500 came in this week from 21 visits." },
+      { at: "22:15", tag: "Bookings", t: "Booked a bridal trial for Friday at 4 PM on Instagram." },
     ],
-    caption: "Example store. Every card is work Nova does today.",
+    caption: "Example store, one day replayed fast. Every line is work Nova does today.",
   },
+
 
   works: { label: "Works with what you already use" },
 
