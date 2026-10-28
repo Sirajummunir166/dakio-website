@@ -76,6 +76,31 @@ const home = {
 
   works: { label: "Works with what you already use" },
 
+  // Nova's machine (components/home/NovaMachine.jsx): a 3D line from a chat
+  // to a delivered order or a kept appointment. Every station is a built
+  // feature; the courier is booked by the owner from the order page.
+  machine: {
+    kicker: "INSIDE DAKIO",
+    h2: { shop: "Watch one chat become a delivered order.", svc: "Watch one chat become a kept appointment.", both: "Watch one chat become an order or a booking." },
+    sub: "This is the line Nova runs all day and all night. Drag to look around, or tap a station.",
+    hint: { drag: "Drag to look around · Tap a station", touch: "Tap a station" },
+    pause: "Pause",
+    play: "Play",
+    back: "Back to the whole line",
+    stations: {
+      in: { t: "Chats come in", d: "Messenger, Instagram, WhatsApp and the chat on your website land in one inbox." },
+      nova: { t: "Nova decides", d: "She reads the message, checks the price, the stock and the free times, and answers in Bangla or English in seconds." },
+      app: {
+        shop: { t: "Order is made", d: "Order #1044: Marigold Yellow Panjabi, size M, ৳2,260 cash on delivery. In your orders, nobody typed it." },
+        svc: { t: "Booking is made", d: "Bridal trial, Friday 4 PM. On your calendar and confirmed, with the client's name and phone." },
+      },
+      out: {
+        shop: { t: "Parcel goes out", d: "The receipt and tracking link are already in the chat. You book the courier from the order page in one tap." },
+        svc: { t: "Client is reminded", d: "An SMS or email the day before, so she comes. Your artist gets her list in the morning." },
+      },
+    },
+  },
+
   contrast: {
     kicker: "WHY DAKIO",
     h2: "Other tools answer messages. Nova runs the business behind them.",

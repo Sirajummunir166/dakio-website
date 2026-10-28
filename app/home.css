@@ -211,12 +211,42 @@
 .hm-team-p { font-size: 16px; color: #33372A; }
 .hm-team .hm-note { margin: 12px 0 0; }
 
+/* Nova's machine (components/home/NovaMachine.jsx, machineScene.js) */
+.hm-sec-mach .hm-head { margin-bottom: 30px; }
+.hm-mach-stage { position: relative; height: 640px; border-radius: 32px; overflow: hidden; background: #F4F2EA; border: 1px solid rgba(26,29,18,0.08); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7); }
+.hm-mach-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; opacity: 0; transition: opacity .6s ease; }
+.hm-mach-canvas:active { cursor: grabbing; }
+.hm-mach-stage.is-ready .hm-mach-canvas { opacity: 1; }
+.hm-mach-stage.is-failed { display: none; }
+.hm-mach-wait { position: absolute; inset: 0; display: grid; place-items: center; }
+.hm-mach-wait .hm-orb { position: relative; width: 46px; height: 46px; inset: auto; }
+.hm-mach-pins { position: absolute; inset: 0; pointer-events: none; }
+.hm-mach-pin { position: absolute; left: 0; top: 0; pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px 5px 5px; border-radius: 99px; border: 1px solid rgba(26,29,18,0.1); background: rgba(255,255,255,0.9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); color: #1A1D12; font: 600 12.5px var(--dk-font-sans), var(--dk-font-bn), sans-serif; letter-spacing: -0.1px; white-space: nowrap; cursor: pointer; box-shadow: 0 1px 2px rgba(26,29,18,0.06), 0 10px 24px rgba(26,29,18,0.07); transition: background .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease; will-change: transform; }
+.hm-mach-pin::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 20px; background: linear-gradient(rgba(26,29,18,0.35), rgba(26,29,18,0.18)); }
+.hm-mach-dot { position: absolute; left: 50%; top: calc(100% + 19px); width: 7px; height: 7px; margin-left: -3px; border-radius: 99px; background: #FFFFFF; border: 1.5px solid #1A1D12; box-sizing: border-box; transition: background .3s ease, box-shadow .3s ease; }
+.hm-mach-pin:hover { border-color: rgba(26,29,18,0.3); }
+.hm-mach-pin.is-on { background: #0F120B; color: #FBFBF4; border-color: #0F120B; box-shadow: 0 12px 28px rgba(15,18,11,0.22); }
+.hm-mach-pin.is-on .hm-mach-dot { background: #C6F035; box-shadow: 0 0 0 4px rgba(198,240,53,0.35); }
+.hm-mach-stage:not(.is-ready) .hm-mach-pin { opacity: 0; }
+.hm-mach-n { display: inline-grid; place-items: center; min-width: 26px; height: 22px; padding: 0 6px; border-radius: 99px; background: #F0EEE6; color: #3E7A45; font-family: var(--dk-font-mono), monospace; font-size: 10.5px; font-weight: 700; }
+.hm-mach-pin.is-on .hm-mach-n { background: #C6F035; color: #0F120B; }
+.hm-mach-cap { position: absolute; left: 18px; bottom: 18px; max-width: 420px; display: grid; gap: 6px; padding: 16px 18px; border-radius: 20px; background: rgba(251,250,245,0.94); border: 1px solid rgba(26,29,18,0.08); box-shadow: 0 14px 34px rgba(26,29,18,0.1); font-size: 14px; line-height: 1.55; color: #55584B; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.hm-mach-cap b { display: inline-flex; align-items: center; gap: 8px; font-size: 15.5px; color: #1A1D12; }
+.hm-mach-back { justify-self: start; margin-top: 4px; padding: 0 0 1px; border: 0; border-bottom: 2px solid #C6F035; background: none; font: 700 13px var(--dk-font-sans), var(--dk-font-bn), sans-serif; color: #1A1D12; cursor: pointer; }
+.hm-mach-pause { position: absolute; top: 16px; right: 16px; display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 99px; border: 1px solid rgba(26,29,18,0.12); background: #FBFAF5; color: #1A1D12; font: 700 12.5px var(--dk-font-sans), var(--dk-font-bn), sans-serif; cursor: pointer; }
+.hm-mach-hint { position: absolute; right: 20px; bottom: 20px; font-size: 12px; color: #878B76; pointer-events: none; }
+.hm-mach-steps { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.hm-mach-steps button { width: 100%; display: flex; align-items: center; gap: 10px; padding: 13px 14px; border-radius: 16px; border: 1px solid rgba(26,29,18,0.08); background: #FBFAF5; color: #1A1D12; font: 700 14px var(--dk-font-sans), var(--dk-font-bn), sans-serif; text-align: left; cursor: pointer; transition: background .25s ease, border-color .25s ease; }
+.hm-mach-steps li.is-on button { border-color: #C6F035; background: #F1FBD2; }
+.hm-mach-pin:focus-visible, .hm-mach-pause:focus-visible, .hm-mach-back:focus-visible, .hm-mach-steps button:focus-visible { outline: 2px solid #3E7A45; outline-offset: 3px; }
+
 /* ---------- Phones and tablets ---------- */
 @media (max-width: 980px) {
   .hm-hero-grid, .hm-charge, .hm-team { grid-template-columns: minmax(0, 1fr); }
   .hm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hm-grid4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hm-chatdemo { grid-template-columns: minmax(0, 1fr); gap: 28px; max-width: 460px; }
+  .hm-mach-stage { height: 540px; }
   .hm-h1 { font-size: clamp(36px, 8vw, 54px); letter-spacing: -1.6px; }
   .hm-h2 { font-size: clamp(30px, 6.4vw, 42px); letter-spacing: -1.2px; }
 }
@@ -244,6 +274,14 @@
   .hm-cta { padding: 52px 20px; border-radius: 28px; }
   .hm-cta-h2 { font-size: clamp(32px, 9vw, 44px); letter-spacing: -1.4px; }
   .hm-btn { padding: 14px 22px; }
+  .hm-mach-stage { height: 480px; border-radius: 24px; margin: 0 -4px; }
+  .hm-mach-pin { font-size: 11px; padding: 5px 9px 5px 6px; }
+  .hm-mach-pin .hm-mach-n { min-width: 22px; height: 18px; }
+  .hm-mach-cap { left: 10px; right: 10px; bottom: 10px; max-width: none; padding: 12px 14px; font-size: 13px; }
+  .hm-mach-cap b { font-size: 14px; }
+  .hm-mach-hint { display: none; }
+  .hm-mach-pause { top: 10px; right: 10px; }
+  .hm-mach-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ---------- Bangla ---------- */
@@ -258,6 +296,7 @@ html[lang="bn"] .hm-day-at { font-size: 12px; }
 html[lang="bn"] .hm-msg, html[lang="bn"] .hm-pcard-txt, html[lang="bn"] .hm-rcard-txt, html[lang="bn"] .hm-chips, html[lang="bn"] .hm-shot-cap, html[lang="bn"] .hm-chat-cap { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
 html[lang="bn"] .hm-day-list { height: 392px; }
 html[lang="bn"] .hm-status { font-family: var(--dk-font-bn), sans-serif; }
+html[lang="bn"] .hm-mach-cap, html[lang="bn"] .hm-mach-cap b, html[lang="bn"] .hm-mach-steps button, html[lang="bn"] .hm-mach-pin, html[lang="bn"] .hm-mach-pause, html[lang="bn"] .hm-mach-hint, html[lang="bn"] .hm-mach-back { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
 html[lang="bn"] .hm-seg button, html[lang="bn"] .hm-btn, html[lang="bn"] .hm-day-tag, html[lang="bn"] .hm-day-title { font-family: var(--dk-font-bn), sans-serif; }
 @media (max-width: 980px) {
   html[lang="bn"] .hm-h1 { font-size: clamp(32px, 7.4vw, 46px); }

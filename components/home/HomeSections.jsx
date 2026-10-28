@@ -8,6 +8,7 @@ import Link from "next/link";
 import { AudienceSwitch, StartLink } from "./Audience";
 import NovaFeed from "./NovaFeed";
 import ChatDemo from "./ChatDemo";
+import NovaMachine from "./NovaMachine";
 import HomePlans from "./HomePlans";
 import TrialLine from "../pricing/TrialLine";
 import { REGISTER_URL } from "../../lib/urls";
@@ -96,6 +97,23 @@ export function Works({ c, marquee }) {
         </div>
       </div>
     </div>
+  );
+}
+
+/* ---------------- 1b · Nova's machine (NovaMachine.jsx) ---------------- */
+
+export function Machine({ c }) {
+  const x = c.machine;
+  return (
+    <section className="hm-wrap hm-sec hm-sec-mach" data-reveal>
+      <div className="hm-head">
+        <div className="hm-kicker">{x.kicker}</div>
+        <h2 className="hm-h2" data-show="shop-only">{x.h2.shop}</h2>
+        <h2 className="hm-h2" data-show="svc-only">{x.h2.svc}</h2>
+        <h2 className="hm-h2" data-show="both-only">{x.h2.both}</h2>
+      </div>
+      <NovaMachine m={x} chat={c.chat} />
+    </section>
   );
 }
 
