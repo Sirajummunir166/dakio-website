@@ -56,7 +56,7 @@
 .hm-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .hm-under { margin-top: 16px; font-size: 13px; color: #878B76; }
 
-/* Nova's clock (components/home/NovaClock.jsx) */
+/* Nova's feed (components/home/NovaFeed.jsx) */
 .hm-day { position: relative; border-radius: 26px; background: #161A0F; border: 1px solid rgba(198,240,53,0.16); padding: 22px; box-shadow: 0 30px 70px rgba(0,0,0,0.35); animation: heroUp .7s .2s ease both; }
 .hm-day-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .hm-orb-wrap { position: relative; width: 28px; height: 28px; flex-shrink: 0; }
@@ -66,8 +66,7 @@
 .hm-day-title { font-size: 15px; font-weight: 800; color: #FBFBF4; }
 .hm-live { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border-radius: 99px; background: rgba(198,240,53,0.12); color: #C6F035; font-family: var(--dk-font-mono), monospace; font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; }
 .hm-live-dot { width: 6px; height: 6px; border-radius: 99px; background: #C6F035; animation: glowDot 1.6s ease-in-out infinite; }
-.hm-clock { margin-left: auto; font-family: var(--dk-font-mono), monospace; font-size: 20px; font-weight: 600; color: #FBFBF4; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.hm-status { margin-top: 12px; display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-size: 12.5px; color: #A9AD98; }
+.hm-status { margin-top: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(233,239,220,0.08); display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-size: 12.5px; color: #A9AD98; }
 .hm-day-store { margin-left: auto; font-size: 12px; color: #6E7262; }
 .hm-typing { display: inline-flex; gap: 3px; }
 .hm-typing i { width: 5px; height: 5px; border-radius: 99px; background: #C6F035; opacity: .3; animation: hmType 1.2s ease-in-out infinite; }
@@ -75,26 +74,18 @@
 .hm-typing i:nth-child(3) { animation-delay: .3s; }
 @keyframes hmType { 0%, 60%, 100% { opacity: .25; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
 
-.hm-track { margin-top: 16px; padding-bottom: 14px; border-bottom: 1px solid rgba(233,239,220,0.08); }
-.hm-track-bar { position: relative; height: 6px; border-radius: 99px; background: rgba(233,239,220,0.08); margin: 8px 0; }
-.hm-track-fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: linear-gradient(90deg, rgba(198,240,53,0.15), rgba(198,240,53,0.55)); }
-.hm-track-dot { position: absolute; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 99px; background: #3A4128; border: 1px solid rgba(233,239,220,0.18); transition: background .3s ease, transform .3s ease; }
-.hm-track-dot.is-done { background: #8CBF33; border-color: #8CBF33; }
-.hm-track-dot.is-now { background: #C6F035; border-color: #C6F035; transform: scale(1.5); box-shadow: 0 0 10px rgba(198,240,53,0.7); }
-.hm-track-cursor { position: absolute; top: -5px; width: 2px; height: 16px; margin-left: -1px; border-radius: 2px; background: #FBFBF4; box-shadow: 0 0 8px rgba(251,251,244,0.6); }
-.hm-track-marks { position: relative; height: 14px; font-family: var(--dk-font-mono), monospace; font-size: 9.5px; color: #6E7262; }
-.hm-track-marks span { position: absolute; top: 0; white-space: nowrap; }
 
 .hm-day-list { list-style: none; margin: 0; padding: 4px 0 0; display: flex; flex-direction: column; height: 352px; overflow: hidden; -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent); }
-.hm-day-list li { display: grid; grid-template-columns: 76px minmax(0, 1fr); grid-template-areas: "at t" ". tag"; gap: 4px 12px; padding: 12px 10px; margin: 0 -10px; border-radius: 14px; border-bottom: 1px dashed rgba(233,239,220,0.08); }
+.hm-day-top { display: flex; align-items: center; gap: 8px; }
+.hm-day-now { font-size: 11px; color: #C6F035; font-weight: 600; }
+.hm-day-list li { display: grid; gap: 6px; flex-shrink: 0; padding: 12px 10px; margin: 0 -10px; border-radius: 14px; border-bottom: 1px dashed rgba(233,239,220,0.08); }
 .hm-day-list li:last-child { border-bottom: 0; }
 .hm-day-list li.is-new { animation: hmIn .6s cubic-bezier(.2,.8,.2,1) both, hmFlash 2.2s ease-out both; }
 @keyframes hmIn { 0% { opacity: 0; transform: translateY(-14px) scale(.98); } 100% { opacity: 1; transform: none; } }
 @keyframes hmFlash { 0% { background: rgba(198,240,53,0.16); } 100% { background: rgba(198,240,53,0); } }
-.hm-day-at { grid-area: at; font-family: var(--dk-font-mono), monospace; font-size: 11px; color: #C6F035; padding-top: 2px; white-space: nowrap; }
-.hm-day-t { grid-area: t; font-size: 14px; line-height: 1.5; color: #E9EFDC; }
-.hm-day-tag { grid-area: tag; justify-self: start; font-size: 10.5px; font-weight: 700; color: #8CBF33; border: 1px solid rgba(140,191,51,0.35); border-radius: 99px; padding: 2px 9px; }
-.hm-day-list li.is-new .hm-day-tag { background: #C6F035; color: #0F120B; border-color: #C6F035; transition: background 1.5s ease 1s, color 1.5s ease 1s; }
+.hm-day-t { font-size: 14px; line-height: 1.5; color: #E9EFDC; }
+.hm-day-tag { justify-self: start; font-size: 10.5px; font-weight: 700; color: #8CBF33; border: 1px solid rgba(140,191,51,0.35); border-radius: 99px; padding: 2px 9px; }
+.hm-day-list li.is-new .hm-day-tag { background: #C6F035; color: #0F120B; border-color: #C6F035; }
 .hm-day-cap { margin-top: 10px; font-size: 11.5px; color: #6E7262; }
 
 /* Works with */
@@ -202,10 +193,7 @@
   .hm-works { gap: 16px; }
   .hm-works-label { white-space: normal; max-width: 120px; font-size: 12px; }
   .hm-day { padding: 18px; }
-  .hm-day-list li { grid-template-columns: 64px minmax(0, 1fr); }
-  .hm-clock { font-size: 17px; }
-  .hm-day-list { height: 330px; }
-  .hm-day-store { margin-left: 0; width: 100%; }
+  .hm-day-list { height: 360px; }
   .hm-cta { padding: 52px 20px; border-radius: 28px; }
   .hm-cta-h2 { font-size: clamp(32px, 9vw, 44px); letter-spacing: -1.4px; }
   .hm-btn { padding: 14px 22px; }
@@ -218,8 +206,7 @@ html[lang="bn"] .hm-h2 { font-size: 38px; }
 html[lang="bn"] .hm-cta-h2 { font-size: 46px; }
 html[lang="bn"] .hm-kicker, html[lang="bn"] .hm-badge, html[lang="bn"] .hm-ask-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; text-transform: none; font-size: 13px; }
 html[lang="bn"] .hm-lead, html[lang="bn"] .hm-body, html[lang="bn"] .hm-lead-dark, html[lang="bn"] .hm-note, html[lang="bn"] .hm-day-t, html[lang="bn"] .hm-faq summary, html[lang="bn"] .hm-vs-t { font-family: var(--dk-font-bn), sans-serif; line-height: 1.75; }
-html[lang="bn"] .hm-day-at, html[lang="bn"] .hm-clock, html[lang="bn"] .hm-track-marks, html[lang="bn"] .hm-live { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; }
-html[lang="bn"] .hm-day-at { font-size: 12px; }
+html[lang="bn"] .hm-live, html[lang="bn"] .hm-day-now { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; }
 html[lang="bn"] .hm-day-list { height: 392px; }
 html[lang="bn"] .hm-status { font-family: var(--dk-font-bn), sans-serif; }
 html[lang="bn"] .hm-seg button, html[lang="bn"] .hm-btn, html[lang="bn"] .hm-day-tag, html[lang="bn"] .hm-day-title { font-family: var(--dk-font-bn), sans-serif; }

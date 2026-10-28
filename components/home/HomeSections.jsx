@@ -6,7 +6,7 @@
 
 import Link from "next/link";
 import { AudienceSwitch } from "./Audience";
-import NovaClock from "./NovaClock";
+import NovaFeed from "./NovaFeed";
 import HomePlans from "./HomePlans";
 import TrialLine from "../pricing/TrialLine";
 import { REGISTER_URL } from "../../lib/urls";
@@ -73,7 +73,7 @@ export function Hero({ c, lang, L, head = null }) {
             </div>
             <div className="hm-under">{h.under}</div>
           </div>
-          <NovaClock d={c.day} lang={lang} />
+          <NovaFeed d={c.day} />
         </div>
       </div>
     </div>
