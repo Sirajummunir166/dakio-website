@@ -93,7 +93,7 @@ export default function NovaMachine({ m, chat, dark = false }) {
         api.current = createMachine({
           canvas: canvas.current,
           labels: pins.current,
-          data: { phone: { shop: phone("shop"), svc: phone("svc") }, app: { shop: SCREENS.shop, svc: SCREENS.svc }, cal: SCREENS.cal },
+          data: { phone: { shop: phone("shop"), svc: phone("svc") }, app: { shop: SCREENS.shop, svc: SCREENS.svc }, cal: SCREENS.cal, chips: m.chips },
           fontFamily, reduced, coarse: isCoarse, dark,
           onPhase: (p, k) => { setPhase(p); setKind(k); },
           onPick: k => setFocus(k),

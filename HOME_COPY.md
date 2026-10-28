@@ -9,12 +9,12 @@ Copy deck for the home redesign (branch `feat/home-focus`), "AI manager" version
 _What Google and link previews show._
 
 **Title**
-- EN: Dakio | An AI manager for your whole business, made in Bangladesh
-- BN: Dakio | আপনার পুরো ব্যবসার জন্য একজন AI ম্যানেজার
+- EN: Dakio | One app to run your whole business, with an AI manager built in
+- BN: Dakio | পুরো ব্যবসা চালানোর এক অ্যাপ, সাথে AI ম্যানেজার
 
 **Description**
-- EN: Website, orders, customers, couriers, bookings and payments in one app, with Nova, your AI manager, working in every part. Bangla first, bKash and cash on delivery built in.
-- BN: ওয়েবসাইট, অর্ডার, কাস্টমার, কুরিয়ার, বুকিং আর পেমেন্ট, সব এক অ্যাপে। প্রতিটা কাজে আছে আপনার AI ম্যানেজার Nova। বাংলায়, বিকাশ আর ক্যাশ অন ডেলিভারি সহ।
+- EN: Website, products and stock, orders, couriers, bookings, clients and money in one app, made in Bangladesh. Nova, your AI manager, works in every part. Bangla first, bKash and cash on delivery built in.
+- BN: ওয়েবসাইট, প্রোডাক্ট আর স্টক, অর্ডার, কুরিয়ার, বুকিং, ক্লায়েন্ট আর টাকার হিসাব, সব এক অ্যাপে, বাংলাদেশে বানানো। প্রতিটা অংশে কাজ করে আপনার AI ম্যানেজার Nova। বাংলায়, বিকাশ আর ক্যাশ অন ডেলিভারি সহ।
 
 ### Top menu
 
@@ -37,8 +37,12 @@ _Says what Dakio is in five seconds: a role everyone knows (a manager) and the w
 - BN: বাংলাদেশের দোকান আর সার্ভিস ব্যবসার জন্য
 
 **Headline**
-- EN: An AI manager for your whole business.
-- BN: আপনার পুরো ব্যবসার জন্য একজন AI ম্যানেজার।
+- EN: Run your whole business from one app.
+- BN: পুরো ব্যবসা চালান এক অ্যাপে।
+
+**Headline, second line (lime)**
+- EN: With an AI manager built in.
+- BN: সাথে আছে একজন AI ম্যানেজার।
 
 **Switch label**
 - EN: What do you sell?
@@ -49,16 +53,16 @@ _Says what Dakio is in five seconds: a role everyone knows (a manager) and the w
 - BN: পণ্য · সার্ভিস · দুটোই
 
 **Sub · Products**
-- EN: Website, orders, customers, couriers and payments in one app, with Nova working in every part. She answers customers, takes orders, keeps buyers updated and tells you what needs you.
-- BN: ওয়েবসাইট, অর্ডার, কাস্টমার, কুরিয়ার আর পেমেন্ট, সব এক অ্যাপে। প্রতিটা কাজে আছে Nova। কাস্টমারের উত্তর দেয়, অর্ডার নেয়, ক্রেতাকে আপডেট জানায়, আর কোনটায় আপনাকে লাগবে সেটা বলে দেয়।
+- EN: Website, products and stock, orders, couriers, payments and your team, all in Dakio. Nova answers customers, takes orders, keeps buyers updated and tells you what needs you.
+- BN: ওয়েবসাইট, প্রোডাক্ট আর স্টক, অর্ডার, কুরিয়ার, পেমেন্ট আর আপনার টিম, সব Dakio-তে। Nova কাস্টমারের উত্তর দেয়, অর্ডার নেয়, ক্রেতাকে আপডেট জানায়, আর কোনটায় আপনাকে লাগবে সেটা বলে দেয়।
 
 **Sub · Services**
-- EN: Website, bookings, calendar, clients and invoices in one app, with Nova working in every part. She answers, books, reminds clients and tells you what needs you.
-- BN: ওয়েবসাইট, বুকিং, ক্যালেন্ডার, ক্লায়েন্ট আর ইনভয়েস, সব এক অ্যাপে। প্রতিটা কাজে আছে Nova। উত্তর দেয়, বুকিং নেয়, ক্লায়েন্টকে মনে করিয়ে দেয়, আর কোনটায় আপনাকে লাগবে সেটা বলে দেয়।
+- EN: Website, bookings and calendar, clients, invoices and your team, all in Dakio. Nova answers, books, reminds clients and tells you what needs you.
+- BN: ওয়েবসাইট, বুকিং আর ক্যালেন্ডার, ক্লায়েন্ট, ইনভয়েস আর আপনার টিম, সব Dakio-তে। Nova উত্তর দেয়, বুকিং নেয়, ক্লায়েন্টকে মনে করিয়ে দেয়, আর কোনটায় আপনাকে লাগবে সেটা বলে দেয়।
 
 **Sub · Both**
-- EN: Products and services, orders and bookings, all in one app, with Nova working in every part of it.
-- BN: পণ্য আর সার্ভিস, অর্ডার আর বুকিং, সব এক অ্যাপে। আর প্রতিটা কাজে আছে Nova।
+- EN: Products and services, orders and bookings, stock, clients and money, all in Dakio. Nova works in every part of it.
+- BN: পণ্য আর সার্ভিস, অর্ডার আর বুকিং, স্টক, ক্লায়েন্ট আর টাকার হিসাব, সব Dakio-তে। আর প্রতিটা অংশে কাজ করে Nova।
 
 **Main button**
 - EN: Get started
@@ -115,6 +119,22 @@ _Below the headline, across the hero: a 3D line on the hero's dark floor. Channe
 **04 · Services · Client is reminded**
 - EN: Client is reminded: An SMS or email the day before, so she comes. Your artist gets her list in the morning.
 - BN: ক্লায়েন্টকে মনে করানো: আগের দিন SMS বা ইমেইল, যাতে তিনি আসেন। আপনার আর্টিস্ট সকালে তার লিস্ট পায়।
+
+**Note rising from the monitor · Shops 1**
+- EN: Stock 12 → 11
+- BN: স্টক ১২ → ১১
+
+**Note rising from the monitor · Shops 2**
+- EN: ৳2,260 due on delivery
+- BN: ডেলিভারিতে ৳২,২৬০ বাকি
+
+**Note rising from the monitor · Services 1**
+- EN: Added to Rina's Friday
+- BN: Rina-র শুক্রবারে যোগ হলো
+
+**Note rising from the monitor · Services 2**
+- EN: Deal → Trial / booking
+- BN: ডিল → ট্রায়াল / বুকিং
 
 ### 1b · Everything to run it (new)
 
@@ -779,16 +799,20 @@ _One promise, one button._
 _Where parlour, coaching and clinic ads land. Ships with feat/reach._
 
 **Title**
-- EN: Dakio for services | An AI manager for your bookings and clients
-- BN: সার্ভিস ব্যবসার জন্য Dakio | বুকিং আর ক্লায়েন্টের জন্য AI ম্যানেজার
+- EN: Dakio for services | One app for bookings, clients and invoices, with an AI manager built in
+- BN: সার্ভিস ব্যবসার জন্য Dakio | বুকিং, ক্লায়েন্ট আর ইনভয়েস এক অ্যাপে, সাথে AI ম্যানেজার
 
 **Headline**
-- EN: An AI manager for your bookings, clients and team.
-- BN: আপনার বুকিং, ক্লায়েন্ট আর টিমের জন্য একজন AI ম্যানেজার।
+- EN: Run your bookings, clients and team from one app.
+- BN: বুকিং, ক্লায়েন্ট আর টিম চালান এক অ্যাপে।
+
+**Headline, second line (lime)**
+- EN: With an AI manager built in.
+- BN: সাথে আছে একজন AI ম্যানেজার।
 
 **Sub**
-- EN: For parlours, salons, coaching centres, chambers, photographers and every business that sells its time. Nova answers, offers your free times, books the client and reminds them. You get the calendar, client pages, invoices and a booking website.
-- BN: পার্লার, সেলুন, কোচিং সেন্টার, চেম্বার, ফটোগ্রাফার, যারা সময় বিক্রি করেন তাদের জন্য। Nova উত্তর দেয়, খালি সময় জানায়, বুকিং নেয়, মনে করিয়ে দেয়। আপনি পান ক্যালেন্ডার, ক্লায়েন্ট পেজ, ইনভয়েস আর বুকিংয়ের ওয়েবসাইট।
+- EN: With an AI manager built in.
+- BN: সাথে আছে একজন AI ম্যানেজার।
 
 **Button**
 - EN: Get started
@@ -869,16 +893,20 @@ _Reuses home sections 2, 3, 4 (Services), 6, 7 and the Questions._
 _Where shop ads land. The home with Products picked, plus what only shops need._
 
 **Title**
-- EN: Dakio for online shops | An AI manager for your page, orders and customers
-- BN: অনলাইন দোকানের জন্য Dakio | পেজ, অর্ডার আর কাস্টমারের জন্য AI ম্যানেজার
+- EN: Dakio for online shops | One app for products, orders, couriers and customers, with an AI manager built in
+- BN: অনলাইন দোকানের জন্য Dakio | প্রোডাক্ট, অর্ডার, কুরিয়ার আর কাস্টমার এক অ্যাপে, সাথে AI ম্যানেজার
 
 **Headline**
-- EN: An AI manager for your page, your orders and your customers.
-- BN: আপনার পেজ, অর্ডার আর কাস্টমারের জন্য একজন AI ম্যানেজার।
+- EN: Run your online shop from one app.
+- BN: অনলাইন দোকান চালান এক অ্যাপে।
+
+**Headline, second line (lime)**
+- EN: With an AI manager built in.
+- BN: সাথে আছে একজন AI ম্যানেজার।
 
 **Sub**
-- EN: Nova answers your page in Bangla, day and night, takes the order and keeps the buyer updated. Your website, couriers, bKash, cash on delivery and customer list are already in the same app.
-- BN: আপনার পেজের প্রতিটা মেসেজের উত্তর দেয় Nova, বাংলায়, দিনরাত। অর্ডার নেয়, ক্রেতাকে আপডেট জানায়। ওয়েবসাইট, কুরিয়ার, বিকাশ, ক্যাশ অন ডেলিভারি আর কাস্টমারের তালিকা আগে থেকেই একই অ্যাপে।
+- EN: With an AI manager built in.
+- BN: সাথে আছে একজন AI ম্যানেজার।
 
 ### What only shops need
 

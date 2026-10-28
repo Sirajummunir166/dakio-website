@@ -314,6 +314,31 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   const appTex = canvasTex(1100, 660, 1.5);
   screen(4.08, 2.4, appTex.tex, monitor, 0.074);
 
+  // What else the order or booking changed (stock, money, the day list, the
+  // deal): two notes that rise beside the monitor when it lands.
+  const chips = [0, 1].map((i) => {
+    const t = canvasTex(560, 96, 2);
+    const sp = new THREE.Sprite(keep(new THREE.SpriteMaterial({ map: t.tex, transparent: true, depthWrite: false })));
+    sp.center.set(0, 0.5);
+    sp.scale.set(3.5, 0.6, 1);
+    sp.position.set(5.95, 3.45 - i * 0.78, -2.3);
+    sp.userData = { t, base: sp.position.y, t0: null };
+    sp.visible = false;
+    st.app.add(sp);
+    return sp;
+  });
+  function drawChip(sp, text) {
+    const { ctx, tex } = sp.userData.t;
+    ctx.clearRect(0, 0, 560, 96);
+    ctx.font = font(700, 32);
+    const w = Math.min(552, ctx.measureText(text).width + 92);
+    ctx.fillStyle = "rgba(251,250,245,0.96)"; rr(ctx, 4, 8, w, 80, 40); ctx.fill();
+    ctx.fillStyle = CSS.lime; ctx.beginPath(); ctx.arc(46, 48, 13, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = CSS.ink0; ctx.lineWidth = 4; ctx.stroke();
+    ctx.fillStyle = CSS.ink0; ctx.textBaseline = "middle"; ctx.textAlign = "left"; ctx.fillText(text, 74, 50);
+    tex.needsUpdate = true;
+  }
+
   // ---------- station 04a: courier belt (shops) ----------
   st.outShop = new THREE.Group(); world.add(st.outShop);
   const BELT = { x: 5.3, z: 2.6, y: 0.66, len: 4.2 };
@@ -681,6 +706,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     drawPhone(); drawApp(); drawCal();
     parcels.forEach(p => { p.g.visible = false; p.t0 = -1; });
     sms.visible = false;
+    chips.forEach((c, i) => { drawChip(c, data.chips?.[kind]?.[i] ?? ""); c.visible = false; c.userData.t0 = null; });
     lastPhase = null;
   }
   // The finished frame, for reduced motion: the whole story at once.
@@ -689,6 +715,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     drawPhone(); drawApp(); drawCal();
     if (kind === "shop" || aud === "both") { const p = parcels[0]; p.g.visible = true; p.g.position.set(5.6, BELT.y + 0.32, BELT.z); }
     pulse.visible = false;
+    chips.forEach((c) => { c.visible = !!data.chips; c.material.opacity = 1; c.position.y = c.userData.base + 0.2; });
     onPhase?.(null, kind);
   }
 
@@ -753,7 +780,14 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     glow.material.opacity = 0.5 + beat * 0.4;
     ring.rotation.z += dt * (thinking ? 4 : 0.6);
 
-    if (crossed(T.toApp[1])) { appNew = true; drawApp(); }
+    if (crossed(T.toApp[1])) { appNew = true; drawApp(); if (data.chips) chips.forEach((c, i) => { c.userData.t0 = t + 0.25 + i * 0.55; }); }
+    for (const c of chips) {
+      if (c.userData.t0 == null) continue;
+      const u = t - c.userData.t0;
+      c.visible = u > 0;
+      c.material.opacity = Math.min(1, Math.max(0, u) / 0.4) * Math.min(1, Math.max(0, T.cycle - 0.3 - t) / 0.7);
+      c.position.y = c.userData.base + Math.min(Math.max(u, 0), 2.5) * 0.08;
+    }
     if (crossed(T.toOut[1])) {
       if (kind === "shop") { const p = parcels.find(q => q.t0 < 0) || parcels[0]; p.t0 = t; p.g.visible = true; }
       else { calLit = true; drawCal(); sms.visible = true; sms.userData.t0 = t; }

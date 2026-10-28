@@ -58,7 +58,7 @@ export function Hero({ c, lang, L, head = null }) {
         <div className="hm-hero-top">
           <div className="hm-hero-text">
             <div className="hm-badge"><span className="hm-dot" />{head ? head.badge : h.badge}</div>
-            <h1 className="hm-h1">{head ? head.h1 : h.h1}</h1>
+            <h1 className="hm-h1"><span className="hm-h1-main">{head ? head.h1 : h.h1}</span><span className="hm-h1-accent">{head ? head.accent : h.accent}</span></h1>
           </div>
           <div className="hm-hero-act">
             {head ? null : <AudienceSwitch label={h.ask} opts={h.opts} />}
@@ -71,6 +71,8 @@ export function Hero({ c, lang, L, head = null }) {
                 <p className="hm-lead" data-show="both-only">{h.sub.both}</p>
               </>
             )}
+          </div>
+          <div className="hm-hero-go">
             <div className="hm-ctas">
               <StartLink href={REGISTER_URL} className="hm-btn hm-btn-lime">{h.cta} <Arrow /></StartLink>
               <Link href={L("/nova")} className="hm-btn hm-btn-ghost">{h.second}</Link>

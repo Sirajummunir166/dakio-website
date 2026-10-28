@@ -12,20 +12,21 @@ export const MARQUEE = ["Messenger", "Instagram", "WhatsApp", "Website chat", "b
 
 const home = {
   meta: {
-    title: "Dakio | An AI manager for your whole business, made in Bangladesh",
+    title: "Dakio | One app to run your whole business, with an AI manager built in",
     description:
-      "Website, orders, customers, couriers, bookings and payments in one app, with Nova, your AI manager, working in every part. Bangla first, bKash and cash on delivery built in.",
+      "Website, products and stock, orders, couriers, bookings, clients and money in one app, made in Bangladesh. Nova, your AI manager, works in every part. Bangla first, bKash and cash on delivery built in.",
   },
 
   hero: {
     badge: "FOR SHOPS AND SERVICE BUSINESSES IN BANGLADESH",
-    h1: "An AI manager for your whole business.",
+    h1: "Run your whole business from one app.",
+    accent: "With an AI manager built in.",
     ask: "What do you sell?",
     opts: { shop: "Products", svc: "Services", both: "Both" },
     sub: {
-      shop: "Website, orders, customers, couriers and payments in one app, with Nova working in every part. She answers customers, takes orders, keeps buyers updated and tells you what needs you.",
-      svc: "Website, bookings, calendar, clients and invoices in one app, with Nova working in every part. She answers, books, reminds clients and tells you what needs you.",
-      both: "Products and services, orders and bookings, all in one app, with Nova working in every part of it.",
+      shop: "Website, products and stock, orders, couriers, payments and your team, all in Dakio. Nova answers customers, takes orders, keeps buyers updated and tells you what needs you.",
+      svc: "Website, bookings and calendar, clients, invoices and your team, all in Dakio. Nova answers, books, reminds clients and tells you what needs you.",
+      both: "Products and services, orders and bookings, stock, clients and money, all in Dakio. Nova works in every part of it.",
     },
     cta: "Get started",
     under: "Live in 5 minutes · No developer needed",
@@ -70,12 +71,14 @@ const home = {
     pause: "Pause",
     play: "Play",
     back: "Back to the whole line",
+    // What else changes when the order or booking lands (they rise from the monitor).
+    chips: { shop: ["Stock 12 → 11", "৳2,260 due on delivery"], svc: ["Added to Rina's Friday", "Deal → Trial / booking"] },
     stations: {
       in: { t: "Chats come in", d: "Messenger, Instagram, WhatsApp and the chat on your website land in one inbox." },
       nova: { t: "Nova decides", d: "She reads the message, checks the price, the stock and the free times, and answers in Bangla or English in seconds." },
       app: {
-        shop: { t: "Order is made", d: "Order #6BB-VHQ6: Marigold Yellow Panjabi, size 40, ৳2,260 cash on delivery. In your orders, nobody typed it." },
-        svc: { t: "Booking is made", d: "Bridal trial, Friday 4 PM. On your calendar and confirmed, with the client's name and phone." },
+        shop: { t: "Order is made", d: "Order #6BB-VHQ6: Marigold Yellow Panjabi, size 40, ৳2,260 cash on delivery. Stock goes down by one on its own, and nobody typed a thing." },
+        svc: { t: "Booking is made", d: "Bridal trial, Friday 4 PM, confirmed. It is on the calendar and on Rina's day list, and the client's deal moves to Trial / booking by itself." },
       },
       out: {
         shop: { t: "Parcel goes out", d: "The receipt and tracking link are already in the chat. You book the courier from the order page in one tap." },
@@ -263,12 +266,13 @@ const home = {
 
   shops: {
     meta: {
-      title: "Dakio for online shops | An AI manager for your page, orders and customers",
+      title: "Dakio for online shops | One app for products, orders, couriers and customers, with an AI manager built in",
       description: "Nova answers your page in Bangla, day and night, takes the order and keeps the buyer updated. Website, couriers, bKash, cash on delivery and customer list in the same app.",
     },
     badge: "FOR ONLINE SHOPS",
-    h1: "An AI manager for your page, your orders and your customers.",
-    sub: "Nova answers your page in Bangla, day and night, takes the order and keeps the buyer updated. Your website, couriers, bKash, cash on delivery and customer list are already in the same app.",
+    h1: "Run your online shop from one app.",
+    accent: "With an AI manager built in.",
+    sub: "Products and stock, your website, orders, couriers, bKash and cash on delivery, and every customer, in one app. Nova answers your page in Bangla day and night, takes the order and keeps the buyer updated.",
     extraKicker: "MADE FOR SHOPS",
     extraH2: "What a shop needs, already here.",
     extra: [
@@ -282,12 +286,13 @@ const home = {
 
   services: {
     meta: {
-      title: "Dakio for services | An AI manager for your bookings and clients",
+      title: "Dakio for services | One app for bookings, clients and invoices, with an AI manager built in",
       description: "For parlours, salons, coaching centres, chambers and photographers. Nova answers, offers your free times, books the client and reminds them. Calendar, client pages, invoices and a booking website in one app.",
     },
     badge: "FOR SERVICE BUSINESSES",
-    h1: "An AI manager for your bookings, clients and team.",
-    sub: "For parlours, salons, coaching centres, chambers, photographers and every business that sells its time. Nova answers, offers your free times, books the client and reminds them. You get the calendar, client pages, invoices and a booking website.",
+    h1: "Run your bookings, clients and team from one app.",
+    accent: "With an AI manager built in.",
+    sub: "For parlours, salons, coaching centres, chambers, photographers and every business that sells its time. The calendar, client pages, quotes and invoices and a booking website in one app. Nova answers, offers your free times, books the client and reminds them.",
     kindsKicker: "READY SETUPS",
     kindsH2: "A ready setup for your kind of business.",
     kinds: [
