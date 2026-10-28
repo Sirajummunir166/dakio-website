@@ -220,7 +220,7 @@ _Right under the hero. The whole system, stage by stage, so a visitor sees Dakio
 
 ### 1c · The real app (new)
 
-_Real screens of the merchant app (public/app/*.webp, 1600x800), taken on the example stores Saril (clothing, real catalogue and photos) and Glow Studio (beauty parlour), with demo orders, chats, bookings and deals on a throwaway copy of the demo database. Features listed on the left (the active one opens with its caption and a progress bar), the screen on the right; on laptops the pair stays pinned while the reader scrolls, one stretch of scrolling per feature, so a quick scroll still passes them all (a click scrolls to that feature). The list follows the switch; Both shows all six under For shops and For services. No section switch here (the sticky pill covers it). On phones the features are a stack of cards, each with its own screen, sticking under the menu as the next slides over (no autoplay). Nova's order in the inbox and the Orders list is #6BB-VHQ6, the same number the chat card and the hero use._
+_Real screens of the merchant app (public/app/*.webp, 1600x800), taken on the example stores Saril (clothing, real catalogue and photos) and Glow Studio (beauty parlour), with demo orders, chats, bookings and deals on a throwaway copy of the demo database. One card per feature with its own screen, stacking as you scroll (each sticks under the menu as the next slides over). Laptops: words left, screen right; phones: screen under the words. Follows the switch; in Both each card says For shops or For services. No section switch here (the sticky pill covers it). Nova's order in the inbox and the Orders list is #6BB-VHQ6, the same number the chat card and the hero use._
 
 **Kicker**
 - EN: THE REAL APP
