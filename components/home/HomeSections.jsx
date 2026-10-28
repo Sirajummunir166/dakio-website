@@ -178,6 +178,7 @@ export function Contrast({ c }) {
       <div className="hm-head">
         <div className="hm-kicker">{x.kicker}</div>
         <h2 className="hm-h2">{x.h2}</h2>
+        {x.sub ? <p className="hm-lead-dark">{x.sub}</p> : null}
       </div>
       <div className="hm-vs" role="table">
         <div className="hm-vs-row hm-vs-top" role="row">
@@ -185,7 +186,14 @@ export function Contrast({ c }) {
           <span role="columnheader">{x.cols[0]}</span>
           <span role="columnheader" className="hm-vs-us">{x.cols[1]}</span>
         </div>
-        {x.rows.map(r => (
+        {x.rows.map(r => r.head ? (
+          // A group: what both do in the inbox, then what only Nova does after the reply.
+          <div className={`hm-vs-row hm-vs-group${r.dark ? " is-only" : ""}`} role="row" key={r.head}>
+            <span role="rowheader" className="hm-vs-group-t">{r.head}</span>
+            <span role="cell" />
+            <span role="cell" className="hm-vs-us" />
+          </div>
+        ) : (
           <div className="hm-vs-row" role="row" key={r.t} data-show={r.show}>
             <span role="cell" className="hm-vs-t">{r.t}</span>
             <span role="cell" className={r.bot ? "hm-vs-yes" : "hm-vs-no"}><Check on={!!r.bot} /></span>

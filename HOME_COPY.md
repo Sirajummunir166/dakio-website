@@ -278,77 +278,105 @@ _Real screens of the merchant app (public/app/*.webp, 1600x800), taken on the ex
 - EN: Every enquiry from the first message to won, with its value and who is on it.
 - BN: প্রথম মেসেজ থেকে কনফার্ম পর্যন্ত প্রতিটা এনকোয়ারি, টাকার অঙ্ক আর কে দেখছেন সহ।
 
-### 2 · Other tools vs Dakio
+### 2 · Other tools vs Dakio (Nova as operator)
 
-_Takes us out of the chatbot box on purpose. Compares with "a chatbot" in general and names no competitor, so we never claim a rival lacks something it has. Three rows follow the switch: shops see stock, courier and inventory/POS; services see free times, calendar/staff and quotes/invoices; Both sees a merged three._
+_Compares with "a chatbot" in general, names no competitor. Two groups: In the inbox (where a chatbot and Nova overlap), then After the reply, only Nova, below a dashed line where the chatbot column goes empty. Every operator row is a built feature or a real Nova duty (morning brief, nightly review, weekly stock, courier, purchase, pipeline and money checks, comment desk, post drafts, own-words duties)._
+
+**Kicker**
+- EN: WHY DAKIO
+- BN: কেন Dakio
 
 **Heading**
-- EN: Other tools answer messages. Nova runs the business behind them.
-- BN: অন্যরা শুধু মেসেজের উত্তর দেয়। Nova সামলায় পুরো ব্যবসা।
+- EN: Other tools answer messages. Nova operates the business.
+- BN: অন্যরা শুধু মেসেজের উত্তর দেয়। Nova পুরো ব্যবসা চালায়।
+
+**Sub**
+- EN: A chatbot stops at the reply. Nova keeps working after it, across orders, stock, couriers, sales and money, every day and every night. Every row is work she does today.
+- BN: চ্যাটবট উত্তর দিয়েই থেমে যায়। Nova তার পরেও কাজ করে চলে: অর্ডার, স্টক, কুরিয়ার, বিক্রি আর টাকার হিসাবে, সারাদিন, সারারাত। প্রতিটা লাইন তার আজকের আসল কাজ।
 
 **Columns**
 - EN: A chatbot · Dakio with Nova
 - BN: চ্যাটবট · Nova সহ Dakio
 
-**Row 1 (both columns · shown for all)**
-- EN: Answers messages in Bangla
-- BN: বাংলায় মেসেজের উত্তর
+**Group**
+- EN: In the inbox
+- BN: ইনবক্সে
 
-**Row 2 (Dakio · shown for Products)**
+**Row (both columns · shown for all)**
+- EN: Answers messages in Bangla, voice notes and screenshots too
+- BN: বাংলায় মেসেজের উত্তর, ভয়েস মেসেজ আর স্ক্রিনশটও বোঝে
+
+**Row (Nova only · shown for Products)**
 - EN: Takes the order with stock and price checked
 - BN: স্টক আর দাম মিলিয়ে অর্ডার নেয়
 
-**Row 3 (Dakio · shown for Products)**
-- EN: Courier, cash on delivery and bKash in the same place
-- BN: কুরিয়ার, ক্যাশ অন ডেলিভারি আর বিকাশ একই জায়গায়
-
-**Row 4 (Dakio · shown for Products)**
-- EN: Inventory, purchases and POS in the same app
-- BN: ইনভেন্টরি, কেনাকাটা আর POS একই অ্যাপে
-
-**Row 5 (Dakio · shown for Services)**
+**Row (Nova only · shown for Services)**
 - EN: Books only the times you are really free
 - BN: শুধু সত্যিই খালি সময়ে বুক করে
 
-**Row 6 (Dakio · shown for Services)**
-- EN: Calendar, staff and reminders in the same place
-- BN: ক্যালেন্ডার, স্টাফ আর রিমাইন্ডার একই জায়গায়
-
-**Row 7 (Dakio · shown for Services)**
-- EN: Quotes and invoices your client accepts online
-- BN: কোটেশন আর ইনভয়েস, ক্লায়েন্ট অনলাইনে রাজি হন
-
-**Row 8 (Dakio · shown for Both)**
+**Row (Nova only · shown for Both)**
 - EN: Takes orders and bookings, with stock and free times checked
 - BN: স্টক আর খালি সময় মিলিয়ে অর্ডার আর বুকিং নেয়
 
-**Row 9 (Dakio · shown for Both)**
-- EN: Courier, calendar and reminders in the same place
-- BN: কুরিয়ার, ক্যালেন্ডার আর রিমাইন্ডার একই জায়গায়
+**Group**
+- EN: After the reply, only Nova
+- BN: উত্তরের পরে, শুধু Nova
 
-**Row 10 (Dakio · shown for Both)**
-- EN: Inventory, POS and invoices in the same app
-- BN: ইনভেন্টরি, POS আর ইনভয়েস একই অ্যাপে
+**Row (Nova only · shown for Products)**
+- EN: Keeps every buyer updated in the chat: confirmed, shipped, delivered
+- BN: চ্যাটেই প্রতিটা ক্রেতাকে আপডেট দেয়: কনফার্ম, পাঠানো হয়েছে, পৌঁছে গেছে
 
-**Row 11 (Dakio · shown for all)**
-- EN: Every customer's full history on one page
-- BN: প্রতিটা কাস্টমারের পুরো ইতিহাস এক পাতায়
+**Row (Nova only · shown for Services)**
+- EN: Reminds clients before their visit and sends each person their day
+- BN: আসার আগে ক্লায়েন্টকে মনে করায় আর প্রত্যেক স্টাফকে তার দিনের তালিকা পাঠায়
 
-**Row 12 (Dakio · shown for all)**
-- EN: Your own website, ready on day one
-- BN: প্রথম দিন থেকেই নিজের ওয়েবসাইট
+**Row (Nova only · shown for Both)**
+- EN: Keeps buyers updated and reminds clients before their visit
+- BN: ক্রেতাকে আপডেট দেয় আর আসার আগে ক্লায়েন্টকে মনে করায়
 
-**Row 13 (Dakio · shown for all)**
-- EN: Follows up and brings customers back
-- BN: ফলো-আপ করে কাস্টমার ফিরিয়ে আনে
+**Row (Nova only · shown for Products)**
+- EN: Follows up chats that went quiet and asks for a review after delivery
+- BN: চুপ হয়ে যাওয়া চ্যাটে ফলো-আপ করে আর ডেলিভারির পরে রিভিউ চায়
 
-**Row 14 (Dakio · shown for all)**
-- EN: Reports to you every morning
-- BN: প্রতিদিন সকালে আপনাকে রিপোর্ট দেয়
+**Row (Nova only · shown for Services)**
+- EN: Follows up enquiries that went quiet and chases deals that are stuck
+- BN: চুপ হয়ে যাওয়া এনকোয়ারিতে ফলো-আপ করে আর আটকে থাকা ডিল এগিয়ে নেয়
+
+**Row (Nova only · shown for Both)**
+- EN: Follows up quiet chats, asks for reviews and chases stuck deals
+- BN: চুপ হয়ে যাওয়া চ্যাটে ফলো-আপ, রিভিউ চাওয়া আর আটকে থাকা ডিল এগিয়ে নেওয়া
+
+**Row (Nova only · shown for all)**
+- EN: Answers comments under your posts and sends the price to their inbox
+- BN: পোস্টের কমেন্টের উত্তর দেয় আর ইনবক্সে দাম পাঠিয়ে দেয়
+
+**Row (Nova only · shown for Products and Both)**
+- EN: Drafts posts from your products, for you to approve
+- BN: আপনার প্রোডাক্ট থেকে পোস্ট লিখে রাখে, আপনার অনুমোদনের জন্য
+
+**Row (Nova only · shown for Products and Both)**
+- EN: Checks stock, couriers and purchases every week and flags what needs you
+- BN: প্রতি সপ্তাহে স্টক, কুরিয়ার আর কেনাকাটা দেখে, যেটায় আপনাকে লাগবে জানায়
+
+**Row (Nova only · shown for Services and Both)**
+- EN: Checks your pipeline every week and lists who is waiting
+- BN: প্রতি সপ্তাহে পাইপলাইন দেখে, কে অপেক্ষায় আছে তালিকা দেয়
+
+**Row (Nova only · shown for all)**
+- EN: Counts the money every week, from your own books
+- BN: প্রতি সপ্তাহে আপনার নিজের খাতা থেকে টাকার হিসাব করে
+
+**Row (Nova only · shown for all)**
+- EN: Reviews the whole day at night and briefs you every morning
+- BN: রাতে পুরো দিনটা মিলিয়ে দেখে, সকালে আপনাকে রিপোর্ট দেয়
+
+**Row (Nova only · shown for all)**
+- EN: Takes on jobs you write in your own words
+- BN: আপনি নিজের ভাষায় যে কাজ লিখে দেন, সেটাও করে
 
 **Under the table**
-- EN: One app, one bill. No more stitching five tools together.
-- BN: এক অ্যাপ, এক বিল। পাঁচটা টুল জোড়া লাগানোর ঝামেলা নেই।
+- EN: One app, one bill, one manager. Risky things, like a refund or an angry customer, always come to you.
+- BN: এক অ্যাপ, এক বিল, একজন ম্যানেজার। ঝুঁকির কিছু, যেমন টাকা ফেরত বা রাগী কাস্টমার, সবসময় আপনার কাছে আসে।
 
 ### 3 · Where Nova works
 
