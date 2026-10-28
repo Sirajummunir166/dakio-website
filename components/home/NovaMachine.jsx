@@ -21,7 +21,7 @@ const SCREENS = {
   shop: {
     title: "Orders", sub: "Saril · today", menu: ["Orders", "Products", "Customers", "Inbox", "Couriers"], byNova: "BY NOVA",
     cols: [{ h: "Order", x: 0 }, { h: "Area", x: 140 }, { h: "Items", x: 300 }, { h: "Total", x: 580 }, { h: "Payment", x: 700 }],
-    fresh: ["#6BB-VHQ6", "Mirpur 10", "Marigold Yellow Panjabi · 40", "৳2,260", "COD"],
+    fresh: ["#6BB-VHQ6", "Mirpur 10", "Peacock Teal Panjabi · 40", "৳2,420", "COD"],
     rows: [
       ["#8CG-HH5N", "Dhanmondi", "2 items", "৳4,170", "bKash"],
       ["#5XW-LWHP", "Khilgaon", "1 item", "৳2,420", "COD"],

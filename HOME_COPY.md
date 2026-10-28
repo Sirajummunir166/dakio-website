@@ -123,8 +123,8 @@ _Below the headline, across the hero: a 3D line drawn in thin light outlines on 
 - BN: নোভা সিদ্ধান্ত নেয়: মেসেজ পড়ে, দাম, স্টক আর খালি সময় মিলিয়ে, কয়েক সেকেন্ডে বাংলা বা ইংরেজিতে উত্তর দেয়।
 
 **03 · Shop · Order is made**
-- EN: Order is made: Order #6BB-VHQ6: Marigold Yellow Panjabi, size 40, ৳2,260 cash on delivery. In your orders, nobody typed it.
-- BN: অর্ডার তৈরি: অর্ডার #6BB-VHQ6: ম্যারিগোল্ড ইয়েলো পাঞ্জাবি, সাইজ ৪০, ৳২,২৬০ ক্যাশ অন ডেলিভারি। আপনার অর্ডারে, কাউকে টাইপ করতে হয়নি।
+- EN: Order is made: Order #6BB-VHQ6: Peacock Teal Panjabi, size 40, ৳2,420 cash on delivery. In your orders, nobody typed it.
+- BN: অর্ডার তৈরি: অর্ডার #6BB-VHQ6: পিকক টিল পাঞ্জাবি, সাইজ ৪০, ৳২,৪২০ ক্যাশ অন ডেলিভারি। আপনার অর্ডারে, কাউকে টাইপ করতে হয়নি।
 
 **03 · Services · Booking is made**
 - EN: Booking is made: Bridal trial, Friday 4 PM. On your calendar and confirmed, with the client's name and phone.
@@ -255,8 +255,8 @@ _Real screens of the merchant app (public/app/*.webp, 1600x800), taken on the ex
 - BN: ইনবক্স
 
 **Shops · Inbox · caption**
-- EN: Messenger, Instagram and WhatsApp in one inbox. Here Nova takes the Marigold Yellow Panjabi order.
-- BN: মেসেঞ্জার, ইনস্টাগ্রাম আর হোয়াটসঅ্যাপ এক ইনবক্সে। এখানে Nova নিচ্ছে Marigold Yellow Panjabi-র অর্ডার।
+- EN: Messenger, Instagram and WhatsApp in one inbox. Here Nova takes the Peacock Teal Panjabi order.
+- BN: মেসেঞ্জার, ইনস্টাগ্রাম আর হোয়াটসঅ্যাপ এক ইনবক্সে। এখানে Nova নিচ্ছে Peacock Teal Panjabi-র অর্ডার।
 
 **Services · tab**
 - EN: Calendar
@@ -493,28 +493,28 @@ _Scroll-driven: the phone stays pinned while the reader scrolls; each stretch of
 _A phone plays one conversation where Nova turns chat into an order or a booking; when the card lands, the five steps beside it light up one by one, then it plays again. The English page shows Banglish, the way customers write. Each Nova move is a built feature._
 
 **Shop · Saril · Messenger · Customer**
-- EN: Eta ase? [screenshot with photo: Saril · Marigold Yellow Panjabi]
-- BN: এটা আছে? [screenshot with photo: Saril · Marigold Yellow Panjabi]
+- EN: Eta ase? [screenshot with photo: Saril · Peacock Teal Panjabi]
+- BN: এটা আছে? [screenshot with photo: Saril · Peacock Teal Panjabi]
 
 **Shop · Saril · Messenger · Nova**
-- EN: Ji, ase! Eta amader Marigold Yellow Panjabi. [product card with photo: Marigold Yellow Panjabi · ৳2,190 · 38 to 46 in stock]
-- BN: জি, আছে! এটা আমাদের Marigold Yellow Panjabi। [product card with photo: Marigold Yellow Panjabi · ৳২,১৯০ · ৩৮ থেকে ৪৬ সাইজ স্টকে আছে]
+- EN: Ji, ase! Eta amader Peacock Teal Panjabi. [product card with photo: Peacock Teal Panjabi · ৳2,350 · 38 to 46 in stock]
+- BN: জি, আছে! এটা আমাদের Peacock Teal Panjabi। [product card with photo: Peacock Teal Panjabi · ৳২,৩৫০ · ৩৮ থেকে ৪৬ সাইজ স্টকে আছে]
 
 **Shop · Saril · Messenger · Customer**
 - EN: 40 size. Mirpur e delivery koto?
 - BN: ৪০ সাইজ। মিরপুরে ডেলিভারি কত?
 
 **Shop · Saril · Messenger · Nova**
-- EN: Mirpur e delivery ৳70, 2 dine pouchabe. Total ৳2,260. Order kore dibo?
-- BN: মিরপুরে ডেলিভারি ৳৭০, ২ দিনে পৌঁছাবে। মোট ৳২,২৬০। অর্ডার করে দিই?
+- EN: Mirpur e delivery ৳70, 2 dine pouchabe. Total ৳2,420. Order kore dibo?
+- BN: মিরপুরে ডেলিভারি ৳৭০, ২ দিনে পৌঁছাবে। মোট ৳২,৪২০। অর্ডার করে দিই?
 
 **Shop · Saril · Messenger · Customer**
 - EN: Ha den. Mirpur 10, 01711-xxxxxx
 - BN: হ্যাঁ দেন। মিরপুর ১০, 01711-xxxxxx
 
 **Shop · Saril · Messenger · Nova**
-- EN: Order confirmed! Receipt pathalam. Parcel pathale janabo. [card: Order #6BB-VHQ6 · ৳2,260 · Cash on delivery · now in your Orders]
-- BN: অর্ডার কনফার্ম! রসিদ পাঠালাম। পার্সেল পাঠালে জানাব। [card: অর্ডার #6BB-VHQ6 · ৳২,২৬০ · ক্যাশ অন ডেলিভারি · আপনার অর্ডার তালিকায় উঠে গেছে]
+- EN: Order confirmed! Receipt pathalam. Parcel pathale janabo. [card: Order #6BB-VHQ6 · ৳2,420 · Cash on delivery · now in your Orders]
+- BN: অর্ডার কনফার্ম! রসিদ পাঠালাম। পার্সেল পাঠালে জানাব। [card: অর্ডার #6BB-VHQ6 · ৳২,৪২০ · ক্যাশ অন ডেলিভারি · আপনার অর্ডার তালিকায় উঠে গেছে]
 
 **Service · Glow Studio · Instagram · Customer**
 - EN: Friday bridal trial kora jabe?
