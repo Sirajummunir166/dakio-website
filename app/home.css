@@ -445,12 +445,15 @@ html[lang="bn"] .hm-vs-group-t { letter-spacing: normal; text-transform: none; f
   .hm-chatdemo { top: 76px; grid-template-columns: minmax(0, 1fr); gap: 14px; max-width: 420px; }
   .hm-phone { height: min(400px, 48vh); border-width: 6px; border-radius: 28px; }
   .hm-chatside { min-height: 0; gap: 10px; }
-  .hm-chatbeat { gap: 6px; }
-  .hm-chatbeat-t { font-size: 18px; letter-spacing: -0.3px; }
-  .hm-chatafter { gap: 8px; }
-  .hm-chatafter-t { font-size: 16px; }
-  .hm-chatafter-list { gap: 5px; }
-  .hm-chatafter-list li { font-size: 12.5px; line-height: 1.4; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; }
+  /* Big and bold under the phone, so the line fills the space below it. */
+  .hm-chatside { padding-top: 6px; }
+  .hm-chatbeat { gap: 8px; }
+  .hm-chatbeat-n { font-size: 12.5px; }
+  .hm-chatbeat-t { font-size: clamp(25px, 6.6vw, 34px); line-height: 1.16; letter-spacing: -0.8px; }
+  .hm-chatafter { gap: 10px; }
+  .hm-chatafter-t { font-size: clamp(20px, 5.2vw, 26px); letter-spacing: -0.4px; }
+  .hm-chatafter-list { gap: 7px; }
+  .hm-chatafter-list li { font-size: 14px; line-height: 1.4; grid-template-columns: 20px minmax(0, 1fr); gap: 9px; }
   .hm-chatafter-tick { width: 17px; height: 17px; }
   .hm-chat-cap { display: none; }
   .hm-chatdots { display: none; }
