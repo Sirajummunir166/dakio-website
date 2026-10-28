@@ -58,7 +58,7 @@ const grow = {
     withNova: [
       { t: "Replied to all 23 DMs, in Bangla", waiting: false },
       { t: "Tomorrow's reel scheduled — 7:30 PM", waiting: false },
-      { t: "Weak ad set paused, budget shifted", waiting: false },
+      { t: "Comments on today's post answered", waiting: false },
       { t: "3 carts recovered · ৳6,900", waiting: false },
       { t: "Eid playbook drafted — for your approval", waiting: true },
     ],

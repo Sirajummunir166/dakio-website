@@ -65,7 +65,7 @@ const home = {
     ),
     ctaPrimary: "Open your store",
     ctaSecondary: "Meet Nova",
-    chips: ["84 messages answered", "Cart recovered · ৳2,300", "Weak ad set paused"],
+    chips: ["84 messages answered", "Cart recovered · ৳2,300", "Order taken in chat · ৳2,370"],
   },
 
   marquee: { worksWith: "Works with" },
@@ -135,12 +135,12 @@ const home = {
       { v: "23", l: "orders confirmed" },
       { v: "84", l: "messages answered" },
       { v: "11", l: "carts recovered" },
-      { v: "7", l: "trends found" },
+      { v: "31", l: "comments answered" },
       { v: "6h 40m", l: "your hours saved" },
     ],
     focus: (
       <>
-        Today&apos;s focus: scale the <b>Muslin drop</b> campaign — est. <b style={{ color: "#C6F035" }}>+14% weekly profit</b>.{" "}
+        Today&apos;s draft: a Facebook post for the <b>Muslin drop</b>, with photo and price, <b style={{ color: "#C6F035" }}>ready to go</b>.{" "}
       </>
     ),
   },
@@ -149,8 +149,8 @@ const home = {
     h2: "This is your team now.",
     stats: [
       { v: "1", l: "Acting CEO" },
-      { v: "10", l: "departments" },
-      { v: "12", l: "duties from day one" },
+      { v: "24/7", l: "on duty" },
+      { v: "4", l: "chat channels answered" },
     ],
     ceo: "CEO Office",
     depts: [
@@ -278,9 +278,9 @@ const home = {
     // lib/plans.js#getHomePricing — these mirror the pricing page's committed
     // cards and render only if the API is unreachable. No free tier.
     plans: [
-      { n: "Growth", audience: "The default for running shops", pr: "৳1,490", sub: "/month", yr: "or ৳1,242/month billed annually", level: "NOVA L3 OPERATOR", cta: "Choose Growth", dark: false, pop: true,
+      { n: "Growth", audience: "The default for running shops", pr: "৳1,490", sub: "/month", yr: "or ৳1,242/month billed annually", level: "NOVA OPERATOR", cta: "Choose Growth", dark: false, pop: true,
         feats: ["Unlimited products, no daily order cap", "Nova Operator — 7,500 Nova credits/month", "Grow Suite + Supplier Network", "Decision desk, receipts & undo"] },
-      { n: "Business", audience: "The full CEO seat", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA L4 ACTING CEO", cta: "Choose Business", dark: true, pop: false,
+      { n: "Business", audience: "The full CEO seat", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA OPERATOR + VOICE", cta: "Choose Business", dark: true, pop: false,
         feats: ["Everything in Growth", "Acting CEO — 25,000 Nova credits/month", "60 Nova voice minutes/month — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)"] },
     ],
     footLink: "See full pricing →",

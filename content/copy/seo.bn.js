@@ -13,7 +13,7 @@ const seo = {
 
   offers: [
     { name: "Growth", price: "1490", priceCurrency: "BDT", description: "৳1,490/মাস—Nova Operator, মাসে 7,500 Nova ক্রেডিট, Grow Suite ও Supplier Network।" },
-    { name: "Business", price: "3990", priceCurrency: "BDT", description: "৳3,990/মাস—Nova L4 Acting CEO, মাসে 25,000 Nova ক্রেডিট, ভয়েস মিনিট ও Playbook।" },
+    { name: "Business", price: "3990", priceCurrency: "BDT", description: "৳3,990/মাস—ভয়েস সহ Nova, মাসে 25,000 Nova ক্রেডিট, ভয়েস মিনিট ও Playbook।" },
   ],
 
   pageNames: {

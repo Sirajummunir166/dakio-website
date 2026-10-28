@@ -6,7 +6,7 @@ export const MONO = {
   heroBadge: "৳ BANGLADESH PRICING · GOING GLOBAL SOON",
   // Outside Bangladesh (lib/region.js): the dollar page's badge and strip.
   heroBadgeIntl: "US DOLLAR PRICING · TAX ADDED WHERE IT APPLIES",
-  planLevels: ["NOVA L0–L1 ADVISOR", "NOVA L3 OPERATOR", "NOVA L4 ACTING CEO"],
+  planLevels: ["NOVA ADVISOR", "NOVA OPERATOR", "NOVA OPERATOR + VOICE"],
   meterKicker: "THE METER, IN PLAIN WORDS",
   perTask: "= 1 CREDIT",
   voiceMinutes: "= NOVA MINUTES",
@@ -90,7 +90,7 @@ const pricing = {
       title: "Nova — Acting CEO",
       price: "৳3,990",
       per: "/month, Business plan",
-      lines: ["24/7 — nights, Eid, monsoon", "10 departments, 65 duties", "Every action receipted & undoable"],
+      lines: ["24/7 — nights, Eid, monsoon", "Messenger, Instagram, WhatsApp and website chat", "Every action receipted & undoable"],
     },
   },
 
