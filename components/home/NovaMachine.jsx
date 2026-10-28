@@ -86,15 +86,14 @@ export default function NovaMachine({ m, chat, dark = false }) {
       try {
         const probe = document.createElement("canvas");
         if (!(probe.getContext("webgl2") || probe.getContext("webgl"))) throw new Error("no webgl");
-        const [{ createMachine }] = await Promise.all([import("./machineScene"), document.fonts?.ready]);
+        const { createMachine } = await import("./machineScene");
         if (!alive) return;
-        const fontFamily = getComputedStyle(el).fontFamily || "sans-serif";
         const phone = k => ({ name: chat.head[k].name, channel: chat.head[k].channel, img: chat.shop[0].img, msgs: chat[k] });
         api.current = createMachine({
           canvas: canvas.current,
           labels: pins.current,
-          data: { phone: { shop: phone("shop"), svc: phone("svc") }, app: { shop: SCREENS.shop, svc: SCREENS.svc }, cal: SCREENS.cal, chips: m.chips },
-          fontFamily, reduced, coarse: isCoarse, dark,
+          data: { phone: { shop: phone("shop"), svc: phone("svc") }, app: { shop: SCREENS.shop, svc: SCREENS.svc }, cal: SCREENS.cal },
+          reduced, coarse: isCoarse,
           onPhase: (p, k) => { setPhase(p); setKind(k); },
           onPick: k => setFocus(k),
         });

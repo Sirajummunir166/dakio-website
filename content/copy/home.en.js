@@ -71,8 +71,6 @@ const home = {
     pause: "Pause",
     play: "Play",
     back: "Back to the whole line",
-    // What else changes when the order or booking lands (they rise from the monitor).
-    chips: { shop: ["Stock 12 → 11", "৳2,260 due on delivery"], svc: ["Added to Rina's Friday", "Deal → Trial / booking"] },
     stations: {
       in: { t: "Chats come in", d: "Messenger, Instagram, WhatsApp and the chat on your website land in one inbox." },
       nova: { t: "Nova decides", d: "She reads the message, checks the price, the stock and the free times, and answers in Bangla or English in seconds." },

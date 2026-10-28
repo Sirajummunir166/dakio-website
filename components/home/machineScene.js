@@ -38,7 +38,7 @@ const ANCHORS = {
   outSvc: [7.7, 1.9, -0.75],
 };
 
-export function createMachine({ canvas, labels, data, fontFamily, reduced, coarse, onPhase, onPick }) {
+export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, onPick }) {
   // Default power: a laptop should not wake its big GPU for a hero. 1.5x is
   // sharp on Retina; the quality ladder below can drop it to 1x.
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
@@ -118,7 +118,6 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   const cyl = (rt, rb, h, parent = world, seg = 40, tone = "main") => shape(new THREE.CylinderGeometry(rt, rb, h, seg), parent, tone);
 
   // ---------- canvas textures ----------
-  const font = (w, px) => `${w} ${px}px ${fontFamily}`;
   // Drawn in logical pixels, stored at k times that for crisp screens.
   function canvasTex(w, h, k = 1) {
     const cv = document.createElement("canvas");
@@ -201,19 +200,13 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
 
   // ---------- station 02: Nova ----------
   st.nova = new THREE.Group(); world.add(st.nova);
-  // One pedestal. Its top is a lens ringed in lime light, and Nova floats over it.
+  // One pedestal, its top ringed in lime light. Nova floats over it.
   const PED = { w: 1.6, h: 0.95 };
   const block = box(PED.w, PED.h, PED.w, st.nova, "main");
   block.position.set(0, PED.h / 2, 0.3);
   const top = PED.h;
   const ring = new THREE.Mesh(keep(new THREE.TorusGeometry(0.52, 0.014, 12, 128)), keep(new THREE.MeshBasicMaterial({ color: COL.lime })));
   ring.rotation.x = Math.PI / 2; ring.position.set(0, top + 0.01, 0.3); st.nova.add(ring);
-  const plate = canvasTex(256, 64, 2);
-  plate.ctx.fillStyle = CSS.lime; plate.ctx.font = font(700, 28); plate.ctx.textAlign = "center"; plate.ctx.textBaseline = "middle";
-  if ("letterSpacing" in plate.ctx) plate.ctx.letterSpacing = "8px";
-  plate.ctx.fillText("NOVA", 128, 34); plate.tex.needsUpdate = true;
-  const plateMesh = plane(0.56, 0.14, plate.tex, block, true);
-  plateMesh.position.set(0, 0.08, PED.w / 2 + 0.002);
 
   const novaHome = new THREE.Vector3(0, top + 1.05, 0.3);
   const nova = new THREE.Group(); nova.position.copy(novaHome); st.nova.add(nova);
@@ -238,31 +231,6 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   box(4.3, 2.62, 0.1, monitor, "main");
   const appTex = canvasTex(1100, 660, 1.5);
   plane(4.12, 2.44, appTex.tex, monitor).position.z = 0.052;
-
-  // What else the order or booking changed (stock, money, the day list, the
-  // deal): two notes that rise beside the monitor when it lands.
-  const chips = [0, 1].map((i) => {
-    const t = canvasTex(560, 96, 2);
-    const sp = new THREE.Sprite(keep(new THREE.SpriteMaterial({ map: t.tex, transparent: true, depthWrite: false })));
-    sp.center.set(0, 0.5);
-    sp.scale.set(3.5, 0.6, 1);
-    sp.position.set(5.95, 3.45 - i * 0.78, -2.3);
-    sp.userData = { t, base: sp.position.y, t0: null };
-    sp.visible = false;
-    st.app.add(sp);
-    return sp;
-  });
-  function drawChip(sp, text) {
-    const { ctx, tex } = sp.userData.t;
-    ctx.clearRect(0, 0, 560, 96);
-    ctx.font = font(600, 30);
-    const w = Math.min(552, ctx.measureText(text).width + 88);
-    ctx.fillStyle = "rgba(15,18,11,0.85)"; rr(ctx, 4, 10, w, 76, 38); ctx.fill();
-    ctx.strokeStyle = CSS.line; ctx.lineWidth = 2.5; ctx.stroke();
-    ctx.fillStyle = CSS.lime; ctx.beginPath(); ctx.arc(44, 48, 9, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = CSS.text; ctx.textBaseline = "middle"; ctx.textAlign = "left"; ctx.fillText(text, 68, 50);
-    tex.needsUpdate = true;
-  }
 
   // ---------- station 04a: courier belt (shops) ----------
   st.outShop = new THREE.Group(); world.add(st.outShop);
@@ -520,10 +488,12 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     ctx.beginPath(); ctx.moveTo(144, 108); ctx.lineTo(180, 108); ctx.lineTo(202, 132); ctx.lineTo(202, 154); ctx.lineTo(144, 154); ctx.stroke();
     for (const x of [84, 176]) { ctx.beginPath(); ctx.arc(x, 164, 14, 0, Math.PI * 2); ctx.fillStyle = CSS.ink0; ctx.fill(); ctx.stroke(); }
   }
+  // The reminder going out: a lime chat bubble with three dots.
   function drawSms(ctx) {
-    ctx.fillStyle = "rgba(15,18,11,0.85)"; rr(ctx, 8, 8, 240, 92, 30); ctx.fill();
-    ctx.strokeStyle = CSS.lime; ctx.lineWidth = 3; ctx.stroke();
-    ctx.fillStyle = CSS.lime; ctx.font = font(800, 42); ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("SMS", 128, 56);
+    ctx.fillStyle = "rgba(15,18,11,0.85)"; rr(ctx, 48, 10, 160, 84, 30); ctx.fill();
+    pen(ctx, CSS.lime, 3); rr(ctx, 48, 10, 160, 84, 30); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(82, 92); ctx.lineTo(72, 118); ctx.lineTo(104, 94); ctx.stroke();
+    for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.arc(102 + i * 26, 52, 6, 0, Math.PI * 2); ctx.fill(); }
   }
 
   // ---------- audience ----------
@@ -545,7 +515,6 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     drawPhone(); drawApp(); drawCal();
     parcels.forEach(p => { p.g.visible = false; p.t0 = -1; });
     sms.visible = false;
-    chips.forEach((c, i) => { drawChip(c, data.chips?.[kind]?.[i] ?? ""); c.visible = false; c.userData.t0 = null; });
     lastPhase = null;
   }
   // The finished frame, for reduced motion: the whole story at once.
@@ -555,7 +524,6 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     if (kind === "shop" || aud === "both") { const p = parcels[0]; p.g.visible = true; p.g.position.set(5.6, BELT.y + 0.29, BELT.z); }
     pulse.visible = false;
     lightStation(null);
-    chips.forEach((c) => { c.visible = !!data.chips; c.material.opacity = 1; c.position.y = c.userData.base + 0.2; });
     onPhase?.(null, kind);
   }
 
@@ -621,14 +589,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     glow.material.opacity = 0.5 + beat * 0.4;
     ring.rotation.z += dt * (thinking ? 4 : 0.6);
 
-    if (crossed(T.toApp[1])) { appNew = true; drawApp(); if (data.chips) chips.forEach((c, i) => { c.userData.t0 = t + 0.25 + i * 0.55; }); }
-    for (const c of chips) {
-      if (c.userData.t0 == null) continue;
-      const u = t - c.userData.t0;
-      c.visible = u > 0;
-      c.material.opacity = Math.min(1, Math.max(0, u) / 0.4) * Math.min(1, Math.max(0, T.cycle - 0.3 - t) / 0.7);
-      c.position.y = c.userData.base + Math.min(Math.max(u, 0), 2.5) * 0.08;
-    }
+    if (crossed(T.toApp[1])) { appNew = true; drawApp(); }
     if (crossed(T.toOut[1])) {
       if (kind === "shop") { const p = parcels.find(q => q.t0 < 0) || parcels[0]; p.t0 = t; p.g.visible = true; }
       else { calLit = true; drawCal(); sms.visible = true; sms.userData.t0 = t; }

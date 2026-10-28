@@ -120,22 +120,6 @@ _Below the headline, across the hero: a 3D line drawn in thin light outlines on 
 - EN: Client is reminded: An SMS or email the day before, so she comes. Your artist gets her list in the morning.
 - BN: ক্লায়েন্টকে মনে করানো: আগের দিন SMS বা ইমেইল, যাতে তিনি আসেন। আপনার আর্টিস্ট সকালে তার লিস্ট পায়।
 
-**Note rising from the monitor · Shops 1**
-- EN: Stock 12 → 11
-- BN: স্টক ১২ → ১১
-
-**Note rising from the monitor · Shops 2**
-- EN: ৳2,260 due on delivery
-- BN: ডেলিভারিতে ৳২,২৬০ বাকি
-
-**Note rising from the monitor · Services 1**
-- EN: Added to Rina's Friday
-- BN: Rina-র শুক্রবারে যোগ হলো
-
-**Note rising from the monitor · Services 2**
-- EN: Deal → Trial / booking
-- BN: ডিল → ট্রায়াল / বুকিং
-
 ### 1b · Everything to run it (new)
 
 _Right under the hero. The whole system, stage by stage, so a visitor sees Dakio is the software that runs the business, not a chat tool. Nova's band runs over every stage. The line follows the switch; Both shows the two lines, each labelled. Every item is in the app today._
