@@ -105,7 +105,8 @@ export default function NovaMachine({ m, chat, dark = false }) {
         api.current.setAudience(audRef.current);
         setState("ready");
         sync();
-      } catch {
+      } catch (err) {
+        console.error("Nova's machine could not start", err);
         if (alive) setState("failed");
       }
     };

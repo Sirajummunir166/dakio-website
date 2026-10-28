@@ -31,11 +31,11 @@ const T = { phoneFrom: 1.1, phoneStep: 0.55, novaIn: [1.3, 2.1], think: [2.1, 4.
 const PHASES = [["in", 0], ["nova", 2.1], ["app", 5.3], ["out", 6.6]];
 
 const ANCHORS = {
-  in: [-6.35, 1.55, 2.15],
-  nova: [0, 2.9, 0.3],
+  in: [-6.35, 1.1, 2.15],
+  nova: [0, 2.7, 0.3],
   app: [3.6, 4.0, -2.42],
-  outShop: [4.4, 0.78, 2.6],
-  outSvc: [7.7, 2.1, -0.75],
+  outShop: [4.4, 0.25, 2.6],
+  outSvc: [7.7, 1.9, -0.75],
 };
 
 export function createMachine({ canvas, labels, data, fontFamily, reduced, coarse, onPhase, onPick }) {
@@ -135,22 +135,6 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
     ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
   }
-  function wrap(ctx, text, maxW) {
-    const words = String(text).split(" ");
-    const lines = []; let cur = "";
-    for (const w of words) {
-      const next = cur ? `${cur} ${w}` : w;
-      if (ctx.measureText(next).width > maxW && cur) { lines.push(cur); cur = w; } else cur = next;
-    }
-    if (cur) lines.push(cur);
-    return lines;
-  }
-  function fit(ctx, text, maxW) {
-    let t = String(text);
-    if (ctx.measureText(t).width <= maxW) return t;
-    while (t.length > 1 && ctx.measureText(t + "…").width > maxW) t = t.slice(0, -1);
-    return t + "…";
-  }
   function plane(w, h, tex, parent, transparent = false) {
     const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(w, h)), keep(new THREE.MeshBasicMaterial({ map: tex, transparent, depthWrite: !transparent })));
     parent.add(m);
@@ -186,7 +170,6 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   // ---------- station 01: channels + phone ----------
   const st = {};
   st.in = new THREE.Group(); world.add(st.in);
-  box(5.0, 0.18, 1.5, st.in, "soft").position.set(-6.35, 0.09, 2.3);
   const CHANNELS = [
     { n: "Messenger", draw: glyphMessenger },
     { n: "Instagram", draw: glyphInstagram },
@@ -195,9 +178,8 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   ];
   const chanX = [-8.0, -6.9, -5.8, -4.7];
   const chanTiles = CHANNELS.map((ch, i) => {
-    cyl(0.05, 0.05, 0.4, st.in, 16, "soft").position.set(chanX[i], 0.38, 2.15);
     const tile = new THREE.Group();
-    tile.position.set(chanX[i], 0.98, 2.15);
+    tile.position.set(chanX[i], 0.5, 2.15);
     tile.rotation.x = -0.12;
     tile.userData.base = tile.position.y;
     st.in.add(tile);
@@ -206,20 +188,11 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     const face = canvasTex(256, 256, 2);
     ch.draw(face.ctx); face.tex.needsUpdate = true;
     plane(0.62, 0.62, face.tex, tile, true).position.z = 0.062;
-    // The channel's name, printed on the plinth.
-    const name = canvasTex(256, 56, 2);
-    name.ctx.fillStyle = CSS.dim; name.ctx.font = font(600, 28); name.ctx.textAlign = "center"; name.ctx.textBaseline = "middle";
-    name.ctx.fillText(ch.n, 128, 30); name.tex.needsUpdate = true;
-    const n = plane(0.96, 0.21, name.tex, st.in, true);
-    n.rotation.x = -Math.PI / 2; n.position.set(chanX[i], 0.184, 2.72);
     return tile;
   });
 
-  box(1.9, 0.2, 1.6, st.in, "soft").position.set(-3.8, 0.1, 0.2);
-  const phoneStand = box(0.9, 1.3, 0.04, st.in, "soft");
-  phoneStand.position.set(-3.8, 0.84, -0.12); phoneStand.rotation.x = 0.32;
   const phone = new THREE.Group();
-  phone.position.set(-3.8, 1.42, 0.3);
+  phone.position.set(-3.8, 1.2, 0.3);
   phone.rotation.x = -0.16;
   st.in.add(phone);
   box(1.18, 2.32, 0.08, phone, "main");
@@ -228,12 +201,11 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
 
   // ---------- station 02: Nova ----------
   st.nova = new THREE.Group(); world.add(st.nova);
-  box(2.7, 0.2, 2.3, st.nova, "soft").position.set(0, 0.1, 0.3);
   // One pedestal. Its top is a lens ringed in lime light, and Nova floats over it.
   const PED = { w: 1.6, h: 0.95 };
   const block = box(PED.w, PED.h, PED.w, st.nova, "main");
-  block.position.set(0, 0.2 + PED.h / 2, 0.3);
-  const top = 0.2 + PED.h;
+  block.position.set(0, PED.h / 2, 0.3);
+  const top = PED.h;
   const ring = new THREE.Mesh(keep(new THREE.TorusGeometry(0.52, 0.014, 12, 128)), keep(new THREE.MeshBasicMaterial({ color: COL.lime })));
   ring.rotation.x = Math.PI / 2; ring.position.set(0, top + 0.01, 0.3); st.nova.add(ring);
   const plate = canvasTex(256, 64, 2);
@@ -260,7 +232,6 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
 
   // ---------- station 03: the app on a monitor ----------
   st.app = new THREE.Group(); world.add(st.app);
-  box(1.4, 0.04, 1.05, st.app, "soft").position.set(3.6, 0.02, -2.25);
   const arm = box(0.9, 1.85, 0.04, st.app, "soft");
   arm.position.set(3.6, 0.95, -2.62); arm.rotation.x = 0.2;
   const monitor = new THREE.Group(); monitor.position.set(3.6, 2.66, -2.42); monitor.rotation.x = -0.04; st.app.add(monitor);
@@ -295,9 +266,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
 
   // ---------- station 04a: courier belt (shops) ----------
   st.outShop = new THREE.Group(); world.add(st.outShop);
-  const BELT = { x: 5.3, z: 2.6, y: 0.66, len: 4.2 };
-  for (const z of [BELT.z - 0.64, BELT.z + 0.64]) box(BELT.len + 0.4, 0.14, 0.06, st.outShop, "soft").position.set(BELT.x, BELT.y + 0.02, z);
-  for (const x of [BELT.x - 2.0, BELT.x + 2.0]) for (const z of [BELT.z - 0.6, BELT.z + 0.6]) box(0.06, BELT.y - 0.05, 0.06, st.outShop, "soft").position.set(x, (BELT.y - 0.05) / 2, z);
+  const BELT = { x: 5.3, z: 2.6, y: 0.12, len: 4.2 };
   for (const x of [BELT.x - BELT.len / 2, BELT.x + BELT.len / 2]) {
     const r = cyl(0.1, 0.1, 1.18, st.outShop, 40, "main"); r.rotation.x = Math.PI / 2; r.position.set(x, BELT.y, BELT.z);
   }
@@ -325,14 +294,12 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
 
   // ---------- station 04b: desk calendar (services) ----------
   st.outSvc = new THREE.Group(); world.add(st.outSvc);
-  box(3.0, 0.18, 1.8, st.outSvc, "soft").position.set(7.9, 0.09, -0.6);
-  const cal = new THREE.Group(); cal.position.set(7.7, 1.16, -0.7); cal.rotation.x = -0.22; st.outSvc.add(cal);
+  const cal = new THREE.Group(); cal.position.set(7.7, 0.95, -0.7); cal.rotation.x = -0.22; st.outSvc.add(cal);
   box(2.2, 1.72, 0.06, cal, "main");
   const calTex = canvasTex(640, 500, 2);
   plane(2.1, 1.62, calTex.tex, cal).position.z = 0.032;
-  const bell = new THREE.Group(); bell.position.set(9.05, 0.18, -0.25); st.outSvc.add(bell);
-  shape(new THREE.LatheGeometry([[0.02, 0.62], [0.12, 0.6], [0.16, 0.5], [0.2, 0.3], [0.3, 0.14], [0.33, 0.1], [0.33, 0.0]].map(([x, y]) => new THREE.Vector2(x, y)), 40), bell, null);
-  outline(bell.children[0], "main", 12);
+  // The reminder rises from the calendar's corner.
+  const bell = new THREE.Group(); bell.position.set(8.75, 0.75, -0.5); st.outSvc.add(bell);
   const smsTex = canvasTex(256, 128, 2); drawSms(smsTex.ctx); smsTex.tex.needsUpdate = true;
   const sms = new THREE.Sprite(keep(new THREE.SpriteMaterial({ map: smsTex.tex, transparent: true, depthWrite: false })));
   sms.scale.set(0.9, 0.45, 1); sms.visible = false; bell.add(sms);
@@ -356,23 +323,19 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     }
     return path;
   };
-  // A cable is one lime line, with a small ring where it meets a station.
+  // A cable is one lime line.
   function cable(path, parent) {
     const pts = path.getSpacedPoints(Math.ceil(path.getLength() * 12));
     const g = keep(new LineGeometry());
     g.setPositions(pts.flatMap(p => [p.x, p.y, p.z]));
     parent.add(new Line2(g, L.cable));
-    for (const u of [0, 1]) {
-      const end = new THREE.Mesh(keep(new THREE.RingGeometry(0.05, 0.075, 24)), keep(new THREE.MeshBasicMaterial({ color: COL.lime, transparent: true, opacity: 0.7 })));
-      end.rotation.x = -Math.PI / 2; end.position.copy(path.getPointAt(u)).setY(Y + 0.002); parent.add(end);
-    }
     return path;
   }
   const R = {
-    chan: chanX.map((x) => cable(route([[x, 1.62], [x, 1.3], [-3.8, 1.3], [-3.8, 1.0]]), st.in)),
-    toNova: cable(route([[-2.85, 0.2], [-1.35, 0.2]]), st.nova),
-    toApp: cable(route([[1.35, 0.3], [2.2, 0.3], [2.2, -2.4], [2.9, -2.4]]), st.app),
-    toShop: cable(route([[4.15, -1.72], [4.15, 1.9]]), st.outShop),
+    chan: chanX.map((x) => cable(route([[x, 2.05], [x, 1.3], [-3.8, 1.3], [-3.8, 0.45]]), st.in)),
+    toNova: cable(route([[-3.2, 0.3], [-0.8, 0.3]]), st.nova),
+    toApp: cable(route([[0.8, 0.3], [2.2, 0.3], [2.2, -2.5], [3.4, -2.5]]), st.app),
+    toShop: cable(route([[3.9, -2.4], [3.9, 2.0]]), st.outShop),
     toSvc: cable(route([[4.3, -2.4], [6.0, -2.4], [6.0, -0.6], [6.4, -0.6]]), st.outSvc),
   };
 
@@ -410,65 +373,59 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   }
 
   // ---------- drawing the screens ----------
-  const img = new Image();
-  img.src = data.phone.shop.img;
-  img.onload = () => { dirty = true; drawPhone(); };
-
   let kind = "shop";
   let phoneShown = 0;
   let appNew = false;
   let calLit = false;
+
+  // The screens are line sketches, not text: a bar stands for a line of
+  // words (its length follows the real text), a box for a bubble or a row.
+  // Only what Nova just did is lime.
+  function bar(ctx, x, y, w, color, h = 6) { ctx.fillStyle = color; rr(ctx, x, y - h / 2, Math.max(h, w), h, h / 2); ctx.fill(); }
+  function barW(text, max, k = 7.5) { return Math.min(max, 24 + String(text).length * k); }
 
   function drawPhone() {
     const { ctx, cv, tex } = phoneTex;
     const W = cv.width / cv.k, H = cv.height / cv.k;
     const p = data.phone[kind];
     ctx.fillStyle = CSS.bg; ctx.fillRect(0, 0, W, H);
-    ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 112); ctx.lineTo(W, 112); ctx.stroke();
-    ctx.strokeStyle = CSS.lime; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(58, 60, 24, 0, Math.PI * 2); ctx.stroke();
-    ctx.fillStyle = CSS.lime; ctx.font = font(700, 26); ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(p.name.slice(0, 1), 58, 61);
-    ctx.textAlign = "left"; ctx.fillStyle = CSS.text; ctx.font = font(700, 28); ctx.fillText(p.name, 98, 50);
-    ctx.fillStyle = CSS.dim; ctx.font = font(500, 21); ctx.fillText(p.channel, 98, 80);
+    ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 104); ctx.lineTo(W, 104); ctx.stroke();
+    ctx.strokeStyle = CSS.line; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(58, 54, 22, 0, Math.PI * 2); ctx.stroke();
+    bar(ctx, 98, 46, 150, CSS.line, 9); bar(ctx, 98, 70, 90, CSS.soft, 7);
 
-    // Lay the shown messages out bottom up, newest at the bottom.
+    // Bubbles laid out bottom up, newest at the bottom.
     const msgs = p.msgs.slice(0, phoneShown);
     const blocks = msgs.map(m => {
-      ctx.font = font(500, 25);
-      const lines = wrap(ctx, m.t, 300);
-      const bw = Math.max(...lines.map(l => ctx.measureText(l).width)) + 36;
-      const imgH = m.img && img.complete && img.naturalWidth ? 210 : 0;
-      const cardH = m.card ? 92 : 0;
-      return { m, lines, bw, h: lines.length * 33 + 26 + imgH + (imgH ? 10 : 0) + (cardH ? cardH + 10 : 0), imgH, cardH };
+      const n = Math.max(1, Math.min(3, Math.ceil(String(m.t).length / 26)));
+      const bw = Math.min(320, 70 + String(m.t).length * 6.5);
+      const imgH = m.img ? 150 : 0;
+      const cardH = m.card ? 70 : 0;
+      return { m, n, bw, h: n * 26 + 30 + (imgH ? imgH + 12 : 0) + (cardH ? cardH + 12 : 0), imgH, cardH };
     });
     let y = H - 36 - (phoneTyping ? 66 : 0);
     const placed = [];
-    for (let i = blocks.length - 1; i >= 0; i--) { y -= blocks[i].h; placed.unshift({ ...blocks[i], y }); y -= 16; }
-    ctx.save(); ctx.beginPath(); ctx.rect(0, 114, W, H - 114); ctx.clip();
+    for (let i = blocks.length - 1; i >= 0; i--) { y -= blocks[i].h; placed.unshift({ ...blocks[i], y }); y -= 18; }
+    ctx.save(); ctx.beginPath(); ctx.rect(0, 106, W, H - 106); ctx.clip();
     for (const b of placed) {
       const mine = b.m.from === "nova";
       let yy = b.y;
       if (b.imgH) {
-        const iw = 168, ih = b.imgH;
-        ctx.save(); rr(ctx, 26, yy, iw, ih, 18); ctx.clip();
-        ctx.filter = "grayscale(1) brightness(0.85)"; ctx.drawImage(img, 26, yy, iw, ih); ctx.filter = "none";
-        ctx.restore();
-        ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2; rr(ctx, 26, yy, iw, ih, 18); ctx.stroke();
-        yy += ih + 10;
+        // The customer's photo: a frame with a hanger, no picture.
+        ctx.strokeStyle = CSS.line; ctx.lineWidth = 2.5; rr(ctx, 26, yy, 130, b.imgH, 16); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(66, yy + 50); ctx.lineTo(91, yy + 34); ctx.lineTo(116, yy + 50); ctx.lineTo(108, yy + 120); ctx.lineTo(74, yy + 120); ctx.closePath(); ctx.stroke();
+        yy += b.imgH + 12;
       }
-      const bh = b.lines.length * 33 + 26;
+      const bh = b.n * 26 + 30;
       const x = mine ? W - 26 - b.bw : 26;
-      ctx.fillStyle = mine ? CSS.limeSoft : "rgba(233,239,220,0.04)"; rr(ctx, x, yy, b.bw, bh, 22); ctx.fill();
-      ctx.strokeStyle = mine ? CSS.lime : CSS.line; ctx.lineWidth = 2.5; ctx.stroke();
-      ctx.fillStyle = mine ? CSS.lime : CSS.text; ctx.font = font(500, 25); ctx.textBaseline = "top";
-      b.lines.forEach((l, i) => ctx.fillText(l, x + 18, yy + 14 + i * 33));
-      yy += bh + 10;
+      ctx.strokeStyle = mine ? CSS.lime : CSS.line; ctx.lineWidth = 2.5; rr(ctx, x, yy, b.bw, bh, 20); ctx.stroke();
+      for (let i = 0; i < b.n; i++) bar(ctx, x + 20, yy + 28 + i * 26, (i === b.n - 1 && b.n > 1 ? 0.6 : 1) * (b.bw - 40), mine ? CSS.lime : CSS.dim, 7);
+      yy += bh + 12;
       if (b.cardH) {
-        const cw = 360, cx = W - 26 - cw;
-        ctx.strokeStyle = CSS.lime; ctx.lineWidth = 2.5; rr(ctx, cx, yy, cw, b.cardH, 18); ctx.stroke();
-        ctx.beginPath(); ctx.arc(cx + 34, yy + b.cardH / 2, 15, 0, Math.PI * 2); ctx.stroke();
+        const cw = 300, cx = W - 26 - cw;
+        ctx.strokeStyle = CSS.lime; ctx.lineWidth = 2.5; rr(ctx, cx, yy, cw, b.cardH, 16); ctx.stroke();
+        ctx.beginPath(); ctx.arc(cx + 34, yy + b.cardH / 2, 14, 0, Math.PI * 2); ctx.stroke();
         ctx.lineWidth = 3.5; ctx.beginPath(); ctx.moveTo(cx + 27, yy + b.cardH / 2); ctx.lineTo(cx + 32, yy + b.cardH / 2 + 6); ctx.lineTo(cx + 42, yy + b.cardH / 2 - 6); ctx.stroke();
-        ctx.fillStyle = CSS.text; ctx.font = font(700, 23); ctx.fillText(fit(ctx, b.m.card.t, cw - 80), cx + 62, yy + 20);
-        ctx.fillStyle = CSS.dim; ctx.font = font(500, 19); ctx.fillText(fit(ctx, b.m.card.d, cw - 80), cx + 62, yy + 52);
+        bar(ctx, cx + 62, yy + 26, 170, CSS.lime, 8); bar(ctx, cx + 62, yy + 46, 120, CSS.dim, 6);
       }
     }
     if (phoneTyping) {
@@ -487,40 +444,24 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     const W = cv.width / cv.k, H = cv.height / cv.k;
     const a = data.app[kind];
     ctx.fillStyle = CSS.bg; ctx.fillRect(0, 0, W, H);
-    ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(210, 0); ctx.lineTo(210, H); ctx.stroke();
-    ctx.fillStyle = CSS.lime; ctx.font = font(800, 34); ctx.textBaseline = "middle"; ctx.textAlign = "left";
-    ctx.fillText("dakio", 30, 50);
-    a.menu.forEach((m, i) => {
-      const on = i === 0;
-      if (on) { ctx.strokeStyle = CSS.line; ctx.lineWidth = 2; rr(ctx, 16, 104 + i * 52, 178, 42, 12); ctx.stroke(); }
-      ctx.fillStyle = on ? CSS.text : CSS.dim; ctx.font = font(on ? 700 : 500, 21);
-      ctx.fillText(m, 34, 125 + i * 52);
-    });
-    ctx.fillStyle = CSS.text; ctx.font = font(800, 44); ctx.fillText(a.title, 250, 64);
-    ctx.fillStyle = CSS.dim; ctx.font = font(500, 20); ctx.fillText(a.sub, 250, 104);
-    // The table.
+    ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(200, 0); ctx.lineTo(200, H); ctx.stroke();
+    bar(ctx, 34, 52, 80, CSS.lime, 12);
+    a.menu.forEach((m, i) => bar(ctx, 34, 120 + i * 50, barW(m, 120, 9), i === 0 ? CSS.line : CSS.soft, 8));
+    bar(ctx, 244, 60, barW(a.title, 260, 22), CSS.line, 18);
+    bar(ctx, 244, 98, 220, CSS.soft, 7);
+    // The table: one bar per cell, the new row in lime.
     const cols = a.cols;
-    const top = 140;
-    ctx.fillStyle = CSS.dim; ctx.font = font(700, 16);
-    cols.forEach(c => ctx.fillText(c.h.toUpperCase(), 250 + c.x, top + 10));
+    const top = 136;
     const rows = appNew ? [a.fresh, ...a.rows] : a.rows;
     rows.slice(0, 6).forEach((r, i) => {
       const y = top + 34 + i * 76;
       const fresh = appNew && i === 0;
-      if (fresh) { ctx.fillStyle = CSS.limeSoft; rr(ctx, 236, y, W - 266, 64, 14); ctx.fill(); ctx.strokeStyle = CSS.lime; ctx.lineWidth = 2.5; ctx.stroke(); }
-      else { ctx.strokeStyle = CSS.soft; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(236, y + 66); ctx.lineTo(W - 30, y + 66); ctx.stroke(); }
+      if (fresh) { ctx.strokeStyle = CSS.lime; ctx.lineWidth = 2.5; rr(ctx, 228, y, W - 258, 62, 14); ctx.stroke(); }
+      else { ctx.strokeStyle = CSS.soft; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(228, y + 66); ctx.lineTo(W - 30, y + 66); ctx.stroke(); }
       cols.forEach((c, j) => {
-        ctx.fillStyle = fresh ? CSS.lime : CSS.text;
-        ctx.font = font(j === 0 || fresh ? 700 : 500, 21);
-        ctx.fillText(fit(ctx, r[j], (cols[j + 1]?.x ?? W - 300) - c.x - 16), 250 + c.x, y + 32);
+        const room = (cols[j + 1]?.x ?? W - 300) - c.x - 30;
+        bar(ctx, 250 + c.x, y + 31, barW(r[j], room, 8), fresh ? CSS.lime : (j === 0 ? CSS.line : CSS.dim), 7);
       });
-      if (fresh) {
-        ctx.font = font(800, 15);
-        const label = a.byNova;
-        const tw = ctx.measureText(label).width + 26;
-        ctx.strokeStyle = CSS.lime; ctx.lineWidth = 2; rr(ctx, W - 50 - tw, y + 18, tw, 28, 14); ctx.stroke();
-        ctx.fillStyle = CSS.lime; ctx.fillText(label, W - 50 - tw + 13, y + 33);
-      }
     });
     tex.needsUpdate = true;
   }
@@ -530,33 +471,24 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
     const W = cv.width / cv.k, H = cv.height / cv.k;
     const c = data.cal;
     ctx.fillStyle = CSS.bg; ctx.fillRect(0, 0, W, H);
-    ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 96); ctx.lineTo(W, 96); ctx.stroke();
-    ctx.fillStyle = CSS.lime; ctx.font = font(800, 40); ctx.textBaseline = "middle"; ctx.textAlign = "left";
-    ctx.fillText(c.day, 34, 50);
-    ctx.fillStyle = CSS.dim; ctx.font = font(500, 24); ctx.textAlign = "right"; ctx.fillText(c.store, W - 34, 52);
-    ctx.textAlign = "left";
+    ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 92); ctx.lineTo(W, 92); ctx.stroke();
+    bar(ctx, 34, 48, 140, CSS.line, 14);
     c.slots.forEach((s, i) => {
-      const y = 120 + i * 92;
+      const y = 116 + i * 92;
       const lit = s.fresh && calLit;
-      if (s.fresh && !calLit) {
-        ctx.setLineDash([10, 8]); ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2.5; rr(ctx, 30, y, W - 60, 76, 16); ctx.stroke(); ctx.setLineDash([]);
-        ctx.fillStyle = CSS.dim; ctx.font = font(600, 26); ctx.fillText(s.time, 54, y + 38);
-        return;
-      }
-      if (lit) { ctx.fillStyle = CSS.limeSoft; rr(ctx, 30, y, W - 60, 76, 16); ctx.fill(); }
-      ctx.strokeStyle = lit ? CSS.lime : CSS.soft; ctx.lineWidth = lit ? 3 : 2; rr(ctx, 30, y, W - 60, 76, 16); ctx.stroke();
-      ctx.fillStyle = lit ? CSS.lime : CSS.text; ctx.font = font(800, 26); ctx.fillText(s.time, 54, y + 38);
-      ctx.font = font(lit ? 700 : 500, 26); ctx.fillText(fit(ctx, s.what, W - 300), 210, y + 38);
+      if (s.fresh && !calLit) { ctx.setLineDash([10, 8]); ctx.strokeStyle = CSS.soft; ctx.lineWidth = 2.5; rr(ctx, 30, y, W - 60, 74, 16); ctx.stroke(); ctx.setLineDash([]); return; }
+      ctx.strokeStyle = lit ? CSS.lime : CSS.soft; ctx.lineWidth = lit ? 3 : 2; rr(ctx, 30, y, W - 60, 74, 16); ctx.stroke();
+      bar(ctx, 56, y + 37, 70, lit ? CSS.lime : CSS.line, 8);
+      bar(ctx, 170, y + 37, barW(s.what, W - 250, 9), lit ? CSS.lime : CSS.dim, 8);
     });
     tex.needsUpdate = true;
   }
 
-  // The shipping label on each parcel.
+  // The shipping label on each parcel: a frame, two lines and a barcode.
   function drawShippingLabel(ctx) {
     ctx.strokeStyle = CSS.line; ctx.lineWidth = 3; rr(ctx, 4, 4, 248, 152, 14); ctx.stroke();
-    ctx.fillStyle = CSS.text; ctx.font = font(800, 30); ctx.textBaseline = "top"; ctx.fillText("Saril", 20, 18);
-    ctx.font = font(600, 20); ctx.fillStyle = CSS.dim; ctx.fillText("#6BB-VHQ6 · Mirpur 10", 20, 58);
-    ctx.fillStyle = CSS.dim; for (let i = 0; i < 26; i++) ctx.fillRect(20 + i * 8, 100, i % 3 ? 2 : 4, 40);
+    bar(ctx, 22, 34, 110, CSS.line, 10); bar(ctx, 22, 62, 170, CSS.dim, 7);
+    ctx.fillStyle = CSS.dim; for (let i = 0; i < 26; i++) ctx.fillRect(22 + i * 8, 92, i % 3 ? 2 : 4, 44);
   }
 
   // Channel glyphs: line drawings, no logos, no brand colours.
@@ -620,7 +552,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   function poseStill() {
     phoneShown = data.phone[kind].msgs.length; appNew = true; calLit = true;
     drawPhone(); drawApp(); drawCal();
-    if (kind === "shop" || aud === "both") { const p = parcels[0]; p.g.visible = true; p.g.position.set(5.6, BELT.y + 0.32, BELT.z); }
+    if (kind === "shop" || aud === "both") { const p = parcels[0]; p.g.visible = true; p.g.position.set(5.6, BELT.y + 0.29, BELT.z); }
     pulse.visible = false;
     lightStation(null);
     chips.forEach((c) => { c.visible = !!data.chips; c.material.opacity = 1; c.position.y = c.userData.base + 0.2; });
@@ -707,15 +639,15 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
       const u = t - p.t0;
       const x = 3.4 + u * 1.15;
       const drop = Math.max(0, x - 7.3);
-      p.g.position.set(Math.min(x, 7.9), BELT.y + 0.32 - drop * drop * 1.6, BELT.z);
-      if (p.g.position.y < -0.4) { p.g.visible = false; p.t0 = -1; }
+      p.g.position.set(Math.min(x, 7.9), BELT.y + 0.29 - drop * drop * 1.6, BELT.z);
+      if (p.g.position.y < -0.6) { p.g.visible = false; p.t0 = -1; }
     }
     if (parcels.some(p => p.t0 >= 0)) ribs.tex.offset.x -= dt * 1.15 / (BELT.len / ribs.tex.repeat.x);
     // The bell rings and the SMS rises.
     if (sms.visible) {
       const u = t - sms.userData.t0;
       bell.rotation.z = Math.sin(u * 22) * 0.25 * Math.max(0, 1 - u / 1.4);
-      sms.position.y = 1.0 + Math.min(u, 2) * 0.35;
+      sms.position.y = 0.4 + Math.min(u, 2) * 0.3;
       sms.material.opacity = Math.max(0, 1 - Math.max(0, u - 2.4) / 0.8);
     }
 
