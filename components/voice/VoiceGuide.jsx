@@ -34,7 +34,11 @@ export const VOICE_COPY = {
     ask: "Can I help you understand Dakio, or find what your business needs?",
     pick: "Which language do you prefer?",
     typeInstead: "Type instead",
-    hear: "Hear Nova",
+    hear: "Hear Nova say hello",
+    hearSub: "Tap to unmute · free, no microphone",
+    speaking: "Nova is speaking…",
+    stop: "Stop",
+    again: "Hear again",
   },
   bn: {
     launch: "Nova-র সাথে কথা বলুন",
@@ -50,7 +54,11 @@ export const VOICE_COPY = {
     ask: "Dakio বুঝতে বা আপনার ব্যবসার যা দরকার খুঁজে পেতে সাহায্য করব?",
     pick: "কোন ভাষায় কথা বলবেন?",
     typeInstead: "লিখে কথা বলুন",
-    hear: "Nova-র কথা শুনুন",
+    hear: "Nova-র হ্যালো শুনুন",
+    hearSub: "সাউন্ড চালু করতে চাপুন · ফ্রি, মাইক লাগবে না",
+    speaking: "Nova কথা বলছে…",
+    stop: "থামান",
+    again: "আবার শুনুন",
   },
 };
 
@@ -167,6 +175,7 @@ export default function VoiceGuide({ lang = "en" }) {
   // only when they pick a language.
   const [welcome, setWelcome] = useState(false);
   const [hearing, setHearing] = useState("off"); // off | ready | playing | none
+  const [heard, setHeard] = useState(false); // she said hello: the languages are the next step
   const clip = useRef(null);
   const stopClip = () => { try { clip.current?.pause(); } catch { /* fine */ } setHearing((h) => (h === "none" ? h : "ready")); };
   useEffect(() => {
@@ -174,7 +183,7 @@ export default function VoiceGuide({ lang = "en" }) {
     const a = new Audio(`/nova-guide/welcome-${lang}.mp3`);
     clip.current = a;
     a.onplaying = () => setHearing("playing");
-    a.onended = () => setHearing("ready");
+    a.onended = () => { setHearing("ready"); setHeard(true); };
     a.onerror = () => setHearing("none"); // no clip yet: the card works silently
     setHearing("ready");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -182,6 +191,7 @@ export default function VoiceGuide({ lang = "en" }) {
     return () => { a.pause(); a.onplaying = a.onended = a.onerror = null; };
   }, [welcome, lang]);
   const hear = () => { const a = clip.current; if (!a) return; a.currentTime = 0; a.play().catch(() => setHearing("none")); track("voice_welcome_hear", { lang }); };
+  const hush = () => { try { clip.current?.pause(); } catch { /* fine */ } setHearing("ready"); setHeard(true); };
   useEffect(() => {
     if (mode === "off" || hiddenOn(pathname)) return undefined;
     let seen = false;
@@ -218,19 +228,38 @@ export default function VoiceGuide({ lang = "en" }) {
       ) : welcome && phase === "idle" ? (
         <div className="vg-panel vg-welcome" role="dialog" aria-label={copy.hello}>
           <div className="vg-head">
-            <div className="vg-orb" data-state={hearing === "playing" ? "speaking" : undefined} style={{ width: 44, height: 44 }} aria-hidden />
+            <button type="button" className="vg-orb vg-orb-btn" data-state={hearing === "playing" ? "speaking" : undefined} style={{ width: 44, height: 44 }} onClick={hearing === "playing" ? hush : hear} disabled={hearing !== "ready" && hearing !== "playing"} aria-label={hearing === "playing" ? copy.stop : copy.hear} />
             <div className={`vg-title${bn ? " vg-bn" : ""}`}>{copy.hello}</div>
             <button type="button" className="vg-close-x" style={{ marginLeft: "auto", alignSelf: "flex-start" }} onClick={() => { setWelcome(false); track("voice_welcome_closed"); }} aria-label={copy.close}>×</button>
           </div>
           <p className={`vg-welcome-ask${bn ? " vg-bn" : ""}`}>{copy.ask}</p>
-          {hearing === "ready" ? (
-            <button type="button" className={`vg-welcome-hear${bn ? " vg-bn" : ""}`} onClick={hear}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M11 5L6 9H2v6h4l5 4V5zM15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14" /></svg>
-              {copy.hear}
+          {hearing === "playing" ? (
+            <div className={`vg-hear is-playing${bn ? " vg-bn" : ""}`} role="status">
+              <span className="vg-hear-bars" aria-hidden><i /><i /><i /><i /><i /></span>
+              <span className="vg-hear-t">{copy.speaking}</span>
+              <button type="button" className="vg-hear-stop" onClick={hush}>
+                <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden><rect width="10" height="10" rx="2" fill="currentColor" /></svg>
+                {copy.stop}
+              </button>
+            </div>
+          ) : hearing === "ready" && !heard ? (
+            <button type="button" className={`vg-hear${bn ? " vg-bn" : ""}`} onClick={hear}>
+              <span className="vg-hear-play" aria-hidden>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" /><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14" /></svg>
+              </span>
+              <span className="vg-hear-words">
+                <span className="vg-hear-t">{copy.hear}</span>
+                <span className="vg-hear-sub">{copy.hearSub}</span>
+              </span>
+            </button>
+          ) : hearing === "ready" ? (
+            <button type="button" className={`vg-hear-again${bn ? " vg-bn" : ""}`} onClick={hear}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M11 5L6 9H2v6h4l5 4V5z" /><path d="M15.5 8.5a5 5 0 010 7" /></svg>
+              {copy.again}
             </button>
           ) : null}
           <div className={`vg-welcome-pick${bn ? " vg-bn" : ""}`}>{copy.pick}</div>
-          <div className="vg-welcome-langs">
+          <div className={`vg-welcome-langs${hearing === "ready" && !heard ? " is-quiet" : ""}`}>
             <button type="button" className="vg-btn vg-btn-lime vg-btn-bn" onPointerEnter={warm} onClick={() => start({ lang: "bn" })}>বাংলা</button>
             <button type="button" className="vg-btn vg-btn-lime" onPointerEnter={warm} onClick={() => start({ lang: "en" })}>English</button>
           </div>

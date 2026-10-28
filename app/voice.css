@@ -207,6 +207,30 @@
 .vg-welcome-type { display: block; margin: 10px auto 0; padding: 4px 6px; border: 0; background: none; color: #C9CBBE; font: 600 13px var(--dk-font-sans); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .vg-welcome-type.vg-bn { font-family: var(--dk-font-bn); }
 .vg-welcome .vg-note { margin-top: 10px; font-size: 11px; }
-.vg-welcome-hear { display: inline-flex; align-items: center; gap: 7px; margin-top: 10px; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--vg-line); background: transparent; color: #E9EFDC; font: 600 12.5px var(--dk-font-sans); cursor: pointer; }
-.vg-welcome-hear:hover { border-color: #4A4F37; }
-.vg-welcome-hear.vg-bn { font-family: var(--dk-font-bn); }
+/* "Hear Nova say hello": the free, recorded greeting, the card's first action. */
+@keyframes vgBars { 0%, 100% { transform: scaleY(0.35); } 50% { transform: scaleY(1); } }
+.vg-hear { display: flex; align-items: center; gap: 12px; width: 100%; margin-top: 14px; padding: 12px 14px; border: 0; border-radius: 16px; background: var(--vg-lime); color: var(--vg-ink); text-align: left; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; animation: vgHalo 2.2s ease-out infinite; }
+.vg-hear:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(198, 240, 53, 0.22); }
+.vg-hear:focus-visible { outline: 2px solid var(--vg-cream); outline-offset: 3px; }
+.vg-hear-play { display: grid; place-items: center; flex: none; width: 42px; height: 42px; border-radius: 50%; background: var(--vg-ink); color: var(--vg-lime); }
+.vg-hear-words { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.vg-hear-t { font: 700 15.5px/1.2 var(--dk-font-sans); }
+.vg-hear-sub { font: 500 12px/1.3 var(--dk-font-sans); opacity: 0.72; }
+.vg-hear.vg-bn .vg-hear-t, .vg-hear.vg-bn .vg-hear-sub { font-family: var(--dk-font-bn); }
+.vg-hear.is-playing { cursor: default; animation: none; background: var(--vg-ink-2); color: var(--vg-cream); border: 1px solid #4A5A1E; }
+.vg-hear.is-playing .vg-hear-t { font-size: 14.5px; }
+.vg-hear-bars { display: flex; align-items: center; gap: 3px; height: 22px; padding: 0 4px; }
+.vg-hear-bars i { width: 4px; height: 100%; border-radius: 2px; background: var(--vg-lime); transform-origin: center; animation: vgBars 0.9s ease-in-out infinite; }
+.vg-hear-bars i:nth-child(2) { animation-delay: -0.2s; } .vg-hear-bars i:nth-child(3) { animation-delay: -0.45s; } .vg-hear-bars i:nth-child(4) { animation-delay: -0.1s; } .vg-hear-bars i:nth-child(5) { animation-delay: -0.6s; }
+.vg-hear-stop { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--vg-line); background: var(--vg-ink); color: var(--vg-cream); font: 600 12.5px var(--dk-font-sans); cursor: pointer; }
+.vg-hear.vg-bn .vg-hear-stop { font-family: var(--dk-font-bn); }
+.vg-hear-again { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; padding: 4px 2px; border: 0; background: none; color: var(--vg-muted); font: 600 12.5px var(--dk-font-sans); cursor: pointer; }
+.vg-hear-again:hover { color: var(--vg-cream); }
+.vg-hear-again.vg-bn { font-family: var(--dk-font-bn); }
+.vg-orb-btn { padding: 0; border: 0; cursor: pointer; }
+.vg-orb-btn:disabled { cursor: default; }
+.vg-orb-btn:focus-visible { outline: 2px solid var(--vg-lime); outline-offset: 3px; }
+/* Until she has said hello, the languages wait quietly as outlines. */
+.vg-welcome-langs.is-quiet .vg-btn-lime { background: transparent; color: var(--vg-cream); border-color: #4A4F37; }
+.vg-welcome-langs.is-quiet .vg-btn-lime:hover { border-color: var(--vg-lime); color: var(--vg-lime); }
+@media (prefers-reduced-motion: reduce) { .vg-hear { animation: none; } .vg-hear-bars i { animation: none; transform: scaleY(0.7); } }
