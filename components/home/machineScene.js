@@ -306,7 +306,8 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
     return path;
   }
   const R = {
-    chan: chanX.map((x) => cable(route([[x, 2.05], [x, 1.3], [-3.8, 1.3], [-3.8, 0.45]]), st.in)),
+    // One cable in front of the icon row (so it never crosses an icon), then back to the phone.
+    chan: cable(route([[-8.4, 2.95], [-3.8, 2.95], [-3.8, 0.45]]), st.in),
     toNova: cable(route([[-3.2, 0.3], [-0.8, 0.3]]), st.nova),
     toApp: cable(route([[0.8, 0.3], [2.2, 0.3], [2.2, -2.5], [3.4, -2.5]]), st.app),
     toShop: cable(route([[3.9, -2.4], [3.9, 2.0]]), st.outShop),
@@ -539,9 +540,9 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
   const ease = x => x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
   const chanIndex = () => (data.phone[kind].channel === "Instagram" ? 1 : 0);
 
-  function placePulse(path, a, b, t) {
+  function placePulse(path, a, b, t, u0 = 0) {
     if (t < a || t > b) return false;
-    path.getPointAt(ease((t - a) / (b - a)), tmp);
+    path.getPointAt(u0 + ease((t - a) / (b - a)) * (1 - u0), tmp);
     pulse.position.copy(tmp).setY(Y + 0.1);
     return true;
   }
@@ -566,7 +567,7 @@ export function createMachine({ canvas, labels, data, reduced, coarse, onPhase, 
     // Pulse along the cable.
     const ci = chanIndex();
     pulse.visible =
-      placePulse(R.chan[ci], 0.15, T.phoneFrom, t) ||
+      placePulse(R.chan, 0.15, T.phoneFrom, t, (chanX[ci] + 8.4) / R.chan.getLength()) ||
       placePulse(R.toNova, T.novaIn[0], T.novaIn[1], t) ||
       placePulse(R.toApp, T.toApp[0], T.toApp[1], t) ||
       placePulse(kind === "shop" ? R.toShop : R.toSvc, T.toOut[0], T.toOut[1], t);
