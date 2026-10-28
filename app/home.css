@@ -336,6 +336,27 @@ html[lang="bn"] .hm-vs-group-t { letter-spacing: normal; text-transform: none; f
 .hm-pv-bubble { position: absolute; right: 8px; bottom: 8px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px 5px 6px; border-radius: 99px; background: #0F120B; color: #FBFBF4; font-size: 10.5px; font-weight: 700; }
 .hm[data-aud="both"] .hm-part-website .hm-pv > * { max-width: 520px; }
 
+/* Set up: a small preview on each step (SetupPreview) */
+.hm-pv-setup { height: 168px; margin-bottom: 8px; }
+.hm-pv-list { gap: 0; padding: 6px 12px; }
+.hm-pv-list .hm-pv-line { align-items: center; padding: 6px 0; }
+.hm-pv-list .hm-pv-line:first-child { border-top: 0; }
+.hm-pv-ok { color: #3E7A45; font-size: 11px; }
+.hm-pv-btn { padding: 2px 9px; border-radius: 99px; border: 1px solid #DAD8CC; font-size: 10.5px; font-weight: 700; color: #55584B; }
+.hm-pv-prod { grid-template-columns: 52px minmax(0, 1fr); gap: 10px; align-items: center; }
+.hm-pv-prod img { width: 52px; height: 66px; border-radius: 9px; object-fit: cover; object-position: 50% 8%; }
+.hm-pv-prod b { display: block; }
+.hm-pv-price { display: inline-block; margin: 2px 0 6px; font-weight: 700; color: #3E7A45; }
+.hm-pv-row .hm-pv-price { margin: 0 0 0 auto; }
+.hm-pv-sizes { display: flex; gap: 4px; flex-wrap: wrap; }
+.hm-pv-sizes span { min-width: 26px; padding: 2px 6px; border-radius: 7px; border: 1px solid #DAD8CC; text-align: center; font-size: 10.5px; color: #33372A; }
+.hm-pv-on { gap: 12px; }
+.hm-pv-on .hm-pv-row b { font-size: 12px; }
+.hm-pv-switch { margin-left: auto; width: 38px; height: 22px; border-radius: 99px; background: #C6F035; position: relative; flex-shrink: 0; }
+.hm-pv-switch i { position: absolute; right: 3px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: #0F120B; }
+.hm-pv-live { display: inline-flex; align-items: center; gap: 7px; padding: 6px 10px; border-radius: 9px; background: #F1FBD2; color: #3E7A45; font-size: 11px; font-weight: 600; }
+.hm-pv-live i { width: 7px; height: 7px; border-radius: 50%; background: #3E7A45; box-shadow: 0 0 0 3px rgba(62,122,69,0.18); }
+
 /* Everything to run it on laptops and tablets (RunWalk.jsx): Nova walks the line */
 .hm-walk { --node: 72px; position: relative; }
 .hm-walk.is-one { max-width: 620px; margin: 0 auto; }

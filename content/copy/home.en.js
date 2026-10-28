@@ -247,6 +247,16 @@ const home = {
       },
       { t: "Turn Nova on", d: "One switch. She starts right away, and one tap turns her off." },
     ],
+    // Small previews of each step (HomeSections.jsx SetupPreview).
+    previews: {
+      channels: [["Messenger", true], ["Instagram", true], ["WhatsApp", false], ["Website chat", true]],
+      connected: "Connected",
+      connect: "Connect",
+      product: { n: "Peacock Teal Panjabi", p: "৳2,350", sizes: ["38", "40", "42", "44", "46"] },
+      service: { n: "Bridal makeup", p: "from ৳15,000", dur: "3 hours", hours: "Sat to Thu · 10 AM to 8 PM" },
+      on: "Answer customer messages",
+      live: "Nova is answering · 3 chats today",
+    },
   },
 
   charge: {

@@ -686,6 +686,12 @@ _How to start. Step 2 follows the switch._
 - EN: One switch. She starts right away, and one tap turns her off.
 - BN: একটা সুইচ। সাথে সাথে কাজ শুরু করে, আর এক চাপেই বন্ধ।
 
+_Each step opens with a small preview of that screen: the four channels with Connected (WhatsApp shows Connect), the Peacock Teal Panjabi with ৳2,350 and sizes 38 to 46 (services: Bridal makeup, from ৳15,000, 3 hours, Sat to Thu 10 AM to 8 PM), and the Answer customer messages switch on with "Nova is answering · 3 chats today"._
+
+**Preview labels**
+- EN: Connected · Connect · Answer customer messages · Nova is answering · 3 chats today
+- BN: যুক্ত · যুক্ত করুন · কাস্টমারের মেসেজের উত্তর দিন · Nova উত্তর দিচ্ছে · আজ ৩টা চ্যাট
+
 ### 6 · You stay in charge
 
 _Answers the fear behind any AI: "what if she gets it wrong?" Three points, no diagram._

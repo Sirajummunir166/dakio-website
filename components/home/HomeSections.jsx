@@ -312,6 +312,39 @@ export function Flow({ c }) {
 
 /* ---------------- 5 · Set up in 5 minutes ---------------- */
 
+// What each step looks like in the app, small, in the same style as PartPreview.
+function SetupPreview({ i, v }) {
+  if (!v) return null;
+  let inner = null;
+  if (i === 0) inner = (
+    <div className="hm-pv-card hm-pv-list">
+      {v.channels.map(([n, on]) => (
+        <div key={n} className="hm-pv-line"><span>{n}</span>{on ? <b className="hm-pv-ok">✓ {v.connected}</b> : <span className="hm-pv-btn">{v.connect}</span>}</div>
+      ))}
+    </div>
+  );
+  if (i === 1) inner = (
+    <>
+      <div className="hm-pv-card hm-pv-prod" data-show="shop">
+        <img src="/demo/saril/peacock-teal-panjabi.jpg" alt="" width={52} height={66} loading="lazy" />
+        <div><b>{v.product.n}</b><span className="hm-pv-price">{v.product.p}</span><div className="hm-pv-sizes">{v.product.sizes.map(z => <span key={z}>{z}</span>)}</div></div>
+      </div>
+      <div className="hm-pv-card" data-show="svc-only">
+        <div className="hm-pv-row"><b>{v.service.n}</b><span className="hm-pv-price">{v.service.p}</span></div>
+        <div className="hm-pv-facts"><span>{v.service.dur}</span></div>
+        <div className="hm-pv-task">{v.service.hours}</div>
+      </div>
+    </>
+  );
+  if (i === 2) inner = (
+    <div className="hm-pv-card hm-pv-on">
+      <div className="hm-pv-row"><span className="hm-pv-orb" /><b>{v.on}</b><span className="hm-pv-switch"><i /></span></div>
+      <span className="hm-pv-live"><i />{v.live}</span>
+    </div>
+  );
+  return <div className="hm-pv hm-pv-setup" aria-hidden="true">{inner}</div>;
+}
+
 export function Setup({ c }) {
   const s = c.setup;
   return (
@@ -323,6 +356,7 @@ export function Setup({ c }) {
       <ol className="hm-setup">
         {s.steps.map((st, i) => (
           <li key={i} className="hm-setup-card">
+            <SetupPreview i={i} v={s.previews} />
             <span className="hm-setup-n">{i + 1}</span>
             {typeof st.t === "string" ? (
               <>
