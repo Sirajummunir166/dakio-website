@@ -255,6 +255,22 @@
 .hm-run-items svg { width: 14px; height: 14px; margin-top: 2px; color: #3E7A45; }
 .hm-plans-svc { margin-top: 14px; }
 
+/* The real app (AppScreens.jsx): tabs over one framed screenshot */
+.hm-app-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0 auto 18px; }
+.hm-app-tab { font: 600 14px var(--dk-font-sans), var(--dk-font-bn), sans-serif; color: #55584B; background: #FBFAF5; border: 1px solid rgba(26,29,18,0.1); padding: 9px 18px; border-radius: 99px; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+.hm-app-tab:hover { color: #1A1D12; border-color: rgba(26,29,18,0.25); }
+.hm-app-tab[aria-selected="true"] { background: #0F120B; color: #C6F035; border-color: #0F120B; }
+.hm-app-tab:focus-visible { outline: 2px solid #3E7A45; outline-offset: 3px; }
+.hm-app-frame { margin: 0; border-radius: 22px; overflow: hidden; background: #FBFAF5; border: 1px solid rgba(26,29,18,0.12); box-shadow: 0 30px 70px rgba(26,29,18,0.12), 0 2px 6px rgba(26,29,18,0.05); }
+.hm-app-bar { display: flex; align-items: center; gap: 14px; padding: 11px 16px; background: #ECEAE0; border-bottom: 1px solid rgba(26,29,18,0.08); }
+.hm-app-dots { display: inline-flex; gap: 6px; }
+.hm-app-dots i { width: 10px; height: 10px; border-radius: 50%; background: #CFCBBB; }
+.hm-app-url { flex: 0 1 360px; margin: 0 auto; padding: 4px 14px; border-radius: 8px; background: #FBFAF5; font-family: var(--dk-font-mono), monospace; font-size: 11.5px; color: #6B6D60; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hm-app-shot { position: relative; aspect-ratio: 2 / 1; background: #F0EEE6; }
+.hm-app-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; opacity: 0; transition: opacity .35s ease; }
+.hm-app-shot img.is-on { opacity: 1; }
+.hm-app-cap { padding: 14px 20px 16px; font-size: 14px; line-height: 1.55; color: #55584B; border-top: 1px solid rgba(26,29,18,0.08); }
+
 /* ---------- Phones and tablets ---------- */
 @media (max-width: 980px) {
   .hm-hero-top, .hm-charge, .hm-team { grid-template-columns: minmax(0, 1fr); gap: 28px; }
@@ -276,6 +292,10 @@
   .hm-hero { border-radius: 0; padding: 44px 16px 28px; }
   .hm-hero-stage { margin: 18px -16px -28px; }
   .hm-run { padding: 20px 18px 24px; border-radius: 24px; }
+  .hm-app-tabs { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px 14px; padding: 0 16px; scrollbar-width: none; }
+  .hm-app-tab { white-space: nowrap; flex-shrink: 0; }
+  .hm-app-frame { border-radius: 16px; margin: 0 -4px; }
+  .hm-app-cap { font-size: 13px; padding: 12px 14px 14px; }
   .hm-run-line { grid-template-columns: minmax(0, 1fr); gap: 0; padding-left: 4px; }
   .hm-run-line::before { display: block; left: 12px; right: auto; top: 10px; bottom: 10px; width: 2px; height: auto; }
   .hm-run-stage { padding: 0 0 18px 34px; }
@@ -319,7 +339,7 @@ html[lang="bn"] .hm-cta-h2 { font-size: 46px; }
 html[lang="bn"] .hm-kicker, html[lang="bn"] .hm-badge, html[lang="bn"] .hm-ask-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; text-transform: none; font-size: 13px; }
 html[lang="bn"] .hm-lead, html[lang="bn"] .hm-body, html[lang="bn"] .hm-lead-dark, html[lang="bn"] .hm-note, html[lang="bn"] .hm-faq summary, html[lang="bn"] .hm-vs-t { font-family: var(--dk-font-bn), sans-serif; line-height: 1.75; }
 html[lang="bn"] .hm-msg, html[lang="bn"] .hm-pcard-txt, html[lang="bn"] .hm-rcard-txt, html[lang="bn"] .hm-chips, html[lang="bn"] .hm-shot-cap, html[lang="bn"] .hm-chat-cap { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
-html[lang="bn"] .hm-run-nova, html[lang="bn"] .hm-run-t, html[lang="bn"] .hm-run-items li, html[lang="bn"] .hm-run-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; line-height: 1.6; }
+html[lang="bn"] .hm-app-tab, html[lang="bn"] .hm-app-cap, html[lang="bn"] .hm-run-nova, html[lang="bn"] .hm-run-t, html[lang="bn"] .hm-run-items li, html[lang="bn"] .hm-run-label { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; line-height: 1.6; }
 html[lang="bn"] .hm-mach-cap, html[lang="bn"] .hm-mach-cap b, html[lang="bn"] .hm-mach-steps button, html[lang="bn"] .hm-mach-pin, html[lang="bn"] .hm-mach-pause, html[lang="bn"] .hm-mach-hint, html[lang="bn"] .hm-mach-back { font-family: var(--dk-font-bn), sans-serif; line-height: 1.6; }
 html[lang="bn"] .hm-seg button, html[lang="bn"] .hm-btn { font-family: var(--dk-font-bn), sans-serif; }
 @media (max-width: 980px) {

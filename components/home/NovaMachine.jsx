@@ -20,14 +20,14 @@ const KEYS = ["in", "nova", "app", "outShop", "outSvc"];
 const SCREENS = {
   shop: {
     title: "Orders", sub: "Saril · today", menu: ["Orders", "Products", "Customers", "Inbox", "Couriers"], byNova: "BY NOVA",
-    cols: [{ h: "Order", x: 0 }, { h: "Area", x: 110 }, { h: "Items", x: 270 }, { h: "Total", x: 560 }, { h: "Payment", x: 680 }],
-    fresh: ["#1044", "Mirpur 10", "Marigold Yellow Panjabi · M", "৳2,260", "COD"],
+    cols: [{ h: "Order", x: 0 }, { h: "Area", x: 140 }, { h: "Items", x: 300 }, { h: "Total", x: 580 }, { h: "Payment", x: 700 }],
+    fresh: ["#6BB-VHQ6", "Mirpur 10", "Marigold Yellow Panjabi · 40", "৳2,260", "COD"],
     rows: [
-      ["#1043", "Dhanmondi", "2 items", "৳3,480", "bKash"],
-      ["#1042", "Uttara", "1 item", "৳1,590", "COD"],
-      ["#1041", "Mohammadpur", "3 items", "৳4,120", "COD"],
-      ["#1040", "Banani", "1 item", "৳2,190", "bKash"],
-      ["#1039", "Badda", "2 items", "৳2,850", "COD"],
+      ["#8CG-HH5N", "Dhanmondi", "2 items", "৳4,170", "bKash"],
+      ["#5XW-LWHP", "Khilgaon", "1 item", "৳2,420", "COD"],
+      ["#AXW-C5M5", "Mohammadpur", "1 item", "৳3,520", "COD"],
+      ["#MJD-EKTN", "Sylhet", "2 items", "৳3,370", "COD"],
+      ["#DHX-R8MD", "Banani", "1 item", "৳6,820", "bKash"],
     ],
   },
   svc: {

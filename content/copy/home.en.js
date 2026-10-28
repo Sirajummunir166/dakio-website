@@ -74,7 +74,7 @@ const home = {
       in: { t: "Chats come in", d: "Messenger, Instagram, WhatsApp and the chat on your website land in one inbox." },
       nova: { t: "Nova decides", d: "She reads the message, checks the price, the stock and the free times, and answers in Bangla or English in seconds." },
       app: {
-        shop: { t: "Order is made", d: "Order #1044: Marigold Yellow Panjabi, size M, ৳2,260 cash on delivery. In your orders, nobody typed it." },
+        shop: { t: "Order is made", d: "Order #6BB-VHQ6: Marigold Yellow Panjabi, size 40, ৳2,260 cash on delivery. In your orders, nobody typed it." },
         svc: { t: "Booking is made", d: "Bridal trial, Friday 4 PM. On your calendar and confirmed, with the client's name and phone." },
       },
       out: {
@@ -82,6 +82,22 @@ const home = {
         svc: { t: "Client is reminded", d: "An SMS or email the day before, so she comes. Your artist gets her list in the morning." },
       },
     },
+  },
+
+  // The real app (components/home/AppScreens.jsx): screenshots of the merchant
+  // app with two example stores, Saril (clothing) and Glow Studio (parlour).
+  app: {
+    kicker: "THE REAL APP",
+    h2: "This is what you get. Not a mock-up.",
+    sub: "Real screens from Dakio, with two example stores: Saril, a clothing shop, and Glow Studio, a beauty parlour.",
+    screens: [
+      { key: "shop-orders", show: "shop", tab: "Orders", url: "app.dakio.io/orders", alt: "Dakio Orders page for Saril: order counts by status and a list of orders with photos, customers, totals and couriers", cap: "Every order in one list, from chats, comments, your website and the counter, with its status and courier." },
+      { key: "shop-products", show: "shop", tab: "Products and stock", url: "app.dakio.io/products", alt: "Dakio Products page for Saril: products with photos, category, purchase and selling price, and stock", cap: "Your catalogue with photos, purchase and selling price, and the stock you have." },
+      { key: "shop-inbox", show: "shop", tab: "Inbox", url: "app.dakio.io/front-office", alt: "Dakio Front Office inbox: chats from Messenger and Instagram, and Nova taking an order for a Marigold Yellow Panjabi", cap: "Messenger, Instagram and WhatsApp in one inbox. Here Nova takes the Marigold Yellow Panjabi order." },
+      { key: "svc-calendar", show: "svc", tab: "Calendar", url: "app.dakio.io/bookings", alt: "Dakio Bookings calendar for Glow Studio: a week of bookings with the client, service and artist", cap: "The week at a glance: who comes, when, for what and with which artist. The sparkle marks a booking Nova made." },
+      { key: "svc-client", show: "svc", tab: "Client page", url: "app.dakio.io/customers", alt: "Dakio client page for a bride: wedding date, area, budget, next booking, open deal and balance due", cap: "One page per client: her wedding date and budget, the next booking, the deal and what she still owes." },
+      { key: "svc-pipeline", show: "svc", tab: "Pipeline", url: "app.dakio.io/pipeline", alt: "Dakio Pipeline board for Glow Studio: enquiries by stage with value and who handles each", cap: "Every enquiry from the first message to won, with its value and who is on it." },
+    ],
   },
 
   contrast: {
@@ -155,11 +171,11 @@ const home = {
     head: { shop: { name: "Saril", channel: "Messenger" }, svc: { name: "Glow Studio", channel: "Instagram" } },
     shop: [
       { from: "them", shot: "Saril · Marigold Yellow Panjabi", img: "/demo/saril/marigold-yellow-panjabi.jpg", t: "Eta ase?" },
-      { from: "nova", t: "Ji, ase! Eta amader Marigold Yellow Panjabi.", product: { n: "Marigold Yellow Panjabi", p: "৳2,190", note: "M and L in stock", img: "/demo/saril/marigold-yellow-panjabi.jpg" } },
-      { from: "them", t: "M size. Mirpur e delivery koto?" },
+      { from: "nova", t: "Ji, ase! Eta amader Marigold Yellow Panjabi.", product: { n: "Marigold Yellow Panjabi", p: "৳2,190", note: "38 to 46 in stock", img: "/demo/saril/marigold-yellow-panjabi.jpg" } },
+      { from: "them", t: "40 size. Mirpur e delivery koto?" },
       { from: "nova", t: "Mirpur e delivery ৳70, 2 dine pouchabe. Total ৳2,260. Order kore dibo?" },
       { from: "them", t: "Ha den. Mirpur 10, 01711-xxxxxx" },
-      { from: "nova", t: "Order confirmed! Receipt pathalam. Parcel pathale janabo.", card: { t: "Order #1044 · ৳2,260", d: "Cash on delivery · now in your Orders" } },
+      { from: "nova", t: "Order confirmed! Receipt pathalam. Parcel pathale janabo.", card: { t: "Order #6BB-VHQ6 · ৳2,260", d: "Cash on delivery · now in your Orders" } },
     ],
     svc: [
       { from: "them", t: "Friday bridal trial kora jabe?" },

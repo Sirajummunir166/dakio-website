@@ -101,8 +101,8 @@ _Below the headline, across the hero: a 3D line on the hero's dark floor. Channe
 - BN: নোভা সিদ্ধান্ত নেয়: মেসেজ পড়ে, দাম, স্টক আর খালি সময় মিলিয়ে, কয়েক সেকেন্ডে বাংলা বা ইংরেজিতে উত্তর দেয়।
 
 **03 · Shop · Order is made**
-- EN: Order is made: Order #1044: Marigold Yellow Panjabi, size M, ৳2,260 cash on delivery. In your orders, nobody typed it.
-- BN: অর্ডার তৈরি: অর্ডার #১০৪৪: ম্যারিগোল্ড ইয়েলো পাঞ্জাবি, সাইজ M, ৳২,২৬০ ক্যাশ অন ডেলিভারি। আপনার অর্ডারে, কাউকে টাইপ করতে হয়নি।
+- EN: Order is made: Order #6BB-VHQ6: Marigold Yellow Panjabi, size 40, ৳2,260 cash on delivery. In your orders, nobody typed it.
+- BN: অর্ডার তৈরি: অর্ডার #6BB-VHQ6: ম্যারিগোল্ড ইয়েলো পাঞ্জাবি, সাইজ ৪০, ৳২,২৬০ ক্যাশ অন ডেলিভারি। আপনার অর্ডারে, কাউকে টাইপ করতে হয়নি।
 
 **03 · Services · Booking is made**
 - EN: Booking is made: Bridal trial, Friday 4 PM. On your calendar and confirmed, with the client's name and phone.
@@ -195,6 +195,70 @@ _Right under the hero. The whole system, stage by stage, so a visitor sees Dakio
 **Note**
 - EN: Every part above is in the app today.
 - BN: উপরের প্রতিটা অংশ আজই অ্যাপে আছে।
+
+### 1c · The real app (new)
+
+_Real screens of the merchant app (public/app/*.webp, 1600x800), taken on the example stores Saril (clothing, real catalogue and photos) and Glow Studio (beauty parlour), with demo orders, chats, bookings and deals on a throwaway copy of the demo database. Tabs follow the switch; Both shows all six. Nova's order in the inbox and the Orders list is #6BB-VHQ6, the same number the chat card and the hero use._
+
+**Kicker**
+- EN: THE REAL APP
+- BN: আসল অ্যাপ
+
+**Heading**
+- EN: This is what you get. Not a mock-up.
+- BN: আপনি যা পাবেন, ঠিক এটাই। কোনো বানানো ছবি না।
+
+**Sub**
+- EN: Real screens from Dakio, with two example stores: Saril, a clothing shop, and Glow Studio, a beauty parlour.
+- BN: Dakio-র আসল স্ক্রিন, দুটো উদাহরণ দোকান দিয়ে: Saril, একটা পোশাকের দোকান, আর Glow Studio, একটা বিউটি পার্লার।
+
+**Shops · tab**
+- EN: Orders
+- BN: অর্ডার
+
+**Shops · Orders · caption**
+- EN: Every order in one list, from chats, comments, your website and the counter, with its status and courier.
+- BN: সব অর্ডার এক তালিকায়: চ্যাট, কমেন্ট, ওয়েবসাইট আর কাউন্টার থেকে, স্ট্যাটাস আর কুরিয়ার সহ।
+
+**Shops · tab**
+- EN: Products and stock
+- BN: প্রোডাক্ট আর স্টক
+
+**Shops · Products and stock · caption**
+- EN: Your catalogue with photos, purchase and selling price, and the stock you have.
+- BN: আপনার পুরো ক্যাটালগ: ছবি, কেনা আর বিক্রির দাম, আর কতটা স্টকে আছে।
+
+**Shops · tab**
+- EN: Inbox
+- BN: ইনবক্স
+
+**Shops · Inbox · caption**
+- EN: Messenger, Instagram and WhatsApp in one inbox. Here Nova takes the Marigold Yellow Panjabi order.
+- BN: মেসেঞ্জার, ইনস্টাগ্রাম আর হোয়াটসঅ্যাপ এক ইনবক্সে। এখানে Nova নিচ্ছে Marigold Yellow Panjabi-র অর্ডার।
+
+**Services · tab**
+- EN: Calendar
+- BN: ক্যালেন্ডার
+
+**Services · Calendar · caption**
+- EN: The week at a glance: who comes, when, for what and with which artist. The sparkle marks a booking Nova made.
+- BN: এক নজরে পুরো সপ্তাহ: কে আসবেন, কখন, কী সার্ভিস আর কোন আর্টিস্টের কাছে। ঝিকমিক চিহ্ন মানে বুকিংটা Nova করেছে।
+
+**Services · tab**
+- EN: Client page
+- BN: ক্লায়েন্টের পাতা
+
+**Services · Client page · caption**
+- EN: One page per client: her wedding date and budget, the next booking, the deal and what she still owes.
+- BN: প্রতি ক্লায়েন্টের এক পাতা: বিয়ের তারিখ আর বাজেট, পরের বুকিং, ডিল আর কত টাকা বাকি।
+
+**Services · tab**
+- EN: Pipeline
+- BN: পাইপলাইন
+
+**Services · Pipeline · caption**
+- EN: Every enquiry from the first message to won, with its value and who is on it.
+- BN: প্রথম মেসেজ থেকে কনফার্ম পর্যন্ত প্রতিটা এনকোয়ারি, টাকার অঙ্ক আর কে দেখছেন সহ।
 
 ### 2 · Other tools vs Dakio
 
@@ -409,12 +473,12 @@ _A phone plays one conversation where Nova turns chat into an order or a booking
 - BN: এটা আছে? [screenshot with photo: Saril · Marigold Yellow Panjabi]
 
 **Shop · Saril · Messenger · Nova**
-- EN: Ji, ase! Eta amader Marigold Yellow Panjabi. [product card with photo: Marigold Yellow Panjabi · ৳2,190 · M and L in stock]
-- BN: জি, আছে! এটা আমাদের Marigold Yellow Panjabi। [product card with photo: Marigold Yellow Panjabi · ৳২,১৯০ · M আর L সাইজ স্টকে আছে]
+- EN: Ji, ase! Eta amader Marigold Yellow Panjabi. [product card with photo: Marigold Yellow Panjabi · ৳2,190 · 38 to 46 in stock]
+- BN: জি, আছে! এটা আমাদের Marigold Yellow Panjabi। [product card with photo: Marigold Yellow Panjabi · ৳২,১৯০ · ৩৮ থেকে ৪৬ সাইজ স্টকে আছে]
 
 **Shop · Saril · Messenger · Customer**
-- EN: M size. Mirpur e delivery koto?
-- BN: M সাইজ। মিরপুরে ডেলিভারি কত?
+- EN: 40 size. Mirpur e delivery koto?
+- BN: ৪০ সাইজ। মিরপুরে ডেলিভারি কত?
 
 **Shop · Saril · Messenger · Nova**
 - EN: Mirpur e delivery ৳70, 2 dine pouchabe. Total ৳2,260. Order kore dibo?
@@ -425,8 +489,8 @@ _A phone plays one conversation where Nova turns chat into an order or a booking
 - BN: হ্যাঁ দেন। মিরপুর ১০, 01711-xxxxxx
 
 **Shop · Saril · Messenger · Nova**
-- EN: Order confirmed! Receipt pathalam. Parcel pathale janabo. [card: Order #1044 · ৳2,260 · Cash on delivery · now in your Orders]
-- BN: অর্ডার কনফার্ম! রসিদ পাঠালাম। পার্সেল পাঠালে জানাব। [card: অর্ডার #১০৪৪ · ৳২,২৬০ · ক্যাশ অন ডেলিভারি · আপনার অর্ডার তালিকায় উঠে গেছে]
+- EN: Order confirmed! Receipt pathalam. Parcel pathale janabo. [card: Order #6BB-VHQ6 · ৳2,260 · Cash on delivery · now in your Orders]
+- BN: অর্ডার কনফার্ম! রসিদ পাঠালাম। পার্সেল পাঠালে জানাব। [card: অর্ডার #6BB-VHQ6 · ৳২,২৬০ · ক্যাশ অন ডেলিভারি · আপনার অর্ডার তালিকায় উঠে গেছে]
 
 **Service · Glow Studio · Instagram · Customer**
 - EN: Friday bridal trial kora jabe?

@@ -8,7 +8,7 @@ import Reveal from "../../components/Reveal";
 import LogoDefs from "../../components/Logo";
 import PageJsonLd from "../../components/PageJsonLd";
 import { AudienceRoot } from "../../components/home/Audience";
-import { Hero, Works, Run, Contrast, Parts, Flow, Setup, Charge, Pricing, Faq, Closing } from "../../components/home/HomeSections";
+import { Hero, Works, Run, RealApp, Contrast, Parts, Flow, Setup, Charge, Pricing, Faq, Closing } from "../../components/home/HomeSections";
 import { href, languageAlternates } from "../../lib/i18n";
 import { type } from "../../lib/type";
 import homeEn, { MARQUEE as MARQUEE_EN } from "../../content/copy/home.en";
@@ -48,6 +48,7 @@ export default async function Home({ params }) {
       <Hero c={c} lang={lang} L={L} />
       <Works c={c} marquee={MARQUEE[lang] || MARQUEE_EN} />
       <Run c={c} />
+      <RealApp c={c} />
       <Contrast c={c} />
       <Parts c={c} L={L} />
       <Flow c={c} />

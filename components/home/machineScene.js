@@ -605,7 +605,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   function drawShippingLabel(ctx) {
     ctx.fillStyle = "#FFFFFF"; rr(ctx, 4, 4, 248, 152, 14); ctx.fill();
     ctx.fillStyle = CSS.ink0; ctx.font = font(800, 30); ctx.textBaseline = "top"; ctx.fillText("Saril", 20, 18);
-    ctx.font = font(600, 20); ctx.fillStyle = CSS.muted; ctx.fillText("#1044 · Mirpur 10", 20, 58);
+    ctx.font = font(600, 20); ctx.fillStyle = CSS.muted; ctx.fillText("#6BB-VHQ6 · Mirpur 10", 20, 58);
     ctx.fillStyle = CSS.ink0; for (let i = 0; i < 26; i++) ctx.fillRect(20 + i * 8, 100, i % 3 ? 3 : 5, 40);
   }
   function radialTex(stops) {

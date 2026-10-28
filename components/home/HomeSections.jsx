@@ -8,6 +8,7 @@ import Link from "next/link";
 import { AudienceSwitch, StartLink } from "./Audience";
 import ChatDemo from "./ChatDemo";
 import NovaMachine from "./NovaMachine";
+import AppScreens from "./AppScreens";
 import HomePlans from "./HomePlans";
 import TrialLine from "../pricing/TrialLine";
 import { REGISTER_URL } from "../../lib/urls";
@@ -142,6 +143,22 @@ export function Run({ c }) {
         {line("svc", "svc")}
       </div>
       <p className="hm-note hm-center">{x.note}</p>
+    </section>
+  );
+}
+
+/* ---------------- 1c · The real app (AppScreens.jsx) ---------------- */
+
+export function RealApp({ c }) {
+  const x = c.app;
+  return (
+    <section className="hm-wrap hm-sec" data-reveal>
+      <div className="hm-head">
+        <div className="hm-kicker">{x.kicker}</div>
+        <h2 className="hm-h2">{x.h2}</h2>
+        <p className="hm-lead-dark">{x.sub}</p>
+      </div>
+      <AppScreens screens={x.screens} />
     </section>
   );
 }
