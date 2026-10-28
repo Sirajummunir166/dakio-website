@@ -443,7 +443,7 @@ html[lang="bn"] .hm-vs-group-t { letter-spacing: normal; text-transform: none; f
   /* Phones: the phone on top, the line under it, both pinned. */
   .hm-chat-track { height: calc(var(--beats) * 26vh + 560px); }
   .hm-chatdemo { top: 76px; grid-template-columns: minmax(0, 1fr); gap: 14px; max-width: 420px; }
-  .hm-phone { height: min(400px, 48vh); border-width: 6px; border-radius: 28px; }
+  .hm-phone { height: min(480px, 56vh); border-width: 6px; border-radius: 28px; }
   .hm-chatside { min-height: 0; gap: 10px; }
   /* Big and bold under the phone, so the line fills the space below it. */
   .hm-chatside { padding-top: 6px; }
