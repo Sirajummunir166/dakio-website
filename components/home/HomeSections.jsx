@@ -163,8 +163,7 @@ export function RealApp({ c }) {
         <h2 className="hm-h2">{x.h2}</h2>
         <p className="hm-lead-dark">{x.sub}</p>
       </div>
-      <SectionSwitch label={c.hero.ask} opts={c.hero.opts} />
-      <AppScreens screens={x.screens} />
+      <AppScreens screens={x.screens} groups={c.flow.label} />
     </section>
   );
 }
