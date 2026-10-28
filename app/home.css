@@ -361,11 +361,6 @@
   .hm-parts, .hm-setup, .hm-kinds, .hm-grid4, .hm-steps { grid-template-columns: minmax(0, 1fr); }
   .hm-phone { height: 540px; border-width: 6px; }
   .hm-steps-v li.is-lit { transform: none; }
-  /* Phones: the steps after the chat stack as you scroll; solid cards, so the
-     unlit ones show by their grey number instead of being see-through. */
-  .hm-steps.hm-steps-v { display: block; }
-  .hm-steps-v li:last-child { margin-bottom: 0; }
-  .hm-steps-v li { position: sticky; top: calc(124px + var(--i) * 12px); margin-bottom: 14vh; opacity: 1; padding: 18px; box-shadow: 0 -10px 30px rgba(26,29,18,0.06), 0 14px 30px rgba(26,29,18,0.07); }
   .hm-steps li { grid-template-columns: 34px minmax(0, 1fr); align-items: start; padding: 16px 18px; }
   .hm-charge { padding: 32px 20px; border-radius: 26px; }
   .hm-charge-head .hm-h2, .hm-team .hm-h2 { font-size: 30px; }

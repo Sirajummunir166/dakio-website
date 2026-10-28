@@ -101,7 +101,7 @@ export default function ChatDemo({ chat, flow }) {
       <div className="hm-chatsteps">
         <ol className="hm-steps hm-steps-v">
           {flow[kind].map((t, i) => (
-            <li key={`${kind}-${i}`} className={!live || lit > i ? "is-lit" : undefined} style={{ "--i": i }}>
+            <li key={`${kind}-${i}`} className={!live || lit > i ? "is-lit" : undefined}>
               <span className="hm-step-n">{i + 1}</span><span className="hm-body">{t}</span>
             </li>
           ))}
