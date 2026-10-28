@@ -32,56 +32,12 @@ const home = {
     second: "See Nova at work",
   },
 
-  // Nova's feed in the hero (components/home/NovaFeed.jsx): one line at a
-  // time, in the order of her day ("at" is 24h HH:MM), starting from the real
-  // time in Dhaka. Every line is a real duty or automation: night_shift, morning_brief,
-  // weekly_stock_check, comment_desk, weekly_shipping_summary, content_draft,
-  // order updates, chat follow-ups, review requests, weekly_finance_summary,
-  // pipeline_check, team agendas, booking reminders, the services desk.
-  day: {
-    title: "Nova on duty",
-    live: "LIVE",
-    status: "Watching Messenger, Instagram, WhatsApp and website chat",
-    store: { shop: "Saril · fashion", svc: "Glow Studio · beauty parlour" },
-    shop: [
-      { at: "00:15", tag: "Night shift", t: "Reviewed today's sales and wrote tomorrow's list for you." },
-      { at: "02:10", tag: "Inbox", t: "Answered 3 Instagram messages and took 1 order. ৳2,450." },
-      { at: "06:00", tag: "Report", t: "Sent you the morning report: 23 orders, 84 chats answered, 3 that need you." },
-      { at: "08:30", tag: "Stock", t: "Stock check: the Marigold Yellow Panjabi in M is down to 2. Flagged it for restock." },
-      { at: "10:05", tag: "Comments", t: "Answered 6 comments under today's post and sent the prices to their inboxes." },
-      { at: "11:20", tag: "Courier", t: "Courier check: 2 parcels stuck with Pathao for 3 days. Flagged them for you." },
-      { at: "13:00", tag: "Marketing", t: "Drafted a Facebook post for the Peacock Teal Silk Saree. Waiting for your OK." },
-      { at: "14:30", tag: "Orders", t: "Told Taspia her parcel is on the way." },
-      { at: "16:00", tag: "Customers", t: "Followed up with 5 customers who stopped replying. 2 ordered." },
-      { at: "18:40", tag: "Reviews", t: "Asked 4 customers whose parcels arrived for a review." },
-      { at: "20:15", tag: "Money", t: "Money note: ৳46,200 came in this week, ৳3,100 more than last week." },
-      { at: "23:48", tag: "Inbox", t: "Answered Taspia on Messenger and took her order. ৳2,260, cash on delivery." },
-    ],
-    svc: [
-      { at: "00:20", tag: "Night shift", t: "Reviewed today's bookings and wrote tomorrow's list for you." },
-      { at: "07:30", tag: "Report", t: "Sent you the morning report: 9 bookings today, 2 new enquiries, 1 that needs you." },
-      { at: "08:00", tag: "Team", t: "Sent each artist their bookings for the day." },
-      { at: "09:45", tag: "Pipeline", t: "Pipeline check: 3 bridal enquiries waiting over 2 days. Listed them for you." },
-      { at: "11:10", tag: "Inbox", t: "Answered 4 Instagram messages and booked 2 facials." },
-      { at: "13:00", tag: "Marketing", t: "Drafted a post for the Eid bridal package. Waiting for your OK." },
-      { at: "15:30", tag: "Clients", t: "Saved a new bride's wedding date and budget to her client page." },
-      { at: "17:00", tag: "Follow-up", t: "Reminded you to call Nadia back about her quote." },
-      { at: "18:00", tag: "Reminders", t: "Reminded tomorrow's 7 clients by SMS." },
-      { at: "20:30", tag: "Money", t: "Money note: ৳38,500 came in this week from 21 visits." },
-      { at: "22:15", tag: "Bookings", t: "Booked a bridal trial for Friday at 4 PM on Instagram." },
-    ],
-    caption: "Example store. Every line is work Nova does today.",
-  },
-
-
   works: { label: "Works with what you already use" },
 
   // Nova's machine (components/home/NovaMachine.jsx): a 3D line from a chat
   // to a delivered order or a kept appointment. Every station is a built
   // feature; the courier is booked by the owner from the order page.
   machine: {
-    kicker: "INSIDE DAKIO",
-    h2: { shop: "Watch one chat become a delivered order.", svc: "Watch one chat become a kept appointment.", both: "Watch one chat become an order or a booking." },
     sub: "This is the line Nova runs all day and all night. Drag to look around, or tap a station.",
     hint: { drag: "Drag to look around · Tap a station", touch: "Tap a station" },
     pause: "Pause",

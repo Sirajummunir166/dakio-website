@@ -1,6 +1,6 @@
 "use client";
 
-// Nova's machine: a small 3D line under the hero (machineScene.js does the
+// Nova's machine: the hero visual, a small 3D line (machineScene.js does the
 // three.js side). A chat comes in, Nova answers, the app records it, and the
 // line delivers it: a parcel for shops, a reminder for services. Drag to look
 // around, tap a station to fly to it.
@@ -52,7 +52,7 @@ const SCREENS = {
   },
 };
 
-export default function NovaMachine({ m, chat }) {
+export default function NovaMachine({ m, chat, dark = false }) {
   const { aud } = useAudience();
   const stage = useRef(null);
   const canvas = useRef(null);
@@ -94,7 +94,7 @@ export default function NovaMachine({ m, chat }) {
           canvas: canvas.current,
           labels: pins.current,
           data: { phone: { shop: phone("shop"), svc: phone("svc") }, app: { shop: SCREENS.shop, svc: SCREENS.svc }, cal: SCREENS.cal },
-          fontFamily, reduced, coarse: isCoarse,
+          fontFamily, reduced, coarse: isCoarse, dark,
           onPhase: (p, k) => { setPhase(p); setKind(k); },
           onPick: k => setFocus(k),
         });
@@ -126,7 +126,7 @@ export default function NovaMachine({ m, chat }) {
       api.current?.dispose();
       api.current = null;
     };
-  }, [chat]);
+  }, [chat, dark]);
 
   useEffect(() => { api.current?.setAudience(aud); setFocus(null); }, [aud]);
   useEffect(() => { api.current?.focus(focus); }, [focus]);
@@ -146,7 +146,7 @@ export default function NovaMachine({ m, chat }) {
   const steps = [["in", s.in], ["nova", s.nova], ["app", s.app], ["out", s.out]];
 
   return (
-    <div className="hm-mach">
+    <div className={`hm-mach${dark ? " hm-mach-dark" : ""}`}>
       <div ref={stage} className={`hm-mach-stage is-${state}`}>
         <canvas ref={canvas} className="hm-mach-canvas" aria-label={m.sub} role="img" />
         {state !== "failed" ? (

@@ -6,7 +6,6 @@
 
 import Link from "next/link";
 import { AudienceSwitch, StartLink } from "./Audience";
-import NovaFeed from "./NovaFeed";
 import ChatDemo from "./ChatDemo";
 import NovaMachine from "./NovaMachine";
 import HomePlans from "./HomePlans";
@@ -55,10 +54,12 @@ export function Hero({ c, lang, L, head = null }) {
       <div className="hm-hero">
         <div className="hm-glow hm-glow-a" />
         <div className="hm-glow hm-glow-b" />
-        <div className="hm-hero-grid">
+        <div className="hm-hero-top">
           <div className="hm-hero-text">
             <div className="hm-badge"><span className="hm-dot" />{head ? head.badge : h.badge}</div>
             <h1 className="hm-h1">{head ? head.h1 : h.h1}</h1>
+          </div>
+          <div className="hm-hero-act">
             {head ? null : <AudienceSwitch label={h.ask} opts={h.opts} />}
             {head ? (
               <p className="hm-lead">{head.sub}</p>
@@ -75,7 +76,10 @@ export function Hero({ c, lang, L, head = null }) {
             </div>
             <div className="hm-under">{h.under}</div>
           </div>
-          <NovaFeed d={c.day} lang={lang} />
+        </div>
+        {/* Nova's machine: a chat becoming an order or a booking (NovaMachine.jsx). */}
+        <div className="hm-hero-stage">
+          <NovaMachine m={c.machine} chat={c.chat} dark />
         </div>
       </div>
     </div>
@@ -97,23 +101,6 @@ export function Works({ c, marquee }) {
         </div>
       </div>
     </div>
-  );
-}
-
-/* ---------------- 1b · Nova's machine (NovaMachine.jsx) ---------------- */
-
-export function Machine({ c }) {
-  const x = c.machine;
-  return (
-    <section className="hm-wrap hm-sec hm-sec-mach" data-reveal>
-      <div className="hm-head">
-        <div className="hm-kicker">{x.kicker}</div>
-        <h2 className="hm-h2" data-show="shop-only">{x.h2.shop}</h2>
-        <h2 className="hm-h2" data-show="svc-only">{x.h2.svc}</h2>
-        <h2 className="hm-h2" data-show="both-only">{x.h2.both}</h2>
-      </div>
-      <NovaMachine m={x} chat={c.chat} />
-    </section>
   );
 }
 

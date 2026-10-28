@@ -37,7 +37,7 @@ const ANCHORS = {
   outSvc: [7.7, 2.1, -0.75],
 };
 
-export function createMachine({ canvas, labels, data, fontFamily, reduced, coarse, onPhase, onPick }) {
+export function createMachine({ canvas, labels, data, fontFamily, reduced, coarse, dark, onPhase, onPick }) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" });
   const pr = Math.min(window.devicePixelRatio || 1, 2);
   renderer.setPixelRatio(pr);
@@ -46,7 +46,8 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   renderer.toneMappingExposure = 1.0;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFShadowMap;
-  renderer.setClearColor(COL.bg, 1);
+  // Dark: the hero's ink, so the scene sits in the hero with no frame.
+  renderer.setClearColor(dark ? 0x0F120B : COL.bg, 1);
   const aniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
 
   const scene = new THREE.Scene();
@@ -58,7 +59,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   const pmrem = new THREE.PMREMGenerator(renderer);
   const envRT = pmrem.fromScene(new RoomEnvironment(), 0.04);
   scene.environment = envRT.texture;
-  scene.environmentIntensity = 0.85;
+  scene.environmentIntensity = dark ? 0.75 : 0.85;
   pmrem.dispose();
 
   const camera = new THREE.PerspectiveCamera(24, 16 / 9, 0.1, 160);
@@ -83,7 +84,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   if (coarse) controls.enableRotate = false; // a finger on a phone scrolls the page
   controls.update();
 
-  scene.add(new THREE.HemisphereLight(0xffffff, 0xE6E2D6, 0.55));
+  scene.add(new THREE.HemisphereLight(0xffffff, dark ? 0x1A1D12 : 0xE6E2D6, 0.55));
   const sun = new THREE.DirectionalLight(0xffffff, 2.0);
   sun.position.set(-5, 15, 8);
   sun.castShadow = true;
@@ -123,7 +124,7 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   const keep = x => { disposables.push(x); return x; };
   const phys = (color, extra = {}) => keep(new THREE.MeshPhysicalMaterial({ color, roughness: 0.5, metalness: 0, ...extra }));
   const M = {
-    porcelain: phys(0xF7F6F1, { roughness: 0.55, clearcoat: 0.35, clearcoatRoughness: 0.35 }),
+    porcelain: phys(dark ? 0xEDECE5 : 0xF7F6F1, { roughness: 0.55, clearcoat: 0.35, clearcoatRoughness: 0.35 }),
     white: phys(0xFFFFFF, { roughness: 0.42, clearcoat: 0.5, clearcoatRoughness: 0.25 }),
     alu: phys(0xCFD1CB, { metalness: 1, roughness: 0.3 }),
     aluDark: phys(0x8E918A, { metalness: 1, roughness: 0.38 }),
@@ -192,12 +193,12 @@ export function createMachine({ canvas, labels, data, fontFamily, reduced, coars
   }
 
   // Floor: the page colour, a fine grid that fades out, and soft shadows.
-  const shadowFloor = new THREE.Mesh(keep(new THREE.PlaneGeometry(80, 80)), keep(new THREE.ShadowMaterial({ opacity: 0.16 })));
+  const shadowFloor = new THREE.Mesh(keep(new THREE.PlaneGeometry(80, 80)), keep(new THREE.ShadowMaterial({ opacity: dark ? 0.5 : 0.16 })));
   shadowFloor.rotation.x = -Math.PI / 2; shadowFloor.receiveShadow = true; world.add(shadowFloor);
   {
     const g = canvasTex(1024, 1024);
     const ctx = g.ctx;
-    ctx.strokeStyle = "rgba(120,116,96,0.22)"; ctx.lineWidth = 1.2;
+    ctx.strokeStyle = dark ? "rgba(233,239,220,0.055)" : "rgba(120,116,96,0.22)"; ctx.lineWidth = 1.2;
     for (let i = 0; i <= 1024; i += 1024 / 40) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 1024); ctx.moveTo(0, i); ctx.lineTo(1024, i); ctx.stroke(); }
     ctx.globalCompositeOperation = "destination-in";
     const fade = ctx.createRadialGradient(512, 512, 120, 512, 512, 512);
