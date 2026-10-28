@@ -345,12 +345,15 @@
   .hm-sticky { bottom: auto; top: 72px; padding: 4px; transform: translate(-50%, -12px); }
   .hm-sticky-label { display: none; }
   .hm-sticky .hm-seg button { padding: 7px 13px; }
-  .hm-run { padding: 20px 18px 24px; border-radius: 24px; }
-  .hm-run-line { grid-template-columns: minmax(0, 1fr); gap: 0; padding-left: 4px; }
-  .hm-run-line::before { display: block; left: 12px; right: auto; top: 10px; bottom: 10px; width: 2px; height: auto; }
-  .hm-run-stage { padding: 0 0 18px 34px; }
-  .hm-run-dot { left: 4px; top: 2px; }
-  .hm-run-t { margin-top: 2px; }
+  /* Phones: each stage is a card that sticks under the menu as the next slides over. */
+  .hm-run { padding: 0; background: transparent; border: 0; border-radius: 0; }
+  .hm-run-block { margin-top: 22px; }
+  .hm-run-label { margin: 0 0 10px 4px; }
+  .hm-run-line { display: block; padding: 0; }
+  .hm-run-line::before, .hm-run-stage::before { display: none; }
+  .hm-run-stage { position: sticky; top: calc(124px + var(--i) * 12px); margin-bottom: 18px; padding: 18px 18px 20px; border-radius: 22px; background: #FBFAF5; border: 1px solid rgba(26,29,18,0.1); box-shadow: 0 -10px 30px rgba(26,29,18,0.06), 0 16px 34px rgba(26,29,18,0.08); }
+  .hm-run-dot { position: relative; left: auto; top: auto; display: inline-block; width: 14px; height: 14px; margin-right: 8px; vertical-align: -2px; border-width: 2px; }
+  .hm-run-t { margin: 6px 0 12px; font-size: 19px; }
   .hm-mach-dark .hm-mach-stage { height: 460px; }
   .hm-mach-dark .hm-mach-cap { left: 12px; right: 12px; bottom: 12px; }
   .hm-mach-dark .hm-mach-pause { top: 14px; right: 12px; }

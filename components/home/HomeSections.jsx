@@ -120,7 +120,7 @@ export function Run({ c }) {
       <div className="hm-run-label" data-show="both-only">{c.flow.label[k]}</div>
       <ol className="hm-run-line">
         {x[k].map((st, i) => (
-          <li key={st.t} className="hm-run-stage">
+          <li key={st.t} className="hm-run-stage" style={{ "--i": i }}>
             <span className="hm-run-dot" aria-hidden="true" />
             <span className="hm-run-n">{String(i + 1).padStart(2, "0")}</span>
             <h3 className="hm-run-t">{st.t}</h3>
