@@ -1,110 +1,112 @@
 "use client";
 
 // The real app: screenshots of the merchant app (public/app/*.webp, taken on
-// the example stores Saril and Glow Studio). The features are listed on the
-// left; the screen on the right plays through them by itself, with a thin
-// bar showing when the next one comes. A click picks one and play goes on
-// from there. Hover, keyboard focus, an off-screen section or a hidden tab
-// pause it; reduced motion never plays. The list follows the Products /
-// Services switch, and Both shows all six under two small headings.
+// the example stores Saril and Glow Studio).
 //
-// Phones get a stack of cards instead, one per feature with its own screen,
-// each sticking under the menu as the next slides over it (no autoplay).
+// Laptops: the feature list and the framed screen stay pinned while you
+// scroll through the section; each stretch of scrolling brings the next
+// feature, and the bar under the active one fills as you go. So a quick
+// scroll still passes every feature. A click scrolls to that feature.
+// Phones: a stack of cards, one per feature with its own screen, each
+// sticking under the menu as the next slides over it.
+//
+// The list follows the Products / Services switch; Both shows all six under
+// two small headings.
 
 import { useEffect, useRef, useState } from "react";
 import { useAudience } from "./Audience";
 
-const EVERY = 5500;
-
 export default function AppScreens({ screens, groups }) {
   const { aud } = useAudience();
   const visible = screens.filter(s => aud === "both" || s.show === aud);
-  const keys = visible.map(s => s.key).join(",");
-  const [active, setActive] = useState(visible[0]?.key);
-  const [hold, setHold] = useState(false);     // hover or focus
-  const [seen, setSeen] = useState(false);     // on screen and tab visible
-  const [motion, setMotion] = useState(false);
-  const box = useRef(null);
+  const n = visible.length;
+  const [idx, setIdx] = useState(0);
+  const [part, setPart] = useState(0); // how far through the active feature, 0..1
+  const track = useRef(null);
+  const pin = useRef(null);
 
-  useEffect(() => { setActive(visible[0]?.key); }, [keys]); // eslint-disable-line react-hooks/exhaustive-deps
-
+  // Where the reader is in the section decides the feature.
   useEffect(() => {
-    setMotion(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-    let inView = false;
-    const sync = () => setSeen(inView && !document.hidden);
-    const io = new IntersectionObserver(([en]) => { inView = en.isIntersecting; sync(); }, { threshold: 0.35 });
-    if (box.current) io.observe(box.current);
-    document.addEventListener("visibilitychange", sync);
-    return () => { io.disconnect(); document.removeEventListener("visibilitychange", sync); };
-  }, []);
+    let raf = 0;
+    const read = () => {
+      raf = 0;
+      const t = track.current, p = pin.current;
+      if (!t || !p || !p.offsetParent) return;
+      const room = t.offsetHeight - p.offsetHeight;
+      const done = Math.min(Math.max(-t.getBoundingClientRect().top + parseFloat(getComputedStyle(p).top), 0), room);
+      const x = room > 0 ? (done / room) * n : 0;
+      const i = Math.min(n - 1, Math.floor(x));
+      setIdx(i);
+      setPart(Math.min(1, x - i));
+    };
+    const on = () => { if (!raf) raf = requestAnimationFrame(read); };
+    read();
+    window.addEventListener("scroll", on, { passive: true });
+    window.addEventListener("resize", on);
+    return () => { window.removeEventListener("scroll", on); window.removeEventListener("resize", on); cancelAnimationFrame(raf); };
+  }, [n]);
 
-  const playing = motion && seen && !hold && visible.length > 1;
-  useEffect(() => {
-    if (!playing) return undefined;
-    const id = setTimeout(() => {
-      const i = visible.findIndex(s => s.key === active);
-      setActive(visible[(i + 1) % visible.length].key);
-    }, EVERY);
-    return () => clearTimeout(id);
-  }, [playing, active, keys]); // eslint-disable-line react-hooks/exhaustive-deps
+  const go = (i) => {
+    const t = track.current, p = pin.current;
+    if (!t || !p) return;
+    const room = t.offsetHeight - p.offsetHeight;
+    const top = t.getBoundingClientRect().top + window.scrollY - parseFloat(getComputedStyle(p).top);
+    const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: top + ((i + 0.15) / n) * room, behavior: smooth ? "smooth" : "auto" });
+  };
 
-  const cur = visible.find(s => s.key === active) || visible[0];
+  const cur = visible[Math.min(idx, n - 1)] || visible[0];
   let lastGroup = null;
 
   return (
     <>
-    <div
-      ref={box}
-      className={`hm-app${playing ? " is-playing" : ""}`}
-      onMouseEnter={() => setHold(true)}
-      onMouseLeave={() => setHold(false)}
-      onFocus={() => setHold(true)}
-      onBlur={() => setHold(false)}
-    >
-      <ul className="hm-app-list" role="tablist" aria-orientation="vertical">
-        {visible.map(s => {
-          const on = cur?.key === s.key;
-          const head = aud === "both" && s.show !== lastGroup ? groups[s.show] : null;
-          lastGroup = s.show;
-          return (
-            <li key={s.key} role="presentation">
-              {head ? <div className="hm-app-group">{head}</div> : null}
-              <button
-                type="button"
-                role="tab"
-                aria-selected={on}
-                className={`hm-app-item${on ? " is-on" : ""}`}
-                onClick={() => setActive(s.key)}
-              >
-                <span className="hm-app-item-t">{s.tab}</span>
-                <span className="hm-app-item-d"><span>{s.cap}</span></span>
-                <span className="hm-app-bar-run" aria-hidden="true"><i key={on ? `${s.key}-run` : s.key} style={{ animationDuration: `${EVERY}ms` }} /></span>
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+    <div ref={track} className="hm-app-track" style={{ "--n": n }}>
+      <div ref={pin} className="hm-app">
+        <ul className="hm-app-list" role="tablist" aria-orientation="vertical">
+          {visible.map((s, i) => {
+            const on = cur?.key === s.key;
+            const head = aud === "both" && s.show !== lastGroup ? groups[s.show] : null;
+            lastGroup = s.show;
+            return (
+              <li key={s.key} role="presentation">
+                {head ? <div className="hm-app-group">{head}</div> : null}
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={on}
+                  className={`hm-app-item${on ? " is-on" : ""}`}
+                  onClick={() => go(i)}
+                >
+                  <span className="hm-app-item-t">{s.tab}</span>
+                  <span className="hm-app-item-d"><span>{s.cap}</span></span>
+                  <span className="hm-app-bar-run" aria-hidden="true"><i style={{ transform: `scaleX(${on ? part : 0})` }} /></span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
 
-      <figure className="hm-app-frame">
-        <div className="hm-app-bar" aria-hidden="true">
-          <span className="hm-app-dots"><i /><i /><i /></span>
-          <span className="hm-app-url">{cur?.url}</span>
-        </div>
-        <div className="hm-app-shot">
-          {screens.map(s => (
-            <img
-              key={s.key}
-              src={`/app/${s.key}.webp`}
-              alt={s.alt}
-              width={1600}
-              height={800}
-              loading="lazy"
-              decoding="async"
-              className={cur?.key === s.key ? "is-on" : undefined}
-            />
-          ))}
-        </div>
-      </figure>
+        <figure className="hm-app-frame">
+          <div className="hm-app-bar" aria-hidden="true">
+            <span className="hm-app-dots"><i /><i /><i /></span>
+            <span className="hm-app-url">{cur?.url}</span>
+          </div>
+          <div className="hm-app-shot">
+            {screens.map(s => (
+              <img
+                key={s.key}
+                src={`/app/${s.key}.webp`}
+                alt={s.alt}
+                width={1600}
+                height={800}
+                loading="lazy"
+                decoding="async"
+                className={cur?.key === s.key ? "is-on" : undefined}
+              />
+            ))}
+          </div>
+        </figure>
+      </div>
     </div>
 
     {/* Phones: one card per feature with its own screen, stacking as you scroll. */}

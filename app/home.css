@@ -265,8 +265,10 @@
 .hm-run-items svg { width: 14px; height: 14px; margin-top: 2px; color: #3E7A45; }
 .hm-plans-svc { margin-top: 14px; }
 
-/* The real app (AppScreens.jsx): features on the left, the screen on the right, playing by itself */
-.hm-app { display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.7fr); gap: 36px; align-items: center; }
+/* The real app (AppScreens.jsx): features on the left, the screen on the right; the pair stays
+   pinned while the reader scrolls through the track, one stretch of scrolling per feature. */
+.hm-app-track { position: relative; height: calc(var(--n) * 52vh + 64vh); }
+.hm-app { position: sticky; top: max(96px, calc(50vh - 260px)); display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.7fr); gap: 36px; align-items: center; }
 .hm-app-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .hm-app-group { margin: 14px 0 6px 18px; font-family: var(--dk-font-mono), monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #3E7A45; }
 .hm-app-list li:first-child .hm-app-group { margin-top: 0; }
@@ -281,17 +283,14 @@
 .hm-app-item-d > span { min-height: 0; overflow: hidden; }
 .hm-app-bar-run { display: block; height: 0; margin-top: 0; border-radius: 2px; background: rgba(26,29,18,0.07); overflow: hidden; opacity: 0; transition: opacity .3s ease; }
 .hm-app-item.is-on .hm-app-bar-run { opacity: 1; height: 2px; margin-top: 12px; }
-.hm-app-bar-run i { display: block; height: 100%; width: 100%; background: #3E7A45; transform-origin: left; transform: scaleX(0); }
-.hm-app.is-playing .hm-app-item.is-on .hm-app-bar-run i { animation: hmRun linear forwards; }
-.hm-app:not(.is-playing) .hm-app-item.is-on .hm-app-bar-run { opacity: 0; }
-@keyframes hmRun { to { transform: scaleX(1); } }
+.hm-app-bar-run i { display: block; height: 100%; width: 100%; background: #3E7A45; transform-origin: left; transform: scaleX(0); transition: transform .12s linear; }
 .hm-app-frame { margin: 0; border-radius: 22px; overflow: hidden; background: #FBFAF5; border: 1px solid rgba(26,29,18,0.12); box-shadow: 0 30px 70px rgba(26,29,18,0.12), 0 2px 6px rgba(26,29,18,0.05); }
 .hm-app-bar { display: flex; align-items: center; gap: 14px; padding: 11px 16px; background: #ECEAE0; border-bottom: 1px solid rgba(26,29,18,0.08); }
 .hm-app-dots { display: inline-flex; gap: 6px; }
 .hm-app-dots i { width: 10px; height: 10px; border-radius: 50%; background: #CFCBBB; }
 .hm-app-url { flex: 0 1 320px; margin: 0 auto; padding: 4px 14px; border-radius: 8px; background: #FBFAF5; font-family: var(--dk-font-mono), monospace; font-size: 11.5px; color: #6B6D60; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .hm-app-shot { position: relative; aspect-ratio: 2 / 1; background: #F0EEE6; }
-.hm-app-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; opacity: 0; transform: scale(1.015); transition: opacity .5s ease, transform .8s ease; }
+.hm-app-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; opacity: 0; transform: scale(1.015); transition: opacity .3s ease, transform .6s ease; }
 .hm-app-shot img.is-on { opacity: 1; transform: none; }
 
 /* Phones: the features as cards that stack while you scroll */
@@ -325,7 +324,7 @@
   .hm-hero-go { justify-self: start; text-align: left; margin-top: 26px; }
   .hm-hero-go .hm-ctas { justify-content: flex-start; }
   .hm-mach-dark .hm-mach-stage { height: 520px; }
-  .hm-app { display: none; }
+  .hm-app-track { display: none; }
   .hm-app-stack { display: block; }
   .hm-run-line { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 8px; }
   .hm-run-line::before { display: none; }
