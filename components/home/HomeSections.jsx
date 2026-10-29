@@ -1,4 +1,6 @@
-// The home page sections (HOME_COPY.md), shared by "/", "/shops" and "/services".
+// The home page sections (HOME_COPY.md). "/" uses them all; "/shops" uses the
+// hero, pricing, questions and closing around its angles (Angles.jsx); "/services"
+// still uses them all.
 //
 // Server components. Every audience variant is in the markup with a data-show
 // attribute; AudienceRoot (Audience.jsx) sets data-aud on the wrapper and
@@ -431,7 +433,8 @@ export function Pricing({ c, pricing, T, L }) {
 
 /* ---------------- 7a · Questions ---------------- */
 
-export function Faq({ c }) {
+// `page` drops the questions marked `not` for it (the parlour question on /shops).
+export function Faq({ c, page = null }) {
   const x = c.faq;
   return (
     <section className="hm-wrap hm-sec" data-reveal>
@@ -440,7 +443,7 @@ export function Faq({ c }) {
         <h2 className="hm-h2">{x.h2}</h2>
       </div>
       <div className="hm-faq">
-        {x.items.map(it => (
+        {x.items.filter(it => !page || it.not !== page).map(it => (
           <details key={it.q}>
             <summary><span>{it.q}</span><span className="hm-faq-plus" aria-hidden="true" /></summary>
             <p className="hm-body">{it.a}</p>
@@ -467,26 +470,6 @@ export function Closing({ c, heading }) {
 }
 
 /* ---------------- /shops and /services blocks ---------------- */
-
-export function ShopExtras({ c }) {
-  const x = c.shops;
-  return (
-    <section className="hm-wrap hm-sec" data-reveal>
-      <div className="hm-head">
-        <div className="hm-kicker">{x.extraKicker}</div>
-        <h2 className="hm-h2">{x.extraH2}</h2>
-      </div>
-      <div className="hm-grid4">
-        {x.extra.map(e => (
-          <div key={e.t} className="hm-part">
-            <h3 className="hm-h3">{e.t}</h3>
-            <p className="hm-body">{e.d}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 export function ServiceKinds({ c }) {
   const x = c.services;

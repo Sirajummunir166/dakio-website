@@ -309,7 +309,7 @@ const home = {
       { q: "Will my Facebook page work?", a: "Yes. Connect it in a few clicks. Your page, posts and old chats stay as they are, and Nova answers comments under your posts too." },
       { q: "I already sell on Facebook and use a courier. What changes?", a: "Your page stays as it is. Connect it, add your products, and enter your Steadfast, Pathao or RedX keys once. Orders from chats, comments and your new website land in one list, and you book the courier from there." },
       { q: "Do I pay per message?", a: "No. Every plan includes a monthly allowance for Nova, enough for well over a thousand customer chats. If a month is busier, add more from the app." },
-      { q: "I run a parlour, a coaching centre or a chamber. Is this for me?", a: "Yes. Pick Services when you sign up. Nova books appointments, classes and visits, and you get a calendar, reminders, invoices and a booking website." },
+      { not: "shop", q: "I run a parlour, a coaching centre or a chamber. Is this for me?", a: "Yes. Pick Services when you sign up. Nova books appointments, classes and visits, and you get a calendar, reminders, invoices and a booking website." },
       { q: "Can I stop any time?", a: "Yes. One switch turns Nova off, and your business keeps running in Dakio without her." },
     ],
   },
@@ -329,14 +329,6 @@ const home = {
     h1: "Run your online shop from one app.",
     accent: "With an AI manager built in.",
     sub: "Products and stock, your website, orders, couriers, bKash and cash on delivery, and every customer, in one app. Nova answers your page in Bangla day and night, takes the order and keeps the buyer updated.",
-    extraKicker: "MADE FOR SHOPS",
-    extraH2: "What a shop needs, already here.",
-    extra: [
-      { t: "Comments too", d: "Someone writes \"price?\" under your post, and Nova sends the price to their inbox." },
-      { t: "Understands what they send", d: "Screenshots of your post, voice messages, a reply to an older message." },
-      { t: "No stock? Sell from suppliers", d: "Pick products from verified suppliers, and Dakio packs and ships every order." },
-      { t: "Posts and video ads", d: "Turn a product photo into a post or a short video ad, and schedule it." },
-    ],
     closing: "Tonight's orders are already waiting in your inbox. Let Nova take them.",
   },
 
