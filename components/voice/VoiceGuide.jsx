@@ -40,7 +40,9 @@ export const VOICE_COPY = {
     speaking: "Nova is speaking…",
     stop: "Stop",
     again: "Hear again",
-    tapToHear: "Tap to hear",
+    voiceMsg: "Nova sent you a voice message",
+    tapMe: "Yes, tap me 🙂",
+    play: "Play Nova's voice message",
   },
   bn: {
     launch: "Nova-র সাথে কথা বলুন",
@@ -61,13 +63,19 @@ export const VOICE_COPY = {
     speaking: "Nova কথা বলছে…",
     stop: "থামান",
     again: "আবার শুনুন",
-    tapToHear: "শুনতে চাপুন",
+    voiceMsg: "Nova একটা ভয়েস মেসেজ পাঠিয়েছে",
+    tapMe: "হ্যাঁ, চাপ দিন 🙂",
+    play: "Nova-র ভয়েস মেসেজ শুনুন",
   },
 };
 
 const TICKET_FRESH_MS = 4 * 60 * 1000; // tickets live 5 minutes on the api
 const WELCOME_AFTER_MS = 8000;
 const WELCOME_KEY = "dakio-nova-welcome";
+const NUDGE_KEY = "dakio-nova-nudged"; // the one second chance, once per visit (sessionStorage)
+// A voice note's waveform: fixed heights, so it looks the same every time.
+const WAVE = [5, 9, 14, 8, 17, 12, 6, 15, 19, 10, 7, 13, 18, 11, 6, 9, 16, 12, 8, 14, 10, 5, 12, 17, 9, 6, 11, 7];
+const mmss = (sec) => `${Math.floor(sec / 60)}:${String(Math.round(sec % 60)).padStart(2, "0")}`;
 
 /** Event kiosk screens: a full-screen display at a stall, nobody to call from it. */
 const KIOSK_PATHS = ["/nsgt26"];
@@ -214,50 +222,70 @@ export default function VoiceGuide({ lang = "en" }) {
   // tapped or clicked the page, so:
   //  - already interacted: the full card opens and she speaks;
   //  - not yet: the TEASER. She bounces in by the corner button, glances at the
-  //    page and then at the visitor, and talks on mute: her words type out as
-  //    captions beside "Tap to hear", like a muted reel. That tap is the
-  //    permission: she speaks from the start and the bubble grows into the card.
-  //    Ignored, she settles back into the corner button after the captions.
+  //    page and then at the visitor, and her hello arrives as a Messenger-style
+  //    VOICE MESSAGE (play, waveform, length, unread dot) under a line that
+  //    stops on a cliffhanger the recording answers. When the pointer comes
+  //    near she leans in ("Yes, tap me"). The tap is the permission: she speaks
+  //    from the start and the bubble grows into the card. Ignored, she settles
+  //    into the corner button, and knocks ONCE more that visit: when the mouse
+  //    heads for the tab bar on a laptop, or past most of the page on a phone.
+  //    Closing her with × means no second knock.
   // The live call, which costs, starts only when they pick a language.
   const page = greetingFor(pathname);
   const line = GREET.pages[page][lang] || GREET.pages[page].en;
-  const words = (line.show || line.say).split(" ");
   const [welcome, setWelcome] = useState(false); // the full card
-  const [teaser, setTeaser] = useState(false);
-  const [shown, setShown] = useState(0); // caption words typed so far
+  const [teaser, setTeaser] = useState(null); // null | "first" | "again"
+  const [shown, setShown] = useState(0); // teaser words typed so far
+  const [near, setNear] = useState(false); // the pointer is close: she leans in
+  const [ignored, setIgnored] = useState(false); // the first teaser settled untapped
+  const [closed, setClosed] = useState(false); // closed with ×: no second knock
   const [hearing, setHearing] = useState("off"); // off | ready | playing | none
   const [heard, setHeard] = useState(false); // she said hello: the languages are the next step
+  const [dur, setDur] = useState(0); // the clip's seconds, for the voice note
   const clip = useRef(null);
   const stopClip = () => { try { clip.current?.pause(); } catch { /* fine */ } setHearing((h) => (h === "none" ? h : "ready")); };
-  const greeting = welcome || teaser;
+  const greeting = welcome || !!teaser;
   useEffect(() => {
     if (!greeting) { stopClip(); return undefined; }
     const a = new Audio(`/nova-guide/welcome-${page === "home" ? "" : `${page}-`}${lang}.mp3`);
+    a.preload = "auto";
     clip.current = a;
+    a.onloadedmetadata = () => { if (Number.isFinite(a.duration)) setDur(a.duration); };
     a.onplaying = () => setHearing("playing");
     a.onended = () => { setHearing("ready"); setHeard(true); };
     a.onerror = () => setHearing("none"); // no clip: the card works silently
     setHearing("ready");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (welcome && navigator.userActivation?.hasBeenActive && !reduced) a.play().catch(() => { /* blocked: the Talk to Nova button stays */ });
-    return () => { a.pause(); a.onplaying = a.onended = a.onerror = null; };
+    return () => { a.pause(); a.onloadedmetadata = a.onplaying = a.onended = a.onerror = null; };
     // The teaser turning into the card keeps the same clip (the tap plays it).
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [greeting, lang, page]);
   const hear = () => { const a = clip.current; if (!a) return; a.currentTime = 0; a.play().catch(() => setHearing("none")); track("voice_welcome_hear", { lang, page }); };
   const hush = () => { try { clip.current?.pause(); } catch { /* fine */ } setHearing("ready"); setHeard(true); };
 
-  // The teaser's muted captions: a word at a time, then a pause, then she settles.
+  const secs = dur ? Math.round(dur) : null;
+  const teaseText = teaser === "again"
+    ? (GREET.again[lang] || GREET.again.en).replace("{s}", secs ? (lang === "bn" ? String(secs).replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[d]) : String(secs)) : lang === "bn" ? "কয়েক" : "a few")
+    : line.tease;
+  const words = teaseText.split(" ");
+
+  // The teaser's line types out a word at a time, then a pause, then she settles.
   useEffect(() => {
     if (!teaser) return undefined;
     if (shown < words.length) {
-      const t = window.setTimeout(() => setShown((n) => n + 1), shown === 0 ? 1500 : lang === "bn" ? 300 : 240);
+      const t = window.setTimeout(() => setShown((n) => n + 1), shown === 0 ? (teaser === "again" ? 500 : 1500) : lang === "bn" ? 280 : 220);
       return () => window.clearTimeout(t);
     }
-    const t = window.setTimeout(() => { setTeaser(false); track("voice_teaser_settled", { page }); }, 6000);
+    const t = window.setTimeout(() => {
+      setTeaser(null); setNear(false);
+      if (teaser === "first") setIgnored(true);
+      track("voice_teaser_settled", { page, kind: teaser });
+    }, 8000);
     return () => window.clearTimeout(t);
   }, [teaser, shown, words.length, lang, page]);
-  const tapTeaser = () => { setTeaser(false); setWelcome(true); hear(); track("voice_teaser_tap", { lang, page, words: shown }); };
+  const tapTeaser = () => { const kind = teaser; setTeaser(null); setNear(false); setWelcome(true); hear(); track("voice_teaser_tap", { lang, page, kind, words: shown }); };
+  const closeTeaser = () => { track("voice_teaser_closed", { page, kind: teaser, words: shown }); setTeaser(null); setNear(false); setClosed(true); };
 
   useEffect(() => {
     if (mode === "off" || hiddenOn(pathname)) return undefined;
@@ -266,14 +294,54 @@ export default function VoiceGuide({ lang = "en" }) {
     if (seen) return undefined;
     const t = window.setTimeout(() => {
       if (navigator.userActivation?.hasBeenActive) setWelcome(true);
-      else { setShown(0); setTeaser(true); }
+      else { setShown(0); setTeaser("first"); }
       try { window.localStorage.setItem(WELCOME_KEY, String(Date.now())); } catch { /* fine */ }
       track("voice_welcome_shown", { lang, page, teaser: !navigator.userActivation?.hasBeenActive });
     }, WELCOME_AFTER_MS);
     return () => window.clearTimeout(t);
   }, [mode, pathname, lang, page]);
 
-  const teaserGaze = useGaze(teaser, true);
+  // The one second chance: the mouse leaving through the top of the window on
+  // a laptop, or the visitor scrolling past most of the page on a phone.
+  useEffect(() => {
+    if (!ignored || closed || teaser || welcome || phase !== "idle") return undefined;
+    try { if (window.sessionStorage.getItem(NUDGE_KEY)) return undefined; } catch { /* fine */ }
+    const knock = (why) => {
+      try { window.sessionStorage.setItem(NUDGE_KEY, why); } catch { /* fine */ }
+      setIgnored(false); setShown(0); setTeaser("again");
+      track("voice_teaser_again", { page, why });
+    };
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    const leave = (e) => { if (!e.relatedTarget && e.clientY <= 8) knock("exit"); };
+    const scroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max > 0 && window.scrollY / max > 0.7) knock("scroll");
+    };
+    const armed = window.setTimeout(() => {
+      if (fine) document.addEventListener("mouseout", leave);
+      else window.addEventListener("scroll", scroll, { passive: true });
+    }, 4000); // never right after she settled
+    return () => { window.clearTimeout(armed); document.removeEventListener("mouseout", leave); window.removeEventListener("scroll", scroll); };
+  }, [ignored, closed, teaser, welcome, phase, page]);
+
+  const teaserGaze = useGaze(!!teaser, teaser === "first");
+  // Lean in when the pointer comes close (with a little slack, so she doesn't flicker).
+  useEffect(() => {
+    if (!teaser) return undefined;
+    let raf = 0;
+    const move = (e) => {
+      if (raf || e.pointerType === "touch") return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const el = teaserGaze.current; if (!el) return;
+        const r = el.getBoundingClientRect();
+        const d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
+        setNear((n) => (n ? d < 260 : d < 190));
+      });
+    };
+    window.addEventListener("pointermove", move, { passive: true });
+    return () => { window.removeEventListener("pointermove", move); cancelAnimationFrame(raf); };
+  }, [teaser, teaserGaze]);
   const launchGaze = useGaze(!teaser && !welcome && phase === "idle", false);
 
   if ((mode === "off" || hiddenOn(pathname)) && phase !== "call") return null;
@@ -340,24 +408,23 @@ export default function VoiceGuide({ lang = "en" }) {
           <p className={`vg-note${bn ? " vg-bn" : ""}`}>{copy.note}</p>
         </div>
       ) : teaser && phase === "idle" ? (
-        <div className="vg-tz" role="dialog" aria-label={copy.hello}>
+        <div className={`vg-tz${near ? " is-near" : ""}${teaser === "again" ? " is-again" : ""}`} role="dialog" aria-label={copy.voiceMsg}>
           <div className="vg-tz-bubble">
-            <button type="button" className={`vg-tz-body${bn ? " vg-bn" : ""}`} onClick={tapTeaser} onPointerEnter={warm}>
-              <span className="vg-tz-top">
-                <span className="vg-tz-mute">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" /><path d="M22 9l-6 6M16 9l6 6" /></svg>
-                  {copy.tapToHear}
-                </span>
-                {shown < words.length ? <span className="vg-hear-bars vg-tz-bars" aria-hidden><i /><i /><i /><i /></span> : null}
+            <button type="button" className={`vg-tz-body${bn ? " vg-bn" : ""}`} onClick={tapTeaser} onPointerEnter={warm} aria-label={copy.play}>
+              <span className="vg-tz-from"><i className="vg-tz-dot" aria-hidden />{near ? copy.tapMe : copy.voiceMsg}</span>
+              <span className="vg-vn" aria-hidden>
+                <span className="vg-vn-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2.5v11l9.5-5.5z" fill="currentColor" /></svg></span>
+                <span className="vg-vn-wave">{WAVE.map((h, i) => <i key={i} style={{ height: h }} />)}</span>
+                <span className="vg-vn-len">{secs ? mmss(secs) : "0:15"}</span>
               </span>
-              <span className="vg-tz-cap" aria-live="off">
+              <span className="vg-tz-cap">
                 {words.slice(0, shown).join(" ")}
                 {shown < words.length ? <span className="vg-tz-caret" aria-hidden /> : null}
               </span>
             </button>
-            <button type="button" className="vg-tz-x" onClick={() => { setTeaser(false); track("voice_teaser_closed", { page, words: shown }); }} aria-label={copy.close}>×</button>
+            <button type="button" className="vg-tz-x" onClick={closeTeaser} aria-label={copy.close}>×</button>
           </div>
-          <button type="button" className="vg-tz-orb" onClick={tapTeaser} aria-label={copy.hear}>
+          <button type="button" className="vg-tz-orb" onClick={tapTeaser} aria-label={copy.play}>
             <span ref={teaserGaze} className="vg-orb vg-gaze" data-state={shown > 0 && shown < words.length ? "speaking" : undefined} aria-hidden />
           </button>
         </div>

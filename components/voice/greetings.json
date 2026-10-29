@@ -1,29 +1,37 @@
 {
-  "_": "Nova's recorded hello on dakio.io, one line per page kind. 'say' is what the voice reads (Bangla names spelled for the voice), 'show' is the caption when it differs. The clip is say + ask[lang]. Re-record after a change: node scripts/make-welcome-voice.mjs public/nova-guide <page...>",
+  "_": "Nova's recorded hello on dakio.io, one per page kind. 'tease' is the line typed on the voice-message bubble: it stops on a cliffhanger the recording answers, so keep both TRUE (things Nova really does today). 'say' is what the voice reads (Bangla names spelled for the voice). The clip is say + ask[lang]. 'again' is the one second chance ({s} = the clip's seconds). Re-record after a change: node scripts/make-welcome-voice.mjs public/nova-guide <page...>",
   "ask": {
     "en": "Would you like to talk in English, or Bangla? চাইলে বাংলায়ও কথা বলতে পারি।",
     "bn": "বাংলায় কথা বলবেন, নাকি ইংরেজিতে? I can speak English too."
   },
+  "again": {
+    "en": "Before you go: {s} seconds, and you'll know if Dakio fits your business…",
+    "bn": "যাওয়ার আগে: {s} সেকেন্ডে জেনে নিন, Dakio আপনার ব্যবসার জন্য ঠিক কিনা…"
+  },
   "pages": {
     "home": {
-      "en": { "say": "Hi, I'm Nova, Dakio's AI manager. I can help you understand Dakio, and find what your business needs." },
-      "bn": { "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। ডাকিও বুঝতে, আর আপনার ব্যবসার যা দরকার সেটা খুঁজে পেতে সাহায্য করতে পারি।",
-              "show": "হ্যালো, আমি Nova, Dakio-র AI ম্যানেজার। Dakio বুঝতে, আর আপনার ব্যবসার যা দরকার সেটা খুঁজে পেতে সাহায্য করতে পারি।" }
+      "en": { "tease": "Hi, I'm Nova. Here's what happens when a customer messages your page at 2 in the morning…",
+              "say": "Hi, I'm Nova, Dakio's AI manager. When a customer messages your page at 2 a.m., I answer in seconds, check the stock, and take the order or the booking. So you wake up to sales, not missed messages." },
+      "bn": { "tease": "হ্যালো, আমি Nova। রাত ২টায় কেউ আপনার পেজে মেসেজ দিলে কী হয়, শুনুন…",
+              "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। রাত দুইটায় কেউ আপনার পেজে মেসেজ দিলে, আমি কয়েক সেকেন্ডে উত্তর দিই, স্টক দেখি, আর অর্ডার বা বুকিং নিয়ে নিই। সকালে উঠে আপনি দেখবেন বিক্রি, মিস হওয়া মেসেজ না।" }
     },
     "pricing": {
-      "en": { "say": "Hi, I'm Nova, Dakio's AI manager. Comparing plans? I can tell you which one fits your business, in a minute." },
-      "bn": { "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। প্ল্যান দেখছেন? আপনার ব্যবসার জন্য কোনটা ঠিক, এক মিনিটে বলে দিতে পারি।",
-              "show": "হ্যালো, আমি Nova, Dakio-র AI ম্যানেজার। প্ল্যান দেখছেন? আপনার ব্যবসার জন্য কোনটা ঠিক, এক মিনিটে বলে দিতে পারি।" }
+      "en": { "tease": "Hi, I'm Nova. Before you pick a plan, here's what I cost next to a shop manager…",
+              "say": "Hi, I'm Nova, Dakio's AI manager. A shop manager costs fifteen thousand taka a month or more, and works ten hours a day. I come with every plan, and I work all day and all night. Tell me about your business, and I'll tell you which plan fits." },
+      "bn": { "tease": "হ্যালো, আমি Nova। প্ল্যান বাছার আগে, একজন শপ ম্যানেজারের তুলনায় আমার খরচ কত, শুনুন…",
+              "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। একজন শপ ম্যানেজারের বেতন মাসে পনেরো হাজার টাকা বা তার বেশি, আর তিনি দিনে দশ ঘণ্টা কাজ করেন। আমি প্রতিটা প্ল্যানেই আছি, আর কাজ করি দিনরাত। আপনার ব্যবসার কথা বলুন, কোন প্ল্যান ঠিক, বলে দেব।" }
     },
     "services": {
-      "en": { "say": "Hi, I'm Nova, Dakio's AI manager. Run a parlour, a clinic or a coaching centre? I can show you how Dakio handles your bookings, clients and invoices." },
-      "bn": { "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। পার্লার, চেম্বার বা কোচিং সেন্টার চালান? বুকিং, ক্লায়েন্ট আর ইনভয়েস ডাকিও কীভাবে সামলায়, দেখিয়ে দিতে পারি।",
-              "show": "হ্যালো, আমি Nova, Dakio-র AI ম্যানেজার। পার্লার, চেম্বার বা কোচিং সেন্টার চালান? বুকিং, ক্লায়েন্ট আর ইনভয়েস Dakio কীভাবে সামলায়, দেখিয়ে দিতে পারি।" }
+      "en": { "tease": "Hi, I'm Nova. Here's how a parlour stops losing bookings in the inbox…",
+              "say": "Hi, I'm Nova, Dakio's AI manager. When a client asks for a time, I check who's free, book a slot that's really open, and remind them the day before. So fewer bookings get lost, and fewer clients forget to come." },
+      "bn": { "tease": "হ্যালো, আমি Nova। পার্লারের বুকিং ইনবক্সে হারিয়ে যাওয়া কীভাবে থামে, শুনুন…",
+              "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। কোনো ক্লায়েন্ট সময় চাইলে, আমি দেখি কে ফ্রি, সত্যিই খালি এমন সময়ে বুকিং দিই, আর আগের দিন মনে করিয়ে দিই। তাই বুকিং হারায় কম, আর ক্লায়েন্ট আসতে ভোলে কম।" }
     },
     "shops": {
-      "en": { "say": "Hi, I'm Nova, Dakio's AI manager. Selling on Facebook? I can show you how Dakio answers your inbox, takes the order and books the courier." },
-      "bn": { "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। ফেসবুকে বিক্রি করেন? ডাকিও কীভাবে ইনবক্সের উত্তর দেয়, অর্ডার নেয় আর কুরিয়ার বুক করে, দেখিয়ে দিতে পারি।",
-              "show": "হ্যালো, আমি Nova, Dakio-র AI ম্যানেজার। ফেসবুকে বিক্রি করেন? Dakio কীভাবে ইনবক্সের উত্তর দেয়, অর্ডার নেয় আর কুরিয়ার বুক করে, দেখিয়ে দিতে পারি।" }
+      "en": { "tease": "Hi, I'm Nova. Here's what I do with every \"price?\" comment on your posts…",
+              "say": "Hi, I'm Nova, Dakio's AI manager. When someone asks the price under your post, I reply right there, send the price to their inbox, and take the order in the chat, with the stock checked. You just book the courier." },
+      "bn": { "tease": "হ্যালো, আমি Nova। আপনার পোস্টে প্রতিটা \"দাম কত?\" কমেন্টে আমি কী করি, শুনুন…",
+              "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। কেউ আপনার পোস্টে দাম জানতে চাইলে, আমি কমেন্টেই উত্তর দিই, ইনবক্সে দাম পাঠাই, আর স্টক মিলিয়ে চ্যাটেই অর্ডার নিয়ে নিই। আপনি শুধু কুরিয়ার বুক করেন।" }
     }
   }
 }
