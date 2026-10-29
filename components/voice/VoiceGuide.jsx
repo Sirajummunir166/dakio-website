@@ -18,6 +18,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { LEGAL_PATHS, isEnglishOnlyPath } from "../../lib/i18n";
 import { initBot } from "../../lib/botid";
+import GREET from "./greetings.json";
 
 export const VOICE_COPY = {
   en: {
@@ -39,6 +40,7 @@ export const VOICE_COPY = {
     speaking: "Nova is speaking…",
     stop: "Stop",
     again: "Hear again",
+    tapToHear: "Tap to hear",
   },
   bn: {
     launch: "Nova-র সাথে কথা বলুন",
@@ -59,6 +61,7 @@ export const VOICE_COPY = {
     speaking: "Nova কথা বলছে…",
     stop: "থামান",
     again: "আবার শুনুন",
+    tapToHear: "শুনতে চাপুন",
   },
 };
 
@@ -73,6 +76,44 @@ const KIOSK_PATHS = ["/nsgt26"];
 function hiddenOn(pathname) {
   const bare = String(pathname || "/").replace(/^\/(en|bn)(?=\/|$)/, "") || "/";
   return LEGAL_PATHS.includes(bare) || isEnglishOnlyPath(bare) || KIOSK_PATHS.includes(bare);
+}
+
+/** Which hello Nova says on this page (components/voice/greetings.json). */
+function greetingFor(pathname) {
+  const bare = String(pathname || "/").replace(/^\/(en|bn)(?=\/|$)/, "") || "/";
+  const page = bare.split("/")[1] || "home";
+  return GREET.pages[page] ? page : "home";
+}
+
+/**
+ * Nova's gaze: her highlight (the faceless ball's only "eye") moves through two
+ * CSS variables. On arrival she glances at the page, then at the visitor; after
+ * that it follows the pointer. Phones and reduced motion keep her still.
+ */
+function useGaze(active, intro) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!active || !el) return undefined;
+    const set = (x, y) => { el.style.setProperty("--gx", `${x}%`); el.style.setProperty("--gy", `${y}%`); };
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+    const timers = intro ? [window.setTimeout(() => set(14, 46), 650), window.setTimeout(() => set(46, 36), 1700)] : [];
+    let raf = 0, follow = !intro;
+    if (intro) timers.push(window.setTimeout(() => { follow = true; }, 2300));
+    const move = (e) => {
+      if (!follow || raf || e.pointerType === "touch") return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const r = el.getBoundingClientRect();
+        const dx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (window.innerWidth / 2)));
+        const dy = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (window.innerHeight / 2)));
+        set(Math.round(40 + dx * 24), Math.round(36 + dy * 20));
+      });
+    };
+    window.addEventListener("pointermove", move, { passive: true });
+    return () => { timers.forEach(window.clearTimeout); window.removeEventListener("pointermove", move); cancelAnimationFrame(raf); };
+  }, [active, intro]);
+  return ref;
 }
 
 function track(name, params = {}) {
@@ -167,43 +208,73 @@ export default function VoiceGuide({ lang = "en" }) {
   // A language switch mid-visit needs a ticket in the new language.
   useEffect(() => { pending.current = null; setCallLang(lang); }, [lang]);
 
-  // The welcome: a few seconds in, once per visitor, Nova offers to help and
-  // asks for a language. Her greeting is a RECORDED clip (public/nova-guide/
-  // welcome-<lang>.mp3, free to play): it plays by itself if the visitor has
-  // already tapped or clicked the page (browsers allow sound only after that),
-  // otherwise the card offers "Hear Nova". The live call, which costs, starts
-  // only when they pick a language.
-  const [welcome, setWelcome] = useState(false);
+  // The welcome: a few seconds in, once per visitor, Nova says hello with a
+  // RECORDED clip (public/nova-guide/welcome-[<page>-]<lang>.mp3, free to play)
+  // and asks for a language. Browsers allow sound only after the visitor has
+  // tapped or clicked the page, so:
+  //  - already interacted: the full card opens and she speaks;
+  //  - not yet: the TEASER. She bounces in by the corner button, glances at the
+  //    page and then at the visitor, and talks on mute: her words type out as
+  //    captions beside "Tap to hear", like a muted reel. That tap is the
+  //    permission: she speaks from the start and the bubble grows into the card.
+  //    Ignored, she settles back into the corner button after the captions.
+  // The live call, which costs, starts only when they pick a language.
+  const page = greetingFor(pathname);
+  const line = GREET.pages[page][lang] || GREET.pages[page].en;
+  const words = (line.show || line.say).split(" ");
+  const [welcome, setWelcome] = useState(false); // the full card
+  const [teaser, setTeaser] = useState(false);
+  const [shown, setShown] = useState(0); // caption words typed so far
   const [hearing, setHearing] = useState("off"); // off | ready | playing | none
   const [heard, setHeard] = useState(false); // she said hello: the languages are the next step
   const clip = useRef(null);
   const stopClip = () => { try { clip.current?.pause(); } catch { /* fine */ } setHearing((h) => (h === "none" ? h : "ready")); };
+  const greeting = welcome || teaser;
   useEffect(() => {
-    if (!welcome) { stopClip(); return undefined; }
-    const a = new Audio(`/nova-guide/welcome-${lang}.mp3`);
+    if (!greeting) { stopClip(); return undefined; }
+    const a = new Audio(`/nova-guide/welcome-${page === "home" ? "" : `${page}-`}${lang}.mp3`);
     clip.current = a;
     a.onplaying = () => setHearing("playing");
     a.onended = () => { setHearing("ready"); setHeard(true); };
-    a.onerror = () => setHearing("none"); // no clip yet: the card works silently
+    a.onerror = () => setHearing("none"); // no clip: the card works silently
     setHearing("ready");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (navigator.userActivation?.hasBeenActive && !reduced) a.play().catch(() => { /* blocked: "Hear Nova" stays */ });
+    if (welcome && navigator.userActivation?.hasBeenActive && !reduced) a.play().catch(() => { /* blocked: the Talk to Nova button stays */ });
     return () => { a.pause(); a.onplaying = a.onended = a.onerror = null; };
-  }, [welcome, lang]);
-  const hear = () => { const a = clip.current; if (!a) return; a.currentTime = 0; a.play().catch(() => setHearing("none")); track("voice_welcome_hear", { lang }); };
+    // The teaser turning into the card keeps the same clip (the tap plays it).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [greeting, lang, page]);
+  const hear = () => { const a = clip.current; if (!a) return; a.currentTime = 0; a.play().catch(() => setHearing("none")); track("voice_welcome_hear", { lang, page }); };
   const hush = () => { try { clip.current?.pause(); } catch { /* fine */ } setHearing("ready"); setHeard(true); };
+
+  // The teaser's muted captions: a word at a time, then a pause, then she settles.
+  useEffect(() => {
+    if (!teaser) return undefined;
+    if (shown < words.length) {
+      const t = window.setTimeout(() => setShown((n) => n + 1), shown === 0 ? 1500 : lang === "bn" ? 300 : 240);
+      return () => window.clearTimeout(t);
+    }
+    const t = window.setTimeout(() => { setTeaser(false); track("voice_teaser_settled", { page }); }, 6000);
+    return () => window.clearTimeout(t);
+  }, [teaser, shown, words.length, lang, page]);
+  const tapTeaser = () => { setTeaser(false); setWelcome(true); hear(); track("voice_teaser_tap", { lang, page, words: shown }); };
+
   useEffect(() => {
     if (mode === "off" || hiddenOn(pathname)) return undefined;
     let seen = false;
     try { seen = !!window.localStorage.getItem(WELCOME_KEY); } catch { /* private window: show it */ }
     if (seen) return undefined;
     const t = window.setTimeout(() => {
-      setWelcome((w) => w || true);
+      if (navigator.userActivation?.hasBeenActive) setWelcome(true);
+      else { setShown(0); setTeaser(true); }
       try { window.localStorage.setItem(WELCOME_KEY, String(Date.now())); } catch { /* fine */ }
-      track("voice_welcome_shown", { lang });
+      track("voice_welcome_shown", { lang, page, teaser: !navigator.userActivation?.hasBeenActive });
     }, WELCOME_AFTER_MS);
     return () => window.clearTimeout(t);
-  }, [mode, pathname, lang]);
+  }, [mode, pathname, lang, page]);
+
+  const teaserGaze = useGaze(teaser, true);
+  const launchGaze = useGaze(!teaser && !welcome && phase === "idle", false);
 
   if ((mode === "off" || hiddenOn(pathname)) && phase !== "call") return null;
 
@@ -268,6 +339,28 @@ export default function VoiceGuide({ lang = "en" }) {
           ) : null}
           <p className={`vg-note${bn ? " vg-bn" : ""}`}>{copy.note}</p>
         </div>
+      ) : teaser && phase === "idle" ? (
+        <div className="vg-tz" role="dialog" aria-label={copy.hello}>
+          <div className="vg-tz-bubble">
+            <button type="button" className={`vg-tz-body${bn ? " vg-bn" : ""}`} onClick={tapTeaser} onPointerEnter={warm}>
+              <span className="vg-tz-top">
+                <span className="vg-tz-mute">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" /><path d="M22 9l-6 6M16 9l6 6" /></svg>
+                  {copy.tapToHear}
+                </span>
+                {shown < words.length ? <span className="vg-hear-bars vg-tz-bars" aria-hidden><i /><i /><i /><i /></span> : null}
+              </span>
+              <span className="vg-tz-cap" aria-live="off">
+                {words.slice(0, shown).join(" ")}
+                {shown < words.length ? <span className="vg-tz-caret" aria-hidden /> : null}
+              </span>
+            </button>
+            <button type="button" className="vg-tz-x" onClick={() => { setTeaser(false); track("voice_teaser_closed", { page, words: shown }); }} aria-label={copy.close}>×</button>
+          </div>
+          <button type="button" className="vg-tz-orb" onClick={tapTeaser} aria-label={copy.hear}>
+            <span ref={teaserGaze} className="vg-orb vg-gaze" data-state={shown > 0 && shown < words.length ? "speaking" : undefined} aria-hidden />
+          </button>
+        </div>
       ) : (
         <button
           type="button"
@@ -280,7 +373,7 @@ export default function VoiceGuide({ lang = "en" }) {
           aria-label={mode === "text" ? copy.launchText : copy.launch}
           title={copy.note}
         >
-          <span className="vg-orb" data-state={phase === "opening" ? "connecting" : undefined} aria-hidden />
+          <span ref={launchGaze} className="vg-orb vg-gaze" data-state={phase === "opening" ? "connecting" : undefined} aria-hidden />
           <span className={bn ? "vg-launch-bn" : undefined}>{phase === "opening" ? copy.opening : mode === "text" ? copy.launchText : copy.launch}</span>
         </button>
       )}

@@ -234,3 +234,78 @@
 .vg-welcome-langs.is-quiet .vg-btn-lime { background: transparent; color: var(--vg-cream); border-color: #4A4F37; }
 .vg-welcome-langs.is-quiet .vg-btn-lime:hover { border-color: var(--vg-lime); color: var(--vg-lime); }
 @media (prefers-reduced-motion: reduce) { .vg-hear { animation: none; } .vg-hear-bars i { animation: none; transform: scaleY(0.7); } }
+
+/* ---- the teaser: Nova arrives by the corner and talks on mute ----
+   She bounces in (squash and stretch), glances at the page, then at the
+   visitor, and her hello types out as captions beside "Tap to hear". One tap
+   anywhere on her or the bubble and she speaks; the bubble becomes the card. */
+@property --gx { syntax: "<percentage>"; inherits: false; initial-value: 32%; }
+@property --gy { syntax: "<percentage>"; inherits: false; initial-value: 28%; }
+.vg-orb.vg-gaze {
+  background: radial-gradient(circle at var(--gx) var(--gy), #F4FFD6 0%, #C6F035 40%, #6FA524 75%, #2E4710 100%);
+  transition: --gx 0.45s cubic-bezier(0.3, 0.7, 0.3, 1), --gy 0.45s cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+@keyframes vgDrop {
+  0% { opacity: 0; transform: translateY(-46px) scale(0.6, 0.6); }
+  38% { opacity: 1; transform: translateY(0) scale(0.86, 1.16); }
+  52% { transform: translateY(0) scale(1.22, 0.8); }
+  68% { transform: translateY(-10px) scale(0.94, 1.08); }
+  84% { transform: translateY(0) scale(1.06, 0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1, 1); }
+}
+@keyframes vgPop { 0% { opacity: 0; transform: translateY(10px) scale(0.92); } 100% { opacity: 1; transform: none; } }
+@keyframes vgCaret { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.vg-tz { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.vg-tz-bubble {
+  position: relative;
+  width: min(300px, calc(100vw - 40px));
+  border-radius: 20px 20px 6px 20px;
+  border: 1px solid #3A4120;
+  background: var(--vg-ink);
+  box-shadow: 0 18px 44px rgba(26, 29, 18, 0.34), 0 0 0 1px rgba(198, 240, 53, 0.06);
+  opacity: 0;
+  animation: vgPop 0.4s 0.9s cubic-bezier(0.2, 0.8, 0.3, 1.2) forwards;
+}
+.vg-tz-body {
+  display: block;
+  width: 100%;
+  padding: 14px 40px 16px 16px;
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  color: var(--vg-cream);
+  text-align: left;
+  cursor: pointer;
+}
+.vg-tz-body:focus-visible { outline: 2px solid var(--vg-lime); outline-offset: 2px; }
+.vg-tz-top { display: flex; align-items: center; gap: 10px; }
+.vg-tz-mute {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 7px 12px 7px 10px;
+  border-radius: 99px;
+  background: var(--vg-lime);
+  color: var(--vg-ink);
+  font: 700 13px/1 var(--dk-font-sans);
+  animation: vgHalo 2s ease-out infinite;
+}
+.vg-tz-body.vg-bn .vg-tz-mute { font-family: var(--dk-font-bn); font-size: 13.5px; }
+.vg-tz-bars { height: 16px; padding: 0; }
+.vg-tz-bars i { width: 3px; }
+.vg-tz-cap { display: block; min-height: 3.1em; margin-top: 11px; font: 600 16px/1.45 var(--dk-font-sans); letter-spacing: -0.005em; }
+.vg-tz-body.vg-bn .vg-tz-cap { font-family: var(--dk-font-bn); font-size: 16.5px; line-height: 1.6; }
+.vg-tz-caret { display: inline-block; width: 2px; height: 1.05em; margin-left: 3px; vertical-align: -0.15em; background: var(--vg-lime); animation: vgCaret 0.8s steps(1) infinite; }
+.vg-tz-x {
+  position: absolute; top: 8px; right: 8px;
+  width: 28px; height: 28px;
+  border: 0; border-radius: 50%;
+  background: transparent; color: var(--vg-muted);
+  font-size: 18px; line-height: 1; cursor: pointer;
+}
+.vg-tz-x:hover { background: var(--vg-ink-2); color: var(--vg-cream); }
+.vg-tz-orb { padding: 0; border: 0; background: none; border-radius: 50%; cursor: pointer; animation: vgDrop 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) both; }
+.vg-tz-orb .vg-orb { display: block; width: 62px; height: 62px; box-shadow: 0 0 34px rgba(198, 240, 53, 0.5); }
+.vg-tz-orb:focus-visible { outline: 2px solid var(--vg-lime); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .vg-tz-orb, .vg-tz-bubble, .vg-tz-mute { animation: none; opacity: 1; }
+  .vg-tz-caret { animation: none; }
+}

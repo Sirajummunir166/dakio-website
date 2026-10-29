@@ -1,0 +1,29 @@
+{
+  "_": "Nova's recorded hello on dakio.io, one line per page kind. 'say' is what the voice reads (Bangla names spelled for the voice), 'show' is the caption when it differs. The clip is say + ask[lang]. Re-record after a change: node scripts/make-welcome-voice.mjs public/nova-guide <page...>",
+  "ask": {
+    "en": "Would you like to talk in English, or Bangla? চাইলে বাংলায়ও কথা বলতে পারি।",
+    "bn": "বাংলায় কথা বলবেন, নাকি ইংরেজিতে? I can speak English too."
+  },
+  "pages": {
+    "home": {
+      "en": { "say": "Hi, I'm Nova, Dakio's AI manager. I can help you understand Dakio, and find what your business needs." },
+      "bn": { "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। ডাকিও বুঝতে, আর আপনার ব্যবসার যা দরকার সেটা খুঁজে পেতে সাহায্য করতে পারি।",
+              "show": "হ্যালো, আমি Nova, Dakio-র AI ম্যানেজার। Dakio বুঝতে, আর আপনার ব্যবসার যা দরকার সেটা খুঁজে পেতে সাহায্য করতে পারি।" }
+    },
+    "pricing": {
+      "en": { "say": "Hi, I'm Nova, Dakio's AI manager. Comparing plans? I can tell you which one fits your business, in a minute." },
+      "bn": { "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। প্ল্যান দেখছেন? আপনার ব্যবসার জন্য কোনটা ঠিক, এক মিনিটে বলে দিতে পারি।",
+              "show": "হ্যালো, আমি Nova, Dakio-র AI ম্যানেজার। প্ল্যান দেখছেন? আপনার ব্যবসার জন্য কোনটা ঠিক, এক মিনিটে বলে দিতে পারি।" }
+    },
+    "services": {
+      "en": { "say": "Hi, I'm Nova, Dakio's AI manager. Run a parlour, a clinic or a coaching centre? I can show you how Dakio handles your bookings, clients and invoices." },
+      "bn": { "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। পার্লার, চেম্বার বা কোচিং সেন্টার চালান? বুকিং, ক্লায়েন্ট আর ইনভয়েস ডাকিও কীভাবে সামলায়, দেখিয়ে দিতে পারি।",
+              "show": "হ্যালো, আমি Nova, Dakio-র AI ম্যানেজার। পার্লার, চেম্বার বা কোচিং সেন্টার চালান? বুকিং, ক্লায়েন্ট আর ইনভয়েস Dakio কীভাবে সামলায়, দেখিয়ে দিতে পারি।" }
+    },
+    "shops": {
+      "en": { "say": "Hi, I'm Nova, Dakio's AI manager. Selling on Facebook? I can show you how Dakio answers your inbox, takes the order and books the courier." },
+      "bn": { "say": "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। ফেসবুকে বিক্রি করেন? ডাকিও কীভাবে ইনবক্সের উত্তর দেয়, অর্ডার নেয় আর কুরিয়ার বুক করে, দেখিয়ে দিতে পারি।",
+              "show": "হ্যালো, আমি Nova, Dakio-র AI ম্যানেজার। ফেসবুকে বিক্রি করেন? Dakio কীভাবে ইনবক্সের উত্তর দেয়, অর্ডার নেয় আর কুরিয়ার বুক করে, দেখিয়ে দিতে পারি।" }
+    }
+  }
+}

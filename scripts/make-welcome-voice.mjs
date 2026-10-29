@@ -1,8 +1,10 @@
-// Records Nova's welcome greeting on dakio.io (public/nova-guide/welcome-<lang>.mp3),
+// Records Nova's hello on dakio.io, one clip per page kind and language
+// (components/voice/greetings.json → public/nova-guide/welcome-[<page>-]<lang>.mp3),
 // played free before any live call. Voice: Gemini "Leda", Nova's voice in the films.
 // Uses dakio-api's AI Gateway key (read from dakio-api/.env, never printed) and the
 // ffmpeg from dakio-commercial. Run from the website repo:
-//   node scripts/make-welcome-voice.mjs public/nova-guide
+//   node scripts/make-welcome-voice.mjs public/nova-guide            (every page)
+//   node scripts/make-welcome-voice.mjs public/nova-guide pricing    (some pages)
 import fs from 'node:fs'
 import path from 'node:path'
 import { spawnSync } from 'node:child_process'
@@ -14,12 +16,16 @@ const keyLine = fs.readFileSync(path.join(API, '.env'), 'utf8').split('\n').find
 process.env.AI_GATEWAY_API_KEY = keyLine.slice('AI_GATEWAY_API_KEY='.length).trim().replace(/^["']|["']$/g, '')
 const { generateSpeech } = await import(pathToFileURL(path.join(API, 'node_modules/ai/dist/index.js')).href)
 const { gateway } = await import(pathToFileURL(path.join(API, 'node_modules/@ai-sdk/gateway/dist/index.js')).href)
-const OUT = process.argv[2]
-const LINES = {
-  en: { text: "Hi, I'm Nova, Dakio's AI manager. I can help you understand Dakio, and find what your business needs. Would you like to talk in English, or Bangla? চাইলে বাংলায়ও কথা বলতে পারি।",
-        instructions: "Speak as Nova, a warm, calm, confident young woman from Dhaka welcoming a visitor to a website. Friendly and natural, a small smile in the voice, never salesy. The last sentence is in natural Bangladeshi Bangla." },
-  bn: { text: "হ্যালো, আমি নোভা, ডাকিওর এআই ম্যানেজার। ডাকিও বুঝতে, আর আপনার ব্যবসার যা দরকার সেটা খুঁজে পেতে সাহায্য করতে পারি। বাংলায় কথা বলবেন, নাকি ইংরেজিতে? I can speak English too.",
-        instructions: "Speak in natural Bangladeshi Bangla as Nova, a warm, calm, confident young woman from Dhaka welcoming a visitor to a website. Friendly and natural, a small smile in the voice, never salesy. The last sentence is in English." },
+const [OUT, ...only] = process.argv.slice(2)
+const GREET = JSON.parse(fs.readFileSync(new URL('../components/voice/greetings.json', import.meta.url), 'utf8'))
+const HOW = {
+  en: "Speak as Nova, a warm, calm, confident young woman from Dhaka welcoming a visitor to a website. Friendly and natural, a small smile in the voice, never salesy. The last sentence is in natural Bangladeshi Bangla.",
+  bn: "Speak in natural Bangladeshi Bangla as Nova, a warm, calm, confident young woman from Dhaka welcoming a visitor to a website. Friendly and natural, a small smile in the voice, never salesy. The last sentence is in English.",
+}
+const LINES = {}
+for (const [page, langs] of Object.entries(GREET.pages)) {
+  if (only.length && !only.includes(page)) continue
+  for (const lang of ['en', 'bn']) LINES[`${page === 'home' ? '' : `${page}-`}${lang}`] = { text: `${langs[lang].say} ${GREET.ask[lang]}`, instructions: HOW[lang] }
 }
 for (const [k, v] of Object.entries(LINES)) {
   const res = await generateSpeech({ model: gateway.speechModel('google/gemini-3.8-flash-tts'), text: v.text, voice: 'Leda', instructions: v.instructions, outputFormat: 'wav' })
