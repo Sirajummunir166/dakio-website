@@ -254,7 +254,6 @@
   100% { opacity: 1; transform: translateY(0) scale(1, 1); }
 }
 @keyframes vgPop { 0% { opacity: 0; transform: translateY(10px) scale(0.92); } 100% { opacity: 1; transform: none; } }
-@keyframes vgCaret { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 .vg-tz { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
 .vg-tz-bubble {
   position: relative;
@@ -269,7 +268,7 @@
 .vg-tz-body {
   display: block;
   width: 100%;
-  padding: 14px 40px 16px 16px;
+  padding: 14px 16px 16px;
   border: 0;
   border-radius: inherit;
   background: none;
@@ -279,9 +278,6 @@
 }
 .vg-tz-body:focus-visible { outline: 2px solid var(--vg-lime); outline-offset: 2px; }
 .vg-tz-top { display: flex; align-items: center; gap: 10px; }
-.vg-tz-cap { display: block; min-height: 2.9em; margin-top: 12px; font: 600 16px/1.45 var(--dk-font-sans); letter-spacing: -0.005em; }
-.vg-tz-body.vg-bn .vg-tz-cap { font-family: var(--dk-font-bn); font-size: 16.5px; line-height: 1.6; }
-.vg-tz-caret { display: inline-block; width: 2px; height: 1.05em; margin-left: 3px; vertical-align: -0.15em; background: var(--vg-lime); animation: vgCaret 0.8s steps(1) infinite; }
 .vg-tz-x {
   position: absolute; top: 8px; right: 8px;
   width: 28px; height: 28px;
@@ -296,16 +292,15 @@
 @media (prefers-reduced-motion: reduce) {
   .vg-tz-orb, .vg-tz-bubble, .vg-tz-dot, .vg-vn-play { animation: none; opacity: 1; }
   .vg-tz.is-near .vg-tz-orb .vg-orb { transform: none; }
-  .vg-tz-caret { animation: none; }
 }
 
 /* The hello as a Messenger voice message: who sent it (with an unread dot),
    a play button, a waveform and its length. */
 @keyframes vgDot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.7); opacity: 0.6; } }
-.vg-tz-from { display: flex; align-items: center; gap: 8px; font: 600 12.5px/1.3 var(--dk-font-sans); color: var(--vg-muted); transition: color 0.2s ease; }
+.vg-tz-from { display: flex; align-items: center; gap: 8px; padding-right: 28px; font: 600 12.5px/1.3 var(--dk-font-sans); color: var(--vg-muted); transition: color 0.2s ease; }
 .vg-tz-body.vg-bn .vg-tz-from { font-family: var(--dk-font-bn); font-size: 13px; }
 .vg-tz-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--vg-lime); box-shadow: 0 0 8px rgba(198, 240, 53, 0.7); animation: vgDot 1.6s ease-in-out infinite; }
-.vg-vn { display: flex; align-items: center; gap: 10px; margin-top: 11px; padding: 7px 14px 7px 7px; border-radius: 99px; background: var(--vg-ink-2); border: 1px solid #343A20; transition: border-color 0.2s ease, background 0.2s ease; }
+.vg-vn { display: flex; align-items: center; gap: 10px; margin-top: 11px; margin-bottom: 2px; padding: 7px 14px 7px 7px; border-radius: 99px; background: var(--vg-ink-2); border: 1px solid #343A20; transition: border-color 0.2s ease, background 0.2s ease; }
 .vg-vn-play { display: grid; place-items: center; flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--vg-lime); color: var(--vg-ink); padding-left: 2px; animation: vgHalo 2s ease-out infinite; transition: transform 0.2s ease; }
 .vg-vn-wave { display: flex; align-items: center; gap: 2px; flex: 1; min-width: 0; height: 22px; overflow: hidden; }
 .vg-vn-wave i { flex: none; width: 3px; border-radius: 2px; background: #5D6838; }
@@ -319,15 +314,3 @@
 .vg-tz.is-near .vg-vn-play { transform: scale(1.1); }
 .vg-tz.is-near .vg-vn-wave i { background: #8FA84A; }
 
-/* The second chance: she is already in the corner, so she knocks instead of dropping in. */
-@keyframes vgKnock {
-  0%, 100% { transform: translateY(0) scale(1, 1); }
-  12% { transform: translateY(-14px) scale(0.92, 1.1); }
-  24% { transform: translateY(0) scale(1.14, 0.88); }
-  36% { transform: translateY(-9px) scale(0.95, 1.06); }
-  48% { transform: translateY(0) scale(1.06, 0.95); }
-  60% { transform: translateY(0) scale(1, 1); }
-}
-.vg-tz.is-again .vg-tz-orb { animation: vgKnock 1.1s ease-out both; }
-.vg-tz.is-again .vg-tz-bubble { animation-delay: 0.35s; }
-@media (prefers-reduced-motion: reduce) { .vg-tz.is-again .vg-tz-orb { animation: none; } }
