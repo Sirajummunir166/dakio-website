@@ -54,14 +54,40 @@ export default function ChatDemo({ chat, flow }) {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setStill(true); return undefined; }
-    let raf = 0;
+    // The scroll room is measured once, and again only when the width changes.
+    // On phones the words under the phone are inside the pinned block, so its
+    // height changes with every line; measuring it on each scroll let a new line
+    // move the reading back to the previous message, and the chat flickered
+    // between the two while you stopped to read. (A phone's address bar showing
+    // or hiding fires resize without a width change; that is ignored too.)
+    // On a small phone the pinned block can be taller than the screen, and it
+    // grows when the steps list comes in; the room then only ever shrinks (the
+    // tallest height seen so far), one step forward, never back and forth.
+    // A thumb resting on the line between two messages moves a pixel or two;
+    // backward moves under a tenth of a message are ignored, so it holds still.
+    const SLACK = 0.1;
+    let raf = 0, room = 0, top = 0, width = -1, tallest = 0, shownX = 0;
+    const measure = () => {
+      const t = track.current, p = pin.current;
+      if (!t || !p) return;
+      width = window.innerWidth;
+      top = parseFloat(getComputedStyle(p).top) || 0;
+      tallest = Math.max(p.offsetHeight, window.innerHeight - top);
+      // Finish by the time the track's end reaches the bottom of the screen, so
+      // the last step (the tallest, with its list) is read while still pinned.
+      room = t.offsetHeight - tallest;
+    };
     const read = () => {
       raf = 0;
       const t = track.current, p = pin.current;
       if (!t || !p) return;
-      const room = t.offsetHeight - p.offsetHeight;
-      const done = Math.min(Math.max(-t.getBoundingClientRect().top + parseFloat(getComputedStyle(p).top), 0), room);
-      setX(room > 0 ? (done / room) * total * 0.999 : 0);
+      if (width !== window.innerWidth) measure();
+      else if (p.offsetHeight > tallest) { tallest = p.offsetHeight; room = t.offsetHeight - tallest; }
+      const done = Math.min(Math.max(-t.getBoundingClientRect().top + top, 0), room);
+      const next = room > 0 ? (done / room) * total * 0.999 : 0;
+      if (next < shownX && shownX - next < SLACK && next > 0) return;
+      shownX = next;
+      setX(next);
     };
     const on = () => { if (!raf) raf = requestAnimationFrame(read); };
     read();
