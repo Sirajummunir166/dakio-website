@@ -4,7 +4,8 @@
 // Server components. Worries is the row of chips under the hero: the owner
 // taps the problem they have and lands on the angle that answers it. Each
 // Angle opens with that worry in the owner's words, answers it next to a real
-// app screen with a Nova note on it, and ends with one result line. Angles
+// app screen with Nova's note on it, and ends with one result line. The dark
+// pill with the glowing ball is kept for the Talk to Nova button alone. Angles
 // alternate sides; an angle without a screen yet is left out. On phones the
 // screen is cropped taller, around shot.focus (how far right the action is).
 
@@ -38,7 +39,7 @@ export function Angles({ x }) {
         <ul className="ag-points">
           {a.points.map(p => <li key={p}>{CHECK}{p}</li>)}
         </ul>
-        <p className="ag-result"><span className="ag-result-dot" aria-hidden="true" />{a.result}</p>
+        <p className="ag-result">{CHECK}{a.result}</p>
       </div>
       <figure className="ag-shot">
         <div className="ag-frame">
@@ -46,7 +47,7 @@ export function Angles({ x }) {
           <img style={{ "--fx": `${a.shot.focus ?? 0}%` }} src={`/app/${a.shot.key}.webp`} alt={a.shot.alt} width={a.shot.size[0]} height={a.shot.size[1]} loading="lazy" decoding="async" />
         </div>
         <figcaption className="ag-note" style={{ "--x": `${a.shot.at.x}%`, "--y": `${a.shot.at.y}%` }}>
-          <span className="ag-orb" aria-hidden="true" />{a.shot.note}
+          <span className="ag-note-dot" aria-hidden="true" />{a.shot.note}
         </figcaption>
       </figure>
     </section>

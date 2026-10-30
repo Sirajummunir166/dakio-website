@@ -27,8 +27,10 @@ html:has(.ag-worries) { scroll-behavior: smooth; scroll-padding-top: 88px; }
 .ag-points { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
 .ag-points li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 15px; line-height: 1.5; font-weight: 600; color: #1A1D12; }
 .ag-points svg { width: 22px; height: 22px; padding: 4px; border-radius: 99px; background: #C6F035; color: #0F120B; box-sizing: border-box; }
-.ag-result { display: flex; align-items: center; gap: 12px; margin: 24px 0 0; padding: 14px 18px; border-radius: 16px; background: #0F120B; color: #E9EFDC; font-size: 15.5px; font-weight: 700; line-height: 1.45; }
-.ag-result-dot { width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; background: radial-gradient(circle at 32% 28%, #F4FFD6 0%, #C6F035 40%, #6FA524 75%, #2E4710 100%); box-shadow: 0 0 14px rgba(198,240,53,0.5); }
+/* The dark pill with the glowing ball belongs to the Talk to Nova button only;
+ * the page keeps to light green so that button stays the one to find. */
+.ag-result { display: flex; align-items: center; gap: 12px; margin: 24px 0 0; padding: 14px 18px; border-radius: 16px; background: #E6EFC9; color: #1A1D12; font-size: 15.5px; font-weight: 700; line-height: 1.45; }
+.ag-result svg { width: 24px; height: 24px; padding: 5px; border-radius: 99px; flex-shrink: 0; background: #3E7A45; color: #FBFAF5; box-sizing: border-box; }
 
 /* The real screen in a browser frame, with Nova's note on what she did. */
 .ag-shot { position: relative; margin: 0; }
@@ -38,11 +40,10 @@ html:has(.ag-worries) { scroll-behavior: smooth; scroll-padding-top: 88px; }
 .ag-bar span { margin-left: 10px; padding: 3px 12px; border-radius: 7px; background: #FBFAF5; font-family: var(--dk-font-mono), monospace; font-size: 11px; color: #6B6D60; }
 /* Each screen keeps its own shape (width/height on the img), up to a height. */
 .ag-frame img { display: block; width: 100%; height: auto; max-height: 640px; object-fit: cover; object-position: left top; }
-.ag-note { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px 10px 10px; border-radius: 99px; background: #0F120B; color: #F4FFD6; font-size: 14px; font-weight: 700; white-space: nowrap; box-shadow: 0 14px 30px rgba(15,18,11,0.3); }
-.ag-orb { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; background: radial-gradient(circle at 32% 28%, #F4FFD6 0%, #C6F035 40%, #6FA524 75%, #2E4710 100%); box-shadow: 0 0 16px rgba(198,240,53,0.6); animation: agPulse 2.4s ease-in-out infinite; }
+.ag-note { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 9px; padding: 9px 16px 9px 14px; border-radius: 99px; background: #C6F035; color: #0F120B; font-size: 14px; font-weight: 700; white-space: nowrap; box-shadow: 0 10px 24px rgba(62,122,69,0.28); }
+.ag-note-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: #0F120B; }
 .ag[data-revealed="1"] .ag-note { animation: agNote .55s .45s cubic-bezier(.3,1.4,.5,1) both; }
 @keyframes agNote { from { opacity: 0; transform: translate(-50%, -30%) scale(.85); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
-@keyframes agPulse { 0%, 100% { box-shadow: 0 0 10px rgba(198,240,53,0.45); } 50% { box-shadow: 0 0 22px rgba(198,240,53,0.85); } }
 
 @media (max-width: 980px) {
   /* One column: the screen comes right after the worry, before the answer. */
@@ -71,7 +72,7 @@ html:has(.ag-worries) { scroll-behavior: smooth; scroll-padding-top: 88px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html:has(.ag-worries) { scroll-behavior: auto; }
-  .ag-orb, .ag[data-revealed="1"] .ag-note { animation: none; }
+  .ag[data-revealed="1"] .ag-note { animation: none; }
 }
 
 html[lang="bn"] .ag-ask, html[lang="bn"] .ag-h, html[lang="bn"] .ag-chip, html[lang="bn"] .ag-kicker { font-family: var(--dk-font-bn), sans-serif; letter-spacing: normal; text-transform: none; }
