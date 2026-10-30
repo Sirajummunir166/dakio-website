@@ -141,7 +141,7 @@ export function Run({ c }) {
         <h2 className="hm-h2" data-show="shop-only">{x.h2.shop}</h2>
         <h2 className="hm-h2" data-show="svc-only">{x.h2.svc}</h2>
         <h2 className="hm-h2" data-show="both-only">{x.h2.both}</h2>
-        <p className="hm-lead-dark">{x.sub}</p>
+        {x.sub ? <p className="hm-lead-dark">{x.sub}</p> : null}
       </div>
       {/* Laptops and tablets: Nova walks the line. Phones: the stacking cards below. */}
       <RunWalk x={x} groups={c.flow.label} />
