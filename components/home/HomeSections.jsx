@@ -299,7 +299,7 @@ export function Parts({ c, L }) {
 export function Flow({ c }) {
   const f = c.flow;
   return (
-    <section className="hm-wrap hm-sec" data-reveal>
+    <section id="chat" className="hm-wrap hm-sec" data-reveal>
       <div className="hm-head">
         <div className="hm-kicker">{f.kicker}</div>
         <h2 className="hm-h2" data-show="shop-only">{f.h2.shop}</h2>

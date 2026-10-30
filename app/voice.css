@@ -326,3 +326,6 @@
 @keyframes vgFlash { 0% { opacity: 0; } 25% { opacity: 1; } 100% { opacity: 0; } }
 @keyframes vgRing { 0% { transform: scale(0.04); opacity: 1; } 60% { opacity: 0.9; } 100% { transform: scale(1); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .vg-wave i { animation-duration: 0.9s; } .vg-wave::before { display: none; } }
+
+/* The phone menu sheet owns the bottom of the screen while it is open. */
+body.nav-sheet-open .vg-root { display: none; }

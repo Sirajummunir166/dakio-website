@@ -150,11 +150,11 @@
 }
 .nav-m-label {
   padding: 16px 2px 6px;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-size: 13px;
+  font-weight: 800;
   color: #3e7a45;
 }
+.nav-m-label a { display: inline-flex; align-items: center; gap: 6px; color: inherit; }
 .nav-m-item {
   display: flex;
   align-items: center;
@@ -175,7 +175,7 @@
   gap: 8px 20px;
   padding: 22px 2px 0;
 }
-.nav-m-company span { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; color: #878b76; width: 100%; }
+.nav-m-company span { font-size: 12px; font-weight: 600; color: #878b76; width: 100%; }
 .nav-m-company a { font-size: 15px; font-weight: 600; color: #6b6d60; }
 
 /* pinned footer — language, Log in and the CTA are always one tap away */
@@ -193,7 +193,7 @@
   gap: 12px;
   margin-bottom: 12px;
 }
-.nav-m-foot-meta > span { font-size: 8.5px; font-weight: 600; letter-spacing: 0.12em; color: #878b76; }
+.nav-m-foot-meta > span { font-size: 11.5px; font-weight: 600; color: #878b76; }
 .nav-m-actions { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 10px; }
 .nav-m-btn {
   display: inline-flex;

@@ -1,59 +1,92 @@
 "use client";
 
-// Port of SiteNav.dc.html — sticky blurred cream bar with Explore mega-menu.
+// Sticky blurred cream bar with the Explore mega-menu.
 // Hover-open with 260ms close grace, click toggles (touch), outside-click
 // closes, caret rotates; active page gets the lime underline.
 //
-// The panel is four columns: START HERE / RUN WITH NOVA / BUILD & GROW, and a
-// dark preview card that swaps vignette on hover (or keyboard focus) of any
-// item and resets to the 60-second tour whenever the menu opens or closes.
+// Explore is built for a visitor who is still deciding: one column per kind of
+// business (shops, services), then Nova and the rest. Every item says what the
+// owner gets and links to the page section that shows it. The fourth column is
+// a light preview card: before you point at anything it asks which business you
+// run; on hover it shows that item's real app screen (public/app) and one line.
+// The phone sheet uses the same groups.
 //
 // Localized: copy arrives as a prop (chrome.<lang>.js), internal links go
 // through href(lang, …), and the EN/বাং switch is a real <a> to the same page
 // in the other locale — not client state — so both locales are crawlable.
 //
-// Routes are <Link> so navigation stays client-side. Three things stay plain
-// anchors on purpose: the app subdomain, the /prototypes embeds, and the EN/বাং
-// switch — [lang] is the root layout's own segment, so a locale change is a new
-// document either way, and a hard nav keeps <html lang> honest.
+// Routes are <Link> so navigation stays client-side. Two things stay plain
+// anchors on purpose: the app subdomain and the EN/বাং switch — [lang] is the
+// root layout's own segment, so a locale change is a new document either way,
+// and a hard nav keeps <html lang> honest.
 
 import Link from "next/link";
 import SmartLink from "./SmartLink";
 import { useEffect, useRef, useState } from "react";
 import LogoDefs from "./Logo";
-import NavPreview from "./NavPreview";
+import NavCard from "./NavCard";
 import { LOGIN_URL, REGISTER_URL } from "../lib/urls";
 import { href, otherLocaleHref } from "../lib/i18n";
-import chromeEn, { MONO_LABELS, PREVIEW_MONO } from "../content/copy/chrome.en";
+import chromeEn from "../content/copy/chrome.en";
 import { type } from "../lib/type";
 
-const MONO = "var(--dk-font-mono), monospace";
+// Small line icons for the menu rows (24px grid, drawn with currentColor).
+const ICONS = {
+  chat: "M4 5h16v11H9l-5 4z",
+  shield: "M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6zM9 12l2 2 4-4",
+  truck: "M3 6h11v10H3zM14 10h4l3 3v3h-7M7 19a2 2 0 100-4 2 2 0 000 4zM17 19a2 2 0 100-4 2 2 0 000 4z",
+  globe: "M12 21a9 9 0 100-18 9 9 0 000 18zM3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z",
+  box: "M3 7l9-4 9 4v10l-9 4-9-4zM3 7l9 4 9-4M12 11v10",
+  calendar: "M4 6h16v14H4zM4 10h16M8 3v5M16 3v5",
+  bell: "M6 16V11a6 6 0 0112 0v5l2 2H4zM10 21h4",
+  team: "M9 11a3.5 3.5 0 100-7 3.5 3.5 0 000 7zM2.5 20c.5-3.5 3-5.5 6.5-5.5s6 2 6.5 5.5M16 4.5a3.5 3.5 0 010 6.5M18 14.8c2 .7 3.2 2.5 3.5 5.2",
+  receipt: "M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6M9 16h3",
+  funnel: "M3 4h18l-7 8v6l-4 2v-8z",
+  spark: "M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z",
+  image: "M4 5h16v14H4zM4 16l5-5 4 4 2-2 5 5M15.5 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z",
+  pen: "M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4",
+  move: "M4 8h13l-3-3M20 16H7l3 3",
+  code: "M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16",
+};
 
-const SUPPLIER_HREF = "/prototypes/Dakio Supplier Dashboard.dc.html";
-const NOVA_HQ_HREF = "/prototypes/Nova HQ Prototype v7.dc.html";
-
-// mono badge · copy key · destination · which preview it shows
-const START_KEYS = [
-  { mono: "GO", href: "#launch", pv: "store" },
-  { mono: "MV", href: "/switch", pv: "switch" },
-  { mono: "ZS", href: SUPPLIER_HREF, pv: "supplier" },
+// group · its own page · rows (copy key, destination, icon, app screen)
+const GROUPS = [
+  {
+    key: "shops", page: "/shops", items: [
+      { k: "inbox", href: "/front-office", icon: "chat", shot: "shop-inbox" },
+      { k: "fake", href: "/shops#fake", icon: "shield", shot: "shop-risk" },
+      { k: "courier", href: "/shops#courier", icon: "truck", shot: "shop-couriers" },
+      { k: "website", href: "/themes", icon: "globe", shot: "shop-website" },
+      { k: "stock", href: "/shops#stock", icon: "box", shot: "shop-dropship" },
+    ],
+  },
+  {
+    key: "services", page: "/services", items: [
+      { k: "bookings", href: "/services#missed", icon: "calendar", shot: "svc-booking" },
+      { k: "noshow", href: "/services#noshow", icon: "bell", shot: "svc-reminder" },
+      { k: "team", href: "/services#team", icon: "team", shot: "svc-calendar" },
+      { k: "paid", href: "/services#paid", icon: "receipt", shot: "svc-paid" },
+      { k: "pipeline", href: "/services#pipeline", icon: "funnel", shot: "svc-pipeline" },
+    ],
+  },
+  {
+    key: "more", page: null, items: [
+      { k: "nova", href: "/nova", icon: "spark", shot: "nav-nova" },
+      { k: "ads", href: "/ads", icon: "image", shot: "nav-ads" },
+      { k: "posts", href: "/grow", icon: "pen", shot: "nav-posts" },
+      { k: "switch", href: "/switch", icon: "move", shot: "nav-switch" },
+      { k: "developers", href: "/developers", icon: "code", shot: null },
+    ],
+  },
 ];
 
-const NOVA_KEYS = [
-  { mono: "NV", href: "/nova", pv: "nova" },
-  { mono: "HQ", href: NOVA_HQ_HREF, pv: "novahq" },
-  { mono: "FO", href: "/front-office", pv: "front" },
-];
-
-const BUILD_KEYS = [
-  { mono: "CS", href: "/store", pv: "complete" },
-  { mono: "SS", href: "/store-studio", pv: "studio" },
-  { mono: "GL", href: "/grow", pv: "grow" },
-  { mono: "AD", href: "/ads", pv: "ads" },
-  { mono: "SN", href: SUPPLIER_HREF, pv: "supplier" },
-  { mono: "TH", href: "/themes", pv: "themes" },
-  { mono: "DV", href: "/developers", pv: "developers" },
-];
+function Icon({ name, size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d={ICONS[name]} />
+    </svg>
+  );
+}
 
 function ArrowIcon({ size = 12, strokeWidth = 2.4 }) {
   return (
@@ -76,7 +109,8 @@ export default function SiteNav({
 }) {
   const [open, setOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [pv, setPv] = useState("tour");
+  const [pv, setPv] = useState(null); // the menu row being pointed at
+
   const closeT = useRef(null);
   const rootRef = useRef(null);
   // The phone sheet mirrors the desktop bar: Explore (collapsible, the same
@@ -97,12 +131,15 @@ export default function SiteNav({
     if (!mobileOpen) return undefined;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    // The Talk to Nova launcher sits over the sheet's Get started button.
+    document.body.classList.add("nav-sheet-open");
     const onKey = e => { if (e.key === "Escape") setMobileOpen(false); };
     const onResize = () => { if (window.innerWidth > 900) setMobileOpen(false); };
     window.addEventListener("keydown", onKey);
     window.addEventListener("resize", onResize);
     return () => {
       document.body.style.overflow = prev;
+      document.body.classList.remove("nav-sheet-open");
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("resize", onResize);
     };
@@ -115,13 +152,16 @@ export default function SiteNav({
   const langHref = otherLocaleHref(lang, route);
   const langAria = isBn ? c.toEnglish : c.toBangla;
 
-  // "#launch" is a section of the home page, not a route of its own.
-  const dest = p => (p.startsWith("#") ? `${L("/")}${p}` : L(p));
+  // "/shops#fake" → the localized page plus the section.
+  const dest = p => {
+    const [path, hash] = p.split("#");
+    return hash ? `${L(path || "/")}#${hash}` : L(path);
+  };
 
-  const toggleOpen = () => { clearTimeout(closeT.current); setPv("tour"); setOpen(o => !o); };
-  const openMenu = () => { clearTimeout(closeT.current); if (!open) { setPv("tour"); setOpen(true); } };
-  const scheduleClose = () => { clearTimeout(closeT.current); closeT.current = setTimeout(() => { setOpen(false); setPv("tour"); }, 260); };
-  const close = () => { clearTimeout(closeT.current); setOpen(false); setPv("tour"); };
+  const toggleOpen = () => { clearTimeout(closeT.current); setPv(null); setOpen(o => !o); };
+  const openMenu = () => { clearTimeout(closeT.current); if (!open) { setPv(null); setOpen(true); } };
+  const scheduleClose = () => { clearTimeout(closeT.current); closeT.current = setTimeout(() => { setOpen(false); setPv(null); }, 260); };
+  const close = () => { clearTimeout(closeT.current); setOpen(false); setPv(null); };
 
   const link = key =>
     active === key
@@ -131,50 +171,35 @@ export default function SiteNav({
     padding: "5px 11px", borderRadius: 99, fontSize: 11.5, fontWeight: 700,
     ...(on ? { background: "#1A1D12", color: "#C6F035" } : { color: "#6B6D60" }),
   });
-  const prodActive = ["store", "store-studio", "grow", "ads", "front-office", "supplier", "themes", "developers"].includes(active);
+  const prodActive = ["store", "store-studio", "grow", "ads", "front-office", "themes", "developers", "switch"].includes(active);
 
-  const startItems = START_KEYS.map(k => ({ ...k, ...c.startItems[k.mono] }));
-  const novaItems = NOVA_KEYS.map(k => ({ ...k, ...c.novaItems[k.mono] }));
-  const buildItems = BUILD_KEYS.map(k => ({ ...k, ...c.buildItems[k.mono] }));
+  const groups = GROUPS.map(g => ({
+    ...g,
+    copy: c.groups[g.key],
+    items: g.items.map(it => ({ ...it, ...c.groups[g.key].items[it.k] })),
+  }));
+  const hovered = groups.flatMap(g => g.items).find(it => it.k === pv) || null;
 
-  const preview = c.previews[pv] ? pv : "tour";
-
-  const PREVIEW_HREF = {
-    tour: `${L("/")}#rooms`,
-    store: `${L("/")}#launch`,
-    switch: L("/switch"),
-    supplier: SUPPLIER_HREF,
-    nova: L("/nova"),
-    novahq: NOVA_HQ_HREF,
-    front: L("/front-office"),
-    complete: L("/store"),
-    studio: L("/store-studio"),
-    grow: L("/grow"),
-    ads: L("/ads"),
-    themes: L("/themes"),
-    developers: L("/developers"),
-  };
-
-  const colTitle = { fontFamily: MONO, fontSize: 8.5, fontWeight: 600, letterSpacing: "0.14em", color: "#3E7A45", padding: "0 10px" };
-  const badge = (bg, color, size) => ({
-    width: size, height: size, borderRadius: size === 34 ? 11 : 12, background: bg, color,
-    display: "flex", alignItems: "center", justifyContent: "center",
-    fontFamily: MONO, fontSize: size === 34 ? 10.5 : 11, fontWeight: 600, flexShrink: 0,
+  const colTitle = { display: "flex", alignItems: "baseline", gap: 8, padding: "0 10px", fontSize: 13, fontWeight: 800, color: "#1A1D12", ...T.label };
+  const colSub = { display: "block", padding: "2px 10px 0", fontSize: 11.5, color: "#878B76", ...T.chip };
+  const badge = size => ({
+    width: size, height: size, borderRadius: 10, background: "#EEF4D4", color: "#3A5212",
+    display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
   });
 
-  // One menu row: mono badge + name + one-liner, and it drives the preview card.
-  const Item = ({ it, badgeStyle, pad, nameSize, descSize }) => (
+  // One menu row: icon + what you get + one line; it drives the preview card.
+  const Item = ({ it }) => (
     <SmartLink
       href={dest(it.href)}
       className="hv-bg-f0efe4"
-      onMouseEnter={() => setPv(it.pv)}
-      onFocus={() => setPv(it.pv)}
-      style={{ display: "flex", alignItems: "center", gap: 12, padding: pad, borderRadius: 14 }}
+      onMouseEnter={() => setPv(it.k)}
+      onFocus={() => setPv(it.k)}
+      style={{ display: "flex", alignItems: "center", gap: 11, padding: "7px 10px", borderRadius: 12 }}
     >
-      <span style={badgeStyle}>{it.mono}</span>
+      <span style={badge(32)}><Icon name={it.icon} size={17} /></span>
       <span style={{ minWidth: 0 }}>
-        <span style={{ display: "block", fontSize: nameSize, fontWeight: 700, ...T.label }}>{it.n}</span>
-        <span style={{ display: "block", fontSize: descSize, color: "#6B6D60", marginTop: 1, ...T.chip }}>{it.d}</span>
+        <span style={{ display: "block", fontSize: 13, fontWeight: 700, ...T.label }}>{it.n}</span>
+        <span style={{ display: "block", fontSize: 11, color: "#6B6D60", marginTop: 1, ...T.chip }}>{it.d}</span>
       </span>
     </SmartLink>
   );
@@ -264,16 +289,14 @@ export default function SiteNav({
             </button>
             {exploreOpen ? (
               <div className="nav-m-explore">
-                {[
-                  { title: MONO_LABELS.navStart, items: startItems, bg: "#C6F035", fg: "#1A1D12" },
-                  { title: MONO_LABELS.navNova, items: novaItems, bg: "#14170E", fg: "#C6F035" },
-                  { title: MONO_LABELS.navBuild, items: buildItems, bg: "#EEF4D4", fg: "#3A5212" },
-                ].map(g => (
-                  <div key={g.title}>
-                    <div className="nav-m-label" style={{ fontFamily: MONO }}>{g.title}</div>
+                {groups.map(g => (
+                  <div key={g.key}>
+                    <div className="nav-m-label" style={T.label}>
+                      {g.page ? <Link href={L(g.page)}>{g.copy.title} <ArrowIcon size={11} /></Link> : g.copy.title}
+                    </div>
                     {g.items.map(it => (
-                      <SmartLink key={`${g.title}-${it.mono}`} href={dest(it.href)} className="nav-m-item">
-                        <span style={{ ...badge(g.bg, g.fg, 34), fontSize: 10 }}>{it.mono}</span>
+                      <SmartLink key={it.k} href={dest(it.href)} className="nav-m-item">
+                        <span style={badge(34)}><Icon name={it.icon} /></span>
                         <span style={{ minWidth: 0 }}>
                           <span className="nav-m-item-n" style={T.label}>{it.n}</span>
                           <span className="nav-m-item-d" style={T.chip}>{it.d}</span>
@@ -295,7 +318,7 @@ export default function SiteNav({
               </Link>
             ))}
             <div className="nav-m-company">
-              <span style={{ fontFamily: MONO }}>{MONO_LABELS.navCompany}</span>
+              <span style={T.chip}>{c.company}</span>
               <Link href={L("/about")} style={T.label}>{c.about}</Link>
               <Link href={L("/blog")} style={T.label}>{c.blog}</Link>
               <Link href={L("/contact")} style={T.label}>{c.contact}</Link>
@@ -303,7 +326,7 @@ export default function SiteNav({
           </div>
           <div className="nav-m-foot">
             <div className="nav-m-foot-meta">
-              <span style={{ fontFamily: MONO }}>{MONO_LABELS.navRegion}</span>
+              <span style={T.chip}>{c.region}</span>
               <LangSwitch />
             </div>
             <div className="nav-m-actions">
@@ -320,49 +343,27 @@ export default function SiteNav({
         <>
           <div onClick={close} style={{ position: "fixed", inset: 0, zIndex: -1 }} />
           <div onMouseEnter={openMenu} onMouseLeave={scheduleClose} style={{ position: "absolute", top: "100%", left: 0, right: 0, padding: "10px 28px 0" }}>
-            <div onClick={e => e.stopPropagation()} style={{ maxWidth: 1150, margin: "0 auto", borderRadius: 24, background: "#FBFBF4", border: "1px solid rgba(26,29,18,0.08)", boxShadow: "0 34px 80px rgba(26,29,18,0.22)", padding: 22, display: "grid", gridTemplateColumns: "0.95fr 0.95fr 1.02fr 1.05fr", gap: 16, animation: "nvDrop .18s ease both" }}>
-              <div>
-                <div style={colTitle}>{MONO_LABELS.navStart}</div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 2, marginTop: 10 }}>
-                  {startItems.map(it => (
-                    <Item key={it.mono} it={it} badgeStyle={badge("#C6F035", "#1A1D12", 38)} pad={10} nameSize={13.5} descSize={11} />
-                  ))}
+            <div onClick={e => e.stopPropagation()} style={{ maxWidth: 1150, margin: "0 auto", borderRadius: 24, background: "#FBFBF4", border: "1px solid rgba(26,29,18,0.08)", boxShadow: "0 34px 80px rgba(26,29,18,0.22)", padding: 20, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1.2fr", gap: 14, animation: "nvDrop .18s ease both" }}>
+              {groups.map((g, i) => (
+                <div key={g.key} style={i ? { borderLeft: "1px solid rgba(26,29,18,0.07)", paddingLeft: 14 } : undefined}>
+                  {g.page ? (
+                    <Link href={L(g.page)} className="hv-ink" style={colTitle}>{g.copy.title} <ArrowIcon size={11} /></Link>
+                  ) : (
+                    <div style={colTitle}>{g.copy.title}</div>
+                  )}
+                  <span style={colSub}>{g.copy.sub}</span>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 1, marginTop: 8 }}>
+                    {g.items.map(it => <Item key={it.k} it={it} />)}
+                  </div>
                 </div>
-              </div>
-              <div style={{ borderLeft: "1px solid rgba(26,29,18,0.07)", paddingLeft: 16 }}>
-                <div style={colTitle}>{MONO_LABELS.navNova}</div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 2, marginTop: 10 }}>
-                  {novaItems.map(it => (
-                    <Item key={it.mono} it={it} badgeStyle={badge("#14170E", "#C6F035", 38)} pad={10} nameSize={13.5} descSize={11} />
-                  ))}
-                </div>
-              </div>
-              <div style={{ borderLeft: "1px solid rgba(26,29,18,0.07)", paddingLeft: 16 }}>
-                <div style={colTitle}>{MONO_LABELS.navBuild}</div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 2, marginTop: 10 }}>
-                  {buildItems.map(it => (
-                    <Item key={it.mono} it={it} badgeStyle={badge("#EEF4D4", "#3A5212", 34)} pad="8px 10px" nameSize={13} descSize={10.5} />
-                  ))}
-                </div>
-              </div>
-              <SmartLink href={PREVIEW_HREF[preview]} className="hv-up2" style={{ display: "flex", flexDirection: "column", borderRadius: 16, background: "#0F120B", color: "#E9EFDC", padding: 16, overflow: "hidden" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span style={{ width: 16, height: 16, borderRadius: "50%", background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)", flexShrink: 0 }} />
-                  <span style={{ fontFamily: MONO, fontSize: 8, fontWeight: 600, letterSpacing: "0.14em", color: "#8CBF33" }}>{PREVIEW_MONO[preview]}</span>
-                </div>
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 7, margin: "12px 0" }}>
-                  <NavPreview pv={preview} copy={c.previews} T={T} />
-                </div>
-                <div style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 12, fontWeight: 700, color: "#C6F035", ...T.label }}>
-                  {c.previews[preview].cta} <ArrowIcon />
-                </div>
-              </SmartLink>
+              ))}
+              <NavCard it={hovered} c={c} T={T} L={L} dest={dest} />
               <div style={{ gridColumn: "1 / -1", display: "flex", alignItems: "center", gap: 16, padding: "12px 10px 2px", borderTop: "1px solid rgba(26,29,18,0.08)", flexWrap: "wrap" }}>
-                <span style={{ fontFamily: MONO, fontSize: 8, fontWeight: 600, letterSpacing: "0.14em", color: "#878B76" }}>{MONO_LABELS.navCompany}</span>
+                <Link href={L("/pricing")} className="hv-ink" style={{ fontSize: 12.5, fontWeight: 700, color: "#1A1D12", ...T.label }}>{c.pricing}</Link>
                 <Link href={L("/about")} className="hv-ink" style={{ fontSize: 12.5, fontWeight: 700, color: "#6B6D60", ...T.label }}>{c.about}</Link>
                 <Link href={L("/blog")} className="hv-ink" style={{ fontSize: 12.5, fontWeight: 700, color: "#6B6D60", ...T.label }}>{c.blog}</Link>
                 <Link href={L("/contact")} className="hv-ink" style={{ fontSize: 12.5, fontWeight: 700, color: "#6B6D60", ...T.label }}>{c.contact}</Link>
-                <span style={{ marginLeft: "auto", fontFamily: MONO, fontSize: 8, letterSpacing: "0.1em", color: "#878B76" }}>{MONO_LABELS.navRegion}</span>
+                <span style={{ marginLeft: "auto", fontSize: 11.5, color: "#878B76", ...T.chip }}>{c.region}</span>
               </div>
             </div>
           </div>
