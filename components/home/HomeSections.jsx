@@ -1,6 +1,6 @@
-// The home page sections (HOME_COPY.md). "/" uses them all; "/shops" uses the
-// hero, pricing, questions and closing around its angles (Angles.jsx); "/services"
-// still uses them all.
+// The home page sections (HOME_COPY.md). "/" uses them all; "/shops" and
+// "/services" use the hero, pricing, questions and closing around their angles
+// (Angles.jsx).
 //
 // Server components. Every audience variant is in the markup with a data-show
 // attribute; AudienceRoot (Audience.jsx) sets data-aud on the wrapper and
@@ -466,38 +466,5 @@ export function Closing({ c, heading }) {
         <div className="hm-cta-under">{x.under}</div>
       </div>
     </section>
-  );
-}
-
-/* ---------------- /shops and /services blocks ---------------- */
-
-export function ServiceKinds({ c }) {
-  const x = c.services;
-  return (
-    <>
-      <section className="hm-wrap hm-sec" data-reveal>
-        <div className="hm-head">
-          <div className="hm-kicker">{x.kindsKicker}</div>
-          <h2 className="hm-h2">{x.kindsH2}</h2>
-        </div>
-        <div className="hm-kinds">
-          {x.kinds.map(k => (
-            <a key={k.n} href={REGISTER_URL} className="hm-kind">
-              <span className="hm-h3">{k.n}</span>
-              <span className="hm-body">{k.d}</span>
-            </a>
-          ))}
-        </div>
-      </section>
-      <section className="hm-wrap hm-sec" data-reveal>
-        <div className="hm-team">
-          <h2 className="hm-h2">{x.teamH2}</h2>
-          <div>
-            <p className="hm-body hm-team-p">{x.team}</p>
-            <p className="hm-note">{x.gcal}</p>
-          </div>
-        </div>
-      </section>
-    </>
   );
 }
