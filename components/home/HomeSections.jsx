@@ -245,7 +245,7 @@ function PartPreview({ k, v }) {
   );
   if (k === "marketing") inner = (
     <div className="hm-pv-card hm-pv-post">
-      <img src="/demo/saril/peacock-teal-panjabi.jpg" alt="" width={56} height={72} loading="lazy" />
+      <img src="/demo/saril/magenta-satin-silk-saree.jpg" alt="" width={56} height={72} loading="lazy" />
       <div><span className="hm-pv-tag">{v.tag}</span><p>{v.text}</p><div className="hm-pv-btns"><span className="is-go">{v.approve}</span><span>{v.edit}</span></div></div>
     </div>
   );
@@ -258,7 +258,7 @@ function PartPreview({ k, v }) {
   if (k === "website") inner = (
     <div className="hm-pv-site">
       <div className="hm-pv-bar"><b>{v.store}</b>{v.nav.map(n => <span key={n}>{n}</span>)}</div>
-      <div className="hm-pv-hero"><img src="/demo/saril/peacock-teal-panjabi.jpg" alt="" width={90} height={110} loading="lazy" /><div><i /><i /><i /></div></div>
+      <div className="hm-pv-hero"><img src="/demo/saril/saffron-katan-silk-saree.jpg" alt="" width={90} height={110} loading="lazy" /><div><i /><i /><i /></div></div>
       <span className="hm-pv-bubble"><span className="hm-pv-orb" />{v.bubble}</span>
     </div>
   );
@@ -328,7 +328,7 @@ function SetupPreview({ i, v }) {
   if (i === 1) inner = (
     <>
       <div className="hm-pv-card hm-pv-prod" data-show="shop">
-        <img src="/demo/saril/peacock-teal-panjabi.jpg" alt="" width={52} height={66} loading="lazy" />
+        <img src={v.product.img} alt="" width={52} height={66} loading="lazy" />
         <div><b>{v.product.n}</b><span className="hm-pv-price">{v.product.p}</span><div className="hm-pv-sizes">{v.product.sizes.map(z => <span key={z}>{z}</span>)}</div></div>
       </div>
       <div className="hm-pv-card" data-show="svc-only">

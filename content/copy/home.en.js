@@ -157,11 +157,11 @@ const home = {
     link: "See the website designs",
     // A small preview of Nova at work in each part (HomeSections.jsx PartPreview).
     previews: {
-      inbox: { them: "Eta ase? 40 size?", nova: "Ji, ase! ৳2,350, 2 dine pouchabe.", voice: "Voice note · heard: delivery koto?" },
+      inbox: { them: "Navy panjabi ta 42 e ase?", nova: "Ji, ase! ৳2,890, 2 dine pouchabe.", voice: "Voice note · heard: delivery koto?" },
       customers: { name: "Nusrat Jahan", facts: ["Wedding 12 Dec", "Uttara", "Budget ৳35,000"], saved: "Saved by Nova", task: "Call back tomorrow, 11:00" },
       orders: { id: "#6BB-VHQ6", status: "Shipped · Steadfast", msg: "Nova: Your parcel is on the way. Tracking link sent." },
       bookings: { day: "Friday", slots: [["2:00", "Threading · Rupa"], ["4:00", "Bridal trial · Nusrat"], ["6:00", "Party makeup · Sadia"]], note: "Reminder goes out Thursday" },
-      marketing: { tag: "Draft post", text: "New in: Peacock Teal Panjabi, 38 to 46. ৳2,350.", approve: "Approve", edit: "Edit" },
+      marketing: { tag: "Draft post", text: "New in: Magenta Satin Silk Saree, hand-finished border. ৳3,450.", approve: "Approve", edit: "Edit" },
       money: { title: "Weekly money note", lines: [["Came in", "৳38,500"], ["Orders", "21"], ["Couriers holding", "৳12,400"]] },
       website: { store: "Saril", nav: ["New in", "Panjabi", "Saree"], bubble: "Ask Nova" },
     },
@@ -196,6 +196,9 @@ const home = {
   chat: {
     typing: "Nova is typing",
     input: "Message",
+    soundOn: "Turn the chat sounds on",
+    soundOff: "Turn the chat sounds off",
+    soundAsk: "Tap for sound",
     caption: "Example store. Nova's side is how she answers today.",
     // What is happening, one line per message (ChatDemo.jsx, right side).
     beats: {
@@ -218,6 +221,15 @@ const home = {
     },
     after: "Then Dakio carries on, without you:",
     head: { shop: { name: "Saril", channel: "Messenger" }, svc: { name: "Glow Studio", channel: "Instagram" } },
+    // Who is talking, and what the special bubbles are (ChatDemo.jsx).
+    // Each chat's title card when both play (ChatDemo.jsx).
+    intro: {
+      shop: { tag: "For shops", name: "Saril, a clothing shop", sub: "Sells on Facebook and Instagram", line: "First, a shop. A customer sends Saril a screenshot of a post, late at night." },
+      svc: { tag: "For services", name: "Glow Studio, a beauty parlour", sub: "Takes bookings on Instagram", line: "Now a service business. A client asks Glow Studio for a bridal trial." },
+    },
+    who: { them: "Customer", nova: "Nova" },
+    customer: { shop: "Tanvir", svc: "Nusrat" },
+    tags: { shot: "Screenshot of your post", product: "Product card from your shop", chips: "Free times as buttons", tap: "Tapped a time", order: "Order created", booking: "Booking made" },
     shop: [
       { from: "them", shot: "Saril · Peacock Teal Panjabi", img: "/demo/saril/peacock-teal-panjabi.jpg", t: "Eta ase?" },
       { from: "nova", t: "Ji, ase! Eta amader Peacock Teal Panjabi.", product: { n: "Peacock Teal Panjabi", p: "৳2,350", note: "38 to 46 in stock", img: "/demo/saril/peacock-teal-panjabi.jpg" } },
@@ -252,7 +264,7 @@ const home = {
       channels: [["Messenger", true], ["Instagram", true], ["WhatsApp", false], ["Website chat", true]],
       connected: "Connected",
       connect: "Connect",
-      product: { n: "Peacock Teal Panjabi", p: "৳2,350", sizes: ["38", "40", "42", "44", "46"] },
+      product: { n: "Mehfil Velvet Three-Piece", p: "৳7,450", img: "/demo/saril/mehfil-velvet-three-piece.jpg", sizes: ["S", "M", "L", "XL", "XXL"] },
       service: { n: "Bridal makeup", p: "from ৳15,000", dur: "3 hours", hours: "Sat to Thu · 10 AM to 8 PM" },
       on: "Answer customer messages",
       live: "Nova is answering · 3 chats today",
