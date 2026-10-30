@@ -295,9 +295,9 @@ const home = {
     // FALLBACK ONLY. The cards come from the live catalogue via
     // lib/plans.js#getHomePricing and render from here only if the API is down.
     plans: [
-      { n: "Growth", audience: "For a business that sells every day", pr: "৳1,490", sub: "/month", yr: "or ৳1,242/month billed annually", level: "NOVA MANAGER", cta: "Choose Growth", dark: false, pop: true,
+      { n: "Growth", audience: "For a business that sells every day", pr: "৳1,490", sub: "/month", yr: "or ৳1,242/month billed annually", level: "NOVA AI CEO", cta: "Choose Growth", dark: false, pop: true,
         feats: ["Unlimited products, no daily order cap", "Nova answers, sells and follows up", "Website, couriers, bKash and cash on delivery", "Customer pages, follow-ups and reviews"] },
-      { n: "Business", audience: "For a busy business with a team", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA MANAGER + VOICE", cta: "Choose Business", dark: true, pop: false,
+      { n: "Business", audience: "For a busy business with a team", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA AI CEO + VOICE", cta: "Choose Business", dark: true, pop: false,
         feats: ["Everything in Growth", "60 minutes a month to talk to Nova by voice", "Logins for your staff", "Video ads from your product photos"] },
     ],
     footLink: "See full pricing",
@@ -335,8 +335,8 @@ const home = {
     badge: "FOR ONLINE SHOPS",
     h1: "Run your online shop from one app.",
     accent: "With an AI CEO built in.",
-    sub: "Products and stock, your website, orders, couriers, bKash and cash on delivery, and every customer, in one app. Nova answers your page in Bangla day and night, takes the order and keeps the buyer updated.",
-    closing: "Tonight's orders are already waiting in your inbox. Let Nova take them.",
+    sub: "Stock, website, orders, couriers and every customer in one app. Nova answers your page day and night and takes the order.",
+    closing: "Tonight's orders are waiting. Let Nova take them.",
   },
 
   services: {
@@ -347,8 +347,8 @@ const home = {
     badge: "FOR SERVICE BUSINESSES",
     h1: "Run your bookings, clients and team from one app.",
     accent: "With an AI CEO built in.",
-    sub: "For parlours, salons, coaching centres, chambers, photographers and every business that sells its time. The calendar, client pages, quotes and invoices and a booking website in one app. Nova answers, offers your free times, books the client and reminds them.",
-    closing: "Your next booking could come in tonight. Let Nova take it.",
+    sub: "Calendar, clients, invoices and a booking website in one app. Nova answers, books and reminds.",
+    closing: "Your next booking could come tonight. Let Nova take it.",
   },
 };
 

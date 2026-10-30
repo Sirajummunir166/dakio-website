@@ -4,7 +4,8 @@
 // Server components. Worries is the row of chips under the hero: the owner
 // taps the problem they have and lands on the angle that answers it. Each
 // Angle opens with that worry in the owner's words, answers it next to a real
-// app screen with Nova's note on it, and ends with one result line. The dark
+// app screen with Nova's note on it (three short points, no paragraph: the
+// screen tells the rest), and ends with one result line. The dark
 // pill with the glowing ball is kept for the Talk to Nova button alone. Angles
 // alternate sides; an angle without a screen yet is left out.
 
@@ -69,7 +70,7 @@ export function Angles({ x }) {
         <div className="ag-kicker"><span>{num(i)}</span>{a.n}</div>
         <blockquote className="ag-worry">{a.worry}</blockquote>
         <h2 className="ag-h">{a.h}</h2>
-        <p className="ag-d">{a.d}</p>
+        {a.d ? <p className="ag-d">{a.d}</p> : null}
         <ul className="ag-points">
           {a.points.map(p => <li key={p}>{CHECK}{p}</li>)}
         </ul>
