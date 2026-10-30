@@ -19,6 +19,7 @@ import { usePathname } from "next/navigation";
 import { LEGAL_PATHS, isEnglishOnlyPath } from "../../lib/i18n";
 import { initBot } from "../../lib/botid";
 import GREET from "./greetings.json";
+import { play, canPlay, SOUNDS } from "../../lib/sound";
 
 export const VOICE_COPY = {
   en: {
@@ -126,32 +127,6 @@ function useGaze(active, intro) {
 // (sessionStorage, so a reload in the same tab doesn't repeat it), a small
 // ripple round her ball after that.
 const WAVE_KEY = "dakio-nova-waved";
-
-/** A soft two-note pop, made by the page. Browsers play it only once the
- *  visitor has tapped or clicked something on the site; before that it is
- *  silently skipped and the wave works alone. */
-function chime(ctxRef) {
-  if (!navigator.userActivation?.hasBeenActive) return;
-  try {
-    const C = window.AudioContext || window.webkitAudioContext;
-    if (!C) return;
-    const ctx = ctxRef.current || (ctxRef.current = new C());
-    if (ctx.state === "suspended") ctx.resume().catch(() => {});
-    const now = ctx.currentTime;
-    [[784, 0], [1175, 0.11]].forEach(([freq, at]) => {
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
-      o.type = "sine";
-      o.frequency.value = freq;
-      g.gain.setValueAtTime(0.0001, now + at);
-      g.gain.exponentialRampToValueAtTime(0.08, now + at + 0.015);
-      g.gain.exponentialRampToValueAtTime(0.0001, now + at + 0.28);
-      o.connect(g).connect(ctx.destination);
-      o.start(now + at);
-      o.stop(now + at + 0.3);
-    });
-  } catch { /* no sound is fine */ }
-}
 
 function track(name, params = {}) {
   try { window.gtag?.("event", name, params); } catch { /* analytics never breaks the call */ }
@@ -293,7 +268,6 @@ export default function VoiceGuide({ lang = "en" }) {
   // Each page sends its message: 8 seconds into the visit, 3 on later pages.
   const pagesSeen = useRef(0);
   const quiet = useRef(false); // closed a message or talked to her: no more sound
-  const audio = useRef(null); // the page's one AudioContext for the pop
   const busy = useRef(false); // the card is open or a call is on: no message
   busy.current = welcome || phase !== "idle";
   useEffect(() => {
@@ -324,8 +298,8 @@ export default function VoiceGuide({ lang = "en" }) {
       const x = r.left + r.width / 2, y = r.top + r.height / 2;
       const reach = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
       setPing({ big, x, y, size: big ? reach * 2 : 240, id: Date.now() });
-      if (!quiet.current) chime(audio);
-      track("voice_teaser_wave", { big, sound: !quiet.current && !!navigator.userActivation?.hasBeenActive });
+      if (!quiet.current) play(SOUNDS.pop);
+      track("voice_teaser_wave", { big, sound: !quiet.current && canPlay() });
     }, 420); // the drop lands
     const done = window.setTimeout(() => setPing(null), 3200);
     return () => { window.clearTimeout(land); window.clearTimeout(done); };
