@@ -1,4 +1,4 @@
-// Home. Nova as the AI manager for the whole business (HOME_COPY.md).
+// Home. Nova as the AI CEO for the whole business (HOME_COPY.md).
 // Copy lives in content/copy/home.<lang>.js; the sections are shared with
 // /shops and /services (components/home/HomeSections.jsx, styles in app/home.css).
 

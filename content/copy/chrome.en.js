@@ -25,7 +25,7 @@ export const PREVIEW_MONO = {
   store: "OPEN YOUR FIRST STORE",
   switch: "MOVE TO DAKIO",
   supplier: "SUPPLIER NETWORK",
-  nova: "NOVA · YOUR AI MANAGER",
+  nova: "NOVA · YOUR AI CEO",
   novahq: "NOVA HQ",
   front: "FRONT OFFICE",
   complete: "THE COMPLETE STORE",
@@ -71,7 +71,7 @@ const chrome = {
       ZS: { n: "Sell without inventory", d: "Suppliers hold and ship for you" },
     },
     novaItems: {
-      NV: { n: "Nova", d: "Meet your AI manager" },
+      NV: { n: "Nova", d: "Meet your AI CEO" },
       HQ: { n: "Nova HQ", d: "Supervise decisions, receipts and results" },
       FO: { n: "Front Office", d: "Nova sells in your inbox" },
     },
@@ -161,9 +161,9 @@ const chrome = {
     contact: "Contact",
   },
   footer: {
-    tagline: "Your whole business in one app, with Nova as your AI manager.",
+    tagline: "Your whole business in one app, with Nova as your AI CEO.",
     product: {
-      nova: "Nova, your AI manager",
+      nova: "Nova, your AI CEO",
       store: "The Complete Store",
       studio: "Store Studio",
       grow: "Grow Suite",

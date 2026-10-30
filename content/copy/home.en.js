@@ -12,9 +12,9 @@ export const MARQUEE = ["Messenger", "Instagram", "WhatsApp", "Website chat", "b
 
 const home = {
   meta: {
-    title: "Dakio | One app to run your whole business, with an AI manager built in",
+    title: "Dakio | One app to run your whole business, with an AI CEO built in",
     description:
-      "Website, products and stock, orders, couriers, bookings, clients and money in one app, made in Bangladesh. Nova, your AI manager, works in every part. Bangla first, bKash and cash on delivery built in.",
+      "Website, products and stock, orders, couriers, bookings, clients and money in one app, made in Bangladesh. Nova, your AI CEO, works in every part. Bangla first, bKash and cash on delivery built in.",
   },
 
   hero: {
@@ -32,7 +32,7 @@ const home = {
         { t: "photography studio", k: "svc" }, { t: "men's salon", k: "svc" },
       ],
     },
-    accent: "With an AI manager built in.",
+    accent: "With an AI CEO built in.",
     ask: "What do you sell?",
     opts: { shop: "Products", svc: "Services", both: "Both" },
     sub: {
@@ -312,7 +312,7 @@ const home = {
     kicker: "QUESTIONS",
     h2: "Questions people ask",
     items: [
-      { q: "What is Nova?", a: "Nova is the AI manager inside Dakio. She works in your inbox, orders, bookings and customer pages, and reports to you every morning." },
+      { q: "What is Nova?", a: "Nova is the AI CEO inside Dakio. She runs the day to day, day and night: your inbox, orders, bookings and customer pages, and she briefs you every morning. You make the big calls." },
       { q: "How is this different from a chatbot?", a: "A chatbot stops at the reply. Nova takes the order or the booking, keeps the customer updated, follows up, and does it inside the app where your website, couriers and accounts already live." },
       { not: "svc", q: "Can I replace my stock sheet and my POS?", a: "Yes. Products with sizes and colours, stock in every warehouse, purchases from your suppliers and a POS for the counter are all in Dakio. A sale at the counter and an order from chat take stock from the same place." },
       { q: "Can my staff use it?", a: "Yes. Each person gets a login with their own role: sales staff see their own customers, and attendance, leave and advances are in Employees. On a service business, each person gets their day's bookings every morning. Staff logins come with the Business plan." },
@@ -334,24 +334,24 @@ const home = {
 
   shops: {
     meta: {
-      title: "Dakio for online shops | One app for products, orders, couriers and customers, with an AI manager built in",
+      title: "Dakio for online shops | One app for products, orders, couriers and customers, with an AI CEO built in",
       description: "Nova answers your page in Bangla, day and night, takes the order and keeps the buyer updated. Website, couriers, bKash, cash on delivery and customer list in the same app.",
     },
     badge: "FOR ONLINE SHOPS",
     h1: "Run your online shop from one app.",
-    accent: "With an AI manager built in.",
+    accent: "With an AI CEO built in.",
     sub: "Products and stock, your website, orders, couriers, bKash and cash on delivery, and every customer, in one app. Nova answers your page in Bangla day and night, takes the order and keeps the buyer updated.",
     closing: "Tonight's orders are already waiting in your inbox. Let Nova take them.",
   },
 
   services: {
     meta: {
-      title: "Dakio for services | One app for bookings, clients and invoices, with an AI manager built in",
+      title: "Dakio for services | One app for bookings, clients and invoices, with an AI CEO built in",
       description: "For parlours, salons, coaching centres, chambers and photographers. Nova answers, offers your free times, books the client and reminds them. Calendar, client pages, invoices and a booking website in one app.",
     },
     badge: "FOR SERVICE BUSINESSES",
     h1: "Run your bookings, clients and team from one app.",
-    accent: "With an AI manager built in.",
+    accent: "With an AI CEO built in.",
     sub: "For parlours, salons, coaching centres, chambers, photographers and every business that sells its time. The calendar, client pages, quotes and invoices and a booking website in one app. Nova answers, offers your free times, books the client and reminds them.",
     closing: "Your next booking could come in tonight. Let Nova take it.",
   },

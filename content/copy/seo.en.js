@@ -5,10 +5,10 @@ const seo = {
   home: "Home",
 
   organizationDescription:
-    "Dakio runs a whole business in one app: website, orders, customers, couriers, bookings and payments, with Nova, an AI manager, working in every part. Made in Bangladesh.",
+    "Dakio runs a whole business in one app: website, orders, customers, couriers, bookings and payments, with Nova, an AI CEO, working in every part. Made in Bangladesh.",
 
   applicationDescription:
-    "One app for shops and service businesses in Bangladesh, with Nova, an AI manager: website, inbox, orders, couriers, bookings, customer pages, bKash, Nagad and cash on delivery.",
+    "One app for shops and service businesses in Bangladesh, with Nova, an AI CEO: website, inbox, orders, couriers, bookings, customer pages, bKash, Nagad and cash on delivery.",
 
   // FALLBACK ONLY — the emitted offers come from the live catalogue
   // (lib/plans.js#getJsonLdOffers). The withdrawn Starter tier is gone: a
