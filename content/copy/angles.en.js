@@ -5,9 +5,10 @@
 // Dakio yet" list. An angle without a `shot` is not shown yet.
 //
 // shot: key = public/app/<key>.webp, size = its pixels, note = Nova's note on
-// it, at = where the note sits (% of the screen), focus = how far right the
-// phone crop looks (%). The screens are the example store Saril, shot on the
-// throwaway screens database; shop-website is Saril's Studio theme.
+// it, pin = the spot it points at, via = where its line turns, at = where the
+// note sits (all % of the screen; at.y "top" or "bottom" = just outside it).
+// The screens are the example stores Saril and Glow Studio on the throwaway
+// screens database; shop-website is Saril's Studio theme.
 
 export default {
   shops: {
@@ -32,8 +33,9 @@ export default {
           url: "app.dakio.io/front-office",
           alt: "Dakio Front Office: a customer asks about a Peacock Teal Panjabi at 00:52 and Nova answers with the price and sizes in stock at 00:53",
           note: "Answered at 12:53 at night",
-          at: { x: 76, y: 36 },
-          focus: 100,
+          pin: { x: 64.5, y: 51 },
+          via: { x: 57, y: 51 },
+          at: { x: 57, y: "top" },
         },
       },
       {
@@ -55,8 +57,9 @@ export default {
           url: "app.dakio.io/orders",
           alt: "Dakio order page: a new order from Imran Kabir, whose customer history is marked RISK with 3 of 4 orders cancelled or returned, and a tip to take the delivery charge in advance",
           note: "3 earlier parcels came back",
-          at: { x: 62, y: 62 },
-          focus: 100,
+          pin: { x: 85, y: 82 },
+          via: { x: 71, y: 82 },
+          at: { x: 71, y: "bottom" },
         },
       },
       {
@@ -78,8 +81,8 @@ export default {
           url: "app.dakio.io/orders",
           alt: "Dakio Orders page filtered to Delivered: eleven orders, each with its courier, Steadfast or Pathao, and the tracking number",
           note: "Every parcel with its tracking",
-          at: { x: 78, y: 26 },
-          focus: 100,
+          pin: { x: 88.6, y: 51 },
+          at: { x: 88.6, y: "top" },
         },
       },
       {
@@ -101,8 +104,9 @@ export default {
           url: "app.dakio.io/front-office",
           alt: "Dakio Front Office: Sadia asks about a Pistachio kurti and goes quiet, Nova follows up, Sadia orders at 2:29 at night and also takes the White Chikankari Anarkali that Nova suggested",
           note: "Followed up, then sold one more",
-          at: { x: 58, y: 47 },
-          focus: 80,
+          pin: { x: 64, y: 25 },
+          via: { x: 52, y: 25 },
+          at: { x: 52, y: "top" },
         },
       },
       {
@@ -124,8 +128,9 @@ export default {
           url: "app.dakio.io/money",
           alt: "Dakio Accounting overview for Saril: cash and banks ৳244,980, this month's profit ৳16,850, couriers holding ৳13,740 (Pathao ৳9,480, Steadfast ৳4,260), and the bank, bKash and cash accounts",
           note: "Counted from your own books",
-          at: { x: 50, y: 41 },
-          focus: 0,
+          pin: { x: 43, y: 28.5 },
+          via: { x: 56, y: 28.5 },
+          at: { x: 56, y: "top" },
         },
       },
       {
@@ -147,8 +152,8 @@ export default {
           url: "yourshop.com",
           alt: "The Saril website on a Dakio theme: a festive saree banner, the menu for women, men, panjabi and kids, and cash on delivery all over Bangladesh",
           note: "Live in minutes",
-          at: { x: 76, y: 72 },
-          focus: 30,
+          pin: { x: 12.5, y: 10.8 },
+          at: { x: 12.5, y: "top" },
         },
       },
       {
@@ -170,8 +175,9 @@ export default {
           url: "app.dakio.io/dropshipping",
           alt: "Dakio Dropshipping: jewellery from a verified supplier, each with the wholesale price, the price it sells for, the stock in Dakio's warehouse and an Import button",
           note: "Already in Dakio's warehouse",
-          at: { x: 76, y: 20 },
-          focus: 0,
+          pin: { x: 11, y: 89.7 },
+          via: { x: 19.2, y: 89.7 },
+          at: { x: 19.2, y: "bottom" },
         },
       },
     ],
@@ -198,8 +204,9 @@ export default {
           url: "app.dakio.io/front-office",
           alt: "Dakio Front Office for Glow Studio: at 00:51 Mehnaz asks for party makeup on Saturday, Nova gives the price, the time it takes and two free times, and at 00:55 confirms the booking",
           note: "Booked at 12:55 at night",
-          at: { x: 40, y: 80 },
-          focus: 80,
+          pin: { x: 64, y: 80 },
+          via: { x: 50, y: 80 },
+          at: { x: 50, y: "bottom" },
         },
       },
       {
@@ -221,8 +228,9 @@ export default {
           url: "app.dakio.io/front-office",
           alt: "Dakio Front Office for Glow Studio: the evening before, Nabila gets a reminder of her hair cut and styling at 2 PM the next day, and replies that she will come",
           note: "Sent the evening before",
-          at: { x: 26, y: 86 },
-          focus: 80,
+          pin: { x: 64, y: 39 },
+          via: { x: 51, y: 39 },
+          at: { x: 51, y: "bottom" },
         },
       },
       {
@@ -244,8 +252,8 @@ export default {
           url: "app.dakio.io/bookings",
           alt: "Dakio Bookings for Glow Studio: a week of bookings, each with the client, the service and the artist",
           note: "Every artist's week",
-          at: { x: 22, y: 72 },
-          focus: 100,
+          pin: { x: 79, y: 50.6 },
+          at: { x: 79, y: "top" },
         },
       },
       {
@@ -267,8 +275,9 @@ export default {
           url: "app.dakio.io/customers",
           alt: "Dakio client page for Nusrat Jahan: an accepted quote of ৳33,000, the invoice part paid, a payment of ৳10,000 recorded and ৳23,000 still due",
           note: "৳10,000 in, ৳23,000 to go",
-          at: { x: 72, y: 92 },
-          focus: 100,
+          pin: { x: 30, y: 86 },
+          via: { x: 26.3, y: 86 },
+          at: { x: 26.3, y: "bottom" },
         },
       },
       {
@@ -290,8 +299,8 @@ export default {
           url: "app.dakio.io/customers",
           alt: "Dakio client page for a bride: wedding date, area, budget, next booking, open deal and balance due",
           note: "Her next visit, deal and balance",
-          at: { x: 50, y: 86 },
-          focus: 60,
+          pin: { x: 84, y: 65 },
+          at: { x: 84, y: "bottom" },
         },
       },
       {
@@ -313,8 +322,8 @@ export default {
           url: "app.dakio.io/pipeline",
           alt: "Dakio Pipeline for Glow Studio: enquiries by stage, each with its value and who handles it, and the deals won this month",
           note: "Won this month, at a glance",
-          at: { x: 62, y: 86 },
-          focus: 30,
+          pin: { x: 70.2, y: 40 },
+          at: { x: 70.2, y: "bottom" },
         },
       },
       {
@@ -336,8 +345,9 @@ export default {
           url: "app.dakio.io/services",
           alt: "Dakio Services for Glow Studio: bridal makeup, party makeup, bridal trial, gold facial, hair cut and styling and home service, each with its price and how long it takes",
           note: "Nova offers only what is here",
-          at: { x: 28, y: 94 },
-          focus: 0,
+          pin: { x: 20, y: 41 },
+          via: { x: 58.3, y: 41 },
+          at: { x: 58.3, y: "bottom" },
         },
       },
     ],
