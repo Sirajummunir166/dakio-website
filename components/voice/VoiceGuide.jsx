@@ -122,6 +122,37 @@ function useGaze(active, intro) {
   return ref;
 }
 
+// The wave that announces her message: the full screen once per visit
+// (sessionStorage, so a reload in the same tab doesn't repeat it), a small
+// ripple round her ball after that.
+const WAVE_KEY = "dakio-nova-waved";
+
+/** A soft two-note pop, made by the page. Browsers play it only once the
+ *  visitor has tapped or clicked something on the site; before that it is
+ *  silently skipped and the wave works alone. */
+function chime(ctxRef) {
+  if (!navigator.userActivation?.hasBeenActive) return;
+  try {
+    const C = window.AudioContext || window.webkitAudioContext;
+    if (!C) return;
+    const ctx = ctxRef.current || (ctxRef.current = new C());
+    if (ctx.state === "suspended") ctx.resume().catch(() => {});
+    const now = ctx.currentTime;
+    [[784, 0], [1175, 0.11]].forEach(([freq, at]) => {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = "sine";
+      o.frequency.value = freq;
+      g.gain.setValueAtTime(0.0001, now + at);
+      g.gain.exponentialRampToValueAtTime(0.08, now + at + 0.015);
+      g.gain.exponentialRampToValueAtTime(0.0001, now + at + 0.28);
+      o.connect(g).connect(ctx.destination);
+      o.start(now + at);
+      o.stop(now + at + 0.3);
+    });
+  } catch { /* no sound is fine */ }
+}
+
 function track(name, params = {}) {
   try { window.gtag?.("event", name, params); } catch { /* analytics never breaks the call */ }
 }
@@ -175,6 +206,7 @@ export default function VoiceGuide({ lang = "en" }) {
     stopClip();
     setWelcome(false);
     setCallLang(pick);
+    quiet.current = true; // they talked to her: later messages arrive without a sound
     if (pick !== lang || want) {
       // A different language or "type instead" needs its own ticket and panel.
       mod.current = (want === "text" || mode === "text" ? import("./TextChat") : import("./VoiceCall")).catch((e) => { mod.current = null; throw e; });
@@ -256,10 +288,12 @@ export default function VoiceGuide({ lang = "en" }) {
   const secs = dur ? Math.round(dur) : null;
 
   const tapTeaser = () => { setTeaser(false); setNear(false); setWelcome(true); hear(); track("voice_teaser_tap", { lang, page }); };
-  const closeTeaser = () => { setTeaser(false); setNear(false); track("voice_teaser_closed", { page }); };
+  const closeTeaser = () => { setTeaser(false); setNear(false); quiet.current = true; track("voice_teaser_closed", { page }); };
 
   // Each page sends its message: 8 seconds into the visit, 3 on later pages.
   const pagesSeen = useRef(0);
+  const quiet = useRef(false); // closed a message or talked to her: no more sound
+  const audio = useRef(null); // the page's one AudioContext for the pop
   const busy = useRef(false); // the card is open or a call is on: no message
   busy.current = welcome || phase !== "idle";
   useEffect(() => {
@@ -275,6 +309,27 @@ export default function VoiceGuide({ lang = "en" }) {
   }, [mode, pathname, lang, page]);
 
   const teaserGaze = useGaze(teaser, true);
+  // When she lands, a wave goes out from her ball, with the pop when allowed.
+  const [ping, setPing] = useState(null); // { big, x, y, size, id }
+  useEffect(() => {
+    if (!teaser) return undefined;
+    const land = window.setTimeout(() => {
+      const r = teaserGaze.current?.getBoundingClientRect();
+      if (!r) return;
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let seen = false;
+      try { seen = sessionStorage.getItem(WAVE_KEY) === "1"; } catch { /* storage may be off */ }
+      const big = !seen && !reduced;
+      if (big) { try { sessionStorage.setItem(WAVE_KEY, "1"); } catch { /* fine */ } }
+      const x = r.left + r.width / 2, y = r.top + r.height / 2;
+      const reach = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+      setPing({ big, x, y, size: big ? reach * 2 : 240, id: Date.now() });
+      if (!quiet.current) chime(audio);
+      track("voice_teaser_wave", { big, sound: !quiet.current && !!navigator.userActivation?.hasBeenActive });
+    }, 420); // the drop lands
+    const done = window.setTimeout(() => setPing(null), 3200);
+    return () => { window.clearTimeout(land); window.clearTimeout(done); };
+  }, [teaser, teaserGaze]);
   // Lean in when the pointer comes close (with a little slack, so she doesn't flicker).
   useEffect(() => {
     if (!teaser) return undefined;
@@ -299,6 +354,11 @@ export default function VoiceGuide({ lang = "en" }) {
   const bn = lang === "bn";
   return (
     <div className="vg-root" lang={lang}>
+      {ping ? (
+        <div key={ping.id} className={`vg-wave${ping.big ? " is-big" : ""}`} style={{ "--wx": `${ping.x}px`, "--wy": `${ping.y}px`, "--ws": `${ping.size}px` }} aria-hidden>
+          <i />
+        </div>
+      ) : null}
       {phase === "call" && Call && ticket ? (
         <Call ticket={ticket} lang={callLang} siteLang={lang} onEnded={ended} />
       ) : phase === "refused" ? (

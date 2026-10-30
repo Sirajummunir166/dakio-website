@@ -314,3 +314,15 @@
 .vg-tz.is-near .vg-vn-play { transform: scale(1.1); }
 .vg-tz.is-near .vg-vn-wave i { background: #8FA84A; }
 
+
+/* The wave when Nova's voice message lands (VoiceGuide.jsx): one lime ring
+ * from her ball. The first message of a visit sends them across the whole
+ * screen; later ones make a small ripple round her. Never blocks a click. */
+.vg-wave { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.vg-wave i { position: absolute; left: var(--wx); top: var(--wy); width: var(--ws); height: var(--ws); margin: calc(var(--ws) / -2) 0 0 calc(var(--ws) / -2); border-radius: 50%; border: 2px solid rgba(110, 165, 40, 0.3); box-shadow: 0 0 28px 6px rgba(198, 240, 53, 0.5), inset 0 0 36px 6px rgba(198, 240, 53, 0.35); background: radial-gradient(circle, rgba(198, 240, 53, 0) 62%, rgba(198, 240, 53, 0.14) 100%); transform: scale(0); opacity: 0; animation: vgRing 1.4s cubic-bezier(0.2, 0.7, 0.3, 1) forwards; }
+.vg-wave.is-big i { border-width: 2.5px; animation-duration: 1.9s; }
+/* The big one also flashes the screen with a breath of lime as it passes. */
+.vg-wave.is-big::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at var(--wx) var(--wy), rgba(198, 240, 53, 0.16), rgba(198, 240, 53, 0) 70%); opacity: 0; animation: vgFlash 1.6s ease-out forwards; }
+@keyframes vgFlash { 0% { opacity: 0; } 25% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes vgRing { 0% { transform: scale(0.04); opacity: 1; } 60% { opacity: 0.9; } 100% { transform: scale(1); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .vg-wave i { animation-duration: 0.9s; } .vg-wave::before { display: none; } }
