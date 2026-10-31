@@ -1,19 +1,19 @@
 # Dakio
 
-> Dakio is one app to run a whole business, for shops and service businesses everywhere: website, inbox, orders, bookings, customers and money, with Nova, an AI CEO, in every part. In Bangladesh it also has the storefront checkout, couriers, bKash, Nagad and cash on delivery built in; outside Bangladesh the inbox, Nova, bookings and customer records work today, paid in US dollars. Nova plans, executes and reports 24/7 inside founder-set guardrails; every action carries a receipt and can be undone. Built by Digidhaka Communication Limited (Dhaka, Bangladesh). Pricing in taka: every package starts with a 14-day free trial (no card); Growth is ৳1,490/month (Nova Operator, 750 tasks/mo, Grow Suite, Supplier Network), Business is ৳3,990/month (Nova L4 Acting CEO, 2,500 tasks/mo, voice calls, seasonal playbooks). Every plan includes Nova; courier deliveries are billed per shipment at cost.
+> Dakio is one app to run a whole business, for shops and service businesses everywhere: website, inbox, orders, bookings, customers, quotes, invoices and money, with Nova, an AI CEO, in every part. Shops get products, stock, orders and couriers; service businesses (parlours, salons, coaching centres, chambers, photographers, repair, events) get bookings, a team calendar, reminders, quotes and invoices; a business can do both. In Bangladesh it also has the storefront checkout, couriers, bKash, Nagad and cash on delivery built in; outside Bangladesh the inbox, Nova, bookings and customer records work today, paid in US dollars. Nova runs the day to day inside limits the owner sets; prices, discounts, refunds and anything risky stay the owner's call. Built by Digidhaka Communication Limited (Dhaka, Bangladesh). Plans are in taka in Bangladesh and in US dollars elsewhere; every plan includes Nova.
 
 ## Pages
 
-- [Home](https://dakio.io/): Appoint an AI CEO to your online store — store, couriers, bKash, Nagad & COD, run by Nova 24/7.
-- [Nova](https://dakio.io/nova): Nova is an AI Acting CEO — not a chatbot. It observes, plans, executes and reports inside guardrails, with a receipt for everything.
-- [The Complete Store](https://dakio.io/store): What every Dakio store already includes — storefront and link, checkout (bKash, Nagad, cards, cash on delivery), couriers (Steadfast, Pathao, RedX), one order desk, stock (your own or a supplier's), and automatic money records.
-- [Store Studio](https://dakio.io/store-studio): Design a storefront without a developer — live canvas, theme gallery, Bangla fonts, dark mode, undo everything.
-- [Grow Suite](https://dakio.io/grow): The business Grow Suite — six growth levers (campaigns, content, reach, research, pricing, goals) pulled by Nova around the clock.
-- [Ads Gallery](https://dakio.io/ads): Pick a product, get an editable on-brand ad in 3 sizes, static and motion, checked by the Creative Doctor.
-- [Front Office](https://dakio.io/front-office): One inbox for Messenger, Instagram, WhatsApp and email — Nova sells in Bangla and takes orders only after the customer confirms.
-- [Switch](https://dakio.io/switch): Move from Shopify to Dakio in one weekend — free concierge migration, SEO redirects intact, COD + bKash native.
-- [Developers](https://dakio.io/developers): @dakio/sdk — build your own React or Next.js storefront on Dakio's commerce backend (catalog, server-priced quotes, cash-on-delivery checkout with fake-order protection, couriers, abandoned carts, Meta Pixel, webhooks). No backend needed; every plan includes API keys.
-- [Pricing](https://dakio.io/pricing): Plans in taka, free to start, AI CEO included on every tier — honest task metering, no hidden fees.
+- [Home](https://dakio.io/): Run your whole business from one app, with Nova, an AI CEO, built in.
+- [For shops](https://dakio.io/shops): Missed messages, fake orders, couriers, repeat buyers, profit, a website and selling without stock, each answered with a real app screen.
+- [For services](https://dakio.io/services): Missed bookings, no shows, the team's day, getting paid, client pages and enquiries, each answered with a real app screen.
+- [Nova](https://dakio.io/nova): Nova is the AI CEO of your business: it answers customers, books clients, takes orders and follows up, inside the limits you set.
+- [Front Office](https://dakio.io/front-office): One inbox for Messenger, Instagram, WhatsApp and website chat; Nova answers in Bangla or English.
+- [Themes](https://dakio.io/themes): Ready storefront designs for each kind of shop, each becoming your own website.
+- [Ads Studio](https://dakio.io/ads): Pick a product, get an editable ad in three sizes, static and motion.
+- [Switch](https://dakio.io/switch): Move from Shopify to Dakio in one weekend.
+- [Developers](https://dakio.io/developers): @dakio/sdk to build your own React or Next.js storefront on Dakio's backend.
+- [Pricing](https://dakio.io/pricing): Plans with Nova included on every tier, no hidden fees.
 
 ## Languages
 
@@ -29,7 +29,7 @@ English version governs.
 
 ## What is Nova?
 
-Nova is an AI Acting CEO for e-commerce stores on Dakio. It starts as an L3 Operator on day one and earns the full L4 Acting CEO seat through approved work. Nova never touches a store directly: every action passes an authority check, executes, writes a ledger receipt, and lands in a product surface the founder can inspect and undo. Refunds, guardrails and contract signing stay founder-only, forever.
+Nova is the AI CEO inside every Dakio business. It answers customers in chat and comments, offers free times and records bookings, takes orders after the customer confirms, follows up quiet chats, and briefs the owner every morning. Every action leaves a receipt the owner can check. Nova never records money as received by itself: when a customer says they paid, it goes to the owner to confirm. Prices, discounts, refunds and risky decisions stay with the owner.
 
 ## Developer docs
 

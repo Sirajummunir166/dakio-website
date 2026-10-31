@@ -17,12 +17,20 @@ export const OG_KICKER = "DAKIO · ONE APP TO RUN YOUR BUSINESS";
 
 const CLAIMS = {
   "/": {
-    en: "Appoint an AI CEO to your online store.",
-    bn: "আপনার দোকানে একজন AI CEO নিয়োগ দিন।",
+    en: "Run your whole business from one app, with an AI CEO.",
+    bn: "পুরো ব্যবসা এক অ্যাপে, সাথে AI সিইও।",
+  },
+  "/shops": {
+    en: "Run your online shop from one app.",
+    bn: "অনলাইন দোকান চালান এক অ্যাপে।",
+  },
+  "/services": {
+    en: "Bookings, clients and invoices in one app.",
+    bn: "বুকিং, ক্লায়েন্ট আর ইনভয়েস এক অ্যাপে।",
   },
   "/nova": {
-    en: "Your store's AI Acting CEO, on duty 24/7.",
-    bn: "আপনার দোকানের AI Acting CEO, ২৪ ঘণ্টা ডিউটিতে।",
+    en: "Your business's AI CEO, on duty day and night.",
+    bn: "আপনার ব্যবসার AI সিইও, দিনরাত ডিউটিতে।",
   },
   "/store": {
     en: "A store that runs itself.",
@@ -57,16 +65,16 @@ const CLAIMS = {
     bn: "এক উইকেন্ডেই Shopify ছেড়ে আসুন।",
   },
   "/pricing": {
-    en: "Plans in taka. AI CEO included.",
-    bn: "প্ল্যান টাকায়। সাথে AI CEO।",
+    en: "Plans for every business. AI CEO included.",
+    bn: "সব ব্যবসার জন্য প্ল্যান। সাথে AI সিইও।",
   },
   "/about": {
     en: "Built in Bangladesh by Digidhaka.",
     bn: "বাংলাদেশে, Digidhaka-র তৈরি।",
   },
   "/blog": {
-    en: "E-commerce growth guides, in Bangla and English.",
-    bn: "ই-কমার্স বাড়ানোর গাইড, বাংলায়।",
+    en: "Guides to grow your business, in Bangla and English.",
+    bn: "ব্যবসা বাড়ানোর গাইড, বাংলায়।",
   },
   "/contact": {
     en: "Talk to a human.",

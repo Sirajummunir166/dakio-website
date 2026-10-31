@@ -52,7 +52,7 @@ const about = {
     h2: "Give every merchant the team that was only available to big brands.",
     p: "A small business in Khulna, Lagos or Lima deserves what a funded company has: a marketing team, a support desk, an operations lead. Dakio levels the field with one appointment: Nova. The best product wins, not the best-staffed one.",
     points: [
-      "Make powerful ecommerce tools simple enough for first-time sellers.",
+      "Make powerful business tools simple enough for a first-time owner.",
       "Integrate the platforms merchants actually use in their own country, not just the global ones.",
       "Keep pricing honest. No hidden fees. No surprise charges.",
       "Make AI accountable: every Nova action carries a receipt and stays inside your limits.",
@@ -64,7 +64,7 @@ const about = {
     h2: "Our values",
     items: [
       { t: "Merchants first", d: "Every feature we build starts with one question: does this make life easier for a merchant? If the answer is no, we don't build it." },
-      { t: "Zero friction", d: "A merchant shouldn't need a developer, an IT team, or a manual to run their business. Dakio handles the complexity so they can focus on selling." },
+      { t: "Zero friction", d: "A merchant shouldn't need a developer, an IT team, or a manual to run their business. Dakio handles the complexity so they can focus on their customers." },
       { t: "Local where it matters", d: "In Bangladesh we work with bKash, Nagad, Pathao, RedX and Steadfast, the services merchants there actually use. Each new country gets what its merchants use, not one size for all." },
       { t: "Trust through transparency", d: "No hidden fees, no surprise charges. Merchants see exactly what they're paying, what they're getting, and what they're earning." },
     ],

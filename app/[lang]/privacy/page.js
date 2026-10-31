@@ -17,7 +17,7 @@ export default async function PrivacyPage({ params }) {
     <LegalLayout title="Privacy Policy" lastUpdated="November 2026">
       <Section title="About Dakio">
         <P>Dakio is a business management platform for shops and service businesses around the world, built by a team in Bangladesh. We provide tools for order management, storefront creation, bookings, quotes and invoices, inventory, customer relationships, a shared inbox with an AI assistant (Nova), and business reporting, plus courier integration and dropshipping for merchants in Bangladesh. This Privacy Policy explains how Dakio collects, uses, and handles data in connection with providing these services.</P>
-        <P>By using Dakio, you agree to the collection and use of information as described in this policy. If you are a merchant using Dakio to run your store, this policy applies to your account and your use of the platform. When your customers place orders through your Dakio storefront, we process that data on your behalf as described below.</P>
+        <P>By using Dakio, you agree to the collection and use of information as described in this policy. If you are a merchant using Dakio to run your business, this policy applies to your account and your use of the platform. When your customers place orders, book appointments, message you, or receive quotes and invoices through Dakio, we process that data on your behalf as described below.</P>
       </Section>
 
       <Section title="Data We Collect">
@@ -29,15 +29,18 @@ export default async function PrivacyPage({ params }) {
           "Login credentials (passwords are stored in hashed form)",
           "Communication history with Dakio support",
         ]} />
-        <P><strong>Customer order data (processed on behalf of merchants)</strong></P>
-        <P>When customers place orders through a merchant&apos;s Dakio storefront, we collect and store the information they provide in order to fulfill those orders. This includes:</P>
+        <P><strong>Customer and client data (processed on behalf of merchants)</strong></P>
+        <P>When customers place orders, book appointments, fill in an enquiry form, or deal with a merchant through Dakio, we collect and store the information needed to serve them. This includes:</P>
         <Ul items={[
           "Customer name, phone number, and delivery address",
           "Order details: items, quantities, prices, payment method, and order status",
           "Notes or instructions provided by the customer with the order",
+          "Bookings: the service, date and time, the staff member, and booking notes",
+          "Quotes, invoices and payments the merchant records, including advances and amounts still due",
+          "Details the merchant chooses to keep on a client's page (for example an event date, area or budget) and files the merchant attaches there",
           "Email address, if voluntarily provided",
         ]} />
-        <P>This data is controlled by the merchant whose storefront the customer ordered from. Dakio processes it as a service provider on the merchant&apos;s behalf.</P>
+        <P>This data is controlled by the merchant the customer dealt with. Dakio processes it as a service provider on the merchant&apos;s behalf.</P>
         <P><strong>Technical and usage data</strong></P>
         <Ul items={[
           "IP address and approximate location derived from IP",
@@ -53,7 +56,8 @@ export default async function PrivacyPage({ params }) {
         <P>Data collected through the Dakio platform is used to:</P>
         <Ul items={[
           "Provide, operate, and maintain the Dakio platform and its services",
-          "Process orders and manage order workflows for merchants",
+          "Process orders and bookings, and manage order and booking workflows for merchants",
+          "Send booking confirmations and reminders, and receipts, quotes and invoices, on the merchant's behalf",
           "Book and coordinate deliveries with courier partners",
           "Facilitate supplier payouts and merchant payable settlements",
           "Support fraud prevention and fake order detection",
@@ -88,7 +92,7 @@ export default async function PrivacyPage({ params }) {
       </Section>
 
       <Section title="AI Features (Nova)">
-        <P>Dakio includes an AI assistant, Nova, that can answer customer messages and comments, suggest products, write posts, transcribe voice notes and make voice calls. To do this, Dakio sends the content needed for each task (for example a customer&apos;s message or comment, a voice note, product details and the order in question) to AI model providers that process it on our behalf and return a result:</P>
+        <P>Dakio includes an AI assistant, Nova, that can answer customer messages and comments, suggest products and services, offer free times and record booking requests, write posts, transcribe voice notes and make voice calls. To do this, Dakio sends the content needed for each task (for example a customer&apos;s message or comment, a voice note, product or service details, free times and the order or booking in question) to AI model providers that process it on our behalf and return a result:</P>
         <Ul items={[
           "Anthropic, Google and OpenAI, reached through Vercel AI Gateway (writing replies and posts, understanding photos, transcribing voice notes)",
           "ElevenLabs and Twilio (voice calls and speech)",
@@ -103,6 +107,10 @@ export default async function PrivacyPage({ params }) {
         <P><strong>Payment processors</strong></P>
         <P>Payment and transaction data is shared with payment service providers such as bKash, Nagad, and SSLCommerz as required to complete billing and subscription transactions. These processors have their own privacy policies and security standards.</P>
         <P>For businesses based outside Bangladesh, subscriptions are sold by our reseller Paddle.com, which acts as Merchant of Record. Paddle collects your name, email, billing country, postcode and payment details to process the payment, calculate tax and issue invoices, under the <A href="https://www.paddle.com/legal/privacy">Paddle Privacy Notice</A>. Dakio receives the payment status and amounts, not your card details. We use your country to decide how you are billed and which price you see on dakio.io.</P>
+        <P><strong>Email and SMS delivery</strong></P>
+        <P>Booking confirmations and reminders, receipts and other messages a merchant sends by email or SMS go through email and SMS delivery providers, which receive the recipient&apos;s address or number and the message.</P>
+        <P><strong>Google Calendar</strong></P>
+        <P>When a merchant&apos;s team member connects their Google Calendar, Dakio adds that person&apos;s bookings to it (the service, time and client name) and reads their busy times so clients are not offered a time they are away. Disconnecting stops this.</P>
         <P><strong>Analytics and marketing platforms</strong></P>
         <P>Only when a merchant explicitly enables third-party tracking integrations (e.g. Meta Pixel, Google Tag Manager) through their Dakio settings does any storefront visitor or conversion data flow to those platforms. This is controlled entirely by the merchant for their own advertising and analytics purposes.</P>
         <P><strong>Meta (Facebook, Instagram, WhatsApp)</strong></P>
@@ -116,14 +124,14 @@ export default async function PrivacyPage({ params }) {
       </Section>
 
       <Section title="Operational Communications">
-        <P>Dakio sends operational messages to merchants, suppliers, and where relevant, to order participants. These include order confirmation notifications, account and billing messages, platform service updates, and responses to support requests.</P>
+        <P>Dakio sends operational messages to merchants, suppliers, and where relevant, to their customers and clients. These include order and booking confirmations, booking reminders, receipts, account and billing messages, platform service updates, and responses to support requests.</P>
         <P>Dakio operates an AI-assisted order confirmation feature that may place automated or agent-assisted calls to customers on behalf of merchants to verify or confirm orders. These calls are part of the order management workflow. Calls or interactions conducted through the platform may be recorded or transcribed for purposes including quality assurance, workflow processing, customer service, and fraud prevention. Such recordings or transcriptions are handled with the same care as other operational data and retained only as long as needed for these purposes.</P>
         <P>Merchants who use AI-assisted calling or other automated communication features are responsible for ensuring their customers are appropriately informed and that their use of these features complies with applicable laws and regulations in their jurisdiction.</P>
       </Section>
 
       <Section title="Merchant Responsibilities">
-        <P>Merchants using Dakio are responsible for how they collect, use, and manage their customers&apos; data through the platform. This includes ensuring customers are aware that their order information is being processed, complying with applicable data protection laws in their jurisdiction, and using Dakio&apos;s tools — including any tracking integrations they choose to enable — in accordance with the policies of those tools and the expectations of their customers.</P>
-        <P>Dakio processes customer order data on behalf of merchants to provide order management and fulfillment services. Merchants are the data controllers for their customers&apos; information.</P>
+        <P>Merchants using Dakio are responsible for how they collect, use, and manage their customers&apos; data through the platform. This includes ensuring customers and clients are aware that their order, booking and contact information is being processed, complying with applicable data protection laws in their jurisdiction, and using Dakio&apos;s tools, including any tracking integrations they choose to enable, in accordance with the policies of those tools and the expectations of their customers.</P>
+        <P>Dakio processes customer and client data on behalf of merchants to provide order, booking, invoicing and fulfillment services. Merchants are the data controllers for their customers&apos; information.</P>
       </Section>
 
       <Section title="Data Security">

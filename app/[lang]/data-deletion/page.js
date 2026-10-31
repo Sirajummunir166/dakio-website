@@ -14,10 +14,10 @@ export default async function DataDeletionPage({ params }) {
   englishOnly(lang);
 
   return (
-    <LegalLayout title="Data Deletion Request" lastUpdated="June 2026">
+    <LegalLayout title="Data Deletion Request" lastUpdated="November 2026">
       <Section title="Overview">
         <P>You have the right to request deletion of your personal data held by Dakio. This page explains who can make a deletion request, what to include, how to submit it, and what to expect.</P>
-        <P>This process applies to merchants, suppliers, and any individual whose data is held by Dakio directly. If you are a customer who placed an order through a merchant&apos;s Dakio storefront, your order data is controlled by that merchant — please contact the merchant directly for requests relating to their customer records.</P>
+        <P>This process applies to merchants, suppliers, and any individual whose data is held by Dakio directly. If you are a customer who placed an order, booked an appointment, or messaged a business that uses Dakio, your data is controlled by that business: please contact the business directly for requests relating to their customer or client records.</P>
       </Section>
 
       <Section title="How to Submit a Deletion Request">
@@ -45,7 +45,7 @@ export default async function DataDeletionPage({ params }) {
         <P>Upon a successful deletion request, we will remove your personal account data, business profile, and associated records from our active systems. However, certain data may be retained where necessary:</P>
         <Ul items={[
           "Transaction and financial records that are required for accounting, tax, or audit purposes",
-          "Order and payout records needed to resolve outstanding financial obligations or disputes",
+          "Order, invoice, payment and payout records needed to resolve outstanding financial obligations or disputes",
           "Records we are legally required to retain under applicable law",
           "Anonymised or aggregated data that cannot identify you",
           "Data relating to fraud prevention where retention is necessary to protect the platform and its users",

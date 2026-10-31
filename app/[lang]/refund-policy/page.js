@@ -14,19 +14,19 @@ export default async function RefundPolicyPage({ params }) {
   englishOnly(lang);
 
   return (
-    <LegalLayout title="Return and Refund Policy" lastUpdated="July 2026">
+    <LegalLayout title="Return and Refund Policy" lastUpdated="November 2026">
       <Section title="Overview">
-        <P>This Return and Refund Policy explains how refunds are handled for payments made directly to Dakio (Digidhaka Communication Limited) — primarily platform subscription fees paid when a merchant signs up for or renews a Dakio plan.</P>
-        <P>Dakio is an ecommerce platform that merchants use to run their own online stores. Products and services sold by merchants through their Dakio-powered storefronts are not sold by Dakio. Returns and refunds for those purchases are handled by the individual merchant under their own return policy, as described below under &quot;Purchases Made From a Dakio Merchant Store.&quot;</P>
+        <P>This Return and Refund Policy explains how refunds are handled for payments made directly to Dakio (Digidhaka Communication Limited), primarily platform subscription fees paid when a merchant signs up for or renews a Dakio plan.</P>
+        <P>Dakio is a platform that shops and service businesses use to run their own business. Products sold and services provided by those businesses are not sold or provided by Dakio. Returns, cancellations and refunds for them are handled by the business under its own policy, as described below under &quot;Purchases and Bookings With a Business on Dakio.&quot;</P>
       </Section>
 
       <Section title="Subscription Refunds">
-        <P>Dakio subscription fees are billed in advance for the plan period you select (e.g. 6 months or 1 year). Because platform access, storefront hosting, and account resources are provisioned immediately upon payment, subscription fees are generally non-refundable once your account has been activated.</P>
+        <P>Dakio subscription fees are billed in advance for the plan period you select (for example monthly or yearly). Because platform access, storefront hosting, and account resources are provisioned immediately upon payment, subscription fees are generally non-refundable once your account has been activated.</P>
         <P>You may be eligible for a refund in the following cases:</P>
         <Ul items={[
           "You were charged twice for the same subscription period due to a payment or system error",
           "A payment was successfully captured by the payment gateway but your account was never activated",
-          "You cancel within 24 hours of an initial paid signup and have not materially used the platform (e.g. no orders processed, no storefront published)",
+          "You cancel within 24 hours of an initial paid signup and have not materially used the platform (for example no orders or bookings processed, no website published)",
         ]} />
         <P>To request a refund, contact <A href="mailto:hello@dakio.io">hello@dakio.io</A> with your registered email and payment reference. We aim to review and respond to refund requests within 3 business days.</P>
       </Section>
@@ -40,16 +40,16 @@ export default async function RefundPolicyPage({ params }) {
         <P>These subscriptions renew automatically. Cancelling stops the next renewal; the period you already paid for is not refunded unless one of the cases above applies or the Paddle Buyer Terms give you a right to a refund.</P>
       </Section>
 
-      <Section title="Purchases Made From a Dakio Merchant Store">
-        <P>If you bought a product or service from a store built on Dakio (a merchant&apos;s own storefront), your purchase is a transaction between you and that merchant, not with Dakio. Dakio provides the underlying platform and payment infrastructure but is not the seller of record.</P>
-        <P>For returns, exchanges, or refunds on such a purchase, please contact the merchant directly using the contact details published on their store. Merchants are responsible for setting and honoring their own return and refund terms, and for processing eligible refunds within a reasonable timeframe, consistent with applicable consumer protection law.</P>
+      <Section title="Purchases and Bookings With a Business on Dakio">
+        <P>If you bought a product from a store built on Dakio, or booked or paid for a service (including an advance or deposit) with a business that uses Dakio, your purchase or booking is between you and that business, not with Dakio. Dakio provides the underlying platform but is not the seller of record or the service provider.</P>
+        <P>For returns, exchanges, cancellations or refunds, please contact the business directly using the contact details on their website, chat, receipt or invoice. Merchants are responsible for setting and honoring their own return and refund terms, and for processing eligible refunds within a reasonable timeframe, consistent with applicable consumer protection law.</P>
         <P>If you&apos;re unable to reach a merchant or believe a merchant is not honoring a reasonable return request, you may contact <A href="mailto:hello@dakio.io">hello@dakio.io</A> and we will assist where we can, though final resolution rests with the merchant.</P>
       </Section>
 
       <Section title="Non-Refundable Items">
         <P>The following are not eligible for a refund:</P>
         <Ul items={[
-          "Operational charges already incurred on your behalf, such as dropship fulfillment costs, courier fees, or SMS/email credits already consumed",
+          "Operational charges already incurred on your behalf, such as dropship fulfillment costs, courier fees, SMS or email credits, or Nova credits already used",
           "Subscription periods that have already elapsed",
           "Add-ons or one-time services that have already been delivered or activated",
         ]} />
