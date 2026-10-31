@@ -3,7 +3,7 @@
 import Mark from "../../components/Mark";
 
 export const MONO = {
-  heroBadge: "৳ BANGLADESH PRICING · GOING GLOBAL SOON",
+  heroBadge: "৳ TAKA PRICING FOR BANGLADESH",
   // Outside Bangladesh (lib/region.js): the dollar page's badge and strip.
   heroBadgeIntl: "US DOLLAR PRICING · TAX ADDED WHERE IT APPLIES",
   planLevels: ["NOVA ADVISOR", "NOVA AI CEO", "NOVA AI CEO + VOICE"],

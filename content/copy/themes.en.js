@@ -20,13 +20,13 @@ const themes = {
   meta: {
     title: "Dakio Themes — Designer Storefronts for Every Kind of Shop",
     description:
-      "Eight complete storefront designs for Bangladeshi shops: fashion, beauty, jewelry, furniture, grocery, baby, modest wear and books. Your own website, with Dakio's catalog, cash-on-delivery checkout and couriers behind it.",
+      "Eight complete storefront designs for shops: fashion, beauty, jewelry, furniture, grocery, baby, modest wear and books. Your own website, with Dakio's catalog, cash-on-delivery checkout and couriers behind it.",
   },
   navCta: "Open your store",
 
   hero: {
     h1: "A storefront made for your kind of shop.",
-    sub: "Eight complete store designs, one for each kind of shop Bangladeshi sellers start with. Each becomes your own website on your own domain, and Dakio runs everything behind it: products, prices, cash-on-delivery checkout, couriers and Nova.",
+    sub: "Eight complete store designs, one for each kind of shop sellers usually start with. Each becomes your own website on your own domain, and Dakio runs everything behind it: products, prices, cash-on-delivery checkout, couriers and Nova.",
     ctaPrimary: "See the themes",
     ctaSecondary: "Open your store",
   },

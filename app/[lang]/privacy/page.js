@@ -14,9 +14,9 @@ export default async function PrivacyPage({ params }) {
   englishOnly(lang);
 
   return (
-    <LegalLayout title="Privacy Policy" lastUpdated="October 2026">
+    <LegalLayout title="Privacy Policy" lastUpdated="November 2026">
       <Section title="About Dakio">
-        <P>Dakio is an ecommerce management platform built for merchants in Bangladesh. We provide tools for order management, storefront creation, dropshipping, inventory, customer relationships, courier integration, and business reporting. This Privacy Policy explains how Dakio collects, uses, and handles data in connection with providing these services.</P>
+        <P>Dakio is a business management platform for shops and service businesses around the world, built by a team in Bangladesh. We provide tools for order management, storefront creation, bookings, quotes and invoices, inventory, customer relationships, a shared inbox with an AI assistant (Nova), and business reporting, plus courier integration and dropshipping for merchants in Bangladesh. This Privacy Policy explains how Dakio collects, uses, and handles data in connection with providing these services.</P>
         <P>By using Dakio, you agree to the collection and use of information as described in this policy. If you are a merchant using Dakio to run your store, this policy applies to your account and your use of the platform. When your customers place orders through your Dakio storefront, we process that data on your behalf as described below.</P>
       </Section>
 

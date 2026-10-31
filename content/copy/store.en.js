@@ -57,7 +57,7 @@ const store = {
     h2: "Everything included. Everything automatic.",
     items: [
       { mono: "SF", n: "Storefront & link", d: "A ready-made store at name.dakio.shop the moment you register — your own domain when you want it.", chips: ["name.dakio.shop", "own domain", "বাংলা + EN"] },
-      { mono: "CK", n: "Checkout", d: "The payments Bangladesh actually uses, already set up — nothing to install, no dollar fees.", chips: ["bKash", "Nagad", "cards · SSLCommerz", "cash on delivery"] },
+      { mono: "CK", n: "Checkout", d: "In Bangladesh, the payments people actually use are already set up. Nothing to install, no dollar fees.", chips: ["bKash", "Nagad", "cards · SSLCommerz", "cash on delivery"] },
       { mono: "CR", n: "Couriers", d: "Order confirmed → pickup booked, tracking made, customer told. COD cash reaches your balance after delivery.", chips: ["Steadfast", "Pathao", "RedX"] },
       { mono: "OD", n: "Order desk", d: "Storefront, Messenger, Instagram, WhatsApp — one list. Nova replies, and places an order only after the customer says yes.", chips: ["one list", "asks first", "fewer fake orders"] },
       { mono: "ST", n: "Stock — yours or theirs", d: "Keep your own stock, or sell from trusted suppliers who hold it for you. Dakio ships either way.", chips: ["own stock", "supplier network", "no stock needed"] },

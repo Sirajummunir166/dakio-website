@@ -5,10 +5,10 @@ const seo = {
   home: "Home",
 
   organizationDescription:
-    "Dakio runs a whole business in one app: website, orders, customers, couriers, bookings and payments, with Nova, an AI CEO, working in every part. Made in Bangladesh.",
+    "Dakio runs a whole business in one app: website, orders, customers, couriers, bookings and payments, with Nova, an AI CEO, working in every part. Made in Bangladesh, open to businesses everywhere.",
 
   applicationDescription:
-    "One app for shops and service businesses in Bangladesh, with Nova, an AI CEO: website, inbox, orders, couriers, bookings, customer pages, bKash, Nagad and cash on delivery.",
+    "One app for shops and service businesses, with Nova, an AI CEO: website, inbox, orders, bookings, customer pages and money. In Bangladesh, bKash, Nagad, couriers and cash on delivery are built in.",
 
   // FALLBACK ONLY — the emitted offers come from the live catalogue
   // (lib/plans.js#getJsonLdOffers). The withdrawn Starter tier is gone: a
@@ -41,7 +41,7 @@ const seo = {
     ["Why not unlimited AI?", "Nova does real work on real compute — unlimited would mean either fake AI or hidden throttling. We'd rather sell you an honest meter with receipts than a soft lie."],
     ["What happens when my credits run out?", "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 250 credits) or the month resets. Nothing is lost, nothing is silent."],
     ["What do couriers cost?", "Per-delivery, passed through at the courier's rate (Steadfast, Pathao, RedX) on every plan — we don't mark up shipping."],
-    ["I'm not in Bangladesh — can I use Dakio?", "Soon. We built for Bangladesh first — ৳, bKash, COD, Bangla — and global markets open next with local pricing, not conversions. Join the waitlist from the signup page."],
+    ["I'm not in Bangladesh. Can I use Dakio?", "Yes. Outside Bangladesh you pay in US dollars by card or PayPal. Your inbox, Nova, bookings and customer records work everywhere today; the online store checkout and courier partners are Bangladesh only for now and come to more countries next."],
   ],
 
   switchFaq: [

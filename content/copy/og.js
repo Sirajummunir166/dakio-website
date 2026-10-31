@@ -13,7 +13,7 @@
 // The Bangla lines below are written and ready — swap `ogClaim` to prefer them
 // the day the card renderer can shape Bengali.
 
-export const OG_KICKER = "DAKIO — THE COMMERCE OS FOR BANGLADESH";
+export const OG_KICKER = "DAKIO · ONE APP TO RUN YOUR BUSINESS";
 
 const CLAIMS = {
   "/": {

@@ -73,7 +73,7 @@ const sw = {
   gain: {
     h2: `What ${PLATFORM} never gave you.`,
     cards: [
-      { t: "COD + bKash native", d: "The checkout Bangladesh actually uses — no plugins, no USD fees, no workarounds.", chips: ["bKash", "Nagad", "COD"] },
+      { t: "COD + bKash native", d: "In Bangladesh, the checkout people actually use: no plugins, no USD fees, no workarounds.", chips: ["bKash", "Nagad", "COD"] },
       { t: "Courier rails built in", d: "Steadfast, Pathao and RedX booked in one tap, with COD collection tracked to the taka.", chips: ["Steadfast", "Pathao", "RedX"] },
     ],
     nova: {

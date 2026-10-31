@@ -1,6 +1,6 @@
 // Site chrome copy — nav + footer. English.
 //
-// The footer's mono/all-caps labels (PRODUCT, COMPANY, ৳ BANGLADESH …) are
+// The footer's mono/all-caps labels (PRODUCT, COMPANY, MADE IN BANGLADESH …) are
 // deliberately absent from the Bangla file too: Bengali has no uppercase and
 // breaks under the 0.14em tracking these carry, so they stay English in both
 // locales and live here as shared constants.
@@ -9,7 +9,7 @@ export const MONO_LABELS = {
   footProduct: "PRODUCT",
   footTryLive: "TRY IT LIVE",
   footCompany: "COMPANY",
-  footRegion: "৳ BANGLADESH · GOING GLOBAL SOON",
+  footRegion: "MADE IN BANGLADESH · OPEN WORLDWIDE",
   footPayments: "CHECKOUT PAYMENTS · VERIFIED BY SSLCOMMERZ",
 };
 
@@ -76,7 +76,7 @@ const chrome = {
       chat: "Or watch Nova answer a real chat",
     },
     see: "See how",
-    region: "Made in Bangladesh, going global soon",
+    region: "Made in Bangladesh, open worldwide",
     company: "Company",
     about: "About",
     blog: "Blog",
@@ -113,7 +113,7 @@ const chrome = {
       <>
         © 2026 Dakio by Digidhaka Communication Limited. All rights reserved.
         <br />
-        Trade License No. TRAD/DSCC/041467/2021 · Made for Bangladesh&apos;s entrepreneurs
+        Trade License No. TRAD/DSCC/041467/2021 · Made for entrepreneurs everywhere
       </>
     ),
     privacy: "Privacy",

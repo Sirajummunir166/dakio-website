@@ -14,11 +14,11 @@ const home = {
   meta: {
     title: "Dakio | One app to run your whole business, with an AI CEO built in",
     description:
-      "Website, products and stock, orders, couriers, bookings, clients and money in one app, made in Bangladesh. Nova, your AI CEO, works in every part. Bangla first, bKash and cash on delivery built in.",
+      "Website, products and stock, orders, bookings, clients and money in one app. Nova, your AI CEO, works in every part. Made in Bangladesh, open to businesses everywhere.",
   },
 
   hero: {
-    badge: "FOR SHOPS AND SERVICE BUSINESSES IN BANGLADESH",
+    badge: "FOR SHOPS AND SERVICE BUSINESSES",
     h1: "Run your whole business from one app.",
     // The rotating headline (components/home/RotatingHead.jsx): shops and
     // service businesses in turn; "fallback" is what phones and search see.
@@ -180,7 +180,7 @@ const home = {
       "Their whole history on one page.",
     ],
     label: { shop: "For shops", svc: "For services" },
-    bottom: "Made for Bangladesh: taka, bKash, cash on delivery, Bangla.",
+    bottom: "Open worldwide. In Bangladesh: taka, bKash, cash on delivery and couriers built in.",
   },
 
   // The live chat in "After the chat" (components/home/ChatDemo.jsx). The
