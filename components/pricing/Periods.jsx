@@ -53,6 +53,12 @@ export function PeriodPrice({ p, v, T, notSold, onNudge }) {
         <span style={{ fontSize: 38, fontWeight: 800, letterSpacing: "-1.4px", ...(p.dark ? { color: "#C6F035" } : {}) }}>{v.price}</span>
         <span style={{ fontSize: 13, color: muted, ...T.chip }}>{p.sub}</span>
       </div>
+      {v.launchLine && (
+        <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 4, fontSize: 12, fontWeight: 700, color: p.dark ? "#C6F035" : "#3E7A45", ...T.chip }}>
+          <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: 99, flexShrink: 0, background: p.dark ? "#C6F035" : "#8CBF33" }} />
+          {v.launchLine}
+        </div>
+      )}
       <div style={{ fontSize: 11.5, marginTop: 3, color: muted, ...T.chip }}>{v.billed || p.noteMo}</div>
       {v.save && (
         <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 10, padding: "5px 11px", borderRadius: 99, fontSize: 12, fontWeight: 800,
