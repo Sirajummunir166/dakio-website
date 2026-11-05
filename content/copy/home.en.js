@@ -41,7 +41,7 @@ const home = {
       both: "Orders, bookings, stock, clients and money in one app. Nova runs it with you.",
     },
     cta: "Get started",
-    under: "Live in 5 minutes · No developer needed",
+    under: "Free forever · premium from day one · no card",
     second: "See Nova at work",
   },
 
