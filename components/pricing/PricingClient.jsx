@@ -16,7 +16,8 @@ import { Nav, Footer } from "../Chrome";
 import Reveal from "../Reveal";
 import LogoDefs from "../Logo";
 import { REGISTER_URL, buyHref } from "../../lib/urls";
-import TrialLine from "./TrialLine";
+import FreeRow from "./FreeRow";
+import AddOns from "./AddOns";
 import { href } from "../../lib/i18n";
 import { type } from "../../lib/type";
 import { PeriodTabs, PeriodPrice } from "./Periods";
@@ -86,7 +87,10 @@ export default function PricingClient({ lang = "en", copy, mono }) {
         ].map(set => (
           <div key={set.cur} className={["m-grid", cls(set.cur)].filter(Boolean).join(" ")} style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(set.plans.length, 3)}, 1fr)`, gap: 14, alignItems: "stretch", maxWidth: set.plans.length < 3 ? 800 : "none", margin: set.plans.length < 3 ? "0 auto" : undefined }}>
             {set.plans.map((p, i) => (
-              <div key={p.n} style={{ padding: 28, borderRadius: 26, display: "flex", flexDirection: "column", ...(p.dark ? { background: "#0F120B", color: "#E9EFDC", boxShadow: "0 28px 60px rgba(15,18,11,0.3)" } : p.pop ? { background: "#FBFAF5", border: "2px solid #1A1D12" } : { background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)" }) }}>
+              <div key={p.n} style={{ position: "relative", padding: 28, borderRadius: 26, display: "flex", flexDirection: "column", ...(p.dark ? { background: "#0F120B", color: "#E9EFDC", boxShadow: "0 28px 60px rgba(15,18,11,0.3)" } : p.pop ? { background: "#FBFAF5", border: "2px solid #1A1D12" } : { background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)" }) }}>
+                {p.pop && c.popular && (
+                  <span style={{ position: "absolute", top: -13, left: "50%", transform: "translateX(-50%)", padding: "5px 14px", borderRadius: 99, background: "#C6F035", color: "#0F120B", border: "2px solid #1A1D12", fontSize: 12, fontWeight: 800, whiteSpace: "nowrap", ...T.chip }}>{c.popular}</span>
+                )}
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <span style={{ fontSize: 17, fontWeight: 800, letterSpacing: "-0.3px", ...(p.dark ? { color: "#FBFBF4" } : {}) }}>{p.n}</span>
                   <span style={{ fontFamily: MONOFONT, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.08em", padding: "4px 9px", borderRadius: 99, ...(p.dark ? { background: "rgba(198,240,53,0.16)", color: "#C6F035" } : { background: "rgba(26,29,18,0.07)", color: "#3E7A45" }) }}>{p.level || mono.planLevels[i]}</span>
@@ -119,8 +123,11 @@ export default function PricingClient({ lang = "en", copy, mono }) {
             ))}
           </div>
         ))}
+        {/* Free: a slim row under the paid cards, never a card of its own (FreeRow.jsx). */}
+        <FreeRow free={c.free} T={T} maxWidth={c.plans.length < 3 ? 800 : 1144} />
         <div style={{ textAlign: "center", marginTop: 18, fontSize: 13, color: "#6B6D60", ...T.small }}>{c.plansNote}</div>
-        <TrialLine trial={c.trial} T={T} />
+        {/* Add-ons are priced in taka only: visitors on the dollar page do not see them. */}
+        <AddOns addons={c.addons} T={T} maxWidth={c.plans.length < 3 ? 800 : 1144} className={cls("BDT")} />
       </div>
 
       {/* WHAT'S A NOVA CREDIT */}

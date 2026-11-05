@@ -58,7 +58,38 @@ const pricing = {
     },
   ],
 
+  // The badge on the popular card (the plan admin marks `badge: popular`).
+  popular: "Most stores choose this",
+
   plansNote: "Courier deliveries are billed per shipment on all plans.",
+
+  // The Free plan: one slim row under the paid cards, never a card of its own
+  // and never a big ৳0 (DAKIO_GROWTH_SYSTEM.md §9). Shown when the catalogue
+  // carries a Free plan (lib/plans.js#fetchCatalogue).
+  free: {
+    title: "Free forever",
+    tag: "Premium from day one",
+    limits: "25 products · 30 orders a month · Nova on one channel · Dakio subdomain · All themes",
+    launch: "Every new store starts with 7 days of everything",
+    cta: "Start free",
+  },
+
+  // Add-ons on top of Growth; Business includes all of them (§3.5). No public
+  // add-on API yet, so the names and prices live here.
+  addons: {
+    h2: "Add-ons",
+    sub: "Add to Growth when you need them.",
+    included: "Included in Business",
+    per: "/month",
+    items: [
+      { n: "Order Shield", d: "AI calls confirm risky COD orders before they ship.", price: "৳1,490" },
+      { n: "WhatsApp", d: "Nova answers and sends order updates on WhatsApp.", price: "৳990" },
+      { n: "Ad Studio Pro", d: "Ad videos and motion ads, no designer needed.", price: "৳990" },
+      { n: "Shop counter (POS)", d: "Sell at your counter, stock stays in sync.", price: "৳990" },
+      { n: "Website chat", d: "Nova chats with visitors and takes orders.", price: "৳490" },
+      { n: "AI product assistant", d: "Product pages written in seconds, Bangla or English.", price: "৳490" },
+    ],
+  },
 
   meter: {
     h2: "What’s a Nova credit?",
@@ -106,6 +137,8 @@ const pricing = {
   faq: {
     h2: "Fair questions.",
     items: [
+      { q: "Is Free really free forever?", a: "Yes. No card, no time limit. Your store stays open and keeps selling within Free's limits." },
+      { q: "What happens after my launch week?", a: "Your store steps down to Free and keeps selling. Nothing is deleted. Move to Growth any time to keep everything on." },
       { q: "Why not unlimited AI?", a: "Nova does real work on real compute — unlimited would mean either fake AI or hidden throttling. We'd rather sell you an honest meter with receipts than a soft lie." },
       { q: "What happens when my credits run out?", a: "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 250 credits) or the month resets. Nothing is lost, nothing is silent." },
       { q: "What do couriers cost?", a: "Per-delivery, passed through at the courier's rate (Steadfast, Pathao, RedX) on every plan — we don't mark up shipping." },
