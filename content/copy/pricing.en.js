@@ -150,8 +150,8 @@ const pricing = {
     items: [
       { q: "Is Free really free forever?", a: "Yes. No card, no time limit. Your store stays open and keeps selling within Free's limits." },
       { q: "What is the autopilot trial?", a: "14 days of Business, once. When your store is ready, you start it. It never starts by itself." },
-      { q: "Monthly or yearly?", a: "Monthly is the full price. Every saving is on yearly, the launch price too." },
-      { q: "Can I use an influencer code?", a: "Yes, on yearly. You pay the lower of the code or the launch price, never both." },
+      { q: "Monthly or yearly?", a: "Monthly is the full price. Yearly is 30% off." },
+      { q: "Can I use an influencer code?", a: "Yes, on Business yearly. The code takes its percent off the monthly price for a full year, instead of the yearly saving." },
     ],
   },
 

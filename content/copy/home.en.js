@@ -293,9 +293,9 @@ const home = {
     // FALLBACK ONLY. The cards come from the live catalogue via
     // lib/plans.js#getHomePricing and render from here only if the API is down.
     plans: [
-      { n: "Growth", audience: "For a business that sells every day", pr: "৳1,490", sub: "/month", yr: "or ৳1,242/month billed annually", level: "NOVA AI CEO", cta: "Choose Growth", dark: false, pop: true,
+      { n: "Growth", audience: "For a business that sells every day", pr: "৳2,980", sub: "/month", yr: "or ৳2,090/month billed annually", level: "NOVA AI CEO", cta: "Choose Growth", dark: false, pop: true,
         feats: ["Unlimited products, no daily order cap", "Nova answers, sells and follows up", "Website, couriers, bKash and cash on delivery", "Customer pages, follow-ups and reviews"] },
-      { n: "Business", audience: "For a busy business with a team", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA AI CEO + VOICE", cta: "Choose Business", dark: true, pop: false,
+      { n: "Business", audience: "For a busy business with a team", pr: "৳6,690", sub: "/month", yr: "or ৳4,690/month billed annually", level: "NOVA AI CEO + VOICE", cta: "Choose Business", dark: true, pop: false,
         feats: ["Everything in Growth", "60 minutes a month to talk to Nova by voice", "Logins for your staff", "Video ads from your product photos"] },
     ],
     footLink: "Compare every feature",

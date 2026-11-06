@@ -14,8 +14,8 @@ const seo = {
   // (lib/plans.js#getJsonLdOffers). The withdrawn Starter tier is gone: a
   // schema.org Offer at price 0 is a rich-result promise Google keeps showing.
   offers: [
-    { name: "Growth", price: "1490", priceCurrency: "BDT", description: "৳1,490/month — Nova Operator, 7,500 Nova credits/month, Grow Suite, Supplier Network." },
-    { name: "Business", price: "3990", priceCurrency: "BDT", description: "৳3,990/month — Nova with voice, 25,000 Nova credits/month, voice minutes, playbooks." },
+    { name: "Growth", price: "2980", priceCurrency: "BDT", description: "৳2,980/month · Nova Operator, 7,500 Nova credits/month, Grow Suite, Supplier Network." },
+    { name: "Business", price: "6690", priceCurrency: "BDT", description: "৳6,690/month · Nova with voice, 25,000 Nova credits/month, voice minutes, playbooks." },
   ],
 
   pageNames: {

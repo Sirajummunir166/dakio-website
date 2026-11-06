@@ -12,8 +12,8 @@ const seo = {
     "দোকান আর সার্ভিস ব্যবসার জন্য এক অ্যাপ, সাথে AI সিইও Nova: ওয়েবসাইট, ইনবক্স, অর্ডার, বুকিং, কাস্টমার পেজ আর টাকার হিসাব। বাংলাদেশে bKash, Nagad, কুরিয়ার আর ক্যাশ অন ডেলিভারি সাথেই।",
 
   offers: [
-    { name: "Growth", price: "1490", priceCurrency: "BDT", description: "৳1,490/মাস—Nova Operator, মাসে 7,500 Nova ক্রেডিট, Grow Suite ও Supplier Network।" },
-    { name: "Business", price: "3990", priceCurrency: "BDT", description: "৳3,990/মাস—ভয়েস সহ Nova, মাসে 25,000 Nova ক্রেডিট, ভয়েস মিনিট ও Playbook।" },
+    { name: "Growth", price: "2980", priceCurrency: "BDT", description: "৳2,980/মাস · Nova Operator, মাসে 7,500 Nova ক্রেডিট, Grow Suite ও Supplier Network।" },
+    { name: "Business", price: "6690", priceCurrency: "BDT", description: "৳6,690/মাস · ভয়েস সহ Nova, মাসে 25,000 Nova ক্রেডিট, ভয়েস মিনিট ও Playbook।" },
   ],
 
   pageNames: {
