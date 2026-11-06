@@ -289,8 +289,6 @@ const home = {
       svc: "A receptionist costs ৳12,000+ a month. Nova books day and night, in every plan.",
       both: "A manager costs ৳15,000+ a month. Nova works day and night, in every plan.",
     },
-    svcLine: "For services, both plans include bookings, reminders, invoices and a booking site.",
-    busy: "Busy month? Add more from the app any time.",
     popular: "POPULAR",
     // FALLBACK ONLY. The cards come from the live catalogue via
     // lib/plans.js#getHomePricing and render from here only if the API is down.
@@ -300,7 +298,7 @@ const home = {
       { n: "Business", audience: "For a busy business with a team", pr: "৳3,990", sub: "/month", yr: "or ৳3,325/month billed annually", level: "NOVA AI CEO + VOICE", cta: "Choose Business", dark: true, pop: false,
         feats: ["Everything in Growth", "60 minutes a month to talk to Nova by voice", "Logins for your staff", "Video ads from your product photos"] },
     ],
-    footLink: "See full pricing",
+    footLink: "Compare every feature",
   },
 
   faq: {

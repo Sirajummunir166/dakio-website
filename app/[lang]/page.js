@@ -3,6 +3,7 @@
 // /shops and /services (components/home/HomeSections.jsx, styles in app/home.css).
 
 import "../home.css";
+import "../pricing.css";
 import { Nav, Footer } from "../../components/Chrome";
 import Reveal from "../../components/Reveal";
 import LogoDefs from "../../components/Logo";

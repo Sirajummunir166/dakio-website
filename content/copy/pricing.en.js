@@ -75,6 +75,10 @@ const pricing = {
       sms: "SMS",
       voice: "Nova voice minutes",
       storage: "Media storage",
+      ownDomain: "Own domain",
+      answersOn: "Nova answers on",
+      webchat: "Website chat",
+      creditsMonth: "Nova credits a month",
       topups: "Top-ups",
     },
     v: {
@@ -94,6 +98,7 @@ const pricing = {
       moneyFull: "Full accounting",
       moneyPro: "Full accounting + profit per order and per ad",
       topups: "Credits, SMS",
+      everyChannelPlusComments: "Every channel + comments",
       topupsVoice: "Credits, SMS, voice minutes",
     },
   },

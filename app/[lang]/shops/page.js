@@ -3,6 +3,7 @@
 // (components/home/Angles.jsx), then pricing, questions and the closing.
 
 import "../../home.css";
+import "../../pricing.css";
 import "../../angles.css";
 import { Nav, Footer } from "../../../components/Chrome";
 import Reveal from "../../../components/Reveal";

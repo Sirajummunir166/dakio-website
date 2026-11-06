@@ -9,6 +9,11 @@
 // and the button. The row under it (launch price, what is billed, the saving)
 // scrolls with the table. On a phone it is the same table, one plan column at a
 // time, picked with the switcher at the top of the sticky row.
+//
+// `compact` (the home page) shows the short row set from lib/compare.js
+// instead of every section, and no closing buttons. `kind` makes the Shops /
+// Services wording controlled from outside (the home page's own switch); the
+// table's switch is then hidden.
 
 import { useState } from "react";
 import { FREE_URL, buyHref } from "../../lib/urls";
@@ -65,11 +70,13 @@ function Details({ v, T }) {
   );
 }
 
-export default function CompareTable({ compare, copy, period, T = {}, notSold }) {
+export default function CompareTable({ compare, copy, period, T = {}, notSold, compact = false, kind: kindProp }) {
   const cols = compare.columns;
   const recIdx = Math.max(0, cols.findIndex((c) => c.recommended));
   const [pick, setPick] = useState(recIdx);
-  const [kind, setKind] = useState("shop");
+  const [kindState, setKind] = useState("shop");
+  const kind = kindProp || kindState;
+  const groups = compact ? [{ key: "compact", rows: compare.compact || [] }] : compare.groups;
   const usd = cols.some((c) => c.price.USD);
   const dia = copy.diamondNote;
 
@@ -78,13 +85,15 @@ export default function CompareTable({ compare, copy, period, T = {}, notSold })
   const href = (c) => (c.free ? FREE_URL : buyHref(c.code, period));
 
   return (
-    <div className="pt" data-pick={pick} style={{ "--pt-cols": cols.length }}>
+    <div className={`pt${compact ? " is-compact" : ""}`} data-pick={pick} style={{ "--pt-cols": cols.length }}>
       <div className="pt-tools">
-        <div className="pt-kind">
-          <span className="pt-kind-label" style={T.chip}>{copy.kindLabel}</span>
-          <Seg value={kind} onChange={setKind} label={copy.kindLabel} T={T}
-            opts={[{ key: "shop", label: copy.kinds.shop }, { key: "svc", label: copy.kinds.svc }]} />
-        </div>
+        {kindProp ? <span /> : (
+          <div className="pt-kind">
+            <span className="pt-kind-label" style={T.chip}>{copy.kindLabel}</span>
+            <Seg value={kind} onChange={setKind} label={copy.kindLabel} T={T}
+              opts={[{ key: "shop", label: copy.kinds.shop }, { key: "svc", label: copy.kinds.svc }]} />
+          </div>
+        )}
         <span className="pt-key" style={T.chip}><Diamond title={dia} /> {dia}</span>
       </div>
 
@@ -126,7 +135,7 @@ export default function CompareTable({ compare, copy, period, T = {}, notSold })
           ))}
         </div>
 
-        {compare.groups.map((g) => (
+        {groups.map((g) => (
           <div key={g.key} className="pt-group" role="rowgroup">
             {g.rows.map((r) => (
               <div key={r.key} className={`pt-row${r.strong ? " is-strong" : ""}${r.values ? "" : " is-head"}`} role="row">
@@ -144,14 +153,14 @@ export default function CompareTable({ compare, copy, period, T = {}, notSold })
         ))}
 
         {/* The buttons again at the end of a long table. */}
-        <div className="pt-row pt-foot" role="row">
+        {!compact && <div className="pt-row pt-foot" role="row">
           <div className="pt-cell pt-corner" role="cell" />
           {cols.map((c, i) => (
             <div key={c.code} className={`pt-cell${c.recommended ? " is-rec" : ""}`} data-col={i} role="cell">
               <a href={href(c)} className={`pt-btn${c.recommended ? " is-rec" : c.free ? " is-free" : ""}`} style={T.label}>{c.cta}</a>
             </div>
           ))}
-        </div>
+        </div>}
       </div>
     </div>
   );

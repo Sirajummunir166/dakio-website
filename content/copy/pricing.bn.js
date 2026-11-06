@@ -60,6 +60,10 @@ const pricing = {
       sms: "SMS",
       voice: "Nova ভয়েস মিনিট",
       storage: "মিডিয়া স্টোরেজ",
+      ownDomain: "নিজের ডোমেইন",
+      answersOn: "Nova উত্তর দেয়",
+      webchat: "ওয়েবসাইট চ্যাট",
+      creditsMonth: "মাসে Nova ক্রেডিট",
       topups: "টপ-আপ",
     },
     v: {
@@ -79,6 +83,7 @@ const pricing = {
       moneyFull: "পুরো হিসাব",
       moneyPro: "পুরো হিসাব + প্রতি অর্ডার ও অ্যাডের লাভ",
       topups: "ক্রেডিট, SMS",
+      everyChannelPlusComments: "সব চ্যানেল + কমেন্ট",
       topupsVoice: "ক্রেডিট, SMS, ভয়েস মিনিট",
     },
   },

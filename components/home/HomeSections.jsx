@@ -15,7 +15,7 @@ import NovaMachine from "./NovaMachine";
 import AppScreens from "./AppScreens";
 import HomePlans from "./HomePlans";
 import FreeLine from "../pricing/FreeLine";
-import { REGISTER_URL } from "../../lib/urls";
+import { REGISTER_URL, DEMO_URL } from "../../lib/urls";
 
 function Arrow({ size = 15 }) {
   return (
@@ -421,12 +421,13 @@ export function Pricing({ c, pricing, T, L }) {
         <p className="hm-lead-dark" data-show="both-only">{x.sub.both}</p>
       </div>
       <HomePlans pricing={pricing} T={T} />
-      <p className="hm-note hm-center hm-plans-svc" data-show="svc">{x.svcLine}</p>
       <p className="hm-note hm-center">
-        {x.busy}{" "}
         <Link href={L("/pricing")} className="hm-link">{x.footLink} <Arrow size={13} /></Link>
       </p>
       <FreeLine free={pricing.free} T={T} />
+      {pricing.demo && (
+        <p className="hm-note hm-center"><a href={DEMO_URL} className="hm-link">{pricing.demo} <Arrow size={13} /></a></p>
+      )}
     </section>
   );
 }

@@ -91,6 +91,10 @@
 .pt-val.is-rec .pt-yes { color: #1A1D12; }
 .pt-no { display: inline-block; width: 12px; height: 2px; border-radius: 2px; background: rgba(26, 29, 18, 0.25); }
 
+/* Compact (home): one flat list of rows, no section heads to indent under */
+.pt.is-compact .pt-row:not(.is-strong) .pt-label { padding-left: 16px; }
+.pt.is-compact .pt-group .pt-row:last-child .pt-cell.is-rec { border-radius: 0 0 22px 22px; padding-bottom: 16px; }
+
 /* Closing buttons */
 .pt-foot { margin-top: 0; }
 .pt-foot .pt-cell { padding-top: 6px; padding-bottom: 18px; }
@@ -133,6 +137,6 @@
 
   .pt-detail .pt-cell { padding: 10px 16px 14px; }
   .pt-save { font-size: 20px; }
-  .pt-row:not(.is-strong) .pt-label { padding-left: 12px; }
+  .pt-row:not(.is-strong) .pt-label, .pt.is-compact .pt-row:not(.is-strong) .pt-label { padding-left: 12px; }
   .pt-label, .pt-val { font-size: 13px; }
 }
