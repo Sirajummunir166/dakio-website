@@ -1,0 +1,138 @@
+/* The plan comparison table on /pricing (components/pricing/CompareTable.jsx).
+   Palette as the rest of the site: paper #F4F2EA, card #FBFAF5, ink #1A1D12,
+   night #0F120B, lime #C6F035, green #3E7A45, muted #6B6D60. */
+
+.pt { --pt-top: 64px; --pt-rec: rgba(198, 240, 53, 0.16); max-width: 1144px; margin: 0 auto; }
+
+/* Toolbar: Shops / Services, and what ◆ means */
+.pt-tools { display: flex; align-items: center; justify-content: space-between; gap: 10px 18px; flex-wrap: wrap; margin-bottom: 18px; }
+.pt-kind { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pt-kind-label { font-size: 12.5px; color: #6B6D60; font-weight: 600; }
+.pt-key { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: #6B6D60; font-weight: 600; }
+.pt-dia { color: #6FA524; font-size: 0.85em; line-height: 1; }
+.pt-plan.is-rec .pt-dia { color: #C6F035; }
+
+.pt-seg { display: inline-flex; gap: 3px; padding: 4px; border-radius: 99px; background: #E9EBE0; }
+.pt-seg button {
+  border: none; cursor: pointer; font-family: inherit; padding: 8px 16px; border-radius: 99px;
+  font-size: 13px; font-weight: 700; color: #6B6D60; background: transparent;
+}
+.pt-seg button[aria-pressed="true"] { background: #1A1D12; color: #C6F035; }
+
+/* The grid: label column + one column per plan */
+.pt-row {
+  display: grid;
+  grid-template-columns: minmax(170px, 1.25fr) repeat(var(--pt-cols, 3), minmax(0, 1fr));
+  column-gap: 10px;
+}
+.pt-cell { padding: 11px 16px; min-width: 0; }
+.pt-cell.is-rec { background: var(--pt-rec); }
+
+/* Sticky top row */
+.pt-sticky { position: sticky; top: var(--pt-top); z-index: 20; background: #F4F2EA; box-shadow: 0 0 0 2px #F4F2EA; padding-top: 14px; }
+.pt-pick { display: none; }
+.pt-head .pt-cell { padding-top: 16px; padding-bottom: 16px; }
+.pt-plan { position: relative; display: flex; flex-direction: column; border-radius: 22px 22px 0 0; background: #FBFAF5; border: 1px solid rgba(26, 29, 18, 0.07); border-bottom: none; }
+.pt-plan.is-rec { background: #0F120B; color: #E9EFDC; border-color: #0F120B; }
+.pt-pop {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  padding: 4px 12px; border-radius: 99px; background: #C6F035; color: #0F120B; border: 2px solid #1A1D12;
+  font-size: 11.5px; font-weight: 800; white-space: nowrap;
+}
+.pt-name { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.pt-name b { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+.pt-plan.is-rec .pt-name b { color: #FBFBF4; }
+.pt-tag { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 99px; font-size: 11.5px; font-weight: 700; background: rgba(26, 29, 18, 0.07); color: #3E7A45; }
+.pt-plan.is-rec .pt-tag { background: rgba(198, 240, 53, 0.16); color: #C6F035; }
+.pt-line { font-size: 13px; color: #6B6D60; margin-top: 4px; min-height: 20px; }
+.pt-plan.is-rec .pt-line { color: #A9AD98; }
+
+.pt-price { display: flex; align-items: baseline; gap: 4px 8px; flex-wrap: wrap; margin-top: 12px; }
+.pt-strike { font-size: 16px; font-weight: 700; text-decoration: line-through; text-decoration-thickness: 2px; color: #A3A596; }
+.pt-plan.is-rec .pt-strike { color: #6B6F5C; }
+.pt-amount { font-size: 34px; font-weight: 800; letter-spacing: -1.2px; line-height: 1.05; }
+.pt-amount.is-rec { color: #C6F035; }
+.pt-per { font-size: 13px; color: #6B6D60; }
+.pt-plan.is-rec .pt-per { color: #878B76; }
+.pt-price-none { margin-top: 12px; font-size: 13px; color: #6B6D60; min-height: 36px; }
+
+.pt-btn {
+  margin-top: 14px; display: flex; align-items: center; justify-content: center; padding: 12px 0; border-radius: 99px;
+  font-size: 14px; font-weight: 700; background: #1A1D12; color: #C6F035; white-space: nowrap;
+}
+.pt-btn.is-free { background: transparent; color: #1A1D12; border: 1.5px solid rgba(26, 29, 18, 0.2); padding: 10.5px 0; }
+.pt-btn.is-rec { background: #C6F035; color: #0F120B; }
+
+/* Under the sticky row: launch price, saving, billed */
+.pt-detail .pt-cell { margin-top: -1px; padding-top: 12px; padding-bottom: 16px; background: #FBFAF5; border: 1px solid rgba(26, 29, 18, 0.07); border-top: none; border-radius: 0 0 22px 22px; }
+.pt-detail .pt-cell.is-rec { background: #0F120B; color: #E9EFDC; border-color: #0F120B; }
+.pt-detail .pt-corner { background: none; border: none; }
+.pt-detail { margin-bottom: 14px; }
+.pt-launch { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #3E7A45; }
+.pt-launch i { width: 6px; height: 6px; border-radius: 99px; background: #8CBF33; flex-shrink: 0; }
+.pt-detail .is-rec .pt-launch { color: #C6F035; }
+.pt-detail .is-rec .pt-launch i { background: #C6F035; }
+.pt-save { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-top: 6px; color: #1A1D12; }
+.pt-detail .is-rec .pt-save { color: #C6F035; }
+.pt-billed { font-size: 12px; color: #6B6D60; margin-top: 4px; }
+.pt-detail .is-rec .pt-billed { color: #878B76; }
+
+/* Body rows */
+/* Sections are spaced by padding, not margin, so the Business tint runs unbroken. */
+.pt-group .pt-row.is-strong .pt-cell { padding-top: 24px; }
+.pt-group .pt-row { border-bottom: 1px solid rgba(26, 29, 18, 0.07); }
+.pt-group .pt-row:last-child { border-bottom: none; }
+.pt-group .pt-row.is-strong { border-top: 1.5px solid rgba(26, 29, 18, 0.16); }
+.pt-label { font-size: 13.5px; color: #4C4F42; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+.pt-row:not(.is-strong) .pt-label { padding-left: 26px; }
+.pt-row.is-strong .pt-label { font-size: 14.5px; font-weight: 800; color: #1A1D12; letter-spacing: -0.2px; }
+.pt-val { font-size: 13.5px; font-weight: 600; color: #1A1D12; display: flex; align-items: center; }
+.pt-yes { color: #3E7A45; display: inline-flex; }
+.pt-val.is-rec .pt-yes { color: #1A1D12; }
+.pt-no { display: inline-block; width: 12px; height: 2px; border-radius: 2px; background: rgba(26, 29, 18, 0.25); }
+
+/* Closing buttons */
+.pt-foot { margin-top: 0; }
+.pt-foot .pt-cell { padding-top: 6px; padding-bottom: 18px; }
+.pt-foot .pt-cell.is-rec { border-radius: 0 0 22px 22px; }
+.pt-foot .pt-btn { margin-top: 8px; }
+
+/* ===== Phones: one plan column at a time ===== */
+@media (max-width: 720px) {
+  .pt { --pt-top: 63px; }
+  .pt-row { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); column-gap: 6px; }
+  .pt-cell { padding: 10px 10px; }
+  .pt[data-pick="0"] [data-col]:not([data-col="0"]),
+  .pt[data-pick="1"] [data-col]:not([data-col="1"]),
+  .pt[data-pick="2"] [data-col]:not([data-col="2"]),
+  .pt[data-pick="3"] [data-col]:not([data-col="3"]) { display: none; }
+
+  .pt-pick { display: flex; width: 100%; margin-bottom: 10px; }
+  .pt-pick button { flex: 1; padding: 9px 6px; }
+  .pt-sticky { padding-top: 10px; }
+
+  .pt-head .pt-corner, .pt-detail .pt-corner, .pt-foot .pt-corner { display: none; }
+  .pt-head .pt-cell, .pt-detail .pt-cell, .pt-foot .pt-cell { grid-column: 1 / -1; }
+
+  /* The plan header lies flat: name and line on the left, price on the right, button under. */
+  .pt-plan {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 10px; align-items: start;
+    grid-template-areas: "pop pop" "name price" "line line" "btn btn";
+    padding: 14px 16px !important;
+  }
+  .pt-plan .pt-name { grid-area: name; }
+  .pt-plan .pt-line { grid-area: line; }
+  .pt-plan .pt-pw { grid-area: price; }
+  .pt-plan .pt-price { margin-top: 0; justify-content: flex-end; flex-wrap: nowrap; }
+  .pt-plan .pt-strike { font-size: 14px; }
+  .pt-plan .pt-line { margin-top: 6px; }
+  .pt-plan .pt-btn { grid-area: btn; margin-top: 12px; }
+  .pt-pop { grid-area: pop; position: static; transform: none; justify-self: start; margin-bottom: 8px; font-size: 11px; }
+  .pt-amount { font-size: 28px; }
+  .pt-line { min-height: 0; }
+
+  .pt-detail .pt-cell { padding: 10px 16px 14px; }
+  .pt-save { font-size: 20px; }
+  .pt-row:not(.is-strong) .pt-label { padding-left: 12px; }
+  .pt-label, .pt-val { font-size: 13px; }
+}

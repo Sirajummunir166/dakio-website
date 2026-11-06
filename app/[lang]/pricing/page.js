@@ -1,3 +1,4 @@
+import "../../pricing.css";
 import PricingClient from "../../../components/pricing/PricingClient";
 import PageJsonLd from "../../../components/PageJsonLd";
 import { href, languageAlternates } from "../../../lib/i18n";

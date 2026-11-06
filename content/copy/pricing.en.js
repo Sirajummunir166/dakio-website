@@ -21,12 +21,10 @@ export const MONO = {
 
 const pricing = {
   meta: {
-    // The metadata is NOT fetched — generateMetadata runs off this copy, so a
-    // free-tier claim here would keep appearing in search results long after the
-    // tier was withdrawn. It says trial, because that is what is on offer.
-    title: "Dakio Pricing — Plans in Taka, AI CEO Included",
+    // The description is replaced by live prices when the API answers (lib/plans.js).
+    title: "Dakio Pricing: Plans in Taka, AI CEO Included",
     description:
-      "Growth ৳1,490/mo, Business ৳3,990/mo — every plan includes Nova. Honest credit metering, no hidden fees, courier rates passed through.",
+      "Free forever. Growth from ৳2,980 a month on yearly, Business from ৳7,980. Every plan includes Nova. No hidden fees, courier rates passed through.",
   },
 
   hero: {
@@ -35,60 +33,69 @@ const pricing = {
         Your whole back office, for less than <Mark bottom={6} height={14}>one employee</Mark>.
       </>
     ),
-    sub: "A shop assistant costs ৳12,000 a month and works ten hours. Nova works around the clock — and every plan includes it.",
-    monthly: "Monthly",
-    annual: "Annual — 2 months free",
+    sub: "A shop assistant costs ৳12,000 a month and works ten hours. Nova works around the clock, in every plan.",
   },
-
-  // FALLBACK ONLY — the live cards come from lib/plans.js#getPricingCopy. The
-  // Starter tier is gone from here because it is no longer on sale; existing free
-  // stores keep it, but nobody new can be sent to it.
-  plans: [
-    {
-      n: "Growth", audience: "The default for running shops",
-      prMo: "৳1,490", prYr: "৳1,242", sub: "/month", noteMo: "billed monthly", noteYr: "billed ৳14,900/year",
-      cta: "Choose Growth", dark: false, pop: true,
-      feats: ["Unlimited products, no daily order cap", "Nova Operator — 7,500 Nova credits/month", "Grow Suite + Supplier Network", "Ads Gallery — static exports", "Decision desk, receipts & undo"],
-    },
-    {
-      n: "Business", audience: "The full CEO seat",
-      prMo: "৳3,990", prYr: "৳3,325", sub: "/month", noteMo: "billed monthly", noteYr: "billed ৳39,900/year",
-      cta: "Choose Business", dark: true, pop: false,
-      feats: ["Everything in Growth", "Acting CEO — 25,000 Nova credits/month", "60 Nova voice minutes/month — briefs, alerts, COD confirms", "Seasonal playbooks (Eid, Puja, 11.11)", "Motion ad renders + staff logins", "Concierge migration included"],
-    },
-  ],
-
-  // The badge on the popular card (the plan admin marks `badge: popular`).
-  popular: "Most stores choose this",
 
   plansNote: "Courier deliveries are billed per shipment on all plans.",
+  demo: "Just looking? See Dakio running",
 
-  // The Free plan: one slim row under the paid cards, never a card of its own
-  // and never a big ৳0 (DAKIO_GROWTH_SYSTEM.md §9). Shown when the catalogue
-  // carries a Free plan (lib/plans.js#fetchCatalogue).
-  free: {
-    title: "Free forever",
-    tag: "Premium from day one",
-    limits: "25 products · 30 orders a month · Nova on one channel · Dakio subdomain · All themes",
-    launch: "Every new store starts with 7 days of everything",
-    cta: "Start free",
-  },
-
-  // Add-ons on top of Growth; Business includes all of them (§3.5). No public
-  // add-on API yet, so the names and prices live here.
-  addons: {
-    h2: "Add-ons",
-    sub: "Add to Growth when you need them.",
-    included: "Included in Business",
-    per: "/month",
-    items: [
-      { n: "Order Shield", d: "AI calls confirm risky COD orders before they ship.", price: "৳1,490" },
-      { n: "WhatsApp", d: "Nova answers and sends order updates on WhatsApp.", price: "৳990" },
-      { n: "Ad Studio Pro", d: "Ad videos and motion ads, no designer needed.", price: "৳990" },
-      { n: "Shop counter (POS)", d: "Sell at your counter, stock stays in sync.", price: "৳990" },
-      { n: "Website chat", d: "Nova chats with visitors and takes orders.", price: "৳490" },
-      { n: "AI product assistant", d: "Product pages written in seconds, Bangla or English.", price: "৳490" },
-    ],
+  // The comparison table (DAKIO_GROWTH_SYSTEM.md §25.1, lib/compare.js). Labels
+  // per kind of business where they differ: `shop` and `svc`.
+  compare: {
+    kindLabel: "Show it for",
+    kinds: { shop: "Shops", svc: "Services" },
+    popular: "Most stores choose this",
+    startFree: "Start free",
+    diamondNote: "Business: autopilot",
+    tiers: {
+      free: { tag: "Start", line: "Your store, live today." },
+      growth: { tag: "You run it", line: "Nova answers. You decide." },
+      business: { tag: "Autopilot", line: "Nova runs it for you." },
+    },
+    rows: {
+      store: { shop: "Your store", svc: "Your booking site" },
+      products: { shop: "Products", svc: "Services" },
+      orders: { shop: "Orders a month", svc: "Bookings a month" },
+      team: { shop: "Team", svc: "Staff calendars" },
+      pos: { shop: "Shop counter (POS)", svc: "Quotes and invoices" },
+      answers: "Nova answers",
+      acts: "Nova acts on its own",
+      followUps: { shop: "Follow-ups and cart recovery", svc: "Books in chat, sends reminders" },
+      orderShield: { shop: "Confirmation calls", svc: "Chases no-shows" },
+      whatsapp: { shop: "WhatsApp order updates", svc: "WhatsApp booking updates" },
+      brief: "Daily brief with actions",
+      marketing: "Marketing",
+      adImages: "Ad images",
+      aiWriting: { shop: "AI product writing", svc: "AI service writing" },
+      adVideos: "Ad videos",
+      money: "Money",
+      talk: "Talk to Nova",
+      monthly: "Every month you get",
+      credits: "Nova credits",
+      sms: "SMS",
+      voice: "Nova voice minutes",
+      storage: "Media storage",
+      topups: "Top-ups",
+    },
+    v: {
+      unlimited: "Unlimited",
+      subdomain: "Dakio subdomain, all themes",
+      ownDomain: "Your own domain, no Dakio badge",
+      dropship: "dropship",
+      upTo: "up to",
+      ownerOnly: "Owner only",
+      withHr: "with HR",
+      oneChannel: "One channel",
+      everyChannel: "Every channel",
+      everyChannelChat: "Every channel + website chat",
+      everyChannelComments: "Every channel, website chat + comments",
+      threeAMonth: "3 a month",
+      moneyBasic: "This month's P&L",
+      moneyFull: "Full accounting",
+      moneyPro: "Full accounting + profit per order and per ad",
+      topups: "Credits, SMS",
+      topupsVoice: "Credits, SMS, voice minutes",
+    },
   },
 
   meter: {
@@ -125,12 +132,11 @@ const pricing = {
     },
   },
 
+  // `{price}` is Growth's per-month price on the period the page opens on (lib/plans.js).
   switchStrip: {
-    headline: (
-      <>
-        Their stack: ≈ ৳16,500/mo.<br />Dakio Growth: ৳1,490 — CEO included.
-      </>
-    ),
+    stack: "Their stack: ≈ ৳16,500/mo.",
+    ours: "Dakio Growth: {price} a month, CEO included.",
+    price: "৳2,980",
     cta: "See the full math",
   },
 
@@ -138,11 +144,9 @@ const pricing = {
     h2: "Fair questions.",
     items: [
       { q: "Is Free really free forever?", a: "Yes. No card, no time limit. Your store stays open and keeps selling within Free's limits." },
-      { q: "What happens after my launch week?", a: "Your store steps down to Free and keeps selling. Nothing is deleted. Move to Growth any time to keep everything on." },
-      { q: "Why not unlimited AI?", a: "Nova does real work on real compute — unlimited would mean either fake AI or hidden throttling. We'd rather sell you an honest meter with receipts than a soft lie." },
-      { q: "What happens when my credits run out?", a: "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 250 credits) or the month resets. Nothing is lost, nothing is silent." },
-      { q: "What do couriers cost?", a: "Per-delivery, passed through at the courier's rate (Steadfast, Pathao, RedX) on every plan — we don't mark up shipping." },
-      { q: "I'm not in Bangladesh — can I use Dakio?", a: "Yes. Outside Bangladesh you pay in US dollars by card or PayPal, with tax added where it applies, and the plan renews by itself until you cancel. Your inbox, Nova and customer records work everywhere today; the online store and courier partners are Bangladesh-only for now and come to more countries next. Paddle, our reseller, charges only for Dakio software (your plan and Nova credits): Dakio doesn't sell or ship physical goods; you sell your own products to your own customers." },
+      { q: "What is the autopilot trial?", a: "14 days of Business, once. When your store is ready, you start it. It never starts by itself." },
+      { q: "Monthly or yearly?", a: "Monthly is the full price. Every saving is on yearly, the launch price too." },
+      { q: "Can I use an influencer code?", a: "Yes, on yearly. You pay the lower of the code or the launch price, never both." },
     ],
   },
 

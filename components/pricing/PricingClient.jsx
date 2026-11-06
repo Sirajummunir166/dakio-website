@@ -1,54 +1,46 @@
 "use client";
 
-// Pricing — 1:1 port of "Dakio Pricing.dc.html". Client component because the
-// billing-period tabs reprice the plan cards. With the live catalogue the tabs
-// are every period a plan is sold on (Monthly / 6 months / Yearly), each saying
-// how much it saves against paying monthly, and the page opens on the longest —
-// the term Dakio wants to sell. The committed fallback copy keeps the old
-// two-way Monthly/Annual toggle.
+// Pricing: one comparison table (Free, Growth, Business; DAKIO_GROWTH_SYSTEM.md
+// §25.1) under a Monthly / Yearly switch that opens on Yearly, where every
+// saving is (§25.6). The rest of the page (the credit meter, the payroll
+// comparison, the Shopify strip, questions) is the 1:1 port of
+// "Dakio Pricing.dc.html".
 //
-// Copy arrives as props from the route file so this stays a pure view — the
-// only locale-aware logic here is the type deltas and href().
+// Copy arrives as props from the route file (lib/plans.js#getPricingCopy) so
+// this stays a pure view; the only locale-aware logic here is the type deltas
+// and href().
 
 import Link from "next/link";
 import { useState } from "react";
 import { Nav, Footer } from "../Chrome";
 import Reveal from "../Reveal";
 import LogoDefs from "../Logo";
-import { REGISTER_URL, buyHref } from "../../lib/urls";
-import FreeRow from "./FreeRow";
-import AddOns from "./AddOns";
+import { REGISTER_URL, DEMO_URL } from "../../lib/urls";
 import { href } from "../../lib/i18n";
 import { type } from "../../lib/type";
-import { PeriodTabs, PeriodPrice } from "./Periods";
+import { PeriodTabs } from "./Periods";
+import CompareTable from "./CompareTable";
 
 const MONOFONT = "var(--dk-font-mono), monospace";
 const ROUTE = "/pricing";
 
 export default function PricingClient({ lang = "en", copy, mono }) {
   const c = copy;
-  const live = Boolean(c.billing?.tabs?.length);
-  const [billing, setBilling] = useState(live ? c.billing.defaultKey : "mo");
-  // The dollar set (visitors outside Bangladesh — lib/region.js). Rendered beside
-  // the taka set; CSS shows one. Each has its own period tabs.
-  const usd = live && c.usd ? c.usd : null;
-  const [usdPeriod, setUsdPeriod] = useState(usd ? usd.billing.defaultKey : null);
+  // Monthly or Yearly, one choice for the whole table; Yearly first (§25.6).
+  const [period, setPeriod] = useState(c.billing?.defaultKey || "YEARLY");
+  // The dollar set (visitors outside Bangladesh, lib/region.js). Rendered beside
+  // the taka set; CSS shows one.
+  const usd = c.usd || null;
   // One class per set when both exist; none when only taka is on the page.
   const cls = cur => (usd ? (cur === "USD" ? "cur-usd" : "cur-bdt") : undefined);
   // A label with a dollar twin: both spans, CSS shows the visitor's.
   const dual = (bdt, intl) => (usd && intl ? <><span className="cur-bdt">{bdt}</span><span className="cur-usd">{intl}</span></> : bdt);
-  const yr = billing === "yr";
   const T = type(lang);
   const L = p => href(lang, p);
 
-  const seg = on => ({
-    padding: "9px 18px", borderRadius: 99, cursor: "pointer", fontSize: 13, fontWeight: 700,
-    ...(on ? { background: "#1A1D12", color: "#C6F035" } : { color: "#6B6D60" }),
-    ...T.label,
-  });
-
   return (
-    <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", color: "#1A1D12", background: "#F4F2EA", overflowX: "hidden" }}>
+    // overflow-x: clip (not hidden) so the sticky nav and the table's sticky row stick.
+    <div style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", color: "#1A1D12", background: "#F4F2EA", overflowX: "clip" }}>
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />
 
@@ -61,73 +53,22 @@ export default function PricingClient({ lang = "en", copy, mono }) {
           {c.hero.h1}
         </h1>
         <p style={{ margin: "18px auto 0", fontSize: 16, lineHeight: 1.6, color: "#6B6D60", maxWidth: 480, animation: "heroUp .6s .16s ease both", ...T.lead }}>{c.hero.sub}</p>
-        {live ? (
+        {c.billing?.tabs?.length > 1 && (
           <>
-            <div className={cls("BDT")}><PeriodTabs billing={c.billing} value={billing} onChange={setBilling} T={T} style={{ marginTop: 28, animation: "heroUp .6s .24s ease both" }} /></div>
-            {usd && <div className={cls("USD")}><PeriodTabs billing={usd.billing} value={usdPeriod} onChange={setUsdPeriod} T={T} style={{ marginTop: 28, animation: "heroUp .6s .24s ease both" }} /></div>}
+            <div className={cls("BDT")}><PeriodTabs billing={c.billing} value={period} onChange={setPeriod} T={T} style={{ marginTop: 28, animation: "heroUp .6s .24s ease both" }} /></div>
+            {usd && <div className={cls("USD")}><PeriodTabs billing={usd.billing} value={period} onChange={setPeriod} T={T} style={{ marginTop: 28, animation: "heroUp .6s .24s ease both" }} /></div>}
           </>
-        ) : (
-          <div style={{ display: "inline-flex", padding: 3, borderRadius: 99, background: "#E9EBE0", marginTop: 28, animation: "heroUp .6s .24s ease both" }}>
-            <span onClick={() => setBilling("mo")} style={seg(!yr)}>{c.hero.monthly}</span>
-            <span onClick={() => setBilling("yr")} style={seg(yr)}>{c.hero.annual}</span>
-          </div>
         )}
       </div>
 
-      {/* PLANS */}
-      <div id="plans" style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 28px 20px" }}>
-        {/* Column count follows the number of plans on sale. It was hardcoded to 3
-            when three tiers were hand-written here; now that the catalogue is live,
-            withdrawing a plan in the admin app would otherwise leave an empty
-            column on the page. Capped at 3 so a fourth plan wraps instead of
-            squeezing the cards. */}
-        {[
-          { cur: "BDT", plans: c.plans, billing: c.billing, period: billing, setPeriod: setBilling },
-          ...(usd ? [{ cur: "USD", plans: usd.plans, billing: usd.billing, period: usdPeriod, setPeriod: setUsdPeriod }] : []),
-        ].map(set => (
-          <div key={set.cur} className={["m-grid", cls(set.cur)].filter(Boolean).join(" ")} style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(set.plans.length, 3)}, 1fr)`, gap: 14, alignItems: "stretch", maxWidth: set.plans.length < 3 ? 800 : "none", margin: set.plans.length < 3 ? "0 auto" : undefined }}>
-            {set.plans.map((p, i) => (
-              <div key={p.n} style={{ position: "relative", padding: 28, borderRadius: 26, display: "flex", flexDirection: "column", ...(p.dark ? { background: "#0F120B", color: "#E9EFDC", boxShadow: "0 28px 60px rgba(15,18,11,0.3)" } : p.pop ? { background: "#FBFAF5", border: "2px solid #1A1D12" } : { background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)" }) }}>
-                {p.pop && c.popular && (
-                  <span style={{ position: "absolute", top: -13, left: "50%", transform: "translateX(-50%)", padding: "5px 14px", borderRadius: 99, background: "#C6F035", color: "#0F120B", border: "2px solid #1A1D12", fontSize: 12, fontWeight: 800, whiteSpace: "nowrap", ...T.chip }}>{c.popular}</span>
-                )}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <span style={{ fontSize: 17, fontWeight: 800, letterSpacing: "-0.3px", ...(p.dark ? { color: "#FBFBF4" } : {}) }}>{p.n}</span>
-                  <span style={{ fontFamily: MONOFONT, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.08em", padding: "4px 9px", borderRadius: 99, ...(p.dark ? { background: "rgba(198,240,53,0.16)", color: "#C6F035" } : { background: "rgba(26,29,18,0.07)", color: "#3E7A45" }) }}>{p.level || mono.planLevels[i]}</span>
-                </div>
-                <div style={{ fontSize: 12.5, marginTop: 5, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.audience}</div>
-                {live ? (
-                  <PeriodPrice p={p} v={p.periods?.[set.period]} T={T} notSold={set.billing.notSold} onNudge={() => set.setPeriod(set.billing.bestKey)} />
-                ) : (
-                  <>
-                    <div style={{ marginTop: 18, display: "flex", alignItems: "baseline", gap: 6 }}>
-                      <span style={{ fontSize: 38, fontWeight: 800, letterSpacing: "-1.4px", ...(p.dark ? { color: "#C6F035" } : {}) }}>{yr ? p.prYr : p.prMo}</span>
-                      <span style={{ fontSize: 13, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{p.sub}</span>
-                    </div>
-                    <div style={{ fontSize: 11.5, marginTop: 3, color: p.dark ? "#878B76" : "#6B6D60", ...T.chip }}>{yr ? p.noteYr : p.noteMo}</div>
-                  </>
-                )}
-                <div style={{ height: 1, margin: "20px 0", background: p.dark ? "rgba(240,239,230,0.12)" : "rgba(26,29,18,0.08)" }} />
-                <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-                  {p.feats.map(t => (
-                    <div key={t} style={{ display: "flex", alignItems: "flex-start", gap: 9 }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={p.dark ? "#C6F035" : "#1A1D12"} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 2 }}><path d="M20 6L9 17l-5-5" /></svg>
-                      <span style={{ fontSize: 13, lineHeight: 1.5, ...(p.dark ? { color: "#E9EFDC" } : {}), ...T.small }}>{t}</span>
-                    </div>
-                  ))}
-                </div>
-                {/* The card's own plan AND the period on screen ride along, so signup
-                    opens on paying for exactly this card. */}
-                <a href={buyHref(p.code, live ? set.period : null)} style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 0", borderRadius: 99, fontSize: 14, fontWeight: 700, ...(p.dark ? { background: "#C6F035", color: "#0F120B" } : p.pop ? { background: "#1A1D12", color: "#C6F035" } : { border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12" }), ...T.label }}>{p.cta}</a>
-              </div>
-            ))}
-          </div>
-        ))}
-        {/* Free: a slim row under the paid cards, never a card of its own (FreeRow.jsx). */}
-        <FreeRow free={c.free} T={T} maxWidth={c.plans.length < 3 ? 800 : 1144} />
+      {/* PLANS: one table */}
+      <div id="plans" style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 28px 20px" }}>
+        {c.compareTable && <CompareTable compare={c.compareTable} copy={c.compare} period={period} T={T} notSold={c.billing?.notSold} />}
         <div style={{ textAlign: "center", marginTop: 18, fontSize: 13, color: "#6B6D60", ...T.small }}>{c.plansNote}</div>
-        {/* Add-ons are priced in taka only: visitors on the dollar page do not see them. */}
-        <AddOns addons={c.addons} T={T} maxWidth={c.plans.length < 3 ? 800 : 1144} className={cls("BDT")} />
+        {/* Just looking: the demo store, safe to click (§25.3). Quiet on purpose. */}
+        <div style={{ textAlign: "center", marginTop: 10, fontSize: 13.5, ...T.small }}>
+          <a href={DEMO_URL} style={{ color: "#3E7A45", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: 3 }}>{c.demo} →</a>
+        </div>
       </div>
 
       {/* WHAT'S A NOVA CREDIT */}
@@ -198,7 +139,9 @@ export default function PricingClient({ lang = "en", copy, mono }) {
         <div data-reveal style={{ borderRadius: 28, background: "#FBFAF5", border: "1px solid rgba(26,29,18,0.07)", padding: "34px 40px", display: "flex", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
           <div style={{ flex: 1, minWidth: 260 }}>
             <div style={{ fontFamily: MONOFONT, fontSize: 9, letterSpacing: "0.12em", color: "#3E7A45" }}>{mono.switchKicker}</div>
-            <div style={{ fontSize: 24, fontWeight: 800, letterSpacing: "-0.7px", marginTop: 8, ...T.h3 }}>{c.switchStrip.headline}</div>
+            <div style={{ fontSize: 24, fontWeight: 800, letterSpacing: "-0.7px", marginTop: 8, ...T.h3 }}>
+              {c.switchStrip.stack}<br />{c.switchStrip.ours.replace("{price}", c.switchStrip.price)}
+            </div>
           </div>
           <Link href={L("/switch")} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 24px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 14, fontWeight: 700, flexShrink: 0, ...T.label }}>
             {c.switchStrip.cta} <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
