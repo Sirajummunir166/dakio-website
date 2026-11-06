@@ -1,9 +1,8 @@
 "use client";
 
-// Home — the plan cards under PRICING. With the live catalogue they carry the
-// same billing-period tabs as /pricing (Monthly / 6 months / Yearly, opening
-// on the longest), so the front page quotes the price Dakio actually sells
-// rather than only the monthly one. The committed fallback copy has no
+// Home: the plan cards under PRICING. With the live catalogue they carry the
+// same Monthly / Yearly tabs as /pricing, opening on Yearly with the launch
+// price (§25.6), so the front page quotes the price Dakio actually sells. The committed fallback copy has no
 // periods and keeps its single monthly price.
 
 import { useState } from "react";

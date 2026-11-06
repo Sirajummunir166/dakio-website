@@ -14,7 +14,7 @@ import ChatDemo from "./ChatDemo";
 import NovaMachine from "./NovaMachine";
 import AppScreens from "./AppScreens";
 import HomePlans from "./HomePlans";
-import TrialLine from "../pricing/TrialLine";
+import FreeLine from "../pricing/FreeLine";
 import { REGISTER_URL } from "../../lib/urls";
 
 function Arrow({ size = 15 }) {
@@ -426,7 +426,7 @@ export function Pricing({ c, pricing, T, L }) {
         {x.busy}{" "}
         <Link href={L("/pricing")} className="hm-link">{x.footLink} <Arrow size={13} /></Link>
       </p>
-      <TrialLine trial={pricing.trial} T={T} />
+      <FreeLine free={pricing.free} T={T} />
     </section>
   );
 }
