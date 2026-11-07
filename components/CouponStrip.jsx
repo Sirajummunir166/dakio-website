@@ -21,8 +21,10 @@ const CODE_RE = /^[A-Z0-9_-]{3,32}$/;
 const HIDE_KEY = "dakio_coupon_hidden";
 
 const COPY = {
-  en: { lead: "Code", saved: "saved", onPlan: "on your first plan payment", cta: "Open your store", close: "Hide" },
-  bn: { lead: "কোড", saved: "সেভ হয়েছে", onPlan: "প্রথম প্ল্যান পেমেন্টে", cta: "স্টোর খুলুন", close: "লুকান" },
+  en: { lead: "Code", saved: "saved", onPlan: "on your first plan payment", cta: "Open your store", close: "Hide",
+    offer: (plan, period, price, lbl) => <>{plan} {period} for <b>{price}</b> a year ({lbl})</> },
+  bn: { lead: "কোড", saved: "সেভ হয়েছে", onPlan: "প্রথম প্ল্যান পেমেন্টে", cta: "স্টোর খুলুন", close: "লুকান",
+    offer: (plan, period, price, lbl) => <>{plan} {period} বছরে <b>{price}</b> ({lbl})</> },
 };
 
 // Said out loud when a code only fits some billing periods, so nobody is surprised at checkout.
@@ -46,6 +48,8 @@ const taka = (n, lang) => {
 /** "20% off (up to ৳500)" / "২০% ছাড় (সর্বোচ্চ ৳৫০০)" — built here so Bangla reads as Bangla. */
 function label(c, lang) {
   if (c.discountType === "FIXED") return lang === "bn" ? `${taka(c.discountValue, lang)} ছাড়` : `${taka(c.discountValue, lang)} off`;
+  // A percent of the monthly price × months (NAFEES), instead of the yearly saving.
+  if (c.percentOf === "monthly") return lang === "bn" ? `মাসিক দামে ${toBn(c.discountValue)}% ছাড়` : `${c.discountValue}% off the monthly price`;
   if (lang === "bn") return `${toBn(c.discountValue)}% ছাড়${c.maxDiscount ? ` (সর্বোচ্চ ${taka(c.maxDiscount, lang)})` : ""}`;
   return `${c.discountValue}% off${c.maxDiscount ? ` (up to ${taka(c.maxDiscount, lang)})` : ""}`;
 }
@@ -103,10 +107,13 @@ export default function CouponStrip({ lang = "en" }) {
           {coupon.programName && <><b style={{ fontWeight: 700 }}>{coupon.programName}</b>{" · "}</>}
           {t.lead}{" "}
           <b style={{ fontFamily: "var(--dk-font-mono)", letterSpacing: "0.06em", color: "var(--dk-lime)" }}>{coupon.code}</b>{" "}
-          {t.saved} · <b>{label(coupon, lang)}</b> {t.onPlan}{periods(coupon, lang)}
+          {t.saved} · {coupon.offer
+            ? t.offer(coupon.offer.planName, (PERIODS[lang] || PERIODS.en)[coupon.offer.interval] || "", taka(coupon.offer.finalAmount, lang), label(coupon, lang))
+            : <><b>{label(coupon, lang)}</b> {t.onPlan}{periods(coupon, lang)}</>}
         </span>
         <a
-          href={`${REGISTER_URL}?code=${encodeURIComponent(coupon.code)}`}
+          // A one-plan code opens signup on that plan and period, the code attached.
+          href={`${REGISTER_URL}?${coupon.offer ? `plan=${encodeURIComponent(`${coupon.offer.plan}:${coupon.offer.interval}`)}&` : ""}code=${encodeURIComponent(coupon.code)}`}
           style={{ background: "var(--dk-lime)", color: "var(--dk-ink)", fontWeight: 700, padding: "6px 14px", borderRadius: 999, textDecoration: "none", whiteSpace: "nowrap" }}
         >
           {t.cta}
