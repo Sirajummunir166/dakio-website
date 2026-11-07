@@ -113,6 +113,7 @@ export default async function PrivacyPage({ params }) {
         <P>When a merchant&apos;s team member connects their Google Calendar, Dakio adds that person&apos;s bookings to it (the service, time and client name) and reads their busy times so clients are not offered a time they are away. Disconnecting stops this.</P>
         <P><strong>Analytics and marketing platforms</strong></P>
         <P>Only when a merchant explicitly enables third-party tracking integrations (e.g. Meta Pixel, Google Tag Manager) through their Dakio settings does any storefront visitor or conversion data flow to those platforms. This is controlled entirely by the merchant for their own advertising and analytics purposes.</P>
+        <P>On Dakio&apos;s own website (dakio.io) and Dakio&apos;s sign-up pages, Dakio itself uses Google Analytics and the Meta Pixel to count visits and to measure the results of Dakio&apos;s own ads. They receive the pages you visit, the buttons that lead to sign-up, and, when you sign up or pay for a Dakio plan, that it happened, the plan and the amount. They do not receive your password, your payment details or your store&apos;s data. You can limit this with your browser&apos;s tracking settings or an ad blocker.</P>
         <P><strong>Meta (Facebook, Instagram, WhatsApp)</strong></P>
         <P>When a merchant connects their accounts, the replies, comment replies and posts they send from Dakio go to Meta to be delivered, as described in &quot;Facebook, Instagram and WhatsApp&quot; above.</P>
         <P><strong>AI providers</strong></P>

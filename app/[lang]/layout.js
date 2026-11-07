@@ -5,7 +5,8 @@ import "../hover.css";
 import "../responsive.css";
 import "../voice.css";
 import { LOCALES } from "../../lib/i18n";
-import { GA_MEASUREMENT_ID, analyticsEnabled } from "../../lib/analytics";
+import { GA_MEASUREMENT_ID, analyticsEnabled, pixelEnabled } from "../../lib/analytics";
+import MetaPixel from "../../components/MetaPixel";
 import CouponStrip from "../../components/CouponStrip";
 import VoiceGuide from "../../components/voice/VoiceGuide";
 import { REGION_SCRIPT } from "../../lib/region";
@@ -62,6 +63,8 @@ export default async function RootLayout({ children, params }) {
         <main style={{ display: "block" }}>{children}</main>
         {/* "Talk to Nova" — one button; the call itself loads on intent. */}
         <VoiceGuide lang={lang} />
+        {/* Dakio's own Meta Pixel — renders nothing until lib/analytics.js has the ID. */}
+        {pixelEnabled ? <MetaPixel /> : null}
       </body>
       {/* Loads after hydration, so it never blocks first paint. Both locales
           report into the one stream — `lang` on <html> is what separates them. */}
