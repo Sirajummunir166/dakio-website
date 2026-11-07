@@ -50,8 +50,6 @@ const taka = (n, lang) => {
 /** "20% off (up to ৳500)" / "২০% ছাড় (সর্বোচ্চ ৳৫০০)" — built here so Bangla reads as Bangla. */
 function label(c, lang) {
   if (c.discountType === "FIXED") return lang === "bn" ? `${taka(c.discountValue, lang)} ছাড়` : `${taka(c.discountValue, lang)} off`;
-  // A percent of the monthly price × months (NAFEES), instead of the yearly saving.
-  if (c.percentOf === "monthly") return lang === "bn" ? `মাসিক দামে ${toBn(c.discountValue)}% ছাড়` : `${c.discountValue}% off the monthly price`;
   if (lang === "bn") return `${toBn(c.discountValue)}% ছাড়${c.maxDiscount ? ` (সর্বোচ্চ ${taka(c.maxDiscount, lang)})` : ""}`;
   return `${c.discountValue}% off${c.maxDiscount ? ` (up to ${taka(c.maxDiscount, lang)})` : ""}`;
 }
