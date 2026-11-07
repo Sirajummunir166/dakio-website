@@ -22,9 +22,11 @@ const HIDE_KEY = "dakio_coupon_hidden";
 
 const COPY = {
   en: { lead: "Code", saved: "saved", onPlan: "on your first plan payment", cta: "Open your store", close: "Hide",
-    offer: (plan, period, price, lbl) => <>{plan} {period} for <b>{price}</b> a year ({lbl})</> },
+    // "Use NAFEES to save 55% on a year of Business: ~~৳80,280~~ ৳36,126. You save ৳44,154."
+    // The 55% is against a year at the monthly price, which is what the code is taken from.
+    offer: (code, pct, plan, full, price, save) => <>Use {code} to save <b>{pct}%</b> on a year of {plan}: <s style={{ opacity: 0.6 }}>{full}</s> <b>{price}</b>. You save <b style={{ color: "var(--dk-lime)" }}>{save}</b>.</> },
   bn: { lead: "কোড", saved: "সেভ হয়েছে", onPlan: "প্রথম প্ল্যান পেমেন্টে", cta: "স্টোর খুলুন", close: "লুকান",
-    offer: (plan, period, price, lbl) => <>{plan} {period} বছরে <b>{price}</b> ({lbl})</> },
+    offer: (code, pct, plan, full, price, save) => <>{code} কোডে {plan}-এর এক বছরে <b>{pct}%</b> সাশ্রয়: <s style={{ opacity: 0.6 }}>{full}</s> <b>{price}</b>। আপনার সাশ্রয় <b style={{ color: "var(--dk-lime)" }}>{save}</b>।</> },
 };
 
 // Said out loud when a code only fits some billing periods, so nobody is surprised at checkout.
@@ -105,11 +107,16 @@ export default function CouponStrip({ lang = "en" }) {
           {/* The code's customer-facing program (NAFEES → "Founding Merchant Program"),
               shown exactly as Dakio stored it in admin — same words on /en and /bn. */}
           {coupon.programName && <><b style={{ fontWeight: 700 }}>{coupon.programName}</b>{" · "}</>}
-          {t.lead}{" "}
-          <b style={{ fontFamily: "var(--dk-font-mono)", letterSpacing: "0.06em", color: "var(--dk-lime)" }}>{coupon.code}</b>{" "}
-          {t.saved} · {coupon.offer
-            ? t.offer(coupon.offer.planName, (PERIODS[lang] || PERIODS.en)[coupon.offer.interval] || "", taka(coupon.offer.finalAmount, lang), label(coupon, lang))
-            : <><b>{label(coupon, lang)}</b> {t.onPlan}{periods(coupon, lang)}</>}
+          {(() => {
+            const codeTag = <b style={{ fontFamily: "var(--dk-font-mono)", letterSpacing: "0.06em", color: "var(--dk-lime)" }}>{coupon.code}</b>;
+            const o = coupon.offer;
+            // A one-plan code says the offer itself: what it saves on a year, in taka.
+            if (o && o.fullAmount > o.finalAmount) {
+              const pct = Math.round((o.saving / o.fullAmount) * 100);
+              return t.offer(codeTag, lang === "bn" ? toBn(pct) : pct, o.planName, taka(o.fullAmount, lang), taka(o.finalAmount, lang), taka(o.saving, lang));
+            }
+            return <>{t.lead} {codeTag} {t.saved} · <b>{label(coupon, lang)}</b> {t.onPlan}{periods(coupon, lang)}</>;
+          })()}
         </span>
         <a
           // A one-plan code opens signup on that plan and period, the code attached.
