@@ -272,9 +272,9 @@ const home = {
     popular: "জনপ্রিয়",
     // FALLBACK ONLY, see home.en.js.
     plans: [
-      { n: "Growth", audience: "যে ব্যবসায় প্রতিদিন বিক্রি হয়", pr: "৳2,980", sub: "/মাস", yr: "বার্ষিক বিলে মাসে ৳2,090", level: "NOVA AI সিইও", cta: "Growth নিন", dark: false, pop: true,
+      { n: "Growth", audience: "যে ব্যবসায় প্রতিদিন বিক্রি হয়", pr: "৳2,990", sub: "/মাস", yr: "বার্ষিক বিলে মাসে ৳1,990", level: "NOVA AI সিইও", cta: "Growth নিন", dark: false, pop: true,
         feats: ["যত খুশি পণ্য, দিনে অর্ডারের কোনো সীমা নেই", "Nova উত্তর দেয়, বিক্রি করে, ফলো-আপ করে", "ওয়েবসাইট, কুরিয়ার, বিকাশ আর ক্যাশ অন ডেলিভারি", "কাস্টমার পেজ, ফলো-আপ আর রিভিউ"] },
-      { n: "Business", audience: "টিম নিয়ে ব্যস্ত ব্যবসার জন্য", pr: "৳6,690", sub: "/মাস", yr: "বার্ষিক বিলে মাসে ৳4,690", level: "NOVA AI সিইও + ভয়েস", cta: "Business নিন", dark: true, pop: false,
+      { n: "Business", audience: "টিম নিয়ে ব্যস্ত ব্যবসার জন্য", pr: "৳6,990", sub: "/মাস", yr: "বার্ষিক বিলে মাসে ৳4,990", level: "NOVA AI সিইও + ভয়েস", cta: "Business নিন", dark: true, pop: false,
         feats: ["Growth-এর সবকিছু", "মাসে ৬০ মিনিট Nova-র সাথে কথা বলুন", "স্টাফদের আলাদা লগইন", "পণ্যের ছবি থেকে ভিডিও অ্যাড"] },
     ],
     footLink: "সব ফিচার মিলিয়ে দেখুন",

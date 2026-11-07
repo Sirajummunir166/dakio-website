@@ -53,8 +53,8 @@ const sw = {
       { n: "Couriers + Grow Suite", d: "Steadfast · Pathao · RedX, campaigns, broadcasts" },
       { n: "Nova — your Acting CEO", d: "Marketing, support, ops. On duty 24/7" },
     ],
-    newTotalLabel: "One plan — Growth",
-    newTotal: "৳1,490",
+    newTotalLabel: "One plan · Growth yearly",
+    newTotal: "৳1,990",
     footnote:
       "Typical stack for a BD merchant on a $39 plan with paid apps and a designer retainer, at July 2026 rates. Your bill may differ — bring it, we’ll do the math with you.",
   },

@@ -24,7 +24,7 @@ const pricing = {
     // The description is replaced by live prices when the API answers (lib/plans.js).
     title: "Dakio Pricing: Plans in Taka, AI CEO Included",
     description:
-      "Free forever. Growth from ৳2,980 a month on yearly, Business from ৳7,980. Every plan includes Nova. No hidden fees, courier rates passed through.",
+      "Free forever. Growth from ৳1,990 a month on yearly, Business from ৳4,990. Every plan includes Nova. No hidden fees, courier rates passed through.",
   },
 
   hero: {
@@ -131,8 +131,8 @@ const pricing = {
     },
     nova: {
       title: "Nova — Acting CEO",
-      price: "৳3,990",
-      per: "/month, Business plan",
+      price: "৳4,990",
+      per: "/month, Business yearly",
       lines: ["24/7 — nights, Eid, monsoon", "Messenger, Instagram, WhatsApp and website chat", "Every action receipted & undoable"],
     },
   },
@@ -141,7 +141,7 @@ const pricing = {
   switchStrip: {
     stack: "Their stack: ≈ ৳16,500/mo.",
     ours: "Dakio Growth: {price} a month, CEO included.",
-    price: "৳2,980",
+    price: "৳1,990",
     cta: "See the full math",
   },
 
@@ -150,8 +150,8 @@ const pricing = {
     items: [
       { q: "Is Free really free forever?", a: "Yes. No card, no time limit. Your store stays open and keeps selling within Free's limits." },
       { q: "What is the autopilot trial?", a: "14 days of Business, once. When your store is ready, you start it. It never starts by itself." },
-      { q: "Monthly or yearly?", a: "Monthly is the full price. Yearly is 30% off." },
-      { q: "Can I use an influencer code?", a: "Yes, on Business yearly. The code takes its percent off the monthly price for a full year, instead of the yearly saving." },
+      { q: "Monthly or yearly?", a: "Monthly is the full price. Yearly saves up to ৳24,000." },
+      { q: "Can I use an influencer code?", a: "Yes, on yearly plans. The code's percent is your total saving for the year, not added on top of the yearly price." },
     ],
   },
 
