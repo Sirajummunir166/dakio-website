@@ -46,12 +46,19 @@ export default async function RefundPolicyPage({ params }) {
         <P>If you&apos;re unable to reach a merchant or believe a merchant is not honoring a reasonable return request, you may contact <A href="mailto:hello@dakio.io">hello@dakio.io</A> and we will assist where we can, though final resolution rests with the merchant.</P>
       </Section>
 
+      <Section title="Domain Names">
+        <P>Domain names you buy through Dakio are registered in your name with our registrar partner, Namecheap, as soon as your payment is confirmed. Because the registration happens right away and is charged by the registry, a domain name cannot be refunded once it is registered. The same applies to a renewal once it has been made.</P>
+        <P>If your payment went through but we could not register the name (for example, someone else registered it moments before you), you are not charged for a domain you did not get: you can use the amount for another name, or ask for a refund at <A href="mailto:hello@dakio.io">hello@dakio.io</A>.</P>
+        <P>You are the legal owner of every domain you buy through Dakio. To move one to another registrar, write to <A href="mailto:hello@dakio.io">hello@dakio.io</A> and we will unlock it and send you its transfer code. Under ICANN rules, a domain usually cannot be moved within 60 days of being registered.</P>
+      </Section>
+
       <Section title="Non-Refundable Items">
         <P>The following are not eligible for a refund:</P>
         <Ul items={[
           "Operational charges already incurred on your behalf, such as dropship fulfillment costs, courier fees, SMS or email credits, or Nova credits already used",
           "Subscription periods that have already elapsed",
           "Add-ons or one-time services that have already been delivered or activated",
+          "Domain names once registered or renewed",
         ]} />
       </Section>
 
