@@ -43,6 +43,25 @@ function withRegion(request, res) {
   return res;
 }
 
+/**
+ * The language the visitor reads dakio.io in, kept in `dakio_lang` on .dakio.io
+ * so app.dakio.io's sign-up and sign-in open in it: those pages have no language
+ * switch (owner 2026-11-07). Written only when it changes; English-only pages
+ * (legal, docs) leave it alone so a Bangla reader stays Bangla.
+ */
+const LANG_COOKIE = "dakio_lang";
+function withLang(request, res, lang) {
+  if (!lang || request.cookies.get(LANG_COOKIE)?.value === lang) return res;
+  const host = request.nextUrl.hostname;
+  res.cookies.set(LANG_COOKIE, lang, {
+    path: "/",
+    maxAge: REGION_MAX_AGE,
+    sameSite: "lax",
+    ...(host === "dakio.io" || host.endsWith(".dakio.io") ? { domain: ".dakio.io", secure: true } : {}),
+  });
+  return res;
+}
+
 export function middleware(request) {
   const { pathname } = request.nextUrl;
 
@@ -76,10 +95,11 @@ export function middleware(request) {
     // /bn/privacy to /privacy, /bn/developers/docs/… to /developers/docs/….
     const bare = pathname.slice(3) || "/";
     if (isLegalPath(bare) || isEnglishOnlyPath(bare)) return NextResponse.redirect(new URL(bare + request.nextUrl.search, request.url), 308);
-    return withRegion(request, NextResponse.next());
+    return withLang(request, withRegion(request, NextResponse.next()), "bn");
   }
 
-  return withRegion(request, NextResponse.rewrite(new URL(`/en${pathname === "/" ? "" : pathname}`, request.url)));
+  const englishOnly = isLegalPath(pathname) || isEnglishOnlyPath(pathname);
+  return withLang(request, withRegion(request, NextResponse.rewrite(new URL(`/en${pathname === "/" ? "" : pathname}`, request.url))), englishOnly ? null : "en");
 }
 
 export const config = {
