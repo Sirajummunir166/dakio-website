@@ -132,6 +132,11 @@ function track(name, params = {}) {
   try { window.gtag?.("event", name, params); } catch { /* analytics never breaks the call */ }
 }
 
+// Nova SPEAKS Bangla by default, on the English site too (owner, 2026-11-09):
+// her voice message, a call and a typed chat start in Bangla unless the visitor
+// taps English. The card's words and the pages she opens follow the site.
+const SPEAKS = "bn";
+
 export default function VoiceGuide({ lang = "en" }) {
   const pathname = usePathname();
   const copy = VOICE_COPY[lang] || VOICE_COPY.en;
@@ -152,7 +157,7 @@ export default function VoiceGuide({ lang = "en" }) {
     return () => { alive = false; (window.cancelIdleCallback || window.clearTimeout)(idle); };
   }, []);
 
-  const fetchTicket = useCallback(async (callLang = lang, want = null) => {
+  const fetchTicket = useCallback(async (callLang = SPEAKS, want = null) => {
     await initBot();
     const r = await fetch("/api/voice-guide/open", {
       method: "POST",
@@ -160,7 +165,7 @@ export default function VoiceGuide({ lang = "en" }) {
       body: JSON.stringify({ lang: callLang, page: window.location.pathname, ...(want ? { want } : {}) }),
     });
     return r.json().catch(() => ({ ok: false, reason: "error" }));
-  }, [lang]);
+  }, []);
 
   /** Start everything the tap will need. Safe to call as often as you like. */
   const warm = useCallback(() => {
@@ -174,15 +179,15 @@ export default function VoiceGuide({ lang = "en" }) {
 
   // The language the visitor picked on the welcome card (the call runs in it;
   // pages Nova opens stay in the site's language).
-  const [callLang, setCallLang] = useState(lang);
+  const [callLang, setCallLang] = useState(SPEAKS);
 
-  const start = useCallback(async ({ lang: pick = lang, want = null } = {}) => {
+  const start = useCallback(async ({ lang: pick = SPEAKS, want = null } = {}) => {
     if (phase === "opening" || phase === "call") return;
     stopClip();
     setWelcome(false);
     setCallLang(pick);
     quiet.current = true; // they talked to her: later messages arrive without a sound
-    if (pick !== lang || want) {
+    if (pick !== SPEAKS || want) {
       // A different language or "type instead" needs its own ticket and panel.
       mod.current = (want === "text" || mode === "text" ? import("./TextChat") : import("./VoiceCall")).catch((e) => { mod.current = null; throw e; });
       pending.current = { at: Date.now(), promise: fetchTicket(pick, want).catch(() => ({ ok: false, reason: "error" })) };
@@ -211,7 +216,7 @@ export default function VoiceGuide({ lang = "en" }) {
       setRefusal(null);
       setPhase("refused");
     }
-  }, [phase, warm, lang, mode, fetchTicket]);
+  }, [phase, warm, mode, fetchTicket]);
 
   const ended = useCallback(() => {
     setPhase("idle");
@@ -219,7 +224,7 @@ export default function VoiceGuide({ lang = "en" }) {
   }, []);
 
   // A language switch mid-visit needs a ticket in the new language.
-  useEffect(() => { pending.current = null; setCallLang(lang); }, [lang]);
+  useEffect(() => { pending.current = null; setCallLang(SPEAKS); }, [lang]);
 
   // The welcome: on EVERY page, a few seconds in, Nova sends a voice message:
   // her orb bounces in by the corner, glances at the page and then at the
@@ -243,7 +248,7 @@ export default function VoiceGuide({ lang = "en" }) {
   const greeting = welcome || teaser;
   useEffect(() => {
     if (!greeting) { stopClip(); return undefined; }
-    const a = new Audio(`/nova-guide/welcome-${page === "home" ? "" : `${page}-`}${lang}.mp3`);
+    const a = new Audio(`/nova-guide/welcome-${page === "home" ? "" : `${page}-`}${SPEAKS}.mp3`);
     a.preload = "auto";
     clip.current = a;
     setHeard(false);
@@ -257,7 +262,7 @@ export default function VoiceGuide({ lang = "en" }) {
     return () => { a.pause(); a.onloadedmetadata = a.onplaying = a.onended = a.onerror = null; };
     // The voice message turning into the card keeps the same clip (the tap plays it).
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [greeting, lang, page]);
+  }, [greeting, page]);
   const hear = () => { const a = clip.current; if (!a) return; a.currentTime = 0; a.play().catch(() => setHearing("none")); track("voice_welcome_hear", { lang, page }); };
   const hush = () => { try { clip.current?.pause(); } catch { /* fine */ } setHearing("ready"); setHeard(true); };
   const secs = dur ? Math.round(dur) : null;
@@ -387,7 +392,7 @@ export default function VoiceGuide({ lang = "en" }) {
             <button type="button" className="vg-btn vg-btn-lime" onPointerEnter={warm} onClick={() => start({ lang: "en" })}>English</button>
           </div>
           {mode === "voice" ? (
-            <button type="button" className={`vg-welcome-type${bn ? " vg-bn" : ""}`} onClick={() => start({ lang, want: "text" })}>{copy.typeInstead}</button>
+            <button type="button" className={`vg-welcome-type${bn ? " vg-bn" : ""}`} onClick={() => start({ lang: SPEAKS, want: "text" })}>{copy.typeInstead}</button>
           ) : null}
           <p className={`vg-note${bn ? " vg-bn" : ""}`}>{copy.note}</p>
         </div>
