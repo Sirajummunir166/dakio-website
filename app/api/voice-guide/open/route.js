@@ -39,7 +39,7 @@ export async function POST(request) {
     const res = await fetch(`${API_BASE}/api/public/voice-guide/open`, {
       method: "POST",
       headers,
-      body: JSON.stringify({ lang: body?.lang === "bn" ? "bn" : "en", page: typeof body?.page === "string" ? body.page.slice(0, 200) : "/", ...(body?.want === "text" ? { want: "text" } : {}) }),
+      body: JSON.stringify({ lang: body?.lang === "bn" ? "bn" : "en", page: typeof body?.page === "string" ? body.page.slice(0, 200) : "/", ...(body?.want === "text" ? { want: "text" } : {}), ...(typeof body?.from === "string" && body.from.length < 2000 ? { from: body.from } : {}) }),
       cache: "no-store",
       signal: AbortSignal.timeout(10_000),
     });

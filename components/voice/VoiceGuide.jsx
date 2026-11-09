@@ -1,7 +1,10 @@
 "use client";
 
 // "Talk to Nova" / "Chat with Nova" — the Nova guide on every dakio.io page
-// (DAKIO_VOICE_GUIDE_PLAN.md, cut 3). An admin picks the mode: voice, text or off.
+// (DAKIO_VOICE_GUIDE_PLAN.md, cut 3). An admin picks the mode: voice and chat,
+// chat only, or off. With voice on, chat is an equal choice on the card, and a
+// call that ends by itself (time limit, dropped) carries on as a chat with what
+// was said (DAKIO_WEBSITE_CHAT_PLAN.md).
 //
 // This file is the light part every page carries: one button. Everything that
 // makes a call — the realtime SDK, the microphone, the captions — lives in
@@ -25,6 +28,9 @@ export const VOICE_COPY = {
   en: {
     launch: "Talk to Nova",
     launchText: "Chat with Nova",
+    launchBoth: "Talk or chat with Nova",
+    chat: "Chat with Nova",
+    or: "or type instead",
     note: "Voice is processed by our AI provider. We keep a text transcript for 30 days, never the audio.",
     opening: "Connecting…",
     title: "Nova",
@@ -34,8 +40,7 @@ export const VOICE_COPY = {
     close: "Close",
     hello: "Hi, I'm Nova from Dakio.",
     ask: "Can I help you understand Dakio, or find what your business needs?",
-    pick: "Which language do you prefer?",
-    typeInstead: "Type instead",
+    pick: "Which language should we talk in?",
     hear: "Talk to Nova",
     hearSub: "Tap and she'll say hello",
     speaking: "Nova is speaking…",
@@ -48,6 +53,9 @@ export const VOICE_COPY = {
   bn: {
     launch: "Nova-র সাথে কথা বলুন",
     launchText: "Nova-কে লিখুন",
+    launchBoth: "Nova-র সাথে কথা বা চ্যাট",
+    chat: "Nova-কে লিখুন",
+    or: "অথবা লিখে জিজ্ঞেস করুন",
     note: "ভয়েস আমাদের AI প্রোভাইডার প্রসেস করে। আমরা ৩০ দিন লেখা ট্রান্সক্রিপ্ট রাখি, অডিও কখনো না।",
     opening: "সংযোগ হচ্ছে…",
     title: "Nova",
@@ -58,7 +66,6 @@ export const VOICE_COPY = {
     hello: "হ্যালো, আমি Dakio-র Nova।",
     ask: "Dakio বুঝতে বা আপনার ব্যবসার যা দরকার খুঁজে পেতে সাহায্য করব?",
     pick: "কোন ভাষায় কথা বলবেন?",
-    typeInstead: "লিখে কথা বলুন",
     hear: "Nova-র সাথে কথা বলুন",
     hearSub: "চাপলেই Nova হ্যালো বলবে",
     speaking: "Nova কথা বলছে…",
@@ -157,12 +164,12 @@ export default function VoiceGuide({ lang = "en" }) {
     return () => { alive = false; (window.cancelIdleCallback || window.clearTimeout)(idle); };
   }, []);
 
-  const fetchTicket = useCallback(async (callLang = SPEAKS, want = null) => {
+  const fetchTicket = useCallback(async (callLang = SPEAKS, want = null, from = null) => {
     await initBot();
     const r = await fetch("/api/voice-guide/open", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ lang: callLang, page: window.location.pathname, ...(want ? { want } : {}) }),
+      body: JSON.stringify({ lang: callLang, page: window.location.pathname, ...(want ? { want } : {}), ...(from ? { from } : {}) }),
     });
     return r.json().catch(() => ({ ok: false, reason: "error" }));
   }, []);
@@ -201,7 +208,7 @@ export default function VoiceGuide({ lang = "en" }) {
       const [m, t] = await Promise.all([mod.current, pending.current.promise]);
       pending.current = null; // a ticket opens exactly one call
       if (!t?.ok) {
-        setRefusal(t?.message || null);
+        setRefusal({ message: t?.message || null, reason: t?.reason || "error", want: want === "text" || mode === "text" ? "text" : "voice" });
         setPhase("refused");
         track("voice_refused", { reason: t?.reason || "error" });
         return;
@@ -211,9 +218,10 @@ export default function VoiceGuide({ lang = "en" }) {
       setTicket({ ...t, tapAt });
       setCall(() => panel.default);
       setPhase("call");
+      if (t.mode === "text") track("chat_start", { from: "card", lang: pick });
     } catch {
       pending.current = null;
-      setRefusal(null);
+      setRefusal({ message: null, reason: "error", want: want === "text" || mode === "text" ? "text" : "voice" });
       setPhase("refused");
     }
   }, [phase, warm, mode, fetchTicket]);
@@ -222,6 +230,30 @@ export default function VoiceGuide({ lang = "en" }) {
     setPhase("idle");
     setTicket(null);
   }, []);
+
+  // A call that ends by itself (time limit, dropped), or a visitor who would
+  // rather type, carries on as a chat (DAKIO_WEBSITE_CHAT_PLAN.md, cut 2): the
+  // call's close token links the two, the server gives Nova the call's
+  // transcript, and the chat shows what was said above Nova's first line. The
+  // call's panel stays up until the chat is ready.
+  const continueInChat = useCallback(async ({ closeToken, lines = [], reason = "visitor" }) => {
+    track("voice_to_chat", { reason });
+    try {
+      const [m, t] = await Promise.all([import("./TextChat"), fetchTicket(callLang, "text", closeToken)]);
+      if (!t?.ok) {
+        setRefusal({ message: t?.message || null, reason: t?.reason || "error", want: "text" });
+        setPhase("refused");
+        return;
+      }
+      setTicket({ ...t, earlier: lines, tapAt: performance.now() });
+      setCall(() => m.default);
+      setPhase("call");
+      track("chat_start", { from: "call", reason });
+    } catch {
+      setRefusal({ message: null, reason: "error", want: "text" });
+      setPhase("refused");
+    }
+  }, [fetchTicket, callLang]);
 
   // A language switch mid-visit needs a ticket in the new language.
   useEffect(() => { pending.current = null; setCallLang(SPEAKS); }, [lang]);
@@ -339,7 +371,7 @@ export default function VoiceGuide({ lang = "en" }) {
         </div>
       ) : null}
       {phase === "call" && Call && ticket ? (
-        <Call ticket={ticket} lang={callLang} siteLang={lang} onEnded={ended} />
+        <Call key={ticket.callId} ticket={ticket} lang={callLang} siteLang={lang} onEnded={ended} onContinue={mode === "voice" ? continueInChat : null} />
       ) : phase === "refused" ? (
         <div className="vg-panel" role="dialog" aria-label={copy.refusedTitle}>
           <div className="vg-head">
@@ -347,9 +379,13 @@ export default function VoiceGuide({ lang = "en" }) {
             <div className={`vg-title${bn ? " vg-bn" : ""}`}>{copy.refusedTitle}</div>
             <button type="button" className="vg-close-x" style={{ marginLeft: "auto" }} onClick={() => setPhase("idle")} aria-label={copy.close}>×</button>
           </div>
-          {refusal ? <p className="vg-note" style={{ fontSize: 13.5, color: "#C9CBBE" }}>{refusal}</p> : null}
+          {refusal?.message ? <p className="vg-note" style={{ fontSize: 13.5, color: "#C9CBBE" }}>{refusal.message}</p> : null}
           <div className="vg-actions">
-            <a className={`vg-btn vg-btn-lime${bn ? " vg-btn-bn" : ""}`} href="https://app.dakio.io/register">{copy.startFree}</a>
+            {/* Voice refused (a call open elsewhere, today's calls used, it failed): chat may still be there. */}
+            {mode === "voice" && refusal?.want === "voice" && ["busy", "ip_limit", "error"].includes(refusal.reason) ? (
+              <button type="button" className={`vg-btn vg-btn-lime${bn ? " vg-btn-bn" : ""}`} onClick={() => { setPhase("idle"); track("chat_start_offer", { reason: refusal.reason }); start({ lang: callLang, want: "text" }); }}>{copy.chat}</button>
+            ) : null}
+            <a className={`vg-btn${mode === "voice" && refusal?.want === "voice" ? "" : " vg-btn-lime"}${bn ? " vg-btn-bn" : ""}`} href="https://app.dakio.io/register">{copy.startFree}</a>
             <a className={`vg-btn${bn ? " vg-btn-bn" : ""}`} href="mailto:hello@dakio.io">{copy.email}</a>
           </div>
         </div>
@@ -392,7 +428,13 @@ export default function VoiceGuide({ lang = "en" }) {
             <button type="button" className="vg-btn vg-btn-lime" onPointerEnter={warm} onClick={() => start({ lang: "en" })}>English</button>
           </div>
           {mode === "voice" ? (
-            <button type="button" className={`vg-welcome-type${bn ? " vg-bn" : ""}`} onClick={() => start({ lang: SPEAKS, want: "text" })}>{copy.typeInstead}</button>
+            <>
+              <div className={`vg-welcome-or${bn ? " vg-bn" : ""}`}>{copy.or}</div>
+              <button type="button" className={`vg-btn vg-welcome-chat${bn ? " vg-btn-bn" : ""}`} data-chat onClick={() => start({ lang: SPEAKS, want: "text" })}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" /></svg>
+                {copy.chat}
+              </button>
+            </>
           ) : null}
           <p className={`vg-note${bn ? " vg-bn" : ""}`}>{copy.note}</p>
         </div>
@@ -422,11 +464,11 @@ export default function VoiceGuide({ lang = "en" }) {
           onTouchStart={warm}
           onClick={() => { setWelcome(true); track("voice_launch_tap", { lang }); }}
           disabled={phase === "opening"}
-          aria-label={mode === "text" ? copy.launchText : copy.launch}
+          aria-label={mode === "text" ? copy.launchText : copy.launchBoth}
           title={copy.note}
         >
           <span ref={launchGaze} className="vg-orb vg-gaze" data-state={phase === "opening" ? "connecting" : undefined} aria-hidden />
-          <span className={bn ? "vg-launch-bn" : undefined}>{phase === "opening" ? copy.opening : mode === "text" ? copy.launchText : copy.launch}</span>
+          <span className={bn ? "vg-launch-bn" : undefined}>{phase === "opening" ? copy.opening : mode === "text" ? copy.launchText : copy.launchBoth}</span>
         </button>
       )}
     </div>

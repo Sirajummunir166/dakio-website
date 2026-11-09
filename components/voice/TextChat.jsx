@@ -30,6 +30,7 @@ const COPY = {
     ended: "Thanks for chatting with Nova.",
     note: "Answers come from our AI. We keep the chat text for 30 days to improve answers.",
     error: "Nova could not answer. Please try again.",
+    fromCall: "From your call",
   },
   bn: {
     ready: "অনলাইন",
@@ -43,6 +44,7 @@ const COPY = {
     ended: "Nova-র সাথে কথা বলার জন্য ধন্যবাদ।",
     note: "উত্তর দেয় আমাদের AI। উত্তর আরও ভালো করতে আমরা ৩০ দিন চ্যাটের লেখা রাখি।",
     error: "Nova উত্তর দিতে পারেনি। আবার চেষ্টা করুন।",
+    fromCall: "আপনার কল থেকে",
   },
 };
 
@@ -175,6 +177,7 @@ export default function TextChat({ ticket, lang, siteLang = lang, onEnded }) {
 
   const bn = lang === "bn";
   const lines = messages.map((m) => ({ id: m.id, who: m.role, text: textOf(m) })).filter((l) => l.text);
+  const earlier = Array.isArray(ticket.earlier) ? ticket.earlier : [];
   const errorText = error ? (() => { try { return JSON.parse(error.message)?.error; } catch { return null; } })() || copy.error : null;
 
   return (
@@ -188,6 +191,15 @@ export default function TextChat({ ticket, lang, siteLang = lang, onEnded }) {
       </div>
 
       <div className="vg-captions" aria-live="polite" style={{ maxHeight: 300 }}>
+        {/* A chat that carries on a call shows what was said in it (DAKIO_WEBSITE_CHAT_PLAN.md). */}
+        {earlier.length ? (
+          <div className="vg-earlier">
+            <div className={`vg-earlier-label${bn ? " vg-bn" : ""}`}>{copy.fromCall}</div>
+            {earlier.map((l, i) => (
+              <div key={i} className={`${l.who === "user" ? "vg-line-you" : "vg-line-nova"}${BN.test(l.text) ? " vg-bn" : ""}`} data-who={copy.you}>{l.text}</div>
+            ))}
+          </div>
+        ) : null}
         <div className={`vg-line-nova${bn ? " vg-bn" : ""}`}>{ticket.greeting}</div>
         {lines.map((l) => (
           <div key={l.id} className={`${l.who === "user" ? "vg-line-you" : "vg-line-nova"}${BN.test(l.text) ? " vg-bn" : ""}`} data-who={copy.you}>

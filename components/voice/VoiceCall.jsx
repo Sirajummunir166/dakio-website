@@ -36,6 +36,9 @@ const COPY = {
     ended: "Thanks for talking with Nova.",
     close: "Close",
     error: "The call dropped. Please try again.",
+    chatInstead: "Chat instead",
+    continueChat: "Continue in chat",
+    movingToChat: "Opening the chat…",
   },
   bn: {
     connecting: "সংযোগ হচ্ছে…",
@@ -50,6 +53,9 @@ const COPY = {
     ended: "Nova-র সাথে কথা বলার জন্য ধন্যবাদ।",
     close: "বন্ধ করুন",
     error: "কলটি কেটে গেছে। আবার চেষ্টা করুন।",
+    chatInstead: "লিখে কথা বলুন",
+    continueChat: "চ্যাটে চালিয়ে যান",
+    movingToChat: "চ্যাট খুলছে…",
   },
 };
 
@@ -70,7 +76,7 @@ function signupUrl() {
   } catch { return REGISTER_URL; }
 }
 
-export default function VoiceCall({ ticket, lang, siteLang = lang, onEnded }) {
+export default function VoiceCall({ ticket, lang, siteLang = lang, onEnded, onContinue = null }) {
   const copy = COPY[lang] || COPY.en;
   const router = useRouter();
   const [stream, setStream] = useState(null);
@@ -179,6 +185,26 @@ export default function VoiceCall({ ticket, lang, siteLang = lang, onEnded }) {
     setEnded(true);
   }, [close, report, stream, ticket.closeUrl]);
 
+  // Into a chat (DAKIO_WEBSITE_CHAT_PLAN.md, cut 2): the call ends (once) and
+  // the guide opens a chat that carries it on, showing what was said.
+  const [moving, setMoving] = useState(false);
+  const linesRef = useRef([]);
+  linesRef.current = messages
+    .map((m) => ({ who: m.role === "user" ? "user" : "assistant", text: textOf(m) }))
+    .filter((l) => l.text && l.text !== GREET_NOTE)
+    .slice(-20);
+  const toChat = useCallback(async (reason) => {
+    if (!onContinue || moving) return;
+    setMoving(true);
+    if (!finished.current) await finish(reason);
+    onContinue({ closeToken: ticket.closeToken, lines: linesRef.current, reason });
+  }, [onContinue, moving, finish, ticket.closeToken]);
+
+  // A dropped call carries on in chat by itself.
+  useEffect(() => {
+    if (failed && onContinue && !moving) toChat("error");
+  }, [failed, onContinue, moving, toChat]);
+
   // Open the microphone and the call. The tap that mounted us is the gesture.
   useEffect(() => {
     let cancelled = false;
@@ -255,9 +281,10 @@ export default function VoiceCall({ ticket, lang, siteLang = lang, onEnded }) {
   useEffect(() => {
     if (!startedAt || ended) return undefined;
     const t = setInterval(() => setElapsed(Math.round((Date.now() - startedAt) / 1000)), 500);
-    const cap = setTimeout(() => finish("time_cap"), Math.max(0, startedAt + ticket.maxSeconds * 1000 - Date.now()));
+    // At the time limit the call carries on in chat (when chat is on).
+    const cap = setTimeout(() => (onContinue ? toChat("time_cap") : finish("time_cap")), Math.max(0, startedAt + ticket.maxSeconds * 1000 - Date.now()));
     return () => { clearInterval(t); clearTimeout(cap); };
-  }, [startedAt, ended, ticket.maxSeconds, finish]);
+  }, [startedAt, ended, ticket.maxSeconds, finish, onContinue, toChat]);
 
   // A tab closed mid-call (or a language switch, which remounts the layout)
   // still reports what it used. Only once the call is really open: React's
@@ -282,7 +309,7 @@ export default function VoiceCall({ ticket, lang, siteLang = lang, onEnded }) {
   const caption = lastNova ? textOf(lastNova) : "";
   const live = status === "connected" && !ended;
   const state = !live ? "connecting" : isPlaying ? "speaking" : "listening";
-  const statusText = failed ? copy.error : ended ? copy.ended : micBlocked ? copy.micBlocked : !live ? copy.connecting : isPlaying ? copy.speaking : isCapturing ? copy.listening : copy.muted;
+  const statusText = moving ? copy.movingToChat : failed ? copy.error : ended ? copy.ended : micBlocked ? copy.micBlocked : !live ? copy.connecting : isPlaying ? copy.speaking : isCapturing ? copy.listening : copy.muted;
   const lean = state === "listening" && isCapturing ? 1 + level * 0.22 : 1;
   const late = live && ticket.maxSeconds - elapsed <= 20;
 
@@ -305,9 +332,10 @@ export default function VoiceCall({ ticket, lang, siteLang = lang, onEnded }) {
       {caption ? <p className={`vg-caption${BN.test(caption) ? " vg-bn" : ""}`}>{caption}</p> : null}
 
       <div className="vg-actions">
-        {ended || failed ? (
+        {moving ? null : ended || failed ? (
           <>
-            <a className={`vg-btn vg-btn-lime${bn ? " vg-btn-bn" : ""}`} href={signupUrl()} onClick={() => { signupClicked.current = true; track("voice_signup_click"); }}>{copy.startFree}</a>
+            {onContinue ? <button type="button" className={`vg-btn vg-btn-lime${bn ? " vg-btn-bn" : ""}`} onClick={() => toChat(failed ? "error" : "visitor")}>{copy.continueChat}</button> : null}
+            <a className={`vg-btn${onContinue ? "" : " vg-btn-lime"}${bn ? " vg-btn-bn" : ""}`} href={signupUrl()} onClick={() => { signupClicked.current = true; track("voice_signup_click"); }}>{copy.startFree}</a>
             <button type="button" className={`vg-btn vg-btn-end${bn ? " vg-btn-bn" : ""}`} onClick={async () => { if (!finished.current) await finish(failed ? "error" : "visitor"); onEnded(); }}>{copy.close}</button>
           </>
         ) : (
@@ -322,6 +350,9 @@ export default function VoiceCall({ ticket, lang, siteLang = lang, onEnded }) {
               >
                 {copy.startFree}
               </a>
+            ) : null}
+            {micBlocked && onContinue ? (
+              <button type="button" className={`vg-btn vg-btn-lime${bn ? " vg-btn-bn" : ""}`} onClick={() => toChat("to_chat")}>{copy.chatInstead}</button>
             ) : null}
             {stream ? (
               <button
