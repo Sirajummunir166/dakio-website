@@ -27,8 +27,8 @@ export async function generateMetadata({ params }) {
 }
 
 const EMAIL = "hello@dakio.io";
-const PHONE_HREF = "tel:01521305403";
-const PHONE_LABEL = "01521 305 403";
+const PHONE_HREF = "tel:01727809264";
+const PHONE_LABEL = "01727 809 264";
 
 const VALUE_DOTS = [
   { background: "#3E7A45" },

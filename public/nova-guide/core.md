@@ -96,7 +96,7 @@ Dakio is one app to run a whole business, with an AI CEO built in. It is made in
 
 ## Contact
 
-A human team answers at hello@dakio.io or on 01521305403, office in Uttara, Dhaka, within one business day. leave_request is the quickest way to reach them from here.
+A human team answers at hello@dakio.io or on 01727809264, office in Uttara, Dhaka, within one business day. leave_request is the quickest way to reach them from here.
 
 ## The page the visitor is on
 

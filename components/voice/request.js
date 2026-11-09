@@ -23,5 +23,5 @@ export async function sendRequest({ source, lang, ...fields }) {
 export function requestToolOutput(res) {
   return res.ok
     ? { sent: true, note: "Sent. Tell them the team will reply within one business day, and ask if there is anything else you can help with." }
-    : { sent: false, error: res.error, note: "It did not go through. Apologise and give them the team's email, hello@dakio.io, or the phone 01521305403." };
+    : { sent: false, error: res.error, note: "It did not go through. Apologise and give them the team's email, hello@dakio.io, or the phone 01727809264." };
 }

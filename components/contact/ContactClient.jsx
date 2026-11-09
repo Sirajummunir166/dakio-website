@@ -18,8 +18,8 @@ const labelBase = { display: "block", fontSize: 12.5, fontWeight: 600, color: "#
 
 const ROUTE = "/contact";
 const EMAIL = "hello@dakio.io";
-const PHONE_HREF = "tel:01521305403";
-const PHONE_LABEL = "01521 305 403";
+const PHONE_HREF = "tel:01727809264";
+const PHONE_LABEL = "01727 809 264";
 
 const ICONS = {
   hq: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6F035" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>,

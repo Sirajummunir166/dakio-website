@@ -63,7 +63,7 @@ export default async function RefundPolicyPage({ params }) {
       </Section>
 
       <Section title="Contact">
-        <P>Questions about this policy or a specific refund request can be sent to <A href="mailto:hello@dakio.io">hello@dakio.io</A> or 01521 305 403.</P>
+        <P>Questions about this policy or a specific refund request can be sent to <A href="mailto:hello@dakio.io">hello@dakio.io</A> or 01727 809 264.</P>
       </Section>
     </LegalLayout>
   );
