@@ -22,6 +22,12 @@ const contact = {
     phone: { label: "Phone" },
   },
 
+  demo: {
+    title: "Book a free demo",
+    body: "A 30 minute call. Pick a free time and we show you Dakio for your business.",
+    cta: "Pick a time",
+  },
+
   promo: {
     title: "Start for free",
     body: "Open your store — and appoint your CEO on day one.",

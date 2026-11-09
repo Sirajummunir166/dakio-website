@@ -158,7 +158,7 @@ const pricing = {
   cta: {
     h2: "Your store. Your CEO. Today.",
     primary: "Open your store",
-    secondary: "Back to Dakio",
+    secondary: "Book a free demo",
   },
 };
 

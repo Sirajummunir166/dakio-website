@@ -12,6 +12,7 @@ import LogoDefs from "../Logo";
 import { href } from "../../lib/i18n";
 import { type } from "../../lib/type";
 import { sendRequest } from "../voice/request";
+import BookDemo from "../BookDemo";
 
 const inputStyle = { width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid rgba(26,29,18,0.14)", background: "#ffffff", fontSize: 14, color: "#1A1D12" };
 const labelBase = { display: "block", fontSize: 12.5, fontWeight: 600, color: "#1A1D12", marginBottom: 7 };
@@ -88,6 +89,14 @@ export default function ContactClient({ lang = "en", copy }) {
                 </div>
               </div>
             ))}
+            <div data-reveal data-book-demo style={{ padding: 24, borderRadius: 22, background: "#C6F035", color: "#1A1D12" }}>
+              <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: "-0.2px", ...T.h3 }}>{c.demo.title}</div>
+              <div style={{ fontSize: 13.5, color: "rgba(26,29,18,0.72)", marginTop: 8, lineHeight: 1.55, ...T.small }}>{c.demo.body}</div>
+              <BookDemo lang={lang} className="hv-up2" style={{ marginTop: 16, display: "inline-flex", alignItems: "center", gap: 7, padding: "11px 22px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 14, fontWeight: 700, ...T.label }}>
+                {c.demo.cta}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </BookDemo>
+            </div>
             <div data-reveal style={{ padding: 24, borderRadius: 22, background: "#0F120B", color: "#F0EFE6" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
                 <span style={{ width: 18, height: 18, borderRadius: "50%", background: "radial-gradient(circle at 32% 28%, #F4FFD6, #C6F035 45%, #6FA524 90%)" }} />

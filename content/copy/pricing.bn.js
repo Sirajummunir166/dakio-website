@@ -142,7 +142,7 @@ const pricing = {
   cta: {
     h2: "আপনার স্টোর। আপনার AI CEO। শুরু হোক আজই।",
     primary: "স্টোর খুলুন",
-    secondary: "হোমে ফিরুন",
+    secondary: "ফ্রি ডেমো বুক করুন",
   },
 };
 

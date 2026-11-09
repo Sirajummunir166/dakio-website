@@ -20,6 +20,7 @@ import { href } from "../../lib/i18n";
 import { type } from "../../lib/type";
 import { PeriodTabs } from "./Periods";
 import CompareTable from "./CompareTable";
+import BookDemo from "../BookDemo";
 
 const MONOFONT = "var(--dk-font-mono), monospace";
 const ROUTE = "/pricing";
@@ -173,7 +174,7 @@ export default function PricingClient({ lang = "en", copy, mono }) {
             <a href={REGISTER_URL} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "16px 30px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 15.5, fontWeight: 700, ...T.label }}>
               <span style={{ width: 8, height: 8, borderRadius: 99, background: "#C6F035", animation: "pulseRing 2.2s infinite" }} />{c.cta.primary}
             </a>
-            <Link href={L("/")} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</Link>
+            <BookDemo lang={lang} className="hv-bg-ink08" style={{ display: "inline-flex", alignItems: "center", padding: "16px 26px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.35)", color: "#1A1D12", fontSize: 15.5, fontWeight: 700, ...T.label }}>{c.cta.secondary}</BookDemo>
           </div>
           <div style={{ position: "relative", marginTop: 20, fontFamily: MONOFONT, fontSize: 9.5, letterSpacing: "0.14em", color: "rgba(26,29,18,0.6)" }}>{dual(mono.ctaStrip, mono.ctaStripIntl)}</div>
         </div>
