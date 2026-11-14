@@ -9,7 +9,7 @@ import ThemeShots from "../../../../components/themes/ThemeShots";
 import { REGISTER_URL } from "../../../../lib/urls";
 import { href, languageAlternates } from "../../../../lib/i18n";
 import { type } from "../../../../lib/type";
-import { THEMES, themeByKey, shot, wordmarkStyle } from "../../../../lib/themes";
+import { ALL_THEMES as THEMES, themeByKey, shot, wordmarkStyle } from "../../../../lib/themes";
 import { themeFontVars } from "../../../../lib/themeFonts";
 import themesEn, { MONO } from "../../../../content/copy/themes.en";
 import themesBn from "../../../../content/copy/themes.bn";
@@ -107,8 +107,16 @@ export default async function ThemePage({ params }) {
             </div>
           </Block>
           <Block label={MONO.type}>
-            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: "#4A4E3F", ...T.body }}>{c.detail.typeLine(t.fonts.display, t.fonts.body)} {c.detail.accent(t.fonts.accent)}</p>
+            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: "#4A4E3F", ...T.body }}>{c.detail.typeLine(t.fonts.display, t.fonts.body)} {t.fonts.accent && t.fonts.accent !== t.fonts.body && t.fonts.accent !== t.fonts.display ? c.detail.accent(t.fonts.accent) : ""}</p>
           </Block>
+          {it.versions?.length > 1 && t.demo ? (
+            <Block label={c.detail.madeFor}>
+              <p style={{ margin: "0 0 10px", fontSize: 12.5, color: "#6B6D60", ...T.small }}>{c.detail.madeForNote}</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                {it.versions.map(v => <a key={v.key} href={`${t.demo}/api/dakio/version?v=${v.key}&path=/`} target="_blank" rel="noopener" className="hv-bg-ink05" style={{ fontSize: 13, fontWeight: 650, padding: "6px 12px", borderRadius: 99, border: "1px solid rgba(26,29,18,0.18)", color: "#1A1D12", ...T.chip }}>{v.name} ↗</a>)}
+              </div>
+            </Block>
+          ) : null}
           <Block label={MONO.sections}>
             <ol style={{ margin: 0, paddingLeft: 20, display: "grid", gap: 5, fontSize: 13.5, lineHeight: 1.5, color: "#4A4E3F", ...T.small }}>
               {it.sections.map(s => <li key={s}>{s}</li>)}
@@ -118,7 +126,7 @@ export default async function ThemePage({ params }) {
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
               {t.pages.map(p => <code key={p} style={{ fontFamily: MONOFONT, fontSize: 11.5, padding: "3px 8px", borderRadius: 7, background: "#EEF0E6", color: "#4A4E3F" }}>{p}</code>)}
             </div>
-            <p style={{ margin: "10px 0 0", fontSize: 12.5, color: "#6B6D60", ...T.small }}>{c.detail.stats(t.products, t.categories)}</p>
+            {t.products ? <p style={{ margin: "10px 0 0", fontSize: 12.5, color: "#6B6D60", ...T.small }}>{c.detail.stats(t.products, t.categories)}</p> : null}
           </Block>
         </aside>
       </div>

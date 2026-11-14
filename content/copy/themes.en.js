@@ -4,7 +4,7 @@
 
 export const MONO = {
   kicker: "DAKIO THEMES",
-  count: "8 STOREFRONTS",
+  count: "35 DESIGNS",
   template: "TEMPLATE",
   includesKicker: "IN EVERY THEME",
   stepsKicker: "GOING LIVE",
@@ -16,17 +16,19 @@ export const MONO = {
   ctaStrip: "CASH ON DELIVERY · SMS-CODE CHECKOUT · YOUR OWN DOMAIN",
 };
 
+import more from "./themesMore.en";
+
 const themes = {
   meta: {
-    title: "Dakio Themes — Designer Storefronts for Every Kind of Shop",
+    title: "Dakio Themes — Designer Websites for Every Kind of Business",
     description:
-      "Eight complete storefront designs for shops: fashion, beauty, jewelry, furniture, grocery, baby, modest wear and books. Your own website, with Dakio's catalog, cash-on-delivery checkout and couriers behind it.",
+      "35 complete website designs: shops for fashion, beauty, jewelry, furniture, grocery, electronics, baby, modest wear and books, and sites for clinics, law firms, salons, travel, schools and more. Your own website, with Dakio's catalog, cash-on-delivery checkout and couriers behind it.",
   },
   navCta: "Open your store",
 
   hero: {
-    h1: "A storefront made for your kind of shop.",
-    sub: "Eight complete store designs, one for each kind of shop sellers usually start with. Each becomes your own website on your own domain, and Dakio runs everything behind it: products, prices, cash-on-delivery checkout, couriers and Nova.",
+    h1: "A website made for your kind of business.",
+    sub: "35 complete designs: shops, clinics, salons, law firms, travel, schools and more. Each becomes your own website on your own domain, and Dakio runs everything behind it: products, prices, cash-on-delivery checkout, couriers and Nova.",
     ctaPrimary: "See the themes",
     ctaSecondary: "Open your store",
   },
@@ -38,6 +40,9 @@ const themes = {
     products: n => `${n} demo products`,
     categories: n => `${n} categories`,
     pages: n => `${n} pages`,
+    versions: n => `${n} versions`,
+    shopsH: "Shops",
+    servicesH: "Service businesses",
   },
 
   // One per theme, keyed like lib/themes.js.
@@ -174,8 +179,8 @@ const themes = {
   },
 
   showroom: {
-    h2: "Eight shops, eight looks.",
-    sub: "Every theme is a whole store: home, collections, product pages, cart, checkout with an SMS code, and order pages. Open any theme to see its home page on a laptop and on a phone, and a product page.",
+    h2: "Every kind of business, its own look.",
+    sub: "Every design is a whole website: shops come with collections, product pages and checkout; service sites come with services, booking and contact. Open any design to see its home page on a laptop and on a phone, or visit its live demo.",
   },
 
   includes: {
@@ -203,8 +208,10 @@ const themes = {
 
   detail: {
     back: "All themes",
-    tabs: { full: "Home on a laptop", phoneFull: "Home on a phone", product: "Product page", home2: "Second home design" },
+    tabs: { hero: "Home on a laptop", phone: "Home on a phone", full: "Home on a laptop", phoneFull: "Home on a phone", product: "Product page", home2: "Second home design" },
     captions: {
+      hero: "The home page, first screen, at laptop width.",
+      phone: "The home page, first screen, on a phone.",
       full: "The whole home page, at laptop width.",
       phoneFull: "The whole home page on a phone.",
       product: "A product page, first screen.",
@@ -214,6 +221,9 @@ const themes = {
     accent: a => `Accents in ${a}.`,
     stats: (p, c) => `${p} demo products in ${c} categories`,
     next: "Next theme",
+    madeFor: "MADE FOR",
+    madeForNote: "One design, a version for each kind of business. Open a version in the live demo.",
+    servicePages: n => `${n} pages`,
     demoNote: "The demo runs on sample products. Orders there are not real.",
   },
 
@@ -227,9 +237,11 @@ const themes = {
   home: {
     kicker: "DAKIO THEMES",
     h2: "Your own website, in a look made for your shop.",
-    sub: "Eight designer storefronts, from sarees to groceries. Dakio runs the checkout, couriers and Nova behind every one.",
+    sub: "35 designs, from sarees and groceries to clinics and law firms. Dakio runs the checkout, couriers and Nova behind every one.",
     cta: "See all themes",
   },
 };
+
+themes.items = { ...themes.items, ...more };
 
 export default themes;

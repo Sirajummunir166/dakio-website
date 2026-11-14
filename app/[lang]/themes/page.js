@@ -12,7 +12,7 @@ import PageJsonLd from "../../../components/PageJsonLd";
 import { REGISTER_URL } from "../../../lib/urls";
 import { href, languageAlternates } from "../../../lib/i18n";
 import { type } from "../../../lib/type";
-import { THEMES, shot, wordmarkStyle } from "../../../lib/themes";
+import { ALL_THEMES as THEMES, shot, wordmarkStyle } from "../../../lib/themes";
 import { themeFontVars } from "../../../lib/themeFonts";
 import themesEn, { MONO } from "../../../content/copy/themes.en";
 import themesBn from "../../../content/copy/themes.bn";
@@ -74,8 +74,8 @@ export default async function ThemesPage({ params }) {
             <a href={REGISTER_URL} style={{ display: "inline-flex", alignItems: "center", padding: "15px 24px", borderRadius: 99, border: "1.5px solid rgba(244,242,234,0.25)", color: "#F4F2EA", fontSize: 15, fontWeight: 700, ...T.label }}>{c.hero.ctaSecondary}</a>
           </div>
           <nav aria-label={MONO.kicker} style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 34, animation: "heroUp .6s .3s ease both" }}>
-            {THEMES.map(t => (
-              <Link key={t.key} href={L(`${ROUTE}/${t.key}`)} className="hv-up2" style={{ padding: "8px 15px", borderRadius: 99, border: "1px solid rgba(244,242,234,0.18)", color: "#F4F2EA", fontSize: t.wordmark.upper ? 13.5 : 17, lineHeight: 1.2, ...wordmarkStyle(t) }}>{t.name}</Link>
+            {[["shops", c.card.shopsH, THEMES.filter(t => t.kind === "shop").length], ["services", c.card.servicesH, THEMES.filter(t => t.kind === "service").length]].map(([id, label, n]) => (
+              <a key={id} href={`#${id}`} className="hv-up2" style={{ padding: "9px 17px", borderRadius: 99, border: "1px solid rgba(244,242,234,0.18)", color: "#F4F2EA", fontSize: 14.5, fontWeight: 700, ...T.label }}>{label} · {n}</a>
             ))}
           </nav>
           </div>
@@ -94,8 +94,11 @@ export default async function ThemesPage({ params }) {
           <h2 className="m-h2" style={{ margin: 0, fontSize: 44, lineHeight: 1.06, letterSpacing: "-1.7px", fontWeight: 800, ...T.h2 }}>{c.showroom.h2}</h2>
           <p style={{ margin: "14px 0 0", fontSize: 15.5, lineHeight: 1.65, color: "#6B6D60", ...T.body }}>{c.showroom.sub}</p>
         </div>
+        {[["shops", c.card.shopsH, "shop"], ["services", c.card.servicesH, "service"]].map(([gid, gh, gk]) => (
+        <div key={gid} id={gid} style={{ scrollMarginTop: 80, marginTop: gk === "shop" ? 0 : 64 }}>
+          <h3 style={{ margin: "0 0 22px", fontSize: 30, letterSpacing: "-1px", fontWeight: 800, ...T.h2 }}>{gh}</h3>
         <div className="th-grid">
-          {THEMES.map(t => {
+          {THEMES.filter(t => t.kind === gk).map(t => {
             const it = c.items[t.key];
             const page = L(`${ROUTE}/${t.key}`);
             return (
@@ -103,7 +106,7 @@ export default async function ThemesPage({ params }) {
                 <Link href={page} className="th-shot" aria-label={`${t.name} — ${c.card.look}`}>
                   <span className="th-frame">
                     <span className="th-bar" aria-hidden="true"><i /><i /><i /><span>{t.name}</span></span>
-                    <img src={shot(t.key, "hero")} alt="" width={1440} height={900} loading={t.num <= "02" ? "eager" : "lazy"} />
+                    <img src={shot(t.key, "hero")} alt="" width={1440} height={900} loading={t.num <= "02" || t.num === "09" ? "eager" : "lazy"} />
                   </span>
                   <img className="th-phone" src={shot(t.key, "phone")} alt="" width={780} height={1688} loading="lazy" />
                 </Link>
@@ -118,7 +121,7 @@ export default async function ThemesPage({ params }) {
                     {t.palette.map(h => <span key={h} style={{ width: 24, height: 24, borderRadius: 99, background: h, boxShadow: "inset 0 0 0 1px rgba(26,29,18,0.14)" }} />)}
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "4px 16px", fontSize: 12.5, color: "#6B6D60", fontVariantNumeric: "tabular-nums", ...T.small }}>
-                    <span>{c.card.products(t.products)}</span><span>{c.card.categories(t.categories)}</span><span>{c.card.pages(t.pages.length)}</span>
+                    {t.products ? <><span>{c.card.products(t.products)}</span><span>{c.card.categories(t.categories)}</span></> : null}{it.versions?.length > 1 ? <span>{c.card.versions(it.versions.length)}</span> : null}<span>{c.card.pages(t.pages.length)}</span>
                   </div>
                   <div className="m-wrap" style={{ display: "flex", gap: 10, marginTop: 4, alignItems: "center" }}>
                     <Link href={page} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "11px 19px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 14, fontWeight: 700, ...T.label }}>{c.card.look}<Arrow size={13} /></Link>
@@ -133,6 +136,8 @@ export default async function ThemesPage({ params }) {
             );
           })}
         </div>
+        </div>
+        ))}
       </div>
 
       {/* INCLUDES — one green panel of what every theme already does */}

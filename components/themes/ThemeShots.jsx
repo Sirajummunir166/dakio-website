@@ -11,8 +11,9 @@ export default function ThemeShots({ name, shots, tabs, captions, srcFor }) {
   const [view, setView] = useState(shots[0]);
   useEffect(() => {
     if (window.matchMedia("(max-width: 700px)").matches && shots.includes("phoneFull")) setView("phoneFull");
+    else if (window.matchMedia("(max-width: 700px)").matches && shots.includes("phone")) setView("phone");
   }, [shots]);
-  const phone = view === "phoneFull";
+  const phone = view === "phoneFull" || view === "phone";
   return (
     <div>
       <div className="th-tabs">
