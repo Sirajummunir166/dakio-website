@@ -227,6 +227,7 @@ const templates = {
     pagesKicker: "EVERY PAGE",
     pagesH: "Every page, top to bottom.",
     pagesSub: "The whole site as it looks live: every page in one scroll, on a laptop or on a phone.",
+    close: "Close",
     laptop: "Laptop",
     phone: "Phone",
     next: "Next template",

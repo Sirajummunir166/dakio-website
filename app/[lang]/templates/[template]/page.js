@@ -141,7 +141,7 @@ export default async function ThemePage({ params }) {
             <h2 className="m-h2" style={{ margin: "12px 0 0", fontSize: 38, lineHeight: 1.08, letterSpacing: "-1.4px", fontWeight: 800, ...T.h2 }}>{c.detail.pagesH}</h2>
             <p style={{ margin: "10px 0 0", fontSize: 15, lineHeight: 1.6, color: "#6B6D60", ...T.body }}>{c.detail.pagesSub}</p>
           </div>
-          <ThemePages id={t.dir} pages={PAGES[t.dir]} lang={lang} labels={{ title: c.detail.pagesH, laptop: c.detail.laptop, phone: c.detail.phone }} />
+          <ThemePages id={t.dir} pages={PAGES[t.dir]} lang={lang} labels={{ title: c.detail.pagesH, laptop: c.detail.laptop, phone: c.detail.phone, close: c.detail.close }} />
         </div>
       ) : null}
 
