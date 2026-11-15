@@ -1,0 +1,1779 @@
+{
+ "agency": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services",
+    "bn": "সার্ভিস"
+   }
+  },
+  {
+   "key": "start",
+   "path": "/start",
+   "label": {
+    "en": "Book and quote",
+    "bn": "বুকিং ও কোটেশন"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  }
+ ],
+ "architect": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services",
+    "bn": "সার্ভিস"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Booking",
+    "bn": "বুকিং"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  }
+ ],
+ "auto": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Work and prices",
+    "bn": "কাজ ও দাম"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "baby": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About"
+   }
+  },
+  {
+   "key": "help",
+   "path": "/help",
+   "label": {
+    "en": "Help"
+   }
+  },
+  {
+   "key": "shop",
+   "path": "/shop",
+   "label": {
+    "en": "Shop",
+    "bn": "শপ"
+   }
+  },
+  {
+   "key": "checkout",
+   "path": "/checkout",
+   "label": {
+    "en": "Checkout",
+    "bn": "চেকআউট"
+   }
+  },
+  {
+   "key": "track",
+   "path": "/track",
+   "label": {
+    "en": "Track an order",
+    "bn": "অর্ডার ট্র্যাক"
+   }
+  },
+  {
+   "key": "saved",
+   "path": "/saved",
+   "label": {
+    "en": "Saved",
+    "bn": "সেভ করা"
+   }
+  },
+  {
+   "key": "collection",
+   "path": "/collections/baby",
+   "label": {
+    "en": "A collection",
+    "bn": "একটি কালেকশন"
+   }
+  },
+  {
+   "key": "product",
+   "path": "/p/premium-baby-diapers",
+   "label": {
+    "en": "A product page",
+    "bn": "পণ্যের পেজ"
+   }
+  }
+ ],
+ "beauty": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About"
+   }
+  },
+  {
+   "key": "help",
+   "path": "/help",
+   "label": {
+    "en": "Help"
+   }
+  },
+  {
+   "key": "shop",
+   "path": "/shop",
+   "label": {
+    "en": "Shop",
+    "bn": "শপ"
+   }
+  },
+  {
+   "key": "checkout",
+   "path": "/checkout",
+   "label": {
+    "en": "Checkout",
+    "bn": "চেকআউট"
+   }
+  },
+  {
+   "key": "track",
+   "path": "/track",
+   "label": {
+    "en": "Track an order",
+    "bn": "অর্ডার ট্র্যাক"
+   }
+  },
+  {
+   "key": "collection",
+   "path": "/collections/skincare",
+   "label": {
+    "en": "A collection",
+    "bn": "একটি কালেকশন"
+   }
+  },
+  {
+   "key": "product",
+   "path": "/p/gentle-gel-cleanser",
+   "label": {
+    "en": "A product page",
+    "bn": "পণ্যের পেজ"
+   }
+  }
+ ],
+ "books": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About"
+   }
+  },
+  {
+   "key": "help",
+   "path": "/help",
+   "label": {
+    "en": "Help"
+   }
+  },
+  {
+   "key": "shop",
+   "path": "/shop",
+   "label": {
+    "en": "Shop",
+    "bn": "শপ"
+   }
+  },
+  {
+   "key": "checkout",
+   "path": "/checkout",
+   "label": {
+    "en": "Checkout",
+    "bn": "চেকআউট"
+   }
+  },
+  {
+   "key": "track",
+   "path": "/track",
+   "label": {
+    "en": "Track an order",
+    "bn": "অর্ডার ট্র্যাক"
+   }
+  },
+  {
+   "key": "saved",
+   "path": "/saved",
+   "label": {
+    "en": "Saved",
+    "bn": "সেভ করা"
+   }
+  },
+  {
+   "key": "collection",
+   "path": "/collections/books",
+   "label": {
+    "en": "A collection",
+    "bn": "একটি কালেকশন"
+   }
+  },
+  {
+   "key": "product",
+   "path": "/p/everyday-habits-book",
+   "label": {
+    "en": "A product page",
+    "bn": "পণ্যের পেজ"
+   }
+  }
+ ],
+ "bridal": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Looks and prices",
+    "bn": "সাজ ও দাম"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "cleaning": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services",
+    "bn": "সার্ভিস"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "clinic": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "doctors",
+   "path": "/doctors",
+   "label": {
+    "en": "Doctors",
+    "bn": "ডাক্তার"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services",
+    "bn": "সেবা"
+   }
+  },
+  {
+   "key": "visit",
+   "path": "/visit",
+   "label": {
+    "en": "Visit info",
+    "bn": "ভিজিটের তথ্য"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  }
+ ],
+ "coaching": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About"
+   }
+  },
+  {
+   "key": "coaching",
+   "path": "/coaching",
+   "label": {
+    "en": "1:1 Coaching"
+   }
+  },
+  {
+   "key": "programs",
+   "path": "/programs",
+   "label": {
+    "en": "Programs"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "coachingcentre": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "batches",
+   "path": "/batches",
+   "label": {
+    "en": "Batches",
+    "bn": "ব্যাচ"
+   }
+  },
+  {
+   "key": "admission",
+   "path": "/admission",
+   "label": {
+    "en": "Admission",
+    "bn": "ভর্তি"
+   }
+  },
+  {
+   "key": "teachers",
+   "path": "/teachers",
+   "label": {
+    "en": "Teachers",
+    "bn": "শিক্ষক"
+   }
+  },
+  {
+   "key": "results",
+   "path": "/results",
+   "label": {
+    "en": "Results",
+    "bn": "ফলাফল"
+   }
+  },
+  {
+   "key": "routine",
+   "path": "/routine",
+   "label": {
+    "en": "Routine",
+    "bn": "রুটিন"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  }
+ ],
+ "counselling": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Sessions and fees",
+    "bn": "সেশন ও ফি"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "পরিচিতি"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "dental": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Treatments and fees",
+    "bn": "চিকিৎসা ও ফি"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About the clinic",
+    "bn": "ক্লিনিক সম্পর্কে"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "driving": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Lessons and fees",
+    "bn": "ক্লাস ও ফি"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের সম্পর্কে"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "electronics": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "help",
+   "path": "/help",
+   "label": {
+    "en": "Help",
+    "bn": "সাহায্য"
+   }
+  },
+  {
+   "key": "shop",
+   "path": "/shop",
+   "label": {
+    "en": "Shop",
+    "bn": "শপ"
+   }
+  },
+  {
+   "key": "checkout",
+   "path": "/checkout",
+   "label": {
+    "en": "Checkout",
+    "bn": "চেকআউট"
+   }
+  },
+  {
+   "key": "track",
+   "path": "/track",
+   "label": {
+    "en": "Track an order",
+    "bn": "অর্ডার ট্র্যাক"
+   }
+  },
+  {
+   "key": "saved",
+   "path": "/saved",
+   "label": {
+    "en": "Saved",
+    "bn": "সেভ করা"
+   }
+  },
+  {
+   "key": "collection",
+   "path": "/collections/mobiles",
+   "label": {
+    "en": "A collection",
+    "bn": "একটি কালেকশন"
+   }
+  },
+  {
+   "key": "product",
+   "path": "/p/iphone-16-pro",
+   "label": {
+    "en": "A product page",
+    "bn": "পণ্যের পেজ"
+   }
+  }
+ ],
+ "events": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services",
+    "bn": "সার্ভিস"
+   }
+  },
+  {
+   "key": "enquiry",
+   "path": "/enquiry",
+   "label": {
+    "en": "Enquiry",
+    "bn": "জানতে চান"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  }
+ ],
+ "fashion": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About"
+   }
+  },
+  {
+   "key": "help",
+   "path": "/help",
+   "label": {
+    "en": "Help"
+   }
+  },
+  {
+   "key": "shop",
+   "path": "/shop",
+   "label": {
+    "en": "Shop",
+    "bn": "শপ"
+   }
+  },
+  {
+   "key": "checkout",
+   "path": "/checkout",
+   "label": {
+    "en": "Checkout",
+    "bn": "চেকআউট"
+   }
+  },
+  {
+   "key": "track",
+   "path": "/track",
+   "label": {
+    "en": "Track an order",
+    "bn": "অর্ডার ট্র্যাক"
+   }
+  },
+  {
+   "key": "collection",
+   "path": "/collections/women",
+   "label": {
+    "en": "A collection",
+    "bn": "একটি কালেকশন"
+   }
+  },
+  {
+   "key": "product",
+   "path": "/p/bottle-green-brocade-koti",
+   "label": {
+    "en": "A product page",
+    "bn": "পণ্যের পেজ"
+   }
+  }
+ ],
+ "furniture": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About"
+   }
+  },
+  {
+   "key": "help",
+   "path": "/help",
+   "label": {
+    "en": "Help"
+   }
+  },
+  {
+   "key": "shop",
+   "path": "/shop",
+   "label": {
+    "en": "Shop",
+    "bn": "শপ"
+   }
+  },
+  {
+   "key": "checkout",
+   "path": "/checkout",
+   "label": {
+    "en": "Checkout",
+    "bn": "চেকআউট"
+   }
+  },
+  {
+   "key": "track",
+   "path": "/track",
+   "label": {
+    "en": "Track an order",
+    "bn": "অর্ডার ট্র্যাক"
+   }
+  },
+  {
+   "key": "saved",
+   "path": "/saved",
+   "label": {
+    "en": "Saved",
+    "bn": "সেভ করা"
+   }
+  },
+  {
+   "key": "collection",
+   "path": "/collections/living",
+   "label": {
+    "en": "A collection",
+    "bn": "একটি কালেকশন"
+   }
+  },
+  {
+   "key": "product",
+   "path": "/p/luna-3-seater-sofa",
+   "label": {
+    "en": "A product page",
+    "bn": "পণ্যের পেজ"
+   }
+  }
+ ],
+ "grocery": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About"
+   }
+  },
+  {
+   "key": "help",
+   "path": "/help",
+   "label": {
+    "en": "Help"
+   }
+  },
+  {
+   "key": "shop",
+   "path": "/shop",
+   "label": {
+    "en": "Shop",
+    "bn": "শপ"
+   }
+  },
+  {
+   "key": "checkout",
+   "path": "/checkout",
+   "label": {
+    "en": "Checkout",
+    "bn": "চেকআউট"
+   }
+  },
+  {
+   "key": "track",
+   "path": "/track",
+   "label": {
+    "en": "Track an order",
+    "bn": "অর্ডার ট্র্যাক"
+   }
+  },
+  {
+   "key": "saved",
+   "path": "/saved",
+   "label": {
+    "en": "Saved",
+    "bn": "সেভ করা"
+   }
+  },
+  {
+   "key": "collection",
+   "path": "/collections/produce",
+   "label": {
+    "en": "A collection",
+    "bn": "একটি কালেকশন"
+   }
+  },
+  {
+   "key": "product",
+   "path": "/p/fresh-tomato",
+   "label": {
+    "en": "A product page",
+    "bn": "পণ্যের পেজ"
+   }
+  }
+ ],
+ "homeservice": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services",
+    "bn": "সার্ভিস"
+   }
+  },
+  {
+   "key": "areas",
+   "path": "/areas",
+   "label": {
+    "en": "Coverage",
+    "bn": "এলাকা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Help",
+    "bn": "সাহায্য"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "interior": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "projects",
+   "path": "/projects",
+   "label": {
+    "en": "Projects",
+    "bn": "প্রজেক্ট"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services",
+    "bn": "সার্ভিস"
+   }
+  },
+  {
+   "key": "process",
+   "path": "/process",
+   "label": {
+    "en": "Process",
+    "bn": "কাজের ধাপ"
+   }
+  },
+  {
+   "key": "quote",
+   "path": "/quote",
+   "label": {
+    "en": "Get a Quote",
+    "bn": "কোটেশন"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  }
+ ],
+ "jewelry": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About"
+   }
+  },
+  {
+   "key": "help",
+   "path": "/help",
+   "label": {
+    "en": "Help"
+   }
+  },
+  {
+   "key": "shop",
+   "path": "/shop",
+   "label": {
+    "en": "Shop",
+    "bn": "শপ"
+   }
+  },
+  {
+   "key": "checkout",
+   "path": "/checkout",
+   "label": {
+    "en": "Checkout",
+    "bn": "চেকআউট"
+   }
+  },
+  {
+   "key": "track",
+   "path": "/track",
+   "label": {
+    "en": "Track an order",
+    "bn": "অর্ডার ট্র্যাক"
+   }
+  },
+  {
+   "key": "collection",
+   "path": "/collections/rings",
+   "label": {
+    "en": "A collection",
+    "bn": "একটি কালেকশন"
+   }
+  },
+  {
+   "key": "product",
+   "path": "/p/carnelian-signet-ring",
+   "label": {
+    "en": "A product page",
+    "bn": "পণ্যের পেজ"
+   }
+  }
+ ],
+ "law": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services and fees",
+    "bn": "সেবা ও ফি"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "modest": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About"
+   }
+  },
+  {
+   "key": "help",
+   "path": "/help",
+   "label": {
+    "en": "Help"
+   }
+  },
+  {
+   "key": "shop",
+   "path": "/shop",
+   "label": {
+    "en": "Shop",
+    "bn": "শপ"
+   }
+  },
+  {
+   "key": "checkout",
+   "path": "/checkout",
+   "label": {
+    "en": "Checkout",
+    "bn": "চেকআউট"
+   }
+  },
+  {
+   "key": "track",
+   "path": "/track",
+   "label": {
+    "en": "Track an order",
+    "bn": "অর্ডার ট্র্যাক"
+   }
+  },
+  {
+   "key": "saved",
+   "path": "/saved",
+   "label": {
+    "en": "Saved",
+    "bn": "সেভ করা"
+   }
+  },
+  {
+   "key": "collection",
+   "path": "/collections/hijab",
+   "label": {
+    "en": "A collection",
+    "bn": "একটি কালেকশন"
+   }
+  },
+  {
+   "key": "product",
+   "path": "/p/premium-chiffon-hijab",
+   "label": {
+    "en": "A product page",
+    "bn": "পণ্যের পেজ"
+   }
+  }
+ ],
+ "pet": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services and fees",
+    "bn": "সেবা ও ফি"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About us",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "photography": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "portfolio",
+   "path": "/portfolio",
+   "label": {
+    "en": "Portfolio",
+    "bn": "পোর্টফোলিও"
+   }
+  },
+  {
+   "key": "packages",
+   "path": "/packages",
+   "label": {
+    "en": "Packages",
+    "bn": "প্যাকেজ"
+   }
+  },
+  {
+   "key": "checkDate",
+   "path": "/check-date",
+   "label": {
+    "en": "Check your date",
+    "bn": "তারিখ দেখুন"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  }
+ ],
+ "physio": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Sessions and fees",
+    "bn": "সেশন ও ফি"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "salon": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Price list",
+    "bn": "দামের তালিকা"
+   }
+  },
+  {
+   "key": "packages",
+   "path": "/packages",
+   "label": {
+    "en": "Wedding packages",
+    "bn": "বিয়ের প্যাকেজ"
+   }
+  },
+  {
+   "key": "lookbook",
+   "path": "/lookbook",
+   "label": {
+    "en": "Lookbook",
+    "bn": "আমাদের কাজ"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "skin": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Care and fees",
+    "bn": "সেবা ও ফি"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About the clinic",
+    "bn": "ক্লিনিকের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "spa": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Treatments and prices",
+    "bn": "ট্রিটমেন্ট ও দাম"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About us",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "tailor": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Charges",
+    "bn": "মজুরি"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About the shop",
+    "bn": "দোকানের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "tax": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services and fees",
+    "bn": "সার্ভিস ও ফি"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের সম্পর্কে"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ],
+ "travel": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services",
+    "bn": "সার্ভিস"
+   }
+  },
+  {
+   "key": "plan",
+   "path": "/plan",
+   "label": {
+    "en": "Request",
+    "bn": "অনুরোধ"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  }
+ ],
+ "venue": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "halls",
+   "path": "/halls",
+   "label": {
+    "en": "Halls",
+    "bn": "হলসমূহ"
+   }
+  },
+  {
+   "key": "dates",
+   "path": "/dates",
+   "label": {
+    "en": "Dates",
+    "bn": "তারিখ"
+   }
+  },
+  {
+   "key": "packages",
+   "path": "/packages",
+   "label": {
+    "en": "Packages",
+    "bn": "প্যাকেজ"
+   }
+  },
+  {
+   "key": "gallery",
+   "path": "/gallery",
+   "label": {
+    "en": "Gallery",
+    "bn": "গ্যালারি"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  }
+ ],
+ "visa": [
+  {
+   "key": "home",
+   "path": "/",
+   "label": {
+    "en": "Home",
+    "bn": "হোম"
+   }
+  },
+  {
+   "key": "services",
+   "path": "/services",
+   "label": {
+    "en": "Services and fees",
+    "bn": "সার্ভিস ও ফি"
+   }
+  },
+  {
+   "key": "about",
+   "path": "/about",
+   "label": {
+    "en": "About",
+    "bn": "আমাদের কথা"
+   }
+  },
+  {
+   "key": "contact",
+   "path": "/contact",
+   "label": {
+    "en": "Contact",
+    "bn": "যোগাযোগ"
+   }
+  },
+  {
+   "key": "book",
+   "path": "/book",
+   "label": {
+    "en": "Book",
+    "bn": "বুক করুন"
+   }
+  }
+ ]
+}

@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import { Nav, Footer } from "../../../../components/Chrome";
 import LogoDefs from "../../../../components/Logo";
 import ThemeShots from "../../../../components/themes/ThemeShots";
+import ThemePages from "../../../../components/themes/ThemePages";
+import PAGES from "../../../../lib/themePages.json";
 import { REGISTER_URL } from "../../../../lib/urls";
 import { href, languageAlternates } from "../../../../lib/i18n";
 import { type } from "../../../../lib/type";
@@ -130,6 +132,18 @@ export default async function ThemePage({ params }) {
           </Block>
         </aside>
       </div>
+
+      {/* EVERY PAGE — whole-page screenshots of the live demo, tab by tab */}
+      {PAGES[t.dir]?.length ? (
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "40px 20px 0" }}>
+          <div style={{ marginBottom: 20, maxWidth: 680 }}>
+            <div style={kicker("#3E7A45")}>{c.detail.pagesKicker}</div>
+            <h2 className="m-h2" style={{ margin: "12px 0 0", fontSize: 38, lineHeight: 1.08, letterSpacing: "-1.4px", fontWeight: 800, ...T.h2 }}>{c.detail.pagesH}</h2>
+            <p style={{ margin: "10px 0 0", fontSize: 15, lineHeight: 1.6, color: "#6B6D60", ...T.body }}>{c.detail.pagesSub}</p>
+          </div>
+          <ThemePages id={t.dir} pages={PAGES[t.dir]} lang={lang} labels={{ title: c.detail.pagesH, laptop: c.detail.laptop, phone: c.detail.phone }} />
+        </div>
+      ) : null}
 
       {/* NEXT — the next theme, so the showroom reads like a walk */}
       <div style={{ maxWidth: 1240, margin: "0 auto", padding: "56px 20px 80px" }}>
