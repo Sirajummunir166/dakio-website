@@ -107,3 +107,8 @@
 .th-lightbox-body { overflow-y: auto; padding: 16px; }
 @media (max-width: 1100px) { .th-wall-desktop { column-count: 2; } .th-wall-phone { column-count: 4; } }
 @media (max-width: 760px) { .th-wall-desktop { column-count: 1; } .th-wall-phone { column-count: 2; } }
+.th-lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 2; width: 48px; height: 48px; border-radius: 50%; border: 0; background: #C6F035; color: #1A1D12; font-size: 30px; line-height: 1; padding: 0 0 4px; cursor: pointer; box-shadow: 0 10px 30px -8px rgba(0,0,0,0.6); }
+.th-lightbox-nav.prev { left: max(10px, calc(50% - 570px)); } .th-lightbox-nav.next { right: max(10px, calc(50% - 570px)); }
+.th-lightbox-nav:hover { background: #D6FA5C; } .th-lightbox-nav:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.th-lightbox-count { font-size: 12px; color: #6B6D60; }
+@media (max-width: 700px) { .th-lightbox-nav { width: 40px; height: 40px; font-size: 26px; top: auto; bottom: 18px; transform: none; } .th-lightbox-nav.prev { left: 18px; } .th-lightbox-nav.next { right: 18px; } }
