@@ -16,6 +16,9 @@
 .th-shot:hover .th-frame { transform: translateY(-4px); }
 .th-shot:hover .th-phone { transform: translateY(-8px); }
 .th-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+.th-view-btn { display: inline-flex; align-items: center; gap: 6px; border: 0; background: transparent; color: #4A4E3F; padding: 7px 13px; border-radius: 99px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+.th-view-btn[aria-pressed="true"] { background: #1A1D12; color: #C6F035; }
+.th-view-btn:focus-visible { outline: 2px solid #3E7A45; outline-offset: 2px; }
 
 /* Detail page */
 .th-detail { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 28px; align-items: start; }
@@ -36,8 +39,37 @@
 .th-belt-item:hover .th-frame { transform: translateY(-6px); }
 @keyframes thBelt { to { transform: translateX(-50%); } }
 
+/* Views of the templates page (components/themes/ViewToggle.jsx): grid = four across, compact;
+   large = the two-up card above; list = one row each. */
+#th-views[data-view="grid"] .th-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+#th-views[data-view="grid"] .th-card { border-radius: 18px; }
+#th-views[data-view="grid"] .th-shot { padding: 10px 10px 0; }
+#th-views[data-view="grid"] .th-shot .th-frame { margin-right: 0; }
+#th-views[data-view="grid"] .th-phone { display: none; }
+#th-views[data-view="grid"] .th-bar { height: 18px; padding: 0 8px; }
+#th-views[data-view="grid"] .th-bar i { width: 6px; height: 6px; }
+#th-views[data-view="grid"] .th-bar span { display: none; }
+#th-views[data-view="grid"] .th-body { padding: 12px 14px 14px !important; gap: 6px !important; }
+#th-views[data-view="grid"] .th-num, #th-views[data-view="grid"] .th-line, #th-views[data-view="grid"] .th-pal, #th-views[data-view="grid"] .th-stats { display: none !important; }
+#th-views[data-view="grid"] .th-cat { font-size: 11.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+#th-views[data-view="grid"] .th-title { font-size: 21px !important; }
+#th-views[data-view="grid"] .th-actions { gap: 6px !important; margin-top: 4px !important; flex-wrap: nowrap !important; }
+#th-views[data-view="grid"] .th-actions a { padding: 7px 12px !important; font-size: 12.5px !important; gap: 5px !important; white-space: nowrap; }
+#th-views[data-view="large"] .th-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+#th-views[data-view="list"] .th-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+#th-views[data-view="list"] .th-card { grid-template-rows: none; grid-template-columns: 280px minmax(0, 1fr); border-radius: 20px; }
+#th-views[data-view="list"] .th-shot { padding: 12px; border-bottom: 0; border-right: 1px solid rgba(26,29,18,0.08); display: grid; align-items: center; }
+#th-views[data-view="list"] .th-shot .th-frame { margin-right: 0; border-radius: 10px; }
+#th-views[data-view="list"] .th-phone { display: none; }
+#th-views[data-view="list"] .th-pal { display: none !important; }
+#th-views[data-view="list"] .th-body { padding: 16px 22px !important; gap: 8px !important; align-content: center !important; }
+#th-views[data-view="list"] .th-title { font-size: 24px !important; }
+#th-views[data-view="list"] .th-line { font-size: 13.5px !important; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+@media (max-width: 1100px) { #th-views[data-view="grid"] .th-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 800px) { #th-views[data-view="grid"] .th-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } #th-views[data-view="list"] .th-card { grid-template-columns: 200px minmax(0, 1fr); } }
+@media (max-width: 520px) { #th-views[data-view="grid"] .th-grid { grid-template-columns: minmax(0, 1fr); } #th-views[data-view="list"] .th-card { grid-template-columns: minmax(0, 1fr); } #th-views[data-view="list"] .th-shot { border-right: 0; border-bottom: 1px solid rgba(26,29,18,0.08); } .th-view-btn span { display: none; } }
 @media (max-width: 900px) {
-  .th-grid { grid-template-columns: minmax(0, 1fr); }
+  #th-views[data-view="large"] .th-grid { grid-template-columns: minmax(0, 1fr); }
   .th-detail { grid-template-columns: minmax(0, 1fr); }
   .th-side { position: static; }
 }

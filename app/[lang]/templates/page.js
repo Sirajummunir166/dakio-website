@@ -16,6 +16,7 @@ import { ALL_THEMES as THEMES, shot, wordmarkStyle } from "../../../lib/themes";
 import { themeFontVars } from "../../../lib/themeFonts";
 import themesEn, { MONO } from "../../../content/copy/themes.en";
 import themesBn from "../../../content/copy/themes.bn";
+import ViewToggle from "../../../components/themes/ViewToggle";
 import "../../themes.css";
 
 const COPY = { en: themesEn, bn: themesBn };
@@ -90,10 +91,14 @@ export default async function ThemesPage({ params }) {
 
       {/* SHOWROOM — two up, laptop + phone, the name in its own typeface */}
       <div id="themes" style={{ maxWidth: 1240, margin: "0 auto", padding: "80px 20px 20px", scrollMarginTop: 80 }}>
-        <div style={{ maxWidth: 720, marginBottom: 34 }} data-reveal>
+        <div style={{ display: "flex", gap: 20, alignItems: "end", justifyContent: "space-between", flexWrap: "wrap", marginBottom: 34 }} data-reveal>
+        <div style={{ maxWidth: 720 }}>
           <h2 className="m-h2" style={{ margin: 0, fontSize: 44, lineHeight: 1.06, letterSpacing: "-1.7px", fontWeight: 800, ...T.h2 }}>{c.showroom.h2}</h2>
           <p style={{ margin: "14px 0 0", fontSize: 15.5, lineHeight: 1.65, color: "#6B6D60", ...T.body }}>{c.showroom.sub}</p>
         </div>
+        <ViewToggle label={c.card.view} labels={{ grid: c.card.viewGrid, large: c.card.viewLarge, list: c.card.viewList }} />
+        </div>
+        <div id="th-views" data-view="grid">
         {[["shops", c.card.shopsH, "shop"], ["services", c.card.servicesH, "service"]].map(([gid, gh, gk]) => (
         <div key={gid} id={gid} style={{ scrollMarginTop: 80, marginTop: gk === "shop" ? 0 : 64 }}>
           <h3 style={{ margin: "0 0 22px", fontSize: 30, letterSpacing: "-1px", fontWeight: 800, ...T.h2 }}>{gh}</h3>
@@ -110,20 +115,20 @@ export default async function ThemesPage({ params }) {
                   </span>
                   <img className="th-phone" src={shot(t.key, "phone")} alt="" width={780} height={1688} loading="lazy" />
                 </Link>
-                <div style={{ padding: "22px 24px 26px", display: "grid", gap: 12, alignContent: "start" }}>
-                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap", ...kicker("#6B6D60") }}>
-                    <span style={{ color: "#1A1D12" }}>{MONO.template} {t.num}</span>
-                    <span style={T.chip}>{it.category}</span>
+                <div className="th-body" style={{ padding: "22px 24px 26px", display: "grid", gap: 12, alignContent: "start" }}>
+                  <div className="th-meta" style={{ display: "flex", gap: 12, flexWrap: "wrap", ...kicker("#6B6D60") }}>
+                    <span className="th-num" style={{ color: "#1A1D12" }}>{MONO.template} {t.num}</span>
+                    <span className="th-cat" style={T.chip}>{it.category}</span>
                   </div>
-                  <h3 style={{ margin: 0, fontSize: t.wordmark.upper ? 28 : 34, lineHeight: 1.05, color: "#1A1D12", ...wordmarkStyle(t) }}>{t.name}</h3>
-                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: "#4A4E3F", ...T.body }}>{it.line}</p>
-                  <div style={{ display: "flex", gap: 6 }} aria-hidden="true">
+                  <h3 className="th-title" style={{ margin: 0, fontSize: t.wordmark.upper ? 28 : 34, lineHeight: 1.05, color: "#1A1D12", ...wordmarkStyle(t) }}>{t.name}</h3>
+                  <p className="th-line" style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: "#4A4E3F", ...T.body }}>{it.line}</p>
+                  <div className="th-pal" style={{ display: "flex", gap: 6 }} aria-hidden="true">
                     {t.palette.map(h => <span key={h} style={{ width: 24, height: 24, borderRadius: 99, background: h, boxShadow: "inset 0 0 0 1px rgba(26,29,18,0.14)" }} />)}
                   </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "4px 16px", fontSize: 12.5, color: "#6B6D60", fontVariantNumeric: "tabular-nums", ...T.small }}>
+                  <div className="th-stats" style={{ display: "flex", flexWrap: "wrap", gap: "4px 16px", fontSize: 12.5, color: "#6B6D60", fontVariantNumeric: "tabular-nums", ...T.small }}>
                     {t.products ? <><span>{c.card.products(t.products)}</span><span>{c.card.categories(t.categories)}</span></> : null}{it.versions?.length > 1 ? <span>{c.card.versions(it.versions.length)}</span> : null}<span>{c.card.pages(t.pages.length)}</span>
                   </div>
-                  <div className="m-wrap" style={{ display: "flex", gap: 10, marginTop: 4, alignItems: "center" }}>
+                  <div className="m-wrap th-actions" style={{ display: "flex", gap: 10, marginTop: 4, alignItems: "center" }}>
                     <Link href={page} className="hv-up2" style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "11px 19px", borderRadius: 99, background: "#1A1D12", color: "#C6F035", fontSize: 14, fontWeight: 700, ...T.label }}>{c.card.look}<Arrow size={13} /></Link>
                     {t.demo ? (
                       <a href={t.demo} target="_blank" rel="noopener" className="hv-bg-ink05" style={{ display: "inline-flex", alignItems: "center", padding: "11px 18px", borderRadius: 99, border: "1.5px solid rgba(26,29,18,0.2)", color: "#1A1D12", fontSize: 14, fontWeight: 700, ...T.label }}>{c.card.demo} ↗</a>
@@ -138,6 +143,7 @@ export default async function ThemesPage({ params }) {
         </div>
         </div>
         ))}
+        </div>
       </div>
 
       {/* INCLUDES — one green panel of what every theme already does */}
