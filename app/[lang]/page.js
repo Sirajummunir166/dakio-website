@@ -8,6 +8,7 @@ import { Nav, Footer } from "../../components/Chrome";
 import Reveal from "../../components/Reveal";
 import LogoDefs from "../../components/Logo";
 import PageJsonLd from "../../components/PageJsonLd";
+import TemplatesBand from "../../components/home/TemplatesBand";
 import { AudienceRoot } from "../../components/home/Audience";
 import { Hero, Works, Run, RealApp, Contrast, Parts, Flow, Setup, Charge, Pricing, Faq, Closing } from "../../components/home/HomeSections";
 import { href, languageAlternates } from "../../lib/i18n";
@@ -50,6 +51,7 @@ export default async function Home({ params }) {
       <Works c={c} marquee={MARQUEE[lang] || MARQUEE_EN} />
       <Run c={c} />
       <RealApp c={c} />
+      <TemplatesBand lang={lang} L={L} T={T} />
       <Contrast c={c} />
       <Parts c={c} L={L} />
       <Flow c={c} />

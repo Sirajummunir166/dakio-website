@@ -286,7 +286,7 @@ export function Parts({ c, L }) {
             <PartPreview k={k} v={p.previews[k]} />
             <div className="hm-part-head"><span className="hm-part-icon"><Icon name={k} /></span><h3 className="hm-h3">{p.cards[k].t}</h3></div>
             <p className="hm-body">{p.cards[k].d}</p>
-            {k === "website" ? <Link href={L("/themes")} className="hm-link">{p.link} <Arrow size={13} /></Link> : null}
+            {k === "website" ? <Link href={L("/templates")} className="hm-link">{p.link} <Arrow size={13} /></Link> : null}
           </div>
         ))}
       </div>

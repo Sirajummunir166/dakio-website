@@ -2,7 +2,7 @@
 // The look follows the theme gallery the owner approved: an ink hero with the
 // rounded foot, a two-up showroom of cards (laptop shot + overlapping phone
 // shot, the theme's name in its own typeface), then one panel per idea.
-// Each card opens the theme's own page, /themes/<key>.
+// Each card opens the theme's own page, /templates/<key>.
 
 import Link from "next/link";
 import { Nav, Footer } from "../../../components/Chrome";
@@ -19,7 +19,7 @@ import themesBn from "../../../content/copy/themes.bn";
 import "../../themes.css";
 
 const COPY = { en: themesEn, bn: themesBn };
-const ROUTE = "/themes";
+const ROUTE = "/templates";
 const MONOFONT = "var(--dk-font-mono), monospace";
 const kicker = color => ({ fontFamily: MONOFONT, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color });
 
@@ -57,7 +57,7 @@ export default async function ThemesPage({ params }) {
       <Reveal />
       <LogoDefs mkId="mk" wmId="wm" />
 
-      <Nav lang={lang} route={ROUTE} active="themes" ctaLabel={c.navCta} style={{ position: "sticky", top: 0, zIndex: 60 }} />
+      <Nav lang={lang} route={ROUTE} active="templates" ctaLabel={c.navCta} style={{ position: "sticky", top: 0, zIndex: 60 }} />
 
       {/* HERO — ink, rounded foot, the eight names as the index */}
       <div style={{ padding: "0 12px" }}>

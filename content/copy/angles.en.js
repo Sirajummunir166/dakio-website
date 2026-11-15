@@ -135,7 +135,7 @@ export default {
         worry: "I only have a Facebook page.",
         h: "Your own website, products already in it.",
         points: [
-          "Ready themes, no developer",
+          "Ready templates, no developer",
           "Same stock and orders as the app",
           "Your own domain anytime",
         ],
@@ -144,7 +144,7 @@ export default {
           key: "shop-website",
           size: [1440, 900],
           url: "yourshop.com",
-          alt: "The Saril website on a Dakio theme: a festive saree banner, the menu for women, men, panjabi and kids, and cash on delivery all over Bangladesh",
+          alt: "The Saril website on a Dakio template: a festive saree banner, the menu for women, men, panjabi and kids, and cash on delivery all over Bangladesh",
           note: "Live in minutes",
           pin: { x: 12.5, y: 10.8 },
           at: { x: 12.5, y: "top" },

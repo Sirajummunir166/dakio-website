@@ -56,7 +56,7 @@ const CLAIMS = {
     en: "Build any store. Dakio runs the business.",
     bn: "যেমন খুশি দোকান বানান। ব্যবসা চালাবে Dakio।",
   },
-  "/themes": {
+  "/templates": {
     en: "A storefront made for your kind of shop.",
     bn: "আপনার দোকানের জন্যই বানানো স্টোরফ্রন্ট।",
   },

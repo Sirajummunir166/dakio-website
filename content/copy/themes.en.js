@@ -1,12 +1,12 @@
-// Themes copy — English. /themes (the showroom) and /themes/<key> (one theme).
+// Templates copy — English. /templates (the showroom) and /templates/<key> (one template).
 // Facts that don't change with language (palette, fonts, pages) are in
 // lib/themes.js.
 
 export const MONO = {
-  kicker: "DAKIO THEMES",
+  kicker: "DAKIO TEMPLATES",
   count: "35 DESIGNS",
   template: "TEMPLATE",
-  includesKicker: "IN EVERY THEME",
+  includesKicker: "IN EVERY TEMPLATE",
   stepsKicker: "GOING LIVE",
   colours: "COLOURS",
   type: "TYPE",
@@ -18,9 +18,9 @@ export const MONO = {
 
 import more from "./themesMore.en";
 
-const themes = {
+const templates = {
   meta: {
-    title: "Dakio Themes — Designer Websites for Every Kind of Business",
+    title: "Dakio Templates — Designer Websites for Every Kind of Business",
     description:
       "35 complete website designs: shops for fashion, beauty, jewelry, furniture, grocery, electronics, baby, modest wear and books, and sites for clinics, law firms, salons, travel, schools and more. Your own website, with Dakio's catalog, cash-on-delivery checkout and couriers behind it.",
   },
@@ -29,7 +29,7 @@ const themes = {
   hero: {
     h1: "A website made for your kind of business.",
     sub: "35 complete designs: shops, clinics, salons, law firms, travel, schools and more. Each becomes your own website on your own domain, and Dakio runs everything behind it: products, prices, cash-on-delivery checkout, couriers and Nova.",
-    ctaPrimary: "See the themes",
+    ctaPrimary: "See the templates",
     ctaSecondary: "Open your store",
   },
 
@@ -45,7 +45,7 @@ const themes = {
     servicesH: "Service businesses",
   },
 
-  // One per theme, keyed like lib/themes.js.
+  // One per template, keyed like lib/themes.js.
   items: {
     saril: {
       category: "Fashion & clothing",
@@ -185,7 +185,7 @@ const themes = {
 
   includes: {
     h2: "The parts your customers never see, already done.",
-    sub: "Every theme runs on the same Dakio checkout as your Dakio store. You choose the look; the selling works the same.",
+    sub: "Every template runs on the same Dakio checkout as your Dakio store. You choose the look; the selling works the same.",
     items: [
       "Cash on delivery with an SMS code, so fake orders stop at checkout",
       "Delivery charges by district, set once in Dakio",
@@ -197,17 +197,17 @@ const themes = {
   },
 
   steps: {
-    h2: "From theme to your own website.",
+    h2: "From template to your own website.",
     items: [
-      { t: "Pick a theme", d: "Look through its pages here, or open its live demo where there is one." },
-      { t: "Tell us which one", d: "Send us the theme and your Dakio store. We set it up with you." },
+      { t: "Pick a template", d: "Look through its pages here, or open its live demo where there is one." },
+      { t: "Tell us which one", d: "Send us the template and your Dakio store. We set it up with you." },
       { t: "Connect your Dakio store", d: "One website key from Dakio, under Settings → Developers. Your products, prices and delivery charges appear on their own." },
       { t: "Use your own domain", d: "Point your domain at it. Orders arrive in Dakio with a Website tag, ready for your couriers." },
     ],
   },
 
   detail: {
-    back: "All themes",
+    back: "All templates",
     tabs: { hero: "Home on a laptop", phone: "Home on a phone", full: "Home on a laptop", phoneFull: "Home on a phone", product: "Product page", home2: "Second home design" },
     captions: {
       hero: "The home page, first screen, at laptop width.",
@@ -215,7 +215,7 @@ const themes = {
       full: "The whole home page, at laptop width.",
       phoneFull: "The whole home page on a phone.",
       product: "A product page, first screen.",
-      home2: "A second home page that comes with the theme.",
+      home2: "A second home page that comes with the template.",
     },
     typeLine: (display, body) => `${display} for headlines, ${body} for text.`,
     accent: a => `Accents in ${a}.`,
@@ -225,7 +225,7 @@ const themes = {
     pagesSub: "Screenshots of the live demo, page by page, on a laptop and on a phone.",
     laptop: "Laptop",
     phone: "Phone",
-    next: "Next theme",
+    next: "Next template",
     madeFor: "MADE FOR",
     madeForNote: "One design, a version for each kind of business. Open a version in the live demo.",
     servicePages: n => `${n} pages`,
@@ -238,15 +238,15 @@ const themes = {
     secondary: "Talk to us",
   },
 
-  // The home page band (components/home/ThemesBand.jsx).
+  // The home page band (components/home/TemplatesBand.jsx).
   home: {
-    kicker: "DAKIO THEMES",
-    h2: "Your own website, in a look made for your shop.",
+    kicker: "DAKIO TEMPLATES",
+    h2: "Your own website, in a look made for your business.",
     sub: "35 designs, from sarees and groceries to clinics and law firms. Dakio runs the checkout, couriers and Nova behind every one.",
-    cta: "See all themes",
+    cta: "See all templates",
   },
 };
 
-themes.items = { ...themes.items, ...more };
+templates.items = { ...templates.items, ...more };
 
-export default themes;
+export default templates;

@@ -8,6 +8,16 @@ const nextConfig = {
   // Post frontmatter lives in lib/blog.js (not in the .mdx files), so no
   // remark plugins are needed.
   experimental: { mdxRs: true },
+  // Themes became Templates. The pictures stay under /themes/<id>/..., so only
+  // the pages (one path segment after /themes) are sent on.
+  async redirects() {
+    return [
+      { source: "/themes", destination: "/templates", permanent: true },
+      { source: "/bn/themes", destination: "/bn/templates", permanent: true },
+      { source: "/themes/:key", destination: "/templates/:key", permanent: true },
+      { source: "/bn/themes/:key", destination: "/bn/templates/:key", permanent: true },
+    ];
+  },
 };
 
 const withMDX = createMDX({});

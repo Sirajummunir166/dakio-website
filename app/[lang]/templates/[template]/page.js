@@ -1,4 +1,4 @@
-// One theme — /themes/<key>. The screenshots on the left (laptop, phone,
+// One theme — /templates/<key>. The screenshots on the left (laptop, phone,
 // product page), the theme's facts in a sticky column on the right.
 
 import Link from "next/link";
@@ -22,16 +22,16 @@ const MONOFONT = "var(--dk-font-mono), monospace";
 const kicker = color => ({ fontFamily: MONOFONT, fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", color });
 
 export function generateStaticParams() {
-  return THEMES.map(t => ({ theme: t.key }));
+  return THEMES.map(t => ({ template: t.key }));
 }
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }) {
-  const { lang, theme } = await params;
+  const { lang, template: theme } = await params;
   const t = themeByKey(theme);
   if (!t) return {};
   const c = COPY[lang] || COPY.en;
-  const route = `/themes/${t.key}`;
+  const route = `/templates/${t.key}`;
   return {
     title: `${t.name} — ${c.items[t.key].category} · Dakio`,
     description: c.items[t.key].line,
@@ -55,7 +55,7 @@ function Block({ label, children }) {
 }
 
 export default async function ThemePage({ params }) {
-  const { lang, theme } = await params;
+  const { lang, template: theme } = await params;
   const t = themeByKey(theme);
   if (!t) notFound();
   const c = COPY[lang] || COPY.en;
@@ -68,11 +68,11 @@ export default async function ThemePage({ params }) {
   return (
     <div className={themeFontVars} style={{ fontFamily: "var(--dk-font-sans), var(--dk-font-bn), sans-serif", color: "#1A1D12", background: "#F4F2EA", overflowX: "hidden" }}>
       <LogoDefs mkId="mk" wmId="wm" />
-      <Nav lang={lang} route={`/themes/${t.key}`} active="themes" ctaLabel={c.navCta} style={{ position: "sticky", top: 0, zIndex: 60 }} />
+      <Nav lang={lang} route={`/templates/${t.key}`} active="templates" ctaLabel={c.navCta} style={{ position: "sticky", top: 0, zIndex: 60 }} />
 
       {/* HEAD — back, the name in its own typeface, the line, the demo */}
       <div style={{ maxWidth: 1240, margin: "0 auto", padding: "40px 20px 0" }}>
-        <Link href={L("/themes")} style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 13.5, fontWeight: 700, color: "#3E7A45", ...T.label }}><Arrow size={13} back />{c.detail.back}</Link>
+        <Link href={L("/templates")} style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 13.5, fontWeight: 700, color: "#3E7A45", ...T.label }}><Arrow size={13} back />{c.detail.back}</Link>
         <div className="m-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) auto", gap: 24, alignItems: "end", marginTop: 22 }}>
           <div>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", ...kicker("#6B6D60") }}>
@@ -147,7 +147,7 @@ export default async function ThemePage({ params }) {
 
       {/* NEXT — the next theme, so the showroom reads like a walk */}
       <div style={{ maxWidth: 1240, margin: "0 auto", padding: "56px 20px 80px" }}>
-        <Link href={L(`/themes/${next.key}`)} className="th-shot m-grid" style={{ borderRadius: 28, border: 0, display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.2fr)", gap: 28, alignItems: "end", padding: "28px 28px 0" }}>
+        <Link href={L(`/templates/${next.key}`)} className="th-shot m-grid" style={{ borderRadius: 28, border: 0, display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.2fr)", gap: 28, alignItems: "end", padding: "28px 28px 0" }}>
           <div style={{ paddingBottom: 28 }}>
             <div style={kicker("#3E7A45")}>{c.detail.next}</div>
             <div style={{ marginTop: 10, fontSize: next.wordmark.upper ? 30 : 38, lineHeight: 1.05, color: "#1A1D12", ...wordmarkStyle(next) }}>{next.name}</div>

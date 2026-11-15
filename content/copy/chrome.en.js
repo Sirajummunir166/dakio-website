@@ -20,6 +20,7 @@ const chrome = {
     switch: "Switch to Dakio",
     shops: "For shops",
     services: "For services",
+    templates: "Templates",
     pricing: "Pricing",
     login: "Log in",
     cta: "Get started",
@@ -93,7 +94,7 @@ const chrome = {
       frontOffice: "Front Office",
       pricing: "Pricing",
       developers: "Developers",
-      themes: "Themes",
+      templates: "Templates",
     },
     tryLive: {
       hq: "Nova HQ",

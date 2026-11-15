@@ -12,5 +12,5 @@ export function generateStaticParams() {
 }
 
 export default function Image() {
-  return ogImage("/themes");
+  return ogImage("/templates");
 }

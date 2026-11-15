@@ -83,7 +83,7 @@ const pricing = {
     },
     v: {
       unlimited: "Unlimited",
-      subdomain: "Dakio subdomain, all themes",
+      subdomain: "Dakio subdomain, all templates",
       ownDomain: "Your own domain, no Dakio badge",
       dropship: "dropship",
       upTo: "up to",

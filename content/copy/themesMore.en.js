@@ -1,4 +1,4 @@
-// Generated from dakio-templates. Words for the themes in lib/themesMore.js.
+// Generated from dakio-templates. Words for the templates in lib/themesMore.js.
 const more = {
   "agency": {
     "category": "IT services · Software company · Digital marketing agency",

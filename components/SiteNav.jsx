@@ -56,7 +56,7 @@ const GROUPS = [
       { k: "inbox", href: "/front-office", icon: "chat", shot: "shop-inbox" },
       { k: "fake", href: "/shops#fake", icon: "shield", shot: "shop-risk" },
       { k: "courier", href: "/shops#courier", icon: "truck", shot: "shop-couriers" },
-      { k: "website", href: "/themes", icon: "globe", shot: "shop-website" },
+      { k: "website", href: "/templates", icon: "globe", shot: "shop-website" },
       { k: "stock", href: "/shops#stock", icon: "box", shot: "shop-dropship" },
     ],
   },
@@ -247,6 +247,7 @@ export default function SiteNav({
           </div>
           <Link href={L("/shops")} className="hv-ink" style={link("shops")}>{c.shops}</Link>
           <Link href={L("/services")} className="hv-ink" style={link("services")}>{c.services}</Link>
+          <Link href={L("/templates")} className="hv-ink" style={link("templates")}>{c.templates}</Link>
           <Link href={L("/nova")} className="hv-ink" style={link("nova")}>{c.nova}</Link>
           <Link href={L("/pricing")} className="hv-ink" style={link("pricing")}>{c.pricing}</Link>
         </div>
@@ -310,6 +311,7 @@ export default function SiteNav({
             {[
               { key: "shops", p: "/shops", label: c.shops },
               { key: "services", p: "/services", label: c.services },
+              { key: "templates", p: "/templates", label: c.templates },
               { key: "nova", p: "/nova", label: c.nova },
               { key: "pricing", p: "/pricing", label: c.pricing },
             ].map(r => (

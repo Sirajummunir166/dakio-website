@@ -12,6 +12,7 @@ const chrome = {
     switch: "Dakio-তে আসুন",
     shops: "দোকানের জন্য",
     services: "সার্ভিসের জন্য",
+    templates: "টেমপ্লেট",
     pricing: "প্ল্যান ও দাম",
     login: "লগ ইন",
     cta: "শুরু করুন",
@@ -81,7 +82,7 @@ const chrome = {
       frontOffice: "Front Office",
       pricing: "প্ল্যান ও দাম",
       developers: "ডেভেলপার",
-      themes: "থিম",
+      templates: "টেমপ্লেট",
     },
     tryLive: {
       hq: "Nova HQ",
