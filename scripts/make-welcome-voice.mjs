@@ -12,8 +12,13 @@ import { pathToFileURL } from 'node:url'
 const API = '/Users/hasan/Dakio Project/Dakio Apps/Dakio Repos/dakio-api'
 const COM = '/Users/hasan/Dakio Project/Dakio Apps/Dakio Repos/dakio-commercial'
 const ffmpeg = (await import(pathToFileURL(path.join(COM, 'node_modules/ffmpeg-static/index.js')).href)).default
-const keyLine = fs.readFileSync(path.join(API, '.env'), 'utf8').split('\n').find((l) => l.startsWith('AI_GATEWAY_API_KEY='))
-process.env.AI_GATEWAY_API_KEY = keyLine.slice('AI_GATEWAY_API_KEY='.length).trim().replace(/^["']|["']$/g, '')
+// Content work spends on its own budgeted gateway key when dakio-api/.env has
+// one (AI_GATEWAY_CONTENT_KEY); with none set, the API's own key as before.
+const envLines = fs.readFileSync(path.join(API, '.env'), 'utf8').split('\n')
+const keyOf = (name) => (envLines.find((l) => l.startsWith(`${name}=`)) ?? '').slice(name.length + 1).trim().replace(/^["']|["']$/g, '')
+const gatewayKey = keyOf('AI_GATEWAY_CONTENT_KEY') || keyOf('AI_GATEWAY_API_KEY')
+if (!gatewayKey) throw new Error('AI_GATEWAY_API_KEY not found in dakio-api/.env')
+process.env.AI_GATEWAY_API_KEY = gatewayKey
 const { generateSpeech } = await import(pathToFileURL(path.join(API, 'node_modules/ai/dist/index.js')).href)
 const { gateway } = await import(pathToFileURL(path.join(API, 'node_modules/@ai-sdk/gateway/dist/index.js')).href)
 const [OUT, ...only] = process.argv.slice(2)
