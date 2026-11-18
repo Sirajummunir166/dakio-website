@@ -105,13 +105,13 @@ const pricing = {
 
   meter: {
     h2: "What’s a Nova credit?",
-    p: "One credit is one finished piece of work — not a token, not an API call. The Hours-Saved report shows you every one and what it was worth.",
+    p: "A credit measures the work Nova really did. A short reply takes a few credits, a long job takes more. Your ledger shows every one and what it was for.",
     chips: ["Customer reply answered", "Listing written from a photo", "Ad creative generated", "Abandoned cart recovered", "Reorder drafted"],
     voiceChip: "Voice call",
     draft: {
       h3: "Nova never just stops. It shifts to Draft mode.",
       quote: "“I’ve queued 12 replies and 2 campaigns as drafts — nothing executes until you top up or the month resets. Nothing is lost.”",
-      topUp: "Top up — ৳250 / 250 credits",
+      topUp: "Top up · ৳250 / 2,500 credits",
       wait: "Wait for reset",
       note: "Prepared work executes the moment you top up. Honest billing is the same product as honest AI.",
     },

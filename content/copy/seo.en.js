@@ -14,8 +14,8 @@ const seo = {
   // (lib/plans.js#getJsonLdOffers). The withdrawn Starter tier is gone: a
   // schema.org Offer at price 0 is a rich-result promise Google keeps showing.
   offers: [
-    { name: "Growth", price: "2990", priceCurrency: "BDT", description: "৳2,990/month · Nova Operator, 7,500 Nova credits/month, Grow Suite, Supplier Network." },
-    { name: "Business", price: "6990", priceCurrency: "BDT", description: "৳6,990/month · Nova with voice, 25,000 Nova credits/month, voice minutes, playbooks." },
+    { name: "Growth", price: "2990", priceCurrency: "BDT", description: "৳2,990/month · Nova Operator, 5,000 Nova credits/month, Grow Suite, Supplier Network." },
+    { name: "Business", price: "6990", priceCurrency: "BDT", description: "৳6,990/month · Nova with voice, 15,000 Nova credits/month, voice minutes, playbooks." },
   ],
 
   pageNames: {
@@ -39,7 +39,7 @@ const seo = {
 
   pricingFaq: [
     ["Why not unlimited AI?", "Nova does real work on real compute — unlimited would mean either fake AI or hidden throttling. We'd rather sell you an honest meter with receipts than a soft lie."],
-    ["What happens when my credits run out?", "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 250 credits) or the month resets. Nothing is lost, nothing is silent."],
+    ["What happens when my credits run out?", "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 2,500 credits) or the month resets. Nothing is lost, nothing is silent."],
     ["What do couriers cost?", "Per-delivery, passed through at the courier's rate (Steadfast, Pathao, RedX) on every plan — we don't mark up shipping."],
     ["I'm not in Bangladesh. Can I use Dakio?", "Yes. Outside Bangladesh you pay in US dollars by card or PayPal. Your inbox, Nova, bookings and customer records work everywhere today; the online store checkout and courier partners are Bangladesh only for now and come to more countries next."],
   ],
