@@ -39,7 +39,7 @@ const seo = {
 
   pricingFaq: [
     ["Why not unlimited AI?", "Nova does real work on real compute — unlimited would mean either fake AI or hidden throttling. We'd rather sell you an honest meter with receipts than a soft lie."],
-    ["What happens when my credits run out?", "Nova shifts to Draft mode: it keeps preparing everything but executes nothing until you top up (৳250 / 2,500 credits) or the month resets. Nothing is lost, nothing is silent."],
+    ["What happens when my credits run out?", "Nova warns you before they do. When the plan’s credits are used and you have no pack, Nova’s own work (posts, the brief, follow-ups) rests first and customers still get replies for a short while. After that, new messages wait and are answered once you top up (৳250 / 2,500 credits) or the month resets. Nothing is lost, and you can reply by hand the whole time."],
     ["What do couriers cost?", "Per-delivery, passed through at the courier's rate (Steadfast, Pathao, RedX) on every plan — we don't mark up shipping."],
     ["I'm not in Bangladesh. Can I use Dakio?", "Yes. Outside Bangladesh you pay in US dollars by card or PayPal. Your inbox, Nova, bookings and customer records work everywhere today; the online store checkout and courier partners are Bangladesh only for now and come to more countries next."],
   ],
