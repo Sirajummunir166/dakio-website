@@ -59,7 +59,7 @@ Dakio is one app to run a whole business, with an AI CEO built in. It is made in
 - One page per client with their whole history; a pipeline from enquiry to won.
 - Quotes and invoices the client accepts online; part or full payments recorded.
 - Advances: the booking page tells the client how to send a bKash advance to the business's own number, and the owner records it. Dakio does not take the advance online at booking yet.
-- Ready setups for nine kinds of business: beauty parlour, men's salon, coaching centre, home tutor, doctor's chamber, photographer, event hall, AC and home repair, interior and events.
+- Ready setups for 46 kinds of business: parlours and salons, clinics (doctor's chamber, dental, skin, hair, laser, physiotherapy, vet), coaching and tutors, photography, events and halls, repair, cleaning and tailoring, architects and interiors, law, accounting, IT, travel and study abroad.
 
 ## What Nova does (every plan includes her)
 

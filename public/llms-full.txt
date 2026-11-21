@@ -1,0 +1,606 @@
+# Dakio: the full guide
+
+> Dakio is one app to run a whole business, with Nova, an AI CEO, built in. Shops get products, stock, orders, couriers and a counter; service businesses get bookings, a team calendar, reminders, client pages, quotes and invoices; a business can do both. Every business gets an inbox for Messenger, Instagram, WhatsApp and website chat, its own website, marketing tools, the books and a team. Made in Bangladesh by Digidhaka Communication Limited, open to businesses in every country.
+
+This is the long version of https://dakio.io/llms.txt, written for AI assistants and agents that need to explain Dakio accurately. It says what each part of the app does today, what works only in Bangladesh, and what is not built yet. When this file and a page on dakio.io disagree, the page on dakio.io is newer.
+
+- Website: https://dakio.io (English) and https://dakio.io/bn (Bangla)
+- The app: https://app.dakio.io
+- Contact: hello@dakio.io · +880 1727 809 264 (answers within one business day)
+- Updated: 21 November 2026
+
+## Contents
+
+1. What Dakio is
+2. How the app is laid out
+3. Nova, the AI CEO
+4. In every business: inbox, contacts, website, marketing, money, team and more
+5. The shop module
+6. The service module
+7. Website templates (35 designs)
+8. Plans, prices and Nova credits
+9. Channels, payments and integrations
+10. Outside Bangladesh
+11. Getting started and moving from Shopify
+12. Not built yet
+13. Common questions
+14. Learn more: pages, tutorial videos, developer docs
+
+---
+
+## 1. What Dakio is
+
+**In one line:** one app to run a whole business, with an AI CEO called Nova built in.
+
+**Who makes it:** Digidhaka Communication Limited, a company registered in Bangladesh, with its team in Dhaka.
+
+**Who it is for:**
+- **Shops** that sell on a Facebook Page, Instagram, WhatsApp, a website or at a counter: clothing, beauty, gadgets, grocery, jewellery, books, furniture, baby goods and similar.
+- **Service businesses:** parlours and salons, clinics and doctor's chambers, coaching centres and tutors, photographers, repair and cleaning, event halls and planners, law, accounting, travel and study abroad consultancies, and more (46 kinds have a ready setup; see section 6).
+- **Businesses that do both** pick "Both" at sign up and get both sets of tools.
+
+**What makes it different:**
+1. **Nova does the work, not only the reply.** A chatbot stops at the answer. Nova takes the order or the booking with price, stock and free times checked, sends the receipt, tells the buyer when the parcel ships, reminds clients before a visit, follows up quiet chats and asks for a review after delivery.
+2. **Everything is in one app.** The chat, the order, the stock, the courier, the customer's history and the money are in one place, so Nova answers from real data. A counter sale and a chat order take stock from the same count.
+3. **Nova never makes up facts.** She quotes prices, stock, delivery charges and free times only from the business's own data. Risky messages (a refund, an angry customer, a payment question) go to the owner.
+4. **The owner stays in charge.** One switch turns Nova on or off, and the owner can read every chat and reply at any time.
+5. **Made for how Bangladesh sells.** Bangla, Banglish and English, voice notes, cash on delivery, bKash and Nagad, the three big couriers and fake order protection are built in. The app is in English and Bangla.
+
+**What Dakio is not:**
+- Dakio does not sell or ship goods to a business's customers and does not provide its services: the business sells; Dakio is the software. The one exception is dropshipping in Bangladesh, where Dakio packs and ships supplier products for the shop.
+- Dakio is not a marketplace. Customers buy from the business, on its own Page, chat and website.
+
+---
+
+## 2. How the app is laid out
+
+At sign up a business says what it sells: **Products**, **Services** or **Both**. The app shows the menu for that choice; it can be changed later in Settings and nothing is deleted.
+
+The sidebar, by section:
+
+- **Main:** Home · Nova · Orders and Products (shops) · Media · Contacts · Pipeline (service businesses) · Services, Bookings and Courses (service businesses) · Inbox (the Front Office) · Comments · POS (shops)
+- **Business:** Purchases, Stock and Delivery (shops) · Accounting · Quotes and invoices (service businesses)
+- **Marketing:** Website (Store Studio) · Content Studio · Ads Studio · Campaigns
+- **Plan:** Billing
+
+From the profile menu: Settings, Nova settings, Employees (HR), Add-ons, Support, Dakio Academy, and App and notifications.
+
+A new store sees a short menu while it is starting; the rest sits under "More" until the store is running.
+
+---
+
+## 3. Nova, the AI CEO
+
+Nova is Dakio's AI. Inside each business she is the **AI CEO of that business**: she runs the day to day work, day and night. She is software, not a person, and introduces herself as "Nova from Dakio". Every plan includes her.
+
+### Answering customers
+- Messenger, Instagram, WhatsApp and website chat, in one inbox.
+- Bangla, Banglish and English, typed or as a **voice note** (she hears it and answers it like a typed message). She follows the customer's language.
+- She recognises a product from a **screenshot or photo**; when a photo only looks similar she shows the close matches and asks "is it this one?".
+- Products go as **cards** with a picture, price and an "I want this" button; services as cards with "Book this"; free times as **buttons** to tap.
+- Prices, stock, delivery charges and free times come **only from the business's data**. She never makes them up.
+- She reads the date and time, and in a services chat she knows the client's history (past bookings, calls, invoices, notes).
+
+### Taking orders (shops)
+- Checks the price, live stock, the delivery charge for the area and the delivery time.
+- Shows an order summary and places the order **only after the customer says yes**.
+- Sends the order number and a receipt picture in the chat.
+- Offers one add-on ("goes well with") if the shop set them up, and a coupon only if the shop switched it on for her and the customer asks for a discount.
+
+### Booking clients (services)
+- Offers only times that are really free, books the one the client picks once she has their phone number, and sends the details.
+- Asks the questions the business marked (for example the wedding date or the area) and saves the answers on the client's page.
+- An "on quote" service, or anything she should not decide, goes to the owner.
+
+### After the reply
+- Keeps every buyer updated: confirmed, shipped with tracking, out for delivery, delivered.
+- Reminds clients before their visit.
+- Follows up chats that went quiet: one message after three hours, and one last chance before Meta's 24 hour window closes.
+- Asks for a review two days after delivery; "Problem" goes straight to the owner.
+
+### Comments under posts
+- When someone asks under a Facebook or Instagram post, Nova sends the answer (for example the price) to their inbox.
+- The short public reply under the comment needs a Facebook permission Dakio does not have yet, so it is off.
+
+### For the owner
+- **Morning brief:** what happened, the money, what needs the owner. A **night review** of the day.
+- **Checks** on stock, couriers, purchases, the pipeline and the money in the books.
+- **Duties:** jobs she does on a schedule; the owner can also give her a job in their own words.
+- **Drafts posts** from the products for the owner to approve.
+- **Answers questions** about the business in chat. Talking to her **by voice** comes with the Business plan.
+- **Shows the way in the app:** she can walk the owner through any step ("Show me").
+
+### What always stays with the owner
+- Prices, discounts and refunds.
+- Angry customers, complaints, legal threats, damaged items and returns.
+- Payments: when a customer says they paid, Nova passes it to the owner to confirm. She never marks a payment as received on her own.
+- Anything risky. Bigger changes she suggests come as a card the owner approves; nothing changes before the owner taps.
+
+When Nova hands a chat over, it shows under **Waiting** with the reason, and the customer is told a person is coming.
+
+### The owner's controls
+- **Switches per desk:** "Answer customer messages" and "Answer post comments". On means she answers; off means she does not touch those messages. A new store starts with them off. A single chat can also be taken back from her.
+- **Pause Nova** stops her work for the whole store; resuming brings back the desks as they were.
+- **Notes and rules:** the shop's rules, areas, policies, tone and facts customers ask about; she follows them in every chat.
+- **Teach her:** mark good and bad replies so she learns how the business likes to answer.
+- **Receipts:** every action she takes leaves a record the owner can check.
+
+### Not yet
+- Reading Facebook ad results or running ads on her own.
+- Phoning customers to confirm orders (built, not switched on).
+- Taking a bKash payment online.
+
+---
+
+## 4. In every business
+
+These parts are in every Dakio business, shop or service.
+
+### 4.1 Inbox (the Front Office)
+
+The Front Office is where every customer conversation lands, and where Nova and the team answer. It is in every plan and works in every country.
+
+**Channels in one list**
+- Facebook Messenger, Instagram direct messages, WhatsApp (the business's own number) and the website chat, side by side in one list. Each chat shows its channel as an icon.
+- Comments under posts have their own page (Marketing, Comments), next to the posts they belong to.
+
+**The chat list**
+- **Tabs:** Waiting (chats that need a person), Unread, Open and Done. A customer who writes again moves a Done chat back to Open.
+- **Search** by name, phone number (01… finds +8801…) or any word in the messages.
+- **Filter by channel.** Each row shows the person, their last message and when the chat was last active (the time today, "Yesterday", or the date).
+- **Select** turns on a box on every row to delete many chats at once. A deleted chat leaves the list and comes back when the customer writes again.
+- New messages appear live, without a reload.
+
+**Inside a chat**
+- **Day headings** (Today, Yesterday, the weekday, then the date) and the time on every message.
+- **Seen:** "✓✓ Read" under messages the customer has seen, on Messenger, Instagram and WhatsApp.
+- **Photos and voice notes:** a voice note has a player and, under it, what Nova heard in words.
+- **Replies to a message:** when a customer swipes to reply to an earlier message, Nova knows which one they mean.
+- **Order and booking cards:** an order Nova took, or a booking she made, shows as a card in the thread with its status (Waiting, Confirmed, Done, No-show, Cancelled).
+- **Nova's steps** are folded under her reply, so the thread reads like a conversation and the detail opens on a tap.
+- **The side panel:** the customer's details, their orders or bookings, their history with the business, and why Nova is or is not answering.
+- Older messages load on request, however long the chat.
+
+**Who is answering**
+- **Nova on or off for all chats:** one switch at the top of the inbox (owner only; turning it off asks first).
+- **Nova on or off for this chat:** a pill in the chat's header. The owner can also simply take a chat over; Nova stays quiet in it until it is handed back.
+- **The reply area says, in one line, who has the chat** ("Nova handed this to you", "You took this chat over", "Nova is off in this chat") with the one button that changes it.
+
+**When Nova hands a chat to a person**
+- A legal threat, a "Talk to a person" tap, or a voice note she could not hear goes straight to the owner. Anger, a dispute, a refund or a request for a person is handed over when Nova judges it is really that.
+- The chat moves to **Waiting** with the reason, and the customer is told a person is coming. Once the owner answers it shows as theirs; **Hand back to Nova** returns it.
+- If Nova cannot reply because of a fault, she sends nothing rather than a guess, and the chat goes to the owner with the cause.
+
+**Tools for answering by hand**
+- **Saved replies:** the team's ready answers, shared by everyone. Pick one by the reply box or type "/" and its shortcut. Up to 100, with a starter set (greeting, how to pay, we will call you, ask for the address or the details, thanks).
+- **Draft with Nova:** whenever Nova is not answering a chat herself, she can write the reply into the box for the person to edit and send.
+- Photos can be sent from the reply box.
+
+**How Nova answers in chat**
+- **Every message in a burst:** when a customer sends several messages in a row (and photos), Nova waits a moment and answers all of them together, in full.
+- **Typing dots** show while she works, so the customer knows a reply is coming.
+- **She answers what was asked, then stops.** A price question gets the price, not a push to order. She asks for name, mobile and address only once the customer wants to buy or book, and asks once.
+- **Nothing is held in words:** an item is the customer's only when the order is made, a time only when it is booked.
+- **Honest about being automated:** asked whether this is a bot or AI, she says yes in one short line.
+- **Manners:** she answers a customer's salam once and does not open with her own; she does not call people "bhai", "apu" or "sir" unless they did.
+- **Photos:** she works out which product is in a customer's photo: a screenshot of the shop's own post is recognised exactly; any other photo is compared with every product photo, and only a checked match counts. When it only looks similar, she asks "is it this one?".
+- **Cards and buttons:** products and services as cards, free times and confirmations as buttons to tap.
+- **She knows the date and time,** and in a service chat the client's history with the business.
+
+**Teaching Nova from real chats**
+- **Teach Nova this** on any reply in a thread (Nova's, the team's, or one sent from Meta Business Suite) saves it as an example of how the business answers; customer details are masked. Up to 10 examples are pinned for her to follow.
+- **Like or dislike** on each of Nova's replies; a dislike asks why and offers "Write the better reply". The Dakio team reviews them.
+
+**Where a chat came from, and what it became**
+- **Came from your ad:** when someone writes after tapping a Facebook "Send message" ad, the chat shows the ad's title under their name, linked to the ad's post.
+- **Mark ordered / Mark booked:** for a sale made outside the chat, one tap records what the chat became, with the amount, and wins its deal. It can be undone.
+
+**Getting chats in**
+- **Past chats:** the last 30 days of the Page's Messenger and Instagram conversations come in as history when the Page is connected (or from "Bring in past chats" in the inbox settings).
+- **Website chat:** a visitor first leaves a phone number or an email (name optional), so the business can reach them after they leave.
+
+**Knowing when something arrives**
+- A small card slides in wherever the owner is in the app: the person, the channel, the first line, and whether Nova is answering it.
+- **Push notifications** to the owner's phone or computer, for chats that need them or for every message (their choice), and the **bell** keeps the list.
+
+**Queues: people to get back to**
+- One page with **leads** (a chat that went quiet 6 hours after the customer's last message, with what Nova's follow up did), **complaints**, **support cases** and **reviews**. Each can be marked done; a lead comes back if the customer writes again.
+
+**Inbox Insights (last 7 or 30 days)**
+- Chats by channel, the median first reply time, how many replies Nova sent versus people, orders and sales from chat, ratings and complaints, the busy hours, follow ups sent and the orders that came after them.
+
+**Testing before going live**
+- The **Front Office sandbox**: write as a customer and see how Nova answers, with the real products or services. Nothing reaches a real customer.
+
+### 4.2 Contacts (CRM)
+- **Everyone who writes becomes a contact**, even before they buy, book or give a phone number.
+- **One page per person:** chats, orders or bookings, deals, quotes, invoices, payments, calls and notes on one timeline.
+- **The business's own fields** (wedding date, area, budget, size, course). Fields marked for Nova are asked in chat and saved.
+- **Who owns the contact** on the team, follow up tasks, and where the person came from.
+- **Pipeline:** every enquiry on a board, stage by stage, to won or lost, with its value. Deals move by themselves (a chat opens one, a chosen service moves it on, an accepted quote wins it). A service business has Pipeline in the sidebar; a shop has it as a Contacts tab.
+- **Lists and messages to lists:** ready lists (customers, leads, bought in the last 90 days, have not bought in 90 days, bought twice or more, spent ৳10,000 or more, left an order unfinished, booked in the last 90 days, have not booked in 60 days), saved lists from rules ("city is Dhaka", "orders at least 2"), and tags. Write once; each person gets the message by chat, email or SMS, whichever reaches them, and the app shows what it brought. SMS is paid from a messaging balance.
+- **Enquiry form** with its own link, a QR code and code to place it on another website; each enquiry becomes a contact with a deal.
+
+### 4.3 Website (Store Studio)
+- **Every business gets a website from day one** at a free address like yourshop.dakio.shop: a shop with its products, or a booking site with its services.
+- **Edit it yourself:** words, photos, sections, menus, buttons, colours and fonts, with the real site in front of you. No developer needed. Every page has its search title and description.
+- **Languages:** one main language, and an optional second that Nova writes from the main words. Words the owner writes in the second language stay theirs.
+- **Website chat:** one tap puts a chat bubble on the site, answered by Nova.
+- **Own domain:** connect a domain the business already owns (which plans include it: see section 8). Buying a new domain inside Dakio is not available yet.
+- **Reviews:** buyer reviews show on product pages after the owner approves them.
+- **Meta Pixel and Conversions API:** the site sends shopping events to Meta from the browser and the server, counted once.
+- **Templates:** 35 complete designs made for kinds of business (section 7).
+
+### 4.4 Marketing
+- **Content Studio:** write a post (text, photo or video) and publish it to the Facebook Page and Instagram now or on a schedule. Nova drafts posts from the products or services for the owner to approve.
+- **Ads Studio:** turn a product or a service into a branded ad picture in square, portrait and story sizes, with words Nova writes. Motion (video) ads come with the Business plan.
+- **Campaigns and coupons:** coupons and campaigns, with the orders each brought.
+- **Comments:** comments under the Page's posts in one place, with Draft with Nova; Nova answers questions by sending the details to the commenter's inbox.
+
+### 4.5 Money (Accounting)
+- Cash boxes for cash, bKash and bank; expenses by type.
+- "Switch on my books" turns on full double-entry books.
+- Reports: profit and loss, sales, purchases, payments, customers, expenses, product sales, service sales.
+- This month's profit and what each courier still holds, on one screen.
+
+### 4.6 Media
+- Every photo and video the business has, in one library that fills itself from every upload.
+- Free background removal on the owner's own device.
+
+### 4.7 Team
+- Staff logins with roles; how many depends on the plan.
+- A Sales role sees only its own and unassigned contacts; money, settings and billing stay closed to it.
+- Employees: attendance, leave and salary advances.
+
+### 4.8 The app on a phone, and notifications
+- The app installs on a phone or a computer like any other app (Android and desktop: one tap; iPhone: Share, then Add to Home Screen).
+- **Push notifications** per device, by topic: new orders, bookings and enquiries, reminders, chats that need the owner, every message (opt in), account and billing.
+- The **bell** lists messages, comments, orders, bookings, reminders and account notices (plan ending, payment received, Nova credits low).
+
+### 4.9 Dakio Academy
+- Short tutorial videos in Bangla, one module per part of the app, inside the app (profile menu, Dakio Academy) and on YouTube (links in section 14).
+- On each page, a small tip offers the video for that page.
+
+### 4.10 Settings, developers and help
+- **Developers:** API keys for **@dakio/sdk** come with every plan (Settings, Developers). See section 9.
+- **Support:** tickets to the Dakio team from the app. **Support access:** the owner can let the Dakio team into the account for a limited time to help, and switch that off.
+- **Start over:** an owner can reset their own store and begin again.
+
+---
+
+## 5. The shop module
+
+For a business that sells products, online or at a counter.
+
+### Products and stock
+- Products with photos, videos, sizes, colours, categories and brands; edit many at once.
+- **Barcodes** on every product and variant, printable stickers, and scanning at the counter. Each piece can be tracked.
+- **Warranty** on a product (how long, what kind, what it covers), shown wherever the sold item is shown.
+- Stock in every warehouse, transfers between them, and a low stock alert.
+- Import products from Shopify or a CSV file.
+
+### Orders
+- Orders from Messenger, Instagram, WhatsApp, website chat, comments, the website and the counter, in one list.
+- Tabs for draft orders, returns and **Incomplete Orders** (carts left at checkout).
+- A chat order is placed only after the customer says yes to a summary with the price, delivery charge and address.
+
+### Payments from customers (Bangladesh)
+- **Cash on delivery** on the website and in chat.
+- **bKash and Nagad** at website checkout: the customer pays from their own app to the shop's number after the shop's confirmation call. There is no automatic online gateway on the shop's website today.
+- Delivery charges inside and outside Dhaka, and optional **free delivery over an amount**.
+
+### Fake order protection
+- On each order: how many parcels this buyer took and how many came back.
+- **Reputation across Dakio shops:** if a phone number refused parcels at other Dakio shops, the shop sees it before shipping. It warns; it never refuses a sale.
+- A **block list:** a blocked number cannot order from the website, from Nova or by hand.
+- Repeat phones and devices are caught, and an SMS code check on risky website orders can be switched on.
+
+### Couriers (Bangladesh)
+- **Steadfast, Pathao and RedX** built in. The shop connects its own courier account once; charges are the courier's own rates, with no markup.
+- Approve the order and the parcel is booked, with the tracking number on the order.
+- The **Courier Ledger** follows cash on delivery money: collected, paid to the shop, still held, and returns.
+
+### POS for the counter
+- Ring up products (or scan their barcodes), take cash, card, bKash or Nagad, print a receipt.
+- A counter sale and a chat order take stock from the same count.
+
+### Dropshipping (Bangladesh)
+- No stock? Sell products from verified suppliers already in Dakio's warehouse: import, set the price, and Dakio packs and ships.
+- Turned on by request from the Dropshipping page; not on the Free plan.
+- The shop gets units held for it for a time; sell them and it gets more; unsold units go back.
+
+### Purchases and suppliers
+- Record stock bought from a supplier: goods in, money owed, money paid. Purchase returns send goods back.
+- Each supplier shows what the shop still owes them.
+
+### After the order
+- **Updates in the chat:** confirmed (with the expected date), shipped (tracking link), out for delivery (cash to keep ready), delivered. They go while Meta allows a message, normally within 24 hours of the customer's last message.
+- **Receipt:** a branded receipt picture with the order number, items and total.
+- **Reviews:** two days after delivery Nova asks how it was.
+- **Goes well with:** up to three add-ons per product; Nova offers one before the order summary (also shown under Add to bag on the website).
+- **Follow ups** on quiet chats, and **messages to lists** (section 4.2).
+
+---
+
+## 6. The service module
+
+For a business that sells services: parlours, salons, clinics, coaching, photography, repair, events, law, accounting, travel and more.
+
+### Services
+- Each service has a name, price, duration, category, what it includes and who does it.
+- A price can be fixed, "starts from", a range, or "on quote". Nova quotes only what is written; "on quote" goes to the owner.
+- Online services can run on Google Meet; the meeting link reaches the client by itself once booked.
+
+### Bookings and the calendar
+- **Hours:** the days and times the business takes clients, the notice needed, how far ahead people can book, how many at once.
+- **Calendar:** a Day view with a column per person and a Week view. Free times are shown on the calendar (what Nova can book), per service. Tap an empty time to book; drag a booking to move it. Confirm, cancel, mark done or no show.
+- **Nova books only times that are really free.** By default a booking is confirmed at once; the owner can make bookings wait for their confirmation instead.
+- **Booking link:** a page of its own (no website needed) where a client picks a service, a day and a free time, then gives a name and mobile number. The client can cancel or move their own booking from it.
+- **Booking confirmation calls:** Nova can call to confirm a new booking.
+- Booking times are in Bangladesh time today.
+
+### The team
+- Choose who takes bookings; each person has their own hours and days off.
+- A new booking goes to the free person with the fewest bookings that day, unless the client asks for someone.
+- Each person gets their day on their phone at 8:30 in the morning.
+- Google Calendar two way sync per person is built but still being switched on.
+
+### Reminders
+- The evening before at 6 pm, and a chosen number of hours before, or off.
+- In the client's chat when it is open, otherwise by email, with SMS as a fallback (SMS is paid from a messaging balance). Nothing goes out between 9 pm and 9 am.
+
+### Clients, pipeline, quotes and invoices
+- Client pages, the business's own fields and the pipeline (section 4.2).
+- **Quotes and invoices** from the services list, with a discount and a due date. **Send in chat** puts a link in the client's chat; the page needs no login and works on a phone. A quote has an Accept button, and accepting wins the deal. An invoice shows what is due and how to pay (the business's bKash or Nagad number, bank details, the invoice number as reference). Part payments are fine.
+- **Advances:** record money paid ahead for a booking; the booking page can tell the client how to send a bKash advance to the business's own number. Dakio does not take the advance online yet.
+
+### Done, walk ins and service money
+- **Done** on a booking opens a bill filled from what was booked, using any advance first; one tap says what was paid: in full, part, or not yet.
+- **New sale** bills a walk in client: booked, done and billed at once.
+- Home and Invoices show today's takings, this month, what clients owe, overdue and advances held. **Reports, Service sales** by service, by person and by day. Nova's morning brief includes yesterday's service money.
+
+### Booking website and enquiries
+- A website made for a service business: a **Book now** button, WhatsApp and call buttons, the services listed live from the app, a page per service, booking on real free times, and an enquiry form.
+- The first time the website editor opens, one tap builds a starting site from the business, in the look of its kind.
+
+### Courses (coaching and training)
+- **Courses** holds programs (a self paced course, a live cohort or a one to one package), their modules and lessons (a YouTube video, a reading or a live session) and the students.
+
+### Ready setups for 46 kinds of business
+At sign up a service business picks its kind, and one button sets up its services with sample prices, the questions Nova asks, its sales stages, booking hours, how clients pay, the enquiry form, Nova's notes and rules, and a starting website. It never overwrites what the owner wrote, and a pretend client chat can be tried before going live.
+
+- **First nine:** beauty parlour, men's salon, coaching centre, home tutor, doctor's chamber, photography, event hall, AC and home repair, interior and event services.
+- **One client per slot:** dental clinic, skin clinic, hair clinic, laser clinic, physiotherapy centre, spa, massage centre, vet clinic, pet grooming, counsellor, psychologist, makeup artist, mehndi artist, bridal studio, car workshop, bike workshop, driving school.
+- **A visit, then a quote:** cleaning service, pest control, home shifting, tailor, boutique stitching, architect, interior firm, wedding planner, event decorator.
+- **A long pipeline:** study abroad consultancy, visa consultancy, tour operator, air ticketing agency, lawyer's chamber, law firm, accounting firm, tax consultant, IT services, software company, digital marketing agency.
+
+Sign up shows the kinds in groups (health and care, beauty and wellness, home and vehicle, weddings and events, travel and study abroad, professional services, learning, creative and design) with a search that reads English and Bangla.
+
+---
+
+## 7. Website templates (35 designs)
+
+Dakio has 35 complete website designs: 9 for shops and 26 for service businesses. Each is a whole website: a shop design comes with collections, product pages and checkout; a service design comes with services, booking and contact. Many service designs have versions for related kinds of business (for example skinora. has a skin clinic, a hair clinic and a laser clinic version).
+
+- **See them:** https://dakio.io/themes, each with its home page on a laptop and a phone, every inner page, and a live demo.
+- **In the app:** Website, Templates opens on the designs that fit what the business sells, filtered by business. **Try it with my products** shows the design with the business's own products or services.
+- **Editing:** the business edits a design's words, photos, sections, menus, buttons and theme in the website editor, with the real site in front of it. The design itself stays the template's: the editor changes only what the template lets it change.
+- **Behind it:** Dakio runs the products, prices, cash on delivery checkout, couriers, bookings and Nova behind every design.
+
+### For shops
+
+| Design | For | The look |
+|---|---|---|
+| [SARIL](https://dakio.io/themes/saril) | Fashion and clothing | For clothing brands selling sarees, three-piece, panjabi and kidswear. A warm editorial look: full-bleed photos, cream and maroon, italic serif headlines. |
+| [bloomé](https://dakio.io/themes/bloome) | Beauty and skincare | Cream backgrounds, deep green serif headlines, handwritten notes and soft amber product photos. |
+| [LUMIRA](https://dakio.io/themes/lumira) | Jewelry and accessories | Rings, necklaces, earrings, bangles, watches and gift sets. Cream and gold, large serif headlines and soft photos of every piece. |
+| [nook.](https://dakio.io/themes/nook) | Furniture and home | Big room photos, serif headlines and handwritten notes, shopped by room and by category. |
+| [freshcart](https://dakio.io/themes/freshcart) | Grocery and daily needs | A bright, friendly supermarket look with fresh green buttons and big produce photos, for shops that deliver fast across the city. |
+| [tinyjoy](https://dakio.io/themes/tinyjoy) | Baby and kids | Diapers, feeding, bath, clothes and toys, with hand-lettered navy and red headlines and playful doodles. |
+| [safiyah](https://dakio.io/themes/safiyah) | Modest fashion | Hijabs, abayas, panjabis, kids' modest wear and prayer sets: a warm cream and black storefront with large lifestyle photos. |
+| [papyr](https://dakio.io/themes/papyr) | Books, stationery and gifts | Book and desk photos on warm cream paper, serif headlines, handwritten notes and deep green buttons. |
+| [VOLTEX](https://dakio.io/themes/electronics) | Phones, laptops and gadgets | A dark, sharp storefront for genuine phones, laptops and gadgets. |
+
+### For service businesses
+
+| Design | For | What the site says |
+|---|---|---|
+| [mehndi.](https://dakio.io/themes/salon) | Bridal and beauty parlour | Bridal, holud and party makeup by artists who arrive on time. Try your look first, know the price before you book. |
+| [bridely.](https://dakio.io/themes/bridal) | Makeup artist · Mehndi artist · Bridal studio | Tell me your date and where you will be. I will confirm if I am free and what it costs. |
+| [skinora.](https://dakio.io/themes/skin) | Skin clinic · Hair clinic · Laser clinic | Book a consultation, talk through your concern and get a plan made for your skin. |
+| [spavita.](https://dakio.io/themes/spa) | Spa · Massage centre | Pick a treatment and a time. A quiet room and a therapist are kept for you. |
+| [shefa.](https://dakio.io/themes/clinic) | Doctors' chamber and consultation | Consult experienced doctors, book a serial, and get care without the wait. |
+| [dentalia.](https://dakio.io/themes/dental) | Dental clinic | See the dentist, talk through the problem and know the cost before any treatment starts. |
+| [physio+.](https://dakio.io/themes/physio) | Physiotherapy centre | Start with an assessment. Your sessions are planned around what you need. |
+| [mindwell.](https://dakio.io/themes/counselling) | Counsellor · Psychologist | Book a first session. You do not have to explain anything to book. |
+| [petwell.](https://dakio.io/themes/pet) | Vet clinic · Pet grooming | Book a visit, tell the vet what you have noticed and know the cost before treatment. |
+| [path.](https://dakio.io/themes/coachingcentre) | HSC, SSC and admission coaching | Structured programs, expert mentors and a proven track record. |
+| [elevate.](https://dakio.io/themes/coaching) | Career and leadership coaching | Coaching, courses and cohorts for professionals ready for a clearer, braver next step. |
+| [driveon.](https://dakio.io/themes/driving) | Driving school | One learner per lesson. Start with a trial and book the next when you are ready. |
+| [frame.](https://dakio.io/themes/photography) | Wedding and event photography | Photography for people, brands and special moments. |
+| [eventia.](https://dakio.io/themes/events) | Wedding planner · Event decorator | Tell us the date and the guests. We plan it with you and run the day for the family. |
+| [mahal.](https://dakio.io/themes/venue) | Wedding and event halls | Weddings, corporate events and family gatherings, with elegant spaces and complete support. |
+| [atelier.](https://dakio.io/themes/interior) | Interior design and decoration | Interior design and custom decoration for homes, offices and commercial spaces. |
+| [archivy.](https://dakio.io/themes/architect) | Architect · Interior firm | Start with a conversation about the land, what you need and what you can spend. |
+| [fixit.](https://dakio.io/themes/homeservice) | Home services | Trusted professionals for your home, on your schedule. |
+| [cleano.](https://dakio.io/themes/cleaning) | Cleaning service · Pest control · Home shifting | Pick the cleaning you need and a time. Our team comes with what the job takes. |
+| [autocare.](https://dakio.io/themes/auto) | Car workshop · Bike workshop | Book a time to bring your car. We check it, tell you what it needs and what it costs. |
+| [stitchly.](https://dakio.io/themes/tailor) | Tailor · Boutique stitching | Bring your fabric and your idea. We measure, stitch and call you for a fitting. |
+| [lawfort.](https://dakio.io/themes/law) | Lawyer's chamber · Law firm | Book a consultation, bring your papers and talk the matter through in private. |
+| [taxpro.](https://dakio.io/themes/tax) | Accounting firm · Tax consultant | Tell us how your business keeps its books today. We show you what we would take over and what it costs. |
+| [digipro.](https://dakio.io/themes/agency) | IT services · Software company · Digital marketing agency | Tell us what is slowing your office down. We visit, look at the setup and give you a written quote. |
+| [travelo.](https://dakio.io/themes/travel) | Tour operator · Air ticketing agency | Send your dates and how many people. You get a plan and one clear price. |
+| [visaex.](https://dakio.io/themes/visa) | Study abroad consultancy · Visa consultancy | Sit with a counsellor, go through your results and budget, and leave with a clear list of options. |
+
+A business that wants a fully custom website can have a developer build it on @dakio/sdk (section 9) instead of a template.
+
+---
+
+## 8. Plans, prices and Nova credits
+
+Every plan includes Nova. Prices in Bangladesh taka (৳).
+
+| | Free | Growth | Business |
+|---|---|---|---|
+| Price | ৳0, forever | ৳2,990 a month, or ৳23,880 a year (৳1,990 a month) | ৳6,990 a month, or ৳59,880 a year (৳4,990 a month) |
+| Logins | 1 (the owner) | 3 | 10 |
+| Products and orders | 25 products and 50 orders a month, or 10 services | Unlimited | Unlimited |
+| Nova credits a month | 100 | 5,000 | 15,000 |
+| Nova voice minutes a month | none | none | 60 |
+| SMS a month | 10 | 300 | 1,000 |
+| Files | 500 MB | 5 GB | 15 GB |
+| Also | | Content Studio, Ads Studio, campaigns, the supplier network | Everything in Growth, plus motion ads, seasonal playbooks (Eid, Puja, 11.11) and concierge migration |
+
+- **Autopilot trial:** every store can try Business free for 14 days, once. The owner starts it; it never starts by itself. Afterwards the store chooses Growth or Business, or stays on Free.
+- **Monthly or yearly:** yearly saves money. A partner or influencer code works on yearly plans only, entered at sign up.
+- **Paying Dakio:** in the app, by bKash, Nagad or card through SSLCommerz, in taka. Cancel any time from Billing; everything works until the end of the paid period.
+- **Refunds:** subscription fees are generally not refunded, except a double charge, a payment taken without the account opening, or a cancel within 24 hours of the first payment without real use. Write to hello@dakio.io.
+
+### Nova credits
+- Nova's work (replies, drafts, briefs, chats with the owner) is counted in **Nova credits**, charged by the work it really took. There is no price per message. Work that fails is not charged, and one piece of work never costs more than 400 credits.
+- A normal customer reply takes about 2 to 8 credits, most often about 5. As a rough guide, 5,000 credits is about 1,000 customer replies in a month (measured on Dakio's own chats in November 2026; it can change).
+- The plan's credits come fresh every month and do not carry over.
+- **Top ups** in Billing: 2,500 credits for ৳250, 10,000 for ৳900, 30,000 for ৳2,400. Bought credits last 365 days; the plan's credits are used first.
+- **When credits run out:** Nova's own work (duties, drafts, the brief) rests first and customers still get replies for a short while; after that new messages wait until credits return. No message is lost and the owner can answer every chat by hand. The app warns before this happens.
+- **Voice minutes:** talking to Nova by voice uses voice minutes. Business includes 60 a month; a voice pack is 30 minutes for ৳300 or 100 for ৳900.
+- The app shows every charge in a ledger (Billing, Nova credits, View ledger).
+
+---
+
+## 9. Channels, payments and integrations
+
+### Chat channels (every country)
+- **Facebook Messenger:** connect the Page in a few clicks; posts and old chats stay as they are.
+- **Instagram:** the professional account linked to the Page; direct messages and comments.
+- **WhatsApp:** the business's own WhatsApp Business number. If it is connected to another company's tool, disconnect it there first. Template messages are not sent yet.
+- **Website chat:** a bubble on the Dakio website. Visitors first leave a phone number or email.
+- **The 24 hour rule:** Meta lets a business message a customer freely within 24 hours of the customer's last message. Nova's follow ups and order updates work inside that window; outside it, messages to lists and reminders go by email or SMS.
+
+### Email and SMS
+- **Email** (every country): messages to lists, reminders and notices, sent from the store's name; replies go to the business; one click unsubscribes from offers.
+- **SMS** (Bangladesh): offers, reminders and one to one messages, paid from a messaging balance; the cost shows before anything is sent.
+
+### Payments
+- **Customers paying the business (Bangladesh):** cash on delivery; bKash and Nagad paid to the business's number after its confirmation call; cash, card, bKash or Nagad at the POS; invoice pages that show how to pay. An automatic online gateway for the business's own store is not built yet.
+- **The business paying Dakio:** SSLCommerz (bKash, Nagad or card), in taka. US dollar billing through Paddle is built but switched off.
+
+### Couriers (Bangladesh)
+Steadfast, Pathao and RedX, with the business's own accounts, and the Courier Ledger.
+
+### Calendars
+- Google Calendar two way sync per team member is built and being switched on.
+- Clients can add their booking to Google or iPhone calendars from the booking page.
+- Outlook and Apple calendar sync are not built.
+
+### Developers: @dakio/sdk
+- **@dakio/sdk** on npm lets a developer build a custom website (React, Next.js, Vue, Svelte or plain JavaScript) with Dakio running everything behind it: the catalogue with live sale prices, a cash on delivery checkout with fake order protection, stock, orders and couriers, abandoned carts, order tracking, the Meta Pixel and Conversions API, and webhooks.
+- Orders from a custom website land in Dakio Orders, and Nova sees them.
+- Keys: a test key (test orders only, works on localhost), a live client key (only on the listed websites) and a secret key (server only). API keys come with every plan at no extra charge.
+- Docs: https://dakio.io/developers/docs
+
+---
+
+## 10. Outside Bangladesh
+
+Dakio is open to businesses in every country.
+
+**Works everywhere today:** the inbox and Nova (in English as well as Bangla), contacts, the pipeline, bookings and the team calendar, quotes and invoices, the website and website chat, products and stock, purchases and suppliers, email, Content Studio and Ads Studio, and @dakio/sdk.
+
+**Bangladesh only today:** couriers and the Courier Ledger; the shop website's cash on delivery checkout (with Bangladesh districts and delivery charges); bKash and Nagad; SMS; dropshipping and the Dakio warehouse.
+
+**Other limits:** money shows in taka in several places (for example Accounting), and booking times and reminders follow Bangladesh time. A shop abroad arranges its own delivery.
+
+**Billing:** every business, in every country, pays in taka through SSLCommerz today. The Free plan is free everywhere.
+
+**Languages:** the app is in English and Bangla. Nova speaks Bangla, Banglish and English with customers, and English or Bangla with the owner. A website has one main language and an optional second.
+
+---
+
+## 11. Getting started and moving from Shopify
+
+1. **Sign up** at https://app.dakio.io: name, mobile number, store name, email and a password, then the code sent by email. Start on Free or pay for Growth or Business. The store is live at its own link at once.
+2. **Say what you sell:** Products, Services or Both. A service business picks its kind and can set everything up in one go.
+3. **Meet Nova:** appoint her; she checks the store and says what she still needs. A path in the sidebar shows the next step, and she can show the way ("Show me").
+4. **Connect where customers write:** the Facebook Page, Instagram, WhatsApp, website chat.
+5. **Add what you sell:** products with photos, prices, sizes and stock (or import from Shopify or a CSV file), courier keys and delivery charges; or services, hours, the team and how clients pay.
+6. **Tell Nova about the business:** rules, areas, returns, payment, tone and common facts.
+7. **Test first:** the Front Office sandbox lets the owner write as a customer and see Nova's answers; nothing reaches a real customer.
+8. **Switch Nova on.**
+
+A basic setup takes a few minutes; no developer is needed.
+
+**Moving from Shopify or another platform:** import products from Shopify or a CSV file, or use **concierge migration** (Business plan): the Dakio team moves products and variants, customers, order history, reviews and images, rebuilds the storefront in a design the business picks, and sets up redirects so old links keep working. The domain stays the business's. Themes do not move between platforms.
+
+---
+
+## 12. Not built yet
+
+Say plainly that these are not available yet:
+
+- An automatic online payment gateway for a business's own website (taking bKash or cards online), and taking a booking advance online.
+- Buying a new domain inside Dakio (connecting an owned domain works).
+- WhatsApp template messages (for example booking confirmations by template).
+- The public reply under a Facebook or Instagram comment (waits on a Facebook permission).
+- Nova reading Facebook ad results or running ads on her own.
+- Nova phoning customers to confirm orders (built, not switched on).
+- Monthly fee billing for coaching centres and tutors.
+- Outlook and Apple calendar sync.
+- Couriers, cash on delivery checkout, bKash, Nagad, SMS and dropshipping outside Bangladesh.
+- Other currencies and time zones across the app.
+- Paying Dakio in US dollars (built, switched off).
+
+---
+
+## 13. Common questions
+
+- **Is Dakio free?** There is a Free plan, forever, with limits. Growth and Business are paid.
+- **Is there a free trial?** Yes: 14 days of Business, once per store, started by the owner.
+- **Do I need a developer?** No. Only a fully custom website on @dakio/sdk needs one.
+- **Can I cancel?** Any time; access continues to the end of the paid period. Nova can be switched off and Dakio used without her.
+- **Who owns the data?** The business. Products, customers and orders can be exported; there is no contract holding anyone in.
+- **Does Dakio speak Bangla?** The app is in Bangla and English; Nova answers in Bangla, Banglish and English, typed or by voice note.
+- **How is Nova different from a chatbot?** She does the work (orders, bookings, receipts, updates, reminders, follow ups, reviews, briefs) inside the app where the stock, couriers, calendar and money are.
+- **Is Nova a person?** No. She is Dakio's AI. A human team at Dakio is there too.
+- **Will Nova give discounts or refunds?** No. Those stay with the owner; she offers only coupons the owner switched on for her.
+- **Do I pay per message?** No. Every plan includes monthly Nova credits; a normal reply takes about 2 to 8.
+- **Can staff log in?** Yes, with their own login and role; the number depends on the plan.
+- **Can I use my own domain?** Yes, connect one you own. Every store also gets a free yourshop.dakio.shop address.
+- **I run a parlour, clinic or coaching centre. Is Dakio for me?** Yes: pick Services and your kind of business.
+- **How do I reach a person?** hello@dakio.io or +880 1727 809 264.
+
+---
+
+## 14. Learn more
+
+### Pages on dakio.io
+- [Home](https://dakio.io/) · [For shops](https://dakio.io/shops) · [For services](https://dakio.io/services) · [Nova](https://dakio.io/nova) · [Front Office](https://dakio.io/front-office) · [Templates](https://dakio.io/themes) · [Ads Studio](https://dakio.io/ads) · [Switch from Shopify](https://dakio.io/switch) · [Developers](https://dakio.io/developers) · [Pricing](https://dakio.io/pricing)
+- Every page has a Bangla version under /bn (for example https://dakio.io/bn/pricing).
+
+### Dakio Academy: tutorial videos (Bangla, on YouTube)
+Short videos recorded from the real app, one playlist per module. Channel: https://www.youtube.com/@DakioOfficial
+
+- [Getting started (shops)](https://www.youtube.com/playlist?list=PLVIX7WHBmKrg)
+- [Getting started (service businesses)](https://www.youtube.com/playlist?list=PLN7NtoIqaxRA)
+- [Nova: your AI CEO](https://www.youtube.com/playlist?list=PLWpgQRlHJhTw)
+- [Inbox](https://www.youtube.com/playlist?list=PLB9UadiYEwRQ)
+- [Connections](https://www.youtube.com/playlist?list=PLVHZjFWT7OxE)
+- [Contacts](https://www.youtube.com/playlist?list=PLf7CEXdVB1Ik)
+- [Orders](https://www.youtube.com/playlist?list=PLM00RRZG3p_k)
+- [Products](https://www.youtube.com/playlist?list=PLSJzCxH67mP8)
+- [Stock and purchases](https://www.youtube.com/playlist?list=PLPS9r9T7M7_Q)
+- [Delivery](https://www.youtube.com/playlist?list=PLU5GmiSr8pmQ)
+- [POS](https://www.youtube.com/playlist?list=PLRqyMppo6_Og)
+- [Services and bookings](https://www.youtube.com/playlist?list=PLUfO8UWxRcc4)
+- [Website](https://www.youtube.com/playlist?list=PLLvc99KA71E4)
+- [Content and campaigns](https://www.youtube.com/playlist?list=PLU-wpN3rzttc)
+- [Media](https://www.youtube.com/playlist?list=PLVLEQPGDKYMs)
+- [Accounting](https://www.youtube.com/playlist?list=PLPr7wTttTLDI)
+- [Team and settings](https://www.youtube.com/playlist?list=PLIcs8U67wYJQ)
+- [Your Dakio plan](https://www.youtube.com/playlist?list=PLbFe-3Fm6cH8)
+- Every video for a shop: https://www.youtube.com/playlist?list=PLCK8rBv5U-68 · for a service business: https://www.youtube.com/playlist?list=PLUqdVGrWKfmU
+
+### Developer docs (English)
+- [Quickstart](https://dakio.io/developers/docs) · [Keys and security](https://dakio.io/developers/docs/keys) · [Bag, quote and checkout](https://dakio.io/developers/docs/checkout) · [React](https://dakio.io/developers/docs/react) · [Next.js](https://dakio.io/developers/docs/nextjs) · [Webhooks](https://dakio.io/developers/docs/webhooks) · [Secret keys](https://dakio.io/developers/docs/secret-keys) · [HTTP API](https://dakio.io/developers/docs/api) · [Going live](https://dakio.io/developers/docs/going-live)
+
+### Contact
+hello@dakio.io · +880 1727 809 264 · Digidhaka Communication Limited, Dhaka, Bangladesh

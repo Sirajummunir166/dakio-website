@@ -1,6 +1,8 @@
 # Dakio
 
-> Dakio is one app to run a whole business, for shops and service businesses everywhere: website, inbox, orders, bookings, customers, quotes, invoices and money, with Nova, an AI CEO, in every part. Shops get products, stock, orders and couriers; service businesses (parlours, salons, coaching centres, chambers, photographers, repair, events) get bookings, a team calendar, reminders, quotes and invoices; a business can do both. In Bangladesh it also has the storefront checkout, couriers, bKash, Nagad and cash on delivery built in; outside Bangladesh the inbox, Nova, bookings and customer records work today, paid in US dollars. Nova runs the day to day inside limits the owner sets; prices, discounts, refunds and anything risky stay the owner's call. Built by Digidhaka Communication Limited (Dhaka, Bangladesh). Plans are in taka in Bangladesh and in US dollars elsewhere; every plan includes Nova.
+> Dakio is one app to run a whole business, for shops and service businesses everywhere: website, inbox, orders, bookings, customers, quotes, invoices and money, with Nova, an AI CEO, in every part. Shops get products, stock, orders and couriers; service businesses (parlours, salons, coaching centres, chambers, photographers, repair, events) get bookings, a team calendar, reminders, quotes and invoices; a business can do both. In Bangladesh it also has the storefront checkout, couriers, bKash, Nagad and cash on delivery built in; outside Bangladesh the inbox, Nova, bookings and customer records work today, paid in US dollars. Nova runs the day to day inside limits the owner sets; prices, discounts, refunds and anything risky stay the owner's call. Built by Digidhaka Communication Limited (Dhaka, Bangladesh). Plans are paid in taka today, and every plan includes Nova.
+
+The full guide, with every part of the app, the shop and service modules, all 35 website templates, plans and Nova credits, what works only in Bangladesh and what is not built yet: https://dakio.io/llms-full.txt
 
 ## Pages
 
@@ -9,7 +11,7 @@
 - [For services](https://dakio.io/services): Missed bookings, no shows, the team's day, getting paid, client pages and enquiries, each answered with a real app screen.
 - [Nova](https://dakio.io/nova): Nova is the AI CEO of your business: it answers customers, books clients, takes orders and follows up, inside the limits you set.
 - [Front Office](https://dakio.io/front-office): One inbox for Messenger, Instagram, WhatsApp and website chat; Nova answers in Bangla or English.
-- [Themes](https://dakio.io/themes): Ready storefront designs for each kind of shop, each becoming your own website.
+- [Templates](https://dakio.io/themes): 35 complete website designs, 9 for shops and 26 for service businesses.
 - [Ads Studio](https://dakio.io/ads): Pick a product, get an editable ad in three sizes, static and motion.
 - [Switch](https://dakio.io/switch): Move from Shopify to Dakio in one weekend.
 - [Developers](https://dakio.io/developers): @dakio/sdk to build your own React or Next.js storefront on Dakio's backend.
@@ -39,3 +41,8 @@ English-only reference for @dakio/sdk (npm) and the HTTP API at https://dakio-ap
 - [Keys & security](https://dakio.io/developers/docs/keys): client keys (dk_pub_, browser-safe, domain-locked), secret keys (dk_sec_, server only), limits.
 - [Bag, quote & checkout](https://dakio.io/developers/docs/checkout): prices only from quotes; COD checkout; the SMS code step; Idempotency-Key.
 - [React](https://dakio.io/developers/docs/react), [Next.js](https://dakio.io/developers/docs/nextjs), [Webhooks](https://dakio.io/developers/docs/webhooks), [Secret keys](https://dakio.io/developers/docs/secret-keys), [HTTP API](https://dakio.io/developers/docs/api), [Going live](https://dakio.io/developers/docs/going-live).
+
+## Optional
+
+- [Full guide](https://dakio.io/llms-full.txt): everything above in detail, in one file.
+- [Dakio Academy on YouTube](https://www.youtube.com/@DakioOfficial): short Bangla tutorial videos recorded from the real app, one playlist per module.
