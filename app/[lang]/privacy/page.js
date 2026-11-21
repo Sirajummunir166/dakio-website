@@ -75,6 +75,7 @@ export default async function PrivacyPage({ params }) {
           "Messages customers send to the merchant's Page, Instagram account or WhatsApp number, and the replies sent from Dakio",
           "Comments customers leave on the merchant's own Facebook and Instagram posts, and the replies posted from Dakio",
           "The name and profile picture Meta provides for a customer who messages the Page, so the merchant can see who is writing",
+          "When a customer reaches the merchant's inbox by tapping one of the merchant's ads or a link the merchant shared: which ad or link it was (the ad's id, title and post, or the link's tag), as Meta reports it",
           "The connected Page's name and picture, and the text and picture of the merchant's posts that customers comment on",
           "The WhatsApp number's display name, status and quality rating, and the status of its message templates",
           "Read receipts (whether a customer has seen a message)",
@@ -82,6 +83,7 @@ export default async function PrivacyPage({ params }) {
         <P><strong>What Dakio does with it</strong></P>
         <Ul items={[
           "Shows conversations and comments to the merchant in Dakio's inbox (Front Office) and Comments page",
+          "Shows the merchant which of their ads a conversation came from, so they can see what their ads bring",
           "Sends the replies the merchant writes, and, when the merchant switches it on, the replies of Dakio's AI assistant Nova",
           "Posts a public reply under a customer's comment, for example to tell them the details were sent to their inbox",
           "Publishes the posts the merchant writes or schedules in Dakio's Content Studio to their own Page and Instagram account",
