@@ -84,7 +84,7 @@ Dakio is one app to run a whole business, with an AI CEO built in. It is made in
 ## Getting started
 
 - Sign up at app dot dakio dot io, say what you sell, and the store opens with the right menu. A store goes live in minutes: connect your page, add your products or services, turn Nova on. No developer needed.
-- Done for you, on quote (never name a price): Dakio's team designs and builds custom websites connected to Dakio, and helps with branding strategy. Ask what they sell and where, then offer a free demo call or the contact page.
+- Done for you, on quote (never name a price): Dakio's team designs and builds custom websites connected to Dakio, helps with branding strategy, and does the whole start as Launch for you (brand, website, the app set up; the plan is paid apart). Ask what they sell and where, then offer a free demo call or the contact page.
 - Moving from Shopify or another platform: the team moves products, customers and orders for you (look_up switch).
 
 ## Pricing

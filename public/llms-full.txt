@@ -434,7 +434,7 @@ Dakio has 35 complete website designs: 9 for shops and 26 for service businesses
 
 A business that wants a fully custom website can have a developer build it on @dakio/sdk (section 9) instead of a template, or have Dakio's team design and build it, on quote.
 
-Dakio's team also takes on work for a business that wants it done for them, each priced after we understand the business (no fixed price): a **custom website** designed and built on the business's own domain and connected to Dakio, and **branding strategy** (who it sells to, its voice, colours and logo direction, how its page, website and Nova speak to customers). Ask in chat or book a free demo call.
+Dakio's team also takes on work for a business that wants it done for them, each priced after we understand the business (no fixed price): a **custom website** designed and built on the business's own domain and connected to Dakio, and **branding strategy** (who it sells to, its voice, colours and logo direction, how its page, website and Nova speak to customers), and **Launch for you**, the whole start on one path: the brand direction, the website, and the Dakio app set up with the business's products or services so Nova answers from day one. The Dakio plan to run it is paid apart, monthly or yearly. Ask in chat or book a free demo call.
 
 ---
 
