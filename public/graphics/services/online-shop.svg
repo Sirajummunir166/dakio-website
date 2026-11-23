@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect width="400" height="300" fill="#F2F5E6" stroke="none"/>
+  <!-- a shop front with its awning, a bag going out -->
+  <rect x="104" y="112" width="168" height="120" rx="6" fill="#FBFCF5"/>
+  <path d="M96 84h184l14 34H82z" fill="#E6EFC9"/>
+  <path d="M128 84l-8 34M160 84l-4 34M200 84v34M240 84l4 34M272 84l8 34" stroke-width="2.5"/>
+  <path d="M82 118c0 12 13 12 13 0c0 12 18 12 18 0c0 12 18 12 18 0c0 12 18 12 18 0c0 12 18 12 18 0c0 12 18 12 18 0c0 12 18 12 18 0c0 12 18 12 18 0c0 12 13 12 13 0" fill="#D3E4A0" stroke-width="2.5"/>
+  <rect x="124" y="152" width="58" height="44" rx="4" fill="#E6EFC9" stroke-width="2.5"/>
+  <rect x="200" y="152" width="50" height="80" rx="4" fill="#D3E4A0" stroke-width="2.5"/>
+  <circle cx="240" cy="194" r="3" fill="#3E7A45" stroke="none"/>
+  <path d="M286 170h46l-6 62h-34z" fill="#C6F035"/>
+  <path d="M298 170v-8a11 11 0 0 1 22 0v8" stroke-width="2.5"/>
+</svg>

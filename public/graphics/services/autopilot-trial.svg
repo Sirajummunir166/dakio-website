@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect width="400" height="300" fill="#F2F5E6" stroke="none"/>
+  <!-- Nova over a running dashboard: replies and orders ticking on their own -->
+  <rect x="96" y="128" width="208" height="110" rx="14" fill="#FBFCF5"/>
+  <rect x="114" y="146" width="80" height="34" rx="8" fill="#E6EFC9" stroke-width="2.5"/>
+  <rect x="206" y="146" width="80" height="34" rx="8" fill="#E6EFC9" stroke-width="2.5"/>
+  <path d="M116 220l26-14l20 8l26-20l22 10l26-18l50 0" stroke-width="2.5"/>
+  <circle cx="200" cy="80" r="24" fill="#C6F035"/>
+  <circle cx="192" cy="72" r="6" fill="#FBFCF5" stroke="none"/>
+  <circle cx="200" cy="80" r="36" stroke="#D3E4A0" stroke-width="2.5"/>
+  <path d="M268 64l10-8M274 88h14M126 64l-10-8M120 88h-14" stroke-width="2.5"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect width="400" height="300" fill="#F2F5E6" stroke="none"/>
+  <!-- one path: a swatch, a page, a shop, ending at a flag -->
+  <path d="M70 226c40 0 46-60 92-60s50 46 92 46s34-80 76-96" stroke-width="3" stroke-dasharray="2 9"/>
+  <circle cx="74" cy="226" r="26" fill="#FBFCF5"/>
+  <rect x="62" y="214" width="24" height="24" rx="5" fill="#D3E4A0" stroke-width="2.5"/>
+  <circle cx="162" cy="166" r="28" fill="#FBFCF5"/>
+  <rect x="146" y="152" width="32" height="26" rx="4" fill="#E6EFC9" stroke-width="2.5"/><path d="M146 160h32" stroke-width="2"/>
+  <circle cx="254" cy="212" r="28" fill="#FBFCF5"/>
+  <path d="M240 204h28l-4 22h-20z" fill="#D3E4A0" stroke-width="2.5"/><path d="M248 204v-4a6 6 0 0 1 12 0v4" stroke-width="2.5"/>
+  <path d="M330 116V52"/>
+  <path d="M330 54h44l-12 16l12 16h-44z" fill="#C6F035"/>
+  <ellipse cx="330" cy="118" rx="18" ry="5" fill="#D3E4A0" stroke-width="2.5"/>
+</svg>

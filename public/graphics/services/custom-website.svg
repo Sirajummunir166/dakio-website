@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect width="400" height="300" fill="#F2F5E6" stroke="none"/>
+  <!-- a browser window with a page laid out, a cursor placing a block -->
+  <rect x="80" y="62" width="240" height="176" rx="14" fill="#FBFCF5"/>
+  <path d="M80 92h240"/>
+  <circle cx="100" cy="77" r="4" fill="#D3E4A0" stroke-width="2"/><circle cx="114" cy="77" r="4" fill="#D3E4A0" stroke-width="2"/><circle cx="128" cy="77" r="4" fill="#D3E4A0" stroke-width="2"/>
+  <rect x="148" y="72" width="120" height="10" rx="5" fill="#E6EFC9" stroke-width="2"/>
+  <rect x="100" y="108" width="200" height="54" rx="8" fill="#E6EFC9" stroke-width="2.5"/>
+  <rect x="114" y="122" width="80" height="8" rx="4" fill="#3E7A45" opacity=".6" stroke="none"/>
+  <rect x="114" y="138" width="54" height="8" rx="4" fill="#3E7A45" opacity=".35" stroke="none"/>
+  <rect x="100" y="176" width="60" height="44" rx="8" fill="#D3E4A0" stroke-width="2.5"/>
+  <rect x="170" y="176" width="60" height="44" rx="8" fill="#D3E4A0" stroke-width="2.5"/>
+  <rect x="240" y="176" width="60" height="44" rx="8" fill="#C6F035" stroke-width="2.5" stroke-dasharray="5 5"/>
+  <path d="M286 204l26 10l-11 4l-4 11z" fill="#FBFCF5" stroke-width="2.5"/>
+</svg>

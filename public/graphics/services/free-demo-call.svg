@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="#3E7A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect width="400" height="300" fill="#F2F5E6" stroke="none"/>
+  <!-- a laptop on a video call, a chat bubble beside it -->
+  <rect x="96" y="78" width="176" height="118" rx="12" fill="#FBFCF5"/>
+  <rect x="110" y="92" width="148" height="90" rx="8" fill="#E6EFC9" stroke-width="2.5"/>
+  <rect x="156" y="120" width="44" height="32" rx="7" fill="#D3E4A0" stroke-width="2.5"/>
+  <path d="M200 130l16-9v30l-16-9z" fill="#D3E4A0" stroke-width="2.5"/>
+  <path d="M78 196h212l-12 18H90z" fill="#D3E4A0"/>
+  <path d="M284 92h54a10 10 0 0 1 10 10v30a10 10 0 0 1-10 10h-30l-16 14v-14h-8a10 10 0 0 1-10-10v-30a10 10 0 0 1 10-10z" fill="#C6F035"/>
+  <rect x="290" y="106" width="40" height="6" rx="3" fill="#3E7A45" opacity=".55" stroke="none"/>
+  <rect x="290" y="120" width="26" height="6" rx="3" fill="#3E7A45" opacity=".4" stroke="none"/>
+</svg>
