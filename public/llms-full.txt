@@ -432,7 +432,9 @@ Dakio has 35 complete website designs: 9 for shops and 26 for service businesses
 | [travelo.](https://dakio.io/themes/travel) | Tour operator · Air ticketing agency | Send your dates and how many people. You get a plan and one clear price. |
 | [visaex.](https://dakio.io/themes/visa) | Study abroad consultancy · Visa consultancy | Sit with a counsellor, go through your results and budget, and leave with a clear list of options. |
 
-A business that wants a fully custom website can have a developer build it on @dakio/sdk (section 9) instead of a template.
+A business that wants a fully custom website can have a developer build it on @dakio/sdk (section 9) instead of a template, or have Dakio's team design and build it, on quote.
+
+Dakio's team also takes on work for a business that wants it done for them, each priced after we understand the business (no fixed price): a **custom website** designed and built on the business's own domain and connected to Dakio, and **branding strategy** (who it sells to, its voice, colours and logo direction, how its page, website and Nova speak to customers). Ask in chat or book a free demo call.
 
 ---
 
@@ -555,7 +557,7 @@ Say plainly that these are not available yet:
 
 - **Is Dakio free?** There is a Free plan, forever, with limits. Growth and Business are paid.
 - **Is there a free trial?** Yes: 14 days of Business, once per store, started by the owner.
-- **Do I need a developer?** No. Only a fully custom website on @dakio/sdk needs one.
+- **Do I need a developer?** No. Only a fully custom website on @dakio/sdk needs one, or Dakio's team can build it for you, on quote.
 - **Can I cancel?** Any time; access continues to the end of the paid period. Nova can be switched off and Dakio used without her.
 - **Who owns the data?** The business. Products, customers and orders can be exported; there is no contract holding anyone in.
 - **Does Dakio speak Bangla?** The app is in Bangla and English; Nova answers in Bangla, Banglish and English, typed or by voice note.
